@@ -1,0 +1,152 @@
+  <div class="footer" style="padding: 15px; font-size: 12px; line-height: 20px; text-align: center;">
+  {pc:get sql="SELECT * FROM v9_page where catid='53'" return="page_data"}
+
+  {loop $page_data $v}
+  
+											
+										
+		{$v[content]}
+										
+  
+{/loop}
+{/pc}
+
+    <br>
+  </div>
+</div>
+</div>
+
+<script src="{APP_PATH}statics/sina/js/move.js"></script>
+<!--二维码 begin--> 
+
+<script type="text/javascript">
+
+	(function(aClz,maxSize,co) {
+
+	var doc = document,
+
+		side = (function() {
+
+			var body = doc.body,
+
+				firstChild = body.firstChild,
+
+				wrap = doc.createElement('div');
+
+			wrap.className = 'side-btns-2wm';
+
+			wrap.style.display = 'none';
+			wrap.style.display = 'none';
+			thisURL = document.URL;
+			strwrite = "<img src='https://chart.googleapis.com/chart?cht=qr&chs=90x90&choe=UTF-8&chld=L|4&chl=" + thisURL + "' width='90' height='90' alt='网址二维码' />"; 
+
+			wrap.innerHTML = '<a class="side-btns-2wm-img" target="_blank" href="#" title="手机端快速访问" suda-uatrack="key=qr_code&value=open_index_qrcode"><em>使用手机扫描</em> '+strwrite+' <span>使用手机扫描</span> </a> <a href="javascript:;" class="side-btns-2wm-close" title="关闭" suda-uatrack="key=qr_code&value=open_index_qrcode_close">关闭</a>';
+
+			firstChild ? firstChild.parentNode.insertBefore(wrap, firstChild) : body.appendChild(wrap);
+
+			return wrap;
+
+		})(),
+
+		clz = side.className,
+
+		nClz = clz + ' ' + aClz,
+
+		cookieName = co.name || 'close_open_index_2wm',
+
+		domain = co.domain || 'open.sina.com.cn',
+
+		lnks = side.getElementsByTagName('a'),
+
+		close = lnks[lnks.length-1],
+
+		toggle = function(dis) {
+
+			side.style.display = dis;
+
+		}, addEvent = function(o, s, fn) {
+
+			if (o.attachEvent) {
+
+				o.attachEvent('on' + s, fn);
+
+			} else {
+
+				o.addEventListener(s, fn, false);
+
+			}
+
+			return o;
+
+		}, resize = function() {
+
+			var body = doc.documentElement || doc.body;
+
+			if (!body) {
+
+				return;
+
+			}
+
+			var width = body.offsetWidth;
+
+			if (width < maxSize) {
+
+				side.className = nClz;
+
+			} else {
+
+				side.className = clz;
+
+			}
+
+		};
+
+		// name, value, expire(hour), path, domain, secure
+
+		var cookie = (function() {var co = {}; co.getCookie = function(name) {name = name.replace(/([\.\[\]\$])/g, '\\\$1'); var rep = new RegExp(name + '=([^;]*)?;', 'i'); var co = document.cookie + ';'; var res = co.match(rep); if (res) {return unescape(res[1]) || ""; } else {return ""; } }; co.setCookie = function(name, value, expire, path, domain, secure) {var cstr = []; cstr.push(name + '=' + escape(value)); if (expire) {var dd = new Date(); var expires = dd.getTime() + expire * 3600000; dd.setTime(expires); cstr.push('expires=' + dd.toGMTString()); } if (path) {cstr.push('path=' + path); } if (domain) {cstr.push('domain=' + domain); } if (secure) {cstr.push(secure); } document.cookie = cstr.join(';'); }; co.deleteCookie = function(name) {document.cookie = name + '=;' + 'expires=Fri, 31 Dec 1999 23:59:59 GMT;'; }; return co; })();
+
+		var display = cookie.getCookie(cookieName);
+
+		if(display!=''){
+
+			toggle('none');
+
+			return;
+
+		}
+
+		toggle('block');
+
+		resize();
+
+		addEvent(window, 'resize', resize);
+
+		addEvent(close,'click',function(e){
+
+			toggle('none');
+
+			cookie.setCookie(cookieName,'1',15*24,'/',domain);
+
+			if(window.event){
+
+				window.event.returnValue = false;
+
+			}else{
+
+				e.preventDefault();
+
+			}
+
+		});
+
+	})('side-btns-2wm-resize',1174,{
+
+		name:'close_open_index_2wm',				
+
+		domain:'open.sina.com.cn'		
+	});
+
+	</script>
+</body>
+</html>

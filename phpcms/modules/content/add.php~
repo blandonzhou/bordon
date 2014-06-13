@@ -1,0 +1,6 @@
+<?php
+defined('IN_PHPCMS') or exit('No permission resources.');
+echo '<script>var </script>';
+$title=$_POST['title'];
+exec();
+?>

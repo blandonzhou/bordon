@@ -1,0 +1,211 @@
+/* CSS Document */
+/* ================== css reset ================== */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin: 0; padding: 0; }
+fieldset, img { border: none; }
+address, caption, cite, code, dfn, th, var { font-style: normal; font-weight: normal; }
+ul, ol, li { list-style: none; }
+select, input { vertical-align: middle; }
+select, input, textarea { font-size: 12px; margin: 0; }
+table { border-collapse: collapse; }
+body { color: #686868; padding: 5px 0; font: 12px/20px "宋体"; background: #f7f7f7 url(../images/pubClass2012_yan_rpX.png) 0 0 repeat-x; }
+.clearfix:after { content: "."; display: block; height: 0; visibility: hidden; clear: both; }
+.clearfix { zoom: 1; }
+.clearit { clear: both; height: 10px; font-size: 0; overflow: hidden; zoom: 1; }
+a { color: #686868; text-decoration: none; }
+a:visited { color: #8090A3; }
+a:hover, a:active, a:focus { color: #0673a5; text-decoration: underline; }
+.wrap { width: 950px; margin: 0 auto; }
+/*others added by yan*/
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+.fred, .fred a { color: #C72100; }
+.fgrey, .fgrey a:link { color: #b6b8ba; }
+.fblue, .fblue a:link { color: #1d7aaa; }
+a.fblued, .fblued a:link { color: #396682; }
+.fbluel, .fbluel a:link { color: #145290 }
+.forg, .forg a:link { color: #ff6600; }
+.fred a:visited, .fgrey a:visited, .fblue a:visited, .fblued a:visited, a.fblued:visited, .fbluel a:visited { color: #8090A3; }
+.fred a:hover, .fgrey a:hover, .forg a:hover, .fblued a:hover, a.fblued:hover, .fblue a:hover, .fbluel a:hover { color: #0673a5; }
+.fchg1, .fchg1 a:link, .fchg1 a:visited { color: #396682; }
+.fchg1 a:hover { color: #0673a5; text-decoration: underline; }
+.fchg2, .fchg2 a:link, .fchg2 a:visited { color: #1b71b4; }
+.fchg2 a:hover { color: #0673a5; text-decoration: underline; }
+.fmid { text-align: center; }
+.noBg { background: none repeat scroll 0 0 transparent !important; }
+.lf { float: left }
+.rt { float: left; }
+/* 导航 */
+/*common bg*/
+.saveBtn, .b_txt, .sinaWb, .payAtt, .sub02_t span, .vNum, .btn04, .Lname, .show, .btns a, .part03 .arr { background: url(../images/pubClass2012_yan_icons.png) 999px 999px no-repeat; }
+.stext, .sbtn, .tt, .sub01_t span, .best, .b2t, .tit04, .arr_l, .arr_r, .tit06 h2, .tit06 .payAtt { background: url(../images/pubClass2012_yan_ttblue.png) 999px 999px no-repeat; outline: none; }
+.sub02_c, .sub02_t, .part03 { background: url(../images/pubClass2012_yan_rpX2.png) repeat-x scroll 0 0 transparent; }
+.tit01 .tit, .arr3_r, .line01, .noteBg, .up { background: url(../images/pubClass2012_yan_course.png) 999px 999px no-repeat; }
+/*icons*/
+
+.Lname { background-position: 100% -135px; padding-right: 8px; margin-right: 5px; }/*登陆用户名*/
+.payAtt { background-position: 0 -400px; height: 25px; line-height: 99px; display: inline-block; margin-right: 5px; outline: medium none; overflow: hidden; width: 73px; }/*加关注*/
+.b2t { background-position: -180px -340px; display: block; width: 118px; height: 31px; line-height: 999px; overflow: hidden; zoom: 1; float: right; }/*backToTop*/
+.line01 { height: 5px; overflow: hidden; zoom: 1; background-position: 0 0; background-repeat: repeat-x; }
+.up { background-position: 0 -140px; width: 79px; height: 26px; display: block; float: left; margin-right: 5px; line-height: 999px; overflow: hidden; zoom: 1; }
+.noteBg { background-position: 0 -180px; width: 138px; height: 30px; line-height: 30px; display: block; float: left; text-align: center; color: #000; font-size: 12px }
+/*二级导航导 Start*/
+
+.menu { overflow: hidden; zoom: 1; }
+.menu_nav { position: relative; width: 950px; margin: 0 auto; }
+.menu_t { height: 42px; padding-top: 2px; }
+.menu_t li { display: block; float: left; height: 42px; margin: 0 8px; display: inline; }
+.menu_t li .mt { display: block; height: 42px; text-indent: -999em; outline: none; background: url(../images/pubClass2012_yan_Navtt.png) 0 0 no-repeat; }
+.menu_t #menu1 .mt { background-position: 0 -1px; width: 45px; }
+.menu_t #menu2 .mt { background-position: 0 -61px; width: 100px; }
+.menu_t #menu3 .mt { background-position: 0 -121px; width: 100px; }
+.menu_t #menu4 .mt { background-position: 0 -181px; width: 100px; }
+.menu_t #menu5 .mt { background-position: 0 -241px; width: 80px; }
+.menu_t #menu6 .mt { background-position: 0 -301px; width: 82px; }
+.menu_t #menu7 .mt { background-position: 0 -361px; width: 80px; }
+#menu1.selected .mt, .menu_t #menu1 .mt:hover { background-position: -120px 0; }
+#menu2.selected .mt, .menu_t #menu2 .mt:hover { background-position: -120px -60px; }
+#menu3.selected .mt, .menu_t #menu3 .mt:hover { background-position: -120px -120px; }
+#menu4.selected .mt, .menu_t #menu4 .mt:hover { background-position: -120px -180px; }
+#menu5.selected .mt, .menu_t #menu5 .mt:hover { background-position: -120px -240px; }
+#menu6.selected .mt, .menu_t #menu6 .mt:hover { background-position: -120px -300px; }
+#menu7.selected .mt, .menu_t #menu7 .mt:hover { background-position: -120px -360px; }
+/* .menu_c{ height:90px; background:url(../images/pubClass2012_yan_rpX1.png) 0 -1px repeat-x; } */
+
+.menu_c .className { padding: 2px 20px 0 50px; margin: 0 auto; width: 900px; line-height: 30px; }
+.menu_c a { float: left; padding: 0 10px; white-space: nowrap; }
+.menu_c_bg .clear { clear: both; height: 0px; width: 100%; overflow: hidden; }
+.search { position: absolute; right: 0; top: 6px; width: 210px; line-height: 22px; }
+.search .stext { background-position: 0 -200px; padding: 0 5px 0 20px; line-height: 22px; height: 22px; width: 120px; display: block; float: left; }
+.search .sinput { background: transparent; line-height: 22px; height: 22px; width: 120px; color: #999999; font-size: 12px; border: none; }
+.search .sbtn { float: left; background-position: -153px -200px; width: 58px; height: 22px; border: none; }
+/*二级导航导End*/
+.secondaryHeader { height: 33px; overflow: hidden; color: #000; font-size: 12px; font-weight: 100; padding-bottom: 2px; width: 950px; margin: 0 auto; }
+.secondaryHeader a, .secondaryHeader a:visited { color: #000; text-decoration: none; }
+.secondaryHeader a:hover, .secondaryHeader a:active { color: #c00; text-decoration: underline; }
+.sHBorder { padding: 0 10px 0 12px; overflow: hidden; zoom: 1; }
+.sHLogo { float: left; height: 31px; line-height: 31px; overflow: hidden; }
+.sHLogo span, .sHLogo span a { display: block; *float:left;
+display: table-cell; vertical-align: middle; *display:block;
+*font-size:27px;
+*font-family:Arial;
+height: 31px; }
+.sHLogo span, .sHLogo span a img { vertical-align: middle; }
+.sHLinks { float: right; line-height: 31px; }
+/* ================== block define ================== */
+
+.part01 { margin-top: 10px; border: 1px solid #aeaeae; background: #f1f1f2; }
+.part01 .p_l { width: 688px; float: left; background: #eaeaea url(../images/pubClass2012_yan_courseBg.png) 100% 0 no-repeat; }
+.part01 .p_r { width: 240px; float: right; padding: 10px; }
+.part02 { padding: 10px; border: 1px solid #e9e9e9; background: url(../images/pubClass2012_yan_rpX4.png) repeat-x scroll 0 0 transparent; margin-top: 10px; overflow: hidden; zoom: 1; }
+.part02 .tit01 { overflow: hidden; zoom: 1; margin: 0 20px; border-bottom: 1px solid #dad9d9; height: 45px; }
+.part03 { background-position: 0 -360px; border: 1px solid #e4e5e5; padding: 5px 0 5px 10px; position: relative; margin-top: 10px; text-align: center; }
+.part03 .arr { background-position: -200px -80px; height: 39px; width: 25px; position: absolute; top: 0; left: 0; }
+.part03 a { display: inline-block; padding: 0 12px; color: #000; }
+.part03 a img { background: url(../images/pubClass2012_yan_flag.png) 0px -89px no-repeat; height: 20px; width: 20px; display: block; float: left; margin-top: 10px; }
+.part03 a .sina { background-position: 0 0 }
+.part03 a .ren { background-position: 0 -30px }
+.part03 a .kai { background-position: 0 -59px }
+.part03 a .dou { background-position: 0 -90px }
+.part03 a .wang { background-position: 0 -120px }
+.part03 a .sohu { background-position: 0 -150px; }
+.part03 a .qq { background-position: 0 -180px; }
+.part04 { background: #eeeeee; margin-top: 10px; border: 1px solid #e1e1e1 }
+.part04 .p_l { width: 685px; float: left }
+.part04 .p_r { width: 263px; float: right; }
+/* ==板块单独定义=== */
+
+.tit01 { height: 30px; line-height: 30px; }
+.tit01 .tit { display: inline-block; height: 30px; line-height: 999px; overflow: hidden; zoom: 1; width: 100px; font-size: 12px }
+.tit01 .jsjs { background-position: 0 -20px; }
+.tit01 .kcjs { background-position: 0 -60px; }
+.tit01 .sykc { background-position: 0 -95px; float: left }
+/*标题*/
+
+.tit05 h2 { overflow: hidden; zoom: 1; height: 40px; }
+.tit05 h2 .tt { width: 100px; height: 37px; line-height: 999px; overflow: hidden; zoom: 1; display: block; overflow: hidden; zoom: 1; float: left; }
+.tit05 h2 .tIntro { background-position: 10px -440px; }
+.tit05 h2 .wbtj { background-position: 10px -315px; }
+.tit05 .rt { margin-top: -40px; }
+.tit06 { height: 35px; padding: 10px 0 0 10px; border-bottom: 1px solid #cfcfcf; }
+.tit06 h2 { background-position: 0 -260px; padding-left: 155px; }
+.tit06 h2 a { display: inline-block; width: 40px; text-align: center; font-style: normal; font-size: 14px; }
+.tit06 .rt { height: 30px; }
+.tit06 .payAtt { background-position: 0 -520px; float: left }
+.tit06 .sinaWb { background-position: -200px 3px; padding: 0 10px 0 30px; height: 25px; line-height: 25px; font-size: 16px; font-family: "微软雅黑"; float: left; }
+/*左图右文*/
+
+.pic img { padding: 5px; border: 1px solid #d9d9d9; }
+.pic a:hover img { border-color: #0673a5; }
+.pictxt { overflow: hidden; zoom: 1 }
+.pictxt .pic { float: left; padding-right: 8px; _padding-right: 6px; }
+.pictxt .txt h2 { font-size: 14px; }
+/*块*/
+
+.blk_login { padding: 5px 10px 0 0; line-height: 30px; height: 30px; }
+.blk_login .saveBtn { background-position: 0 8px; display: block; width: 130px; height: 28px; overflow: hidden; zoom: 1; float: left; padding-left: 10px; }
+.blk01 { overflow: hidden; zoom: 1; padding: 5px 20px; }
+.blk01 h2 { font-size: 16px; font-family: "微软雅黑", "黑体"; height: 30px; line-height: 30px; }
+.blk02 { height: 185px; }
+.blk02 .txt { padding-top: 10px; }
+.blk02 .intro { padding-top: 5px; }
+.arr3_r { height: 20px; width: 40px; background-position: 0 -220px; overflow: hidden; zoom: 1; margin: 0 auto; }
+.blk03 { margin-top: 25px; }
+.blk03 .txt { height: 180px; }
+.blk05 { padding: 13px 0 5px; overflow: hidden; zoom: 1; width: 930px; height: 105px; }
+.blk05 .pic { width: 142px; float: left; position: relative; }
+.blk05 .pic img { background: #fff; padding: 2px; border: 1px solid #eeeeee }
+.blk05 .pic a:hover img { border-color: #0673a5 }
+.blk05 .arr_l, .blk05 .arr_r { width: 17px; height: 40px; margin: 20px 10px 0; float: left; display: inline; }
+.blk05 .arr_l { background-position: 0 -60px; }
+.blk05 .arr_r { background-position: -40px -60px; }
+.blk05 .scr_cont { float: left; position: relative; }
+.blk05 .pic .bg { display: none; }
+.blk05 .cur .bg { display: block; position: absolute; top: 3px; left: 3px; width: 132px; height: 100px; background: #000; filter: Alpha(Opacity=50); opacity: 0.5; }
+/*on weibo start*/
+
+.blkWb { border: 1px solid #e9e9e9; padding: 10px 0 6px; height: 630px; border-top: none; background: #f2f2f3; }
+.blkWb .blkScroll { padding: 0 0 0 5px; }
+.blkWb .blk_tw { overflow: hidden; zoom: 1; height: 110px; }
+.blkWb .blk_tw .twpic { float: left; margin-top: 3px; padding-right: 4px; _padding-right: 2px; }
+.blkWb .blk_tw .b_txt { float: left; width: 170px; height: 84px; padding: 10px 10px 5px 18px; background-position: 0 -240px; }
+.blkWb .blk_tw .b_more { text-align: right; }
+.blkWb .blk_tw p { color: #000; }
+/*on weibo end*/
+
+
+
+/*带滚动条滚动图*/
+
+.hScrollPane_dragbar, .hScrollPane_draghandle, .hScrollPane_leftarrow, .hScrollPane_rightarrow { background: url(../images/dragbar.gif) }
+.hScrollPane_dragbar { position: absolute; margin: 0px auto; bottom: 0px; background-position: left -32px; height: 16px; left: 0px }
+.hScrollPane_draghandle { border-bottom: #d5d3d3 1px solid; position: absolute; border-left: #d5d3d3 1px solid; background-COLOR: #e5e5e5; width: 30px; background-REPEAT: no-repeat; background-position: center -48px; height: 14px; overflow: hidden; border-top: #d5d3d3 1px solid; CURSOR: default; border-RIGHT: #d5d3d3 1px solid; top: 0px; left: 0px; -moz-border-radius: 2px; -khtml-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px }
+.hScrollPane_leftarrow { position: absolute; width: 17px; bottom: 0px; display: inline-block; height: 16px; overflow: hidden }
+.hScrollPane_rightarrow { position: absolute; width: 17px; bottom: 0px; display: inline-block; height: 16px; overflow: hidden }
+.hScrollPane_leftarrow { left: 0px }
+.hScrollPane_leftarrow:hover { background-position: left -64px }
+.hScrollPane_rightarrow { background-position: left -16px; RIGHT: 0px }
+.hScrollPane_rightarrow:hover { background-position: left -80px }
+.draghandlealter { background-COLOR: #efefef; background-position: center -96px }
+.container2 { width: 852px; height: 174px; margin: 10px 45px; overflow: hidden; position: relative; -moz-user-select: none; }/*20120925 modify yan*/
+.container2 ul { width: 50000px; position: absolute; left: 0px; top: 0px; padding: 0; margin: 0; }
+.container2 ul li { width: 142px; float: left; line-height: 20px; text-align: center; background: #eee; padding: 0; list-style-type: none; }
+.container2 ul li span { height: 43px; line-height: 20px; display: block }/*20120925 modify yan*/
+.container2 ul li img { border: 1px solid #ccc; padding: 2px; display: block }/*20120925 modify yan*/
+.container2 ul li.selected a:hover img { border-color: #0673A5; }
+.container2 ul li .bg { display: none; }/*20120906 modify yan*/
+.container2 .cur { position: relative; }/*20120906 modify yan*/
+.container2 .cur .bg { display: block; position: absolute; top: 3px; left: 5px; width: 132px; height: 100px; background: #000; filter: Alpha(Opacity=50); opacity: 0.5; }
+/*分页*/
+
+.page { font-family: "宋体", sans-serif; text-align: center; font-size: 12px; line-height: 20px; color: #999; }
+.page span, .page a { display: inline-block; padding: 0px 8px; background: #fff; margin: 0 -2px }
+.page a { border: 1px #9aafe5 solid; color: #3568b9; text-decoration: none; }
+.page span { border: 1px #ddd solid; color: #999; }
+.page span.cur { background: #296cb3; font-weight: bold; color: #fff; border-color: #296cb3 }
+.page a:hover, .page a:active { border: 1px #2e6ab1 solid; color: #363636; text-decoration: none }
+.page label { color: #3568b9 }
+.page .btn { height: 17px; border: 1px #9aafe5 solid; vertical-align: top; margin-left: 20px; width: 50px; }
+/*footer*/
+.footer { color: #686868; line-height: 22px; margin: 2em 0; text-align: center; font-family: Arial, Helvetica, sans-serif, "黑体" }
+
+/* ================= commen define ================ */

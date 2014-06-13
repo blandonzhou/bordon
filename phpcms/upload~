@@ -1,0 +1,4 @@
+<?php 
+include('base.php');
+ftp_upload('52b1baa1d3921.mp4');
+?>

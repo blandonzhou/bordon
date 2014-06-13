@@ -1,0 +1,5 @@
+<?php 
+include('base.php');
+if(ftp_upload('52b1baa1d3921.mp4')) echo 'success';
+else echo 'error';
+?>

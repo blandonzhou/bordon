@@ -1,0 +1,36 @@
+{template 'content', 'header'}
+{template 'content', 'header_nav'}
+	<div class="clr sr_body sr_list">
+    	<div class="sr_main">
+        	
+
+            <div class="brd1s"></div>
+            <div class="wrap sr_lists">
+            	<div class="l">
+                	
+                   
+         <div class="jg">获得约 {$totalnums} 条结果 （用时{sprintf("%01.2f", $execute_time)} 秒）</div>
+                   
+                </div>
+                <div class="c wrap">
+                	<ul class="wrap">
+						{loop $video_data $i $r}
+						<?php print_r($r);?>
+						<li class="wrap">
+							<div>
+								{if $r['thumb']}<a href="{$r[url]}"><img src="{$r[thumb]}" width="60" height="60" /></a>{/if}
+								<h5><a href="{$r[url]}">{$r[title]}</a>{if $r['posids']}<img src="{IMG_PATH}icon/small_elite.gif">{/if}</h5>
+								<p>{$r[description]}</p>
+							</div>
+							<div class="adds">发布时间：{format::date($r[inputtime], 1)}</div>
+						</li>
+						{/loop}
+						{if empty($video_data)}未找到结果{/if}
+                    </ul>
+                 
+					
+                </div>
+            </div>
+      </div>
+
+{template 'content', 'footer'}

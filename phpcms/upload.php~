@@ -1,0 +1,8 @@
+<?php 
+include 'base.php';
+
+
+
+pc_base::ftp_upload('52b1baa1d3921.mp4')
+
+?>

@@ -1,0 +1,56 @@
+10
+
+dir
+0
+svn://localhost/svn/phpcms/phpsso_server/caches
+svn://localhost
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c9eee270-cbd3-4170-9c72-e9098b940636
+
+settings
+dir
+
+
+
+add
+
+configs
+dir
+
+
+
+add
+
+commons
+dir
+
+
+
+add
+
+caches_admin
+dir
+
+
+
+add
+
