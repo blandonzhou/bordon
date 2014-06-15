@@ -21,16 +21,14 @@
             </tr>
         </thead>
     <tbody>
-   	{loop $datas $info} 
+	{loop $datas $info} 
 	<tr>
 	<td align="center">{$info['id']}</td>
-	<td align="left"><a href="{$info[url]}" target="_blank" title="{$info['title']}">{str_cut($info['title'], 60)}</a> {if $info[status]==0}<font color="red">{L('reject_content')}</font>{elseif $info[status]!='99'}<font color="#1D94C7">´ýÉóÖÐ</font>{/if}</td>
+	<td align="left"><a href="{$info[url]}" target="_blank" title="{$info['title']}">{str_cut($info['title'], 60)}</a> {if $info[status]==0}<font color="red">{L('reject_content')}</font>{/if}</td>
 	<td align="center"><a href="{if strpos($CATEGORYS[$info['catid']][url],'http://')===false}{$siteurl}{/if}{$CATEGORYS[$info['catid']][url]}" target="_blank">{$CATEGORYS[$info['catid']][catname]}</a></td>
 	<td align="center">{date('Y-m-d',$info['inputtime'])}</td>
-	<td align="center">
-	{if $info[status]==99}<font color="green">{L('pass')}</font>{elseif !$info[flag]}<a href="index.php?m=member&c=content&a=edit&catid={$info[catid]}&id={$info[id]}"><font color="red">{L('edit')}</font></a> | <a href="index.php?m=member&c=content&a=delete&catid={$info[catid]}&id={$info[id]}">É¾³ý</a>{else}<a href="index.php?m=member&c=content&a=edit&catid={$info[catid]}&id={$info[id]}"><font color="red">{L('edit')}</font></a> | <a href="index.php?m=member&c=content&a=delete&catid={$info[catid]}&id={$info[id]}">É¾³ý</a>{/if}
-  	 
-	</td>
+	<td align="center">{if $info[status]==99}<font color="#1D94C7">{L('pass')}</font>{elseif !$info[flag]}{L('verify_content')}{else}<a href="index.php?m=member&c=content&a=edit&catid={$info[catid]}&id={$info[id]}"><font color="red">{L('edit')}</font></a>{/if}
+	{if in_array($info[modelid],array_keys(getinfocache('info_modelid')))}<a href="javascript:void();" onclick="top_info('{$info[id]}', '{$info[catid]}');return false;"><font color="#1D94C7">ÖÃ¶¥</font></a>{/if}</td>
 	</tr>
 	{/loop}
     </tbody>
@@ -44,11 +42,15 @@
 	</div>
 </div>
 <div class="clear"></div>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 	function c_c(catid) {
 		location.href='index.php?m=member&c=content&a=published&siteid={$siteid}&catid='+catid;
 	}
-//-->
+	function top_info(id, catid) {
+		art.dialog({title:'<?php echo L('edit')?>', id:'top', iframe:'{APP_PATH}index.php?m=member&c=content&a=info_top&id='+id+'&catid='+catid ,width:'600px',height:'200px'}, 	function(){var d = window.top.art.dialog({id:'top'}).data.iframe;
+		var form = d.document.getElementById('dosubmit');form.click();return false;}, function(){window.top.art.dialog({id:'top'}).close()});
+	}	
+//-->	
 </script>
 {template 'member', 'footer'}

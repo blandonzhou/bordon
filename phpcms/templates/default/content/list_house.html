@@ -1,0 +1,131 @@
+{template "content","header_info"}
+<div class="wp">
+	<div id="search-data">
+    	<dl class="searchitem">
+    		{php $zone = intval($_GET['zone'])}
+        	<dt class="blue"><span>区域：</span>
+			{php $zones = show_linkage($info_linkageid,$cityid,$cityid,$modelid)}
+        	{loop $zones  $area}
+	        	{if $zone == $area['linkageid'] || get_linkage_level($info_linkageid,$zone)== $area['linkageid']}
+				<em>{$area['name']}</em>
+				{else}
+	        	<a href="{$area['url']}">{$area['name']}</a> 
+				{/if}
+            {/loop}</dt> 
+            {php $sub_zone = show_linkage($info_linkageid,$zone,$cityid,$modelid)}
+            {if !empty($sub_zone)}
+				<dd><span>子类别：</span>
+				{loop $sub_zone $area}
+					{if $zone == $area['linkageid']}
+						<em>{$area['name']}</em>
+					{else}
+						<a href="{$area['url']}">{$area['name']}</a> 				
+					{/if}
+				{/loop}</dd>
+            {/if}
+  
+        </dl>
+        <dl class="searchitem">
+			<dt class="blue"><span>价格：</span>
+			{php $price_rang = array('500元以下|1_500','500-1000元|500_1000','1000-1500元|1000_1500','1500-2000元|1500_2000','2000-3000元|2000_3000','3000-4500元|3000_4500','4500元以上|4500_9999')}
+			{loop filters('price',$modelid,$price_rang) $r}
+				{$r[menu]}
+			{/loop}
+			</dt>
+        </dl>
+        <dl class="searchitem">
+			<dt class="blue"><span>方式：</span>
+			{loop filters('rent_mode',$modelid) $r}
+				{$r[menu]}
+			{/loop}
+			</dt>
+        </dl>
+        <dl class="searchitem">
+			<dt class="blue"><span>支付方式：</span>
+			{loop filters('pay_type_int',$modelid) $r}
+				{$r[menu]}
+			{/loop}			
+			</dt>
+        </dl>
+			
+        <dl class="searchitem">
+        	<dt class="blue"><span>厅室：</span>
+			{php $bedroom_rang = array('一室|1','两室|2','三室|3','四室以上|4_100')}			
+			{loop filters('bedroom',$modelid,$bedroom_rang) $r}
+				{$r[menu]}
+			{/loop}
+			</dt>
+        </dl>		
+    </div>
+    <div class="bk15"></div>
+    <ul class="tabitem cu-span clear">
+		{loop filters('agent',$modelid) $r}
+			<li {if $_GET['agent'] == $r[value]}class="on"{/if}><a href="{$r[url]}"><span>{$r[name]}</span></a></li>
+		{/loop}			
+        <li class="add"><a href="index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}&city={$city}&zone={$zone}" target="_blank">免费发布信息>></a></li>
+    </ul>
+    <ul class="filter clear">
+    	<li>找到相关信息<b id="total"></b>条</li>
+
+    </ul>
+</div>
+<div class="wp clear info-article">
+	<div class="col-right">
+        <div class="col-ad">
+        <h6><a href="" class="red rt">在这里显示</a>广告</h6>
+        <a href="http://www.phpcms.cn"><img src="http://www.phpcms.cn/uploadfile/tuiguang/right.jpg"/></a><br />
+        <a href="" class="blue1">租房杀价的十三个小技巧</a><br />
+        <a href="" class="blue1">房产中介识别指南</a><br />
+        <a href="" class="blue1">租房注意事项有哪些</a><br />
+        </div>
+    </div>
+	<div class="col-auto">
+	{php $sql = structure_filters_sql($modelid,$cityid)}
+	{php $cachetime = getinfocache('info_cachetime')}
+	<table cellspacing="0" width="100%" cellpadding="0" class="info-list">
+		<tbody> 
+			{php $top_posid = ($zone==0) ? getinfocache('top_city_posid') : (get_linkage_level($info_linkageid,$zone,'child') ? getinfocache('top_zone_posid') : getinfocache('top_district_posid'))}
+			{php $where = ($zone==0) ? '`extention` LIKE \''.$cityid.'_%\'' : (get_linkage_level($info_linkageid,$zone,'child') ? '`extention` LIKE \''.$cityid.'_'.$zone.'%\'' : '`extention` = \''.$cityid.'_'.get_linkage_level($info_linkageid,$zone,'parentid').'_'.$zone.'\'')}
+			{pc:content action="position"  posid="$top_posid" where="$where" order="listorder DESC" num="10" expiration="1" cache="$cachetime"}
+				{loop $data $r}
+					 <tr>
+					 <td><a href="{$r[url]}" class="title" title="{$r[title]}">{str_cut($r[title],44)}</a> ({if $r[zone]}<a href="{structure_filters_url('zone',array('zone'=>$r[zone]),0,$modelid)}" class="blue">{get_linkage($r[zone], $info_linkageid, ' - ', 0)}</a> - {/if}{if $r[xiaoqu_address]}{$r[xiaoqu_address]}{/if})<span class="ding">顶</span></td>
+					<td width="80" class="text-c"><b>{$r[price]}元</b></td>
+					<td width="100" class="text-c">{$r[bedroom]}室{$r[hall]}厅{$r[bathroom]}卫</td>
+					<td width="80" class="text-c">{timeinterval($r[inputtime])}</td>
+					</tr>					
+				{/loop}
+			{/pc}
+			{php $urlrule = makeurlrule()}
+			{pc:content action="lists" catid="$catid"  where="$sql" num="15" order="listorder DESC,inputtime DESC" page="$page" moreinfo="1" cache="$cachetime" urlrule="$urlrule"}
+			<div style="display:none" id="content_total">{$content_total}</div>	
+			{loop $data $r}
+			{php $photos_num = count(string2array($r[photos]))}
+	         <tr>
+	         <td><a href="{$r[url]}" class="title" title="{$r[title]}">{str_cut($r[title],44)}</a> ({if $r[zone]}<a href="{structure_filters_url('zone',array('zone'=>$r[zone]),0,$modelid)}" class="blue">{get_linkage($r[zone], $info_linkageid, ' - ', 0)}</a> - {/if}{if $r[xiaoqu_address]}{$r[xiaoqu_address]}{/if}) <span class="isbiz">({box('agent',$r[agent],$modelid)})</span>{if $photos_num}<span class="tu">{$photos_num}图</span>{/if}</td>
+	        <td width="80" class="text-c"><b>{$r[price]}元</b></td>
+	        <td width="100" class="text-c">{$r[bedroom]}室{$r[hall]}厅{$r[bathroom]}卫</td>
+	        <td width="80" class="text-c">{timeinterval($r[inputtime])}</td>
+	        </tr>
+			{/loop}
+			{/pc}
+			
+		</tbody>		
+	</table>
+	<div id="pages" class="text-c">{$pages}</div>
+    </div>
+</div>
+<script language="JavaScript" src="{APP_PATH}api.php?op=top"></script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	var content_total = $("#content_total").html();
+	$("#total").html(content_total);
+	
+});
+function i_query() {
+	var param = $('#q').val();
+	var url = "{structure_filters_url('q',array('q'=>'"+param+"'),2)}";
+	location.href = url;
+}
+</script>
+{template "content","footer"}

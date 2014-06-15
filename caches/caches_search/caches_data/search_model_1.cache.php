@@ -6,6 +6,12 @@ return array (
     'name' => '专辑',
     'sort' => '0',
   ),
+  14 => 
+  array (
+    'typeid' => '57',
+    'name' => '房产信息',
+    'sort' => '0',
+  ),
   1 => 
   array (
     'typeid' => '1',

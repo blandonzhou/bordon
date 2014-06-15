@@ -7,7 +7,7 @@ ul, ol, li { list-style: none; }
 select, input { vertical-align: middle; }
 select, input, textarea { font-size: 12px; margin: 0; }
 table { border-collapse: collapse; }
-body { color: #686868; padding: 5px 0; font: 12px/20px "ÂÆã‰Ωì"; background: #f7f7f7 url(../images/pubClass2012_yan_rpX.png) 0 0 repeat-x; }
+body { color: #686868; padding: 5px 0; font: 12px/20px "ÂÆ?‰Ω?"; background: #f7f7f7 url(../images/pubClass2012_yan_rpX.png) 0 0 repeat-x; }
 .clearfix:after { content: "."; display: block; height: 0; visibility: hidden; clear: both; }
 .clearfix { zoom: 1; }
 .clearit { clear: both; height: 10px; font-size: 0; overflow: hidden; zoom: 1; }
@@ -34,7 +34,7 @@ a.fblued, .fblued a:link { color: #396682; }
 .noBg { background: none repeat scroll 0 0 transparent !important; }
 .lf { float: left }
 .rt { float: left; }
-/* ÂØºËà™ */
+/* ÂØºË?? */
 /*common bg*/
 .saveBtn, .b_txt, .sinaWb, .payAtt, .sub02_t span, .vNum, .btn04, .Lname, .show, .btns a, .part03 .arr { background: url(../images/pubClass2012_yan_icons.png) 999px 999px no-repeat; }
 .stext, .sbtn, .tt, .sub01_t span, .best, .b2t, .tit04, .arr_l, .arr_r, .tit06 h2, .tit06 .payAtt { background: url(../images/pubClass2012_yan_ttblue.png) 999px 999px no-repeat; outline: none; }
@@ -42,19 +42,19 @@ a.fblued, .fblued a:link { color: #396682; }
 .tit01 .tit, .arr3_r, .line01, .noteBg, .up { background: url(../images/pubClass2012_yan_course.png) 999px 999px no-repeat; }
 /*icons*/
 
-.Lname { background-position: 100% -135px; padding-right: 8px; margin-right: 5px; }/*ÁôªÈôÜÁî®Êà∑Âêç*/
-.payAtt { background-position: 0 -400px; height: 25px; line-height: 99px; display: inline-block; margin-right: 5px; outline: medium none; overflow: hidden; width: 73px; }/*Âä†ÂÖ≥Ê≥®*/
+.Lname { background-position: 100% -135px; padding-right: 8px; margin-right: 5px; }/*?ªÈ???®Ê?∑Â??*/
+.payAtt { background-position: 0 -400px; height: 25px; line-height: 99px; display: inline-block; margin-right: 5px; outline: medium none; overflow: hidden; width: 73px; }/*???≥Ê≥®*/
 .b2t { background-position: -180px -340px; display: block; width: 118px; height: 31px; line-height: 999px; overflow: hidden; zoom: 1; float: right; }/*backToTop*/
 .line01 { height: 5px; overflow: hidden; zoom: 1; background-position: 0 0; background-repeat: repeat-x; }
 .up { background-position: 0 -140px; width: 79px; height: 26px; display: block; float: left; margin-right: 5px; line-height: 999px; overflow: hidden; zoom: 1; }
 .noteBg { background-position: 0 -180px; width: 138px; height: 30px; line-height: 30px; display: block; float: left; text-align: center; color: #000; font-size: 12px }
-/*‰∫åÁ∫ßÂØºËà™ÂØº Start*/
+/*‰∫?Á∫ßÂ?ºË??ÂØ? Start*/
 
 .menu { overflow: hidden; zoom: 1; }
 .menu_nav { position: relative; width: 950px; margin: 0 auto; }
 .menu_t { height: 42px; padding-top: 2px; }
 .menu_t li { display: block; float: left; height: 42px; margin: 0 8px; display: inline; }
-.menu_t li .mt { display: block; height: 42px; text-indent: -999em; outline: none; background: url(../images/pubClass2012_yan_Navtt.png) 0 0 no-repeat; }
+.menu_t li .mt { display: block; height: 42px; /*text-indent: -999em;*/line-height:42px;font-size:18px;color:#fff; outline: none; /*background: url(../images/pubClass2012_yan_Navtt.png) 0 0 no-repeat;*/ }
 .menu_t #menu1 .mt { background-position: 0 -1px; width: 45px; }
 .menu_t #menu2 .mt { background-position: 0 -61px; width: 100px; }
 .menu_t #menu3 .mt { background-position: 0 -121px; width: 100px; }
@@ -78,7 +78,7 @@ a.fblued, .fblued a:link { color: #396682; }
 .search .stext { background-position: 0 -200px; padding: 0 5px 0 20px; line-height: 22px; height: 22px; width: 120px; display: block; float: left; }
 .search .sinput { background: transparent; line-height: 22px; height: 22px; width: 120px; color: #999999; font-size: 12px; border: none; }
 .search .sbtn { float: left; background-position: -153px -200px; width: 58px; height: 22px; border: none; }
-/*‰∫åÁ∫ßÂØºËà™ÂØºEnd*/
+/*‰∫?Á∫ßÂ?ºË??ÂØ?End*/
 .secondaryHeader { height: 33px; overflow: hidden; color: #000; font-size: 12px; font-weight: 100; padding-bottom: 2px; width: 950px; margin: 0 auto; }
 .secondaryHeader a, .secondaryHeader a:visited { color: #000; text-decoration: none; }
 .secondaryHeader a:hover, .secondaryHeader a:active { color: #c00; text-decoration: underline; }
@@ -112,14 +112,14 @@ height: 31px; }
 .part04 { background: #eeeeee; margin-top: 10px; border: 1px solid #e1e1e1 }
 .part04 .p_l { width: 685px; float: left }
 .part04 .p_r { width: 263px; float: right; }
-/* ==ÊùøÂùóÂçïÁã¨ÂÆö‰πâ=== */
+/* ==?øÂ??????ÂÆ?‰π?=== */
 
 .tit01 { height: 30px; line-height: 30px; }
 .tit01 .tit { display: inline-block; height: 30px; line-height: 999px; overflow: hidden; zoom: 1; width: 100px; font-size: 12px }
 .tit01 .jsjs { background-position: 0 -20px; }
 .tit01 .kcjs { background-position: 0 -60px; }
 .tit01 .sykc { background-position: 0 -95px; float: left }
-/*Ê†áÈ¢ò*/
+/*??È¢?*/
 
 .tit05 h2 { overflow: hidden; zoom: 1; height: 40px; }
 .tit05 h2 .tt { width: 100px; height: 37px; line-height: 999px; overflow: hidden; zoom: 1; display: block; overflow: hidden; zoom: 1; float: left; }
@@ -131,20 +131,20 @@ height: 31px; }
 .tit06 h2 a { display: inline-block; width: 40px; text-align: center; font-style: normal; font-size: 14px; }
 .tit06 .rt { height: 30px; }
 .tit06 .payAtt { background-position: 0 -520px; float: left }
-.tit06 .sinaWb { background-position: -200px 3px; padding: 0 10px 0 30px; height: 25px; line-height: 25px; font-size: 16px; font-family: "ÂæÆËΩØÈõÖÈªë"; float: left; }
-/*Â∑¶ÂõæÂè≥Êñá*/
+.tit06 .sinaWb { background-position: -200px 3px; padding: 0 10px 0 30px; height: 25px; line-height: 25px; font-size: 16px; font-family: "Âæ?ËΩ???Èª?"; float: left; }
+/*Â∑??æÂ?≥Ê??*/
 
 .pic img { padding: 5px; border: 1px solid #d9d9d9; }
 .pic a:hover img { border-color: #0673a5; }
 .pictxt { overflow: hidden; zoom: 1 }
 .pictxt .pic { float: left; padding-right: 8px; _padding-right: 6px; }
 .pictxt .txt h2 { font-size: 14px; }
-/*Âùó*/
+/*??*/
 
 .blk_login { padding: 5px 10px 0 0; line-height: 30px; height: 30px; }
 .blk_login .saveBtn { background-position: 0 8px; display: block; width: 130px; height: 28px; overflow: hidden; zoom: 1; float: left; padding-left: 10px; }
 .blk01 { overflow: hidden; zoom: 1; padding: 5px 20px; }
-.blk01 h2 { font-size: 16px; font-family: "ÂæÆËΩØÈõÖÈªë", "Èªë‰Ωì"; height: 30px; line-height: 30px; }
+.blk01 h2 { font-size: 16px; font-family: "Âæ?ËΩ???Èª?", "Èª?‰Ω?"; height: 30px; line-height: 30px; }
 .blk02 { height: 185px; }
 .blk02 .txt { padding-top: 10px; }
 .blk02 .intro { padding-top: 5px; }
@@ -174,7 +174,7 @@ height: 31px; }
 
 
 
-/*Â∏¶ÊªöÂä®Êù°ÊªöÂä®Âõæ*/
+/*Â∏?Êª??®Ê?°Ê??®Â??*/
 
 .hScrollPane_dragbar, .hScrollPane_draghandle, .hScrollPane_leftarrow, .hScrollPane_rightarrow { background: url(../images/dragbar.gif) }
 .hScrollPane_dragbar { position: absolute; margin: 0px auto; bottom: 0px; background-position: left -32px; height: 16px; left: 0px }
@@ -195,9 +195,9 @@ height: 31px; }
 .container2 ul li .bg { display: none; }/*20120906 modify yan*/
 .container2 .cur { position: relative; }/*20120906 modify yan*/
 .container2 .cur .bg { display: block; position: absolute; top: 3px; left: 5px; width: 132px; height: 100px; background: #000; filter: Alpha(Opacity=50); opacity: 0.5; }
-/*ÂàÜÈ°µ*/
+/*??È°?*/
 
-.page { font-family: "ÂÆã‰Ωì", sans-serif; text-align: center; font-size: 12px; line-height: 20px; color: #999; }
+.page { font-family: "ÂÆ?‰Ω?", sans-serif; text-align: center; font-size: 12px; line-height: 20px; color: #999; }
 .page span, .page a { display: inline-block; padding: 0px 8px; background: #fff; margin: 0 -2px }
 .page a { border: 1px #9aafe5 solid; color: #3568b9; text-decoration: none; }
 .page span { border: 1px #ddd solid; color: #999; }
@@ -206,6 +206,6 @@ height: 31px; }
 .page label { color: #3568b9 }
 .page .btn { height: 17px; border: 1px #9aafe5 solid; vertical-align: top; margin-left: 20px; width: 50px; }
 /*footer*/
-.footer { color: #686868; line-height: 22px; margin: 2em 0; text-align: center; font-family: Arial, Helvetica, sans-serif, "Èªë‰Ωì" }
+.footer { color: #686868; line-height: 22px; margin: 2em 0; text-align: center; font-family: Arial, Helvetica, sans-serif, "Èª?‰Ω?" }
 
 /* ================= commen define ================ */

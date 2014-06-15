@@ -16,7 +16,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/',
     'catdir' => 'anxuexiaofenlei',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=9',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=9',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -67,7 +67,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/',
     'catdir' => 'anxuekefenlei',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=10',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=10',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -118,7 +118,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/',
     'catdir' => 'sakai',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=11',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=11',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -169,7 +169,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'qinghuadaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=13',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=13',
     'items' => '7',
     'hits' => '0',
     'setting' => 'array (
@@ -220,7 +220,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'xianggangdaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=14',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=14',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -271,7 +271,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'beijingshifandaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=15',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=15',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -322,7 +322,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'nankaidaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=16',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=16',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -373,7 +373,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'beijingdaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=17',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=17',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -424,7 +424,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'yeludaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=18',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=18',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -475,7 +475,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'hafodaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=19',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=19',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -526,7 +526,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'sitanfudaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=20',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=20',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -577,7 +577,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'niujindaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=21',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=21',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -628,7 +628,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'mashengligong',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=23',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=23',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -679,7 +679,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'pulinsidun',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=24',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=24',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -730,7 +730,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'bokeli',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=25',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=25',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -781,7 +781,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'fudandaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=26',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=26',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -832,7 +832,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'zhongguodizhidaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=27',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=27',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -883,7 +883,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'beijingyoudiandaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=28',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=28',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -934,7 +934,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'jingji',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=31',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=31',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -985,7 +985,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'renwen',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=32',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=32',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1036,7 +1036,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'like',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=33',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=33',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1087,7 +1087,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'zhexue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=34',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=34',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1138,7 +1138,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'gongke',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=35',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=35',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1189,7 +1189,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'qitakexue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=36',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=36',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1240,7 +1240,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'lishi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=37',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=37',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1291,7 +1291,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'shehui',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=38',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=38',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1342,7 +1342,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'language',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=39',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=39',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1393,7 +1393,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'jiangzuo',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=40',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=40',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1444,7 +1444,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'meishu-jianzhu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=41',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=41',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1495,7 +1495,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuekefenlei/',
     'catdir' => 'shishang',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=42',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=42',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1546,7 +1546,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/',
     'catdir' => 'anxuekefenlei',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=43',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=43',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1597,7 +1597,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/',
     'catdir' => 'anxueduanfenlei',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=44',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=44',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1648,7 +1648,7 @@ return array (
     'description' => '',
     'parentdir' => '',
     'catdir' => 'Home',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=51',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=51',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1698,7 +1698,7 @@ return array (
     'description' => '',
     'parentdir' => '',
     'catdir' => 'footer',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=53',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=53',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (  \'ishtml\' => \'0\',  \'template_list\' => \'sina\',  \'page_template\' => \'page\',  \'meta_title\' => \'\',  \'meta_keywords\' => \'\',  \'meta_description\' => \'\',  \'category_ruleid\' => \'6\',  \'show_ruleid\' => \'\',  \'repeatchargedays\' => \'1\',)',
@@ -1731,7 +1731,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/anxuexiaofenlei/',
     'catdir' => 'twdx',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=54',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=54',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1782,7 +1782,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'dili',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=64',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=64',
     'items' => '1',
     'hits' => '0',
     'setting' => 'array (
@@ -1833,7 +1833,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'huaxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=65',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=65',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1884,7 +1884,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'keji',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=66',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=66',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1935,7 +1935,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/',
     'catdir' => 'pulic',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=50',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=50',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1986,7 +1986,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'kexue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=67',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=67',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2037,7 +2037,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'lishi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=68',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=68',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2088,7 +2088,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'meishu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=69',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=69',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2139,7 +2139,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'shengwu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=70',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=70',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2190,7 +2190,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'shufa',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=71',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=71',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2241,7 +2241,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'shuxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=72',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=72',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2292,7 +2292,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'sipin',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=73',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=73',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2343,7 +2343,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'tiyu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=74',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=74',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2394,7 +2394,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'wuli',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=75',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=75',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2445,7 +2445,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'xinliyujiankang',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=76',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=76',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2496,7 +2496,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'xinxijishu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=77',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=77',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2547,7 +2547,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'yinyue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=78',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=78',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2598,7 +2598,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'yingyu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=79',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=79',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2649,7 +2649,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'yuwen',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=80',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=80',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2700,7 +2700,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxuekefenlei/',
     'catdir' => 'zhengzhi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=81',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=81',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2751,7 +2751,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/',
     'catdir' => 'xiaoxue',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=82',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=82',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2802,7 +2802,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/',
     'catdir' => 'chuzhong',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=83',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=83',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2853,7 +2853,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/',
     'catdir' => 'gaozhong',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=84',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=84',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2904,7 +2904,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/xiaoxue/',
     'catdir' => 'xiaoyi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=85',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=85',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -2955,7 +2955,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/xiaoxue/',
     'catdir' => 'xiaoer',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=86',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=86',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3006,7 +3006,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/xiaoxue/',
     'catdir' => 'xiaosan',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=87',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=87',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3057,7 +3057,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/xiaoxue/',
     'catdir' => 'xiaosi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=88',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=88',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3108,7 +3108,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/xiaoxue/',
     'catdir' => 'xiaowu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=89',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=89',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3159,7 +3159,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/xiaoxue/',
     'catdir' => 'xiaoliu',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=90',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=90',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3210,7 +3210,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/chuzhong/',
     'catdir' => 'chuyi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=91',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=91',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3261,7 +3261,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/chuzhong/',
     'catdir' => 'chuer',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=92',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=92',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3312,7 +3312,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/chuzhong/',
     'catdir' => 'chusan',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=93',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=93',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3363,7 +3363,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/gaozhong/',
     'catdir' => 'gaoyi',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=94',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=94',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3414,7 +3414,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/gaozhong/',
     'catdir' => 'gaoer',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=95',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=95',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -3465,7 +3465,7 @@ return array (
     'description' => '',
     'parentdir' => 'Home/sakai/anxueduanfenlei/gaozhong/',
     'catdir' => 'gaosan',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=96',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=96',
     'items' => '12',
     'hits' => '0',
     'setting' => 'array (
@@ -3516,7 +3516,7 @@ return array (
     'description' => 'sakai',
     'parentdir' => 'Home/sakai/',
     'catdir' => 'sakai',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=index&a=lists&catid=97',
+    'url' => 'http://localhost/cms/index.php?m=content&c=index&a=lists&catid=97',
     'items' => '57',
     'hits' => '0',
     'setting' => 'array (

@@ -5,7 +5,7 @@ return array (
 		'hostname' => 'localhost',
 		'database' => 'cms',
 		'username' => 'root',
-		'password' => 'ab123456',
+		'password' => '',
 		'tablepre' => 'v9_',
 		'charset' => 'gbk',
 		'type' => 'mysql',

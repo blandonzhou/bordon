@@ -330,6 +330,177 @@ return array (
     'defaultvalue' => '',
     'ispassword' => '0',
   ),
+  'xueduan' => 
+  array (
+    'fieldid' => '207',
+    'modelid' => '11',
+    'siteid' => '1',
+    'field' => 'xueduan',
+    'name' => '学段',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '请选择学段',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'小学|1
+初中|2
+高中|3
+大学|4\',
+  \'boxtype\' => \'radio\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'1\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '1',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '0',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '5',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => '小学|1
+初中|2
+高中|3
+大学|4',
+    'boxtype' => 'radio',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '1',
+    'filtertype' => '1',
+  ),
+  'xueke' => 
+  array (
+    'fieldid' => '208',
+    'modelid' => '11',
+    'siteid' => '1',
+    'field' => 'xueke',
+    'name' => '学科',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '请选择学科',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'语文|1
+数学|2
+英语|3
+历史|4
+地理|5
+政治|6
+物理|7
+化学|8\',
+  \'boxtype\' => \'radio\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'1\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '1',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '0',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '5',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => '语文|1
+数学|2
+英语|3
+历史|4
+地理|5
+政治|6
+物理|7
+化学|8',
+    'boxtype' => 'radio',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '1',
+    'filtertype' => '1',
+  ),
+  'nianji' => 
+  array (
+    'fieldid' => '209',
+    'modelid' => '11',
+    'siteid' => '1',
+    'field' => 'nianji',
+    'name' => '年级',
+    'tips' => '',
+    'css' => '',
+    'minlength' => '0',
+    'maxlength' => '0',
+    'pattern' => '',
+    'errortips' => '请选择年级',
+    'formtype' => 'box',
+    'setting' => 'array (
+  \'options\' => \'低年级|1
+中年级|2
+高年级|3\',
+  \'boxtype\' => \'radio\',
+  \'fieldtype\' => \'varchar\',
+  \'minnumber\' => \'1\',
+  \'width\' => \'80\',
+  \'size\' => \'1\',
+  \'defaultvalue\' => \'\',
+  \'outputtype\' => \'1\',
+  \'filtertype\' => \'1\',
+)',
+    'formattribute' => '',
+    'unsetgroupids' => '',
+    'unsetroleids' => '',
+    'iscore' => '0',
+    'issystem' => '1',
+    'isunique' => '0',
+    'isbase' => '1',
+    'issearch' => '0',
+    'isadd' => '1',
+    'isfulltext' => '0',
+    'isposition' => '0',
+    'listorder' => '5',
+    'disabled' => '0',
+    'isomnipotent' => '0',
+    'options' => '低年级|1
+中年级|2
+高年级|3',
+    'boxtype' => 'radio',
+    'fieldtype' => 'varchar',
+    'minnumber' => '1',
+    'width' => '80',
+    'size' => '1',
+    'defaultvalue' => '',
+    'outputtype' => '1',
+    'filtertype' => '1',
+  ),
   'keywords' => 
   array (
     'fieldid' => '87',

@@ -48,5 +48,41 @@ return array (
     'siteid' => '0',
     'thumb' => '',
   ),
+  20 => 
+  array (
+    'posid' => '20',
+    'modelid' => '14',
+    'catid' => '0',
+    'name' => '³ÇÊÐÖÃ¶¥',
+    'maxnum' => '20',
+    'extention' => 'get_linkage({zone},getinfocache(\'info_linkageid\'), \'_\',4)',
+    'listorder' => '0',
+    'siteid' => '1',
+    'thumb' => '',
+  ),
+  21 => 
+  array (
+    'posid' => '21',
+    'modelid' => '14',
+    'catid' => '0',
+    'name' => 'ÇøÓòÖÃ¶¥',
+    'maxnum' => '20',
+    'extention' => 'get_linkage({zone},getinfocache(\'info_linkageid\'), \'_\',4)',
+    'listorder' => '0',
+    'siteid' => '1',
+    'thumb' => '',
+  ),
+  22 => 
+  array (
+    'posid' => '22',
+    'modelid' => '14',
+    'catid' => '0',
+    'name' => 'ÉÌÈ¦ÖÃ¶¥',
+    'maxnum' => '20',
+    'extention' => 'get_linkage({zone},getinfocache(\'info_linkageid\'), \'_\',4)',
+    'listorder' => '0',
+    'siteid' => '1',
+    'thumb' => '',
+  ),
 );
 ?>

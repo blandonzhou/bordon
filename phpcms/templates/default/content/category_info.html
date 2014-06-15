@@ -1,0 +1,102 @@
+{template "content","header_info"}
+{if !$_GET['city'] && getinfocache('multi_city')}
+{template "content","city_info"}
+{else}
+<!--main-->
+<div class="wp clear">
+	<!--左侧分栏-->
+	<div class="col-left">
+    	<div class="t-Rounded"><span></span></div>
+        <div class="hot-category"><div class="hot-icon"></div>
+            <h5>热门类别</h5>
+            <ul class="clear">
+			{loop subcat(getinfocache('info_catid'),0,0,$siteid) $r}		
+				{pc:content action="category" catid="$r[catid]" num="8" siteid="$siteid" order="listorder ASC"}
+					{loop $data $c}
+					<li><a href="{makecaturl($c[url], $city, getinfocache('multi_city'))}">{$c[catname]}</a></li>
+					{/loop}			
+				 {/pc}
+			{/loop}			
+            </ul>
+        </div>
+        <div class="f-Rounded"><span></span></div>
+    </div>
+    <!--左侧分栏结束 && 右侧分栏开始-->
+    <div class="col-right">
+    	<!--注册登录发布-->
+        <div class="guest clear">
+        	<a href="{APP_PATH}index.php?m=member&c=index&a=register&siteid={$siteid}" class="guest-register" >免费注册</a>
+            <a href="{APP_PATH}index.php?m=member" class="guest-login">登录</a>
+            <a href="index.php?m=member&c=content&a=info_publish&siteid={$siteid}&city={$city}" class="guest-add">免费发布信息</a>
+        </div>      
+        <div class="announce">
+        	<ul class="tab clear cu-li">
+            	<li class="on" onclick="changetab(1)" id="tab-1">公告</li><li onclick="changetab(2)" id="tab-2">规则</li><li class="weather"><iframe src="http://m.weather.com.cn/m/pn7/weather.htm " width="182" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>
+            </ul>
+            <div class="tab-panel" id="tab-panel-1">
+                {pc:announce  action="lists" siteid="$siteid" num="2"}
+                <ul>
+                   {loop $data $r}
+                     <li> <a href="{APP_PATH}index.php?m=announce&c=index&a=show&aid={$r['aid']}">{$r['title']}</a></li>
+                   {/loop}
+                </ul>
+                {/pc}			
+            </div>
+            <div class="tab-panel" id="tab-panel-2" style="display:none">
+              这里可以通过碎片添加一些规则			
+            </div>			
+        </div>
+    </div>
+    <!--右侧分栏结束-->
+    <div class="bk10"></div>
+    <div class="col-left">
+    	<div class="category-main clear">
+        	<h5><strong>所有类别</strong><p><strong>快速进入：</strong>跳蚤市场 | 生活服务 | 招聘求职 | 房屋信息 | 交友信息</p></h5>
+        	
+			{loop subcat(getinfocache('info_catid'),0,0,$siteid) $r}
+				<dl>
+				<dt><strong><a href="#">{$r[catname]}</a></strong><span class="fuhao">&gt;&gt;</span></dt>			
+				{pc:content action="category" catid="$r[catid]" num="8" siteid="$siteid" order="listorder ASC"}
+					{loop $data $c}
+					<dd><a class="f30" href="{makecaturl($c[url], $city, getinfocache('multi_city'))}" target="_blank">{$c[catname]}</a></dd>
+					{/loop}			
+				 {/pc}
+				 </dl>	
+			{/loop}
+        </div>
+    </div>
+    <div class="col-right">
+    	<div class="category-sub">
+        	<h5>推荐信息</h5>
+            <ul>
+				{pc:content action="lists" catid="$catid" num="11" order="id DESC"}
+				{loop $data $r}
+					<li><a href="{$r[url]}" class="blue1" title="{$r[title]}" {$r[style]}>{str_cut($r[title],34,'')}</a></li>
+				{/loop}	
+				{/pc}				
+            </ul>
+        </div>
+        <div class="bk10"></div>
+        <div class="category-sub">
+        	<h5>浏览排行</h5>
+            <ul>
+				{pc:content action="lists" catid="$catid" num="11" order="id DESC"}
+				{loop $data $r}
+					<li><a href="{$r[url]}" class="blue1" title="{$r[title]}" {$r[style]}>{str_cut($r[title],34,'')}</a></li>
+				{/loop}	
+				{/pc}
+            </ul>
+        </div>
+    </div>
+</div>
+{/if}
+<script type="text/javascript" src="{JS_PATH}cookie.js"></script>
+<script type="text/javascript" >
+function changetab(n) {
+	$("li[id^=tab-]").removeClass('on');
+	$('#tab-'+n).addClass('on');
+	$("div[id^=tab-panel-]").hide();
+	$('#tab-panel-'+n).show();
+}
+</script>
+{template "content","footer"}

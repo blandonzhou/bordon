@@ -1,5 +1,5 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?>  <div class="footer" style="padding: 15px; font-size: 12px; line-height: 20px; text-align: center;">
-  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=f8b50e6ae627a6d2d43e41af04c5d39f&sql=SELECT+%2A+FROM+v9_page+where+catid%3D%2753%27&return=page_data\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ÐÞ¸Ä</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT * FROM v9_page where catid='53' LIMIT 20");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$page_data = $a;unset($a);?>
+  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=f8b50e6ae627a6d2d43e41af04c5d39f&sql=SELECT+%2A+FROM+v9_page+where+catid%3D%2753%27&return=page_data\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT * FROM v9_page where catid='53' LIMIT 20");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$page_data = $a;unset($a);?>
 
   <?php $n=1;if(is_array($page_data)) foreach($page_data AS $v) { ?>
   

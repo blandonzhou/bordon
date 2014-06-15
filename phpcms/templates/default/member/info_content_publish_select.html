@@ -1,0 +1,72 @@
+{template "content","header_info"}
+<link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
+<link href="{CSS_PATH}dialog.css" rel="stylesheet" type="text/css" />
+{if isset($show_validator)}
+<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+{/if}
+<script language="javascript" type="text/javascript" src="{JS_PATH}dialog.js"></script>
+<script language="javascript" type="text/javascript" src="{JS_PATH}content_addtop.js"></script>
+<div class="wp" id="content">
+  <div class="info-add clear">
+  	<ul class="navbar sli-{$step}">
+    	<li class="s1"><em>1.</em>{if $step_1}{$step_1}{else}选择大类{/if}</li>
+    	<li class="s2"><em>2.</em>{if $step_2}{$step_2}{else}选择小类{/if}</li>
+    	<li class="s3"><em>3.</em>{if $step_3}{$step_3}{else}选择区域{/if}</li>
+    	<li class="s4"><em>4.</em>选择商圈</li>
+    	<li class="s5"><em>5.</em>填写信息</li>
+    </ul>
+    <div class="menu blue1 clear">
+	   {if $step == 1}
+	   {loop subcat(getinfocache('info_catid'),0,0,$siteid) $r}
+			<dl>
+			<dt><a href="index.php?m=member&c=content&a=info_publish&siteid=1&catid={$r[catid]}&city={$city}">{$r[catname]}</a></dt>			
+			{pc:content action="category" catid="$r[catid]" num="8" siteid="$siteid" order="listorder ASC"}
+				{loop $data $c}
+				<dd><a href="index.php?m=member&c=content&a=info_publish&siteid=1&catid={$c[catid]}&city={$city}">{$c[catname]}</a></dd>
+				{/loop}			
+			 {/pc}
+			 </dl>	
+		{/loop}	   
+
+	   {elseif $step == 2}
+	   {pc:content action="category" catid="$catid" num="8" siteid="$siteid" order="listorder ASC"}
+			<ul class="sub">
+		   {loop $data $r}
+				<li>
+				<a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid={$siteid}&catid={$r[catid]}&city={$city}">{$r[catname]}</a> 
+				</li>		   
+		   {/loop}
+		   </ul>
+	   {/pc}
+	   {elseif $step == 3 || $step == 4}
+        <ul class="sub">
+		 {loop $zone_arrchild $r}
+			{if $r['linkageid'] != $zone}
+				<li>
+				<a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid={$siteid}&catid={$catid}&city={$citypinyin}&zone={$r[linkageid]}">{$r[name]}</a> 
+				</li>
+			{/if}
+		 {/loop}	 
+        </ul>
+		{/if}
+    </div>
+	{if $step==4}<a href="{get_url()}&jumpstep=1" class="ignore">忽略，直接进入下一步</a>{/if}
+  </div>
+</div>
+<div class="clear"></div>
+<script type="text/javascript"> 
+<!--
+//只能放到最下面
+$(function(){
+	$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'200',height:'50'}, 	function(){$(obj).focus();
+	boxid = $(obj).attr('id');
+	if($('#'+boxid).attr('boxid')!=undefined) {
+		check_content(boxid);
+	}
+	})}});
+	{$formValidator}
+})
+//-->
+</script>
+{template 'content', 'footer'}

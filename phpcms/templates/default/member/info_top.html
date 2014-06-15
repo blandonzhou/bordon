@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>信息发布成功</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link type="text/css" rel="stylesheet" href="{CSS_PATH}reset.css">
+<link type="text/css" rel="stylesheet" href="{CSS_PATH}info.css">
+<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="{JS_PATH}dialog.js"></script>
+</head>
+
+<body>
+<div class="info-tip{if !$_GET['msg']} info-off{/if}">
+{if $_GET['msg']}
+	{php $city = getcity($city, 'pinyin', 'info_citys_id')}
+	<center><div class="tip-ok ib">恭喜信息发布成功！</div></center>
+    <div class="tip-loc"><a href="{$url}" target="_blank">{$title}</a> 已经成功发布到
+			{loop $zone $r}
+			{$r[name]} 
+			{/loop}<br />
+您还可以：<a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid={$siteid}&catid={$catid}&city={$city}&zone={$r[linkageid]}">再发一条</a>
+  </div>
+	{/if}
+    <div class="info-top">
+    	{if $_GET['msg']}<h5>置顶该信息获得更多关注</h5>{/if}
+        <div class="content">
+        	<div class="not"></div>
+		{if count($exist_posids)<=3}	
+		<form action="?m=member&c=content&a=info_top_cost" method="post" id="myform">
+          <table width="100%" class="table" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th>选择置顶页面：</th>
+                <td>
+                	{if !$exist_posids[1]}<label><input type="checkbox" name="toptype[]"  onclick="info_top_select(this)" value="1"/>城市置顶</label><br />{/if}
+                    {if !$exist_posids[2]}<label><input type="checkbox" name="toptype[]" onclick="info_top_select(this)" value="2"/>区域置顶</label><br />{/if}
+                    {if !$exist_posids[3]}<label><input type="checkbox" name="toptype[]" onclick="info_top_select(this)" value="3"/>商圈置顶</label><br />{/if}
+                </td>
+              </tr>
+              <tr>
+                <th>选择置顶时长：</th>
+                <td>
+				<label><input type="radio" name="toptime" value="6" onclick="info_top_select(this)"/>6小时</label>
+				<label><input type="radio" name="toptime" value="12" onclick="info_top_select(this)"/>12小时</label>
+				<label><input type="radio" name="toptime" value="72" onclick="info_top_select(this)"/>3天</label>
+				<label><input type="radio" name="toptime" value="240" onclick="info_top_select(this)">10天</label>
+				<label><input type="radio" name="toptime" value="480" onclick="info_top_select(this)"/>20天</label>
+				<label><input type="radio" name="toptime" value="720" onclick="info_top_select(this)"/>30天</label>
+				</td>
+              </tr>
+              
+              <tr>
+                <th>&nbsp;</th>
+                <td><p class="f12">此次置顶需要花费您<span class="f14 fb red" id="need_point">0</span>积分。您现在拥有<span class="f14 fb red" id="point">{$memberinfo[point]}</span>积分，<span class="red" id="need_recharge"></span></p></td>
+              </tr>
+			  {if $_GET['msg']}
+			  <tr>
+                <th>&nbsp;</th>
+                <td><input type="submit" id="dosubmit" name="dosubmit" value="完成置顶" class="btn"></td>
+              </tr>
+			  {/if}
+          </table>
+          {if !$_GET['msg']}<input type="submit" class="dialog" value="完成置顶" name="dosubmit" id="dosubmit" /> {/if}
+		  <input type="hidden" value="{$catid}" name="catid"/>
+		  <input type="hidden" value="{$id}" name="id" />
+		  <input type="hidden" value="{$_GET['msg']}" name="msg" />
+		  </form>
+		  {/if}
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript"> 
+$(function(){
+	info_top_select(this);
+})
+$("#dosubmit").click( 
+	function () { 
+		art.dialog({id:'edit'}).close();
+	}
+);
+function need_recharge() {
+	var need_point = parseInt($('#need_point').html());
+	var point = parseInt($('#point').html());
+	var need_recharge = Number(point)-Number(need_point);
+	if(need_recharge < 0) {
+		$("#need_recharge").html('<a href="{APP_PATH}index.php?m=pay&c=deposit&a=pay" target="_blank">积分不足,马上充值'+Math.abs(need_recharge)+'积分</a>');
+		$('#dosubmit').attr('disabled',"true").val('积分不足，无法充值');
+	} else {
+		$("#need_recharge").html('');
+		$('#dosubmit').attr('disabled','');		
+	}
+}
+function info_top_select(obj) {
+	var toptime = $("input[name='toptime']:checked").attr('value');
+
+	var chk = $("input[name='toptype[]'][type='checkbox']");
+	var count = chk.length;
+	var data = need_nifen = '';
+	var top_data = new Array(); 
+	for (var i=0; i < count; i++) {
+		if(chk.eq(i).attr("checked")==true) {
+			top_data += chk.eq(i).val()+'_';
+		}
+	}
+	var select_top_type = top_data.length;
+	$.post("{APP_PATH}index.php?m=member&c=content&a=info_top_cost", { toptype: top_data, toptime: toptime },
+		function(data){
+			$("#need_point").html(data);
+			need_recharge();
+		}
+	);
+}
+</script>
+</html>

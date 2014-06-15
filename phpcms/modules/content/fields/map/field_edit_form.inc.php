@@ -1,10 +1,9 @@
-<?php defined('IN_PHPCMS') or exit('No permission resources.');?>
 <table cellpadding="2" cellspacing="1" width="98%">
 	<tr> 
       <td>地图接口选择</td>
       <td>
 	  <input type="radio" name="setting[maptype]" value="2" <?php if($setting['maptype']==2) echo 'checked';?>> 百度地图
-
+	  <input type="radio" name="setting[maptype]" value="1" <?php if($setting['maptype']==1) echo 'checked';?> disabled> MAPABC
 	  </td>
     </tr>	
 	<tr> 

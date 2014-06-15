@@ -5,7 +5,7 @@ return array (
     'siteid' => '1',
     'name' => '默认站点',
     'dirname' => '',
-    'domain' => 'http://bordon.xicp.net:8888/phpcms/',
+    'domain' => 'http://localhost/cms/',
     'site_title' => '医学资源站点',
     'keywords' => '医学多媒体',
     'description' => '医学多媒体资源网站',
@@ -24,7 +24,7 @@ return array (
   \'watermark_pos\' => \'9\',
 )',
     'uuid' => '8261f520-aa47-1031-97af-ab0e46332e4e',
-    'url' => 'http://bordon.xicp.net:8888/phpcms/',
+    'url' => 'http://localhost/cms/',
   ),
 );
 ?>
