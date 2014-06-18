@@ -138,5 +138,28 @@ return array (
     'sort' => '0',
     'type' => '0',
   ),
+  15 => 
+  array (
+    'modelid' => '15',
+    'siteid' => '1',
+    'name' => '²âÊÔÄ£ÐÍ',
+    'description' => 'test',
+    'tablename' => 'test',
+    'setting' => '',
+    'addtime' => '0',
+    'items' => '0',
+    'enablesearch' => '1',
+    'disabled' => '0',
+    'default_style' => 'sina',
+    'category_template' => 'category',
+    'list_template' => '',
+    'show_template' => 'show',
+    'js_template' => '',
+    'admin_list_template' => '',
+    'member_add_template' => '',
+    'member_list_template' => '',
+    'sort' => '0',
+    'type' => '0',
+  ),
 );
 ?>

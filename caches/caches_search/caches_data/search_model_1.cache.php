@@ -12,6 +12,12 @@ return array (
     'name' => '房产信息',
     'sort' => '0',
   ),
+  15 => 
+  array (
+    'typeid' => '58',
+    'name' => '测试模型',
+    'sort' => '0',
+  ),
   1 => 
   array (
     'typeid' => '1',

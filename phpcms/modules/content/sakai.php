@@ -18,7 +18,7 @@ class sakai  extends admin{
 	}
 	
 	public function add() {
-               
+                $_POST=$this->array_to_gbk($_POST);
 		if(isset($_POST['video'])) {
 			$catid = $_POST['video']['catid'] = intval($_POST['video']['catid']);
 			if(trim($_POST['video']['title'])=='') exit('视频标题为必填信息！');
@@ -104,5 +104,16 @@ class sakai  extends admin{
                exit('You do not have permission to perform this operation!');
            }
        }
+       
+       public function array_to_gbk($arr){
+           $r=array();
+           foreach($arr as $k=>$v){
+               if(is_array($v))
+                   $r[$k]=$this->array_to_gbk($v);
+               else $r[$k]=  iconv ('utf-8', 'gbk', $v);
+           }
+           return $r;
+       }
+
 }
 ?>
