@@ -21,7 +21,7 @@ $('#submit').click(function(){
     var data=$('#form').serialize();
     $.ajax({
             type: 'POST',
-            url: 'http://202.120.83.180/phpcms/index.php?m=content&c=sakai&a=add',
+            url: 'http://localhost/bordon/index.php?m=content&c=sakai&a=add',
             data: data,
             success: function(msg){},
           });

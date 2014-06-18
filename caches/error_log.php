@@ -9900,3 +9900,29 @@
 <?php exit;?>06-17 22:41:48 | 2 | unlink(uploadfile/video/53a053aca9f88.): No such file or directory | phpcms\modules\content\sakai.php | 65
 <?php exit;?>06-17 22:41:48 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
 <?php exit;?>06-17 22:41:48 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:23 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:23 | 2 | copy(asdfasf): failed to open stream: No such file or directory | phpcms\modules\content\sakai.php | 49
+<?php exit;?>06-18 10:02:41 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:41 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:23 | 2 | ftp_login() expects parameter 1 to be resource, boolean given | phpcms\base.php | 75
+<?php exit;?>06-18 10:02:23 | 2 | ftp_put() expects parameter 1 to be resource, boolean given | phpcms\base.php | 77
+<?php exit;?>06-18 10:02:23 | 2 | ftp_close() expects parameter 1 to be resource, boolean given | phpcms\base.php | 80
+<?php exit;?>06-18 10:02:23 | 2 | unlink(uploadfile/video/53a0f334f0a00.): No such file or directory | phpcms\modules\content\sakai.php | 66
+<?php exit;?>06-18 10:02:44 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:44 | 2 | copy(asdfasf): failed to open stream: No such file or directory | phpcms\modules\content\sakai.php | 49
+<?php exit;?>06-18 10:02:46 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:46 | 2 | copy(asdfasf): failed to open stream: No such file or directory | phpcms\modules\content\sakai.php | 49
+<?php exit;?>06-18 10:02:44 | 2 | ftp_login() expects parameter 1 to be resource, boolean given | phpcms\base.php | 75
+<?php exit;?>06-18 10:02:44 | 2 | ftp_put() expects parameter 1 to be resource, boolean given | phpcms\base.php | 77
+<?php exit;?>06-18 10:02:44 | 2 | ftp_close() expects parameter 1 to be resource, boolean given | phpcms\base.php | 80
+<?php exit;?>06-18 10:02:44 | 2 | unlink(uploadfile/video/53a0f344d9300.): No such file or directory | phpcms\modules\content\sakai.php | 66
+<?php exit;?>06-18 10:02:23 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-18 10:02:23 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:44 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-18 10:02:44 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 10:02:46 | 2 | ftp_login() expects parameter 1 to be resource, boolean given | phpcms\base.php | 75
+<?php exit;?>06-18 10:02:46 | 2 | ftp_put() expects parameter 1 to be resource, boolean given | phpcms\base.php | 77
+<?php exit;?>06-18 10:02:46 | 2 | ftp_close() expects parameter 1 to be resource, boolean given | phpcms\base.php | 80
+<?php exit;?>06-18 10:02:46 | 2 | unlink(uploadfile/video/53a0f34646758.): No such file or directory | phpcms\modules\content\sakai.php | 66
+<?php exit;?>06-18 10:02:46 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 70
+<?php exit;?>06-18 10:02:46 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
