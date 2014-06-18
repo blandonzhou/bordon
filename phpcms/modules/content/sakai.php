@@ -103,7 +103,7 @@ class sakai  extends admin{
 				if(trim($_POST['video']['title'])=='') showmessage(L('title_is_empty'));
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
-				echo $this->db->edit_content($_POST['info'],$id);
+				echo $this->db->edit_content($_POST['video'],$id);
 			} 
 	}
 	/**
