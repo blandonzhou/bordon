@@ -18,6 +18,7 @@ class sakai  extends admin{
 	}
 	
 	public function add() {
+            if(isset($_POST['code'])&&$_POST['code']=='utf-8')
                 $_POST=$this->array_to_gbk($_POST);
 		if(isset($_POST['video'])) {
 			$catid = $_POST['video']['catid'] = intval($_POST['video']['catid']);

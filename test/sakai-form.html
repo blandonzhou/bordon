@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" src="jquery.js"></script>
+    </head>
+    <body>
+        <form action="http://localhost/bordon/index.php?m=content&c=sakai&a=add" method="post" id="form">
+            <input type="hidden" name="token" value="a7379ecc56b4313b35a20dff1ad8664d"/>
+            <input type="hidden" name="code" value="utf-8"/>
+            <input type="hidden" name="timestamp" value="1402992928"/>
+            标题：<input type="text"   name="video[title]" value=""/></br>
+            栏目：<input type="text"   name="video[catid]" value=""/></br>
+            视频文件名：<input type="text"   name="video[local_video]" value=""/></br>
+            画质：<input type="text"   name="video[vision]" value=""/></br>
+            课程内容：<input type="text"   name="video[content]" value=""/></br>
+            <input type="button" id="submit" value="submit"/>  
+        </form>
+        
+<script>
+$('#submit').click(function(){
+    var data=$('#form').serialize();
+    $.ajax({
+            type: 'POST',
+            url: 'http://localhost/bordon/index.php?m=content&c=sakai&a=add',
+            data: data,
+            success: function(msg){},
+          });
+    
+})
+</script>
+        
+        
+    </body>　
+    <!--
+            $.post(
+                    url:'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=sakai&a=add',
+                    data:{
+                               'video[title]':'title',
+                               'video[local_video]':'local_video',
+                               'video[content]':'content',
+                               'userame' :'username',
+                               'token' :'a7379ecc56b4313b35a20dff1ad8664d',
+                               'timestamp' :'1402992928',
+                               'video[vision]' :1,
+                               'video[catid]' :13
+                           },
+                   success:function(msg){
+                       alert(msg);
+                   }
+                )      
+    
+    
+    
+        $(document).ready(function(){
+            var data={};
+            data.token='a7379ecc56b4313b35a20dff1ad8664d';
+            data.timestamp='1402992928';
+            data.video={
+                'title':'title',
+                'local_video':'local_video',
+                'content':'content',
+                'catid':'13',
+                'vision':'1',
+                
+            };
+            $.ajax({
+                    type: 'POST',
+                    url: 'http://bordon.xicp.net:8888/phpcms/index.php?m=content&c=sakai&a=add',
+                    data: data,
+                    success: function(msg){alert(msg);},
+                  });
+    })
+    
+    
+    
+    
+    -->
+            
+</html>
