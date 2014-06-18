@@ -94,6 +94,110 @@ class sakai  extends admin{
 			}
 		}
 	}
+        
+        
+        public function edit() {
+			if(isset($_POST['video']['id'])) {
+				$id = $_POST['video']['id'] = intval($_POST['id']);
+				$catid = $_POST['video']['catid'] = intval($_POST['info']['catid']);
+				if(trim($_POST['video']['title'])=='') showmessage(L('title_is_empty'));
+				$modelid = $this->categorys[$catid]['modelid'];
+				$this->db->set_model($modelid);
+				echo $this->db->edit_content($_POST['info'],$id);
+			} 
+	}
+	/**
+	 * 删除
+	 */
+	public function delete() {
+		if(isset($_POST['video']['id'])) {
+			$catid = intval($_POST['catid']);
+			$modelid = $this->categorys[$catid]['modelid'];
+			$sethtml = $this->categorys[$catid]['sethtml'];
+			$siteid = $this->categorys[$catid]['siteid'];
+			
+			$html_root = pc_base::load_config('system','html_root');
+			if($sethtml) $html_root = '';
+			
+			$setting = string2array($this->categorys[$catid]['setting']);
+			$content_ishtml = $setting['content_ishtml']; 
+			$this->db->set_model($modelid);
+			$this->hits_db = pc_base::load_model('hits_model');
+			$this->queue = pc_base::load_model('queue_model');
+			if(empty($_POST['video']['id'])) exit('视频ID必须填写');
+			//附件初始化
+			$attachment = pc_base::load_model('attachment_model');
+			$this->content_check_db = pc_base::load_model('content_check_model');
+			$this->position_data_db = pc_base::load_model('position_data_model');
+			$this->search_db = pc_base::load_model('search_model');
+			//判断视频模块是否安装 
+			if (module_exists('video') && file_exists(PC_PATH.'model'.DIRECTORY_SEPARATOR.'video_content_model.class.php')) {
+				$video_content_db = pc_base::load_model('video_content_model');
+				$video_install = 1;
+			}
+			$this->comment = pc_base::load_app_class('comment', 'comment');
+			$search_model = getcache('search_model_'.$this->siteid,'search');
+			$typeid = $search_model[$modelid]['typeid'];
+			$this->url = pc_base::load_app_class('url', 'content');
+                        
+			$id=$_POST['video']['id'];
+                        $r = $this->db->get_one(array('id'=>$id));
+                        if($content_ishtml && !$r['islink']) {
+                                $urls = $this->url->show($id, 0, $r['catid'], $r['inputtime']);
+                                $fileurl = $urls[1];
+                                if($this->siteid != 1) {
+                                        $sitelist = getcache('sitelist','commons');
+                                        $fileurl = $html_root.'/'.$sitelist[$this->siteid]['dirname'].$fileurl;
+                                }
+                                //删除静态文件，排除htm/html/shtml外的文件
+                                $lasttext = strrchr($fileurl,'.');
+                                $len = -strlen($lasttext);
+                                $path = substr($fileurl,0,$len);
+                                $path = ltrim($path,'/');
+                                $filelist = glob(PHPCMS_PATH.$path.'*');
+                                foreach ($filelist as $delfile) {
+                                        $lasttext = strrchr($delfile,'.');
+                                        if(!in_array($lasttext, array('.htm','.html','.shtml'))) continue;
+                                        @unlink($delfile);
+                                        //删除发布点队列数据
+                                        $delfile = str_replace(PHPCMS_PATH, '/', $delfile);
+                                        $this->queue->add_queue('del',$delfile,$this->siteid);
+                                }
+                        } else {
+                                $fileurl = 0;
+                        }
+                        //删除内容
+                        $this->db->delete_content($id,$fileurl,$catid);
+                        //删除统计表数据
+                        $this->hits_db->delete(array('hitsid'=>'c-'.$modelid.'-'.$id));
+                        //删除附件
+                        $attachment->api_delete('c-'.$catid.'-'.$id);
+                        //删除审核表数据
+                        $this->content_check_db->delete(array('checkid'=>'c-'.$id.'-'.$modelid));
+                        //删除推荐位数据
+                        $this->position_data_db->delete(array('id'=>$id,'catid'=>$catid,'module'=>'content'));
+                        //删除全站搜索中数据
+                        $this->search_db->delete_search($typeid,$id);
+                        //删除视频库与内容对应关系数据
+                        if ($video_install ==1) {
+                                $video_content_db->delete(array('contentid'=>$id, 'modelid'=>$modelid));
+                        }
+
+                        //删除相关的评论,删除前应该判断是否还存在此模块
+                        if(module_exists('comment')){
+                                $commentid = id_encode('content_'.$catid, $id, $siteid);
+                                $this->comment->del($commentid, $siteid, $id, $catid);
+                        }
+				
+ 	
+			//更新栏目统计
+			$this->db->cache_items();
+			exit(1);
+		} else 
+                    exit('视频ID必须填写 ');
+	}
+        
+        
 
         
        public function checkAuth(){
