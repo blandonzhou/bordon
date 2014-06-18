@@ -189,10 +189,10 @@ class sakai  extends admin{
                                 $this->comment->del($commentid, $siteid, $id, $catid);
                         }
 				
- 	
+ 			echo 1;
 			//更新栏目统计
 			$this->db->cache_items();
-			exit(1);
+			
 		} else 
                     exit('视频ID必须填写 ');
 	}
