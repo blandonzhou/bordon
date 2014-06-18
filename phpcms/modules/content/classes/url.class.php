@@ -200,14 +200,15 @@ class url{
 	 * 设置当前站点
 	 */
 	private function set_siteid() {
-		if(defined('IN_ADMIN')) {
-			$this->siteid = get_siteid();
-		} else {
-			if (param::get_cookie('siteid')) {
-				$this->siteid = param::get_cookie('siteid');
-			} else {
-				$this->siteid = 1;
-			}
-		}
+//		if(defined('IN_ADMIN')) {
+//			$this->siteid = get_siteid();
+//		} else {
+//			if (param::get_cookie('siteid')) {
+//				$this->siteid = param::get_cookie('siteid');
+//			} else {
+//				$this->siteid = 1;
+//			}
+//		}
+            $this->siteid = 1;
 	}
 }
