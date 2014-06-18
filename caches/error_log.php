@@ -11981,3 +11981,31 @@
 <?php exit;?>06-18 14:30:43 | 2 | unlink(uploadfile/video/53a13213c8190.): No such file or directory | phpcms\modules\content\sakai.php | 64
 <?php exit;?>06-18 14:30:43 | 8192 | Function split() is deprecated | caches\caches_model\caches_data\content_update.class.php | 74
 <?php exit;?>06-18 14:30:43 | 8192 | mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>06-18 16:51:15 | 2 | chmod(): Operation not permitted | phpcms/modules/content/classes/html.class.php | 364
+<?php exit;?>06-18 16:51:15 | 2 | chmod(): Operation not permitted | phpcms/modules/content/classes/html.class.php | 364
+<?php exit;?>06-18 16:51:16 | 2 | chmod(): Operation not permitted | phpcms/modules/content/classes/html.class.php | 364
+<?php exit;?>06-18 16:51:16 | 2 | chmod(): Operation not permitted | phpcms/modules/content/classes/html.class.php | 364
+<?php exit;?>06-18 16:51:18 | 2 | chmod(): Operation not permitted | phpcms/modules/content/classes/html.class.php | 364
+<?php exit;?>06-18 16:51:20 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>06-18 16:51:20 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>06-18 16:51:20 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>06-18 16:51:20 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 273
+<?php exit;?>06-18 16:51:21 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>06-18 16:51:21 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>06-18 16:51:21 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>06-18 16:51:21 | 2 | chmod(): Operation not permitted | phpcms/modules/admin/classes/cache_api.class.php | 394
+<?php exit;?>06-18 16:51:22 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>06-18 16:51:22 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>06-18 16:51:22 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>06-18 16:51:22 | 2 | chmod(): Operation not permitted | phpcms/modules/formguide/classes/formguide.class.php | 35
+<?php exit;?>06-18 16:51:22 | 2 | rmdir(/var/www/html/phpcms/caches/caches_template/default/content/): Directory not empty | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>06-18 16:51:22 | 2 | rmdir(/var/www/html/phpcms/caches/caches_template/default/): Directory not empty | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>06-18 16:51:22 | 2 | rmdir(/var/www/html/phpcms/caches/caches_template/sina/content/): Directory not empty | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>06-18 16:51:22 | 2 | rmdir(/var/www/html/phpcms/caches/caches_template/sina/member/): Directory not empty | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>06-18 16:51:22 | 2 | rmdir(/var/www/html/phpcms/caches/caches_template/sina/): Directory not empty | phpcms/libs/functions/dir.func.php | 154
+<?php exit;?>06-18 16:52:03 | 2 | copy(asdf): failed to open stream: No such file or directory | phpcms/modules/content/sakai.php | 47
+<?php exit;?>06-18 16:52:03 | 2 | ftp_login() expects parameter 1 to be resource, boolean given | phpcms/base.php | 75
+<?php exit;?>06-18 16:52:03 | 2 | ftp_put() expects parameter 1 to be resource, boolean given | phpcms/base.php | 77
+<?php exit;?>06-18 16:52:03 | 2 | ftp_close() expects parameter 1 to be resource, boolean given | phpcms/base.php | 80
+<?php exit;?>06-18 16:52:03 | 2 | unlink(uploadfile/video/53a15333ede22.): No such file or directory | phpcms/modules/content/sakai.php | 64
+<?php exit;?>06-18 16:52:03 | 8192 | Function split() is deprecated | caches/caches_model/caches_data/content_update.class.php | 74

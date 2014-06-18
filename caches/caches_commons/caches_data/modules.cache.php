@@ -466,5 +466,19 @@ return array (
     'installdate' => '2013-11-29',
     'updatedate' => '2013-11-29',
   ),
+  'comment' => 
+  array (
+    'module' => 'comment',
+    'name' => '',
+    'url' => 'comment/',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '',
+    'setting' => '',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2014-06-18',
+    'updatedate' => '2014-06-18',
+  ),
 );
 ?>

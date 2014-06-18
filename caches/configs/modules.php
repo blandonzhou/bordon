@@ -7,5 +7,6 @@ return array (
   'link' => '友情链接',
   'vote' => '投票',
   'wap' => '手机门户',
+  'comment' => '',
 );
 ?>
