@@ -111,7 +111,7 @@ class sakai  extends admin{
 	 */
 	public function delete() {
 		if(isset($_POST['video']['id'])) {
-			$catid = intval($_POST['catid']);
+			$catid = intval($_POST['video']['catid']);
 			$modelid = $this->categorys[$catid]['modelid'];
 			$sethtml = $this->categorys[$catid]['sethtml'];
 			$siteid = $this->categorys[$catid]['siteid'];
@@ -140,7 +140,7 @@ class sakai  extends admin{
 			$typeid = $search_model[$modelid]['typeid'];
 			$this->url = pc_base::load_app_class('url', 'content');
                         
-			$id=$_POST['video']['id'];
+			$id=  intval($_POST['video']['id']);
                         $r = $this->db->get_one(array('id'=>$id));
                         if($content_ishtml && !$r['islink']) {
                                 $urls = $this->url->show($id, 0, $r['catid'], $r['inputtime']);
