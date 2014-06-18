@@ -100,7 +100,7 @@ class sakai  extends admin{
 			if(isset($_POST['video']['id'])) {
 				$id = $_POST['video']['id'] = intval($_POST['id']);
 				$catid = $_POST['video']['catid'] = intval($_POST['info']['catid']);
-				if(trim($_POST['video']['title'])=='') showmessage(L('title_is_empty'));
+				if(trim($_POST['video']['title'])=='') exit('标题必须填写');
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
 				echo $this->db->edit_content($_POST['video'],$id);
