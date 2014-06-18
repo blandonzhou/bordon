@@ -21,24 +21,24 @@
 			<li class="s{$order}"><em>{$order}.</em><a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}{if $order==4}&zone={$r[parentid]}{/if}&city={$city}">{$r[name]}</a></li>
 			{elseif $r[parentid]}
 			<li class="s3"><em>3.</em><a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}&city={$city}">{$r[name]}</a></li>
-			<li class="s4"><em>4.</em><a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}&zone={$r[linkageid]}&city={$city}">È«{$r[name]}</a></li>			
+			<li class="s4"><em>4.</em><a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}&zone={$r[linkageid]}&city={$city}">å…¨{$r[name]}</a></li>			
 			{/if}
 		{/loop}
-    	<li class="s5"><em>5.</em>ÌîĞ´ĞÅÏ¢</li>
+    	<li class="s5"><em>5.</em>å¡«å†™ä¿¡æ¯</li>
     </ul>
     <div class="form-content">
     	<div class="Reminded">
-<strong>ÌáĞÑ£º</strong>ÈÃÄúÌáÇ°»ã¿î»òÕß²»¼ûÃæ½»Ò×µÄ¶¼ÊÇÆ­×Ó£¡<br />
-µçÄÔÅäÖÃºÜ¸ßµ«¼Û¸ñºÜµÍµÄ¶¼ÊÇĞé¼ÙĞÅÏ¢¡£
+<strong>æé†’ï¼š</strong>è®©æ‚¨æå‰æ±‡æ¬¾æˆ–è€…ä¸è§é¢äº¤æ˜“çš„éƒ½æ˜¯éª—å­ï¼<br />
+ç”µè„‘é…ç½®å¾ˆé«˜ä½†ä»·æ ¼å¾ˆä½çš„éƒ½æ˜¯è™šå‡ä¿¡æ¯ã€‚
         </div>
         <div class="bk20"></div>
 		<form method="post" action="" id="myform" name="myform">
-    	<h5>»ù±¾ĞÅÏ¢</h5>
+    	<h5>åŸºæœ¬ä¿¡æ¯</h5>
 		<table width="100%" cellspacing="0" class="table_form">		
 		{loop $forminfos $k $v}
 		{if $k!='contact' && $k!='phone' }
 		<tr>
-			<th width="100">{if $v['star']} <font color="red">*</font>{/if} {$v['name']}£º</th> 
+			<th width="100">{if $v['star']} <font color="red">*</font>{/if} {$v['name']}ï¼š</th> 
 			<td>{$v['form']}{if $v['tips']}{$v['tips']}{/if}</td>
 		</tr>
 		{else}
@@ -46,11 +46,11 @@
 		{/if}
 		{/loop}	
 		</table>		
-		<h5>ÁªÏµ·½Ê½</h5>
+		<h5>è”ç³»æ–¹å¼</h5>
 		{loop $contact $k $v}
 		<table width="100%" cellspacing="0" class="table_form">
 		<tr>
-			<th width="100">{if $v['star']} <font color="red">*</font>{/if} {$v['name']}£º</th> 
+			<th width="100">{if $v['star']} <font color="red">*</font>{/if} {$v['name']}ï¼š</th> 
 			<td>{$v['form']}{if $v['tips']}{$v['tips']}{/if}</td>
 		</tr>	
 		{/loop}	
@@ -58,14 +58,14 @@
 		<input type="hidden" value="{$catid}" name="info[catid]">
 		<input name="forward" type="hidden" value="{HTTP_REFERER}">
 		<input name="id" type="hidden" value="{$id}">
-        <input type="submit"  name="dosubmit" id="dosubmit" value="Á¢¼´·¢²¼" class="addbtn" />
+        <input type="submit"  name="dosubmit" id="dosubmit" value="ç«‹å³å‘å¸ƒ" class="addbtn" />
     </div>
   </div>
 </div>
 <div class="clear"></div>
 <script type="text/javascript"> 
 <!--
-//Ö»ÄÜ·Åµ½×îÏÂÃæ
+//åªèƒ½æ”¾åˆ°æœ€ä¸‹é¢
 $(function(){
 	$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'200',height:'50'}, 	function(){$(obj).focus();
 	boxid = $(obj).attr('id');

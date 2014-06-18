@@ -4,7 +4,7 @@ return array (
   array (
     'modelid' => '1',
     'siteid' => '1',
-    'name' => '文章模型',
+    'name' => '鏂囩珷妯″瀷',
     'description' => '',
     'tablename' => 'news',
     'setting' => '',
@@ -27,7 +27,7 @@ return array (
   array (
     'modelid' => '2',
     'siteid' => '1',
-    'name' => '下载模型',
+    'name' => '涓嬭浇妯″瀷',
     'description' => '',
     'tablename' => 'download',
     'setting' => '',
@@ -50,7 +50,7 @@ return array (
   array (
     'modelid' => '3',
     'siteid' => '1',
-    'name' => '图片模型',
+    'name' => '鍥剧墖妯″瀷',
     'description' => '',
     'tablename' => 'picture',
     'setting' => '',
@@ -73,7 +73,7 @@ return array (
   array (
     'modelid' => '11',
     'siteid' => '1',
-    'name' => '视频模型',
+    'name' => '瑙嗛妯″瀷',
     'description' => '',
     'tablename' => 'video',
     'setting' => '',
@@ -96,8 +96,8 @@ return array (
   array (
     'modelid' => '12',
     'siteid' => '1',
-    'name' => '专辑模型',
-    'description' => '专辑模型',
+    'name' => '涓撹緫妯″瀷',
+    'description' => '涓撹緫妯″瀷',
     'tablename' => 'zhuanji',
     'setting' => '',
     'addtime' => '0',
@@ -119,7 +119,7 @@ return array (
   array (
     'modelid' => '14',
     'siteid' => '1',
-    'name' => '房产信息',
+    'name' => '鎴夸骇淇℃伅',
     'description' => '',
     'tablename' => 'house',
     'setting' => '',
@@ -142,7 +142,7 @@ return array (
   array (
     'modelid' => '15',
     'siteid' => '1',
-    'name' => '测试模型',
+    'name' => '娴嬭瘯妯″瀷',
     'description' => 'test',
     'tablename' => 'test',
     'setting' => '',

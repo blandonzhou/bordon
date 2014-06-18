@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP SDK for QQµÇÂ¼ OpenAPI
+ * PHP SDK for QQç™»å½• OpenAPI
  *
  * @version 1.3
  * @author connect@qq.com
@@ -8,16 +8,16 @@
  */
 
 /**
- * @brief ±¾ÎÄ¼þ°üº¬ÁËOAuthÈÏÖ¤¹ý³ÌÖÐ»áÓÃµ½µÄ¹«ÓÃ·½·¨ 
+ * @brief æœ¬æ–‡ä»¶åŒ…å«äº†OAuthè®¤è¯è¿‡ç¨‹ä¸­ä¼šç”¨åˆ°çš„å…¬ç”¨æ–¹æ³• 
  */
 
 
 /**
- * @brief ¶Ô²ÎÊý½øÐÐ×ÖµäÉýÐòÅÅÐò
+ * @brief å¯¹å‚æ•°è¿›è¡Œå­—å…¸å‡åºæŽ’åº
  *
- * @param $params ²ÎÊýÁÐ±í
+ * @param $params å‚æ•°åˆ—è¡¨
  *
- * @return ÅÅÐòºóÓÃ&Á´½ÓµÄkey-value¶Ô£¨key1=value1&key2=value2...)
+ * @return æŽ’åºåŽç”¨&é“¾æŽ¥çš„key-valueå¯¹ï¼ˆkey1=value1&key2=value2...)
  */
 function get_normalized_string($params)
 {
@@ -32,12 +32,12 @@ function get_normalized_string($params)
 }
 
 /**
- * @brief Ê¹ÓÃHMAC-SHA1Ëã·¨Éú³Éoauth_signatureÇ©ÃûÖµ 
+ * @brief ä½¿ç”¨HMAC-SHA1ç®—æ³•ç”Ÿæˆoauth_signatureç­¾åå€¼ 
  *
- * @param $key  ÃÜÔ¿
- * @param $str  Ô´´®
+ * @param $key  å¯†é’¥
+ * @param $str  æºä¸²
  *
- * @return Ç©ÃûÖµ
+ * @return ç­¾åå€¼
  */
 
 function get_signature($str, $key)
@@ -74,11 +74,11 @@ function get_signature($str, $key)
 } 
 
 /**
- * @brief ¶Ô×Ö·û´®½øÐÐURL±àÂë£¬×ñÑ­rfc1738 urlencode
+ * @brief å¯¹å­—ç¬¦ä¸²è¿›è¡ŒURLç¼–ç ï¼Œéµå¾ªrfc1738 urlencode
  *
  * @param $params
  *
- * @return URL±àÂëºóµÄ×Ö·û´®
+ * @return URLç¼–ç åŽçš„å­—ç¬¦ä¸²
  */
 function get_urlencode_string($params)
 {
@@ -93,11 +93,11 @@ function get_urlencode_string($params)
 }
 
 /**
- * @brief ¼ì²éopenidÊÇ·ñºÏ·¨
+ * @brief æ£€æŸ¥openidæ˜¯å¦åˆæ³•
  *
- * @param $openid  ÓëÓÃ»§QQºÅÂëÒ»Ò»¶ÔÓ¦
- * @param $timestamp¡¡Ê±¼ä´Á
- * @param $sig¡¡¡¡Ç©ÃûÖµ
+ * @param $openid  ä¸Žç”¨æˆ·QQå·ç ä¸€ä¸€å¯¹åº”
+ * @param $timestampã€€æ—¶é—´æˆ³
+ * @param $sigã€€ã€€ç­¾åå€¼
  *
  * @return true or false
  */
@@ -114,7 +114,7 @@ function is_valid_openid($appkey,$openid, $timestamp, $sig)
 }
 
 /**
- * @brief ËùÓÐGetÇëÇó¶¼¿ÉÒÔÊ¹ÓÃÕâ¸ö·½·¨
+ * @brief æ‰€æœ‰Getè¯·æ±‚éƒ½å¯ä»¥ä½¿ç”¨è¿™ä¸ªæ–¹æ³•
  *
  * @param $url
  * @param $appid
@@ -129,7 +129,7 @@ function do_get($url, $appid, $appkey, $access_token, $access_token_secret, $ope
 {
     $sigstr = "GET"."&".rawurlencode("$url")."&";
 
-    //±ØÒª²ÎÊý, ²»ÒªËæ±ã¸ü¸Ä!!
+    //å¿…è¦å‚æ•°, ä¸è¦éšä¾¿æ›´æ”¹!!
     $params = $_GET;
     $params["oauth_version"]          = "1.0";
     $params["oauth_signature_method"] = "HMAC-SHA1";
@@ -140,11 +140,11 @@ function do_get($url, $appid, $appkey, $access_token, $access_token_secret, $ope
     $params["openid"]                 = $openid;
     unset($params["oauth_signature"]);
 
-    //²ÎÊý°´ÕÕ×ÖÄ¸ÉýÐò×öÐòÁÐ»¯
+    //å‚æ•°æŒ‰ç…§å­—æ¯å‡åºåšåºåˆ—åŒ–
     $normalized_str = get_normalized_string($params);
     $sigstr        .= rawurlencode($normalized_str);
 
-    //Ç©Ãû,È·±£php°æ±¾Ö§³Öhash_hmacº¯Êý
+    //ç­¾å,ç¡®ä¿phpç‰ˆæœ¬æ”¯æŒhash_hmacå‡½æ•°
     $key = $appkey."&".$access_token_secret;
     $signature = get_signature($sigstr, $key);
     $url      .= "?".$normalized_str."&"."oauth_signature=".rawurlencode($signature);
@@ -154,7 +154,7 @@ function do_get($url, $appid, $appkey, $access_token, $access_token_secret, $ope
 }
 
 /**
- * @brief ËùÓÐmulti-part post ÇëÇó¶¼¿ÉÒÔÊ¹ÓÃÕâ¸ö·½·¨
+ * @brief æ‰€æœ‰multi-part post è¯·æ±‚éƒ½å¯ä»¥ä½¿ç”¨è¿™ä¸ªæ–¹æ³•
  *
  * @param $url
  * @param $appid
@@ -166,10 +166,10 @@ function do_get($url, $appid, $appkey, $access_token, $access_token_secret, $ope
  */
 function do_multi_post($url, $appid, $appkey, $access_token, $access_token_secret, $openid)
 {
-    //¹¹ÔìÇ©Ãû´®.Ô´´®:·½·¨[GET|POST]&uri&²ÎÊý°´ÕÕ×ÖÄ¸ÉýÐòÅÅÁÐ
+    //æž„é€ ç­¾åä¸².æºä¸²:æ–¹æ³•[GET|POST]&uri&å‚æ•°æŒ‰ç…§å­—æ¯å‡åºæŽ’åˆ—
     $sigstr = "POST"."&"."$url"."&";
 
-    //±ØÒª²ÎÊý,²»ÒªËæ±ã¸ü¸Ä!!
+    //å¿…è¦å‚æ•°,ä¸è¦éšä¾¿æ›´æ”¹!!
     $params = $_POST;
     $params["oauth_version"]          = "1.0";
     $params["oauth_signature_method"] = "HMAC-SHA1";
@@ -181,7 +181,7 @@ function do_multi_post($url, $appid, $appkey, $access_token, $access_token_secre
     unset($params["oauth_signature"]);
 
 
-    //»ñÈ¡ÉÏ´«Í¼Æ¬ÐÅÏ¢
+    //èŽ·å–ä¸Šä¼ å›¾ç‰‡ä¿¡æ¯
     foreach ($_FILES as $filename => $filevalue)
     {
         if ($filevalue["error"] != UPLOAD_ERR_OK)
@@ -192,15 +192,15 @@ function do_multi_post($url, $appid, $appkey, $access_token, $access_token_secre
         $params[$filename] = file_get_contents($filevalue["tmp_name"]);
     }
 
-    //¶Ô²ÎÊý°´ÕÕ×ÖÄ¸ÉýÐò×öÐòÁÐ»¯
+    //å¯¹å‚æ•°æŒ‰ç…§å­—æ¯å‡åºåšåºåˆ—åŒ–
     $sigstr .= get_normalized_string($params);
 
-    //Ç©Ãû,ÐèÒªÈ·±£php°æ±¾Ö§³Öhash_hmacº¯Êý
+    //ç­¾å,éœ€è¦ç¡®ä¿phpç‰ˆæœ¬æ”¯æŒhash_hmacå‡½æ•°
     $key = $appkey."&".$access_token_secret;
     $signature = get_signature($sigstr, $key);
     $params["oauth_signature"] = $signature; 
 
-    //´¦ÀíÉÏ´«Í¼Æ¬
+    //å¤„ç†ä¸Šä¼ å›¾ç‰‡
     foreach ($_FILES as $filename => $filevalue)
     {
         $tmpfile = dirname($filevalue["tmp_name"])."/".$filevalue["name"];
@@ -224,7 +224,7 @@ function do_multi_post($url, $appid, $appkey, $access_token, $access_token_secre
     //print_r($httpinfo);
 
     curl_close($ch);
-    //É¾³ýÉÏ´«ÁÙÊ±ÎÄ¼þ
+    //åˆ é™¤ä¸Šä¼ ä¸´æ—¶æ–‡ä»¶
     unlink($tmpfile);
     return $ret;
 
@@ -232,7 +232,7 @@ function do_multi_post($url, $appid, $appkey, $access_token, $access_token_secre
 
 
 /**
- * @brief ËùÓÐpost ÇëÇó¶¼¿ÉÒÔÊ¹ÓÃÕâ¸ö·½·¨
+ * @brief æ‰€æœ‰post è¯·æ±‚éƒ½å¯ä»¥ä½¿ç”¨è¿™ä¸ªæ–¹æ³•
  *
  * @param $url
  * @param $appid
@@ -244,10 +244,10 @@ function do_multi_post($url, $appid, $appkey, $access_token, $access_token_secre
  */
 function do_post($url, $appid, $appkey, $access_token, $access_token_secret, $openid)
 {
-    //¹¹ÔìÇ©Ãû´®.Ô´´®:·½·¨[GET|POST]&uri&²ÎÊý°´ÕÕ×ÖÄ¸ÉýÐòÅÅÁÐ
+    //æž„é€ ç­¾åä¸².æºä¸²:æ–¹æ³•[GET|POST]&uri&å‚æ•°æŒ‰ç…§å­—æ¯å‡åºæŽ’åˆ—
     $sigstr = "POST"."&".rawurlencode($url)."&";
 
-    //±ØÒª²ÎÊý,²»ÒªËæ±ã¸ü¸Ä!!
+    //å¿…è¦å‚æ•°,ä¸è¦éšä¾¿æ›´æ”¹!!
     $params = $_POST;
     $params["oauth_version"]          = "1.0";
     $params["oauth_signature_method"] = "HMAC-SHA1";
@@ -258,10 +258,10 @@ function do_post($url, $appid, $appkey, $access_token, $access_token_secret, $op
     $params["openid"]                 = $openid;
     unset($params["oauth_signature"]);
 
-    //¶Ô²ÎÊý°´ÕÕ×ÖÄ¸ÉýÐò×öÐòÁÐ»¯
+    //å¯¹å‚æ•°æŒ‰ç…§å­—æ¯å‡åºåšåºåˆ—åŒ–
     $sigstr .= rawurlencode(get_normalized_string($params));
 
-    //Ç©Ãû,ÐèÒªÈ·±£php°æ±¾Ö§³Öhash_hmacº¯Êý
+    //ç­¾å,éœ€è¦ç¡®ä¿phpç‰ˆæœ¬æ”¯æŒhash_hmacå‡½æ•°
     $key = $appkey."&".$access_token_secret;
     $signature = get_signature($sigstr, $key); 
     $params["oauth_signature"] = $signature; 
@@ -284,3 +284,4 @@ function do_post($url, $appid, $appkey, $access_token, $access_token_secret, $op
 }
 
 ?>
+

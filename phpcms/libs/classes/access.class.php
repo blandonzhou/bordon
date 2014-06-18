@@ -7,7 +7,7 @@ class access{
 	var $cursor = 0;
 	//var $ADODB_FETCH_MODE = ADODB_FETCH_BOTH;
 	/**
-	 * ×î½üÒ»´Î²éÑ¯×ÊÔ´¾ä±ú
+	 * æœ€è¿‘ä¸€æ¬¡æŸ¥è¯¢èµ„æºå¥æŸ„
 	 */
 	public $lastqueryid = null;
 

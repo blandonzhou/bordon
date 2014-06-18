@@ -36,6 +36,7 @@ class member_form {
 		}
 		return $info;
 	}
+
 	function text($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -47,6 +48,7 @@ class member_form {
 		if($errortips && $this->fields[$field]['isbase']) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:'.$minlength.',max:'.$maxlength.',onerror:"'.$errortips.'"})'.$regexp.';';
 		return '<input type="text" name="info['.$field.']" id="'.$field.'" size="'.$size.'" value="'.$value.'" class="input-text" '.$formattribute.' '.$css.'>';
 	}
+
 	function textarea($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -58,8 +60,9 @@ class member_form {
 		$value = empty($value) ? $setting['defaultvalue'] : $value;
 		return "<textarea name='info[{$field}]' id='$field' style='width:{$width}%;height:{$height}px;' $formattribute $css>{$value}</textarea>";
 	}
+
 	function editor($field, $value, $fieldinfo) {
-		//ÊÇ·ñÔÊÐíÓÃ»§ÉÏ´«¸½¼þ £¬ºóÌ¨¹ÜÀíÔ±¿ªÆô´Ë¹¦ÄÜ
+		//æ˜¯å¦å…è®¸ç”¨æˆ·ä¸Šä¼ é™„ä»¶ ï¼ŒåŽå°ç®¡ç†å‘˜å¼€å¯æ­¤åŠŸèƒ½
 		extract($fieldinfo);
 		extract(string2array($setting));
 		$allowupload = defined('IN_ADMIN') || $allowupload ? 1 : 0;
@@ -68,6 +71,7 @@ class member_form {
 		if($errortips) $this->formValidator .= '$("#'.$field.'").formValidator({'.$allow_empty.'onshow:"",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
 		return "<div id='{$field}_tip'></div>".'<textarea name="info['.$field.']" id="'.$field.'" boxid="'.$field.'">'.$value.'</textarea>'.form::editor($field,$toolbar,'member','','',$allowupload,1,'',300);
 	}
+
 	function box($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		if($value=='') $value = $this->fields[$field]['defaultvalue'];
@@ -103,6 +107,7 @@ class member_form {
 		}
 		return $string;
 	}
+
 	function image($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		extract($setting);
@@ -120,6 +125,7 @@ class member_form {
 			return $str."<input type='text' name='info[$field]' id='$field' value='$value' size='$size' class='input-text' />  <input type='button' class='button' onclick=\"javascript:flashupload('{$field}_images', '".L('attachment_upload')."','{$field}',submit_images,'1,{$upload_allowext},$isselectimage,$images_width,$images_height','member','','{$authkey}')\"/ value='".L('image_upload')."'>";
 		}
 	}
+
 	function images($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$list_str = '';
@@ -151,13 +157,15 @@ class member_form {
 		$authkey = upload_key("$upload_number,$upload_allowext,$isselectimage");
 		$string .= $str."<div class='picBut cu'><a herf='javascript:void(0);' onclick=\"javascript:flashupload('{$field}_images', '".L('attachment_upload')."','{$field}',change_images,'{$upload_number},{$upload_allowext},{$isselectimage}','member','','{$authkey}')\"/> ".L('select_picture')." </a></div>";
 		return $string;
-	}	function number($field, $value, $fieldinfo) {
+	}
+	function number($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		if(!$value) $value = $defaultvalue;
 		$errortips = $this->fields[$field]['errortips'];
 		if($errortips && $this->fields[$field]['isbase']) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:'.$minnumber.',max:'.$maxnumber.',onerror:"'.$errortips.'"}).regexValidator({regexp:"num",datatype:"enum",onerror:"'.$errortips.'"});';
 		return "<input type='text' name='info[$field]' id='$field' value='$value' size='$size' class='input-text' {$formattribute} {$css}>";
 	}
+
 	function datetime($field, $value, $fieldinfo) {
 		extract(string2array($fieldinfo['setting']));
 		$isdatetime = 0;
@@ -183,11 +191,13 @@ class member_form {
 		}
 		return form::date("info[$field]",$value,$isdatetime,1,'true',$timesystem);
 	}
+
 	function linkage($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		$linkageid = $setting['linkageid'];
 		return menu_linkage($linkageid,$field,$value);
 	}
+
 	function omnipotent($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$formtext = str_replace('{FIELD_VALUE}',$value,$formtext);
@@ -198,6 +208,7 @@ class member_form {
 		if($errortips && $this->fields[$field]['isbase']) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
 		return $formtext;
 	}
+
 	function checkmobile($field, $value, $fieldinfo) {
 		$errortips = L('please_input_mobile');
 		if(defined('IN_ADMIN')) {
@@ -209,7 +220,7 @@ class member_form {
 			$string = "<div id='mobile_div'><input type='text' name='info[mobile]' id='mobile' value='' size='36' class='input-text' title='".L('sms_tips')."'> 
 			<div class='submit'><button onclick='get_verify()' type='button' class='hqyz'>".L('get_sms_code')."</button></div> <div id='mobileTip' class='onShow'></div>
 			<br>
-			</div><div id='mobile_send_div' style='display:none'>".L('sms_checkcode_send_to')."<span id='mobile_send'></span>£¬<span id='edit_mobile' style='display:none'><a href='javascript:void();' onclick='edit_mobile()'>".L('sms_edit_mobile')."</a>£¬</span> ".L('repeat_send')."<br><br>
+			</div><div id='mobile_send_div' style='display:none'>".L('sms_checkcode_send_to')."<span id='mobile_send'></span>ï¼Œ<span id='edit_mobile' style='display:none'><a href='javascript:void();' onclick='edit_mobile()'>".L('sms_edit_mobile')."</a>ï¼Œ</span> ".L('repeat_send')."<br><br>
 			<div class='submit'><button type='button' id='GetVerify' onclick='get_verify()' class='hqyz'>".L('repeat_sms_code')."</button></div> <BR><BR></div>".L('receive_sms_code')."<input type='text' name='mobile_verify' id='mobile_verify' value='' size='14' class='input-text'>";
 			
 					$this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
@@ -280,6 +291,7 @@ class member_form {
 			';
 			return $string;
 	}
+
 
  } 
 ?>

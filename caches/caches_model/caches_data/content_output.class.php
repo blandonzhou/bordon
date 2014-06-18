@@ -22,6 +22,8 @@ class content_output {
 		}
 		return $info;
 	}
+
+
 	function editor($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		if($setting['enablekeylink']) {
@@ -71,10 +73,12 @@ class content_output {
 		$txt = preg_replace($search, $replace1, $txt);
 		return $txt;
 	}
+
 	function title($field, $value) {
 		$value = new_html_special_chars($value);
 		return $value;
 	}
+
 	function box($field, $value) {
 		extract(string2array($this->fields[$field]['setting']));
 		if($outputtype) {
@@ -95,7 +99,7 @@ class content_output {
 				case 'checkbox':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' ¡¢';
+						if($_v) $string .= $option[$_v].' ã€';
 					}
 				break;
 
@@ -106,16 +110,18 @@ class content_output {
 				case 'multiple':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' ¡¢';
+						if($_v) $string .= $option[$_v].' ã€';
 					}
 				break;
 			}
 			return $string;
 		}
 	}
+
 	function images($field, $value) {
 		return string2array($value);
 	}
+
 	function datetime($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		extract($setting);
@@ -133,6 +139,7 @@ class content_output {
 		$value = date($format_txt,$value);
 		return $value;
 	}
+
 	function keyword($field, $value) {
 	    if($value == '') return '';
 		$v = '';
@@ -143,6 +150,7 @@ class content_output {
 		}
 		return $tags;
 	}
+
 	function copyfrom($field, $value) {
 		static $copyfrom_array;
 		if(!$copyform_array) $copyfrom_array = getcache('copyfrom','admin');
@@ -163,10 +171,12 @@ class content_output {
 			return $value;
 		}
 	}
+
 	function groupid($field, $value) {
 		if($value) $value = explode(',',$value);
 		return $value;
 	}
+
 	function linkage($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		$datas = getcache($setting['linkageid'],'linkage');
@@ -180,6 +190,7 @@ class content_output {
 		}
 		return $result;
 	}
+
 
 	function downfile($field, $value) {
 		extract(string2array($this->fields[$field]['setting']));
@@ -207,9 +218,11 @@ class content_output {
 			}
 		} 
 	}
+
 	function downfiles($field, $value) {
 		return string2array($value);		
 	}
+
 	function map($field, $value) {
 		$str = '';
 		$setting = string2array($this->fields[$field]['setting']);
@@ -242,11 +255,11 @@ class content_output {
 		$str .='
 		function drawPoints(){
 			var markerOption = new MMarkerOptions();
-			var tipOption=new MTipOptions();//Ìí¼ÓĞÅÏ¢´°¿Ú 
+			var tipOption=new MTipOptions();//æ·»åŠ ä¿¡æ¯çª—å£ 
 			var address = "'.$address.'";
-			tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ĞÅÏ¢´°¿Ú±êÌâ  
-			tipOption.title = address;//ĞÅÏ¢´°¿Ú±êÌâ  
-			tipOption.content = address;//ĞÅÏ¢´°¿ÚÄÚÈİ     
+			tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+			tipOption.title = address;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+			tipOption.content = address;//ä¿¡æ¯çª—å£å†…å®¹     
 			var markerOption = new MMarkerOptions(); 		
 			markerOption.imageUrl="'.IMG_PATH.'icon/mak.png";		
 			markerOption.picAgent=false;   
@@ -270,7 +283,7 @@ class content_output {
 			mapObj.enableDragging();
 			mapObj.enableScrollWheelZoom();
 			mapObj.enableDoubleClickZoom();
-			mapObj.enableKeyboard();//ÆôÓÃ¼üÅÌÉÏÏÂ×óÓÒ¼üÒÆ¶¯µØÍ¼
+			mapObj.enableKeyboard();//å¯ç”¨é”®ç›˜ä¸Šä¸‹å·¦å³é”®ç§»åŠ¨åœ°å›¾
 			mapObj.centerAndZoom(new BMap.Point(lngX,latY),zoom);
 			drawPoints();
 			';
@@ -286,6 +299,7 @@ class content_output {
 		$str .='</script>';
 		return $str;
 	}
+
 	function bcsfile($field, $value) {
 		extract(string2array($this->fields[$field]['setting']));
 		$list_str = array();
@@ -312,9 +326,11 @@ class content_output {
 			}
 		} 
 	}
+
 	function gallery($field, $value) {
 		return string2array($value);
 	}
+
 
  } 
 ?>

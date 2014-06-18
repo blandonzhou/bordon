@@ -1,7 +1,7 @@
 <?php 
 	/**
-	 * ¼ì²é¹ÜÀíÔ±Ãû³Æ
-	 * @param array $data ¹ÜÀíÔ±Êý¾Ý
+	 * æ£€æŸ¥ç®¡ç†å‘˜åç§°
+	 * @param array $data ç®¡ç†å‘˜æ•°æ®
 	 */
 	function checkuserinfo($data) {
 		if(!is_array($data)){
@@ -16,8 +16,8 @@
 		return $data;
 	}
 	/**
-	 * ¼ì²é¹ÜÀíÔ±ÃÜÂëºÏ·¨ÐÔ
-	 * @param string $password ÃÜÂë
+	 * æ£€æŸ¥ç®¡ç†å‘˜å¯†ç åˆæ³•æ€§
+	 * @param string $password å¯†ç 
 	 */
 	function checkpasswd($password){
 		if (!is_password($password)){

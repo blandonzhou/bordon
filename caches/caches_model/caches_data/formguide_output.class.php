@@ -21,9 +21,12 @@ class formguide_output {
 		}
 		return $info;
 	}
+
+
 	function editor($field, $value) {
 		return $value;
 	}
+
 	function box($field, $value) {
 		extract(string2array($this->fields[$field]['setting']));
 		if($outputtype) {
@@ -44,7 +47,7 @@ class formguide_output {
 				case 'checkbox':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' ¡¢';
+						if($_v) $string .= $option[$_v].' ã€';
 					}
 				break;
 
@@ -55,16 +58,18 @@ class formguide_output {
 				case 'multiple':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' ¡¢';
+						if($_v) $string .= $option[$_v].' ã€';
 					}
 				break;
 			}
 			return $string;
 		}
 	}
+
 	function images($field, $value) {
 		return string2array($value);
 	}
+
 	function datetime($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		extract($setting);
@@ -82,6 +87,7 @@ class formguide_output {
 		$value = date($format_txt,$value);
 		return $value;
 	}
+
 	function linkage($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		$datas = getcache($setting['linkageid'],'linkage');
@@ -95,6 +101,7 @@ class formguide_output {
 		}
 		return $result;
 	}
+
 
 
  } 

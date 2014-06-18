@@ -1,11 +1,11 @@
 <?php
 defined('IN_PHPCMS') or exit('No permission resources.');
-//Ä£ÐÍÔ­ÐÍ´æ´¢Â·¾¶
+//æ¨¡åž‹åŽŸåž‹å­˜å‚¨è·¯å¾„
 define('MODEL_PATH',PC_PATH.'modules'.DIRECTORY_SEPARATOR.'formguide'.DIRECTORY_SEPARATOR.'fields'.DIRECTORY_SEPARATOR);
-//Ä£ÐÍ»º´æÂ·¾¶
+//æ¨¡åž‹ç¼“å­˜è·¯å¾„
 define('CACHE_MODEL_PATH',PHPCMS_PATH.'caches'.DIRECTORY_SEPARATOR.'caches_model'.DIRECTORY_SEPARATOR.'caches_data'.DIRECTORY_SEPARATOR);
 /**
- * ¸üÐÂform±íµ¥Ä£ÐÍÀà
+ * æ›´æ–°formè¡¨å•æ¨¡åž‹ç±»
  * @author 
  *
  */
@@ -16,11 +16,11 @@ class formguide {
 	}
 	
 	/**
-	 * ¸üÐÂÄ£ÐÍ»º´æ·½·¨
+	 * æ›´æ–°æ¨¡åž‹ç¼“å­˜æ–¹æ³•
 	 */
 	public function public_cache() {
 		require MODEL_PATH.'fields.inc.php';
-		//¸üÐÂÄÚÈÝÄ£ÐÍÀà£º±íµ¥Éú³É¡¢Èë¿â¡¢¸üÐÂ¡¢Êä³ö
+		//æ›´æ–°å†…å®¹æ¨¡åž‹ç±»ï¼šè¡¨å•ç”Ÿæˆã€å…¥åº“ã€æ›´æ–°ã€è¾“å‡º
 		$classtypes = array('form','input','update','output');
 		foreach($classtypes as $classtype) {
 			$cache_data = file_get_contents(MODEL_PATH.'formguide_'.$classtype.'.class.php');

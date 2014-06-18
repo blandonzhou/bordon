@@ -1,45 +1,45 @@
 <?php
 /**
- * Éú³ÉÑéÖ¤Âë
+ * ç”ŸæˆéªŒè¯ç 
  * @author chenzhouyu
- * ÀàÓÃ·¨
+ * ç±»ç”¨æ³•
  * $checkcode = new checkcode();
  * $checkcode->doimage();
- * //È¡µÃÑéÖ¤
+ * //å–å¾—éªŒè¯
  * $_SESSION['code']=$checkcode->get_code();
  */
 class checkcode {
-	//ÑéÖ¤ÂëµÄ¿í¶È
+	//éªŒè¯ç çš„å®½åº¦
 	public $width=130;
 	
-	//ÑéÖ¤ÂëµÄ¸ß
+	//éªŒè¯ç çš„é«˜
 	public $height=50;
 	
-	//ÉèÖÃ×ÖÌåµÄµØÖ·
+	//è®¾ç½®å­—ä½“çš„åœ°å€
 	private $font;
 	
-	//ÉèÖÃ×ÖÌåÉ«
+	//è®¾ç½®å­—ä½“è‰²
 	public $font_color;
 	
-	//ÉèÖÃËæ»úÉú³ÉÒò×Ó
+	//è®¾ç½®éšæœºç”Ÿæˆå› å­
 	public $charset = 'abcdefghkmnprstuvwyzABCDEFGHKLMNPRSTUVWYZ23456789';
 	
-	//ÉèÖÃ±³¾°É«
+	//è®¾ç½®èƒŒæ™¯è‰²
 	public $background = '#EDF7FF';
 	
-	//Éú³ÉÑéÖ¤Âë×Ö·ûÊý
+	//ç”ŸæˆéªŒè¯ç å­—ç¬¦æ•°
 	public $code_len = 4;
 	
-	//×ÖÌå´óÐ¡
+	//å­—ä½“å¤§å°
 	public $font_size = 20;
 	
-	//ÑéÖ¤Âë
+	//éªŒè¯ç 
 	private $code;
 	
-	//Í¼Æ¬ÄÚ´æ
+	//å›¾ç‰‡å†…å­˜
 	private $img;
 	
-	//ÎÄ×ÖXÖá¿ªÊ¼µÄµØ·½
+	//æ–‡å­—Xè½´å¼€å§‹çš„åœ°æ–¹
 	private $x_start;
 		
 	function __construct() {
@@ -52,7 +52,7 @@ class checkcode {
 	}
 	
 	/**
-	 * Éú³ÉËæ»úÑéÖ¤Âë¡£
+	 * ç”ŸæˆéšæœºéªŒè¯ç ã€‚
 	 */
 	protected function creat_code() {
 		$code = '';
@@ -64,14 +64,14 @@ class checkcode {
 	}
 	
 	/**
-	 * »ñÈ¡ÑéÖ¤Âë
+	 * èŽ·å–éªŒè¯ç 
 	 */
 	public function get_code() {
 		return strtolower($this->code);
 	}
 	
 	/**
-	 * Éú³ÉÍ¼Æ¬
+	 * ç”Ÿæˆå›¾ç‰‡
 	 */
 	public function doimage() {
 		$code = $this->creat_code();
@@ -81,9 +81,9 @@ class checkcode {
 		} else {
 			$this->font_color = imagecolorallocate($this->img, hexdec(substr($this->font_color, 1,2)), hexdec(substr($this->font_color, 3,2)), hexdec(substr($this->font_color, 5,2)));
 		}
-		//ÉèÖÃ±³¾°É«
+		//è®¾ç½®èƒŒæ™¯è‰²
 		$background = imagecolorallocate($this->img,hexdec(substr($this->background, 1,2)),hexdec(substr($this->background, 3,2)),hexdec(substr($this->background, 5,2)));
-		//»­Ò»¸ö¹ñÐÎ£¬ÉèÖÃ±³¾°ÑÕÉ«¡£
+		//ç”»ä¸€ä¸ªæŸœå½¢ï¼Œè®¾ç½®èƒŒæ™¯é¢œè‰²ã€‚
 		imagefilledrectangle($this->img,0, $this->height, $this->width, 0, $background);
 		$this->creat_font();
 		$this->creat_line();
@@ -91,7 +91,7 @@ class checkcode {
 	}
 	
 	/**
-	 * Éú³ÉÎÄ×Ö
+	 * ç”Ÿæˆæ–‡å­—
 	 */
 	private function creat_font() {
 		$x = $this->width/$this->code_len;
@@ -102,7 +102,7 @@ class checkcode {
 	}
 	
 	/**
-	 * »­Ïß
+	 * ç”»çº¿
 	 */
 	private function creat_line() {
 		imagesetthickness($this->img, 3);
@@ -138,7 +138,7 @@ class checkcode {
 	}
 	
 	/**
-	 * Êä³öÍ¼Æ¬
+	 * è¾“å‡ºå›¾ç‰‡
 	 */
 	private function output() {
 		header("content-type:image/png\r\n");

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * $.ld
  * @extends jquery.1.4.2
  * @fileOverview 创建一组联动选择框

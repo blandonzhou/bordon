@@ -9,7 +9,7 @@ class member extends admin {
 	
 	private $db, $config;
 	/**
-	 * Îö¹¹º¯Êý
+	 * æžæž„å‡½æ•°
 	 */
 	public function __construct() {	
 		parent::__construct();
@@ -18,20 +18,20 @@ class member extends admin {
 	}
 	
 	/**
-	 * ¹ÜÀí»áÔ±
+	 * ç®¡ç†ä¼šå‘˜
 	 */
 	public function manage() {
-		/*ËÑË÷ÓÃ»§*/
+		/*æœç´¢ç”¨æˆ·*/
 		$keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 		$type = isset($_GET['type']) ? $_GET['type'] : '';
 		$start_time = isset($_GET['start_time']) ? $_GET['start_time'] : date('Y-m-d', SYS_TIME-date('t', SYS_TIME)*86400);
 		$end_time = isset($_GET['end_time']) ? $_GET['end_time'] : date('Y-m-d', SYS_TIME);
 
 		if (isset($_GET['search'])) {
-			//Ä¬ÈÏÑ¡È¡Ò»¸öÔÂÄÚµÄÓÃ»§£¬·ÀÖ¹ÓÃ»§Á¿¹ý´ó¸øÊý¾ÝÔì³ÉÔÖÄÑ
+			//é»˜è®¤é€‰å–ä¸€ä¸ªæœˆå†…çš„ç”¨æˆ·ï¼Œé˜²æ­¢ç”¨æˆ·é‡è¿‡å¤§ç»™æ•°æ®é€ æˆç¾éš¾
 			$where_start_time = strtotime($start_time);
 			$where_end_time = strtotime($end_time) + 86400;
-			//¿ªÊ¼Ê±¼ä´óÓÚ½áÊøÊ±¼ä£¬ÖÃ»»±äÁ¿
+			//å¼€å§‹æ—¶é—´å¤§äºŽç»“æŸæ—¶é—´ï¼Œç½®æ¢å˜é‡
 			if($where_start_time > $where_end_time) {
 				$tmp = $where_start_time;
 				$where_start_time = $where_end_time;
@@ -62,7 +62,7 @@ class member extends admin {
 	}
 	
 	/**
-	 * Ìí¼Ó»áÔ±
+	 * æ·»åŠ ä¼šå‘˜
 	 */
 	public function add() {
 		if (isset($_POST['dosubmit'])) {
@@ -82,7 +82,7 @@ class member extends admin {
 				$old_password = $password;
 				list($password, $random) = creat_password($password);
 				
-				//UCenter»áÔ±×¢²á
+				//UCenterä¼šå‘˜æ³¨å†Œ
 				$ucuserid = 0;
 				if ($this->config['ucuse']) {
 					pc_base::load_config('uc_config');
@@ -104,7 +104,7 @@ class member extends admin {
 				}	
 				
 				if ($uid = $this->db->insert(array('username'=>$username, 'password'=>$password, 'random'=>$random, 'email'=>$email, 'regdate'=>$regdate, 'lastdate'=>SYS_TIME, 'type'=>'app', 'regip'=>ip(), 'appname'=>'phpsso', 'ucuserid'=>$ucuserid), 1)) {
-					/*²åÈëÏûÏ¢¶ÓÁÐ*/
+					/*æ’å…¥æ¶ˆæ¯é˜Ÿåˆ—*/
 					$noticedata = array('uid'=>$uid, 'username'=>$username, 'password'=>$password, 'random'=>$random, 'email'=>$email, 'regip'=>ip());
 					messagequeue::add('member_add', $noticedata);
 					
@@ -120,7 +120,7 @@ class member extends admin {
 	}
 	
 	/**
-	 * ±à¼­»áÔ±
+	 * ç¼–è¾‘ä¼šå‘˜
 	 */
 	public function edit() {
 		if (isset($_POST['dosubmit'])) {
@@ -144,21 +144,21 @@ class member extends admin {
 			}
 			
 			$updateinfo['email'] = $email;
-			//ÊÇ·ñÉ¾³ýÍ·Ïñ
+			//æ˜¯å¦åˆ é™¤å¤´åƒ
 			if(isset($_POST['avatar']) && $_POST['avatar']==1) {
 				$updateinfo['avatar'] = 0;
 				$dir = ps_getavatar($uid, 1);
 				ps_unlink($dir);
 			}
 			
-			//ucenter²¿·Ý
+			//ucenteréƒ¨ä»½
 			if ($this->config['ucuse']) {
 				pc_base::load_config('uc_config');
 				include PHPCMS_PATH.'api/uc_client/client.php';
 				$userinfo = $this->db->get_one(array('uid'=>$uid));
 				$r = uc_user_edit($userinfo['username'], '', (!empty($password) ? $password : ''), $updateinfo['email'],1);
 				if ($r < 0) {
-				 //{-1:ÓÃ»§²»´æÔÚ;-2:¾ÉÃÜÂë´íÎó;-3:emailÒÑ¾­´æÔÚ ;1:³É¹¦;0:Î´×÷ÐÞ¸Ä}
+				 //{-1:ç”¨æˆ·ä¸å­˜åœ¨;-2:æ—§å¯†ç é”™è¯¯;-3:emailå·²ç»å­˜åœ¨ ;1:æˆåŠŸ;0:æœªä½œä¿®æ”¹}
 					showmessage(L('ucenter_error_code', array('code'=>$r)), HTTP_REFERER);
 				}
 			}
@@ -168,7 +168,7 @@ class member extends admin {
 			}
 		
 			if ($this->db->update($updateinfo, array('uid'=>$uid))) {
-				/*²åÈëÏûÏ¢¶ÓÁÐ*/
+				/*æ’å…¥æ¶ˆæ¯é˜Ÿåˆ—*/
 				$noticedata = $updateinfo;
 				$noticedata['uid'] = $uid;
 				messagequeue::add('member_edit', $noticedata);
@@ -187,7 +187,7 @@ class member extends admin {
 	}
 
 	/**
-	 * É¾³ý»áÔ±
+	 * åˆ é™¤ä¼šå‘˜
 	 */
 	public function delete() {
 		$uidarr = isset($_POST['uid']) ? $_POST['uid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
@@ -195,14 +195,14 @@ class member extends admin {
 		foreach($uidarr as $v) {
 			$v = intval($v);
 			$new_arr[] = $v;
-			//É¾³ýÍ·Ïñ
+			//åˆ é™¤å¤´åƒ
 			$dir = ps_getavatar($v, 1);
 			ps_unlink($dir);
 		}
 			
 		$where = to_sqls($new_arr, '', 'uid');
 		
-		//ucenter²¿·Ý
+		//ucenteréƒ¨ä»½
 		if ($this->config['ucuse']) {
 			pc_base::load_config('uc_config');
 			include PHPCMS_PATH.'api/uc_client/client.php';
@@ -223,7 +223,7 @@ class member extends admin {
 		}
 			
 		if ($this->db->delete($where)) {
-			/*²åÈëÏûÏ¢¶ÓÁÐ*/
+			/*æ’å…¥æ¶ˆæ¯é˜Ÿåˆ—*/
 			$noticedata = array('uids'=>$new_arr);
 			messagequeue::add('member_delete', $noticedata);
 								
@@ -242,7 +242,7 @@ class member extends admin {
 		if ($this->db->get_one(array('username'=>$username))) {
 			exit('0');
 		} else {
-			//UCenter²¿·Ö
+			//UCenteréƒ¨åˆ†
 			if ($this->config['ucuse']) {
 				pc_base::load_config('uc_config');
 				include PHPCMS_PATH.'api/uc_client/client.php';
@@ -262,7 +262,7 @@ class member extends admin {
 		if ($this->db->get_one($where)) {
 			exit('0');
 		} else {
-			//UCenter²¿·Ö
+			//UCenteréƒ¨åˆ†
 			if ($this->config['ucuse']) {
 				pc_base::load_config('uc_config');
 				include PHPCMS_PATH.'api/uc_client/client.php';

@@ -35,12 +35,12 @@ class block_admin extends admin {
 		if (isset($_POST['dosubmit'])) {
 			$name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : showmessage(L('illegal_operation'), HTTP_REFERER);
 			$type = isset($_POST['type']) && intval($_POST['type']) ? intval($_POST['type']) : 1;
-			//ÅĞ¶ÏÃû³ÆÊÇ·ñÒÑ¾­´æÔÚ
+			//åˆ¤æ–­åç§°æ˜¯å¦å·²ç»å­˜åœ¨
 			if ($this->db->get_one(array('name'=>$name))) {
 				showmessage(L('name').L('exists'), HTTP_REFERER);
 			}
 			if ($id = $this->db->insert(array('name'=>$name, 'pos'=>$pos, 'type'=>$type, 'siteid'=>$this->siteid), true)) {
-				//ÉèÖÃÈ¨ÏŞ
+				//è®¾ç½®æƒé™
 				$priv = isset($_POST['priv']) ? $_POST['priv'] : '';
 				if (!empty($priv)) {
 					if (is_array($priv)) foreach ($priv as $v) {
@@ -74,7 +74,7 @@ class block_admin extends admin {
 				}
 			}
 			if ($this->db->update(array('name'=>$name, 'siteid'=>$this->siteid), array('id'=>$id))) {
-				//ÉèÖÃÈ¨ÏŞ
+				//è®¾ç½®æƒé™
 				$priv = isset($_POST['priv']) ? $_POST['priv'] : '';
 				$this->priv_db->delete(array('blockid'=>$id, 'siteid'=>$this->siteid));
 				if (!empty($priv)) {
@@ -119,7 +119,7 @@ class block_admin extends admin {
 	
 	public function block_update() {
 		$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) :  showmessage(L('illegal_operation'), HTTP_REFERER);
-		//½øĞĞÈ¨ÏŞÅĞ¶Ï
+		//è¿›è¡Œæƒé™åˆ¤æ–­
 		if ($this->roleid != 1) {
 			if (!$this->priv_db->get_one(array('blockid'=>$id, 'roleid'=>$this->roleid, 'siteid'=>$this->siteid))) {
 				showmessage(L('not_have_permissions'));
@@ -157,7 +157,7 @@ class block_admin extends admin {
 				$sql = array('data'=>$datas);
 			}
 			if ($this->db->update($sql, array('id'=>$id))) {
-				//Ìí¼ÓÀúÊ·¼ÇÂ¼
+				//æ·»åŠ å†å²è®°å½•
 				$this->history_db->insert(array('blockid'=>$data['id'], 'data'=>array2string($data), 'creat_at'=>SYS_TIME, 'userid'=>param::get_cookie('userid'), 'username'=>param::get_cookie('admin_username')));
 				showmessage(L('operation_success').'<script style="text/javascript">if(!parent.right){parent.location.reload();}art.dialog({id:"edit"}).close();</script>', '','','edit');
 			} else {
@@ -337,16 +337,16 @@ class block_admin extends admin {
 			if (!empty($start_time) && !empty($end_time)) $sql .= " AND `inputtime` BETWEEN '$start_time' AND '$end_time' ";
 			if (!empty($searchtype) && !empty($keyword)) {
 				switch ($searchtype) {
-					case '1'://±êÌâËÑË÷
+					case '1'://æ ‡é¢˜æœç´¢
 						$sql .= " AND `title` LIKE '%$keyword%' ";
 						break;
-					case '2'://¼ò½éËÑË÷
+					case '2'://ç®€ä»‹æœç´¢
 						$sql .= " AND `description` LIKE '%$keyword%' ";
 						break;
-					case '3'://ÓÃ»§Ãû
+					case '3'://ç”¨æˆ·å
 						$sql .= " AND `username` = '$keyword' ";
 						break;
-					case '4'://IDËÑË÷
+					case '4'://IDæœç´¢
 						$sql .= " AND `id` = '$keyword' ";
 						break;
 				}

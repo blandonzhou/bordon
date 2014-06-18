@@ -12,7 +12,7 @@ class copyfrom extends admin {
 	}
 	
 	/**
-	 * 来源管理列表
+	 * 鏉ユ簮绠＄悊鍒楄〃
 	 */
 	public function init () {
 		$datas = array();
@@ -25,7 +25,7 @@ class copyfrom extends admin {
 	}
 	
 	/**
-	 * 添加来源
+	 * 娣诲姞鏉ユ簮
 	 */
 	public function add() {
 		if(isset($_POST['dosubmit'])) {
@@ -40,7 +40,7 @@ class copyfrom extends admin {
 	}
 	
 	/**
-	 * 管理来源
+	 * 绠＄悊鏉ユ簮
 	 */
 	public function edit() {
 		if(isset($_POST['dosubmit'])) {
@@ -60,7 +60,7 @@ class copyfrom extends admin {
 	}
 	
 	/**
-	 * 删除来源
+	 * 鍒犻櫎鏉ユ簮
 	 */
 	public function delete() {
 		$_GET['id'] = intval($_GET['id']);
@@ -70,8 +70,8 @@ class copyfrom extends admin {
 	}
 	
 	/**
-	 * 检查POST数据
-	 * @param array $data 前台POST数据
+	 * 妫�鏌OST鏁版嵁
+	 * @param array $data 鍓嶅彴POST鏁版嵁
 	 * @return array $data
 	 */
 	private function check($data = array()) {
@@ -84,7 +84,7 @@ class copyfrom extends admin {
 	}
 	
 	/**
-	 * 排序
+	 * 鎺掑簭
 	 */
 	public function listorder() {
 		if(isset($_POST['dosubmit'])) {
@@ -98,7 +98,7 @@ class copyfrom extends admin {
 	}
 
 	/**
-	 * 生成缓存
+	 * 鐢熸垚缂撳瓨
 	 */
 	public function public_cache() {
 		$infos = $this->db->select('','*','','listorder DESC','','id');

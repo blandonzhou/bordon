@@ -18,20 +18,18 @@ class sakai  extends admin{
 	}
 	
 	public function add() {
-            if(isset($_POST['code'])&&$_POST['code']=='utf-8')
-                $_POST=$this->array_to_gbk($_POST);
 		if(isset($_POST['video'])) {
 			$catid = $_POST['video']['catid'] = intval($_POST['video']['catid']);
-			if(trim($_POST['video']['title'])=='') exit('ÊÓÆµ±êÌâÎª±ØÌîÐÅÏ¢£¡');
+			if(trim($_POST['video']['title'])=='') exit('è§†é¢‘æ ‡é¢˜ä¸ºå¿…å¡«ä¿¡æ¯ï¼');
 			$category = $this->categorys[$catid];
 			if($category['type']==0) {
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
 				$_POST['video']['status'] = 99;
 			
-				//Ìí¼ÓÄÚÈÝÊ±ºòÌí¼ÓÊÓÆµ start
+				//æ·»åŠ å†…å®¹æ—¶å€™æ·»åŠ è§†é¢‘ start
 					ini_set("max_execution_time",600000);
-					//È¡µÃÊÓÆµÎÄ¼þÃû×Ö	
+					//å–å¾—è§†é¢‘æ–‡ä»¶åå­—	
 					$local_videos = explode(',' , $_POST['video']['local_video'] );
 					$local_videos = array_filter($local_videos);
 					sort($local_videos);
@@ -45,7 +43,7 @@ class sakai  extends admin{
 						$local_video_name = $local_video[0];
 						$ext = $local_video[1];
 						$unq_name = uniqid();
-							//ÔØÈëffmpeg
+							//è½½å…¥ffmpeg
 						copy($local_video_path , 'uploadfile/video/'.$unq_name.'.'.$ext);
 						//copy($local_video_path , 'uploadfile/video/aaabbb.wmv.bak');
 						
@@ -54,22 +52,22 @@ class sakai  extends admin{
 									$jpg=FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext.'  -f  image2  -ss 5 -vframes 1  '.PHPCMS_PATH.'uploadfile/thumb/'.$unq_name.'.jpg';
 									exec($jpg);
 									if($ext !== 'mp4') {
-										//ÇåÎú¶È
+										//æ¸…æ™°åº¦
 										$r = intval($_POST['video']['quality']) * 15;
-										$ffmpeg = 'ffmpeg.exe';//ÔØÈëffmpeg
+										$ffmpeg = 'ffmpeg.exe';//è½½å…¥ffmpeg
 										$cmd= FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.mp4';
 										 //die($cmd);
 										 exec($cmd,$status);
 										 pc_base::ftp_upload($unq_name.'.mp4');
 										
-										/* Ïú»ÙÔ­ÊÓÆµ */
+										/* é”€æ¯åŽŸè§†é¢‘ */
 										@unlink('uploadfile/video/' . $unq_name . '.' . $ext);
 									} 
 								 $insert_name[$i] = $unq_name;
 								 $insert[$i] = $unq_name . '.mp4';
 								
 						 }else{    
-								showmessage("ffmpegÃ»ÓÐÔØÈë"); 
+								showmessage("ffmpegæ²¡æœ‰è½½å…¥"); 
 						 } 
 								
 					}
@@ -105,16 +103,6 @@ class sakai  extends admin{
                exit('You do not have permission to perform this operation!');
            }
        }
-       
-       public function array_to_gbk($arr){
-           $r=array();
-           foreach($arr as $k=>$v){
-               if(is_array($v))
-                   $r[$k]=$this->array_to_gbk($v);
-               else $r[$k]=  iconv ('utf-8', 'gbk', $v);
-           }
-           return $r;
-       }
-
 }
 ?>
+

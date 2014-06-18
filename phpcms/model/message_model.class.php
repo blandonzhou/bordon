@@ -13,26 +13,26 @@ class message_model extends model {
 	
 	/**
 	 * 
-	 * ¼ì²éµ±Ç°ÓÃ»§¶ÌÏûÏ¢Ïà¹ØÈ¨ÏŞ
-	 * @param  $userid ÓÃ»§ID
+	 * æ£€æŸ¥å½“å‰ç”¨æˆ·çŸ­æ¶ˆæ¯ç›¸å…³æƒé™
+	 * @param  $userid ç”¨æˆ·ID
 	 */
 	public function messagecheck($userid){
 		$member_arr = get_memberinfo($this->_userid);
 		$groups = getcache('grouplist','member');
  		if($groups[$member_arr['groupid']]['allowsendmessage']==0){
-			showmessage('¶Ô²»ÆğÄãÃ»ÓĞÈ¨ÏŞ·¢¶ÌÏûÏ¢',HTTP_REFERER);
+			showmessage('å¯¹ä¸èµ·ä½ æ²¡æœ‰æƒé™å‘çŸ­æ¶ˆæ¯',HTTP_REFERER);
 		}else {
-			//ÅĞ¶ÏÊÇ·ñµ½ÏŞ¶¨ÌõÊı
+			//åˆ¤æ–­æ˜¯å¦åˆ°é™å®šæ¡æ•°
 			$num = $this->get_membermessage($this->_username);
 			if($num>=$groups[$member_arr['groupid']]['allowmessage']){
-				showmessage('ÄãµÄ¶ÌÏûÏ¢ÌõÊıÒÑ´ï×î´óÖµ!',HTTP_REFERER);
+				showmessage('ä½ çš„çŸ­æ¶ˆæ¯æ¡æ•°å·²è¾¾æœ€å¤§å€¼!',HTTP_REFERER);
 			}
 		}
 	}
 	
 	/**
 	 * 
-	 * »ñÈ¡ÓÃ»§·¢ÏûÏ¢ĞÅÏ¢ ...
+	 * è·å–ç”¨æˆ·å‘æ¶ˆæ¯ä¿¡æ¯ ...
 	 */
 	public function get_membermessage($username){
  		$arr = $this->select(array('send_from_id'=>$username));
@@ -53,7 +53,7 @@ class message_model extends model {
 				$message['send_from_id'] = $this->_username;
 			}
 			if(empty($message['content'])){
-				showmessage('·¢ĞÅÄÚ¿Õ²»ÄÜÎª¿Õ£¡',HTTP_REFERER);
+				showmessage('å‘ä¿¡å†…ç©ºä¸èƒ½ä¸ºç©ºï¼',HTTP_REFERER);
 			}
 			
 			$messageid = $this->insert($message,true);

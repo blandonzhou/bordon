@@ -8,23 +8,23 @@ include $this->admin_tpl('header');
 <div>
 	<table width="100%"  class="table_form">
   <tr>
-    <th width="80"><?php echo L('modulename')?>£º</th>
+    <th width="80"><?php echo L('modulename')?>ï¼š</th>
     <td class="y-bg"><?php echo $modulename?></td>
   </tr>
   <tr>
-    <th width="80"><?php echo L('introduce')?>£º</th>
+    <th width="80"><?php echo L('introduce')?>ï¼š</th>
     <td class="y-bg"><?php echo $introduce?></td>
   </tr>
   <tr>
-    <th width="80"><?php echo L('moduleauthor')?>£º</th>
+    <th width="80"><?php echo L('moduleauthor')?>ï¼š</th>
     <td class="y-bg"><?php echo $author?></td>
   </tr>
   <tr>
-    <th width="80">E-mail£º</th>
+    <th width="80">E-mailï¼š</th>
     <td class="y-bg"><?php echo $authoremail?></td>
  </tr>
  <tr>
-    <th width="80"><?php echo L('homepage')?>£º</th>
+    <th width="80"><?php echo L('homepage')?>ï¼š</th>
     <td class="y-bg"><?php echo $authorsite?></td>
  </tr>
 </table>

@@ -63,7 +63,7 @@ class urlrule extends admin {
 		}
 	}
 	/**
-	 * 更新URL规则
+	 * 鏇存柊URL瑙勫垯
 	 */
 	public function public_cache_urlrule() {
 		$datas = $this->db->select('','*','','','','urlruleid');

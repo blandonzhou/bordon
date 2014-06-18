@@ -459,3 +459,4 @@ function closeDialog(dialog_id){
 function openDialog(dialog_id){
     $("#" + dialog_id).dialog('open');
 }
+

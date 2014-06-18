@@ -4,11 +4,11 @@ include $this->admin_tpl('header','admin');
 ?>		    
 <script type="text/javascript" src="<?php echo JS_PATH?>crop/swfobject.js"></script>
 <script>
-			// »ñÈ¡Ò³ÃæÉÏµÄflashÊµÀı¡£
-			// @param flashID Õâ¸ö²ÎÊıÊÇ£ºflash µÄ ID ¡£±¾Àı×ÓµÄflash IDÊÇ "myFlashID" £¬ÔÚ±¾Ò³ÃæËÑË÷Ò»ÏÂ "myFlashID" ¿É¿´µ½¡£
+			// è·å–é¡µé¢ä¸Šçš„flashå®ä¾‹ã€‚
+			// @param flashID è¿™ä¸ªå‚æ•°æ˜¯ï¼šflash çš„ ID ã€‚æœ¬ä¾‹å­çš„flash IDæ˜¯ "myFlashID" ï¼Œåœ¨æœ¬é¡µé¢æœç´¢ä¸€ä¸‹ "myFlashID" å¯çœ‹åˆ°ã€‚
 			function getFlash(flashID) 
 			{
-				// ÅĞ¶Ïä¯ÀÀÆ÷ÀàĞÍ
+				// åˆ¤æ–­æµè§ˆå™¨ç±»å‹
 				if (navigator.appName.indexOf("Microsoft") != -1) 
 				{
 					return window[flashID];
@@ -19,7 +19,7 @@ include $this->admin_tpl('header','admin');
 				}
 			}
 			
-			// flash ÉÏ´«Í¼Æ¬Íê³ÉÊ±»Øµ÷µÄº¯Êı¡£
+			// flash ä¸Šä¼ å›¾ç‰‡å®Œæˆæ—¶å›è°ƒçš„å‡½æ•°ã€‚
 			function uploadComplete(pic)
 			{
 				
@@ -51,9 +51,9 @@ include $this->admin_tpl('header','admin');
             var xiSwfUrlStr = "<?php echo JS_PATH?>crop/images/playerProductInstall.swf";
 			
             var flashvars = {};
-			// Í¼Æ¬µØÖ·
+			// å›¾ç‰‡åœ°å€
 			flashvars.picurl = "<?php echo $picurl?>";
-			// ÉÏ´«µØÖ·£¬Ê¹ÓÃÁË base64 ¼ÓÃÜ
+			// ä¸Šä¼ åœ°å€ï¼Œä½¿ç”¨äº† base64 åŠ å¯†
 			flashvars.uploadurl = "<?php echo base64_encode("index.php?m=attachment&c=attachments&a=crop_upload&module=$module&catid=$catid&file=".urlencode($picurl));?>";
 			
             var params = {};
@@ -117,3 +117,4 @@ include $this->admin_tpl('header','admin');
 	    </noscript>
        </body>
        </html>
+

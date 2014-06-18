@@ -4,9 +4,9 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 /**
  *  
  * 
- * ÊÓÆµÍ³¼Æ¹¦ÄÜ  
+ * è§†é¢‘ç»Ÿè®¡åŠŸèƒ½  
  * @author		wangguanqing
- * @copyright	CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @copyright	CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  * 
  */
 pc_base::load_app_class('admin', 'admin', 0);
@@ -26,7 +26,7 @@ class stat extends admin {
 		pc_base::load_app_class('v', 'video', 0);
 		$this->v =  new v($this->db);
 		
-		//»ñÈ¡¶ÌĞÅÆ½Ì¨ÅäÖÃĞÅÏ¢
+		//è·å–çŸ­ä¿¡å¹³å°é…ç½®ä¿¡æ¯
 		$this->setting = getcache('video');
 		if(empty($this->setting) && ROUTE_A!='setting') {
 			showmessage(L('video_setting_not_succfull'), 'index.php?m=video&c=video&a=setting&meunid='.$_GET['meunid']);
@@ -34,14 +34,14 @@ class stat extends admin {
 		$this->ku6api = new ku6api($this->setting['sn'], $this->setting['skey']);
 	}    
 	
-	/*Ä¬ÈÏÏÔÊ¾ÕûÌåÇ÷ÊÆ*/
+	/*é»˜è®¤æ˜¾ç¤ºæ•´ä½“è¶‹åŠ¿*/
 	public function init() { 
-		//Î´Ö¸¶¨Ê±¼ä£¬ÏÔÊ¾µ±ÌìµÄÊÓÆµÅÅĞĞ 
+		//æœªæŒ‡å®šæ—¶é—´ï¼Œæ˜¾ç¤ºå½“å¤©çš„è§†é¢‘æ’è¡Œ 
 		$pagesize = 20;
 		$page = isset($_GET['page']) ? $_GET['page'] : '1';
 		$start_time = isset($_GET['start_time']) ? $_GET['start_time'] : date("Y-m-d");
 		$end_time = isset($_GET['end_time']) ? $_GET['end_time'] : date("Y-m-d",strtotime("+1 day")); 
-		if(empty($start_time) &&  empty($end_time)){//Ä¬ÈÏä¯ÀÀ 
+		if(empty($start_time) &&  empty($end_time)){//é»˜è®¤æµè§ˆ 
 			$date = isset($_GET['type']) ? $_GET['type'] : 'today' ;
 			switch($date){
 			case 'today':
@@ -66,7 +66,7 @@ class stat extends admin {
 			}
 		}else{
 			if(empty($start_time) || empty($end_time)){
-				showmessage('Ê±¼äÇø¼ä²»ÄÜÎª¿Õ£¡Çë·µ»Ø£¡',HTTP_REFERER);
+				showmessage('æ—¶é—´åŒºé—´ä¸èƒ½ä¸ºç©ºï¼è¯·è¿”å›ï¼',HTTP_REFERER);
 			}
 		}
 		$return_data = $this->ku6api->get_stat_bydate($start_time,$end_time,$pagesize,$page);
@@ -79,10 +79,10 @@ class stat extends admin {
 	}
 	
 	/*
-	* ËÑË÷²é¿´ÊÓÆµÍ³¼Æ
+	* æœç´¢æŸ¥çœ‹è§†é¢‘ç»Ÿè®¡
 	*/
 	public function search_video_stat(){
-		$type = isset($_POST['search_type']) ? $_POST['search_type'] : 2;//2´ú±íÄ¬ÈÏÎª±êÌâËÑË÷
+		$type = isset($_POST['search_type']) ? $_POST['search_type'] : 2;//2ä»£è¡¨é»˜è®¤ä¸ºæ ‡é¢˜æœç´¢
 		$keyword = $_POST['keyword'];
 		$return_data = $this->ku6api->get_video_bykeyword($type,$keyword); 
 		$infos = $return_data['data'];  
@@ -90,7 +90,7 @@ class stat extends admin {
 	}
 	
 	/*
-	* ²é¿´ÊÓÆµÍ³¼Æ×ßÊÆ
+	* æŸ¥çœ‹è§†é¢‘ç»Ÿè®¡èµ°åŠ¿
 	*/
 	public function show_video_stat(){
 		$vid =  $_GET['vid'] ; 
@@ -120,7 +120,7 @@ class stat extends admin {
 	}
 	
 	/*
-	*  ÊÓÆµÁ÷Á¿×ÜÌåÇ÷ÊÆÍ¼  
+	*  è§†é¢‘æµé‡æ€»ä½“è¶‹åŠ¿å›¾  
 	*/
 	public function vv_trend(){
 		$return_data = $this->ku6api->vv_trend($vid); 
@@ -136,7 +136,7 @@ class stat extends admin {
 			$new_data['y'][] = $return[date("Y-m-d",strtotime("$start  +$i   day"))] ? $return[date("Y-m-d",strtotime("$start  +$i   day"))] : 0; 
 		}  
 		
-		//Éú³É×Ö·û´®
+		//ç”Ÿæˆå­—ç¬¦ä¸²
 		$nums  = count($new_data['x']);
 		$i = $j = 1;
 		foreach($new_data['x'] as $re){ 

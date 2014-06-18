@@ -3,7 +3,7 @@ return array (
   1 => 
   array (
     'siteid' => '1',
-    'sitename' => 'PHPCMS手机门户',
+    'sitename' => 'PHPCMS鎵嬫満闂ㄦ埛',
     'logo' => '/statics/images/wap/wlogo.gif',
     'domain' => '',
     'setting' => 'array (

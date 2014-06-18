@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
@@ -820,3 +820,4 @@ CKEDITOR.lang['fa'] =
 		previewHtml : '<p>این یک <strong>متن نمونه</strong> است. شما در حال استفاده از <a href="javascript:void(0)">CKEditor</a> هستید.</p>'
 	}
 };
+

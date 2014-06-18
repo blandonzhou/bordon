@@ -28,7 +28,7 @@ class position extends admin {
 	}
 	
 	/**
-	 * ÍÆ¼öÎ»Ìí¼Ó
+	 * æ¨èä½æ·»åŠ 
 	 */
 	public function add() {
 		if(isset($_POST['dosubmit'])) {
@@ -59,7 +59,7 @@ class position extends admin {
 	}
 	
 	/**
-	 * ÍÆ¼öÎ»±à¼­
+	 * æ¨èä½ç¼–è¾‘
 	 */
 	public function edit() {
 		if(isset($_POST['dosubmit'])) {
@@ -91,7 +91,7 @@ class position extends admin {
 	}
 	
 	/**
-	 * ÍÆ¼öÎ»É¾³ı
+	 * æ¨èä½åˆ é™¤
 	 */
 	public function delete() {
 		$posid = intval($_GET['posid']);
@@ -101,7 +101,7 @@ class position extends admin {
 	}
 	
 	/**
-	 * ÍÆ¼öÎ»ÅÅĞò
+	 * æ¨èä½æ’åº
 	 */
 	public function listorder() {
 		if(isset($_POST['dosubmit'])) {
@@ -116,8 +116,8 @@ class position extends admin {
 	}
 	
 	/**
-	 * ÍÆ¼öÎ»ÎÄÕÂÍ³¼Æ
-	 * @param $posid ÍÆ¼öÎ»ID
+	 * æ¨èä½æ–‡ç« ç»Ÿè®¡
+	 * @param $posid æ¨èä½ID
 	 */
 	public function content_count($posid) {
 		$posid = intval($posid);
@@ -127,7 +127,7 @@ class position extends admin {
 	}
 	
 	/**
-	 * ÍÆ¼öÎ»ÎÄÕÂÁĞ±í
+	 * æ¨èä½æ–‡ç« åˆ—è¡¨
 	 */
 	public function public_item() {	
 		if(isset($_POST['dosubmit'])) {
@@ -171,7 +171,7 @@ class position extends admin {
 		}
 	}
 	/**
-	 * ÍÆ¼öÎ»ÎÄÕÂ¹ÜÀí
+	 * æ¨èä½æ–‡ç« ç®¡ç†
 	 */
 	public function public_item_manage() {
 		if(isset($_POST['dosubmit'])) {
@@ -203,7 +203,7 @@ class position extends admin {
 	
 	}
 	/**
-	 * ÍÆ¼öÎ»ÎÄÕÂÅÅĞò
+	 * æ¨èä½æ–‡ç« æ’åº
 	 */
 	public function public_item_listorder() {
 		if(isset($_POST['posid'])) {
@@ -219,7 +219,7 @@ class position extends admin {
 		}
 	}
 	/**
-	 * ÍÆ¼öÎ»Ìí¼ÓÀ¸Ä¿¼ÓÔØ
+	 * æ¨èä½æ·»åŠ æ ç›®åŠ è½½
 	 */
 	public function public_category_load() {
 		$modelid = intval($_GET['modelid']);

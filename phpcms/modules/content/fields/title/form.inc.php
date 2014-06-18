@@ -16,3 +16,4 @@
 		$str .= L('can_enter').'<B><span id="title_len">'.$maxlength.'</span></B> '.L('characters');
 		return $str;
 	}
+

@@ -2,16 +2,16 @@
 <body>
 <div style='position:absolute;top:0;left:0;width:0;height:0;visibility:hidden'><img width=0 height=0 src='images/a.gif' border='0' alt='' /></div>
 
-<!-- ¶þ¼¶µ¼º½ begin -->
+<!-- äºŒçº§å¯¼èˆª begin -->
 
 <div class="secondaryHeader">
   <div class="sHBorder">
-    <div class="sHLogo"><span><a href="http://www.moe.gov.cn/"><img src="{APP_PATH}statics/sina/images/standardl2nav_sina_new.gif" alt="½ÌÓý²¿"></a></span></div>
+    <div class="sHLogo"><span><a href="http://www.moe.gov.cn/"><img src="{APP_PATH}statics/sina/images/standardl2nav_sina_new.gif" alt="æ•™è‚²éƒ¨"></a></span></div>
     <div class="sHLinks"><script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="300" height="24" frameborder="0" scrolling="no"></iframe>')</script></div>
   </div>
 </div>
 
-<!-- ¶þ¼¶µ¼º½ end --> 
+<!-- äºŒçº§å¯¼èˆª end --> 
 
 <!-- logo begin -->
 
@@ -21,14 +21,14 @@
 
 <!-- logo  end --> 
 
-<!-- Ê×Ò³µ¼º½ begin-->
+<!-- é¦–é¡µå¯¼èˆª begin-->
 
 <div id="menu" class="menu">
   <div class="menu_nav">
     <ul class="menu_t" id="menu_t">
 {pc:content action="category" catid="51" num="3" siteid="$siteid" order="listorder ASC"}
 {php $i = 2}
-			 <li id="menu1"><a href="{siteurl($siteid)}" class="mt t1" hidefocus>Ê×Ò³</a></li>
+			 <li id="menu1"><a href="{siteurl($siteid)}" class="mt t1" hidefocus>é¦–é¡µ</a></li>
 			{loop $data $r}
 		  <li id="menu{$i}" ><a href="javascript:void(0)"  class="mt t2" hidefocus>{$r[catname]}</a></li>
 {php $i++}		
@@ -46,7 +46,7 @@
 	
       <form target="_blank" name="frm" method="get" action="{APP_PATH}index.php" class="search" id="unify_search">
         <span class="stext">
-        <input type="text" maxlength="128" size="32" onfocus="javascript:if(this.value=='ÇëÊäÈëËÑË÷´Ê') this.value = ''" onblur="javascript:if(this.value=='') this.value = 'ÇëÊäÈëËÑË÷´Ê'" value="ÇëÊäÈëËÑË÷´Ê" name="q" class="sinput" id="q" title="¿Î³ÌÃû">
+        <input type="text" maxlength="128" size="32" onfocus="javascript:if(this.value=='è¯·è¾“å…¥æœç´¢è¯') this.value = ''" onblur="javascript:if(this.value=='') this.value = 'è¯·è¾“å…¥æœç´¢è¯'" value="è¯·è¾“å…¥æœç´¢è¯" name="q" class="sinput" id="q" title="è¯¾ç¨‹å">
         </span>
 		
 				<input type="hidden" name="m" value="search"/>
@@ -67,7 +67,7 @@
 	
 		 {pc:content action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
 			{php  $cont = count(array_filter($info))}
-		  <a target="_blank" href="{$r[url]}">{$r[catname]}(¹²{$cont}¼¯)</a> 	
+		  <a target="_blank" href="{$r[url]}">{$r[catname]}(å…±{$cont}é›†)</a> 	
 		  {/pc}
 	{/loop}        
 {/pc}	
@@ -79,7 +79,7 @@
 	{loop $data $r}
 		  {pc:content  action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
 			{php  $cont = count(array_filter($info))}
-		  <a target="_blank" href="{$r[url]}">{$r[catname]}(¹²{$cont}¼¯)</a> 	
+		  <a target="_blank" href="{$r[url]}">{$r[catname]}(å…±{$cont}é›†)</a> 	
 		  {/pc}
 	{/loop}
 {/pc}	
@@ -91,7 +91,7 @@
 	{loop $data $r}
 		 {pc:content  action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
 			{php  $cont = count(array_filter($info))}
-		  <a target="_blank" href="{$r[url]}">{$r[catname]}(¹²{$cont}¼¯)</a> 	
+		  <a target="_blank" href="{$r[url]}">{$r[catname]}(å…±{$cont}é›†)</a> 	
 		  {/pc}
 	{/loop}          
 {/pc}	
@@ -115,8 +115,9 @@
        </script> 
 </div>
 
-<!-- Ê×Ò³µ¼º½ end --> 
+<!-- é¦–é¡µå¯¼èˆª end --> 
 
 
-<!-- ÊÕ²Ø¹«¿ª¿Î end  --> 
+<!-- æ”¶è—å…¬å¼€è¯¾ end  --> 
+
 

@@ -97,7 +97,7 @@ if(is_array($forminfos['base'])) {
 </html>
 <script type="text/javascript"> 
 <!--
-//只能放到最下面
+//鍙兘鏀惧埌鏈�涓嬮潰
 $(function(){
 	$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({id:'check_content_id',content:msg,lock:true,width:'200',height:'50'}, 	function(){$(obj).focus();
 	boxid = $(obj).attr('id');
@@ -108,7 +108,7 @@ $(function(){
 	<?php echo $formValidator;?>
 	
 /*
- * 加载禁用外边链接
+ * 鍔犺浇绂佺敤澶栬竟閾炬帴
  */
 
 	$('#linkurl').attr('disabled',true);

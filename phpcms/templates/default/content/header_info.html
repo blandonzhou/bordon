@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <link type="text/css" rel="stylesheet" href="{CSS_PATH}reset.css">
@@ -26,7 +26,7 @@
     <a href="" class="logo"><img src="{IMG_PATH}info/logo.png" /></a>	
     <div id="cityName">
 	<div class="currentCity">{$cityname}</div>
-	{if getinfocache('multi_city')}<a href="javascript:;" class="tabCity">ÇĞ»»³ÇÊĞ</a>{/if}	
+	{if getinfocache('multi_city')}<a href="javascript:;" class="tabCity">åˆ‡æ¢åŸå¸‚</a>{/if}	
 	</div>
     <div class="search-bar">
         <dl class="clear">
@@ -36,7 +36,7 @@
 			<input type="hidden" name="a" value="init"/>
 			<input type="hidden" name="typeid" value="{$typeid}" id="typeid"/>
 			<input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>			
-            <dt class="s_select cu-span"><a href="javascript:;" class="select-btn"><span>Ñ¡Ôñ·ÖÀà</span></a>
+            <dt class="s_select cu-span"><a href="javascript:;" class="select-btn"><span>é€‰æ‹©åˆ†ç±»</span></a>
                 <div>
 				   {php $search_model = getcache('search_model_'.$siteid, 'search');}
 				   {loop getinfocache('info_modelid') $r}
@@ -50,7 +50,7 @@
             </dd>
 			</form>
         </dl>
-        <strong>ÈÈ´Ê£º</strong><span class="blue" id="hotKey"><a href="javascript:;">±±¾©×â·¿</a> <a href="javascript:;">±±¾©¶şÊÖ</a></span>
+        <strong>çƒ­è¯ï¼š</strong><span class="blue" id="hotKey"><a href="javascript:;">åŒ—äº¬ç§Ÿæˆ¿</a> <a href="javascript:;">åŒ—äº¬äºŒæ‰‹</a></span>
     </div>
 </div>
 <script type="text/javascript">
@@ -66,7 +66,7 @@ function _select(name){
 	  }).bind('mouseleave',function(){
 			s_select.hide()
 	  });
-	//»ñÈ¡Ñ¡ÏîÖµ
+	//è·å–é€‰é¡¹å€¼
 	s_select_a.click(function(){
 		var t = $(this);  
 		s_span.text(t.text());
@@ -75,7 +75,7 @@ function _select(name){
 	});
 }
 _select();
-//ÈÈ´ÊÑ¡Ôñ
+//çƒ­è¯é€‰æ‹©
 function hotKey(){
 	var v_Search=$("#q"),key = $("#hotKey a");
 	key.click(function(){
@@ -84,7 +84,7 @@ function hotKey(){
 	})	
 }
 hotKey();
-//µØÇø
+//åœ°åŒº
 $(".tabCity").click(function(event){
 	  var offset =  $(event.target).offset(),ListCity = $(".ListCity");
 	  event.stopPropagation();
@@ -96,14 +96,14 @@ $(document).click(function(){$(".ListCity").hide();});
 <div class="ListCity" style="display:none">
 	<div class="content clearfix">
 		<dl>
-		<dt>µØÇø£º</dt>
+		<dt>åœ°åŒºï¼š</dt>
 		<dd>
 		{loop getcity() $r}
 		<a href="{$CATEGORYS[$catid]['url']}&city={$r[pinyin]}">{$r[name]}</a>
 		{/loop}
 		</dd>
 		</dl>
-		<!--<a href="#" class="more">¸ü¶à³ÇÊĞ</a>-->
+		<!--<a href="#" class="more">æ›´å¤šåŸå¸‚</a>-->
 	 </div>
 </div>
 {/if}
@@ -111,7 +111,7 @@ $(document).click(function(){$(".ListCity").hide();});
     <map>
     	{pc:content action="category" catid="0" num="8" siteid="$siteid" order="listorder ASC"}
         	<ul class="nav-site cu-span">
-			<li><a href="{siteurl($siteid)}"><span>Ê×Ò³</span></a></li>
+			<li><a href="{siteurl($siteid)}"><span>é¦–é¡µ</span></a></li>
 			{loop $data $r}
 			<li class="line">|</li>
 			<li><a href="{$r[url]}"><span>{$r[catname]}</span></a></li>

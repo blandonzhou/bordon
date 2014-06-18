@@ -76,3 +76,4 @@ var uploader = new plupload.Uploader({
 });
 
 uploader.init();
+

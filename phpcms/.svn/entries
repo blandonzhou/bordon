@@ -26,63 +26,7 @@ add
 
 c9eee270-cbd3-4170-9c72-e9098b940636
 
-model
-dir
-
-
-
-add
-
 base.php
-file
-
-
-
-add
-
-
-
-
-
-has-props
-has-prop-mods
-
-upload
-file
-
-
-
-add
-
-
-
-
-
-has-props
-has-prop-mods
-
-languages
-dir
-
-
-
-add
-
-modules
-dir
-
-
-
-add
-
-libs
-dir
-
-
-
-add
-
-upload.php
 file
 
 
@@ -109,6 +53,34 @@ add
 
 has-props
 has-prop-mods
+
+languages
+dir
+
+
+
+add
+
+libs
+dir
+
+
+
+add
+
+model
+dir
+
+
+
+add
+
+modules
+dir
+
+
+
+add
 
 plugin
 dir

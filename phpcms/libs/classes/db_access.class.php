@@ -1,6 +1,6 @@
 <?php
 /**
- *  access.class.php Êý¾Ý¿âÊµÏÖÀà
+ *  access.class.php æ•°æ®åº“å®žçŽ°ç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -10,22 +10,22 @@
 final class db_access {
 	
 	/**
-	 * Êý¾Ý¿âÅäÖÃÐÅÏ¢
+	 * æ•°æ®åº“é…ç½®ä¿¡æ¯
 	 */
 	private $config = null;
 	
 	/**
-	 * Êý¾Ý¿âÁ¬½Ó×ÊÔ´¾ä±ú
+	 * æ•°æ®åº“è¿žæŽ¥èµ„æºå¥æŸ„
 	 */
 	public $link = null;
 	
 	/**
-	 * ×î½üÒ»´Î²éÑ¯×ÊÔ´¾ä±ú
+	 * æœ€è¿‘ä¸€æ¬¡æŸ¥è¯¢èµ„æºå¥æŸ„
 	 */
 	public $lastqueryid = null;
 	
 	/**
-	 *  Í³¼ÆÊý¾Ý¿â²éÑ¯´ÎÊý
+	 *  ç»Ÿè®¡æ•°æ®åº“æŸ¥è¯¢æ¬¡æ•°
 	 */
 	public $querycount = 0;
 	
@@ -34,8 +34,8 @@ final class db_access {
 	}
 	
 	/**
-	 * ´ò¿ªÊý¾Ý¿âÁ¬½Ó,ÓÐ¿ÉÄÜ²»ÕæÊµÁ¬½ÓÊý¾Ý¿â
-	 * @param $config	Êý¾Ý¿âÁ¬½Ó²ÎÊý
+	 * æ‰“å¼€æ•°æ®åº“è¿žæŽ¥,æœ‰å¯èƒ½ä¸çœŸå®žè¿žæŽ¥æ•°æ®åº“
+	 * @param $config	æ•°æ®åº“è¿žæŽ¥å‚æ•°
 	 * 			
 	 * @return void
 	 */
@@ -47,12 +47,12 @@ final class db_access {
 	}
 
 	/**
-	 * ÕæÕý¿ªÆôÊý¾Ý¿âÁ¬½Ó
+	 * çœŸæ­£å¼€å¯æ•°æ®åº“è¿žæŽ¥
 	 * 			
 	 * @return void
 	 */
 	public function connect() {
-		/*ÕæÕýµÄÁ¬½Ó³ÌÐò*/
+		/*çœŸæ­£çš„è¿žæŽ¥ç¨‹åº*/
 		$dbhost = $this->config['hostname'];
 		$dbuser = $this->config['username'];
 		$dbpwd  = $this->config['password'];

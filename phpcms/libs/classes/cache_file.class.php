@@ -2,18 +2,18 @@
 
 class cache_file {
 	
-	/*»º´æÄ¬ÈÏÅäÖÃ*/
+	/*ç¼“å­˜é»˜è®¤é…ç½®*/
 	protected $_setting = array(
-								'suf' => '.cache.php',	/*»º´æÎÄ¼şºó×º*/
-								'type' => 'array',		/*»º´æ¸ñÊ½£ºarrayÊı×é£¬serializeĞòÁĞ»¯£¬null×Ö·û´®*/
+								'suf' => '.cache.php',	/*ç¼“å­˜æ–‡ä»¶åç¼€*/
+								'type' => 'array',		/*ç¼“å­˜æ ¼å¼ï¼šarrayæ•°ç»„ï¼Œserializeåºåˆ—åŒ–ï¼Œnullå­—ç¬¦ä¸²*/
 							);
 	
-	/*»º´æÂ·¾¶*/
+	/*ç¼“å­˜è·¯å¾„*/
 	protected $filepath = '';
 
 	/**
-	 * ¹¹Ôìº¯Êı
-	 * @param	array	$setting	»º´æÅäÖÃ
+	 * æ„é€ å‡½æ•°
+	 * @param	array	$setting	ç¼“å­˜é…ç½®
 	 * @return  void
 	 */
 	public function __construct($setting = '') {
@@ -21,13 +21,13 @@ class cache_file {
 	}
 	
 	/**
-	 * Ğ´Èë»º´æ
-	 * @param	string	$name		»º´æÃû³Æ
-	 * @param	mixed	$data		»º´æÊı¾İ
-	 * @param	array	$setting	»º´æÅäÖÃ
-	 * @param	string	$type		»º´æÀàĞÍ
-	 * @param	string	$module		ËùÊôÄ£ĞÍ
-	 * @return  mixed				»º´æÂ·¾¶/false
+	 * å†™å…¥ç¼“å­˜
+	 * @param	string	$name		ç¼“å­˜åç§°
+	 * @param	mixed	$data		ç¼“å­˜æ•°æ®
+	 * @param	array	$setting	ç¼“å­˜é…ç½®
+	 * @param	string	$type		ç¼“å­˜ç±»å‹
+	 * @param	string	$module		æ‰€å±æ¨¡å‹
+	 * @return  mixed				ç¼“å­˜è·¯å¾„/false
 	 */
 
 	public function set($name, $data, $setting = '', $type = 'data', $module = ROUTE_M) {
@@ -55,7 +55,7 @@ class cache_file {
 		    }
 	    }
 	    
-	    //ÊÇ·ñ¿ªÆô»¥³âËø
+	    //æ˜¯å¦å¼€å¯äº’æ–¥é”
 		if(pc_base::load_config('system', 'lock_ex')) {
 			$file_size = file_put_contents($filepath.$filename, $data, LOCK_EX);
 		} else {
@@ -66,12 +66,12 @@ class cache_file {
 	}
 	
 	/**
-	 * »ñÈ¡»º´æ
-	 * @param	string	$name		»º´æÃû³Æ
-	 * @param	array	$setting	»º´æÅäÖÃ
-	 * @param	string	$type		»º´æÀàĞÍ
-	 * @param	string	$module		ËùÊôÄ£ĞÍ
-	 * @return  mixed	$data		»º´æÊı¾İ
+	 * è·å–ç¼“å­˜
+	 * @param	string	$name		ç¼“å­˜åç§°
+	 * @param	array	$setting	ç¼“å­˜é…ç½®
+	 * @param	string	$type		ç¼“å­˜ç±»å‹
+	 * @param	string	$module		æ‰€å±æ¨¡å‹
+	 * @return  mixed	$data		ç¼“å­˜æ•°æ®
 	 */
 	public function get($name, $setting = '', $type = 'data', $module = ROUTE_M) {
 		$this->get_setting($setting);
@@ -93,11 +93,11 @@ class cache_file {
 	}
 	
 	/**
-	 * É¾³ı»º´æ
-	 * @param	string	$name		»º´æÃû³Æ
-	 * @param	array	$setting	»º´æÅäÖÃ
-	 * @param	string	$type		»º´æÀàĞÍ
-	 * @param	string	$module		ËùÊôÄ£ĞÍ
+	 * åˆ é™¤ç¼“å­˜
+	 * @param	string	$name		ç¼“å­˜åç§°
+	 * @param	array	$setting	ç¼“å­˜é…ç½®
+	 * @param	string	$type		ç¼“å­˜ç±»å‹
+	 * @param	string	$module		æ‰€å±æ¨¡å‹
 	 * @return  bool
 	 */
 	public function delete($name, $setting = '', $type = 'data', $module = ROUTE_M) {
@@ -118,9 +118,9 @@ class cache_file {
 	}
 	
 	/**
-	 * ºÍÏµÍ³»º´æÅäÖÃ¶Ô±È»ñÈ¡×Ô¶¨Òå»º´æÅäÖÃ
-	 * @param	array	$setting	×Ô¶¨Òå»º´æÅäÖÃ
-	 * @return  array	$setting	»º´æÅäÖÃ
+	 * å’Œç³»ç»Ÿç¼“å­˜é…ç½®å¯¹æ¯”è·å–è‡ªå®šä¹‰ç¼“å­˜é…ç½®
+	 * @param	array	$setting	è‡ªå®šä¹‰ç¼“å­˜é…ç½®
+	 * @return  array	$setting	ç¼“å­˜é…ç½®
 	 */
 	public function get_setting($setting = '') {
 		if($setting) {

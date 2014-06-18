@@ -45,7 +45,7 @@ var uploader = new plupload.Uploader({
 			
 		},
 
-		//文件上传后执行的方法
+		//鏂囦欢涓婁紶鍚庢墽琛岀殑鏂规硶
  		FileUploaded: function(up, file, info) {
 		//dump(info);
 
@@ -56,7 +56,7 @@ var uploader = new plupload.Uploader({
 				var resdata = info.response.split(',');
 				
 				if (info.response.match('exists')){
-					alert('文件已重在，请刷新本页重新选择');
+					alert('鏂囦欢宸查噸鍦紝璇峰埛鏂版湰椤甸噸鏂伴�夋嫨');
 				}
 				
 				
@@ -69,15 +69,16 @@ var uploader = new plupload.Uploader({
 				
        
 			} else {
-				alert('文件上传失败');
+				alert('鏂囦欢涓婁紶澶辫触');
 			}
 		},
 
 		Error: function(up, err) {
-			$$('console').innerHTML += "<font color='red'>上传失败</font> #" + err.code + ": " + err.message;
+			$$('console').innerHTML += "<font color='red'>涓婁紶澶辫触</font> #" + err.code + ": " + err.message;
 		}
 
 	}
 });
 
 uploader.init();
+

@@ -14,7 +14,7 @@ class index {
 		if($this->wap['status']!=1) exit(L('wap_close_status'));
 	}
 	
-	//Õ¹Ê¾Ê×Ò³
+	//å±•ç¤ºé¦–é¡µ
 	public function init() {
 		$WAP = $this->wap;
 		$TYPE = $this->types;
@@ -24,7 +24,7 @@ class index {
 		include template('wap', $template);
 	}
 	
-    //Õ¹Ê¾ÁĞ±íÒ³
+    //å±•ç¤ºåˆ—è¡¨é¡µ
 	public function lists() {
 	    $parentids = array();
 		$WAP = $this->wap;
@@ -55,7 +55,7 @@ class index {
 
 		$list = $this->db->select(array('status'=>'99','catid'=>$catid), '*', $offset.','.$pagesize,'inputtime DESC');
 		
-		//¹¹Ôìwap url¹æÔò
+		//æ„é€ wap urlè§„åˆ™
 		define('URLRULE', 'index.php?m=wap&c=index&a=lists&typeid={$typeid}~index.php?m=wap&c=index&a=lists&typeid={$typeid}&page={$page}');
 		$GLOBALS['URL_ARRAY'] = array('typeid'=>$typeid);
 		
@@ -64,7 +64,7 @@ class index {
 		include template('wap', $template);
 	}	
 	
-    //Õ¹Ê¾ÄÚÈİÒ³
+    //å±•ç¤ºå†…å®¹é¡µ
 	public function show() {
 		$WAP = $this->wap;
 		$WAP_SETTING = string2array($WAP['setting']);
@@ -96,7 +96,7 @@ class index {
 		$r2 = $this->db->get_one(array('id'=>$id));
 		$rs = $r2 ? array_merge($r,$r2) : $r;
 
-		//ÔÙ´ÎÖØĞÂ¸³Öµ£¬ÒÔÊı¾İ¿âÎª×¼
+		//å†æ¬¡é‡æ–°èµ‹å€¼ï¼Œä»¥æ•°æ®åº“ä¸ºå‡†
 		$catid = $CATEGORYS[$r['catid']]['catid'];
 		$modelid = $CATEGORYS[$catid]['modelid'];
 		
@@ -113,7 +113,7 @@ class index {
 			$content = str_replace('[page]', '', $content);
 		}
 
-		//¸ù¾İÉèÖÃ×Ö½ÚÊı¶ÔÎÄÕÂ¼ÓÈë·ÖÒ³±ê¼Ç
+		//æ ¹æ®è®¾ç½®å­—èŠ‚æ•°å¯¹æ–‡ç« åŠ å…¥åˆ†é¡µæ ‡è®°
 		if($maxcharperpage < 10) $maxcharperpage = $WAP_SETTING['c_num'];
 		$contentpage = pc_base::load_app_class('contentpage','content');
 		$content = $contentpage->get_data($content,$maxcharperpage);
@@ -121,7 +121,7 @@ class index {
 		if($pictureurls) {
 			$pictureurl = pic_pages($pictureurls);
 			$isshow = 0;			
-			//½øĞĞÍ¼Æ¬·ÖÒ³´¦Àí		
+			//è¿›è¡Œå›¾ç‰‡åˆ†é¡µå¤„ç†		
 			$PIC_POS = strpos($pictureurl, '[page]');
 			if($PIC_POS !== false) {
 				$this->url = pc_base::load_app_class('wap_url', 'wap');
@@ -144,9 +144,9 @@ class index {
 					}
 				}
 				
-				//µ±²»´æÔÚ [/page]Ê±£¬ÔòÊ¹ÓÃÏÂÃæ·ÖÒ³
+				//å½“ä¸å­˜åœ¨ [/page]æ—¶ï¼Œåˆ™ä½¿ç”¨ä¸‹é¢åˆ†é¡µ
 				$pages = content_pages($pagenumber,$page, $pageurls, 0);
-				//ÅĞ¶Ï[page]³öÏÖµÄÎ»ÖÃÊÇ·ñÔÚµÚÒ»Î» 
+				//åˆ¤æ–­[page]å‡ºç°çš„ä½ç½®æ˜¯å¦åœ¨ç¬¬ä¸€ä½ 
 				if($CONTENT_POS<7) {
 					$pictureurl = $pictureurls[$page];
 				} else {
@@ -159,7 +159,7 @@ class index {
 			}			
 		}
 		
-		//½øĞĞ×Ô¶¯·ÖÒ³´¦Àí		
+		//è¿›è¡Œè‡ªåŠ¨åˆ†é¡µå¤„ç†		
 		$CONTENT_POS = strpos($content, '[page]');
 		if($CONTENT_POS !== false) {
 			$this->url = pc_base::load_app_class('wap_url', 'wap');
@@ -182,9 +182,9 @@ class index {
 				}
 			}
 			
-			//µ±²»´æÔÚ [/page]Ê±£¬ÔòÊ¹ÓÃÏÂÃæ·ÖÒ³
+			//å½“ä¸å­˜åœ¨ [/page]æ—¶ï¼Œåˆ™ä½¿ç”¨ä¸‹é¢åˆ†é¡µ
 			$pages = content_pages($pagenumber,$page, $pageurls);
-			//ÅĞ¶Ï[page]³öÏÖµÄÎ»ÖÃÊÇ·ñÔÚµÚÒ»Î» 
+			//åˆ¤æ–­[page]å‡ºç°çš„ä½ç½®æ˜¯å¦åœ¨ç¬¬ä¸€ä½ 
 			if($CONTENT_POS<7) {
 				$content = $contents[$page];
 			} else {
@@ -207,7 +207,7 @@ class index {
 		include template('wap', $template);
 	}
 	
-	//Ìá½»ÆÀÂÛ
+	//æäº¤è¯„è®º
 	function comment() {
 		$WAP = $this->wap;
 		$TYPE = $this->types;		
@@ -224,7 +224,7 @@ class index {
 			$title = $_POST['title'];
 			$url = $_POST['url'];	
 			
-			//Í¨¹ıAPI½Ó¿Úµ÷ÓÃÊı¾İµÄ±êÌâ¡¢URLµØÖ·
+			//é€šè¿‡APIæ¥å£è°ƒç”¨æ•°æ®çš„æ ‡é¢˜ã€URLåœ°å€
 			if (!$data = get_comment_api($commentid)) {
 				exit(L('parameter_error'));
 			} else {
@@ -239,7 +239,7 @@ class index {
 		}
 	}
 	
-	//ÆÀÂÛÁĞ±íÒ³
+	//è¯„è®ºåˆ—è¡¨é¡µ
 	function comment_list() {
 		$WAP = $this->wap;
 		$TYPE = $this->types;		
@@ -254,7 +254,7 @@ class index {
 		$comment_setting_db = pc_base::load_model('comment_setting_model');
 		$setting = $comment_setting_db->get_one(array('siteid'=>$this->siteid));	
 		
-		//Í¨¹ıAPI½Ó¿Úµ÷ÓÃÊı¾İµÄ±êÌâ¡¢URLµØÖ·
+		//é€šè¿‡APIæ¥å£è°ƒç”¨æ•°æ®çš„æ ‡é¢˜ã€URLåœ°å€
 		if (!$data = get_comment_api($commentid)) {
 			exit(L('illegal_parameters'));
 		} else {
@@ -266,7 +266,7 @@ class index {
 		include template('wap', 'comment_list');
 	}
 	
-	//µ¼º½Ò³
+	//å¯¼èˆªé¡µ
 	function maps() {
 		$WAP = $this->wap;
 		$TYPE = $this->types;
@@ -275,7 +275,7 @@ class index {
 		include template('wap', 'maps');
 	}
 	
-	//Õ¹Ê¾´óÍ¼
+	//å±•ç¤ºå¤§å›¾
 	function big_image() {
 		$WAP = $this->wap;
 		$TYPE = $this->types;

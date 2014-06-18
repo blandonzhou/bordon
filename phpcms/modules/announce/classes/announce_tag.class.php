@@ -1,7 +1,7 @@
 <?php 
 /**
  * 
- * ¹«¸æÀà
+ * å…¬å‘Šç±»
  *
  */
 
@@ -15,9 +15,9 @@ class announce_tag {
 	}
 	
 	/**
-	 * ¹«¸æÁÐ±í·½·¨
-	 * @param array $data ´«µÝ¹ýÀ´µÄ²ÎÊý
-	 * @param return array Êý¾Ý¿âÖÐÈ¡³öµÄÊý¾ÝÊý×é
+	 * å…¬å‘Šåˆ—è¡¨æ–¹æ³•
+	 * @param array $data ä¼ é€’è¿‡æ¥çš„å‚æ•°
+	 * @param return array æ•°æ®åº“ä¸­å–å‡ºçš„æ•°æ®æ•°ç»„
 	 */
 	public function lists($data) {
 		$where = '1';
@@ -32,10 +32,10 @@ class announce_tag {
 	}
 	
 	/**
-	 * pc±êÇ©³õÊ¼·½·¨
+	 * pcæ ‡ç­¾åˆå§‹æ–¹æ³•
 	 */
 	public function pc_tag() {
-		//»ñÈ¡Õ¾µã
+		//èŽ·å–ç«™ç‚¹
 		$sites = pc_base::load_app_class('sites','admin');
 		$sitelist = $sites->pc_tag_list();
 		$result = getcache('special', 'commons');

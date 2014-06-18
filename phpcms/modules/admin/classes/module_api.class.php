@@ -1,6 +1,6 @@
 <?php
 /**
- *  position_api.class.php Ä£¿é°²×°½Ó¿ÚÀà
+ *  position_api.class.php æ¨¡å—å®‰è£…æ¥å£ç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license			http://www.phpcms.cn/license/
@@ -20,8 +20,8 @@ class module_api {
 	}
 	
 	/**
-	 * Ä£¿é°²×°
-	 * @param string $module Ä£¿éÃû
+	 * æ¨¡å—å®‰è£…
+	 * @param string $module æ¨¡å—å
 	 */
 	public function install($module = '') {
 		define('INSTALL', true);
@@ -94,8 +94,8 @@ class module_api {
 	}
 	
 	/**
-	 * ¼ì²é°²×°Ä¿Â¼
-	 * @param string $module Ä£¿éÃû
+	 * æ£€æŸ¥å®‰è£…ç›®å½•
+	 * @param string $module æ¨¡å—å
 	 */
 	public function check($module = '') {
 	define('INSTALL', true);
@@ -147,8 +147,8 @@ class module_api {
 	}
 	
 	/**
-	 * Ä£¿éĞ¶ÔØ
-	 * @param string $module Ä£¿éÃû
+	 * æ¨¡å—å¸è½½
+	 * @param string $module æ¨¡å—å
 	 */
 	public function uninstall($module) {
 		define('UNINSTALL', true);
@@ -203,8 +203,8 @@ class module_api {
 	}
 	
 	/**
-	 * Ö´ĞĞmysql.sqlÎÄ¼ş£¬´´½¨Êı¾İ±íµÈ
-	 * @param string $sql sqlÓï¾ä
+	 * æ‰§è¡Œmysql.sqlæ–‡ä»¶ï¼Œåˆ›å»ºæ•°æ®è¡¨ç­‰
+	 * @param string $sql sqlè¯­å¥
 	 */
 	private function sql_execute($sql) {
 	    $sqls = $this->sql_split($sql);
@@ -222,8 +222,8 @@ class module_api {
 	}
 	
 	/**
-	 * ´¦ÀísqlÓï¾ä£¬Ö´ĞĞÌæ»»Ç°×º¶¼¹¦ÄÜ¡£
-	 * @param string $sql Ô­Ê¼µÄsql£¬½«Ò»Ğ©´óÖÚµÄ²¿·ÖÌæ»»³ÉË½ÓĞµÄ
+	 * å¤„ç†sqlè¯­å¥ï¼Œæ‰§è¡Œæ›¿æ¢å‰ç¼€éƒ½åŠŸèƒ½ã€‚
+	 * @param string $sql åŸå§‹çš„sqlï¼Œå°†ä¸€äº›å¤§ä¼—çš„éƒ¨åˆ†æ›¿æ¢æˆç§æœ‰çš„
 	 */
 	private function sql_split($sql) {
 		$dbcharset = $GLOBALS['dbcharset'];

@@ -47,3 +47,4 @@
 		$txt = preg_replace($search, $replace1, $txt);
 		return $txt;
 	}
+

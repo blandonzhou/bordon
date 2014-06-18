@@ -4,11 +4,11 @@
 {else}
 <!--main-->
 <div class="wp clear">
-	<!--×ó²à·ÖÀ¸-->
+	<!--å·¦ä¾§åˆ†æ -->
 	<div class="col-left">
     	<div class="t-Rounded"><span></span></div>
         <div class="hot-category"><div class="hot-icon"></div>
-            <h5>ÈÈÃÅÀà±ğ</h5>
+            <h5>çƒ­é—¨ç±»åˆ«</h5>
             <ul class="clear">
 			{loop subcat(getinfocache('info_catid'),0,0,$siteid) $r}		
 				{pc:content action="category" catid="$r[catid]" num="8" siteid="$siteid" order="listorder ASC"}
@@ -21,17 +21,17 @@
         </div>
         <div class="f-Rounded"><span></span></div>
     </div>
-    <!--×ó²à·ÖÀ¸½áÊø && ÓÒ²à·ÖÀ¸¿ªÊ¼-->
+    <!--å·¦ä¾§åˆ†æ ç»“æŸ && å³ä¾§åˆ†æ å¼€å§‹-->
     <div class="col-right">
-    	<!--×¢²áµÇÂ¼·¢²¼-->
+    	<!--æ³¨å†Œç™»å½•å‘å¸ƒ-->
         <div class="guest clear">
-        	<a href="{APP_PATH}index.php?m=member&c=index&a=register&siteid={$siteid}" class="guest-register" >Ãâ·Ñ×¢²á</a>
-            <a href="{APP_PATH}index.php?m=member" class="guest-login">µÇÂ¼</a>
-            <a href="index.php?m=member&c=content&a=info_publish&siteid={$siteid}&city={$city}" class="guest-add">Ãâ·Ñ·¢²¼ĞÅÏ¢</a>
+        	<a href="{APP_PATH}index.php?m=member&c=index&a=register&siteid={$siteid}" class="guest-register" >å…è´¹æ³¨å†Œ</a>
+            <a href="{APP_PATH}index.php?m=member" class="guest-login">ç™»å½•</a>
+            <a href="index.php?m=member&c=content&a=info_publish&siteid={$siteid}&city={$city}" class="guest-add">å…è´¹å‘å¸ƒä¿¡æ¯</a>
         </div>      
         <div class="announce">
         	<ul class="tab clear cu-li">
-            	<li class="on" onclick="changetab(1)" id="tab-1">¹«¸æ</li><li onclick="changetab(2)" id="tab-2">¹æÔò</li><li class="weather"><iframe src="http://m.weather.com.cn/m/pn7/weather.htm " width="182" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>
+            	<li class="on" onclick="changetab(1)" id="tab-1">å…¬å‘Š</li><li onclick="changetab(2)" id="tab-2">è§„åˆ™</li><li class="weather"><iframe src="http://m.weather.com.cn/m/pn7/weather.htm " width="182" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>
             </ul>
             <div class="tab-panel" id="tab-panel-1">
                 {pc:announce  action="lists" siteid="$siteid" num="2"}
@@ -43,15 +43,15 @@
                 {/pc}			
             </div>
             <div class="tab-panel" id="tab-panel-2" style="display:none">
-              ÕâÀï¿ÉÒÔÍ¨¹ıËéÆ¬Ìí¼ÓÒ»Ğ©¹æÔò			
+              è¿™é‡Œå¯ä»¥é€šè¿‡ç¢ç‰‡æ·»åŠ ä¸€äº›è§„åˆ™			
             </div>			
         </div>
     </div>
-    <!--ÓÒ²à·ÖÀ¸½áÊø-->
+    <!--å³ä¾§åˆ†æ ç»“æŸ-->
     <div class="bk10"></div>
     <div class="col-left">
     	<div class="category-main clear">
-        	<h5><strong>ËùÓĞÀà±ğ</strong><p><strong>¿ìËÙ½øÈë£º</strong>ÌøÔéÊĞ³¡ | Éú»î·şÎñ | ÕĞÆ¸ÇóÖ° | ·¿ÎİĞÅÏ¢ | ½»ÓÑĞÅÏ¢</p></h5>
+        	<h5><strong>æ‰€æœ‰ç±»åˆ«</strong><p><strong>å¿«é€Ÿè¿›å…¥ï¼š</strong>è·³èš¤å¸‚åœº | ç”Ÿæ´»æœåŠ¡ | æ‹›è˜æ±‚èŒ | æˆ¿å±‹ä¿¡æ¯ | äº¤å‹ä¿¡æ¯</p></h5>
         	
 			{loop subcat(getinfocache('info_catid'),0,0,$siteid) $r}
 				<dl>
@@ -67,7 +67,7 @@
     </div>
     <div class="col-right">
     	<div class="category-sub">
-        	<h5>ÍÆ¼öĞÅÏ¢</h5>
+        	<h5>æ¨èä¿¡æ¯</h5>
             <ul>
 				{pc:content action="lists" catid="$catid" num="11" order="id DESC"}
 				{loop $data $r}
@@ -78,7 +78,7 @@
         </div>
         <div class="bk10"></div>
         <div class="category-sub">
-        	<h5>ä¯ÀÀÅÅĞĞ</h5>
+        	<h5>æµè§ˆæ’è¡Œ</h5>
             <ul>
 				{pc:content action="lists" catid="$catid" num="11" order="id DESC"}
 				{loop $data $r}

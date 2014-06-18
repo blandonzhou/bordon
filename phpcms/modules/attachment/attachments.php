@@ -20,7 +20,7 @@ class attachments {
 	}
 	
 	/**
-	 * ³£¹æÉÏ´«
+	 * å¸¸è§„ä¸Šä¼ 
 	 */
 	public function upload() {
 		$grouplist = getcache('grouplist','member');
@@ -42,7 +42,7 @@ class attachments {
 		}
 	}
 	/**
-	 * swfuploadÉÏ´«¸½¼þ
+	 * swfuploadä¸Šä¼ é™„ä»¶
 	 */
 	public function swfupload(){
 		$grouplist = getcache('grouplist','member');			
@@ -54,7 +54,7 @@ class attachments {
 			$attachment = new attachment($_POST['module'],$_POST['catid'],$_POST['siteid']);
 			$attachment->set_userid($_POST['userid']);
 			$aids = $attachment->upload('Filedata',$_POST['filetype_post'],'','',array($_POST['thumb_width'],$_POST['thumb_height']),$_POST['watermark_enable']);
-			//ÑéÖ¤ÉÏ´«ÎÄ¼þ¸ñÊ½ÊÇ·ñºÏ¹æ
+			//éªŒè¯ä¸Šä¼ æ–‡ä»¶æ ¼å¼æ˜¯å¦åˆè§„
 			$siteid = get_siteid();
 			$site_setting = get_site_setting($siteid);
 			$site_allowext = $site_setting['upload_allowext'];
@@ -94,7 +94,7 @@ class attachments {
 			$att_not_used = param::get_cookie('att_json');
 			if(empty($att_not_used) || !isset($att_not_used)) $tab_status = ' class="on"';
 			if(!empty($att_not_used)) $div_status = ' hidden';
-			//»ñÈ¡ÁÙÊ±Î´´¦ÀíÎÄ¼þÁÐ±í
+			//èŽ·å–ä¸´æ—¶æœªå¤„ç†æ–‡ä»¶åˆ—è¡¨
 			$att = $this->att_not_used();					
 			include $this->admin_tpl('swfupload');
 		}
@@ -151,7 +151,7 @@ class attachments {
 	}
 	
 	/**
-	 * É¾³ý¸½¼þ
+	 * åˆ é™¤é™„ä»¶
 	 */
 	public function swfdelete() {
 		$attachment = pc_base::load_sys_class('attachment');
@@ -163,7 +163,7 @@ class attachments {
 	
 
 	/**
-	 * ¼ÓÔØÍ¼Æ¬¿â
+	 * åŠ è½½å›¾ç‰‡åº“
 	 */
 	public function album_load() {
 		if(!$this->admin_username) return false;
@@ -200,7 +200,7 @@ class attachments {
 	}
 	
 	/**
-	 * Ä¿Â¼ä¯ÀÀÄ£Ê½Ìí¼ÓÍ¼Æ¬
+	 * ç›®å½•æµè§ˆæ¨¡å¼æ·»åŠ å›¾ç‰‡
 	 */
 	public function album_dir() {
 		if(!$this->admin_username) return false;
@@ -216,7 +216,7 @@ class attachments {
 	}
 	
 	/**
-	 * ÉèÖÃuploadÉÏ´«µÄjson¸ñÊ½cookie
+	 * è®¾ç½®uploadä¸Šä¼ çš„jsonæ ¼å¼cookie
 	 */
 	private function upload_json($aid,$src,$filename) {
 		$arr['aid'] = intval($aid);
@@ -235,7 +235,7 @@ class attachments {
 	}
 	
 	/**
-	 * ÉèÖÃswfuploadÉÏ´«µÄjson¸ñÊ½cookie
+	 * è®¾ç½®swfuploadä¸Šä¼ çš„jsonæ ¼å¼cookie
 	 */
 	public function swfupload_json() {
 		$arr['aid'] = intval($_GET['aid']);
@@ -254,7 +254,7 @@ class attachments {
 	}
 	
 	/**
-	 * É¾³ýswfuploadÉÏ´«µÄjson¸ñÊ½cookie
+	 * åˆ é™¤swfuploadä¸Šä¼ çš„jsonæ ¼å¼cookie
 	 */	
 	public function swfupload_json_del() {
 		$arr['aid'] = intval($_GET['aid']);
@@ -269,7 +269,7 @@ class attachments {
 
 	private function att_not_used() {
 		$this->att_db= pc_base::load_model('attachment_model');
-		//»ñÈ¡ÁÙÊ±Î´´¦ÀíÎÄ¼þÁÐ±í
+		//èŽ·å–ä¸´æ—¶æœªå¤„ç†æ–‡ä»¶åˆ—è¡¨
 		if($att_json = param::get_cookie('att_json')) {
 			if($att_json) $att_cookie_arr = explode('||', $att_json);	
 			foreach ($att_cookie_arr as $_att_c) $att[] = json_decode($_att_c,true);
@@ -302,3 +302,4 @@ class attachments {
 	}	
 }
 ?>
+

@@ -7,8 +7,8 @@ defined('IN_PHPCMS') or exit('No permission resources.');
  * check_vid 
  * ------------------------------------------
  * @package 	PHPCMS V9.1.16
- * @author		³ÂÑ§Íú
- * @copyright	CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @author		é™ˆå­¦æ—º
+ * @copyright	CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  * 
  */
 
@@ -23,7 +23,7 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 
 	/**
 	 * 
-	 * Ìí¼Óvid
+	 * æ·»åŠ vid
 	 */
 	public function check () {
 		$vid = $_GET['vid'];

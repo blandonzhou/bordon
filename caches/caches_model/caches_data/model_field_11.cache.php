@@ -6,7 +6,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'local_video',
-    'name' => 'ÉÏ´«ÊÓÆµ',
+    'name' => 'ä¸Šä¼ è§†é¢‘',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -36,13 +36,13 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'catid',
-    'name' => 'À¸Ä¿',
+    'name' => 'æ ç›®',
     'tips' => '',
     'css' => '',
     'minlength' => '1',
     'maxlength' => '6',
     'pattern' => '/^[0-9]{1,6}$/',
-    'errortips' => 'ÇëÑ¡ÔñÀ¸Ä¿',
+    'errortips' => 'è¯·é€‰æ‹©æ ç›®',
     'formtype' => 'catid',
     'setting' => 'array (
   \'defaultvalue\' => \'\',
@@ -69,7 +69,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'typeid',
-    'name' => 'Àà±ð',
+    'name' => 'ç±»åˆ«',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -104,13 +104,13 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'title',
-    'name' => '±êÌâ',
+    'name' => 'æ ‡é¢˜',
     'tips' => '',
     'css' => 'inputtitle',
     'minlength' => '1',
     'maxlength' => '80',
     'pattern' => '',
-    'errortips' => 'ÇëÊäÈë±êÌâ',
+    'errortips' => 'è¯·è¾“å…¥æ ‡é¢˜',
     'formtype' => 'title',
     'setting' => 'array (
 )',
@@ -135,7 +135,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'tea',
-    'name' => '½²Ê¦',
+    'name' => 'è®²å¸ˆ',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -184,7 +184,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'gallary',
-    'name' => '»ÃµÆÆ¬',
+    'name' => 'å¹»ç¯ç‰‡',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -221,7 +221,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'bgsound',
-    'name' => '±³¾°ÒôÀÖ',
+    'name' => 'èƒŒæ™¯éŸ³ä¹',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -262,7 +262,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'tea_des',
-    'name' => '½²Ê¦¼ò½é',
+    'name' => 'è®²å¸ˆç®€ä»‹',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -299,7 +299,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'tea_name',
-    'name' => '½²Ê¦Ãû×Ö',
+    'name' => 'è®²å¸ˆåå­—',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -336,19 +336,19 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'xueduan',
-    'name' => 'Ñ§¶Î',
+    'name' => 'å­¦æ®µ',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
     'maxlength' => '0',
     'pattern' => '',
-    'errortips' => 'ÇëÑ¡ÔñÑ§¶Î',
+    'errortips' => 'è¯·é€‰æ‹©å­¦æ®µ',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'Ð¡Ñ§|1
-³õÖÐ|2
-¸ßÖÐ|3
-´óÑ§|4\',
+  \'options\' => \'å°å­¦|1
+åˆä¸­|2
+é«˜ä¸­|3
+å¤§å­¦|4\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -372,10 +372,10 @@ return array (
     'listorder' => '5',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => 'Ð¡Ñ§|1
-³õÖÐ|2
-¸ßÖÐ|3
-´óÑ§|4',
+    'options' => 'å°å­¦|1
+åˆä¸­|2
+é«˜ä¸­|3
+å¤§å­¦|4',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
@@ -391,23 +391,23 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'xueke',
-    'name' => 'Ñ§¿Æ',
+    'name' => 'å­¦ç§‘',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
     'maxlength' => '0',
     'pattern' => '',
-    'errortips' => 'ÇëÑ¡ÔñÑ§¿Æ',
+    'errortips' => 'è¯·é€‰æ‹©å­¦ç§‘',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'ÓïÎÄ|1
-ÊýÑ§|2
-Ó¢Óï|3
-ÀúÊ·|4
-µØÀí|5
-ÕþÖÎ|6
-ÎïÀí|7
-»¯Ñ§|8\',
+  \'options\' => \'è¯­æ–‡|1
+æ•°å­¦|2
+è‹±è¯­|3
+åŽ†å²|4
+åœ°ç†|5
+æ”¿æ²»|6
+ç‰©ç†|7
+åŒ–å­¦|8\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -431,14 +431,14 @@ return array (
     'listorder' => '5',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => 'ÓïÎÄ|1
-ÊýÑ§|2
-Ó¢Óï|3
-ÀúÊ·|4
-µØÀí|5
-ÕþÖÎ|6
-ÎïÀí|7
-»¯Ñ§|8',
+    'options' => 'è¯­æ–‡|1
+æ•°å­¦|2
+è‹±è¯­|3
+åŽ†å²|4
+åœ°ç†|5
+æ”¿æ²»|6
+ç‰©ç†|7
+åŒ–å­¦|8',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
@@ -454,18 +454,18 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'nianji',
-    'name' => 'Äê¼¶',
+    'name' => 'å¹´çº§',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
     'maxlength' => '0',
     'pattern' => '',
-    'errortips' => 'ÇëÑ¡ÔñÄê¼¶',
+    'errortips' => 'è¯·é€‰æ‹©å¹´çº§',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'µÍÄê¼¶|1
-ÖÐÄê¼¶|2
-¸ßÄê¼¶|3\',
+  \'options\' => \'ä½Žå¹´çº§|1
+ä¸­å¹´çº§|2
+é«˜å¹´çº§|3\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -489,9 +489,9 @@ return array (
     'listorder' => '5',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => 'µÍÄê¼¶|1
-ÖÐÄê¼¶|2
-¸ßÄê¼¶|3',
+    'options' => 'ä½Žå¹´çº§|1
+ä¸­å¹´çº§|2
+é«˜å¹´çº§|3',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
@@ -507,8 +507,8 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'keywords',
-    'name' => '¹Ø¼ü´Ê',
-    'tips' => '¶à¹Ø¼ü´ÊÖ®¼äÓÃ¿Õ¸ñ»òÕß¡°,¡±¸ô¿ª',
+    'name' => 'å…³é”®è¯',
+    'tips' => 'å¤šå…³é”®è¯ä¹‹é—´ç”¨ç©ºæ ¼æˆ–è€…â€œ,â€éš”å¼€',
     'css' => '',
     'minlength' => '0',
     'maxlength' => '40',
@@ -542,7 +542,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'vision',
-    'name' => '»­ÖÊ',
+    'name' => 'ç”»è´¨',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -551,8 +551,8 @@ return array (
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'¸ßÇå|1
-ÆÕÍ¨|2\',
+  \'options\' => \'é«˜æ¸…|1
+æ™®é€š|2\',
   \'boxtype\' => \'select\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -576,8 +576,8 @@ return array (
     'listorder' => '9',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => '¸ßÇå|1
-ÆÕÍ¨|2',
+    'options' => 'é«˜æ¸…|1
+æ™®é€š|2',
     'boxtype' => 'select',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
@@ -593,7 +593,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'description',
-    'name' => '¿Î³Ì½éÉÜ',
+    'name' => 'è¯¾ç¨‹ä»‹ç»',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -632,7 +632,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'updatetime',
-    'name' => '¸üÐÂÊ±¼ä',
+    'name' => 'æ›´æ–°æ—¶é—´',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -671,15 +671,15 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'content',
-    'name' => 'ÄÚÈÝ',
-    'tips' => '<div class="content_attr"><label><input name="add_introduce" type="checkbox"  value="1" checked>ÊÇ·ñ½ØÈ¡ÄÚÈÝ</label><input type="text" name="introcude_length" value="200" size="3">×Ö·ûÖÁÄÚÈÝÕªÒª
-<label><input type=\'checkbox\' name=\'auto_thumb\' value="1" checked>ÊÇ·ñ»ñÈ¡ÄÚÈÝµÚ</label><input type="text" name="auto_thumb_no" value="1" size="2" class="">ÕÅÍ¼Æ¬×÷Îª±êÌâÍ¼Æ¬
+    'name' => 'å†…å®¹',
+    'tips' => '<div class="content_attr"><label><input name="add_introduce" type="checkbox"  value="1" checked>æ˜¯å¦æˆªå–å†…å®¹</label><input type="text" name="introcude_length" value="200" size="3">å­—ç¬¦è‡³å†…å®¹æ‘˜è¦
+<label><input type=\'checkbox\' name=\'auto_thumb\' value="1" checked>æ˜¯å¦èŽ·å–å†…å®¹ç¬¬</label><input type="text" name="auto_thumb_no" value="1" size="2" class="">å¼ å›¾ç‰‡ä½œä¸ºæ ‡é¢˜å›¾ç‰‡
 </div>',
     'css' => '',
     'minlength' => '0',
     'maxlength' => '999999',
     'pattern' => '',
-    'errortips' => 'ÄÚÈÝ²»ÄÜÎª¿Õ',
+    'errortips' => 'å†…å®¹ä¸èƒ½ä¸ºç©º',
     'formtype' => 'editor',
     'setting' => 'array (
   \'toolbar\' => \'full\',
@@ -720,7 +720,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'thumb',
-    'name' => 'ËõÂÔÍ¼',
+    'name' => 'ç¼©ç•¥å›¾',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -769,7 +769,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'relation',
-    'name' => 'Ïà¹ØÎÄÕÂ',
+    'name' => 'ç›¸å…³æ–‡ç« ',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -781,9 +781,9 @@ return array (
   \'formtext\' => \'<input type=\\\'hidden\\\' name=\\\'info[relation]\\\' id=\\\'relation\\\' value=\\\'{FIELD_VALUE}\\\' style=\\\'50\\\' >
 <ul class="list-dot" id="relation_text"></ul>
 <div>
-<input type=\\\'button\\\' value="Ìí¼ÓÏà¹Ø" onclick="omnipotent(\\\'selectid\\\',\\\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\\\',\\\'Ìí¼ÓÏà¹ØÎÄÕÂ\\\',1)" class="button" style="width:66px;">
+<input type=\\\'button\\\' value="æ·»åŠ ç›¸å…³" onclick="omnipotent(\\\'selectid\\\',\\\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\\\',\\\'æ·»åŠ ç›¸å…³æ–‡ç« \\\',1)" class="button" style="width:66px;">
 <span class="edit_content">
-<input type=\\\'button\\\' value="ÏÔÊ¾ÒÑÓÐ" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
+<input type=\\\'button\\\' value="æ˜¾ç¤ºå·²æœ‰" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
 </span>
 </div>\',
   \'fieldtype\' => \'varchar\',
@@ -806,9 +806,9 @@ return array (
     'formtext' => '<input type=\'hidden\' name=\'info[relation]\' id=\'relation\' value=\'{FIELD_VALUE}\' style=\'50\' >
 <ul class="list-dot" id="relation_text"></ul>
 <div>
-<input type=\'button\' value="Ìí¼ÓÏà¹Ø" onclick="omnipotent(\'selectid\',\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\',\'Ìí¼ÓÏà¹ØÎÄÕÂ\',1)" class="button" style="width:66px;">
+<input type=\'button\' value="æ·»åŠ ç›¸å…³" onclick="omnipotent(\'selectid\',\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\',\'æ·»åŠ ç›¸å…³æ–‡ç« \',1)" class="button" style="width:66px;">
 <span class="edit_content">
-<input type=\'button\' value="ÏÔÊ¾ÒÑÓÐ" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
+<input type=\'button\' value="æ˜¾ç¤ºå·²æœ‰" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
 </span>
 </div>',
     'fieldtype' => 'varchar',
@@ -820,7 +820,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'inputtime',
-    'name' => '·¢²¼Ê±¼ä',
+    'name' => 'å‘å¸ƒæ—¶é—´',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -857,7 +857,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'posids',
-    'name' => 'ÍÆ¼öÎ»',
+    'name' => 'æŽ¨èä½',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -923,7 +923,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'listorder',
-    'name' => 'ÅÅÐò',
+    'name' => 'æŽ’åº',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -954,7 +954,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'template',
-    'name' => 'ÄÚÈÝÒ³Ä£°å',
+    'name' => 'å†…å®¹é¡µæ¨¡æ¿',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -989,7 +989,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'status',
-    'name' => '×´Ì¬',
+    'name' => 'çŠ¶æ€',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -1020,7 +1020,7 @@ return array (
     'modelid' => '11',
     'siteid' => '1',
     'field' => 'username',
-    'name' => 'ÓÃ»§Ãû',
+    'name' => 'ç”¨æˆ·å',
     'tips' => '',
     'css' => '',
     'minlength' => '0',

@@ -17,3 +17,4 @@
 		}
 		return "<input type='hidden' name='info[$field][]' value='-1'>".form::checkbox($array,$posids,"name='info[$field][]'",'',$setting['width']);
 	}
+

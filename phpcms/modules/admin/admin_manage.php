@@ -12,7 +12,7 @@ class admin_manage extends admin {
 	}
 	
 	/**
-	 * ¹ÜÀíÔ±¹ÜÀíÁĞ±í
+	 * ç®¡ç†å‘˜ç®¡ç†åˆ—è¡¨
 	 */
 	public function init() {
 		$userid = $_SESSION['userid'];
@@ -25,7 +25,7 @@ class admin_manage extends admin {
 	}
 	
 	/**
-	 * Ìí¼Ó¹ÜÀíÔ±
+	 * æ·»åŠ ç®¡ç†å‘˜
 	 */
 	public function add() {
 		if(isset($_POST['dosubmit'])) {
@@ -59,7 +59,7 @@ class admin_manage extends admin {
 	}
 	
 	/**
-	 * ĞŞ¸Ä¹ÜÀíÔ±
+	 * ä¿®æ”¹ç®¡ç†å‘˜
 	 */
 	public function edit() {
 		if(isset($_POST['dosubmit'])) {
@@ -88,7 +88,7 @@ class admin_manage extends admin {
 	}
 	
 	/**
-	 * É¾³ı¹ÜÀíÔ±
+	 * åˆ é™¤ç®¡ç†å‘˜
 	 */
 	public function delete() {
 		$userid = intval($_GET['userid']);
@@ -98,7 +98,7 @@ class admin_manage extends admin {
 	}
 	
 	/**
-	 * ¸üĞÂ¹ÜÀíÔ±×´Ì¬
+	 * æ›´æ–°ç®¡ç†å‘˜çŠ¶æ€
 	 */
 	public function lock(){
 		$userid = intval($_GET['userid']);
@@ -108,7 +108,7 @@ class admin_manage extends admin {
 	}
 	
 	/**
-	 * ¹ÜÀíÔ±×ÔÖúĞŞ¸ÄÃÜÂë
+	 * ç®¡ç†å‘˜è‡ªåŠ©ä¿®æ”¹å¯†ç 
 	 */
 	public function public_edit_pwd() {
 		$userid = $_SESSION['userid'];
@@ -127,7 +127,7 @@ class admin_manage extends admin {
 
 	}
 	/*
-	 * ±à¼­ÓÃ»§ĞÅÏ¢
+	 * ç¼–è¾‘ç”¨æˆ·ä¿¡æ¯
 	 */
 	public function public_edit_info() {
 		$userid = $_SESSION['userid'];
@@ -158,7 +158,7 @@ class admin_manage extends admin {
 	
 	}
 	/**
-	 * Òì²½¼ì²âÓÃ»§Ãû
+	 * å¼‚æ­¥æ£€æµ‹ç”¨æˆ·å
 	 */
 	function public_checkname_ajx() {
 		$username = isset($_GET['username']) && trim($_GET['username']) ? trim($_GET['username']) : exit(0);
@@ -168,7 +168,7 @@ class admin_manage extends admin {
 		exit('1');
 	}
 	/**
-	 * Òì²½¼ì²âÃÜÂë
+	 * å¼‚æ­¥æ£€æµ‹å¯†ç 
 	 */
 	function public_password_ajx() {
 		$userid = $_SESSION['userid'];
@@ -180,7 +180,7 @@ class admin_manage extends admin {
 		exit('0');
 	}
 	/**
-	 * Òì²½¼ì²âemialºÏ·¨ĞÔ
+	 * å¼‚æ­¥æ£€æµ‹emialåˆæ³•æ€§
 	 */
 	function public_email_ajx() {
 		$email = $_GET['email'];
@@ -193,7 +193,7 @@ class admin_manage extends admin {
 		}
  	}
 
-	//µç×Ó¿ÚÁî¿¨
+	//ç”µå­å£ä»¤å¡
 	function card() {
 		if (pc_base::load_config('system', 'safe_card') != 1) {
 			showmessage(L('your_website_opened_the_card_no_password'));
@@ -213,7 +213,7 @@ class admin_manage extends admin {
 		}
 	}
 	
-	//°ó¶¨µç×Ó¿ÚÁî¿¨
+	//ç»‘å®šç”µå­å£ä»¤å¡
 	function creat_card() {
 		if (pc_base::load_config('system', 'safe_card') != 1) {
 			showmessage(L('your_website_opened_the_card_no_password'));
@@ -237,7 +237,7 @@ class admin_manage extends admin {
 		}
 	}
 	
-	//½â³ı¿ÚÁî¿¨°ó¶¨
+	//è§£é™¤å£ä»¤å¡ç»‘å®š
 	function remove_card() {
 		if (pc_base::load_config('system', 'safe_card') != 1) {
 			showmessage(L('your_website_opened_the_card_no_password'));

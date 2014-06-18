@@ -1,6 +1,6 @@
 <?php
 /**
- *  session mysql Êı¾İ¿â´æ´¢Àà
+ *  session mysql æ•°æ®åº“å­˜å‚¨ç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -11,7 +11,7 @@ class session_mysql {
 	var $db;
 	var $table;
 /**
- * ¹¹Ôìº¯Êı
+ * æ„é€ å‡½æ•°
  * 
  */
     public function __construct() {
@@ -21,7 +21,7 @@ class session_mysql {
     	session_start();
     }
 /**
- * session_set_save_handler  open·½·¨
+ * session_set_save_handler  openæ–¹æ³•
  * @param $save_path
  * @param $session_name
  * @return true
@@ -31,27 +31,27 @@ class session_mysql {
 		return true;
     }
 /**
- * session_set_save_handler  close·½·¨
+ * session_set_save_handler  closeæ–¹æ³•
  * @return bool
  */
     public function close() {
         return $this->gc($this->lifetime);
     } 
 /**
- * ¶ÁÈ¡session_id
- * session_set_save_handler  read·½·¨
- * @return string ¶ÁÈ¡session_id
+ * è¯»å–session_id
+ * session_set_save_handler  readæ–¹æ³•
+ * @return string è¯»å–session_id
  */
     public function read($id) {
 		$r = $this->db->get_one(array('sessionid'=>$id), 'data');
 		return $r ? $r['data'] : '';
     } 
 /**
- * Ğ´Èësession_id µÄÖµ
+ * å†™å…¥session_id çš„å€¼
  * 
  * @param $id session
- * @param $data Öµ
- * @return mixed query Ö´ĞĞ½á¹û
+ * @param $data å€¼
+ * @return mixed query æ‰§è¡Œç»“æœ
  */
     public function write($id, $data) {
     	$uid = isset($_SESSION['userid']) ? $_SESSION['userid'] : 0;
@@ -77,7 +77,7 @@ class session_mysql {
 		return $this->db->insert($sessiondata, 1, 1);
     }
 /** 
- * É¾³ıÖ¸¶¨µÄsession_id
+ * åˆ é™¤æŒ‡å®šçš„session_id
  * 
  * @param $id session
  * @return bool
@@ -86,9 +86,9 @@ class session_mysql {
 		return $this->db->delete(array('sessionid'=>$id));
     }
 /**
- * É¾³ı¹ıÆÚµÄ session
+ * åˆ é™¤è¿‡æœŸçš„ session
  * 
- * @param $maxlifetime ´æ»îÆÚÊ±¼ä
+ * @param $maxlifetime å­˜æ´»æœŸæ—¶é—´
  * @return bool
  */
    public function gc($maxlifetime) {

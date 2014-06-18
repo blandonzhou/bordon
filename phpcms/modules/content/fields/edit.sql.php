@@ -64,7 +64,7 @@ switch($field_type) {
 	case 'timestamp':
 		$this->db->query("ALTER TABLE `$tablename` CHANGE `$oldfield` `$field` TIMESTAMP NOT NULL");
 	break;
-	//ÌØÊâ×Ô¶¨Òå×Ö¶Î
+	//ç‰¹æ®Šè‡ªå®šä¹‰å­—æ®µ
 	case 'pages':
 		
 	break;

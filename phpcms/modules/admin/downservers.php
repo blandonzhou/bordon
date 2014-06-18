@@ -80,7 +80,7 @@ class downservers extends admin {
 	}	
 	
 	/**
-	 * ÅÅĞò
+	 * æ’åº
 	 */
 	public function listorder() {
 		if(isset($_POST['dosubmit'])) {

@@ -4,7 +4,7 @@ return array (
   array (
     'id' => '287',
     'catid' => '17',
-    'title' => 'Ðý×ªÃÅ',
+    'title' => 'æ—‹è½¬é—¨',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=17&id=287',
     'username' => 'user1',
     'sysadd' => '0',
@@ -15,7 +15,7 @@ return array (
   array (
     'id' => '281',
     'catid' => '17',
-    'title' => 'Àî¿ª¸´ÈËÃñ´óÑ§ÑÝ½²-³É¹¦Ö®µÀ',
+    'title' => 'æŽå¼€å¤äººæ°‘å¤§å­¦æ¼”è®²-æˆåŠŸä¹‹é“',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=17&id=281',
     'username' => 'user1',
     'sysadd' => '0',
@@ -26,7 +26,7 @@ return array (
   array (
     'id' => '280',
     'catid' => '13',
-    'title' => 'Ð¡»¨°ê',
+    'title' => 'å°èŠ±ç“£',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=13&id=280',
     'username' => 'user1',
     'sysadd' => '0',
@@ -37,7 +37,7 @@ return array (
   array (
     'id' => '278',
     'catid' => '21',
-    'title' => 'Ð¡¸ë×Ó',
+    'title' => 'å°é¸½å­',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=21&id=278',
     'username' => 'user1',
     'sysadd' => '0',
@@ -48,7 +48,7 @@ return array (
   array (
     'id' => '277',
     'catid' => '19',
-    'title' => 'ÍâÐÇ³µ',
+    'title' => 'å¤–æ˜Ÿè½¦',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=19&id=277',
     'username' => 'user1',
     'sysadd' => '0',
@@ -59,7 +59,7 @@ return array (
   array (
     'id' => '276',
     'catid' => '21',
-    'title' => 'ÐÜÃ¨°ïÃ¦',
+    'title' => 'ç†ŠçŒ«å¸®å¿™',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=21&id=276',
     'username' => 'user1',
     'sysadd' => '0',
@@ -70,7 +70,7 @@ return array (
   array (
     'id' => '275',
     'catid' => '25',
-    'title' => 'Ð¡×ØÐÜ 01',
+    'title' => 'å°æ£•ç†Š 01',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=25&id=275',
     'username' => 'user1',
     'sysadd' => '0',
@@ -103,7 +103,7 @@ return array (
   array (
     'id' => '272',
     'catid' => '13',
-    'title' => 'Ð¡×ØÐÜ 10',
+    'title' => 'å°æ£•ç†Š 10',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=13&id=272',
     'username' => 'user1',
     'sysadd' => '0',
@@ -147,7 +147,7 @@ return array (
   array (
     'id' => '261',
     'catid' => '13',
-    'title' => 'º¸½ÓÖªÊ¶',
+    'title' => 'ç„ŠæŽ¥çŸ¥è¯†',
     'url' => 'http://bordon.xicp.net:9999/phpcms/index.php?m=content&c=index&a=show&catid=13&id=261',
     'username' => 'user1',
     'sysadd' => '0',

@@ -1,6 +1,6 @@
 <?php
 class comment_tag {
-	//Êı¾İ¿âÁ¬½Ó
+	//æ•°æ®åº“è¿æ¥
 	private $comment_db, $comment_setting_db, $comment_data_db, $comment_table_db;
 	
 	public function __construct() {
@@ -12,8 +12,8 @@ class comment_tag {
 	
 	/**
 	 * 
-	 * PC±êÇ©Êı¾İÊıÁ¿¼ÆËãº¯Êı
-	 * @param array $data PC±êÇ©ÖĞµÄÅäÖÃ²ÎÊı´«Èë
+	 * PCæ ‡ç­¾æ•°æ®æ•°é‡è®¡ç®—å‡½æ•°
+	 * @param array $data PCæ ‡ç­¾ä¸­çš„é…ç½®å‚æ•°ä¼ å…¥
 	 */
 	public function count($data) {
 		if($data['action']=='get_comment') return 0;
@@ -26,27 +26,27 @@ class comment_tag {
 		}
 		$comment = $this->comment_db->get_one(array('commentid'=>$commentid, 'siteid'=>$siteid));
 		if (!$comment) return false;
-		//ÊÇ·ñ°´ÆÀÂÛ·½Ïò»ñÈ¡
+		//æ˜¯å¦æŒ‰è¯„è®ºæ–¹å‘è·å–
 		$direction = isset($data['direction']) && intval($data['direction']) ? intval($data['direction']) : 0;
 		switch ($direction) {
-			case 1://Õı·½
+			case 1://æ­£æ–¹
 				return $comment['square'];
 				break;
-			case 2://·´·½
+			case 2://åæ–¹
 				return $comment['anti'];
 				break;
-			case 3://ÖĞÁ¢·½
+			case 3://ä¸­ç«‹æ–¹
 				return $comment['neutral'];
 				break;
-			default://»ñÈ¡ËùÓĞ
+			default://è·å–æ‰€æœ‰
 				return $comment['total'];
 		}
 	}
 	
 	/**
 	 * 
-	 * »ñÈ¡ÆÀÂÛ×Ü±íĞÅÏ¢
-	 * @param array $data PC±êÇ©ÖĞµÄÅäÖÃ²ÎÊı´«Èë
+	 * è·å–è¯„è®ºæ€»è¡¨ä¿¡æ¯
+	 * @param array $data PCæ ‡ç­¾ä¸­çš„é…ç½®å‚æ•°ä¼ å…¥
 	 */
 	public function get_comment($data) {
 		$commentid = $data['commentid'];
@@ -56,8 +56,8 @@ class comment_tag {
 	
 	/**
 	 * 
-	 * »ñÈ¡ÆÀÂÛÊı¾İ
-	 * @param array $data PC±êÇ©ÖĞµÄÅäÖÃ²ÎÊı´«Èë
+	 * è·å–è¯„è®ºæ•°æ®
+	 * @param array $data PCæ ‡ç­¾ä¸­çš„é…ç½®å‚æ•°ä¼ å…¥
 	 */
 	public function lists($data) {
 		$commentid = $data['commentid'];
@@ -69,7 +69,7 @@ class comment_tag {
 		}
 		$comment = $this->comment_db->get_one(array('commentid'=>$commentid, 'siteid'=>$siteid));
 		if (!$comment) return false;
-		//ÉèÖÃ´æ´¢Êı¾İ±í
+		//è®¾ç½®å­˜å‚¨æ•°æ®è¡¨
 		$this->comment_data_db->table_name($comment['tableid']);
 				
 		$hot = 'id';
@@ -77,23 +77,23 @@ class comment_tag {
 			$hot = 'support desc, id';
 		}
 		
-		//ÊÇ·ñ°´ÆÀÂÛ·½Ïò»ñÈ¡
+		//æ˜¯å¦æŒ‰è¯„è®ºæ–¹å‘è·å–
 		$direction = isset($data['direction']) && intval($data['direction']) ? intval($data['direction']) : 0;
 		if (!in_array($direction, array(0,1,2,3))) {
 			$direction = 0;
 		}
 		
 		switch ($direction) {
-			case 1://Õı·½
+			case 1://æ­£æ–¹
 				$sql = array('commentid'=>$commentid, 'direction'=>1, 'status'=>1);
 				break;
-			case 2://·´·½
+			case 2://åæ–¹
 				$sql = array('commentid'=>$commentid, 'direction'=>2, 'status'=>1);
 				break;
-			case 3://ÖĞÁ¢·½
+			case 3://ä¸­ç«‹æ–¹
 				$sql = array('commentid'=>$commentid, 'direction'=>3, 'status'=>1);
 				break;
-			default://»ñÈ¡ËùÓĞ
+			default://è·å–æ‰€æœ‰
 				$sql = array('commentid'=>$commentid, 'status'=>1);
 		}
 		return $this->comment_data_db->select($sql, '*', $data['limit'], $hot.' desc ');
@@ -101,8 +101,8 @@ class comment_tag {
 	
 	/**
 	 * 
-	 * ÆÀÂÛÅÅĞĞ°ñ
-	 * @param array $data PC±êÇ©ÖĞµÄÅäÖÃ²ÎÊı´«Èë
+	 * è¯„è®ºæ’è¡Œæ¦œ
+	 * @param array $data PCæ ‡ç­¾ä¸­çš„é…ç½®å‚æ•°ä¼ å…¥
 	 */
 	public function bang($data) {
 		$data['limit'] = intval($data['limit']);
@@ -119,7 +119,7 @@ class comment_tag {
 	
 	/**
 	 * 
-	 * PC±êÇ©£¬¿ÉÊÓ»¯ÏÔÊ¾²ÎÊıÅäÖÃ¡£
+	 * PCæ ‡ç­¾ï¼Œå¯è§†åŒ–æ˜¾ç¤ºå‚æ•°é…ç½®ã€‚
 	 */
 	public function pc_tag() {
 		$sites = pc_base::load_app_class('sites','admin');

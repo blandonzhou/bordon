@@ -48,7 +48,7 @@ class type_manage extends admin {
 					}
 				}
 			}
-			$this->cache();//¸üĞÂÀà±ğ»º´æ£¬°´Õ¾µã
+			$this->cache();//æ›´æ–°ç±»åˆ«ç¼“å­˜ï¼ŒæŒ‰ç«™ç‚¹
 			showmessage(L('add_success'), '', '', 'add');
 		} else {
 			$show_header = $show_validator = '';
@@ -78,7 +78,7 @@ class type_manage extends admin {
 					$this->category_db->update(array('usable_type'=>$usable_type),array('catid'=>$catid,'siteid'=>$this->siteid));
 				}
 			}
-			//É¾³ıÈ¡ÏûµÄ
+			//åˆ é™¤å–æ¶ˆçš„
 			$catids_string = $_POST['catids_string'];
 			if($catids_string) {	
 				$catids_string = explode(',', $catids_string);
@@ -99,7 +99,7 @@ class type_manage extends admin {
 				}
 			}
 			$this->category_cache();
-			$this->cache();//¸üĞÂÀà±ğ»º´æ£¬°´Õ¾µã
+			$this->cache();//æ›´æ–°ç±»åˆ«ç¼“å­˜ï¼ŒæŒ‰ç«™ç‚¹
 			showmessage(L('update_success'), '', '', 'edit');
 		} else {
 			$show_header = $show_validator = '';
@@ -114,19 +114,19 @@ class type_manage extends admin {
 	public function delete() {
 		$_GET['typeid'] = intval($_GET['typeid']);
 		$this->db->delete(array('typeid'=>$_GET['typeid']));
-		$this->cache();//¸üĞÂÀà±ğ»º´æ£¬°´Õ¾µã
+		$this->cache();//æ›´æ–°ç±»åˆ«ç¼“å­˜ï¼ŒæŒ‰ç«™ç‚¹
 		exit('1');
 	}
 	
 	/**
-	 * ÅÅĞò
+	 * æ’åº
 	 */
 	public function listorder() {
 		if(isset($_POST['dosubmit'])) {
 			foreach($_POST['listorders'] as $id => $listorder) {
 				$this->db->update(array('listorder'=>$listorder),array('typeid'=>$id));
 			}
-			$this->cache();//¸üĞÂÀà±ğ»º´æ£¬°´Õ¾µã
+			$this->cache();//æ›´æ–°ç±»åˆ«ç¼“å­˜ï¼ŒæŒ‰ç«™ç‚¹
 			showmessage(L('operation_success'),HTTP_REFERER);
 		} else {
 			showmessage(L('operation_failure'));
@@ -144,13 +144,13 @@ class type_manage extends admin {
 		return true;
 	}
 	/**
-	 * Ñ¡Ôñ¿ÉÓÃÀ¸Ä¿
+	 * é€‰æ‹©å¯ç”¨æ ç›®
 	 */
 	public function public_getsite_categorys($typeid = 0) {
 		$siteid = $this->siteid;
 		$this->categorys = getcache('category_content_'.$siteid,'commons');
 		$tree = pc_base::load_sys_class('tree');
-		$tree->icon = array('&nbsp;&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;&nbsp;©¸©¤ ');
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;&nbsp;â””â”€ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		$categorys = array();
 		$this->catids_string = array();
@@ -182,7 +182,7 @@ class type_manage extends admin {
 		return $categorys;
 	}
 	/**
-	 * ¸üĞÂÀ¸Ä¿»º´æ
+	 * æ›´æ–°æ ç›®ç¼“å­˜
 	 */
 	private function category_cache() {
 		$categorys = array();

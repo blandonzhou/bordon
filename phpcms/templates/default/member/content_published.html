@@ -28,7 +28,7 @@
 	<td align="center"><a href="{if strpos($CATEGORYS[$info['catid']][url],'http://')===false}{$siteurl}{/if}{$CATEGORYS[$info['catid']][url]}" target="_blank">{$CATEGORYS[$info['catid']][catname]}</a></td>
 	<td align="center">{date('Y-m-d',$info['inputtime'])}</td>
 	<td align="center">{if $info[status]==99}<font color="#1D94C7">{L('pass')}</font>{elseif !$info[flag]}{L('verify_content')}{else}<a href="index.php?m=member&c=content&a=edit&catid={$info[catid]}&id={$info[id]}"><font color="red">{L('edit')}</font></a>{/if}
-	{if in_array($info[modelid],array_keys(getinfocache('info_modelid')))}<a href="javascript:void();" onclick="top_info('{$info[id]}', '{$info[catid]}');return false;"><font color="#1D94C7">ÖÃ¶¥</font></a>{/if}</td>
+	{if in_array($info[modelid],array_keys(getinfocache('info_modelid')))}<a href="javascript:void();" onclick="top_info('{$info[id]}', '{$info[catid]}');return false;"><font color="#1D94C7">ç½®é¡¶</font></a>{/if}</td>
 	</tr>
 	{/loop}
     </tbody>

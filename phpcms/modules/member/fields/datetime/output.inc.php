@@ -17,3 +17,4 @@
 		$value = date($format_txt,$value);
 		return $value;
 	}
+

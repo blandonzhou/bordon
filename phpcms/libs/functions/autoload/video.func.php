@@ -1,7 +1,7 @@
 <?php
 
 /**
- * »ñÈ¡µã»÷ÊıÁ¿
+ * è·å–ç‚¹å‡»æ•°é‡
  * @param $hitsid
  */
 function get_views($hitsid) {
@@ -17,7 +17,7 @@ function get_views($hitsid) {
 }
 
 /**
- * »ñÈ¡ÆÀÂÛÊı
+ * è·å–è¯„è®ºæ•°
  * @param $comment
  */
 function get_comments($commentid) {
@@ -33,7 +33,7 @@ function get_comments($commentid) {
 }
 
 /**
- * »ñÈ¡ÊÓÆµÍ¼Æ¬
+ * è·å–è§†é¢‘å›¾ç‰‡
  * @param $id
  */
 function get_pic($id,$catid) {
@@ -52,11 +52,11 @@ function get_pic($id,$catid) {
 }
 
 /**
- * Éú³É·ÖÀàĞÅÏ¢ÖĞµÄÉ¸Ñ¡²Ëµ¥
- * @param $field   ×Ö¶ÎÃû³Æ
- * @param $modelid  Ä£ĞÍID
- * @param $diyarr Êı¾İ°ü
- * @param $isall ÊÇ·ñÏÔÊ¾È«²¿
+ * ç”Ÿæˆåˆ†ç±»ä¿¡æ¯ä¸­çš„ç­›é€‰èœå•
+ * @param $field   å­—æ®µåç§°
+ * @param $modelid  æ¨¡å‹ID
+ * @param $diyarr æ•°æ®åŒ…
+ * @param $isall æ˜¯å¦æ˜¾ç¤ºå…¨éƒ¨
  */
 function video_filters($field = '',$modelid,$diyarr = array(),$isall = 1) {
 	$fields = getcache('model_field_'.$modelid,'model');
@@ -82,7 +82,7 @@ function video_filters($field = '',$modelid,$diyarr = array(),$isall = 1) {
 
 
 /**
- * ¹¹ÔìÉ¸Ñ¡URL
+ * æ„é€ ç­›é€‰URL
  */
 function video_filters_url($fieldname,$array=array(),$type = 1,$modelid, $isphp = 0) {
 	if(empty($array)) {
@@ -101,9 +101,9 @@ function video_filters_url($fieldname,$array=array(),$type = 1,$modelid, $isphp 
 			}
 		}
 	}
-	//Î±¾²Ì¬url¹æÔò¹ÜÀí£¬apacheÎ±¾²Ì¬Ö§³Ö9¸ö²ÎÊı
+	//ä¼ªé™æ€urlè§„åˆ™ç®¡ç†ï¼Œapacheä¼ªé™æ€æ”¯æŒ9ä¸ªå‚æ•°
 	 $urlrule =APP_PATH.'index.php?m=content&c=index&a=lists&catid='.$_GET[catid].'&modelid='.$modelid.$urlpars.'&page={$page}';
-	//¸ù¾İget´«Öµ¹¹ÔìURL
+	//æ ¹æ®getä¼ å€¼æ„é€ URL
 	if (is_array($array)) foreach ($array as $_k=>$_v) {
 		if($_k=='page') $_v=1;
 		if($type == 1) if($_k==$fieldname) continue;
@@ -117,7 +117,7 @@ function video_filters_url($fieldname,$array=array(),$type = 1,$modelid, $isphp 
 		}
 		$_replaceme[] = $_v;
 	}
-     //type Ä£Ê½µÄÊ±ºò£¬¹¹ÔìÅÅ³ı¸Ã×Ö¶ÎÃû³ÆµÄÕıÔò
+     //type æ¨¡å¼çš„æ—¶å€™ï¼Œæ„é€ æ’é™¤è¯¥å­—æ®µåç§°çš„æ­£åˆ™
 	if($type==1) $filter = '(?!'.$fieldname.'.)';
 	$_findme[] = '/{\$'.$filter.'([a-z0-9_]+)}/';
 	$_replaceme[] = '';
@@ -130,7 +130,7 @@ function video_filters_url($fieldname,$array=array(),$type = 1,$modelid, $isphp 
 
 
 /**
- * ¹¹ÔìÉ¸Ñ¡Ê±ºòµÄsqlÓï¾ä
+ * æ„é€ ç­›é€‰æ—¶å€™çš„sqlè¯­å¥
  */
 function video_filters_sql($modelid,$catid) {
 	$sql = $fieldname = $min = $max = '';

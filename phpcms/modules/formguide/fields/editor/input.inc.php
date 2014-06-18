@@ -6,3 +6,4 @@
 		$value = $this->attachment->download('content', $value,$watermark_enable);
 		return $value;
 	}
+

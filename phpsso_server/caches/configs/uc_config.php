@@ -11,3 +11,4 @@ define('UC_DBCHARSET', 'gbk');
 define('UC_APPID', '8');
 define('UC_KEY', 'arqFDAQRFWQE2346fweqre');
 define('UCUSE', '0');
+

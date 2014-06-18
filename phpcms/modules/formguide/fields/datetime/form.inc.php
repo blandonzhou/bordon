@@ -11,3 +11,4 @@
 		}
 		return form::date("info[$field]",$value,$isdatetime,1);
 	}
+

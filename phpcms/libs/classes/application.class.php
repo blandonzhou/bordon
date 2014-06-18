@@ -1,6 +1,6 @@
 <?php
 /**
- *  application.class.php PHPCMSÓ¦ÓÃ³ÌĞò´´½¨Àà
+ *  application.class.php PHPCMSåº”ç”¨ç¨‹åºåˆ›å»ºç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -9,7 +9,7 @@
 class application {
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public function __construct() {
 		$param = pc_base::load_sys_class('param');
@@ -20,7 +20,7 @@ class application {
 	}
 	
 	/**
-	 * µ÷ÓÃ¼şÊÂ
+	 * è°ƒç”¨ä»¶äº‹
 	 */
 	private function init() {
 		$controller = $this->load_controller();
@@ -36,7 +36,7 @@ class application {
 	}
 	
 	/**
-	 * ¼ÓÔØ¿ØÖÆÆ÷
+	 * åŠ è½½æ§åˆ¶å™¨
 	 * @param string $filename
 	 * @param string $m
 	 * @return obj

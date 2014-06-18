@@ -962,3 +962,4 @@ SWFUpload.Console.writeLine = function (message) {
 		alert("Exception: " + ex.name + " Message: " + ex.message);
 	}
 };
+

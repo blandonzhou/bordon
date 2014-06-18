@@ -1,6 +1,6 @@
 <?php
 /**
- *  db_factory.class.php Êý¾Ý¿â¹¤³§Àà
+ *  db_factory.class.php æ•°æ®åº“å·¥åŽ‚ç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -10,29 +10,29 @@
 final class db_factory {
 	
 	/**
-	 * µ±Ç°Êý¾Ý¿â¹¤³§Àà¾²Ì¬ÊµÀý
+	 * å½“å‰æ•°æ®åº“å·¥åŽ‚ç±»é™æ€å®žä¾‹
 	 */
 	private static $db_factory;
 	
 	/**
-	 * Êý¾Ý¿âÅäÖÃÁÐ±í
+	 * æ•°æ®åº“é…ç½®åˆ—è¡¨
 	 */
 	protected $db_config = array();
 	
 	/**
-	 * Êý¾Ý¿â²Ù×÷ÊµÀý»¯ÁÐ±í
+	 * æ•°æ®åº“æ“ä½œå®žä¾‹åŒ–åˆ—è¡¨
 	 */
 	protected $db_list = array();
 	
 	/**
-	 * ¹¹Ôìº¯Êý
+	 * æž„é€ å‡½æ•°
 	 */
 	public function __construct() {
 	}
 	
 	/**
-	 * ·µ»Øµ±Ç°ÖÕ¼¶Àà¶ÔÏóµÄÊµÀý
-	 * @param $db_config Êý¾Ý¿âÅäÖÃ
+	 * è¿”å›žå½“å‰ç»ˆçº§ç±»å¯¹è±¡çš„å®žä¾‹
+	 * @param $db_config æ•°æ®åº“é…ç½®
 	 * @return object
 	 */
 	public static function get_instance($db_config = '') {
@@ -47,8 +47,8 @@ final class db_factory {
 	}
 	
 	/**
-	 * »ñÈ¡Êý¾Ý¿â²Ù×÷ÊµÀý
-	 * @param $db_name Êý¾Ý¿âÅäÖÃÃû³Æ
+	 * èŽ·å–æ•°æ®åº“æ“ä½œå®žä¾‹
+	 * @param $db_name æ•°æ®åº“é…ç½®åç§°
 	 */
 	public function get_database($db_name) {
 		if(!isset($this->db_list[$db_name]) || !is_object($this->db_list[$db_name])) {
@@ -58,8 +58,8 @@ final class db_factory {
 	}
 	
 	/**
-	 *  ¼ÓÔØÊý¾Ý¿âÇý¶¯
-	 * @param $db_name 	Êý¾Ý¿âÅäÖÃÃû³Æ
+	 *  åŠ è½½æ•°æ®åº“é©±åŠ¨
+	 * @param $db_name 	æ•°æ®åº“é…ç½®åç§°
 	 * @return object
 	 */
 	public function connect($db_name) {
@@ -84,7 +84,7 @@ final class db_factory {
 	}
 
 	/**
-	 * ¹Ø±ÕÊý¾Ý¿âÁ¬½Ó
+	 * å…³é—­æ•°æ®åº“è¿žæŽ¥
 	 * @return void
 	 */
 	protected function close() {
@@ -94,7 +94,7 @@ final class db_factory {
 	}
 	
 	/**
-	 * Îö¹¹º¯Êý
+	 * æžæž„å‡½æ•°
 	 */
 	public function __destruct() {
 		$this->close();

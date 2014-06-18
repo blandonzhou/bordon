@@ -13,13 +13,13 @@ class qqapi{
         }
 
         public function redirect_to_login() {
-            //Ìø×ªµ½QQµÇÂ¼Ò³µÄ½Ó¿ÚµØÖ·, ²»Òª¸ü¸Ä!!
+            //è·³è½¬åˆ°QQç™»å½•é¡µçš„æ¥å£åœ°å€, ä¸è¦æ›´æ”¹!!
             $redirect = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=$this->appid&scope=&redirect_uri=".rawurlencode($this->callback);
             header("Location:$redirect");
         }
         
         
-        //»ñµÃµÇÂ¼µÄ openid
+        //è·å¾—ç™»å½•çš„ openid
         public function get_openid($code){
             $url = "https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=$this->appid&client_secret=$this->appkey&code=$code&redirect_uri=".rawurlencode($this->callback);
             $content = file_get_contents( $url);
@@ -47,7 +47,7 @@ class qqapi{
         }
         
         /**
-        * ·µ»ØÓÃ»§ĞÅÏ¢
+        * è¿”å›ç”¨æˆ·ä¿¡æ¯
         * 
         */
         public function get_user_info(){

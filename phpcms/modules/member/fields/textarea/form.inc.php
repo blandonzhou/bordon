@@ -9,3 +9,4 @@
 		$value = empty($value) ? $setting['defaultvalue'] : $value;
 		return "<textarea name='info[{$field}]' id='$field' style='width:{$width}%;height:{$height}px;' $formattribute $css>{$value}</textarea>";
 	}
+

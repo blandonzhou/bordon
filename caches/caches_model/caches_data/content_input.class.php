@@ -9,7 +9,7 @@ class content_input {
 		$this->db_pre = $this->db->db_tablepre;
 		$this->modelid = $modelid;
 		$this->fields = getcache('model_field_'.$modelid,'model');
-		//³õÊ¼»¯¸½¼þÀà
+		//åˆå§‹åŒ–é™„ä»¶ç±»
 		pc_base::load_sys_class('attachment','',0);
 		$this->siteid = param::get_cookie('siteid');
 		$this->attachment = new attachment('content','0',$this->siteid);
@@ -63,16 +63,18 @@ class content_input {
 			} else {
 				$info['model'][$field] = $value;
 			}
-			//ÑÕÉ«Ñ¡ÔñÎªÒþ²ØÓò ÔÚÕâÀï½øÐÐÈ¡Öµ
+			//é¢œè‰²é€‰æ‹©ä¸ºéšè—åŸŸ åœ¨è¿™é‡Œè¿›è¡Œå–å€¼
 			$info['system']['style'] = $_POST['style_color'] && preg_match('/^#([0-9a-z]+)/i', $_POST['style_color']) ? $_POST['style_color'] : '';
 			if($_POST['style_font_weight']=='bold') $info['system']['style'] = $info['system']['style'].';'.strip_tags($_POST['style_font_weight']);
 		}
 		return $info;
 	}
+
 	function textarea($field, $value) {
 		if(!$this->fields[$field]['enablehtml']) $value = strip_tags($value);
 		return $value;
 	}
+
 	function editor($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		$enablesaveimage = $setting['enablesaveimage'];
@@ -84,6 +86,7 @@ class content_input {
 		}
 		return $value;
 	}
+
 	function box($field, $value) {
 		if($this->fields[$field]['boxtype'] == 'checkbox') {
 			if(!is_array($value) || empty($value)) return false;
@@ -99,14 +102,16 @@ class content_input {
 			return $value;
 		}
 	}
+
 	function image($field, $value) {
 		$value = str_replace(array("'",'"','(',')'),'',$value);
 		return trim($value);
 	}
+
 	function images($field, $value) {
-		//È¡µÃÍ¼Æ¬ÁÐ±í
+		//å–å¾—å›¾ç‰‡åˆ—è¡¨
 		$pictures = $_POST[$field.'_url'];
-		//È¡µÃÍ¼Æ¬ËµÃ÷
+		//å–å¾—å›¾ç‰‡è¯´æ˜Ž
 		$pictures_alt = isset($_POST[$field.'_alt']) ? $_POST[$field.'_alt'] : array();
 		$array = $temp = array();
 		if(!empty($pictures)) {
@@ -119,6 +124,7 @@ class content_input {
 		$array = array2string($array);
 		return $array;
 	}
+
 	function datetime($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		if($setting['fieldtype']=='int') {
@@ -126,11 +132,13 @@ class content_input {
 		}
 		return $value;
 	}
+
 	function posid($field, $value) {
 		$number = count($value);
 		$value = $number==1 ? 0 : 1;
 		return $value;
 	}
+
 	function copyfrom($field, $value) {
 		$field_data = $field.'_data';
 		if(isset($_POST[$field_data])) {
@@ -138,6 +146,7 @@ class content_input {
 		}
 		return $value;
 	}
+
 	function groupid($field, $value) {
 		$datas = '';
 		if(!empty($_POST[$field]) && is_array($_POST[$field])) {
@@ -145,13 +154,15 @@ class content_input {
 		}
 		return $datas;
 	}
+
 	function downfile($field, $value) {
-		//È¡µÃ¾µÏñÕ¾µãÁÐ±í
+		//å–å¾—é•œåƒç«™ç‚¹åˆ—è¡¨
 		$result = '';
 		$server_list = count($_POST[$field.'_servers']) > 0 ? implode(',' ,$_POST[$field.'_servers']) : '';
 		$result = $value.'|'.$server_list;
 		return $result;
 	}
+
 	function downfiles($field, $value) {
 		$files = $_POST[$field.'_fileurl'];
 		$files_alt = $_POST[$field.'_filename'];
@@ -166,17 +177,19 @@ class content_input {
 		$array = array2string($array);
 		return $array;
 	}
+
 	function bcsfile($field, $value) {
-		//È¡µÃ¾µÏñÕ¾µãÁÐ±í
+		//å–å¾—é•œåƒç«™ç‚¹åˆ—è¡¨
 		$result = '';
 		$server_list = count($_POST[$field.'_servers']) > 0 ? implode(',' ,$_POST[$field.'_servers']) : '';
 		$result = $value.'|'.$server_list;
 		return $result;
 	}
+
 	function gallery($field, $value) {
-		//È¡µÃÍ¼Æ¬ÁÐ±í
+		//å–å¾—å›¾ç‰‡åˆ—è¡¨
 		$pictures = $_POST[$field.'_url'];
-		//È¡µÃÍ¼Æ¬ËµÃ÷
+		//å–å¾—å›¾ç‰‡è¯´æ˜Ž
 		$pictures_alt = isset($_POST[$field.'_alt']) ? $_POST[$field.'_alt'] : array();
 		$array = $temp = array();
 		if(!empty($pictures)) {
@@ -189,6 +202,7 @@ class content_input {
 		$array = array2string($array);
 		return $array;
 	}
+
 
  } 
 ?>

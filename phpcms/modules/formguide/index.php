@@ -13,7 +13,7 @@ class index {
 	}
 	
 	/**
-	 * 表单向导首页
+	 * 琛ㄥ崟鍚戝棣栭〉
 	 */
 	public function index() {
 		$siteid = $this->siteid;
@@ -28,7 +28,7 @@ class index {
 	}
 	
 	/**
-	 * 表单展示
+	 * 琛ㄥ崟灞曠ず
 	 */
 	public function show() {
 		if (!isset($_GET['formid']) || empty($_GET['formid'])) {

@@ -10,7 +10,7 @@ class sitemodel_field_model extends model {
 		parent::__construct();
 	}
 	/**
-	 * É¾³ı×Ö¶Î
+	 * åˆ é™¤å­—æ®µ
 	 * 
 	 */
 	public function drop_field($tablename,$field) {
@@ -24,7 +24,7 @@ class sitemodel_field_model extends model {
 	}
 	
 	/**
-	 * ¸Ä±äÊı¾İ±í
+	 * æ”¹å˜æ•°æ®è¡¨
 	 */
 	public function change_table($tablename = '') {
 		if (!$tablename) return false;

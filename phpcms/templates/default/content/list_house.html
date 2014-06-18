@@ -3,7 +3,7 @@
 	<div id="search-data">
     	<dl class="searchitem">
     		{php $zone = intval($_GET['zone'])}
-        	<dt class="blue"><span>ÇøÓò£º</span>
+        	<dt class="blue"><span>åŒºåŸŸï¼š</span>
 			{php $zones = show_linkage($info_linkageid,$cityid,$cityid,$modelid)}
         	{loop $zones  $area}
 	        	{if $zone == $area['linkageid'] || get_linkage_level($info_linkageid,$zone)== $area['linkageid']}
@@ -14,7 +14,7 @@
             {/loop}</dt> 
             {php $sub_zone = show_linkage($info_linkageid,$zone,$cityid,$modelid)}
             {if !empty($sub_zone)}
-				<dd><span>×ÓÀà±ğ£º</span>
+				<dd><span>å­ç±»åˆ«ï¼š</span>
 				{loop $sub_zone $area}
 					{if $zone == $area['linkageid']}
 						<em>{$area['name']}</em>
@@ -26,22 +26,22 @@
   
         </dl>
         <dl class="searchitem">
-			<dt class="blue"><span>¼Û¸ñ£º</span>
-			{php $price_rang = array('500ÔªÒÔÏÂ|1_500','500-1000Ôª|500_1000','1000-1500Ôª|1000_1500','1500-2000Ôª|1500_2000','2000-3000Ôª|2000_3000','3000-4500Ôª|3000_4500','4500ÔªÒÔÉÏ|4500_9999')}
+			<dt class="blue"><span>ä»·æ ¼ï¼š</span>
+			{php $price_rang = array('500å…ƒä»¥ä¸‹|1_500','500-1000å…ƒ|500_1000','1000-1500å…ƒ|1000_1500','1500-2000å…ƒ|1500_2000','2000-3000å…ƒ|2000_3000','3000-4500å…ƒ|3000_4500','4500å…ƒä»¥ä¸Š|4500_9999')}
 			{loop filters('price',$modelid,$price_rang) $r}
 				{$r[menu]}
 			{/loop}
 			</dt>
         </dl>
         <dl class="searchitem">
-			<dt class="blue"><span>·½Ê½£º</span>
+			<dt class="blue"><span>æ–¹å¼ï¼š</span>
 			{loop filters('rent_mode',$modelid) $r}
 				{$r[menu]}
 			{/loop}
 			</dt>
         </dl>
         <dl class="searchitem">
-			<dt class="blue"><span>Ö§¸¶·½Ê½£º</span>
+			<dt class="blue"><span>æ”¯ä»˜æ–¹å¼ï¼š</span>
 			{loop filters('pay_type_int',$modelid) $r}
 				{$r[menu]}
 			{/loop}			
@@ -49,8 +49,8 @@
         </dl>
 			
         <dl class="searchitem">
-        	<dt class="blue"><span>ÌüÊÒ£º</span>
-			{php $bedroom_rang = array('Ò»ÊÒ|1','Á½ÊÒ|2','ÈıÊÒ|3','ËÄÊÒÒÔÉÏ|4_100')}			
+        	<dt class="blue"><span>å…å®¤ï¼š</span>
+			{php $bedroom_rang = array('ä¸€å®¤|1','ä¸¤å®¤|2','ä¸‰å®¤|3','å››å®¤ä»¥ä¸Š|4_100')}			
 			{loop filters('bedroom',$modelid,$bedroom_rang) $r}
 				{$r[menu]}
 			{/loop}
@@ -62,21 +62,21 @@
 		{loop filters('agent',$modelid) $r}
 			<li {if $_GET['agent'] == $r[value]}class="on"{/if}><a href="{$r[url]}"><span>{$r[name]}</span></a></li>
 		{/loop}			
-        <li class="add"><a href="index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}&city={$city}&zone={$zone}" target="_blank">Ãâ·Ñ·¢²¼ĞÅÏ¢>></a></li>
+        <li class="add"><a href="index.php?m=member&c=content&a=info_publish&siteid=1&catid={$catid}&city={$city}&zone={$zone}" target="_blank">å…è´¹å‘å¸ƒä¿¡æ¯>></a></li>
     </ul>
     <ul class="filter clear">
-    	<li>ÕÒµ½Ïà¹ØĞÅÏ¢<b id="total"></b>Ìõ</li>
+    	<li>æ‰¾åˆ°ç›¸å…³ä¿¡æ¯<b id="total"></b>æ¡</li>
 
     </ul>
 </div>
 <div class="wp clear info-article">
 	<div class="col-right">
         <div class="col-ad">
-        <h6><a href="" class="red rt">ÔÚÕâÀïÏÔÊ¾</a>¹ã¸æ</h6>
+        <h6><a href="" class="red rt">åœ¨è¿™é‡Œæ˜¾ç¤º</a>å¹¿å‘Š</h6>
         <a href="http://www.phpcms.cn"><img src="http://www.phpcms.cn/uploadfile/tuiguang/right.jpg"/></a><br />
-        <a href="" class="blue1">×â·¿É±¼ÛµÄÊ®Èı¸öĞ¡¼¼ÇÉ</a><br />
-        <a href="" class="blue1">·¿²úÖĞ½éÊ¶±ğÖ¸ÄÏ</a><br />
-        <a href="" class="blue1">×â·¿×¢ÒâÊÂÏîÓĞÄÄĞ©</a><br />
+        <a href="" class="blue1">ç§Ÿæˆ¿æ€ä»·çš„åä¸‰ä¸ªå°æŠ€å·§</a><br />
+        <a href="" class="blue1">æˆ¿äº§ä¸­ä»‹è¯†åˆ«æŒ‡å—</a><br />
+        <a href="" class="blue1">ç§Ÿæˆ¿æ³¨æ„äº‹é¡¹æœ‰å“ªäº›</a><br />
         </div>
     </div>
 	<div class="col-auto">
@@ -89,9 +89,9 @@
 			{pc:content action="position"  posid="$top_posid" where="$where" order="listorder DESC" num="10" expiration="1" cache="$cachetime"}
 				{loop $data $r}
 					 <tr>
-					 <td><a href="{$r[url]}" class="title" title="{$r[title]}">{str_cut($r[title],44)}</a> ({if $r[zone]}<a href="{structure_filters_url('zone',array('zone'=>$r[zone]),0,$modelid)}" class="blue">{get_linkage($r[zone], $info_linkageid, ' - ', 0)}</a> - {/if}{if $r[xiaoqu_address]}{$r[xiaoqu_address]}{/if})<span class="ding">¶¥</span></td>
-					<td width="80" class="text-c"><b>{$r[price]}Ôª</b></td>
-					<td width="100" class="text-c">{$r[bedroom]}ÊÒ{$r[hall]}Ìü{$r[bathroom]}ÎÀ</td>
+					 <td><a href="{$r[url]}" class="title" title="{$r[title]}">{str_cut($r[title],44)}</a> ({if $r[zone]}<a href="{structure_filters_url('zone',array('zone'=>$r[zone]),0,$modelid)}" class="blue">{get_linkage($r[zone], $info_linkageid, ' - ', 0)}</a> - {/if}{if $r[xiaoqu_address]}{$r[xiaoqu_address]}{/if})<span class="ding">é¡¶</span></td>
+					<td width="80" class="text-c"><b>{$r[price]}å…ƒ</b></td>
+					<td width="100" class="text-c">{$r[bedroom]}å®¤{$r[hall]}å…{$r[bathroom]}å«</td>
 					<td width="80" class="text-c">{timeinterval($r[inputtime])}</td>
 					</tr>					
 				{/loop}
@@ -102,9 +102,9 @@
 			{loop $data $r}
 			{php $photos_num = count(string2array($r[photos]))}
 	         <tr>
-	         <td><a href="{$r[url]}" class="title" title="{$r[title]}">{str_cut($r[title],44)}</a> ({if $r[zone]}<a href="{structure_filters_url('zone',array('zone'=>$r[zone]),0,$modelid)}" class="blue">{get_linkage($r[zone], $info_linkageid, ' - ', 0)}</a> - {/if}{if $r[xiaoqu_address]}{$r[xiaoqu_address]}{/if}) <span class="isbiz">({box('agent',$r[agent],$modelid)})</span>{if $photos_num}<span class="tu">{$photos_num}Í¼</span>{/if}</td>
-	        <td width="80" class="text-c"><b>{$r[price]}Ôª</b></td>
-	        <td width="100" class="text-c">{$r[bedroom]}ÊÒ{$r[hall]}Ìü{$r[bathroom]}ÎÀ</td>
+	         <td><a href="{$r[url]}" class="title" title="{$r[title]}">{str_cut($r[title],44)}</a> ({if $r[zone]}<a href="{structure_filters_url('zone',array('zone'=>$r[zone]),0,$modelid)}" class="blue">{get_linkage($r[zone], $info_linkageid, ' - ', 0)}</a> - {/if}{if $r[xiaoqu_address]}{$r[xiaoqu_address]}{/if}) <span class="isbiz">({box('agent',$r[agent],$modelid)})</span>{if $photos_num}<span class="tu">{$photos_num}å›¾</span>{/if}</td>
+	        <td width="80" class="text-c"><b>{$r[price]}å…ƒ</b></td>
+	        <td width="100" class="text-c">{$r[bedroom]}å®¤{$r[hall]}å…{$r[bathroom]}å«</td>
 	        <td width="80" class="text-c">{timeinterval($r[inputtime])}</td>
 	        </tr>
 			{/loop}

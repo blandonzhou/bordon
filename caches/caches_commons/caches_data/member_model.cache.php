@@ -4,8 +4,8 @@ return array (
   array (
     'modelid' => '10',
     'siteid' => '1',
-    'name' => 'ÆÕÍ¨»áÔ±',
-    'description' => 'ÆÕÍ¨»áÔ±',
+    'name' => 'æ™®é€šä¼šå‘˜',
+    'description' => 'æ™®é€šä¼šå‘˜',
     'tablename' => 'member_detail',
     'setting' => '',
     'addtime' => '0',

@@ -2,8 +2,8 @@
 defined('IN_PHPCMS') or exit('Access Denied');
 defined('INSTALL') or exit('Access Denied');
 $module = 'message';
-$modulename = '¶ÌÏûÏ¢';
-$introduce = '¶ÌÏûÏ¢Ä£¿é';
+$modulename = 'çŸ­æ¶ˆæ¯';
+$introduce = 'çŸ­æ¶ˆæ¯æ¨¡å—';
 $author = 'phpcms Team';
 $authorsite = 'http://www.phpcms.cn';
 $authoremail = '';

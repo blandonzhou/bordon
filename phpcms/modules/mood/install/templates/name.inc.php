@@ -2,6 +2,6 @@
 defined('IN_PHPCMS') or exit('Access Denied');
 defined('INSTALL') or exit('Access Denied');
 return array (
-      'index.html' => '新闻心情',
+      'index.html' => '鏂伴椈蹇冩儏',
     );
 ?>

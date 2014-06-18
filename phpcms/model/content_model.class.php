@@ -3,7 +3,7 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 if(!defined('CACHE_MODEL_PATH')) define('CACHE_MODEL_PATH',CACHE_PATH.'caches_model'.DIRECTORY_SEPARATOR.'caches_data'.DIRECTORY_SEPARATOR);
 
 /**
- * ÄÚÈİÄ£ĞÍÊı¾İ¿â²Ù×÷Àà
+ * å†…å®¹æ¨¡å‹æ•°æ®åº“æ“ä½œç±»
  */
 pc_base::load_sys_class('model', '', 0);
 class content_model extends model {
@@ -23,10 +23,10 @@ class content_model extends model {
 		$this->model_tablename = $this->model[$modelid]['tablename'];
 	}
 	/**
-	 * Ìí¼ÓÄÚÈİ
+	 * æ·»åŠ å†…å®¹
 	 * 
 	 * @param $datas
-	 * @param $isimport ÊÇ·ñÎªÍâ²¿½Ó¿Úµ¼Èë
+	 * @param $isimport æ˜¯å¦ä¸ºå¤–éƒ¨æ¥å£å¯¼å…¥
 	 */
 	public function add_content($data,$isimport = 0) {
 		if($isimport) $data = new_addslashes($data);
@@ -48,7 +48,7 @@ class content_model extends model {
 			$systeminfo['inputtime'] = $data['inputtime'];
 		}
 		
-		//¶ÁÈ¡Ä£ĞÍ×Ö¶ÎÅäÖÃÖĞ£¬¹ØÓÚÈÕÆÚÅäÖÃ¸ñÊ½£¬À´×éºÏÈÕÆÚÊı¾İ
+		//è¯»å–æ¨¡å‹å­—æ®µé…ç½®ä¸­ï¼Œå…³äºæ—¥æœŸé…ç½®æ ¼å¼ï¼Œæ¥ç»„åˆæ—¥æœŸæ•°æ®
 		$this->fields = getcache('model_field_'.$modelid,'model');
 		$setting = string2array($this->fields['inputtime']['setting']);
 		extract($setting);
@@ -68,14 +68,14 @@ class content_model extends model {
 		$systeminfo['username'] = $data['username'] ? $data['username'] : param::get_cookie('admin_username');
 		$systeminfo['sysadd'] = defined('IN_ADMIN') ? 1 : 0;
 		
-		//×Ô¶¯ÌáÈ¡ÕªÒª
+		//è‡ªåŠ¨æå–æ‘˜è¦
 		if(isset($_POST['add_introduce']) && $systeminfo['description'] == '' && isset($modelinfo['content'])) {
 			$content = stripslashes($modelinfo['content']);
 			$introcude_length = intval($_POST['introcude_length']);
 			$systeminfo['description'] = str_cut(str_replace(array("'","\r\n","\t",'[page]','[/page]','&ldquo;','&rdquo;','&nbsp;'), '', strip_tags($content)),$introcude_length);
 			$inputinfo['system']['description'] = $systeminfo['description'] = addslashes($systeminfo['description']);
 		}
-		//×Ô¶¯ÌáÈ¡ËõÂÔÍ¼
+		//è‡ªåŠ¨æå–ç¼©ç•¥å›¾
 		if(isset($_POST['auto_thumb']) && $systeminfo['thumb'] == '' && isset($modelinfo['content'])) {
 			$content = $content ? $content : stripslashes($modelinfo['content']);
 			$auto_thumb_no = intval($_POST['auto_thumb_no'])-1;
@@ -86,11 +86,11 @@ class content_model extends model {
 		$systeminfo['description'] = str_replace(array('/','\\','#','.',"'"),' ',$systeminfo['description']);
 		$systeminfo['keywords'] = str_replace(array('/','\\','#','.',"'"),' ',$systeminfo['keywords']);
 		
-		//Ö÷±í
+		//ä¸»è¡¨
 		$tablename = $this->table_name = $this->db_tablepre.$this->model_tablename;
 		$id = $modelinfo['id'] = $this->insert($systeminfo,true);
 		$this->update($systeminfo,array('id'=>$id));
-		//¸üĞÂURLµØÖ·
+		//æ›´æ–°URLåœ°å€
 		if($data['islink']==1) {
 			$urls[0] = trim_script($_POST['linkurl']);
 			$urls[0] = str_replace(array('select ',')','\\','#',"'"),' ',$urls[0]);
@@ -99,27 +99,27 @@ class content_model extends model {
 		}
 		$this->table_name = $tablename;
 		$this->update(array('url'=>$urls[0]),array('id'=>$id));
-		//¸½Êô±í
+		//é™„å±è¡¨
 		$this->table_name = $this->table_name.'_data';
 		$this->insert($modelinfo);
-		//Ìí¼ÓÍ³¼Æ
+		//æ·»åŠ ç»Ÿè®¡
 		$this->hits_db = pc_base::load_model('hits_model');
 		$hitsid = 'c-'.$modelid.'-'.$id;
 		$this->hits_db->insert(array('hitsid'=>$hitsid,'catid'=>$systeminfo['catid'],'updatetime'=>SYS_TIME));
 		if($data['status']==99) {
-			//¸üĞÂµ½È«Õ¾ËÑË÷
+			//æ›´æ–°åˆ°å…¨ç«™æœç´¢
 			$this->search_api($id,$inputinfo);
 		}
-		//¸üĞÂÀ¸Ä¿Í³¼ÆÊı¾İ
+		//æ›´æ–°æ ç›®ç»Ÿè®¡æ•°æ®
 		$this->update_category_items($systeminfo['catid'],'add',1);
-		//µ÷ÓÃ update
+		//è°ƒç”¨ update
 		$content_update = new content_update($this->modelid,$id);
-		//ºÏ²¢ºó£¬µ÷ÓÃupdate
+		//åˆå¹¶åï¼Œè°ƒç”¨update
 		$merge_data = array_merge($systeminfo,$modelinfo);
 		$merge_data['posids'] = $data['posids'];
 		$content_update->update($merge_data);
 		
-		//·¢²¼µ½ÉóºËÁĞ±íÖĞ
+		//å‘å¸ƒåˆ°å®¡æ ¸åˆ—è¡¨ä¸­
 		if(!defined('IN_ADMIN') || $data['status']!=99) {
 			$this->content_check_db = pc_base::load_model('content_check_model');
 			$check_data = array(
@@ -133,14 +133,14 @@ class content_model extends model {
 				);
 			$this->content_check_db->insert($check_data);
 		}
-		//END·¢²¼µ½ÉóºËÁĞ±íÖĞ
+		//ENDå‘å¸ƒåˆ°å®¡æ ¸åˆ—è¡¨ä¸­
 		if(!$isimport) {
 			$html = pc_base::load_app_class('html', 'content');
 			$urls['data']['system']['id'] = $id;
 			if($urls['content_ishtml'] && $data['status']==99) $html->show($urls[1],$urls['data']);
 			$catid = $systeminfo['catid'];
 		}
-		//·¢²¼µ½ÆäËûÀ¸Ä¿
+		//å‘å¸ƒåˆ°å…¶ä»–æ ç›®
 		if($id && isset($_POST['othor_catid']) && is_array($_POST['othor_catid'])) {
 			$linkurl = $urls[0];
 			$r = $this->get_one(array('id'=>$id));
@@ -148,7 +148,7 @@ class content_model extends model {
 				$this->set_catid($cid);
 				$mid = $this->category[$cid]['modelid'];
 				if($modelid==$mid) {
-					//ÏàÍ¬Ä£ĞÍµÄÀ¸Ä¿²åÈëĞÂµÄÊı¾İ
+					//ç›¸åŒæ¨¡å‹çš„æ ç›®æ’å…¥æ–°çš„æ•°æ®
 					$inputinfo['system']['catid'] = $systeminfo['catid'] = $cid;
 					$newid = $modelinfo['id'] = $this->insert($systeminfo,true);
 					$this->table_name = $tablename.'_data';
@@ -161,7 +161,7 @@ class content_model extends model {
 					}
 					$this->table_name = $tablename;
 					$this->update(array('url'=>$urls[0]),array('id'=>$newid));
-					//·¢²¼µ½ÉóºËÁĞ±íÖĞ
+					//å‘å¸ƒåˆ°å®¡æ ¸åˆ—è¡¨ä¸­
 					if($data['status']!=99) {
 						$check_data = array(
 							'checkid'=>'c-'.$newid.'-'.$mid,
@@ -176,7 +176,7 @@ class content_model extends model {
 					}
 					if($urls['content_ishtml'] && $data['status']==99) $html->show($urls[1],$urls['data']);
 				} else {
-					//²»Í¬Ä£ĞÍ²åÈë×ªÏòÁ´½ÓµØÖ·
+					//ä¸åŒæ¨¡å‹æ’å…¥è½¬å‘é“¾æ¥åœ°å€
 					$newid = $this->insert(
 					array('title'=>$systeminfo['title'],
 						'style'=>$systeminfo['style'],
@@ -193,7 +193,7 @@ class content_model extends model {
 					),true);
 					$this->table_name = $this->table_name.'_data';
 					$this->insert(array('id'=>$newid));
-					//·¢²¼µ½ÉóºËÁĞ±íÖĞ
+					//å‘å¸ƒåˆ°å®¡æ ¸åˆ—è¡¨ä¸­
 					if($data['status']!=99) {
 						$check_data = array(
 							'checkid'=>'c-'.$newid.'-'.$mid,
@@ -211,28 +211,28 @@ class content_model extends model {
 				$this->hits_db->insert(array('hitsid'=>$hitsid,'catid'=>$cid,'updatetime'=>SYS_TIME));
 			}
 		}
-		//END ·¢²¼µ½ÆäËûÀ¸Ä¿
-		//¸üĞÂ¸½¼ş×´Ì¬
+		//END å‘å¸ƒåˆ°å…¶ä»–æ ç›®
+		//æ›´æ–°é™„ä»¶çŠ¶æ€
 		if(pc_base::load_config('system','attachment_stat')) {
 			$this->attachment_db = pc_base::load_model('attachment_model');
 			$this->attachment_db->api_update('','c-'.$systeminfo['catid'].'-'.$id,2);
 		}
-		//Éú³É¾²Ì¬
+		//ç”Ÿæˆé™æ€
 		if(!$isimport && $data['status']==99) {
-			//ÔÚÌí¼ÓºÍĞŞ¸ÄÄÚÈİ´¦¶¨ÒåÁË INDEX_HTML
+			//åœ¨æ·»åŠ å’Œä¿®æ”¹å†…å®¹å¤„å®šä¹‰äº† INDEX_HTML
 			if(defined('INDEX_HTML')) $html->index();
 			if(defined('RELATION_HTML')) $html->create_relation_html($catid);
 		}
 		return $id;
 	}
 	/**
-	 * ĞŞ¸ÄÄÚÈİ
+	 * ä¿®æ”¹å†…å®¹
 	 * 
 	 * @param $datas
 	 */
 	public function edit_content($data,$id) {
 		$model_tablename = $this->model_tablename;
-		//Ç°Ì¨È¨ÏŞÅĞ¶Ï
+		//å‰å°æƒé™åˆ¤æ–­
 		if(!defined('IN_ADMIN')) {
 			$_username = param::get_cookie('_username');
 			$us = $this->get_one(array('id'=>$id,'username'=>$_username));
@@ -263,14 +263,14 @@ class content_model extends model {
 		} else {
 			$systeminfo['updatetime'] = $data['updatetime'];
 		}
-		//×Ô¶¯ÌáÈ¡ÕªÒª
+		//è‡ªåŠ¨æå–æ‘˜è¦
 		if(isset($_POST['add_introduce']) && $systeminfo['description'] == '' && isset($modelinfo['content'])) {
 			$content = stripslashes($modelinfo['content']);
 			$introcude_length = intval($_POST['introcude_length']);
 			$systeminfo['description'] = str_cut(str_replace(array("\r\n","\t",'[page]','[/page]','&ldquo;','&rdquo;','&nbsp;'), '', strip_tags($content)),$introcude_length);
 			$inputinfo['system']['description'] = $systeminfo['description'] = addslashes($systeminfo['description']);
 		}
-		//×Ô¶¯ÌáÈ¡ËõÂÔÍ¼
+		//è‡ªåŠ¨æå–ç¼©ç•¥å›¾
 		if(isset($_POST['auto_thumb']) && $systeminfo['thumb'] == '' && isset($modelinfo['content'])) {
 			$content = $content ? $content : stripslashes($modelinfo['content']);
 			$auto_thumb_no = intval($_POST['auto_thumb_no'])-1;
@@ -282,29 +282,29 @@ class content_model extends model {
 			$systeminfo['url'] = $_POST['linkurl'];
 			$systeminfo['url'] = str_replace(array('select ',')','\\','#',"'"),' ',$systeminfo['url']);
 		} else {
-			//¸üĞÂURLµØÖ·
+			//æ›´æ–°URLåœ°å€
 			$urls = $this->url->show($id, 0, $systeminfo['catid'], $systeminfo['inputtime'], $data['prefix'],$inputinfo,'edit');
 			$systeminfo['url'] = $urls[0];
 		}
 		$systeminfo['description'] = str_replace(array('/','\\','#','.',"'"),' ',$systeminfo['description']);
 		$systeminfo['keywords'] = str_replace(array('/','\\','#','.',"'"),' ',$systeminfo['keywords']);
-		//Ö÷±í
+		//ä¸»è¡¨
 		$this->table_name = $this->db_tablepre.$model_tablename;
 		$this->update($systeminfo,array('id'=>$id));
 
-		//¸½Êô±í
+		//é™„å±è¡¨
 		$this->table_name = $this->table_name.'_data';
 		$this->update($modelinfo,array('id'=>$id));
 		$this->search_api($id,$inputinfo);
-		//µ÷ÓÃ update
+		//è°ƒç”¨ update
 		$content_update = new content_update($this->modelid,$id);
 		$content_update->update($data);
-		//¸üĞÂ¸½¼ş×´Ì¬
+		//æ›´æ–°é™„ä»¶çŠ¶æ€
 		if(pc_base::load_config('system','attachment_stat')) {
 			$this->attachment_db = pc_base::load_model('attachment_model');
 			$this->attachment_db->api_update('','c-'.$systeminfo['catid'].'-'.$id,2);
 		}
-		//¸üĞÂÉóºËÁĞ±í
+		//æ›´æ–°å®¡æ ¸åˆ—è¡¨
 		$this->content_check_db = pc_base::load_model('content_check_model');
 		$check_data = array(
 			'catid'=>$systeminfo['catid'],
@@ -314,12 +314,12 @@ class content_model extends model {
 			);
 		if(!isset($systeminfo['status'])) unset($check_data['status']);
 		$this->content_check_db->update($check_data,array('checkid'=>'c-'.$id.'-'.$this->modelid));
-		//Éú³É¾²Ì¬
+		//ç”Ÿæˆé™æ€
 		$html = pc_base::load_app_class('html', 'content');
 		if($urls['content_ishtml']) {
 			$html->show($urls[1],$urls['data']);
 		}
-		//ÔÚÌí¼ÓºÍĞŞ¸ÄÄÚÈİ´¦¶¨ÒåÁË INDEX_HTML
+		//åœ¨æ·»åŠ å’Œä¿®æ”¹å†…å®¹å¤„å®šä¹‰äº† INDEX_HTML
 		if(defined('INDEX_HTML')) $html->index();
 		if(defined('RELATION_HTML')) $html->create_relation_html($systeminfo['catid']);
 		return true;
@@ -335,7 +335,7 @@ class content_model extends model {
 				$del = false;
 				$r = $this->get_one(array('id'=>$id));
 				if($status==0) {
-				//ÍË¸å·¢ËÍ¶ÌÏûÏ¢¡¢ÓÊ¼ş
+				//é€€ç¨¿å‘é€çŸ­æ¶ˆæ¯ã€é‚®ä»¶
 					$message = L('reject_message_tips').$r['title']."<BR><a href=\'index.php?m=member&c=content&a=edit&catid={$r[catid]}&id={$r[id]}\'><font color=red>".L('click_edit')."</font></a><br>";
 					if(isset($_POST['reject_c']) && $_POST['reject_c'] != L('reject_msg')) {
 						$message .= $_POST['reject_c'];
@@ -354,7 +354,7 @@ class content_model extends model {
 			$del = false;
 			$r = $this->get_one(array('id'=>$ids));
 			if($status==0) {
-				//ÍË¸å·¢ËÍ¶ÌÏûÏ¢¡¢ÓÊ¼ş
+				//é€€ç¨¿å‘é€çŸ­æ¶ˆæ¯ã€é‚®ä»¶
 				$message = L('reject_message_tips').$r['title']."<BR><a href=\'index.php?m=member&c=content&a=edit&catid={$r[catid]}&id={$r[id]}\'><font color=red>".L('click_edit')."</font></a><br>";
 				if(isset($_POST['reject_c']) && $_POST['reject_c'] != L('reject_msg')) {
 					$message .= $_POST['reject_c'];
@@ -371,20 +371,20 @@ class content_model extends model {
 		return true;
 	}
 	/**
-	 * É¾³ıÄÚÈİ
-	 * @param $id ÄÚÈİid
-	 * @param $file ÎÄ¼şÂ·¾¶
-	 * @param $catid À¸Ä¿id
+	 * åˆ é™¤å†…å®¹
+	 * @param $id å†…å®¹id
+	 * @param $file æ–‡ä»¶è·¯å¾„
+	 * @param $catid æ ç›®id
 	 */
 	public function delete_content($id,$file,$catid = 0) {
-		//É¾³ıÖ÷±íÊı¾İ
+		//åˆ é™¤ä¸»è¡¨æ•°æ®
 		$this->delete(array('id'=>$id));
-		//É¾³ı´Ó±íÊı¾İ
+		//åˆ é™¤ä»è¡¨æ•°æ®
 		$this->table_name = $this->table_name.'_data';
 		$this->delete(array('id'=>$id));
-		//ÖØÖÃÄ¬ÈÏ±í
+		//é‡ç½®é»˜è®¤è¡¨
 		$this->table_name = $this->db_tablepre.$this->model_tablename;
-		//¸üĞÂÀ¸Ä¿Í³¼Æ
+		//æ›´æ–°æ ç›®ç»Ÿè®¡
 		$this->update_category_items($catid,'delete');
 	}
 	
@@ -405,7 +405,7 @@ class content_model extends model {
 		}
 	}
 	/**
-	 * »ñÈ¡µ¥ÆªĞÅÏ¢
+	 * è·å–å•ç¯‡ä¿¡æ¯
 	 * 
 	 * @param $catid
 	 * @param $id
@@ -421,7 +421,7 @@ class content_model extends model {
 			$modelid = $this->category[$catid]['modelid'];
 			$this->set_model($modelid);
 			$r = $this->get_one(array('id'=>$id));
-			//¸½Êô±í
+			//é™„å±è¡¨
 			$this->table_name = $this->table_name.'_data';
 			$r2 = $this->get_one(array('id'=>$id));
 			if($r2) {
@@ -433,7 +433,7 @@ class content_model extends model {
 		return true;
 	}
 	/**
-	 * ÉèÖÃcatid ËùÔÚµÄÄ£ĞÍÊı¾İ¿â
+	 * è®¾ç½®catid æ‰€åœ¨çš„æ¨¡å‹æ•°æ®åº“
 	 * 
 	 * @param $catid
 	 */

@@ -46,12 +46,12 @@ class uc_note {
 		$this->applist = getcache('applist', 'admin');
 	}
 	
-	//²âÊÔÍ¨ĞÅ
+	//æµ‹è¯•é€šä¿¡
 	public function test() {
 		return API_RETURN_SUCCEED;
 	}
 	
-	//É¾³ıÓÃ»§
+	//åˆ é™¤ç”¨æˆ·
 	public function deleteuser($get,$post) {
 		pc_base::load_app_func('global', 'admin');
 		pc_base::load_app_class('messagequeue', 'admin' , 0);
@@ -72,7 +72,7 @@ class uc_note {
 		return API_RETURN_SUCCEED;
 	}
 	
-	//¸ü¸ÄÓÃ»§ÃÜÂë
+	//æ›´æ”¹ç”¨æˆ·å¯†ç 
 	public function updatepw($get,$post) {
 		$username = $get['username'];
 		$r = $this->uc_db->get_one(array('username'=>$username));
@@ -82,23 +82,23 @@ class uc_note {
 		return API_RETURN_SUCCEED;
 	}
 	
-	//¸ü¸ÄÒ»¸öÓÃ»§µÄÓÃ»§Ãû
+	//æ›´æ”¹ä¸€ä¸ªç”¨æˆ·çš„ç”¨æˆ·å
 	public function renameuser($get, $post) {
 		return API_RETURN_SUCCEED;
 	}
 	
-	//Í¬²½µÇÂ¼
+	//åŒæ­¥ç™»å½•
 	public function synlogin($get,$post) {
 		header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
 		$uid = intval($get['uid']);
 		if (empty($uid)) return API_RETURN_FAILED;
 		
-		//»ñÈ¡UCÖĞÓÃ»§µÄĞÅÏ¢
+		//è·å–UCä¸­ç”¨æˆ·çš„ä¿¡æ¯
 		$r = $this->uc_db->get_one(array('uid'=>$uid));
 
-		if ($data = $this->member_db->get_one(array('ucuserid'=>$uid))) {//µ±ÓÃ»§´æÔÚÊ±£¬»ñÈ¡ÓÃ»§µÄµÇÂ½ĞÅÏ¢
+		if ($data = $this->member_db->get_one(array('ucuserid'=>$uid))) {//å½“ç”¨æˆ·å­˜åœ¨æ—¶ï¼Œè·å–ç”¨æˆ·çš„ç™»é™†ä¿¡æ¯
 			$this->member_db->update(array('lastip'=>$r['lastloginip'], 'lastdate'=>$r['lastlogindate']), array('uid'=>$data['uid']));
-		} else { //µ±ÓÃ»§²»´æÔÚÊÇ×¢²áĞÂÓÃ»§
+		} else { //å½“ç”¨æˆ·ä¸å­˜åœ¨æ˜¯æ³¨å†Œæ–°ç”¨æˆ·
 			$datas = $data = array('username'=>$r['username'], 'password'=>$r['password'], 'random'=>$r['salt'], 'email'=>$r['email'], 'regip'=>$r['regip'], 'regdate'=>$r['regdate'],  'lastdate'=>$r['lastlogindate'], 'appname'=>'ucenter', 'type'=>'app');
 			$datas['ucuserid'] = $uid;
 			$datas['lastip'] = $r['lastloginip'];
@@ -108,13 +108,13 @@ class uc_note {
 			} else {
 				$data['uid'] = $this->member_db->insert($datas, true);
 			}
-			//ÏòËùÓĞµÄÓ¦ÓÃÖĞ·¢²¼ĞÂÓÃ»§×¢²áÍ¨Öª
+			//å‘æ‰€æœ‰çš„åº”ç”¨ä¸­å‘å¸ƒæ–°ç”¨æˆ·æ³¨å†Œé€šçŸ¥
 			pc_base::load_app_func('global', 'admin');
 			pc_base::load_app_class('messagequeue', 'admin' , 0);
 			messagequeue::add('member_add', $data);
 		}
 	
-		//Êä³öÓ¦ÓÃµÇÂ½
+		//è¾“å‡ºåº”ç”¨ç™»é™†
 		$res = '';
 		foreach($this->applist as $v) {
 			if (!$v['synlogin']) continue;
@@ -125,7 +125,7 @@ class uc_note {
 		return format_js($res);
 	}
 	
-	//Í¬²½ÍË³öµÇÂ¼
+	//åŒæ­¥é€€å‡ºç™»å½•
 	public function synlogout($get, $post) {
 		$res = '';
 		foreach($this->applist as $v) {
@@ -138,7 +138,7 @@ class uc_note {
 		return format_js($res);
 	}
 	
-	//µ± UCenter µÄÓ¦ÓÃ³ÌĞòÁĞ±í±ä¸üÊ±
+	//å½“ UCenter çš„åº”ç”¨ç¨‹åºåˆ—è¡¨å˜æ›´æ—¶
 	public function updateapps() {
 		return API_RETURN_SUCCEED;
 	}
@@ -204,3 +204,4 @@ function uc_unserialize($s) {
 	include_once UC_CLIENT_ROOT.'./lib/xml.class.php';
 	return xml_unserialize($s);
 }
+

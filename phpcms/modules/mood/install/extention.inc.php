@@ -4,54 +4,54 @@ defined('INSTALL') or exit('Access Denied');
 $parentid = $menu_db->insert(array('name'=>'mood', 'parentid'=>'29', 'm'=>'mood', 'c'=>'mood_admin', 'a'=>'init', 'data'=>'', 'listorder'=>0, 'display'=>'1'), true);
 $menu_db->insert(array('name'=>'mood_setting', 'parentid'=>$parentid, 'm'=>'mood', 'c'=>'mood_admin', 'a'=>'setting', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 
-$language = array('mood'=>'ÐÂÎÅÐÄÇé', 'mood_setting'=>'ÐÄÇéÅäÖÃ');
+$language = array('mood'=>'æ–°é—»å¿ƒæƒ…', 'mood_setting'=>'å¿ƒæƒ…é…ç½®');
 setcache('mood_program', array('1'=>array(
   1 => 
   array (
     'use' => '1',
-    'name' => 'Õð¾ª',
+    'name' => 'éœ‡æƒŠ',
     'pic' => 'mood/a1.gif',
   ),
   2 => 
   array (
     'use' => '1',
-    'name' => '²»½â',
+    'name' => 'ä¸è§£',
     'pic' => 'mood/a2.gif',
   ),
   3 => 
   array (
     'use' => '1',
-    'name' => '·ßÅ­',
+    'name' => 'æ„¤æ€’',
     'pic' => 'mood/a3.gif',
   ),
   4 => 
   array (
     'use' => '1',
-    'name' => '±­¾ß',
+    'name' => 'æ¯å…·',
     'pic' => 'mood/a4.gif',
   ),
   5 => 
   array (
     'use' => '1',
-    'name' => 'ÎÞÁÄ',
+    'name' => 'æ— èŠ',
     'pic' => 'mood/a5.gif',
   ),
   6 => 
   array (
     'use' => '1',
-    'name' => '¸ßÐË',
+    'name' => 'é«˜å…´',
     'pic' => 'mood/a6.gif',
   ),
   7 => 
   array (
     'use' => '1',
-    'name' => 'Ö§³Ö',
+    'name' => 'æ”¯æŒ',
     'pic' => 'mood/a7.gif',
   ),
   8 => 
   array (
     'use' => '1',
-    'name' => '³¬ÔÞ',
+    'name' => 'è¶…èµž',
     'pic' => 'mood/a8.gif',
   ),
   9 => 

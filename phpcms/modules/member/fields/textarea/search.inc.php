@@ -2,3 +2,4 @@
 	{
 		return $value === '' ? '' : " `$field` LIKE '%$value%' ";
 	}
+

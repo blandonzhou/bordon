@@ -22,7 +22,7 @@ class index {
 		define('SITEID', $this->siteid);
 	}
 	
-	//显示心情
+	//鏄剧ず蹇冩儏
 	public function init() {
 		$mood_id =& $this->mood_id;
 		$setting =& $this->setting;
@@ -44,7 +44,7 @@ class index {
 		echo format_js($html);
 	}
 	
-	//提交选中
+	//鎻愪氦閫変腑
 	public function post() {
 		if (isset($_GET['callback']) && !preg_match('/^[a-zA-Z_][a-zA-Z0-9_]+$/', $_GET['callback']))  unset($_GET['callback']);
 		$mood_id =& $this->mood_id;
@@ -85,7 +85,7 @@ class index {
 		}
 	}
 	
-	//显示AJAX结果
+	//鏄剧ずAJAX缁撴灉
 	protected function _show_result($status = 0, $msg = '') {
 		if(CHARSET != 'utf-8') {
 			$msg = iconv(CHARSET, 'utf-8', $msg);

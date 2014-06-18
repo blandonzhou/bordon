@@ -1,15 +1,15 @@
 <?php
 /**
- *  Ä£°å½âÎö»º´æ
+ *  æ¨¡æ¿è§£æç¼“å­˜
  */
 final class template_cache {
 	
 	/**
-	 * ±àÒëÄ£°å
+	 * ç¼–è¯‘æ¨¡æ¿
 	 *
-	 * @param $module	Ä£¿éÃû³Æ
-	 * @param $template	Ä£°åÎÄ¼şÃû
-	 * @param $istag	ÊÇ·ñÎª±êÇ©Ä£°å
+	 * @param $module	æ¨¡å—åç§°
+	 * @param $template	æ¨¡æ¿æ–‡ä»¶å
+	 * @param $istag	æ˜¯å¦ä¸ºæ ‡ç­¾æ¨¡æ¿
 	 * @return unknown
 	 */
 	
@@ -52,11 +52,11 @@ public function template_compile_admin($module, $template) {
 		return $strlen;
 	}
 	/**
-	 * ¸üĞÂÄ£°å»º´æ
+	 * æ›´æ–°æ¨¡æ¿ç¼“å­˜
 	 *
-	 * @param $tplfile	Ä£°åÔ­ÎÄ¼şÂ·¾¶
-	 * @param $compiledtplfile	±àÒëÍê³Éºó£¬Ğ´ÈëÎÄ¼şÃû
-	 * @return $strlen ³¤¶È
+	 * @param $tplfile	æ¨¡æ¿åŸæ–‡ä»¶è·¯å¾„
+	 * @param $compiledtplfile	ç¼–è¯‘å®Œæˆåï¼Œå†™å…¥æ–‡ä»¶å
+	 * @return $strlen é•¿åº¦
 	 */
 public function template_refresh($tplfile, $compiledtplfile) {
 		$str = @file_get_contents ($tplfile);
@@ -66,9 +66,9 @@ public function template_refresh($tplfile, $compiledtplfile) {
 		return $strlen;
 	}
 	/**
-	 * ¸üĞÂÖ¸¶¨Ä£¿éÄ£°å»º´æ
+	 * æ›´æ–°æŒ‡å®šæ¨¡å—æ¨¡æ¿ç¼“å­˜
 	 *
-	 * @param $module	Ä£¿éÃû³Æ
+	 * @param $module	æ¨¡å—åç§°
 	 * @return ture
 	 */
 public function template_module($module) {
@@ -82,7 +82,7 @@ public function template_module($module) {
 		return TRUE;
 	}
 	/**
-	 * ¸üĞÂËùÓĞÄ£°å»º´æ
+	 * æ›´æ–°æ‰€æœ‰æ¨¡æ¿ç¼“å­˜
 	 *
 	 * @return ture
 	 */
@@ -96,10 +96,10 @@ public function template_cache() {
 	}
 
 	/**
-	 * ½âÎöÄ£°å
+	 * è§£ææ¨¡æ¿
 	 *
-	 * @param $str	Ä£°åÄÚÈİ
-	 * @param $istag	ÊÇ·ñÎª±êÇ©Ä£°å
+	 * @param $str	æ¨¡æ¿å†…å®¹
+	 * @param $istag	æ˜¯å¦ä¸ºæ ‡ç­¾æ¨¡æ¿
 	 * @return ture
 	 */
 public function template_parse($str, $istag = 0) {
@@ -112,7 +112,7 @@ public function template_parse($str, $istag = 0) {
 		$str = preg_replace ( "/\{else\}/", "<?php } else { ?>", $str );
 		$str = preg_replace ( "/\{elseif\s+(.+?)\}/", "<?php } elseif (\\1) { ?>", $str );
 		$str = preg_replace ( "/\{\/if\}/", "<?php } ?>", $str );
-		//for Ñ­»·
+		//for å¾ªç¯
 		$str = preg_replace("/\{for\s+(.+?)\}/","<?php for(\\1) { ?>",$str);
 		$str = preg_replace("/\{\/for\}/","<?php } ?>",$str);
 		//++ --
@@ -134,10 +134,10 @@ public function template_parse($str, $istag = 0) {
 	}
 
 	/**
-	 * ×ªÒå // Îª /
+	 * è½¬ä¹‰ // ä¸º /
 	 *
-	 * @param $var	×ªÒåµÄ×Ö·û
-	 * @return ×ªÒåºóµÄ×Ö·û
+	 * @param $var	è½¬ä¹‰çš„å­—ç¬¦
+	 * @return è½¬ä¹‰åçš„å­—ç¬¦
 	 */
 public function addquote($var) {
 		return str_replace ( "\\\"", "\"", preg_replace ( "/\[([a-zA-Z0-9_\-\.\x7f-\xff]+)\]/s", "['\\1']", $var ) );

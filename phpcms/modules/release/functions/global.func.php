@@ -1,7 +1,7 @@
 <?php
 defined('IN_PHPCMS') or exit('No permission resources.');
 /**
- * É¾³ý30ÌìÇ°µÄÏûÏ¢¶ÓÁÐ
+ * åˆ é™¤30å¤©å‰çš„æ¶ˆæ¯é˜Ÿåˆ—
  */
 function del_queue() {
 	$times = SYS_TIME-2592000;

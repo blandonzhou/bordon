@@ -49,6 +49,7 @@ class content_form {
 		}
 		return $info;
 	}
+
 	function text($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -59,6 +60,7 @@ class content_form {
 		if($errortips || $minlength) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
 		return '<input type="text" name="info['.$field.']" id="'.$field.'" size="'.$size.'" value="'.$value.'" class="input-text" '.$formattribute.' '.$css.'>';
 	}
+
 	function textarea($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -74,6 +76,7 @@ class content_form {
 		if($maxlength) $str .= L('can_enter').'<B><span id="'.$field.'_len">'.$maxlength.'</span></B> '.L('characters');
 		return $str;
 	}
+
 	function editor($field, $value, $fieldinfo) {
 		$grouplist = getcache('grouplist','member');
 		$_groupid = param::get_cookie('_groupid');
@@ -101,12 +104,14 @@ class content_form {
 	});';
 		return "<div id='{$field}_tip'></div>".'<textarea name="info['.$field.']" id="'.$field.'" boxid="'.$field.'">'.$value.'</textarea>'.form::editor($field,$toolbar,'content',$this->catid,'',$allowupload,1,'',$height,$disabled_page);
 	}
+
 	function catid($field, $value, $fieldinfo) {
 		if(!$value) $value = $this->catid;
 		$publish_str = '';
 		if(defined('IN_ADMIN') && ROUTE_A=='add') $publish_str = " <a href='javascript:;' onclick=\"omnipotent('selectid','?m=content&c=content&a=add_othors&siteid=".$this->siteid."','".L('publish_to_othor_category')."',1);return false;\" style='color:#B5BFBB'>[".L('publish_to_othor_category')."]</a><ul class='list-dot-othors' id='add_othors_text'></ul>";
 		return '<input type="hidden" name="info['.$field.']" value="'.$value.'">'.$this->categorys[$value]['catname'].$publish_str;
 	}
+
 	function title($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$style_arr = explode(';',$this->data['style']);
@@ -125,6 +130,7 @@ class content_form {
 		$str .= L('can_enter').'<B><span id="title_len">'.$maxlength.'</span></B> '.L('characters');
 		return $str;
 	}
+
 	function box($field, $value, $fieldinfo) {
 
 		$setting = string2array($fieldinfo['setting']);
@@ -160,6 +166,7 @@ class content_form {
 		}
 		return $string;
 	}
+
 	function image($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		extract($setting);
@@ -185,6 +192,7 @@ class content_form {
 			return $str."<input type='text' name='info[$field]' id='$field' value='$value' size='$size' class='input-text' />  <input type='button' class='button' onclick=\"flashupload('{$field}_images', '".L('attachment_upload', '', 'content')."','{$field}',submit_images,'1,{$upload_allowext},$isselectimage,$images_width,$images_height,$watermark','content','$this->catid','$authkey')\"/ value='".L('upload_pic', '', 'content')."'>".$html;
 		}
 	}
+
 	function images($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$list_str = '';
@@ -213,13 +221,15 @@ class content_form {
 		$authkey = upload_key("$upload_number,$upload_allowext,$isselectimage");
 		$string .= $str."<div class='picBut cu'><a herf='javascript:void(0);' onclick=\"javascript:flashupload('{$field}_images', '".L('attachment_upload')."','{$field}',change_images,'{$upload_number},{$upload_allowext},{$isselectimage}','content','$this->catid','{$authkey}')\"/> ".L('select_pic')." </a></div>";
 		return $string;
-	}	function number($field, $value, $fieldinfo) {
+	}
+	function number($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
 		$size = $setting['size'];		
 		if(!$value) $value = $defaultvalue;
 		return "<input type='text' name='info[$field]' id='$field' value='$value' class='input-text' size='$size' {$formattribute} {$css}>";
 	}
+
 	function datetime($field, $value, $fieldinfo) {
 		extract(string2array($fieldinfo['setting']));
 		$isdatetime = 0;
@@ -246,6 +256,7 @@ class content_form {
 		}
 		return form::date("info[$field]",$value,$isdatetime,1,'true',$timesystem);
 	}
+
 	function posid($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		$position = getcache('position','commons');
@@ -265,14 +276,17 @@ class content_form {
 		}
 		return "<input type='hidden' name='info[$field][]' value='-1'>".form::checkbox($array,$posids,"name='info[$field][]'",'',$setting['width']);
 	}
+
 	function keyword($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		if(!$value) $value = $defaultvalue;
 		return "<input type='text' name='info[$field]' id='$field' value='$value' style='width:280px' {$formattribute} {$css} class='input-text'>";
 	}
+
 	function author($field, $value, $fieldinfo) {
 		return '<input type="text" name="info['.$field.']" value="'.$value.'" size="30">';
 	}
+
 	function copyfrom($field, $value, $fieldinfo) {
 		$value_data = '';
 		if($value && strpos($value,'|')!==false) {
@@ -289,6 +303,7 @@ class content_form {
 		}
 		return "<input type='text' name='info[$field]' value='$value' style='width: 400px;' class='input-text'>".form::select($copyfrom_datas,$value_data,"name='{$field}_data' ");
 	}
+
 	function groupid($field, $value, $fieldinfo) {
 		extract(string2array($fieldinfo['setting']));
 		$grouplist = getcache('grouplist','member');
@@ -297,6 +312,7 @@ class content_form {
 		}
 		return '<input type="hidden" name="info['.$field.']" value="1">'.form::checkbox($data,$value,'name="'.$field.'[]" id="'.$field.'"','','120');
 	}
+
 	function islink($field, $value, $fieldinfo) {
 		if($value) {
 			$url = $this->data['url'];
@@ -310,11 +326,13 @@ class content_form {
 		$size = $fieldinfo['size'] ? $fieldinfo['size'] : 25;
 		return '<input type="hidden" name="info[islink]" value="0"><input type="text" name="linkurl" id="linkurl" value="'.$url.'" size="'.$size.'" maxlength="255" '.$disabled.' class="input-text"> <input name="info[islink]" type="checkbox" id="islink" value="1" onclick="ruselinkurl();" '.$checked.'> <font color="red">'.L('islink_url').'</font>';
 	}
+
 	function template($field, $value, $fieldinfo) {
 		$sitelist = getcache('sitelist','commons');
 		$default_style = $sitelist[$this->siteid]['default_style'];
 		return form::select_template($default_style,'content',$value,'name="info['.$field.']" id="'.$field.'"','show');
 	}
+
 	function pages($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		if($value) {
@@ -339,6 +357,7 @@ class content_form {
 			<span id=\"paginationtype1\" style=\"display:none\"><input name=\"info[maxcharperpage]\" type=\"text\" id=\"maxcharperpage\" value=\"10000\" size=\"8\" maxlength=\"8\">".L('page_maxlength')."</span>";
 		}
 	}
+
 	function typeid($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -351,7 +370,7 @@ class content_form {
 		$usable_array = array();
 		if($usable_type) $usable_array = explode(',',$usable_type);
 		
-		//获取站点ID
+		//鑾峰彇绔欑偣ID
 		if(intval($_GET['siteid'])){
 			$siteid = intval($_GET['siteid']);
 		}else{
@@ -365,6 +384,7 @@ class content_form {
 		}
 		return form::select($data,$value,'name="info['.$field.']" id="'.$field.'" '.$formattribute.' '.$css,L('copyfrom_tips'));
 	}
+
 	function readpoint($field, $value, $fieldinfo) {
 		$paytype = $this->data['paytype'];
 		if($paytype) {
@@ -376,11 +396,13 @@ class content_form {
 		}
 		return '<input type="text" name="info['.$field.']" value="'.$value.'" size="5"><input type="radio" name="info[paytype]" value="0" '.$checked1.'> '.L('point').' <input type="radio" name="info[paytype]" value="1" '.$checked2.'>'.L('money');
 	}
+
 	function linkage($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		$linkageid = $setting['linkageid'];
 		return menu_linkage($linkageid,$field,$value);
 	}
+
 	function downfile($field, $value, $fieldinfo) {
 		$list_str = $str = '';
 		extract(string2array($fieldinfo['setting']));
@@ -417,6 +439,7 @@ class content_form {
 		$string .= $str."<input type='text' name='info[$field]' id='$field' value='$value' class='input-text' style='width:80%'/>  <input type='button' class='button' onclick=\"javascript:flashupload('{$field}_downfield', '".L('attachment_upload')."','{$field}',submit_files,'{$upload_number},{$upload_allowext},{$isselectimage}','content','$this->catid','{$authkey}')\"/ value='".L('upload_soft')."'>";
 		return $string;
 	}
+
 	function downfiles($field, $value, $fieldinfo) {
 		extract(string2array($fieldinfo['setting']));
 		$list_str = '';
@@ -445,6 +468,7 @@ class content_form {
 		$string .= $str."<input type=\"button\"  class=\"button\" value=\"".L('multiple_file_list')."\" onclick=\"javascript:flashupload('{$field}_multifile', '".L('attachment_upload')."','{$field}',change_multifile,'{$upload_number},{$upload_allowext},{$isselectimage}','content','$this->catid','{$authkey}')\"/>    <input type=\"button\" class=\"button\" value=\"".L('add_remote_url')."\" onclick=\"add_multifile('{$field}')\">";
 		return $string;
 	}
+
 	function map($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -454,6 +478,7 @@ class content_form {
 		$tips = $value ? L('editmark','','map') : L('addmark','','map');
 		return '<input type="button" name="'.$field.'_mark" id="'.$field.'_mark" value="'.$tips.'" class="button" onclick="omnipotent(\'selectid\',\''.APP_PATH.'api.php?op=map&field='.$field.'&modelid='.$modelid.'\',\''.L('mapmark','','map').'\',1,700,420)"><input type="hidden" name="info['.$field.']" value="'.$value.'" id="'.$field.'" >';
 	}
+
 	function omnipotent($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$formtext = str_replace('{FIELD_VALUE}',$value,$formtext);
@@ -474,6 +499,7 @@ class content_form {
 		if($errortips) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
 		return $formtext;
 	}
+
 	function bcsfile($field, $value, $fieldinfo) {
 		$list_str = $str = '';
 		extract(string2array($fieldinfo['setting']));
@@ -530,7 +556,7 @@ EOF;
 							"token"     : "'.md5('unique_salt' . time()).'"
 						},
                                                 "sizeLimit" : "99999999999 ",
-						"buttonText" : "选择文件",
+						"buttonText" : "閫夋嫨鏂囦欢",
 						"swf"      : "'.JS_PATH.'uploadify/uploadify.swf",
 				
 						"uploader" : "'.APP_PATH.'uploadify.php",
@@ -548,6 +574,7 @@ EOF;
 
 		return $string;
 	}
+
 	function gallery($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$list_str = '';
@@ -577,6 +604,7 @@ EOF;
 		$string .= $str."<div class='picBut cu'><a herf='javascript:void(0);' onclick=\"javascript:flashupload('{$field}_images', '".L('attachment_upload')."','{$field}',change_gallery,'{$upload_number},{$upload_allowext},{$isselectimage}','content','$this->catid','{$authkey}')\"/> ".L('select_pic')." </a></div>";
 		return $string;
 	}
+
 
  } 
 ?>

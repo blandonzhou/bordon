@@ -11,7 +11,7 @@ class index {
 	}
 	
 	/**
-	 * 统计广告点击次数
+	 * 缁熻骞垮憡鐐瑰嚮娆℃暟
 	 * 
 	 */
 	public function poster_click() {
@@ -37,7 +37,7 @@ class index {
 	}
 	
 	/**
-	 * php方式展示广告
+	 * php鏂瑰紡灞曠ず骞垮憡
 	 */
 	public function show_poster() {
 		if(!$_GET['id']) exit();
@@ -79,7 +79,7 @@ class index {
 	}
 	
 	/**
-	 * js传值，统计展示次数
+	 * js浼犲�硷紝缁熻灞曠ず娆℃暟
 	 */
 	public function show() {
 		$siteid = $_GET['siteid'] ? intval($_GET['siteid']) : get_siteid();
@@ -93,10 +93,10 @@ class index {
 	}
 	
 	/**
-	 * 统计广告展示次数
-	 * @param intval $siteid 站点ID
-	 * @param intval $spaceid 广告版位ID
-	 * @param intval $id 广告ID
+	 * 缁熻骞垮憡灞曠ず娆℃暟
+	 * @param intval $siteid 绔欑偣ID
+	 * @param intval $spaceid 骞垮憡鐗堜綅ID
+	 * @param intval $id 骞垮憡ID
 	 * @return boolen 
 	 */
 	protected function show_stat($siteid = 0, $spaceid = 0, $id = 0) {

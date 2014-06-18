@@ -412,3 +412,4 @@ used as it is.
 		}
 	};
 })(jQuery);
+

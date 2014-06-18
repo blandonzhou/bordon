@@ -49,7 +49,7 @@ cmsAD_10.PosID = 10;
 cmsAD_10.ADID = 10; 
 cmsAD_10.ADType = "images"; 
 cmsAD_10.ADName = "phpcms"; 
-cmsAD_10.ADContent = "{'Images':[{'imgADLinkUrl':'http%3A%2F%2Fwww.phpcms.cn','imgADAlt':'phpcms¹Ù·½','ImgPath':'http://localhost/video/uploadfile/poster/6.jpg'}],'imgADLinkTarget':'New','Count':'1','showAlt':'Y'}"; 
+cmsAD_10.ADContent = "{'Images':[{'imgADLinkUrl':'http%3A%2F%2Fwww.phpcms.cn','imgADAlt':'phpcmså®˜æ–¹','ImgPath':'http://localhost/video/uploadfile/poster/6.jpg'}],'imgADLinkTarget':'New','Count':'1','showAlt':'Y'}"; 
 cmsAD_10.URL = "http://123.123.110.110:9999/phpcms/index.php?m=poster&c=index"; 
 cmsAD_10.SiteID = 1; 
 cmsAD_10.Width = 307; 

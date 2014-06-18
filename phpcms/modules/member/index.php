@@ -1,6 +1,6 @@
 <?php
 /**
- * »áÔ±Ç°Ì¨¹ÜÀíÖĞĞÄ¡¢ÕËºÅ¹ÜÀí¡¢ÊÕ²Ø²Ù×÷Àà
+ * ä¼šå‘˜å‰å°ç®¡ç†ä¸­å¿ƒã€è´¦å·ç®¡ç†ã€æ”¶è—æ“ä½œç±»
  */
 
 defined('IN_PHPCMS') or exit('No permission resources.');
@@ -20,9 +20,9 @@ class index extends foreground {
 	public function init() {
 		$memberinfo = $this->memberinfo;
 		
-		//³õÊ¼»¯phpsso
+		//åˆå§‹åŒ–phpsso
 		$phpsso_api_url = $this->_init_phpsso();
-		//»ñÈ¡Í·ÏñÊı×é
+		//è·å–å¤´åƒæ•°ç»„
 		$avatar = $this->client->ps_getavatar($this->memberinfo['phpssouid']);
 
 		$grouplist = getcache('grouplist');
@@ -32,25 +32,25 @@ class index extends foreground {
 	
 	public function register() {
 		$this->_session_start();
-		//»ñÈ¡ÓÃ»§siteid
+		//è·å–ç”¨æˆ·siteid
 		$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
-		//¶¨ÒåÕ¾µãid³£Á¿
+		//å®šä¹‰ç«™ç‚¹idå¸¸é‡
 		if (!defined('SITEID')) {
 		   define('SITEID', $siteid);
 		}
 		
-		//¼ÓÔØÓÃ»§Ä£¿éÅäÖÃ
+		//åŠ è½½ç”¨æˆ·æ¨¡å—é…ç½®
 		$member_setting = getcache('member_setting');
 		if(!$member_setting['allowregister']) {
 			showmessage(L('deny_register'), 'index.php?m=member&c=index&a=login');
 		}
-		//¼ÓÔØ¶ÌĞÅÄ£¿éÅäÖÃ
+		//åŠ è½½çŸ­ä¿¡æ¨¡å—é…ç½®
  		$sms_setting_arr = getcache('sms','sms');
 		$sms_setting = $sms_setting_arr[$siteid];		
 		
 		header("Cache-control: private");
 		if(isset($_POST['dosubmit'])) {
-			if($member_setting['enablcodecheck']=='1'){//¿ªÆôÑéÖ¤Âë
+			if($member_setting['enablcodecheck']=='1'){//å¼€å¯éªŒè¯ç 
 				if ((empty($_SESSION['connectid']) && $_SESSION['code'] != strtolower($_POST['code'])) || empty($_SESSION['code'])) {
 					showmessage(L('code_error'));
 				} else {
@@ -77,12 +77,12 @@ class index extends foreground {
 			$userinfo['siteid'] = $siteid;
 			$userinfo['connectid'] = isset($_SESSION['connectid']) ? $_SESSION['connectid'] : '';
 			$userinfo['from'] = isset($_SESSION['from']) ? $_SESSION['from'] : '';
-			//ÊÖ»úÇ¿ÖÆÑéÖ¤
+			//æ‰‹æœºå¼ºåˆ¶éªŒè¯
 			
 			if($member_setting[mobile_checktype]=='1'){
-				//È¡ÓÃ»§ÊÖ»úºÅ
+				//å–ç”¨æˆ·æ‰‹æœºå·
 				$mobile_verify = $_POST['mobile_verify'] ? intval($_POST['mobile_verify']) : '';
-				if($mobile_verify=='') showmessage('ÇëÌá¹©ÕıÈ·µÄÊÖ»úÑéÖ¤Âë£¡', HTTP_REFERER);
+				if($mobile_verify=='') showmessage('è¯·æä¾›æ­£ç¡®çš„æ‰‹æœºéªŒè¯ç ï¼', HTTP_REFERER);
  				$sms_report_db = pc_base::load_model('sms_report_model');
 				$posttime = SYS_TIME-360;
 				$where = "`id_code`='$mobile_verify' AND `posttime`>'$posttime'";
@@ -90,22 +90,22 @@ class index extends foreground {
  				if(!empty($r)){
 					$userinfo['mobile'] = $r['mobile'];
 				}else{
-					showmessage('Î´¼ì²âµ½ÕıÈ·µÄÊÖ»úºÅÂë£¡', HTTP_REFERER);
+					showmessage('æœªæ£€æµ‹åˆ°æ­£ç¡®çš„æ‰‹æœºå·ç ï¼', HTTP_REFERER);
 				}
  			}elseif($member_setting[mobile_checktype]=='2'){
-				//»ñÈ¡ÑéÖ¤Âë£¬Ö±½ÓÍ¨¹ıPOST£¬È¡mobileÖµ
+				//è·å–éªŒè¯ç ï¼Œç›´æ¥é€šè¿‡POSTï¼Œå–mobileå€¼
 				$userinfo['mobile'] = isset($_POST['mobile']) ? $_POST['mobile'] : '';
 			} 
 			if($userinfo['mobile']!=""){
 				if(!preg_match('/^1([0-9]{9})/',$userinfo['mobile'])) {
-					showmessage('ÇëÌá¹©ÕıÈ·µÄÊÖ»úºÅÂë£¡', HTTP_REFERER);
+					showmessage('è¯·æä¾›æ­£ç¡®çš„æ‰‹æœºå·ç ï¼', HTTP_REFERER);
 				}
 			} 
  			unset($_SESSION['connectid'], $_SESSION['from']);
 			
-			if($member_setting['enablemailcheck']) {	//ÊÇ·ñĞèÒªÓÊ¼şÑéÖ¤
+			if($member_setting['enablemailcheck']) {	//æ˜¯å¦éœ€è¦é‚®ä»¶éªŒè¯
 				$userinfo['groupid'] = 7;
-			} elseif($member_setting['registerverify']) {	//ÊÇ·ñĞèÒª¹ÜÀíÔ±ÉóºË
+			} elseif($member_setting['registerverify']) {	//æ˜¯å¦éœ€è¦ç®¡ç†å‘˜å®¡æ ¸
 				$modelinfo_str = $userinfo['modelinfo'] = isset($_POST['info']) ? array2string(array_map("safe_replace", new_html_special_chars($_POST['info']))) : '';
 				$this->verify_db = pc_base::load_model('member_verify_model');
 				unset($userinfo['lastdate'],$userinfo['connectid'],$userinfo['from']);
@@ -113,7 +113,7 @@ class index extends foreground {
 				$this->verify_db->insert($userinfo);
 				showmessage(L('operation_success'), 'index.php?m=member&c=index&a=register&t=3');
 			} else {
-				//²é¿´µ±Ç°Ä£ĞÍÊÇ·ñ¿ªÆôÁË¶ÌĞÅÑéÖ¤¹¦ÄÜ
+				//æŸ¥çœ‹å½“å‰æ¨¡å‹æ˜¯å¦å¼€å¯äº†çŸ­ä¿¡éªŒè¯åŠŸèƒ½
 				$model_field_cache = getcache('model_field_'.$userinfo['modelid'],'model');
 				if(isset($model_field_cache['mobile']) && $model_field_cache['mobile']['disabled']==0) {
 					$mobile = $_POST['info']['mobile'];
@@ -132,12 +132,12 @@ class index extends foreground {
 				$status = $this->client->ps_member_register($userinfo['username'], $userinfo['password'], $userinfo['email'], $userinfo['regip'], $userinfo['encrypt']);
 				if($status > 0) {
 					$userinfo['phpssouid'] = $status;
-					//´«ÈëphpssoÎªÃ÷ÎÄÃÜÂë£¬¼ÓÃÜºó´æÈëphpcms_v9
+					//ä¼ å…¥phpssoä¸ºæ˜æ–‡å¯†ç ï¼ŒåŠ å¯†åå­˜å…¥phpcms_v9
 					$password = $userinfo['password'];
 					$userinfo['password'] = password($userinfo['password'], $userinfo['encrypt']);
 					$userid = $this->db->insert($userinfo, 1);
-					if($member_setting['choosemodel']) {	//Èç¹û¿ªÆôÑ¡ÔñÄ£ĞÍ
-						//Í¨¹ıÄ£ĞÍ»ñÈ¡»áÔ±ĞÅÏ¢					
+					if($member_setting['choosemodel']) {	//å¦‚æœå¼€å¯é€‰æ‹©æ¨¡å‹
+						//é€šè¿‡æ¨¡å‹è·å–ä¼šå‘˜ä¿¡æ¯					
 						require_once CACHE_MODEL_PATH.'member_input.class.php';
 				        require_once CACHE_MODEL_PATH.'member_update.class.php';
 						$member_input = new member_input($userinfo['modelid']);
@@ -146,13 +146,13 @@ class index extends foreground {
 						$user_model_info = $member_input->get($_POST['info']);
 						$user_model_info['userid'] = $userid;
 	
-						//²åÈë»áÔ±Ä£ĞÍÊı¾İ
+						//æ’å…¥ä¼šå‘˜æ¨¡å‹æ•°æ®
 						$this->db->set_model($userinfo['modelid']);
 						$this->db->insert($user_model_info);
 					}
 					
 					if($userid > 0) {
-						//Ö´ĞĞµÇÂ½²Ù×÷
+						//æ‰§è¡Œç™»é™†æ“ä½œ
 						if(!$cookietime) $get_cookietime = param::get_cookie('cookietime');
 						$_cookietime = $cookietime ? intval($cookietime) : ($get_cookietime ? $get_cookietime : 0);
 						$cookietime = $_cookietime ? TIME + $_cookietime : 0;
@@ -172,7 +172,7 @@ class index extends foreground {
 							param::set_cookie('cookietime', $_cookietime, $cookietime);
 						}
 					}
-					//Èç¹ûĞèÒªÓÊÏäÈÏÖ¤
+					//å¦‚æœéœ€è¦é‚®ç®±è®¤è¯
 					if($member_setting['enablemailcheck']) {
 						pc_base::load_sys_func('mail');
 						$phpcms_auth_key = md5(pc_base::load_config('system', 'auth_key'));
@@ -181,13 +181,13 @@ class index extends foreground {
 						$message = $member_setting['registerverifymessage'];
 						$message = str_replace(array('{click}','{url}','{username}','{email}','{password}'), array('<a href="'.$url.'">'.L('please_click').'</a>',$url,$userinfo['username'],$userinfo['email'],$password), $message);
  						sendmail($userinfo['email'], L('reg_verify_email'), $message);
-						//ÉèÖÃµ±Ç°×¢²áÕËºÅCOOKIE£¬ÎªµÚ¶ş²½ÖØ·¢ÓÊ¼şËùÓÃ
+						//è®¾ç½®å½“å‰æ³¨å†Œè´¦å·COOKIEï¼Œä¸ºç¬¬äºŒæ­¥é‡å‘é‚®ä»¶æ‰€ç”¨
 						param::set_cookie('_regusername', $userinfo['username'], $cookietime);
 						param::set_cookie('_reguserid', $userid, $cookietime);
 						param::set_cookie('_reguseruid', $userinfo['phpssouid'], $cookietime);
 						showmessage(L('operation_success'), 'index.php?m=member&c=index&a=register&t=2');
 					} else {
-						//Èç¹û²»ĞèÒªÓÊÏäÈÏÖ¤¡¢Ö±½ÓµÇÂ¼ÆäËûÓ¦ÓÃ
+						//å¦‚æœä¸éœ€è¦é‚®ç®±è®¤è¯ã€ç›´æ¥ç™»å½•å…¶ä»–åº”ç”¨
 						$synloginstr = $this->client->ps_member_synlogin($userinfo['phpssouid']);
 						showmessage(L('operation_success').$synloginstr, 'index.php?m=member&c=index&a=init');
 					}
@@ -216,7 +216,7 @@ class index extends foreground {
 
 				include template('member', 'protocol');
 			} else {
-				//¹ıÂË·Çµ±Ç°Õ¾µã»áÔ±Ä£ĞÍ
+				//è¿‡æ»¤éå½“å‰ç«™ç‚¹ä¼šå‘˜æ¨¡å‹
 				$modellist = getcache('member_model', 'commons');
 				foreach($modellist as $k=>$v) {
 					if($v['siteid']!=$siteid || $v['disabled']) {
@@ -226,19 +226,19 @@ class index extends foreground {
 				if(empty($modellist)) {
 					showmessage(L('site_have_no_model').L('deny_register'), HTTP_REFERER);
 				}
-				//ÊÇ·ñ¿ªÆôÑ¡Ôñ»áÔ±Ä£ĞÍÑ¡Ïî
+				//æ˜¯å¦å¼€å¯é€‰æ‹©ä¼šå‘˜æ¨¡å‹é€‰é¡¹
 				if($member_setting['choosemodel']) {
 					$first_model = array_pop(array_reverse($modellist));
 					$modelid = isset($_GET['modelid']) && in_array($_GET['modelid'], array_keys($modellist)) ? intval($_GET['modelid']) : $first_model['modelid'];
 
 					if(array_key_exists($modelid, $modellist)) {
-						//»ñÈ¡»áÔ±Ä£ĞÍ±íµ¥
+						//è·å–ä¼šå‘˜æ¨¡å‹è¡¨å•
 						require CACHE_MODEL_PATH.'member_form.class.php';
 						$member_form = new member_form($modelid);
 						$this->db->set_model($modelid);
 						$forminfos = $forminfos_arr = $member_form->get();
 
-						//ÍòÄÜ×Ö¶Î¹ıÂË
+						//ä¸‡èƒ½å­—æ®µè¿‡æ»¤
 						foreach($forminfos as $field=>$info) {
 							if($info['isomnipotent']) {
 								unset($forminfos[$field]);
@@ -266,7 +266,7 @@ class index extends foreground {
  	
 	
 	/*
-	 * ²âÊÔÓÊ¼şÅäÖÃ
+	 * æµ‹è¯•é‚®ä»¶é…ç½®
 	 */
 	public function send_newmail() {
 		$_username = param::get_cookie('_regusername');
@@ -274,18 +274,18 @@ class index extends foreground {
 		$_ssouid = param::get_cookie('_reguseruid');
 		$newemail = $_GET['newemail'];
 
-		if($newemail==''){//ÓÊÏäÎª¿Õ£¬Ö±½Ó·µ»Ø´íÎó
+		if($newemail==''){//é‚®ç®±ä¸ºç©ºï¼Œç›´æ¥è¿”å›é”™è¯¯
 			return '2';
 		}
 		$this->_init_phpsso();
 		$status = $this->client->ps_checkemail($newemail);
-		if($status=='-5'){//ÓÊÏä±»Õ¼ÓÃ
+		if($status=='-5'){//é‚®ç®±è¢«å ç”¨
 			exit('-1');
 		}
 		if ($status==-1) {
 			$status = $this->client->ps_get_member_info($newemail, 3);
 			if($status) {
-				$status = unserialize($status);	//½Ó¿Ú·µ»ØĞòÁĞ»¯£¬½øĞĞÅĞ¶Ï
+				$status = unserialize($status);	//æ¥å£è¿”å›åºåˆ—åŒ–ï¼Œè¿›è¡Œåˆ¤æ–­
 				if (!isset($status['uid']) || $status['uid'] != intval($_ssouid)) {
 					exit('-1');
 				}
@@ -293,19 +293,19 @@ class index extends foreground {
 				exit('-1');
 			}
 		}
-		//ÑéÖ¤ÓÊÏä¸ñÊ½
+		//éªŒè¯é‚®ç®±æ ¼å¼
 		pc_base::load_sys_func('mail');
 		$phpcms_auth_key = md5(pc_base::load_config('system', 'auth_key'));
 		$code = sys_auth($_userid.'|'.$phpcms_auth_key, 'ENCODE', $phpcms_auth_key);
 		$url = APP_PATH."index.php?m=member&c=index&a=register&code=$code&verify=1";
 		
-		//¶ÁÈ¡ÅäÖÃ»ñÈ¡ÑéÖ¤ĞÅÏ¢
+		//è¯»å–é…ç½®è·å–éªŒè¯ä¿¡æ¯
 		$member_setting = getcache('member_setting');
 		$message = $member_setting['registerverifymessage'];
 		$message = str_replace(array('{click}','{url}','{username}','{email}','{password}'), array('<a href="'.$url.'">'.L('please_click').'</a>',$url,$_username,$newemail,$password), $message);
 		
  		if(sendmail($newemail, L('reg_verify_email'), $message)){
-			//¸üĞÂĞÂµÄÓÊÏä£¬ÓÃÀ´ÑéÖ¤
+			//æ›´æ–°æ–°çš„é‚®ç®±ï¼Œç”¨æ¥éªŒè¯
  			$this->db->update(array('email'=>$newemail), array('userid'=>$_userid));
 			$this->client->ps_member_edit($_username, $newemail, '', '', $_ssouid);
 			$return = '1';
@@ -317,15 +317,15 @@ class index extends foreground {
 	
 	public function account_manage() {
 		$memberinfo = $this->memberinfo;
-		//³õÊ¼»¯phpsso
+		//åˆå§‹åŒ–phpsso
 		$phpsso_api_url = $this->_init_phpsso();
-		//»ñÈ¡Í·ÏñÊı×é
+		//è·å–å¤´åƒæ•°ç»„
 		$avatar = $this->client->ps_getavatar($this->memberinfo['phpssouid']);
 	
 		$grouplist = getcache('grouplist');
 		$member_model = getcache('member_model', 'commons');
 
-		//»ñÈ¡ÓÃ»§Ä£ĞÍÊı¾İ
+		//è·å–ç”¨æˆ·æ¨¡å‹æ•°æ®
 		$this->db->set_model($this->memberinfo['modelid']);
 		$member_modelinfo_arr = $this->db->get_one(array('userid'=>$this->memberinfo['userid']));
 		$model_info = getcache('model_field_'.$this->memberinfo['modelid'], 'model');
@@ -333,7 +333,7 @@ class index extends foreground {
 			if($v['formtype'] == 'omnipotent') continue;
 			if($v['formtype'] == 'image') {
 				$member_modelinfo[$v['name']] = "<a href='$member_modelinfo_arr[$k]' target='_blank'><img src='$member_modelinfo_arr[$k]' height='40' widht='40' onerror=\"this.src='$phpsso_api_url/statics/images/member/nophoto.gif'\"></a>";
-			} elseif($v['formtype'] == 'datetime' && $v['fieldtype'] == 'int') {	//Èç¹ûÎªÈÕÆÚ×Ö¶Î
+			} elseif($v['formtype'] == 'datetime' && $v['fieldtype'] == 'int') {	//å¦‚æœä¸ºæ—¥æœŸå­—æ®µ
 				$member_modelinfo[$v['name']] = format::date($member_modelinfo_arr[$k], $v['format'] == 'Y-m-d H:i:s' ? 1 : 0);
 			} elseif($v['formtype'] == 'images') {
 				$tmp = string2array($member_modelinfo_arr[$k]);
@@ -344,7 +344,7 @@ class index extends foreground {
 					}
 					unset($tmp);
 				}
-			} elseif($v['formtype'] == 'box') {	//box×Ö¶Î£¬»ñÈ¡×Ö¶ÎÃû³ÆºÍÖµµÄÊı×é
+			} elseif($v['formtype'] == 'box') {	//boxå­—æ®µï¼Œè·å–å­—æ®µåç§°å’Œå€¼çš„æ•°ç»„
 				$tmp = explode("\n",$v['options']);
 				if(is_array($tmp)) {
 					foreach($tmp as $boxv) {
@@ -361,7 +361,7 @@ class index extends foreground {
 					$member_modelinfo[$v['name']] = $member_modelinfo_arr[$k];
 				}
 				unset($tmp, $tmp_key, $box_tmp, $box_tmp_arr);
-			} elseif($v['formtype'] == 'linkage') {	//Èç¹ûÎªÁª¶¯²Ëµ¥
+			} elseif($v['formtype'] == 'linkage') {	//å¦‚æœä¸ºè”åŠ¨èœå•
 				$tmp = string2array($v['setting']);
 				$tmpid = $tmp['linkageid'];
 				$linkagelist = getcache($tmpid, 'linkage');
@@ -379,12 +379,12 @@ class index extends foreground {
 
 	public function account_manage_avatar() {
 		$memberinfo = $this->memberinfo;
-		//³õÊ¼»¯phpsso
+		//åˆå§‹åŒ–phpsso
 		$phpsso_api_url = $this->_init_phpsso();
 		$ps_auth_key = pc_base::load_config('system', 'phpsso_auth_key');
 		$auth_data = $this->client->auth_data(array('uid'=>$this->memberinfo['phpssouid'], 'ps_auth_key'=>$ps_auth_key), '', $ps_auth_key);
 		$upurl = base64_encode($phpsso_api_url.'/index.php?m=phpsso&c=index&a=uploadavatar&auth_data='.$auth_data);
-		//»ñÈ¡Í·ÏñÊı×é
+		//è·å–å¤´åƒæ•°ç»„
 		$avatar = $this->client->ps_getavatar($this->memberinfo['phpssouid']);
 		
 		include template('member', 'account_manage_avatar');
@@ -397,7 +397,7 @@ class index extends foreground {
 	
 	public function account_manage_info() {
 		if(isset($_POST['dosubmit'])) {
-			//¸üĞÂÓÃ»§êÇ³Æ
+			//æ›´æ–°ç”¨æˆ·æ˜µç§°
 			$nickname = isset($_POST['nickname']) && is_username(trim($_POST['nickname'])) ? trim($_POST['nickname']) : '';
 			if($nickname) {
 				$this->db->update(array('nickname'=>$nickname), array('userid'=>$this->memberinfo['userid']));
@@ -425,7 +425,7 @@ class index extends foreground {
 			showmessage(L('operation_success'), HTTP_REFERER);
 		} else {
 			$memberinfo = $this->memberinfo;
-			//»ñÈ¡»áÔ±Ä£ĞÍ±íµ¥
+			//è·å–ä¼šå‘˜æ¨¡å‹è¡¨å•
 			require CACHE_MODEL_PATH.'member_form.class.php';
 			$member_form = new member_form($this->memberinfo['modelid']);
 			$this->db->set_model($this->memberinfo['modelid']);
@@ -433,7 +433,7 @@ class index extends foreground {
 			$membermodelinfo = $this->db->get_one(array('userid'=>$this->memberinfo['userid']));
 			$forminfos = $forminfos_arr = $member_form->get($membermodelinfo);
 
-			//ÍòÄÜ×Ö¶Î¹ıÂË
+			//ä¸‡èƒ½å­—æ®µè¿‡æ»¤
 			foreach($forminfos as $field=>$info) {
 				if($info['isomnipotent']) {
 					unset($forminfos[$field]);
@@ -464,7 +464,7 @@ class index extends foreground {
 			if($this->memberinfo['password'] != password($_POST['info']['password'], $this->memberinfo['encrypt'])) {
 				showmessage(L('old_password_incorrect'), HTTP_REFERER);
 			}
-			//ĞŞ¸Ä»áÔ±ÓÊÏä
+			//ä¿®æ”¹ä¼šå‘˜é‚®ç®±
 			if($this->memberinfo['email'] != $_POST['info']['email'] && is_email($_POST['info']['email'])) {
 				$email = $_POST['info']['email'];
 				$updateinfo['email'] = $_POST['info']['email'];
@@ -476,7 +476,7 @@ class index extends foreground {
 			
 			$this->db->update($updateinfo, array('userid'=>$this->memberinfo['userid']));
 			if(pc_base::load_config('system', 'phpsso')) {
-				//³õÊ¼»¯phpsso
+				//åˆå§‹åŒ–phpsso
 				$this->_init_phpsso();
 				$res = $this->client->ps_member_edit('', $email, $_POST['info']['password'], $_POST['info']['newpassword'], $this->memberinfo['phpssouid'], $this->memberinfo['encrypt']);
 				$message_error = array('-1'=>L('user_not_exist'), '-2'=>L('old_password_incorrect'), '-3'=>L('email_already_exist'), '-4'=>L('email_error'), '-5'=>L('param_error'));
@@ -512,19 +512,19 @@ class index extends foreground {
 			$upgrade_type = isset($_POST['upgrade_type']) ? intval($_POST['upgrade_type']) : showmessage(L('operation_failure'), HTTP_REFERER);
 			$upgrade_date = !empty($_POST['upgrade_date']) ? intval($_POST['upgrade_date']) : showmessage(L('operation_failure'), HTTP_REFERER);
 
-			//Ïû·ÑÀàĞÍ£¬°üÄê¡¢°üÔÂ¡¢°üÈÕ£¬¼Û¸ñ
+			//æ¶ˆè´¹ç±»å‹ï¼ŒåŒ…å¹´ã€åŒ…æœˆã€åŒ…æ—¥ï¼Œä»·æ ¼
 			$typearr = array($grouplist[$groupid]['price_y'], $grouplist[$groupid]['price_m'], $grouplist[$groupid]['price_d']);
-			//Ïû·ÑÀàĞÍ£¬°üÄê¡¢°üÔÂ¡¢°üÈÕ£¬Ê±¼ä
+			//æ¶ˆè´¹ç±»å‹ï¼ŒåŒ…å¹´ã€åŒ…æœˆã€åŒ…æ—¥ï¼Œæ—¶é—´
 			$typedatearr = array('366', '31', '1');
-			//Ïû·ÑµÄ¼Û¸ñ
+			//æ¶ˆè´¹çš„ä»·æ ¼
 			$cost = $typearr[$upgrade_type]*$upgrade_date;
-			//¹ºÂòÊ±¼ä
+			//è´­ä¹°æ—¶é—´
 			$buydate = $typedatearr[$upgrade_type]*$upgrade_date*86400;
 			$overduedate = $memberinfo['overduedate'] > SYS_TIME ? ($memberinfo['overduedate']+$buydate) : (SYS_TIME+$buydate);
 
 			if($memberinfo['amount'] >= $cost) {
 				$this->db->update(array('groupid'=>$groupid, 'overduedate'=>$overduedate, 'vip'=>1), array('userid'=>$memberinfo['userid']));
-				//Ïû·Ñ¼ÇÂ¼
+				//æ¶ˆè´¹è®°å½•
 				pc_base::load_app_class('spend','pay',0);
 				spend::amount($cost, L('allowupgrade'), $memberinfo['userid'], $memberinfo['username']);
 				showmessage(L('operation_success'), 'index.php?m=member&c=index&a=init');
@@ -535,9 +535,9 @@ class index extends foreground {
 		} else {
 			
 			$groupid = isset($_GET['groupid']) ? intval($_GET['groupid']) : '';
-			//³õÊ¼»¯phpsso
+			//åˆå§‹åŒ–phpsso
 			$phpsso_api_url = $this->_init_phpsso();
-			//»ñÈ¡Í·ÏñÊı×é
+			//è·å–å¤´åƒæ•°ç»„
 			$avatar = $this->client->ps_getavatar($this->memberinfo['phpssouid']);
 			
 			
@@ -550,16 +550,16 @@ class index extends foreground {
 	
 	public function login() {
 		$this->_session_start();
-		//»ñÈ¡ÓÃ»§siteid
+		//è·å–ç”¨æˆ·siteid
 		$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
-		//¶¨ÒåÕ¾µãid³£Á¿
+		//å®šä¹‰ç«™ç‚¹idå¸¸é‡
 		if (!defined('SITEID')) {
 		   define('SITEID', $siteid);
 		}
 		
 		if(isset($_POST['dosubmit'])) {
 			if(empty($_SESSION['connectid'])) {
-				//ÅĞ¶ÏÑéÖ¤Âë
+				//åˆ¤æ–­éªŒè¯ç 
 				$code = isset($_POST['code']) && trim($_POST['code']) ? trim($_POST['code']) : showmessage(L('input_code'), HTTP_REFERER);
 				if ($_SESSION['code'] != strtolower($code)) {
 					showmessage(L('code_error'), HTTP_REFERER);
@@ -569,7 +569,7 @@ class index extends foreground {
 			$username = isset($_POST['username']) && trim($_POST['username']) ? trim($_POST['username']) : showmessage(L('username_empty'), HTTP_REFERER);
 			$password = isset($_POST['password']) && trim($_POST['password']) ? trim($_POST['password']) : showmessage(L('password_empty'), HTTP_REFERER);
 			$cookietime = intval($_POST['cookietime']);
-			$synloginstr = ''; //Í¬²½µÇÂ½js´úÂë
+			$synloginstr = ''; //åŒæ­¥ç™»é™†jsä»£ç 
 			
 			if(pc_base::load_config('system', 'phpsso')) {
 				$this->_init_phpsso();
@@ -577,10 +577,10 @@ class index extends foreground {
 				$memberinfo = unserialize($status);
 				
 				if(isset($memberinfo['uid'])) {
-					//²éÑ¯ÕÊºÅ
+					//æŸ¥è¯¢å¸å·
 					$r = $this->db->get_one(array('phpssouid'=>$memberinfo['uid']));
 					if(!$r) {
-						//²åÈë»áÔ±ÏêÏ¸ĞÅÏ¢£¬»áÔ±²»´æÔÚ ²åÈë»áÔ±
+						//æ’å…¥ä¼šå‘˜è¯¦ç»†ä¿¡æ¯ï¼Œä¼šå‘˜ä¸å­˜åœ¨ æ’å…¥ä¼šå‘˜
 						$info = array(
 									'phpssouid'=>$memberinfo['uid'],
 						 			'username'=>$memberinfo['username'],
@@ -591,11 +591,11 @@ class index extends foreground {
 						 			'regdate'=>$memberinfo['regdate'],
 						 			'lastip'=>$memberinfo['lastip'],
 						 			'lastdate'=>$memberinfo['lastdate'],
-						 			'groupid'=>$this->_get_usergroup_bypoint(),	//»áÔ±Ä¬ÈÏ×é
-						 			'modelid'=>10,	//ÆÕÍ¨»áÔ±
+						 			'groupid'=>$this->_get_usergroup_bypoint(),	//ä¼šå‘˜é»˜è®¤ç»„
+						 			'modelid'=>10,	//æ™®é€šä¼šå‘˜
 									);
 									
-						//Èç¹ûÊÇconnectÓÃ»§
+						//å¦‚æœæ˜¯connectç”¨æˆ·
 						if(!empty($_SESSION['connectid'])) {
 							$userinfo['connectid'] = $_SESSION['connectid'];
 						}
@@ -611,9 +611,9 @@ class index extends foreground {
 					$password = $r['password'];
 					$synloginstr = $this->client->ps_member_synlogin($r['phpssouid']);
  				} else {
-					if($status == -1) {	//ÓÃ»§²»´æÔÚ
+					if($status == -1) {	//ç”¨æˆ·ä¸å­˜åœ¨
 						showmessage(L('user_not_exist'), 'index.php?m=member&c=index&a=login');
-					} elseif($status == -2) { //ÃÜÂë´íÎó
+					} elseif($status == -2) { //å¯†ç é”™è¯¯
 						showmessage(L('password_error'), 'index.php?m=member&c=index&a=login');
 					} else {
 						showmessage(L('login_failure'), 'index.php?m=member&c=index&a=login');
@@ -621,7 +621,7 @@ class index extends foreground {
 				}
 				
 			} else {
-				//ÃÜÂë´íÎóÊ£ÓàÖØÊÔ´ÎÊı
+				//å¯†ç é”™è¯¯å‰©ä½™é‡è¯•æ¬¡æ•°
 				$this->times_db = pc_base::load_model('times_model');
 				$rtime = $this->times_db->get_one(array('username'=>$username));
 				if($rtime['times'] > 4) {
@@ -629,12 +629,12 @@ class index extends foreground {
 					showmessage(L('wait_1_hour', array('minute'=>$minute)));
 				}
 				
-				//²éÑ¯ÕÊºÅ
+				//æŸ¥è¯¢å¸å·
 				$r = $this->db->get_one(array('username'=>$username));
 
 				if(!$r) showmessage(L('user_not_exist'),'index.php?m=member&c=index&a=login');
 				
-				//ÑéÖ¤ÓÃ»§ÃÜÂë
+				//éªŒè¯ç”¨æˆ·å¯†ç 
 				$password = md5(md5(trim($password)).$r['encrypt']);
 				if($r['password'] != $password) {				
 					$ip = ip();
@@ -650,7 +650,7 @@ class index extends foreground {
 				$this->times_db->delete(array('username'=>$username));
 			}
 			
-			//Èç¹ûÓÃ»§±»Ëø¶¨
+			//å¦‚æœç”¨æˆ·è¢«é”å®š
 			if($r['islock']) {
 				showmessage(L('user_is_lock'));
 			}
@@ -661,12 +661,12 @@ class index extends foreground {
 			$nickname = empty($r['nickname']) ? $username : $r['nickname'];
 			
 			$updatearr = array('lastip'=>ip(), 'lastdate'=>SYS_TIME);
-			//vip¹ıÆÚ£¬¸üĞÂvipºÍ»áÔ±×é
+			//vipè¿‡æœŸï¼Œæ›´æ–°vipå’Œä¼šå‘˜ç»„
 			if($r['overduedate'] < SYS_TIME) {
 				$updatearr['vip'] = 0;
 			}		
 
-			//¼ì²éÓÃ»§»ı·Ö£¬¸üĞÂĞÂÓÃ»§×é£¬³ıÈ¥ÓÊÏäÈÏÖ¤¡¢½ûÖ¹·ÃÎÊ¡¢ÓÎ¿Í×éÓÃ»§¡¢vipÓÃ»§£¬Èç¹û¸ÃÓÃ»§×é²»ÔÊĞí×ÔÖúÉı¼¶Ôò²»½øĞĞ¸Ã²Ù×÷		
+			//æ£€æŸ¥ç”¨æˆ·ç§¯åˆ†ï¼Œæ›´æ–°æ–°ç”¨æˆ·ç»„ï¼Œé™¤å»é‚®ç®±è®¤è¯ã€ç¦æ­¢è®¿é—®ã€æ¸¸å®¢ç»„ç”¨æˆ·ã€vipç”¨æˆ·ï¼Œå¦‚æœè¯¥ç”¨æˆ·ç»„ä¸å…è®¸è‡ªåŠ©å‡çº§åˆ™ä¸è¿›è¡Œè¯¥æ“ä½œ		
 			if($r['point'] >= 0 && !in_array($r['groupid'], array('1', '7', '8')) && empty($r[vip])) {
 				$grouplist = getcache('grouplist');
 				if(!empty($grouplist[$r['groupid']]['allowupgrade'])) {	
@@ -678,7 +678,7 @@ class index extends foreground {
 				}
 			}
 
-			//Èç¹ûÊÇconnectÓÃ»§
+			//å¦‚æœæ˜¯connectç”¨æˆ·
 			if(!empty($_SESSION['connectid'])) {
 				$updatearr['connectid'] = $_SESSION['connectid'];
 			}
@@ -719,14 +719,14 @@ class index extends foreground {
   	
 	public function logout() {
 		$setting = pc_base::load_config('system');
-		//sndaÍË³ö
+		//sndaé€€å‡º
 		if($setting['snda_enable'] && param::get_cookie('_from')=='snda') {
 			param::set_cookie('_from', '');
 			$forward = isset($_GET['forward']) && trim($_GET['forward']) ? urlencode($_GET['forward']) : '';
 			$logouturl = 'https://cas.sdo.com/cas/logout?url='.urlencode(APP_PATH.'index.php?m=member&c=index&a=logout&forward='.$forward);
 			header('Location: '.$logouturl);
 		} else {
-			$synlogoutstr = '';	//Í¬²½ÍË³öjs´úÂë
+			$synlogoutstr = '';	//åŒæ­¥é€€å‡ºjsä»£ç 
 			if(pc_base::load_config('system', 'phpsso')) {
 				$this->_init_phpsso();
 				$synlogoutstr = $this->client->ps_member_synlogout();			
@@ -744,7 +744,7 @@ class index extends foreground {
 	}
 
 	/**
-	 * ÎÒµÄÊÕ²Ø
+	 * æˆ‘çš„æ”¶è—
 	 * 
 	 */
 	public function favorite() {
@@ -763,7 +763,7 @@ class index extends foreground {
 	}
 	
 	/**
-	 * ÎÒµÄºÃÓÑ
+	 * æˆ‘çš„å¥½å‹
 	 */
 	public function friend() {
 		$memberinfo = $this->memberinfo;
@@ -772,10 +772,10 @@ class index extends foreground {
 			$this->friend_db->delete(array('userid'=>$memberinfo['userid'], 'friendid'=>intval($_GET['friendid'])));
 			showmessage(L('operation_success'), HTTP_REFERER);
 		} else {
-			//³õÊ¼»¯phpsso
+			//åˆå§‹åŒ–phpsso
 			$phpsso_api_url = $this->_init_phpsso();
 	
-			//ÎÒµÄºÃÓÑÁĞ±íuserid
+			//æˆ‘çš„å¥½å‹åˆ—è¡¨userid
 			$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 			$friendids = $this->friend_db->listinfo(array('userid'=>$memberinfo['userid']), '', $page, 10);
 			$pages = $this->friend_db->pages;
@@ -789,11 +789,11 @@ class index extends foreground {
 	}
 	
 	/**
-	 * »ı·Ö¶Ò»»
+	 * ç§¯åˆ†å…‘æ¢
 	 */
 	public function change_credit() {
 		$memberinfo = $this->memberinfo;
-		//¼ÓÔØÓÃ»§Ä£¿éÅäÖÃ
+		//åŠ è½½ç”¨æˆ·æ¨¡å—é…ç½®
 		$member_setting = getcache('member_setting');
 		$this->_init_phpsso();
 		$setting = $this->client->ps_getcreditlist();
@@ -802,14 +802,14 @@ class index extends foreground {
 		$applist = unserialize($setting);
 		
 		if(isset($_POST['dosubmit'])) {
-			//±¾ÏµÍ³»ı·Ö¶Ò»»Êı
+			//æœ¬ç³»ç»Ÿç§¯åˆ†å…‘æ¢æ•°
 			$fromvalue = intval($_POST['fromvalue']);
-			//±¾ÏµÍ³»ı·ÖÀàĞÍ
+			//æœ¬ç³»ç»Ÿç§¯åˆ†ç±»å‹
 			$from = $_POST['from'];
 			$toappid_to = explode('_', $_POST['to']);
-			//Ä¿±êÏµÍ³appid
+			//ç›®æ ‡ç³»ç»Ÿappid
 			$toappid = $toappid_to[0];
-			//Ä¿±êÏµÍ³»ı·ÖÀàĞÍ
+			//ç›®æ ‡ç³»ç»Ÿç§¯åˆ†ç±»å‹
 			$to = $toappid_to[1];
 			if($from == 1) {
 				if($memberinfo['point'] < $fromvalue) {
@@ -844,10 +844,10 @@ class index extends foreground {
 			if($memberinfo['amount'] < $money) {
 				showmessage(L('short_of_money'), HTTP_REFERER);
 			}
-			//´Ë´¦±ÈÂÊ¶ÁÈ¡ÓÃ»§ÅäÖÃ
+			//æ­¤å¤„æ¯”ç‡è¯»å–ç”¨æˆ·é…ç½®
 			$point = $money*$member_setting['rmb_point_rate'];
 			$this->db->update(array('point'=>"+=$point"), array('userid'=>$memberinfo['userid']));
-			//¼ÓÈëÏû·Ñ¼ÇÂ¼£¬Í¬Ê±¿Û³ı½ğÇ®
+			//åŠ å…¥æ¶ˆè´¹è®°å½•ï¼ŒåŒæ—¶æ‰£é™¤é‡‘é’±
 			pc_base::load_app_class('spend','pay',0);
 			spend::amount($money, L('buy_point'), $memberinfo['userid'], $memberinfo['username']);
 			showmessage(L('operation_success'), HTTP_REFERER);
@@ -858,12 +858,12 @@ class index extends foreground {
 		}
 	}
 	
-	//miniµÇÂ½Ìõ
+	//miniç™»é™†æ¡
 	public function mini() {
 		$_username = param::get_cookie('_username');
 		$_userid = param::get_cookie('_userid');
 		$siteid = isset($_GET['siteid']) ? intval($_GET['siteid']) : '';
-		//¶¨ÒåÕ¾µãid³£Á¿
+		//å®šä¹‰ç«™ç‚¹idå¸¸é‡
 		if (!defined('SITEID')) {
 		   define('SITEID', $siteid);
 		}
@@ -873,9 +873,9 @@ class index extends foreground {
 	}
 	
 	/**
-	 * ³õÊ¼»¯phpsso
+	 * åˆå§‹åŒ–phpsso
 	 * about phpsso, include client and client configure
-	 * @return string phpsso_api_url phpssoµØÖ·
+	 * @return string phpsso_api_url phpssoåœ°å€
 	 */
 	private function _init_phpsso() {
 		pc_base::load_app_class('client', '', 0);
@@ -900,21 +900,21 @@ class index extends foreground {
 	}
 	
 	/*
-	 * Í¨¹ılinkageid»ñÈ¡Ãû×ÖÂ·¾¶
+	 * é€šè¿‡linkageidè·å–åå­—è·¯å¾„
 	 */
 	protected function _get_linkage_fullname($linkageid,  $linkagelist) {
 		$fullname = '';
 		if($linkagelist['data'][$linkageid]['parentid'] != 0) {
 			$fullname = $this->_get_linkage_fullname($linkagelist['data'][$linkageid]['parentid'], $linkagelist);
 		}
-		//ËùÔÚµØÇøÃû³Æ
+		//æ‰€åœ¨åœ°åŒºåç§°
 		$return = $fullname.$linkagelist['data'][$linkageid]['name'].'>';
 		return $return;
 	}
 	
 	/**
-	 *¸ù¾İ»ı·ÖËã³öÓÃ»§×é
-	 * @param $point int »ı·ÖÊı
+	 *æ ¹æ®ç§¯åˆ†ç®—å‡ºç”¨æˆ·ç»„
+	 * @param $point int ç§¯åˆ†æ•°
 	 */
 	protected function _get_usergroup_bypoint($point=0) {
 		$groupid = 2;
@@ -929,7 +929,7 @@ class index extends foreground {
 		}
 		arsort($grouppointlist);
 
-		//Èç¹û³¬³öÓÃ»§×é»ı·ÖÉèÖÃÔòÎª»ı·Ö×î¸ßµÄÓÃ»§×é
+		//å¦‚æœè¶…å‡ºç”¨æˆ·ç»„ç§¯åˆ†è®¾ç½®åˆ™ä¸ºç§¯åˆ†æœ€é«˜çš„ç”¨æˆ·ç»„
 		if($point > max($grouppointlist)) {
 			$groupid = key($grouppointlist);
 		} else {
@@ -945,9 +945,9 @@ class index extends foreground {
 	}
 				
 	/**
-	 * ¼ì²éÓÃ»§Ãû
-	 * @param string $username	ÓÃ»§Ãû
-	 * @return $status {-4£ºÓÃ»§Ãû½ûÖ¹×¢²á;-1:ÓÃ»§ÃûÒÑ¾­´æÔÚ ;1:³É¹¦}
+	 * æ£€æŸ¥ç”¨æˆ·å
+	 * @param string $username	ç”¨æˆ·å
+	 * @return $status {-4ï¼šç”¨æˆ·åç¦æ­¢æ³¨å†Œ;-1:ç”¨æˆ·åå·²ç»å­˜åœ¨ ;1:æˆåŠŸ}
 	 */
 	public function public_checkname_ajax() {
 		$username = isset($_GET['username']) && trim($_GET['username']) ? trim($_GET['username']) : exit(0);
@@ -956,7 +956,7 @@ class index extends foreground {
 			$username = addslashes($username);
 		}
 		$username = safe_replace($username);
-		//Ê×ÏÈÅĞ¶Ï»áÔ±ÉóºË±í
+		//é¦–å…ˆåˆ¤æ–­ä¼šå‘˜å®¡æ ¸è¡¨
 		$this->verify_db = pc_base::load_model('member_verify_model');
 		if($this->verify_db->get_one(array('username'=>$username))) {
 			exit('0');
@@ -973,9 +973,9 @@ class index extends foreground {
 	}
 	
 	/**
-	 * ¼ì²éÓÃ»§êÇ³Æ
-	 * @param string $nickname	êÇ³Æ
-	 * @return $status {0:ÒÑ´æÔÚ;1:³É¹¦}
+	 * æ£€æŸ¥ç”¨æˆ·æ˜µç§°
+	 * @param string $nickname	æ˜µç§°
+	 * @return $status {0:å·²å­˜åœ¨;1:æˆåŠŸ}
 	 */
 	public function public_checknickname_ajax() {
 		$nickname = isset($_GET['nickname']) && trim($_GET['nickname']) ? trim($_GET['nickname']) : exit('0');
@@ -983,18 +983,18 @@ class index extends foreground {
 			$nickname = iconv('utf-8', CHARSET, $nickname);
 			$nickname = addslashes($nickname);
 		} 
-		//Ê×ÏÈÅĞ¶Ï»áÔ±ÉóºË±í
+		//é¦–å…ˆåˆ¤æ–­ä¼šå‘˜å®¡æ ¸è¡¨
 		$this->verify_db = pc_base::load_model('member_verify_model');
 		if($this->verify_db->get_one(array('nickname'=>$nickname))) {
 			exit('0');
 		}
 		if(isset($_GET['userid'])) {
 			$userid = intval($_GET['userid']);
-			//Èç¹ûÊÇ»áÔ±ĞŞ¸Ä£¬¶øÇÒNICKNAMEºÍÔ­À´ÓÅÖÊÒ»ÖÂ·µ»Ø1£¬·ñÔò·µ»Ø0
+			//å¦‚æœæ˜¯ä¼šå‘˜ä¿®æ”¹ï¼Œè€Œä¸”NICKNAMEå’ŒåŸæ¥ä¼˜è´¨ä¸€è‡´è¿”å›1ï¼Œå¦åˆ™è¿”å›0
 			$info = get_memberinfo($userid);
-			if($info['nickname'] == $nickname){//Î´¸Ä±ä
+			if($info['nickname'] == $nickname){//æœªæ”¹å˜
 				exit('1');
-			}else{//ÒÑ¸Ä±ä£¬ÅĞ¶ÏÊÇ·ñÒÑÓĞ´ËÃû
+			}else{//å·²æ”¹å˜ï¼Œåˆ¤æ–­æ˜¯å¦å·²æœ‰æ­¤å
 				$where = array('nickname'=>$nickname);
 				$res = $this->db->get_one($where);
 				if($res) {
@@ -1015,22 +1015,22 @@ class index extends foreground {
 	}
 	
 	/**
-	 * ¼ì²éÓÊÏä
+	 * æ£€æŸ¥é‚®ç®±
 	 * @param string $email
-	 * @return $status {-1:emailÒÑ¾­´æÔÚ ;-5:ÓÊÏä½ûÖ¹×¢²á;1:³É¹¦}
+	 * @return $status {-1:emailå·²ç»å­˜åœ¨ ;-5:é‚®ç®±ç¦æ­¢æ³¨å†Œ;1:æˆåŠŸ}
 	 */
 	public function public_checkemail_ajax() {
 		$this->_init_phpsso();
 		$email = isset($_GET['email']) && trim($_GET['email']) ? trim($_GET['email']) : exit(0);
 		
 		$status = $this->client->ps_checkemail($email);
-		if($status == -5) {	//½ûÖ¹×¢²á
+		if($status == -5) {	//ç¦æ­¢æ³¨å†Œ
 			exit('0');
-		} elseif($status == -1) {	//ÓÃ»§ÃûÒÑ´æÔÚ£¬µ«ÊÇĞŞ¸ÄÓÃ»§µÄÊ±ºòĞèÒªÅĞ¶ÏÓÊÏäÊÇ·ñÊÇµ±Ç°ÓÃ»§µÄ
-			if(isset($_GET['phpssouid'])) {	//ĞŞ¸ÄÓÃ»§´«Èëphpssouid
+		} elseif($status == -1) {	//ç”¨æˆ·åå·²å­˜åœ¨ï¼Œä½†æ˜¯ä¿®æ”¹ç”¨æˆ·çš„æ—¶å€™éœ€è¦åˆ¤æ–­é‚®ç®±æ˜¯å¦æ˜¯å½“å‰ç”¨æˆ·çš„
+			if(isset($_GET['phpssouid'])) {	//ä¿®æ”¹ç”¨æˆ·ä¼ å…¥phpssouid
 				$status = $this->client->ps_get_member_info($email, 3);
 				if($status) {
-					$status = unserialize($status);	//½Ó¿Ú·µ»ØĞòÁĞ»¯£¬½øĞĞÅĞ¶Ï
+					$status = unserialize($status);	//æ¥å£è¿”å›åºåˆ—åŒ–ï¼Œè¿›è¡Œåˆ¤æ–­
 					if (isset($status['uid']) && $status['uid'] == intval($_GET['phpssouid'])) {
 						exit('1');
 					} else {
@@ -1057,7 +1057,7 @@ class index extends foreground {
 			$o = new WeiboOAuth(WB_AKEY, WB_SKEY, $_SESSION['keys']['oauth_token'], $_SESSION['keys']['oauth_token_secret']);
 			$_SESSION['last_key'] = $o->getAccessToken($_REQUEST['oauth_verifier']);
 			$c = new WeiboClient(WB_AKEY, WB_SKEY, $_SESSION['last_key']['oauth_token'], $_SESSION['last_key']['oauth_token_secret']);
-			//»ñÈ¡ÓÃ»§ĞÅÏ¢
+			//è·å–ç”¨æˆ·ä¿¡æ¯
 			$me = $c->verify_credentials();
 			if(CHARSET != 'utf-8') {
 				$me['name'] = iconv('utf-8', CHARSET, $me['name']);
@@ -1066,13 +1066,13 @@ class index extends foreground {
 				$me['screen_name'] = iconv('utf-8', CHARSET, $me['screen_name']);
 			}
 			if(!empty($me['id'])) {
- 				//¼ì²éconnect»áÔ±ÊÇ·ñ°ó¶¨£¬ÒÑ°ó¶¨Ö±½ÓµÇÂ¼£¬Î´°ó¶¨ÌáÊ¾×¢²á/°ó¶¨Ò³Ãæ
+ 				//æ£€æŸ¥connectä¼šå‘˜æ˜¯å¦ç»‘å®šï¼Œå·²ç»‘å®šç›´æ¥ç™»å½•ï¼Œæœªç»‘å®šæç¤ºæ³¨å†Œ/ç»‘å®šé¡µé¢
 				$where = array('connectid'=>$me['id'], 'from'=>'sina');
 				$r = $this->db->get_one($where);
 				
-				//connectÓÃ»§ÒÑ¾­°ó¶¨±¾Õ¾ÓÃ»§
+				//connectç”¨æˆ·å·²ç»ç»‘å®šæœ¬ç«™ç”¨æˆ·
 				if(!empty($r)) {
-					//¶ÁÈ¡±¾Õ¾ÓÃ»§ĞÅÏ¢£¬Ö´ĞĞµÇÂ¼²Ù×÷
+					//è¯»å–æœ¬ç«™ç”¨æˆ·ä¿¡æ¯ï¼Œæ‰§è¡Œç™»å½•æ“ä½œ
 					
 					$password = $r['password'];
 					$this->_init_phpsso();
@@ -1100,21 +1100,21 @@ class index extends foreground {
 					showmessage(L('login_success').$synloginstr, $forward);
 					
 				} else {
- 					//µ¯³ö°ó¶¨×¢²áÒ³Ãæ
+ 					//å¼¹å‡ºç»‘å®šæ³¨å†Œé¡µé¢
 					$_SESSION = array();
 					$_SESSION['connectid'] = $me['id'];
 					$_SESSION['from'] = 'sina';
 					$connect_username = $me['name'];
 					
-					//¼ÓÔØÓÃ»§Ä£¿éÅäÖÃ
+					//åŠ è½½ç”¨æˆ·æ¨¡å—é…ç½®
 					$member_setting = getcache('member_setting');
 					if(!$member_setting['allowregister']) {
 						showmessage(L('deny_register'), 'index.php?m=member&c=index&a=login');
 					}
 					
-					//»ñÈ¡ÓÃ»§siteid
+					//è·å–ç”¨æˆ·siteid
 					$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
-					//¹ıÂË·Çµ±Ç°Õ¾µã»áÔ±Ä£ĞÍ
+					//è¿‡æ»¤éå½“å‰ç«™ç‚¹ä¼šå‘˜æ¨¡å‹
 					$modellist = getcache('member_model', 'commons');
 					foreach($modellist as $k=>$v) {
 						if($v['siteid']!=$siteid || $v['disabled']) {
@@ -1125,15 +1125,15 @@ class index extends foreground {
 						showmessage(L('site_have_no_model').L('deny_register'), HTTP_REFERER);
 					}
 					
-					$modelid = 10; //Éè¶¨Ä¬ÈÏÖµ
+					$modelid = 10; //è®¾å®šé»˜è®¤å€¼
 					if(array_key_exists($modelid, $modellist)) {
-						//»ñÈ¡»áÔ±Ä£ĞÍ±íµ¥
+						//è·å–ä¼šå‘˜æ¨¡å‹è¡¨å•
 						require CACHE_MODEL_PATH.'member_form.class.php';
 						$member_form = new member_form($modelid);
 						$this->db->set_model($modelid);
 						$forminfos = $forminfos_arr = $member_form->get();
 
-						//ÍòÄÜ×Ö¶Î¹ıÂË
+						//ä¸‡èƒ½å­—æ®µè¿‡æ»¤
 						foreach($forminfos as $field=>$info) {
 							if($info['isomnipotent']) {
 								unset($forminfos[$field]);
@@ -1168,7 +1168,7 @@ class index extends foreground {
 	}
 	
 	/**
-	 * Ê¢´óÍ¨ĞĞÖ¤µÇÂ½
+	 * ç››å¤§é€šè¡Œè¯ç™»é™†
 	 */
 	public function public_snda_login() {
 		define('SNDA_AKEY', pc_base::load_config('system', 'snda_akey'));
@@ -1191,13 +1191,13 @@ class index extends foreground {
 
 			if(!empty($userid)) {
 				
-				//¼ì²éconnect»áÔ±ÊÇ·ñ°ó¶¨£¬ÒÑ°ó¶¨Ö±½ÓµÇÂ¼£¬Î´°ó¶¨ÌáÊ¾×¢²á/°ó¶¨Ò³Ãæ
+				//æ£€æŸ¥connectä¼šå‘˜æ˜¯å¦ç»‘å®šï¼Œå·²ç»‘å®šç›´æ¥ç™»å½•ï¼Œæœªç»‘å®šæç¤ºæ³¨å†Œ/ç»‘å®šé¡µé¢
 				$where = array('connectid'=>$userid, 'from'=>'snda');
 				$r = $this->db->get_one($where);
 				
-				//connectÓÃ»§ÒÑ¾­°ó¶¨±¾Õ¾ÓÃ»§
+				//connectç”¨æˆ·å·²ç»ç»‘å®šæœ¬ç«™ç”¨æˆ·
 				if(!empty($r)) {
-					//¶ÁÈ¡±¾Õ¾ÓÃ»§ĞÅÏ¢£¬Ö´ĞĞµÇÂ¼²Ù×÷
+					//è¯»å–æœ¬ç«™ç”¨æˆ·ä¿¡æ¯ï¼Œæ‰§è¡Œç™»å½•æ“ä½œ
 					$password = $r['password'];
 					$this->_init_phpsso();
 					$synloginstr = $this->client->ps_member_synlogin($r['phpssouid']);
@@ -1223,7 +1223,7 @@ class index extends foreground {
 					$forward = isset($_GET['forward']) && !empty($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index';
 					showmessage(L('login_success').$synloginstr, $forward);
 				} else {				
-					//µ¯³ö°ó¶¨×¢²áÒ³Ãæ
+					//å¼¹å‡ºç»‘å®šæ³¨å†Œé¡µé¢
 					$_SESSION = array();
 					$_SESSION['connectid'] = $userid;
 					$_SESSION['from'] = 'snda';
@@ -1243,8 +1243,8 @@ class index extends foreground {
 	
 	
 	/**
-	 * QQºÅÂëµÇÂ¼
-	 * ¸Ãº¯ÊıÎªQQµÇÂ¼»Øµ÷µØÖ·
+	 * QQå·ç ç™»å½•
+	 * è¯¥å‡½æ•°ä¸ºQQç™»å½•å›è°ƒåœ°å€
 	 */
 	public function public_qq_loginnew(){
                 $appid = pc_base::load_config('system', 'qq_appid');
@@ -1262,7 +1262,7 @@ class index extends foreground {
 						$r = $this->db->get_one(array('connectid'=>$openid,'from'=>'qq'));
 						
 						 if(!empty($r)){
-								//QQÒÑ´æÔÚÓÚÊı¾İ¿â£¬ÔòÖ±½Ó×ªÏòµÇÂ½²Ù×÷
+								//QQå·²å­˜åœ¨äºæ•°æ®åº“ï¼Œåˆ™ç›´æ¥è½¬å‘ç™»é™†æ“ä½œ
 								$password = $r['password'];
 								$this->_init_phpsso();
 								$synloginstr = $this->client->ps_member_synlogin($r['phpssouid']);
@@ -1285,11 +1285,11 @@ class index extends foreground {
 								$forward = isset($_GET['forward']) && !empty($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index';
 								showmessage(L('login_success').$synloginstr, $forward);
 						}else{	
-								//Î´´æÔÚÓÚÊı¾İ¿âÖĞ£¬ÌøÈ¥ÍêÉÆ×ÊÁÏÒ³Ãæ¡£Ò³ÃæÔ¤ÖÃÓÃ»§Ãû£¨QQ·µ»ØÊÇUTF8±àÂë£¬ÈçÓĞĞèÒª½øĞĞ×ªÂë£©
+								//æœªå­˜åœ¨äºæ•°æ®åº“ä¸­ï¼Œè·³å»å®Œå–„èµ„æ–™é¡µé¢ã€‚é¡µé¢é¢„ç½®ç”¨æˆ·åï¼ˆQQè¿”å›æ˜¯UTF8ç¼–ç ï¼Œå¦‚æœ‰éœ€è¦è¿›è¡Œè½¬ç ï¼‰
 								$user = $info->get_user_info();
  								$_SESSION['connectid'] = $openid;
 								$_SESSION['from'] = 'qq';
-								if(CHARSET != 'utf-8') {//×ª±àÂë
+								if(CHARSET != 'utf-8') {//è½¬ç¼–ç 
 									$connect_username = iconv('utf-8', CHARSET, $user['nickname']); 
 								} else {
 									 $connect_username = $user['nickname']; 
@@ -1301,7 +1301,7 @@ class index extends foreground {
     }
 	
 	/**
-	 * QQÎ¢²©µÇÂ¼
+	 * QQå¾®åšç™»å½•
 	 */
 	public function public_qq_login() {
 		define('QQ_AKEY', pc_base::load_config('system', 'qq_akey'));
@@ -1313,13 +1313,13 @@ class index extends foreground {
 			$_SESSION['last_key'] = $o->getAccessToken($_REQUEST['oauth_verifier']);
 			
 			if(!empty($_SESSION['last_key']['name'])) {
-				//¼ì²éconnect»áÔ±ÊÇ·ñ°ó¶¨£¬ÒÑ°ó¶¨Ö±½ÓµÇÂ¼£¬Î´°ó¶¨ÌáÊ¾×¢²á/°ó¶¨Ò³Ãæ
+				//æ£€æŸ¥connectä¼šå‘˜æ˜¯å¦ç»‘å®šï¼Œå·²ç»‘å®šç›´æ¥ç™»å½•ï¼Œæœªç»‘å®šæç¤ºæ³¨å†Œ/ç»‘å®šé¡µé¢
 				$where = array('connectid'=>$_REQUEST['openid'], 'from'=>'qq');
 				$r = $this->db->get_one($where);
 				
-				//connectÓÃ»§ÒÑ¾­°ó¶¨±¾Õ¾ÓÃ»§
+				//connectç”¨æˆ·å·²ç»ç»‘å®šæœ¬ç«™ç”¨æˆ·
 				if(!empty($r)) {
-					//¶ÁÈ¡±¾Õ¾ÓÃ»§ĞÅÏ¢£¬Ö´ĞĞµÇÂ¼²Ù×÷
+					//è¯»å–æœ¬ç«™ç”¨æˆ·ä¿¡æ¯ï¼Œæ‰§è¡Œç™»å½•æ“ä½œ
 					$password = $r['password'];
 					$this->_init_phpsso();
 					$synloginstr = $this->client->ps_member_synlogin($r['phpssouid']);
@@ -1345,21 +1345,21 @@ class index extends foreground {
 					$forward = isset($_GET['forward']) && !empty($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index';
 					showmessage(L('login_success').$synloginstr, $forward);
 				} else {				
-					//µ¯³ö°ó¶¨×¢²áÒ³Ãæ
+					//å¼¹å‡ºç»‘å®šæ³¨å†Œé¡µé¢
 					$_SESSION = array();
 					$_SESSION['connectid'] = $_REQUEST['openid'];
 					$_SESSION['from'] = 'qq';
 					$connect_username = $_SESSION['last_key']['name'];
 
-					//¼ÓÔØÓÃ»§Ä£¿éÅäÖÃ
+					//åŠ è½½ç”¨æˆ·æ¨¡å—é…ç½®
 					$member_setting = getcache('member_setting');
 					if(!$member_setting['allowregister']) {
 						showmessage(L('deny_register'), 'index.php?m=member&c=index&a=login');
 					}
 					
-					//»ñÈ¡ÓÃ»§siteid
+					//è·å–ç”¨æˆ·siteid
 					$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
-					//¹ıÂË·Çµ±Ç°Õ¾µã»áÔ±Ä£ĞÍ
+					//è¿‡æ»¤éå½“å‰ç«™ç‚¹ä¼šå‘˜æ¨¡å‹
 					$modellist = getcache('member_model', 'commons');
 					foreach($modellist as $k=>$v) {
 						if($v['siteid']!=$siteid || $v['disabled']) {
@@ -1370,15 +1370,15 @@ class index extends foreground {
 						showmessage(L('site_have_no_model').L('deny_register'), HTTP_REFERER);
 					}
 					
-					$modelid = 10; //Éè¶¨Ä¬ÈÏÖµ
+					$modelid = 10; //è®¾å®šé»˜è®¤å€¼
 					if(array_key_exists($modelid, $modellist)) {
-						//»ñÈ¡»áÔ±Ä£ĞÍ±íµ¥
+						//è·å–ä¼šå‘˜æ¨¡å‹è¡¨å•
 						require CACHE_MODEL_PATH.'member_form.class.php';
 						$member_form = new member_form($modelid);
 						$this->db->set_model($modelid);
 						$forminfos = $forminfos_arr = $member_form->get();
 
-						//ÍòÄÜ×Ö¶Î¹ıÂË
+						//ä¸‡èƒ½å­—æ®µè¿‡æ»¤
 						foreach($forminfos as $field=>$info) {
 							if($info['isomnipotent']) {
 								unset($forminfos[$field]);
@@ -1421,14 +1421,14 @@ class index extends foreground {
 	}
 
 	/**
-	 * ÕÒ»ØÃÜÂë
-	 * ĞÂÔö¼Ó¶ÌĞÅÕÒ»Ø·½Ê½ 
+	 * æ‰¾å›å¯†ç 
+	 * æ–°å¢åŠ çŸ­ä¿¡æ‰¾å›æ–¹å¼ 
 	 */
 	public function public_forget_password () {
 		
 		$email_config = getcache('common', 'commons');
 		
-		//SMTP MAIL ¶şÖÖ·¢ËÍÄ£Ê½
+		//SMTP MAIL äºŒç§å‘é€æ¨¡å¼
  		if($email_config['mail_type'] == '1'){
 			if(empty($email_config['mail_user']) || empty($email_config['mail_password'])) {
 				showmessage(L('email_config_empty'), HTTP_REFERER);
@@ -1456,7 +1456,7 @@ class index extends foreground {
 			$url = APP_PATH."index.php?m=member&c=index&a=public_forget_password&code=$code";
 			$message = $member_setting['forgetpassword'];
 			$message = str_replace(array('{click}','{url}'), array('<a href="'.$url.'">'.L('please_click').'</a>',$url), $message);
-			//»ñÈ¡Õ¾µãÃû³Æ
+			//è·å–ç«™ç‚¹åç§°
 			$sitelist = getcache('sitelist', 'commons');
 			
 			if(isset($sitelist[$memberinfo['siteid']]['name'])) {
@@ -1484,12 +1484,12 @@ class index extends foreground {
 				
 				$this->db->update($updateinfo, array('userid'=>$code[0]));
 				if(pc_base::load_config('system', 'phpsso')) {
-					//³õÊ¼»¯phpsso
+					//åˆå§‹åŒ–phpsso
 					$this->_init_phpsso();
 					$this->client->ps_member_edit('', $email, '', $password, $memberinfo['phpssouid'], $memberinfo['encrypt']);
 				}
 				$email = $memberinfo['email'];
-				//»ñÈ¡Õ¾µãÃû³Æ
+				//è·å–ç«™ç‚¹åç§°
 				$sitelist = getcache('sitelist', 'commons');		
 				if(isset($sitelist[$memberinfo['siteid']]['name'])) {
 					$sitename = $sitelist[$memberinfo['siteid']]['name'];
@@ -1513,10 +1513,10 @@ class index extends foreground {
 	}
 	
 	/**
-	*Í¨¹ıÊÖ»úĞŞ¸ÄÃÜÂë
-	*·½Ê½£ºÓÃ»§·¢ËÍHHPWD afei985#821008 ÖÁ 1065788 £¬PHPCMS½øĞĞ×ª·¢µ½ÍøÕ¾ÔËÓªÕßÖ¸¶¨µÄ»Øµ÷µØÖ·£¬ÔÚ»Øµ÷µØÖ·³ÌĞò½øĞĞÃÜÂëĞŞ¸ÄµÈ²Ù×÷,´¦Àí³É¹¦Ê±¸øÓÃ»§·¢Ìõ¶ÌĞÅÈ·ÈÏ¡£
-	*phpcms ÒÔPOST·½Ê½´«µİÏà¹ØÊı¾İµ½»Øµ÷³ÌĞòÖĞ
-	*ÒªÇó£ºÍøÕ¾ÖĞ»áÔ±ÏµÍ³£¬mobile×öÎªÖ÷±í×Ö¶Î£¬²¢ÇÒÎ¨Ò»£¨ÈçÒÑ¾­ÓĞÊÖ»úºÅÂë£¬°ÑºÅÂë×Ö¶Î×ªÎªÖ÷±í×Ö¶ÎÖĞ£©
+	*é€šè¿‡æ‰‹æœºä¿®æ”¹å¯†ç 
+	*æ–¹å¼ï¼šç”¨æˆ·å‘é€HHPWD afei985#821008 è‡³ 1065788 ï¼ŒPHPCMSè¿›è¡Œè½¬å‘åˆ°ç½‘ç«™è¿è¥è€…æŒ‡å®šçš„å›è°ƒåœ°å€ï¼Œåœ¨å›è°ƒåœ°å€ç¨‹åºè¿›è¡Œå¯†ç ä¿®æ”¹ç­‰æ“ä½œ,å¤„ç†æˆåŠŸæ—¶ç»™ç”¨æˆ·å‘æ¡çŸ­ä¿¡ç¡®è®¤ã€‚
+	*phpcms ä»¥POSTæ–¹å¼ä¼ é€’ç›¸å…³æ•°æ®åˆ°å›è°ƒç¨‹åºä¸­
+	*è¦æ±‚ï¼šç½‘ç«™ä¸­ä¼šå‘˜ç³»ç»Ÿï¼Œmobileåšä¸ºä¸»è¡¨å­—æ®µï¼Œå¹¶ä¸”å”¯ä¸€ï¼ˆå¦‚å·²ç»æœ‰æ‰‹æœºå·ç ï¼ŒæŠŠå·ç å­—æ®µè½¬ä¸ºä¸»è¡¨å­—æ®µä¸­ï¼‰
 	*/
 	
 	public function public_changepwd_bymobile(){
@@ -1530,7 +1530,7 @@ class index extends foreground {
 		if(!preg_match('/^1([0-9]{9})/',$phone)) {
 			return false;
 		}
-		//ÅĞ¶ÏÊÇ·ñPHPCMSÇëÇóµÄ½Ó¿Ú
+		//åˆ¤æ–­æ˜¯å¦PHPCMSè¯·æ±‚çš„æ¥å£
 		pc_base::load_app_func('global','sms');
 		pc_base::load_app_class('smsapi', 'sms', 0);
 		$this->sms_setting_arr = getcache('sms');
@@ -1543,7 +1543,7 @@ class index extends foreground {
 		if($sms_key != $this->sms_setting['sms_key'] || $sms_pid != $this->sms_setting['productid']){
 			return false;
 		}
-		//È¡ÓÃ»§Ãû
+		//å–ç”¨æˆ·å
 		$msg_array = explode("@@",$str);
 		$newpwd = $msg_array[1];
 		$username = $msg_array[2];
@@ -1553,8 +1553,8 @@ class index extends foreground {
 		}else{
 			$result = $this->db->update(array('password'=>$newpwd),array('mobile'=>$phone,'username'=>$username));
 			if($result){
-				//ĞŞ¸Ä³É¹¦£¬·¢ËÍ¶ÌĞÅ¸øÓÃ»§»ØÖ´
- 				//¼ì²é¶ÌĞÅÓà¶î
+				//ä¿®æ”¹æˆåŠŸï¼Œå‘é€çŸ­ä¿¡ç»™ç”¨æˆ·å›æ‰§
+ 				//æ£€æŸ¥çŸ­ä¿¡ä½™é¢
 				if($this->sms_setting['sms_key']) {
 					$smsinfo = $this->smsapi->get_smsinfo();
 				}
@@ -1562,7 +1562,7 @@ class index extends foreground {
  					echo 1;
 				}else{
  					$this->smsapi = new smsapi($this->sms_setting['userid'], $this->sms_setting['productid'], $this->sms_setting['sms_key']);
-					$content = 'ÄãºÃ,'.$username.',ÄãµÄĞÂÃÜÂëÒÑ¾­ĞŞ¸Ä³É¹¦£º'.$newpwd.' ,ÇëÍ×ÉÆ±£´æ£¡';
+					$content = 'ä½ å¥½,'.$username.',ä½ çš„æ–°å¯†ç å·²ç»ä¿®æ”¹æˆåŠŸï¼š'.$newpwd.' ,è¯·å¦¥å–„ä¿å­˜ï¼';
 					$return = $this->smsapi->send_sms($phone, $content, SYS_TIME, CHARSET);
 					echo 1;
 				}
@@ -1571,14 +1571,14 @@ class index extends foreground {
 	}
 	
 	/**
-	 * ÊÖ»ú¶ÌĞÅ·½Ê½ÕÒ»ØÃÜÂë
+	 * æ‰‹æœºçŸ­ä¿¡æ–¹å¼æ‰¾å›å¯†ç 
 	 */
 	public function public_forget_password_mobile () {
  		$email_config = getcache('common', 'commons'); 
 		$this->_session_start();
 		$member_setting = getcache('member_setting');
 		if(isset($_POST['dosubmit'])) {
-		//´¦ÀíÌá½»ÉêÇë£¬ÒÔÊÖ»úºÅÎª×¼
+		//å¤„ç†æäº¤ç”³è¯·ï¼Œä»¥æ‰‹æœºå·ä¸ºå‡†
 			if ($_SESSION['code'] != strtolower($_POST['code'])) {
 				showmessage(L('code_error'), HTTP_REFERER);
 			}
@@ -1589,18 +1589,18 @@ class index extends foreground {
 			if($password != $pwdconfirm){
 				showmessage(L('passwords_not_match'), HTTP_REFERER);
 			}
-			//ÑéÖ¤ÊÖ»úºÅºÍ´«µİµÄÑéÖ¤ÂëÊÇ·ñÆ¥Åä
+			//éªŒè¯æ‰‹æœºå·å’Œä¼ é€’çš„éªŒè¯ç æ˜¯å¦åŒ¹é…
 			$sms_report_db = pc_base::load_model('sms_report_model');
 			$sms_report_array = $sms_report_db->get_one(array("mobile">$mobile,'in_code'=>$mobile_verify));
 			if(empty($sms_report_array)){
-				showmessage("ÊÖ»úºÍÑéÖ¤Âë²»¶ÔÓ¦£¬ÇëÍ¨¹ıÕı³£ÇşµÀĞŞ¸ÄÃÜÂë£¡", HTTP_REFERER);
+				showmessage("æ‰‹æœºå’ŒéªŒè¯ç ä¸å¯¹åº”ï¼Œè¯·é€šè¿‡æ­£å¸¸æ¸ é“ä¿®æ”¹å¯†ç ï¼", HTTP_REFERER);
 			}
-			//¸üĞÂÃÜÂë
+			//æ›´æ–°å¯†ç 
 			$updateinfo = array();
 			$updateinfo['password'] = $password;
  			$this->db->update($updateinfo, array('userid'=>$this->memberinfo['userid']));
 			if(pc_base::load_config('system', 'phpsso')) {
-				//³õÊ¼»¯phpsso
+				//åˆå§‹åŒ–phpsso
 				$this->_init_phpsso();
 				$res = $this->client->ps_member_edit('', $email, $_POST['info']['password'], $_POST['info']['newpassword'], $this->memberinfo['phpssouid'], $this->memberinfo['encrypt']);
 			}
@@ -1622,7 +1622,7 @@ class index extends foreground {
 			$url = APP_PATH."index.php?m=member&c=index&a=public_forget_password&code=$code";
 			$message = $member_setting['forgetpassword'];
 			$message = str_replace(array('{click}','{url}'), array('<a href="'.$url.'">'.L('please_click').'</a>',$url), $message);
-			//»ñÈ¡Õ¾µãÃû³Æ
+			//è·å–ç«™ç‚¹åç§°
 			$sitelist = getcache('sitelist', 'commons');
 			
 			if(isset($sitelist[$memberinfo['siteid']]['name'])) {

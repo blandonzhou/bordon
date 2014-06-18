@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取联动菜单接口
+ * 鑾峰彇鑱斿姩鑿滃崟鎺ュ彛
  */
 defined('IN_PHPCMS') or exit('No permission resources.'); 
 if(!$_GET['callback'] || !$_GET['act'])  showmessage(L('error'));
@@ -20,7 +20,7 @@ switch($_GET['act']) {
 
 
 /**
- * 获取地区列表
+ * 鑾峰彇鍦板尯鍒楄〃
  */
 function ajax_getlist() {
 
@@ -51,11 +51,11 @@ function ajax_getlist() {
 }
 
 /**
- * 获取地区父级路径路径
- * @param $parentid 父级ID
- * @param $keyid 菜单keyid
- * @param $callback json生成callback变量
- * @param $result 递归返回结果数组
+ * 鑾峰彇鍦板尯鐖剁骇璺緞璺緞
+ * @param $parentid 鐖剁骇ID
+ * @param $keyid 鑿滃崟keyid
+ * @param $callback json鐢熸垚callback鍙橀噺
+ * @param $result 閫掑綊杩斿洖缁撴灉鏁扮粍
  * @param $infos
  */
 function ajax_getpath($parentid,$keyid,$callback,$path = 'commons',$result = array(),$infos = array()) {
@@ -82,12 +82,12 @@ function ajax_getpath($parentid,$keyid,$callback,$path = 'commons',$result = arr
 	}
 }
 /**
- * 获取地区顶级ID
+ * 鑾峰彇鍦板尯椤剁骇ID
  * Enter description here ...
- * @param  $linkageid 菜单id
- * @param  $keyid 菜单keyid
- * @param  $callback json生成callback变量
- * @param  $infos 递归返回结果数组
+ * @param  $linkageid 鑿滃崟id
+ * @param  $keyid 鑿滃崟keyid
+ * @param  $callback json鐢熸垚callback鍙橀噺
+ * @param  $infos 閫掑綊杩斿洖缁撴灉鏁扮粍
  */
 function ajax_gettopparent($id,$keyid,$callback,$path,$infos = array()) {
 	$keyid = $keyid;	

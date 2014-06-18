@@ -1,5 +1,5 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?>  <div class="footer" style="padding: 15px; font-size: 12px; line-height: 20px; text-align: center;">
-  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=f8b50e6ae627a6d2d43e41af04c5d39f&sql=SELECT+%2A+FROM+v9_page+where+catid%3D%2753%27&return=page_data\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT * FROM v9_page where catid='53' LIMIT 20");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$page_data = $a;unset($a);?>
+  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=f8b50e6ae627a6d2d43e41af04c5d39f&sql=SELECT+%2A+FROM+v9_page+where+catid%3D%2753%27&return=page_data\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("SELECT * FROM v9_page where catid='53' LIMIT 20");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$page_data = $a;unset($a);?>
 
   <?php $n=1;if(is_array($page_data)) foreach($page_data AS $v) { ?>
   
@@ -17,7 +17,7 @@
 </div>
 
 <script src="<?php echo APP_PATH;?>statics/sina/js/move.js"></script>
-<!--¶şÎ¬Âë begin--> 
+<!--äºŒç»´ç  begin--> 
 
 <script type="text/javascript">
 
@@ -38,9 +38,9 @@
 			wrap.style.display = 'none';
 			wrap.style.display = 'none';
 			thisURL = document.URL;
-			strwrite = "<img src='https://chart.googleapis.com/chart?cht=qr&chs=90x90&choe=UTF-8&chld=L|4&chl=" + thisURL + "' width='90' height='90' alt='ÍøÖ·¶şÎ¬Âë' />"; 
+			strwrite = "<img src='https://chart.googleapis.com/chart?cht=qr&chs=90x90&choe=UTF-8&chld=L|4&chl=" + thisURL + "' width='90' height='90' alt='ç½‘å€äºŒç»´ç ' />"; 
 
-			wrap.innerHTML = '<a class="side-btns-2wm-img" target="_blank" href="#" title="ÊÖ»ú¶Ë¿ìËÙ·ÃÎÊ" suda-uatrack="key=qr_code&value=open_index_qrcode"><em>Ê¹ÓÃÊÖ»úÉ¨Ãè</em> '+strwrite+' <span>Ê¹ÓÃÊÖ»úÉ¨Ãè</span> </a> <a href="javascript:;" class="side-btns-2wm-close" title="¹Ø±Õ" suda-uatrack="key=qr_code&value=open_index_qrcode_close">¹Ø±Õ</a>';
+			wrap.innerHTML = '<a class="side-btns-2wm-img" target="_blank" href="#" title="æ‰‹æœºç«¯å¿«é€Ÿè®¿é—®" suda-uatrack="key=qr_code&value=open_index_qrcode"><em>ä½¿ç”¨æ‰‹æœºæ‰«æ</em> '+strwrite+' <span>ä½¿ç”¨æ‰‹æœºæ‰«æ</span> </a> <a href="javascript:;" class="side-btns-2wm-close" title="å…³é—­" suda-uatrack="key=qr_code&value=open_index_qrcode_close">å…³é—­</a>';
 
 			firstChild ? firstChild.parentNode.insertBefore(wrap, firstChild) : body.appendChild(wrap);
 
@@ -150,3 +150,4 @@
 	</script>
 </body>
 </html>
+

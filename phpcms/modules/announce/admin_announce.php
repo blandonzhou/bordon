@@ -13,7 +13,7 @@ class admin_announce extends admin {
 	}
 	
 	public function init() {
-		//¹«¸æÁĞ±í
+		//å…¬å‘Šåˆ—è¡¨
 		$sql = '';
 		$_GET['status'] = $_GET['status'] ? intval($_GET['status']) : 1;
 		$sql = '`siteid`=\''.$this->get_siteid().'\'';
@@ -29,14 +29,14 @@ class admin_announce extends admin {
 	}
 	
 	/**
-	 * Ìí¼Ó¹«¸æ
+	 * æ·»åŠ å…¬å‘Š
 	 */
 	public function add() {
 		if(isset($_POST['dosubmit'])) {
 			$_POST['announce'] = $this->check($_POST['announce']);
 			if($this->db->insert($_POST['announce'])) showmessage(L('announcement_successful_added'), HTTP_REFERER, '', 'add');
 		} else {
-			//»ñÈ¡Õ¾µãÄ£°åĞÅÏ¢
+			//è·å–ç«™ç‚¹æ¨¡æ¿ä¿¡æ¯
 			pc_base::load_app_func('global', 'admin');
 			$siteid = $this->get_siteid();
 			$template_list = template_list($siteid, 0);
@@ -53,7 +53,7 @@ class admin_announce extends admin {
 	}
 	
 	/**
-	 * ĞŞ¸Ä¹«¸æ
+	 * ä¿®æ”¹å…¬å‘Š
 	 */
 	public function edit() {
 		$_GET['aid'] = intval($_GET['aid']);
@@ -65,7 +65,7 @@ class admin_announce extends admin {
 			$where = array('aid' => $_GET['aid']);
 			$an_info = $this->db->get_one($where);
 			pc_base::load_sys_class('form', '', 0);
-			//»ñÈ¡Õ¾µãÄ£°åĞÅÏ¢
+			//è·å–ç«™ç‚¹æ¨¡æ¿ä¿¡æ¯
 			pc_base::load_app_func('global', 'admin');
 			$template_list = template_list($this->siteid, 0);
 			foreach ($template_list as $k=>$v) {
@@ -78,7 +78,7 @@ class admin_announce extends admin {
 	}
 	
 	/**
-	 * ajax¼ì²â¹«¸æ±êÌâÊÇ·ñÖØ¸´
+	 * ajaxæ£€æµ‹å…¬å‘Šæ ‡é¢˜æ˜¯å¦é‡å¤
 	 */
 	public function public_check_title() {
 		if (!$_GET['title']) exit(0);
@@ -101,7 +101,7 @@ class admin_announce extends admin {
 	}
 	
 	/**
-	 * ÅúÁ¿ĞŞ¸Ä¹«¸æ×´Ì¬ Ê¹Æä³ÉÎªÉóºË¡¢Î´ÉóºË×´Ì¬
+	 * æ‰¹é‡ä¿®æ”¹å…¬å‘ŠçŠ¶æ€ ä½¿å…¶æˆä¸ºå®¡æ ¸ã€æœªå®¡æ ¸çŠ¶æ€
 	 */
 	public function public_approval($aid = 0) {
 		if((!isset($_POST['aid']) || empty($_POST['aid'])) && !$aid) {
@@ -119,7 +119,7 @@ class admin_announce extends admin {
 	}
 	
 	/**
-	 * ÅúÁ¿É¾³ı¹«¸æ
+	 * æ‰¹é‡åˆ é™¤å…¬å‘Š
 	 */
 	public function delete($aid = 0) {
 		if((!isset($_POST['aid']) || empty($_POST['aid'])) && !$aid) {
@@ -136,10 +136,10 @@ class admin_announce extends admin {
 	}
 	
 	/**
-	 * ÑéÖ¤±íµ¥Êı¾İ
-	 * @param  		array 		$data ±íµ¥Êı×éÊı¾İ
-	 * @param  		string 		$a µ±±íµ¥ÎªÌí¼ÓÊı¾İÊ±£¬×Ô¶¯²¹ÉÏÈ±Ê§µÄÊı¾İ¡£
-	 * @return 		array 		ÑéÖ¤ºóµÄÊı¾İ
+	 * éªŒè¯è¡¨å•æ•°æ®
+	 * @param  		array 		$data è¡¨å•æ•°ç»„æ•°æ®
+	 * @param  		string 		$a å½“è¡¨å•ä¸ºæ·»åŠ æ•°æ®æ—¶ï¼Œè‡ªåŠ¨è¡¥ä¸Šç¼ºå¤±çš„æ•°æ®ã€‚
+	 * @return 		array 		éªŒè¯åçš„æ•°æ®
 	 */
 	private function check($data = array(), $a = 'add') {
 		if($data['title']=='') showmessage(L('title_cannot_empty'));

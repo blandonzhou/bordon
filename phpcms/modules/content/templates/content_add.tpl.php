@@ -48,7 +48,7 @@ if(is_array($forminfos['senior'])) {
           </div>
         </div>
     </div>
-    <a title="Õ¹¿ªÓë¹Ø±Õ" class="r-close" hidefocus="hidefocus" style="outline-style: none; outline-width: medium;" id="RopenClose" href="javascript:;"><span class="hidden">Õ¹¿ª</span></a>
+    <a title="å±•å¼€ä¸å…³é—­" class="r-close" hidefocus="hidefocus" style="outline-style: none; outline-width: medium;" id="RopenClose" href="javascript:;"><span class="hidden">å±•å¼€</span></a>
     <div class="col-auto">
     	<div class="col-1">
         	<div class="content pad-6">
@@ -101,7 +101,7 @@ if(is_array($forminfos['base'])) {
 </html>
 <script type="text/javascript"> 
 <!--
-//Ö»ÄÜ·Åµ½×îÏÂÃæ
+//åªèƒ½æ”¾åˆ°æœ€ä¸‹é¢
 var openClose = $("#RopenClose"), rh = $(".addContent .col-auto").height(),colRight = $(".addContent .col-right"),valClose = getcookie('openClose');
 $(function(){
 	if(valClose==1){
@@ -121,7 +121,7 @@ $(function(){
 	<?php echo $formValidator;?>
 	
 /*
- * ¼ÓÔØ½ûÓÃÍâ±ßÁ´½Ó
+ * åŠ è½½ç¦ç”¨å¤–è¾¹é“¾æ¥
  */
 
 	$('#linkurl').attr('disabled',true);

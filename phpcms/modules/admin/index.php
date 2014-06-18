@@ -18,7 +18,7 @@ class index extends admin {
 		$site = pc_base::load_app_class('sites');
 		$sitelist = $site->get_list($_SESSION['roleid']);
 		$currentsite = $this->get_siteinfo(param::get_cookie('siteid'));
-		/*¹ÜÀíÔ±ÊÕ²ØÀ¸*/
+		/*ç®¡ç†å‘˜æ”¶è—æ */
 		$adminpanel = $this->panel_db->select(array('userid'=>$userid), "*",20 , 'datetime');
 		$site_model = param::get_cookie('site_model');
 		include $this->admin_tpl('index');
@@ -27,7 +27,7 @@ class index extends admin {
 	public function login() {
 		if(isset($_GET['dosubmit'])) {
 			
-			//²»Îª¿ÚÁî¿¨ÑéÖ¤
+			//ä¸ä¸ºå£ä»¤å¡éªŒè¯
 			if (!isset($_GET['card'])) {
 				$username = isset($_POST['username']) ? trim($_POST['username']) : showmessage(L('nameerror'),HTTP_REFERER);
 				$code = isset($_POST['code']) && trim($_POST['code']) ? trim($_POST['code']) : showmessage(L('input_code'), HTTP_REFERER);
@@ -35,14 +35,14 @@ class index extends admin {
 					$_SESSION['code'] = '';
 					showmessage(L('code_error'), HTTP_REFERER);
 				}
-			} else { //¿ÚÁî¿¨ÑéÖ¤
+			} else { //å£ä»¤å¡éªŒè¯
 				if (!isset($_SESSION['card_verif']) || $_SESSION['card_verif'] != 1) {
 					showmessage(L('your_password_card_is_not_validate'), '?m=admin&c=index&a=public_card');
 				}
 				$username = $_SESSION['card_username'] ? $_SESSION['card_username'] :  showmessage(L('nameerror'),HTTP_REFERER);
 			}
 			
-			//ÃÜÂë´íÎóÊ£ÓàÖØÊÔ´ÎÊı
+			//å¯†ç é”™è¯¯å‰©ä½™é‡è¯•æ¬¡æ•°
 			$this->times_db = pc_base::load_model('times_model');
 			$rtime = $this->times_db->get_one(array('username'=>$username,'isadmin'=>1));
 			$maxloginfailedtimes = getcache('common','commons');
@@ -52,7 +52,7 @@ class index extends admin {
 				$minute = 60-floor((SYS_TIME-$rtime['logintime'])/60);
 				if($minute>0) showmessage(L('wait_1_hour',array('minute'=>$minute)));
 			}
-			//²éÑ¯ÕÊºÅ
+			//æŸ¥è¯¢å¸å·
 			$r = $this->db->get_one(array('username'=>$username));
 			if(!$r) showmessage(L('user_not_exist'),'?m=admin&c=index&a=login');
 			$password = md5(md5(trim((!isset($_GET['card']) ? $_POST['password'] : $_SESSION['card_password']))).$r['encrypt']);
@@ -71,13 +71,13 @@ class index extends admin {
 			}
 			$this->times_db->delete(array('username'=>$username));
 			
-			//²é¿´ÊÇ·ñÊ¹ÓÃ¿ÚÁî¿¨
+			//æŸ¥çœ‹æ˜¯å¦ä½¿ç”¨å£ä»¤å¡
 			if (!isset($_GET['card']) && $r['card'] && pc_base::load_config('system', 'safe_card') == 1) {
 				$_SESSION['card_username'] = $username;
 				$_SESSION['card_password'] = $_POST['password'];
 				header("location:?m=admin&c=index&a=public_card");
 				exit;
-			} elseif (isset($_GET['card']) && pc_base::load_config('system', 'safe_card') == 1 && $r['card']) {//¶Ô¿ÚÁî¿¨½øĞĞÑéÖ¤
+			} elseif (isset($_GET['card']) && pc_base::load_config('system', 'safe_card') == 1 && $r['card']) {//å¯¹å£ä»¤å¡è¿›è¡ŒéªŒè¯
 				isset($_SESSION['card_username']) ? $_SESSION['card_username'] = '' : '';
 				isset($_SESSION['card_password']) ? $_SESSION['card_password'] = '' : '';
 				isset($_SESSION['card_password']) ? $_SESSION['card_verif'] = '' : '';
@@ -97,7 +97,7 @@ class index extends admin {
 			param::set_cookie('admin_email', $r['email'],$cookie_time);
 			param::set_cookie('sys_lang', $r['lang'],$cookie_time);
 			showmessage(L('login_success'),'?m=admin&c=index');
-			//Í¬²½µÇÂ½vms,ÏÈ¼ì²éÊÇ·ñÆôÓÃÁËvms
+			//åŒæ­¥ç™»é™†vms,å…ˆæ£€æŸ¥æ˜¯å¦å¯ç”¨äº†vms
 			$video_setting = getcache('video', 'video');
 			if ($video_setting['sn'] && $video_setting['skey']) {
 				$vmsapi = pc_base::load_app_class('ku6api', 'video');
@@ -131,14 +131,14 @@ class index extends admin {
 		param::set_cookie('admin_username','');
 		param::set_cookie('userid',0);
 		
-		//ÍË³öphpsso
+		//é€€å‡ºphpsso
 		$phpsso_api_url = pc_base::load_config('system', 'phpsso_api_url');
 		$phpsso_logout = '<script type="text/javascript" src="'.$phpsso_api_url.'/api.php?op=logout" reload="1"></script>';
 		
 		showmessage(L('logout_success').$phpsso_logout,'?m=admin&c=index&a=login');
 	}
 	
-	//×ó²à²Ëµ¥
+	//å·¦ä¾§èœå•
 	public function public_menu_left() {
 		$menuid = intval($_GET['menuid']);
 		$datas = admin::admin_menu($menuid);
@@ -156,14 +156,14 @@ class index extends admin {
 		}
 		
 	}
-	//µ±Ç°Î»ÖÃ
+	//å½“å‰ä½ç½®
 	public function public_current_pos() {
 		echo admin::current_pos($_GET['menuid']);
 		exit;
 	}
 	
 	/**
-	 * ÉèÖÃÕ¾µãID COOKIE
+	 * è®¾ç½®ç«™ç‚¹ID COOKIE
 	 */
 	public function public_set_siteid() {
 		$siteid = isset($_GET['siteid']) && intval($_GET['siteid']) ? intval($_GET['siteid']) : exit('0'); 
@@ -210,7 +210,7 @@ class index extends admin {
 		$sysinfo = get_sysinfo();
 		$sysinfo['mysqlv'] = mysql_get_server_info();
 		$show_header = $show_pc_hash = 1;
-		/*¼ì²â¿ò¼ÜÄ¿Â¼¿ÉĞ´ĞÔ*/
+		/*æ£€æµ‹æ¡†æ¶ç›®å½•å¯å†™æ€§*/
 		$pc_writeable = is_writable(PC_PATH.'base.php');
 		$common_cache = getcache('common','commons');
 		$logsize_warning = errorlog_size() > $common_cache['errorlog_size'] ? '1' : '0';
@@ -226,21 +226,21 @@ class index extends admin {
 		system_information($data);
 	}
 	/**
-	 * Î¬³Ö session µÇÂ½×´Ì¬
+	 * ç»´æŒ session ç™»é™†çŠ¶æ€
 	 */
 	public function public_session_life() {
 		$userid = $_SESSION['userid'];
 		return true;
 	}
 	/**
-	 * ËøÆÁ
+	 * é”å±
 	 */
 	public function public_lock_screen() {
 		$_SESSION['lock_screen'] = 1;
 	}
 	public function public_login_screenlock() {
 		if(empty($_GET['lock_password'])) showmessage(L('password_can_not_be_empty'));
-		//ÃÜÂë´íÎóÊ£ÓàÖØÊÔ´ÎÊı
+		//å¯†ç é”™è¯¯å‰©ä½™é‡è¯•æ¬¡æ•°
 		$this->times_db = pc_base::load_model('times_model');
 		$username = param::get_cookie('admin_username');
 		$maxloginfailedtimes = getcache('common','commons');
@@ -251,7 +251,7 @@ class index extends admin {
 			$minute = 60-floor((SYS_TIME-$rtime['logintime'])/60);
 			exit('3');
 		}
-		//²éÑ¯ÕÊºÅ
+		//æŸ¥è¯¢å¸å·
 		$r = $this->db->get_one(array('userid'=>$_SESSION['userid']));
 		$password = md5(md5($_GET['lock_password']).$r['encrypt']);
 		if($r['password'] != $password) {
@@ -263,14 +263,14 @@ class index extends admin {
 				$this->times_db->insert(array('username'=>$username,'ip'=>$ip,'isadmin'=>1,'logintime'=>SYS_TIME,'times'=>1));
 				$times = $maxloginfailedtimes;
 			}
-			exit('2|'.$times);//ÃÜÂë´íÎó
+			exit('2|'.$times);//å¯†ç é”™è¯¯
 		}
 		$this->times_db->delete(array('username'=>$username));
 		$_SESSION['lock_screen'] = 0;
 		exit('1');
 	}
 	
-	//ºóÌ¨Õ¾µãµØÍ¼
+	//åå°ç«™ç‚¹åœ°å›¾
 	public function public_map() {
 		 $array = admin::admin_menu(0);
 		 $menu = array();
@@ -284,10 +284,10 @@ class index extends admin {
 	
 	/**
 	 * 
-	 * ¶ÁÈ¡Ê¢´ó½Ó¿Û»ñÈ¡appidºÍsecretkey
+	 * è¯»å–ç››å¤§æ¥æ‰£è·å–appidå’Œsecretkey
 	 */
 	public function public_snda_status() {
-		//ÒıÈëÊ¢´ó½Ó¿Ú
+		//å¼•å…¥ç››å¤§æ¥å£
 		if(!strstr(pc_base::load_config('snda','snda_status'), '|')) {
 			$this->site_db = pc_base::load_model('site_model');
 			$uuid_arr = $this->site_db->get_one(array('siteid'=>1), 'uuid');
@@ -306,7 +306,7 @@ class index extends admin {
 	}
 
 	/**
-	 * @ÉèÖÃÍøÕ¾Ä£Ê½ ÉèÖÃÁËÄ£Ê½ºó£¬ºóÌ¨½ö³öÏÖÔÚ´ËÄ£Ê½ÖĞµÄ²Ëµ¥
+	 * @è®¾ç½®ç½‘ç«™æ¨¡å¼ è®¾ç½®äº†æ¨¡å¼åï¼Œåå°ä»…å‡ºç°åœ¨æ­¤æ¨¡å¼ä¸­çš„èœå•
 	 */
 	public function public_set_model() {
 		$model = $_GET['site_model'];

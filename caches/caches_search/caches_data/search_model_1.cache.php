@@ -3,43 +3,43 @@ return array (
   12 => 
   array (
     'typeid' => '54',
-    'name' => '专辑',
+    'name' => '涓撹緫',
     'sort' => '0',
   ),
   14 => 
   array (
     'typeid' => '57',
-    'name' => '房产信息',
+    'name' => '鎴夸骇淇℃伅',
     'sort' => '0',
   ),
   15 => 
   array (
     'typeid' => '58',
-    'name' => '测试模型',
+    'name' => '娴嬭瘯妯″瀷',
     'sort' => '0',
   ),
   1 => 
   array (
     'typeid' => '1',
-    'name' => '新闻',
+    'name' => '鏂伴椈',
     'sort' => '1',
   ),
   3 => 
   array (
     'typeid' => '3',
-    'name' => '图片',
+    'name' => '鍥剧墖',
     'sort' => '2',
   ),
   2 => 
   array (
     'typeid' => '2',
-    'name' => '下载',
+    'name' => '涓嬭浇',
     'sort' => '3',
   ),
   'special' => 
   array (
     'typeid' => '52',
-    'name' => '专题',
+    'name' => '涓撻',
   ),
 );
 ?>

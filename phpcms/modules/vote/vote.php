@@ -19,7 +19,7 @@ class vote extends admin {
  	}
 
 	/*
-	 *ÅĞ¶Ï±êÌâÖØ¸´ºÍÑéÖ¤ 
+	 *åˆ¤æ–­æ ‡é¢˜é‡å¤å’ŒéªŒè¯ 
 	 */
 	public function public_name() {
 		$subject_title = isset($_GET['subject_title']) && trim($_GET['subject_title']) ? (pc_base::load_config('system', 'charset') == 'gbk' ? iconv('utf-8', 'gbk', trim($_GET['subject_title'])) : trim($_GET['subject_title'])) : exit('0');
@@ -39,7 +39,7 @@ class vote extends admin {
 	}
 	
 	/*
-	 *ÅĞ¶Ï½áÊøÊ±¼äÊÇ·ñ±Èµ±Ç°Ê±¼äĞ¡  
+	 *åˆ¤æ–­ç»“æŸæ—¶é—´æ˜¯å¦æ¯”å½“å‰æ—¶é—´å°  
 	 */
 	public function checkdate() {
 		$nowdate = date('Y-m-d',SYS_TIME);
@@ -52,13 +52,13 @@ class vote extends admin {
 	}
 	
 	/**
-	 * Ìí¼ÓÍ¶Æ±
+	 * æ·»åŠ æŠ•ç¥¨
 	 */
 	public function add() {
-		//¶ÁÈ¡ÅäÖÃÎÄ¼ş
+		//è¯»å–é…ç½®æ–‡ä»¶
 		$data = array();
 		$data = $this->M;
-		$siteid = $this->get_siteid();//µ±Ç°Õ¾µã
+		$siteid = $this->get_siteid();//å½“å‰ç«™ç‚¹
 		if(isset($_POST['dosubmit'])) {
 			
 			$_POST['subject']['addtime'] = SYS_TIME;
@@ -66,15 +66,15 @@ class vote extends admin {
 			if(empty($_POST['subject']['subject'])) {
 				showmessage(L('vote_title_noempty'),'?m=vote&c=vote&a=add');
 			}
- 			//¼ÇÂ¼Ñ¡ÏîÌõÊı optionnumber 
+ 			//è®°å½•é€‰é¡¹æ¡æ•° optionnumber 
 			$_POST['subject']['optionnumber'] = count($_POST['option']);
 			$_POST['subject']['template'] = $_POST['vote_subject']['vote_tp_template'];
  			
 			$subjectid = $this->db->insert($_POST['subject'],true);
-			if(!$subjectid) return FALSE; //·µ»ØÍ¶Æ±IDÖµ, ÒÔ±¸ÏÂÃæÌí¼Ó¶ÔÓ¦Ñ¡ÏîÓÃ,²»´æÔÚ·µ»Ø´íÎó
-			//Ìí¼ÓÑ¡Ïî²Ù×÷
+			if(!$subjectid) return FALSE; //è¿”å›æŠ•ç¥¨IDå€¼, ä»¥å¤‡ä¸‹é¢æ·»åŠ å¯¹åº”é€‰é¡¹ç”¨,ä¸å­˜åœ¨è¿”å›é”™è¯¯
+			//æ·»åŠ é€‰é¡¹æ“ä½œ
 			$this->db2->add_options($_POST['option'],$subjectid,$this->get_siteid());
-			//Éú³ÉJSÎÄ¼ş
+			//ç”ŸæˆJSæ–‡ä»¶
 			$this->update_votejs($subjectid);
 			if(isset($_POST['from_api'])&& $_POST['from_api']) {
 				showmessage(L('operation_success'),'?m=vote&c=vote&a=add','100', '',"window.top.$('#voteid').val('".$subjectid."');window.top.art.dialog({id:'addvote'}).close();");
@@ -85,7 +85,7 @@ class vote extends admin {
 			$show_validator = $show_scroll = $show_header = true;
 			pc_base::load_sys_class('form', '', 0);
 			@extract($data[$siteid]);
-			//Ä£°æ
+			//æ¨¡ç‰ˆ
 			pc_base::load_app_func('global', 'admin');
 			$siteid = $this->get_siteid();
 			$template_list = template_list($siteid, 0);
@@ -101,42 +101,42 @@ class vote extends admin {
 	}
 
 	/**
-	 * ±à¼­Í¶Æ±
+	 * ç¼–è¾‘æŠ•ç¥¨
 	 */
 	public function edit() {
 
 		if(isset($_POST['dosubmit'])){
-			//ÑéÖ¤Êı¾İÕıÈ·ĞÔ
+			//éªŒè¯æ•°æ®æ­£ç¡®æ€§
 				$subjectid = intval($_GET['subjectid']);
 				if($subjectid < 1) return false;
 				if(!is_array($_POST['subject']) || empty($_POST['subject'])) return false;
 				if((!$_POST['subject']['subject']) || empty($_POST['subject']['subject'])) return false;
- 				$this->db2->update_options($_POST['option']);//ÏÈ¸üĞÂÒÑÓĞ Í¶Æ±Ñ¡Ïî,ÔÙÌí¼ÓĞÂÔö¼ÓÍ¶Æ±Ñ¡Ïî
+ 				$this->db2->update_options($_POST['option']);//å…ˆæ›´æ–°å·²æœ‰ æŠ•ç¥¨é€‰é¡¹,å†æ·»åŠ æ–°å¢åŠ æŠ•ç¥¨é€‰é¡¹
 				if(is_array($_POST['newoption'])&&!empty($_POST['newoption'])){
-					$siteid = $this->get_siteid();//ĞÂ¼ÓÑ¡ÏîÕ¾µãID
+					$siteid = $this->get_siteid();//æ–°åŠ é€‰é¡¹ç«™ç‚¹ID
 					$this->db2->add_options($_POST['newoption'],$subjectid,$siteid);
 				}
-				//Ä£°æ 
+				//æ¨¡ç‰ˆ 
 				$_POST['subject']['template'] = $_POST['vote_subject']['vote_tp_template'];
 				
 				$_POST['subject']['optionnumber'] = count($_POST['option'])+count($_POST['newoption']);
-	 			$this->db->update($_POST['subject'],array('subjectid'=>$subjectid));//¸üĞÂÍ¶Æ±Ñ¡Ïî×ÜÊı
-				$this->update_votejs($subjectid);//Éú³ÉJSÎÄ¼ş
+	 			$this->db->update($_POST['subject'],array('subjectid'=>$subjectid));//æ›´æ–°æŠ•ç¥¨é€‰é¡¹æ€»æ•°
+				$this->update_votejs($subjectid);//ç”ŸæˆJSæ–‡ä»¶
 				showmessage(L('operation_success'),'?m=vote&c=vote&a=edit','', 'edit');
 			}else{
 				$show_validator = $show_scroll = $show_header = true;
 				pc_base::load_sys_class('form', '', 0);
 				
-				//½â³öÍ¶Æ±ÄÚÈİ
+				//è§£å‡ºæŠ•ç¥¨å†…å®¹
 				$info = $this->db->get_one(array('subjectid'=>$_GET['subjectid']));
 				if(!$info) showmessage(L('operation_success'));
 				extract($info);
 					
-				//½â³öÍ¶Æ±Ñ¡Ïî
+				//è§£å‡ºæŠ•ç¥¨é€‰é¡¹
 				$this->db2 = pc_base::load_model('vote_option_model');
 				$options = $this->db2->get_options($_GET['subjectid']);
 				
-				//Ä£°æ
+				//æ¨¡ç‰ˆ
 				pc_base::load_app_func('global', 'admin');
 				$siteid = $this->get_siteid();
 				$template_list = template_list($siteid, 0);
@@ -153,8 +153,8 @@ class vote extends admin {
 	}
 
 	/**
-	 * É¾³ıÍ¶Æ± 
-	 * @param	intval	$sid	Í¶Æ±µÄID£¬µİ¹éÉ¾³ı
+	 * åˆ é™¤æŠ•ç¥¨ 
+	 * @param	intval	$sid	æŠ•ç¥¨çš„IDï¼Œé€’å½’åˆ é™¤
 	 */
 	public function delete() {
 		if((!isset($_GET['subjectid']) || empty($_GET['subjectid'])) && (!isset($_POST['subjectid']) || empty($_POST['subjectid']))) {
@@ -163,7 +163,7 @@ class vote extends admin {
 				
 			if(is_array($_POST['subjectid'])){
 				foreach($_POST['subjectid'] as $subjectid_arr) {
-					//É¾³ı¶ÔÓ¦Í¶Æ±µÄÑ¡Ïî
+					//åˆ é™¤å¯¹åº”æŠ•ç¥¨çš„é€‰é¡¹
 					$this->db2 = pc_base::load_model('vote_option_model');
 					$this->db2->del_options($subjectid_arr);
 					$this->db->delete(array('subjectid'=>$subjectid_arr));
@@ -172,11 +172,11 @@ class vote extends admin {
 			}else{
 				$subjectid = intval($_GET['subjectid']);
 				if($subjectid < 1) return false;
-				//É¾³ı¶ÔÓ¦Í¶Æ±µÄÑ¡Ïî
+				//åˆ é™¤å¯¹åº”æŠ•ç¥¨çš„é€‰é¡¹
 				$this->db2 = pc_base::load_model('vote_option_model');
 				$this->db2->del_options($subjectid);
 
-				//É¾³ıÍ¶Æ±
+				//åˆ é™¤æŠ•ç¥¨
 				$this->db->delete(array('subjectid'=>$subjectid));
 				$result = $this->db->delete(array('subjectid'=>$subjectid));
 				if($result)
@@ -191,7 +191,7 @@ class vote extends admin {
 		}
 	}
 	/**
-	 * ËµÃ÷:É¾³ı¶ÔÓ¦Í¶Æ±Ñ¡Ïî
+	 * è¯´æ˜:åˆ é™¤å¯¹åº”æŠ•ç¥¨é€‰é¡¹
 	 * @param  $optionid
 	 */
 	public function del_option() {
@@ -205,30 +205,30 @@ class vote extends admin {
 	
 	
 	/**
-	 * Í¶Æ±Ä£¿éÅäÖÃ
+	 * æŠ•ç¥¨æ¨¡å—é…ç½®
 	 */
 	public function setting() {
-		//¶ÁÈ¡ÅäÖÃÎÄ¼ş
+		//è¯»å–é…ç½®æ–‡ä»¶
 		$data = array();
- 		$siteid = $this->get_siteid();//µ±Ç°Õ¾µã 
-		//¸üĞÂÄ£ĞÍÊı¾İ¿â,ÖØÉèsetting Êı¾İ. 
+ 		$siteid = $this->get_siteid();//å½“å‰ç«™ç‚¹ 
+		//æ›´æ–°æ¨¡å‹æ•°æ®åº“,é‡è®¾setting æ•°æ®. 
 		$m_db = pc_base::load_model('module_model');
 		$data = $m_db->select(array('module'=>'vote'));
 		$setting = string2array($data[0]['setting']);
 		$now_seting = $setting[$siteid]; 
  		if(isset($_POST['dosubmit'])) {
-			//¶àÕ¾µã´æ´¢ÅäÖÃÎÄ¼ş
-			$siteid = $this->get_siteid();//µ±Ç°Õ¾µã
+			//å¤šç«™ç‚¹å­˜å‚¨é…ç½®æ–‡ä»¶
+			$siteid = $this->get_siteid();//å½“å‰ç«™ç‚¹
 			$setting[$siteid] = $_POST['setting'];
   			setcache('vote', $setting, 'commons');  
-			//¸üĞÂÄ£ĞÍÊı¾İ¿â,ÖØÉèsetting Êı¾İ. 
+			//æ›´æ–°æ¨¡å‹æ•°æ®åº“,é‡è®¾setting æ•°æ®. 
  			$set = array2string($setting);
 			$m_db->update(array('setting'=>$set), array('module'=>ROUTE_M));
 			showmessage(L('setting_updates_successful'), '?m=vote&c=vote&a=init');
 		} else {
 			@extract($now_seting);
 			pc_base::load_sys_class('form', '', 0);
-			//Ä£°æ
+			//æ¨¡ç‰ˆ
 			pc_base::load_app_func('global', 'admin');
 			$siteid = $this->get_siteid();
 			$template_list = template_list($siteid, 0);
@@ -244,9 +244,9 @@ class vote extends admin {
 
 
 	/**
-	 * ¼ì²é±íµ¥Êı¾İ
-	 * @param	Array	$data	±íµ¥´«µİ¹ıÀ´µÄÊı×é
-	 * @return Array	¼ì²éºóµÄÊı×é
+	 * æ£€æŸ¥è¡¨å•æ•°æ®
+	 * @param	Array	$data	è¡¨å•ä¼ é€’è¿‡æ¥çš„æ•°ç»„
+	 * @return Array	æ£€æŸ¥åçš„æ•°ç»„
 	 */
 	private function check($data = array()) {
 		if($data['name'] == '') showmessage(L('name_plates_not_empty'));
@@ -264,7 +264,7 @@ class vote extends admin {
 	}
 		
 	/**
-	 * Í¶Æ±½á¹ûÍ³¼Æ
+	 * æŠ•ç¥¨ç»“æœç»Ÿè®¡
 	 */
 	public function statistics() {
 			$subjectid = intval($_GET['subjectid']);
@@ -272,15 +272,15 @@ class vote extends admin {
 				showmessage(L('illegal_operation'));
 			}
 			$show_validator = $show_scroll = $show_header = true;
- 			//»ñÈ¡Í¶Æ±ĞÅÏ¢
-			$sdb = pc_base::load_model('vote_data_model'); //¼ÓÔØÍ¶Æ±Í³¼ÆµÄÊı¾İÄ£ĞÍ
+ 			//è·å–æŠ•ç¥¨ä¿¡æ¯
+			$sdb = pc_base::load_model('vote_data_model'); //åŠ è½½æŠ•ç¥¨ç»Ÿè®¡çš„æ•°æ®æ¨¡å‹
         	$infos = $sdb->select("subjectid = $subjectid",'data');	
-          	//ĞÂ½¨Ò»Êı×éÓÃÀ´´æĞÂ×éºÏÊı¾İ
+          	//æ–°å»ºä¸€æ•°ç»„ç”¨æ¥å­˜æ–°ç»„åˆæ•°æ®
         	$total = 0;
         	$vote_data =array();
-			$vote_data['total'] = 0 ;//ËùÓĞÍ¶Æ±Ñ¡Ïî×ÜÊı
-			$vote_data['votes'] = 0 ;//Í¶Æ±ÈËÊı
-			//Ñ­»·Ã¿¸ö»áÔ±µÄÍ¶Æ±¼ÇÂ¼
+			$vote_data['total'] = 0 ;//æ‰€æœ‰æŠ•ç¥¨é€‰é¡¹æ€»æ•°
+			$vote_data['votes'] = 0 ;//æŠ•ç¥¨äººæ•°
+			//å¾ªç¯æ¯ä¸ªä¼šå‘˜çš„æŠ•ç¥¨è®°å½•
 			foreach($infos as $subjectid_arr) {
 					extract($subjectid_arr);
  					$arr = string2array($data);
@@ -291,20 +291,20 @@ class vote extends admin {
 					$vote_data['votes']++ ;
 			}
  			$vote_data['total'] = $total ;
- 			//È¡Í¶Æ±Ñ¡Ïî
+ 			//å–æŠ•ç¥¨é€‰é¡¹
 			$options = $this->db2->get_options($subjectid);	
 			include $this->admin_tpl('vote_statistics');	
 	}
 	
 	/**
-	 * Í¶Æ±»áÔ±Í³¼Æ
+	 * æŠ•ç¥¨ä¼šå‘˜ç»Ÿè®¡
 	 */
 	public function statistics_userlist() {
 			$subjectid = $_GET['subjectid'];
 			if(empty($subjectid)) return false;
  			$show_validator = $show_scroll = $show_header = true;
 			$where = array ("subjectid" => $subjectid);
-			$sdb = pc_base::load_model('vote_data_model'); //µ÷ÓÃÍ³¼ÆµÄÊı¾İÄ£ĞÍ
+			$sdb = pc_base::load_model('vote_data_model'); //è°ƒç”¨ç»Ÿè®¡çš„æ•°æ®æ¨¡å‹
  			$page = isset($_GET['page']) && intval($_GET['page']) ? intval($_GET['page']) : 1;
 			$infos = $sdb->listinfo($where,'time DESC',$page,'7');
 			$pages = $sdb->pages;
@@ -312,16 +312,16 @@ class vote extends admin {
 	}
 	
 	/**
-	 * ËµÃ÷:Éú³ÉJSÍ¶Æ±´úÂë
-	 * @param $subjectid Í¶Æ±ID
+	 * è¯´æ˜:ç”ŸæˆJSæŠ•ç¥¨ä»£ç 
+	 * @param $subjectid æŠ•ç¥¨ID
 	 */
 	function update_votejs($subjectid){
  			if(!isset($subjectid)||intval($subjectid) < 1) return false;
-			//½â³öÍ¶Æ±ÄÚÈİ
+			//è§£å‡ºæŠ•ç¥¨å†…å®¹
 			$info = $this->db->get_subject($subjectid);
 			if(!$info) showmessage(L('not_vote'));
 			extract($info);
- 			//½â³öÍ¶Æ±Ñ¡Ïî
+ 			//è§£å‡ºæŠ•ç¥¨é€‰é¡¹
 			$options = $this->db2->get_options($subjectid);
  			ob_start();
  			include template('vote', $template);
@@ -332,7 +332,7 @@ class vote extends admin {
 	}
 	
 	/**
-	 * ¸üĞÂjs
+	 * æ›´æ–°js
 	 */
 	public function create_js() {
  		$infos = $this->db->select(array('siteid'=>$this->get_siteid()), '*');
@@ -345,9 +345,9 @@ class vote extends admin {
 	}
 	
 	/**
-	 * ËµÃ÷:¶Ô×Ö·û´®½øĞĞ´¦Àí
-	 * @param $string ´ı´¦ÀíµÄ×Ö·û´®
-	 * @param $isjs ÊÇ·ñÉú³ÉJS´úÂë
+	 * è¯´æ˜:å¯¹å­—ç¬¦ä¸²è¿›è¡Œå¤„ç†
+	 * @param $string å¾…å¤„ç†çš„å­—ç¬¦ä¸²
+	 * @param $isjs æ˜¯å¦ç”ŸæˆJSä»£ç 
 	 */
 	function format_js($string, $isjs = 1){
 		$string = addslashes(str_replace(array("\r", "\n"), array('', ''), $string));
@@ -355,7 +355,7 @@ class vote extends admin {
 	}
 	
 	/**
-	 * Í¶Æ±µ÷ÓÃ´úÂë
+	 * æŠ•ç¥¨è°ƒç”¨ä»£ç 
 	 * 
 	 */ 
  	public function public_call() {
@@ -365,7 +365,7 @@ class vote extends admin {
 		include $this->admin_tpl('vote_call');
 	}
 	/**
-	 * ĞÅÏ¢Ñ¡ÔñÍ¶Æ±½Ó¿Ú
+	 * ä¿¡æ¯é€‰æ‹©æŠ•ç¥¨æ¥å£
 	 */
 	public function public_get_votelist() {
 		$infos = $this->db->listinfo(array('siteid'=>$this->get_siteid()),'subjectid DESC',$page,'10');

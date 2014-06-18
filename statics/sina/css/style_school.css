@@ -7,7 +7,7 @@ ul, ol, li { list-style: none; }
 select, input { vertical-align: middle; }
 select, input, textarea { font-size: 12px; margin: 0; }
 table { border-collapse: collapse; }
-body { color: #686868; padding: 5px 0; font: 12px/20px "ÂÆ?‰Ω?"; background: #f7f7f7 url(../images/pubClass2012_yan_rpX.png) 0 0 repeat-x; }
+body { color: #686868; padding: 5px 0; font: 12px/20px "ÁÄπ?Êµ£?"; background: #f7f7f7 url(../images/pubClass2012_yan_rpX.png) 0 0 repeat-x; }
 .clearfix:after { content: "."; display: block; height: 0; visibility: hidden; clear: both; }
 .clearfix { zoom: 1; }
 .clearit { clear: both; height: 10px; font-size: 0; overflow: hidden; zoom: 1; }
@@ -30,7 +30,7 @@ a.fblued, .fblued a:link { color: #396682; }
 .noBg { background: none repeat scroll 0 0 transparent !important; }
 .lf { float: left }
 .rt { float: right; }
-/* ÂØºË?? */
+/* ÁÄµËâ∞?? */
 
 /*common bg*/
 
@@ -38,12 +38,12 @@ a.fblued, .fblued a:link { color: #396682; }
 .tt, .sub01_t span, .best, .b2t { background: url(../images/pubClass2012_yan_tt.png) 999px 999px no-repeat; outline: none; }
 .sub02_c, .sub02_t { background: url(../images/pubClass2012_yan_rpX2.png) repeat-x scroll 0 0 transparent; }
 .Lname { background-position: 100% -135px; padding-right: 8px; margin-right: 5px; }
-.VIP_blue { background-position: 100% -465px; padding-right: 15px }/*?∫Ê??ËÆ§Ë??*/
-.VIP_red { background-position: 100% -440px; padding-right: 15px }/*‰∏?‰∫∫Ë?§Ë??*/
+.VIP_blue { background-position: 100% -465px; padding-right: 15px }/*?ÁÉò??ÁíÅ„Çà??*/
+.VIP_red { background-position: 100% -440px; padding-right: 15px }/*Ê∂ì?ÊµúÈ∏ø?„Çà??*/
 .payAtt { background-position: 0 -400px; height: 25px; line-height: 99px; display: inline-block; margin-right: 5px; outline: medium none; overflow: hidden; width: 73px; }
 .b2t { background-position: -180px -340px; display: block; width: 118px; height: 31px; line-height: 999px; overflow: hidden; zoom: 1; float: right; }
 .btn_play { width: 77px; height: 31px; line-height: 9999px; overflow: hidden; zoom: 1; background-position: -120px -360px; display: block; float: right; }
-/*‰∫?Á∫ßÂ?ºË??ÂØ? Start*/
+/*Êµú?Áªæ—É?Ëâ∞??ÁÄµ? Start*/
 
 .menu { overflow: hidden; zoom: 1; }
 .menu_nav { position: relative; width: 950px; margin: 0 auto; }
@@ -73,9 +73,9 @@ a.fblued, .fblued a:link { color: #396682; }
 .search .stext { background-position: 0 -200px; padding: 0 5px 0 20px; line-height: 22px; height: 22px; width: 120px; display: block; float: left; }
 .search .sinput { background: transparent; line-height: 22px; height: 22px; width: 120px; color: #999999; font-size: 12px; border: none; }
 .search .sbtn { float: left; background-position: -153px -200px; width: 58px; height: 22px; border: none; }
-/*‰∫?Á∫ßÂ?ºË??ÂØ?End*/
+/*Êµú?Áªæ—É?Ëâ∞??ÁÄµ?End*/
 
-/* È°µÈ?¢Â?ºË?? Âº?Âß? */
+/* Ê§§Áî∏?„à†?Ëâ∞?? ÂØÆ?ÊøÆ? */
 
 .secondaryHeader { height: 33px; overflow: hidden; color: #000; font-size: 12px; font-weight: 100; padding-bottom: 2px; width: 950px; margin: 0 auto; }
 .secondaryHeader a, .secondaryHeader a:visited { color: #000; text-decoration: none; }
@@ -100,8 +100,8 @@ height: 31px; }
 .part_school .p_l { background: none repeat scroll 0 0 #EAEAEA; border: 1px solid #AEAEAE; width: 688px; float: left; }
 .part_school .p_r { width: 248px; border: 1px #e5e5e5 solid; float: right; background: #fff; height: 349px; }
 .part_school .cont { border: 1px solid #FFFFFF; font-size: 14px; padding: 15px 12px; }
-/* ==?øÂ??????ÂÆ?‰π?=== */
-/*??È¢?*/
+/* ==?ÂûÆ??????ÁÄπ?Ê∂î?=== */
+/*??Ê£∞?*/
 
 .tit01 { background: url(../images/pubClass2012_yan_rpX2.png) 0 0 repeat-x; height: 30px; overflow: hidden; zoom: 1; padding-top: 10px; }
 .tit01 h2 { float: left; }
@@ -109,7 +109,7 @@ height: 31px; }
 .tit01 .tt { display: block; width: 145px; line-height: 999px; overflow: hidden; zoom: 1; height: 40px; }
 .tit01 .wbtj { background-position: 0 -340px; height: 25px; }
 .tit02 { height: 40px; border-bottom: 3px solid #eaeaea; }
-.tit02 h2 { width: 80px; float: left; height: 40px; line-height: 37px; border-bottom: 3px solid #439be1; font-size: 24px; font-family: "Èª?‰Ω?"; margin-bottom: -3px; position: relative; }
+.tit02 h2 { width: 80px; float: left; height: 40px; line-height: 37px; border-bottom: 3px solid #439be1; font-size: 24px; font-family: "Ê¶õ?Êµ£?"; margin-bottom: -3px; position: relative; }
 .tit03 { margin-left: 8px; margin-top: -16px; position: relative; height: 50px; }
 .tit03 h2 { overflow: hidden; zoom: 1; }
 .tit03 h2 .tt { width: 200px; height: 37px; line-height: 999px; overflow: hidden; zoom: 1; display: block; overflow: hidden; zoom: 1; float: left; }
@@ -122,7 +122,7 @@ height: 31px; }
 .tit03 .show1 { background-position: -60px -360px; }
 .tit03 .show2_cur { background-position: -88px -360px; }
 .tit03 .show2 { background-position: -28px -360px; }
-.tit04 { background-position: -200px -400px; _background-position: -200px -405px; padding-left: 20px; font-family: "Âæ?ËΩ???Èª?", "Èª?‰Ω?"; font-size: 18px; color: #003366; height: 25px; line-height: 25px; }
+.tit04 { background-position: -200px -400px; _background-position: -200px -405px; padding-left: 20px; font-family: "ÂØ∞?Êùû???Ê¶õ?", "Ê¶õ?Êµ£?"; font-size: 18px; color: #003366; height: 25px; line-height: 25px; }
 .tit04 a:link, .tit04 a:visited { color: #003366; }
 .tit04 a:hover { color: #0673a5; }
 .tit05 h2 { overflow: hidden; zoom: 1; height: 40px; }
@@ -134,13 +134,13 @@ height: 31px; }
 .tit06 h2 a { display: inline-block; width: 40px; text-align: center; font-style: normal; font-size: 14px; }
 .tit06 .rt { margin-top: -30px; height: 30px; }/*20120906 moidfy yan*/
 .tit06 .payAtt { background-position: 0 -520px; float: left }
-.tit06 .sinaWb { background-position: -200px 3px; padding: 0 10px 0 30px; height: 25px; line-height: 25px; font-size: 16px; font-family: "Âæ?ËΩ???Èª?"; float: left; text-decoration: underline; }
-/*Â∑??æÂ?≥Ê??*/
+.tit06 .sinaWb { background-position: -200px 3px; padding: 0 10px 0 30px; height: 25px; line-height: 25px; font-size: 16px; font-family: "ÂØ∞?Êùû???Ê¶õ?"; float: left; text-decoration: underline; }
+/*ÂÆ∏??ÊÉß?Ëô´??*/
 
 .pictxt { overflow: hidden; zoom: 1 }
 .pictxt .pic { float: left; padding-right: 8px; _padding-right: 6px; }
 .pictxt .txt h2 { font-size: 14px; }
-/*Ëß?È¢?*/
+/*Áëô?Ê£∞?*/
 
 .vido { float: left; position: relative; display: inline; padding: 10px 0; }
 .vido img { display: block; background-color: #fff; }
@@ -201,13 +201,13 @@ height: 18px; line-height: 999px; overflow: hidden; zoom: 1; }
 .blk07 .txt a:link, .blk07 .txt a:visited { color: #fff; }
 .blk07 .txt a:hover { color: #fff; text-decoration: underline; }
 .blk07 h4, .blk07 p { padding-left: 10px; font-size: 12px; }
-.blk07 h4 { font-size: 18px; font-family: "Âæ?ËΩ???Èª?", "Èª?‰Ω?"; height: 30px; line-height: 30px; }
+.blk07 h4 { font-size: 18px; font-family: "ÂØ∞?Êùû???Ê¶õ?", "Ê¶õ?Êµ£?"; height: 30px; line-height: 30px; }
 .blk07 .vidoPlay { width: 76px; height: 41px; background: url(../images/pubClass2012_yan_play.png) 0 0 no-repeat; _background: none; _FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/pubClass2012_yan_play.png')display:block;
 float: right; line-height: 999px; margin-right: 10px; outline: none; overflow: hidden; zoom: 1; }
 .blk08 { padding: 10px; }
 .blk08 .pic img { border: 1px solid #dadada; padding: 5px; }
 .blk08 .txt { font-size: 13px; line-height: 25px; }
-/*??Á≠?*/
+/*??Áªõ?*/
 
 .sub02 { border: 1px solid #e9e9e9; background: #ffffff; }
 .sub02_c { background-position: 0 -57px }
@@ -216,15 +216,15 @@ float: right; line-height: 999px; margin-right: 10px; outline: none; overflow: h
 .sub02_t .best { display: block; width: 150px; height: 20px; background-position: 0 -160px; line-height: 999px; overflow: hidden; zoom: 1; }
 .sub02_t span { display: block; margin-top: 15px; width: 24px; height: 22px; text-align: center; color: #6b6b6b; text-align: center; float: left; background-position: 0 -160px; padding-right: 3px; cursor: pointer; }
 .sub02_t span.selected { color: #ce1714; background-position: -27px -160px; }
-/*??Ë°?*/
+/*??Áêõ?*/
 
 .list02 { padding: 10px; }
 .list02 li { background-position: -200px -154px; line-height: 29px; height: 29px; }
 .list02 li em { padding: 0 15px 0 5px; font-style: normal; color: #7b7979; }
 .list02 li .data { display: block; margin-top: -29px; text-align: right; height: 29px; color: #ec0000; }
-/*??È°?*/
+/*??Ê§§?*/
 
-.page { font-family: "ÂÆ?‰Ω?", sans-serif; text-align: center; font-size: 12px; line-height: 20px; color: #999; }
+.page { font-family: "ÁÄπ?Êµ£?", sans-serif; text-align: center; font-size: 12px; line-height: 20px; color: #999; }
 .page span, .page a { display: inline-block; padding: 0px 8px; background: #fff; margin: 0 -2px }
 .page a { border: 1px #9aafe5 solid; color: #3568b9; text-decoration: none; }
 .page a { border: 1px #ddd solid; color: #999; }
@@ -233,6 +233,7 @@ float: right; line-height: 999px; margin-right: 10px; outline: none; overflow: h
 .page label { color: #3568b9 }
 .page .btn { height: 17px; border: 1px #9aafe5 solid; vertical-align: top; margin-left: 20px; width: 50px; }
 /*footer*/
-.footer { color: #686868; line-height: 22px; margin: 2em 0; text-align: center; font-family: Arial, Helvetica, sans-serif, "Èª?‰Ω?" }
+.footer { color: #686868; line-height: 22px; margin: 2em 0; text-align: center; font-family: Arial, Helvetica, sans-serif, "Ê¶õ?Êµ£?" }
 
 /* ================= commen define ================ */
+

@@ -2,16 +2,16 @@
 <body>
 <div style='position:absolute;top:0;left:0;width:0;height:0;visibility:hidden'><img width=0 height=0 src='images/a.gif' border='0' alt='' /></div>
 
-<!-- ¶þ¼¶µ¼º½ begin -->
+<!-- äºŒçº§å¯¼èˆª begin -->
 
 <div class="secondaryHeader">
   <div class="sHBorder">
-    <div class="sHLogo"><span><a href="http://www.moe.gov.cn/"><img src="<?php echo APP_PATH;?>statics/sina/images/standardl2nav_sina_new.gif" alt="½ÌÓý²¿"></a></span></div>
+    <div class="sHLogo"><span><a href="http://www.moe.gov.cn/"><img src="<?php echo APP_PATH;?>statics/sina/images/standardl2nav_sina_new.gif" alt="æ•™è‚²éƒ¨"></a></span></div>
     <div class="sHLinks"><script type="text/javascript">document.write('<iframe src="<?php echo APP_PATH;?>index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid=<?php echo get_siteid();?>" allowTransparency="true"  width="300" height="24" frameborder="0" scrolling="no"></iframe>')</script></div>
   </div>
 </div>
 
-<!-- ¶þ¼¶µ¼º½ end --> 
+<!-- äºŒçº§å¯¼èˆª end --> 
 
 <!-- logo begin -->
 
@@ -21,14 +21,14 @@
 
 <!-- logo  end --> 
 
-<!-- Ê×Ò³µ¼º½ begin-->
+<!-- é¦–é¡µå¯¼èˆª begin-->
 
 <div id="menu" class="menu">
   <div class="menu_nav">
     <ul class="menu_t" id="menu_t">
-<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=6084e3661eb0b1bdd354eec87acf79ce&action=category&catid=51&num=3&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'51','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'3',));}?>
+<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=6084e3661eb0b1bdd354eec87acf79ce&action=category&catid=51&num=3&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'51','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'3',));}?>
 <?php $i = 2?>
-			 <li id="menu1"><a href="<?php echo siteurl($siteid);?>" class="mt t1" hidefocus>Ê×Ò³</a></li>
+			 <li id="menu1"><a href="<?php echo siteurl($siteid);?>" class="mt t1" hidefocus>é¦–é¡µ</a></li>
 			<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
 		  <li id="menu<?php echo $i;?>" ><a href="javascript:void(0)"  class="mt t2" hidefocus><?php echo $r['catname'];?></a></li>
 <?php $i++?>		
@@ -46,7 +46,7 @@
 	
       <form target="_blank" name="frm" method="get" action="<?php echo APP_PATH;?>index.php" class="search" id="unify_search">
         <span class="stext">
-        <input type="text" maxlength="128" size="32" onfocus="javascript:if(this.value=='ÇëÊäÈëËÑË÷´Ê') this.value = ''" onblur="javascript:if(this.value=='') this.value = 'ÇëÊäÈëËÑË÷´Ê'" value="ÇëÊäÈëËÑË÷´Ê" name="q" class="sinput" id="q" title="¿Î³ÌÃû">
+        <input type="text" maxlength="128" size="32" onfocus="javascript:if(this.value=='è¯·è¾“å…¥æœç´¢è¯') this.value = ''" onblur="javascript:if(this.value=='') this.value = 'è¯·è¾“å…¥æœç´¢è¯'" value="è¯·è¾“å…¥æœç´¢è¯" name="q" class="sinput" id="q" title="è¯¾ç¨‹å">
         </span>
 		
 				<input type="hidden" name="m" value="search"/>
@@ -62,12 +62,12 @@
   <div class="menu_c_bg">
     <div class="menu_c  clearfix" id="menu_c2" style="display:none;">
       <div class="className fchg1">
-<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=9eda7de8c2f4a6ecf7306165014a73c1&action=category&catid=9&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'9','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'20',));}?>			
+<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=9eda7de8c2f4a6ecf7306165014a73c1&action=category&catid=9&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'9','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'20',));}?>			
 	<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
 	
-		 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=421cd2b0c0c6ce3e3e0c7a4551f5da43&action=lists&catid=%24r%5Bcatid%5D&order=updatetime+DESC&return=info\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$info = $content_tag->lists(array('catid'=>$r[catid],'order'=>'updatetime DESC','limit'=>'20',));}?>  
+		 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=421cd2b0c0c6ce3e3e0c7a4551f5da43&action=lists&catid=%24r%5Bcatid%5D&order=updatetime+DESC&return=info\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$info = $content_tag->lists(array('catid'=>$r[catid],'order'=>'updatetime DESC','limit'=>'20',));}?>  
 			<?php $cont = count(array_filter($info))?>
-		  <a target="_blank" href="<?php echo $r['url'];?>"><?php echo $r['catname'];?>(¹²<?php echo $cont;?>¼¯)</a> 	
+		  <a target="_blank" href="<?php echo $r['url'];?>"><?php echo $r['catname'];?>(å…±<?php echo $cont;?>é›†)</a> 	
 		  <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 	<?php $n++;}unset($n); ?>        
 <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>	
@@ -75,11 +75,11 @@
     </div>
     <div class="menu_c  clearfix" id="menu_c3" style="display:none;">
       <div class="className fchg1"> 
-<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=cfede6022dbc46ae6800853bc706757d&action=category&catid=10&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'10','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'20',));}?>			
+<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=cfede6022dbc46ae6800853bc706757d&action=category&catid=10&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'10','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'20',));}?>			
 	<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-		  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=1922c916f62b7e52257d2bfe34272431&action=lists&catid=%24r%5Bcatid%5D&order=updatetime+DESC&return=info\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$info = $content_tag->lists(array('catid'=>$r[catid],'order'=>'updatetime DESC','limit'=>'20',));}?>  
+		  <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=1922c916f62b7e52257d2bfe34272431&action=lists&catid=%24r%5Bcatid%5D&order=updatetime+DESC&return=info\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$info = $content_tag->lists(array('catid'=>$r[catid],'order'=>'updatetime DESC','limit'=>'20',));}?>  
 			<?php $cont = count(array_filter($info))?>
-		  <a target="_blank" href="<?php echo $r['url'];?>"><?php echo $r['catname'];?>(¹²<?php echo $cont;?>¼¯)</a> 	
+		  <a target="_blank" href="<?php echo $r['url'];?>"><?php echo $r['catname'];?>(å…±<?php echo $cont;?>é›†)</a> 	
 		  <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 	<?php $n++;}unset($n); ?>
 <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>	
@@ -87,11 +87,11 @@
     </div>
     <div class="menu_c  clearfix" id="menu_c4" style="display:none;">
       <div class="className fchg1"> 
-<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f576f723ff3a371da3437b580aa542aa&action=category&catid=11&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'11','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'20',));}?>			
+<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=f576f723ff3a371da3437b580aa542aa&action=category&catid=11&siteid=%24siteid&order=listorder+ASC\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'category')) {$data = $content_tag->category(array('catid'=>'11','siteid'=>$siteid,'order'=>'listorder ASC','limit'=>'20',));}?>			
 	<?php $n=1;if(is_array($data)) foreach($data AS $r) { ?>
-		 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=1922c916f62b7e52257d2bfe34272431&action=lists&catid=%24r%5Bcatid%5D&order=updatetime+DESC&return=info\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">±à¼­</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$info = $content_tag->lists(array('catid'=>$r[catid],'order'=>'updatetime DESC','limit'=>'20',));}?>  
+		 <?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"content\" data=\"op=content&tag_md5=1922c916f62b7e52257d2bfe34272431&action=lists&catid=%24r%5Bcatid%5D&order=updatetime+DESC&return=info\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">ç¼–è¾‘</a>";}$content_tag = pc_base::load_app_class("content_tag", "content");if (method_exists($content_tag, 'lists')) {$info = $content_tag->lists(array('catid'=>$r[catid],'order'=>'updatetime DESC','limit'=>'20',));}?>  
 			<?php $cont = count(array_filter($info))?>
-		  <a target="_blank" href="<?php echo $r['url'];?>"><?php echo $r['catname'];?>(¹²<?php echo $cont;?>¼¯)</a> 	
+		  <a target="_blank" href="<?php echo $r['url'];?>"><?php echo $r['catname'];?>(å…±<?php echo $cont;?>é›†)</a> 	
 		  <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
 	<?php $n++;}unset($n); ?>          
 <?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>	
@@ -115,8 +115,9 @@
        </script> 
 </div>
 
-<!-- Ê×Ò³µ¼º½ end --> 
+<!-- é¦–é¡µå¯¼èˆª end --> 
 
 
-<!-- ÊÕ²Ø¹«¿ª¿Î end  --> 
+<!-- æ”¶è—å…¬å¼€è¯¾ end  --> 
+
 

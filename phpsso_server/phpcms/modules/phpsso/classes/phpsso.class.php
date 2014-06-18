@@ -5,13 +5,13 @@ class phpsso {
 
 	public $db, $settings, $applist, $appid, $data;
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	public function __construct() {
 		$this->db = pc_base::load_model('member_model');
 		pc_base::load_app_func('global');
 		
-		/*»ñÈ¡ÏµÍ³ÅäÖÃ*/
+		/*è·å–ç³»ç»Ÿé…ç½®*/
 		$this->settings = getcache('settings', 'admin');
 		$this->applist = getcache('applist', 'admin');
 

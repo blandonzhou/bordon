@@ -14,7 +14,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æÁĞ±í
+	 * å¹¿å‘Šåˆ—è¡¨
 	 */
 	public function init() {
 		$spaceid = $_GET['spaceid'] ? intval($_GET['spaceid']) : 0;
@@ -31,7 +31,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * Ìí¼Ó¹ã¸æ
+	 * æ·»åŠ å¹¿å‘Š
 	 */
 	public function add() {
 		if (isset($_POST['dosubmit'])) {
@@ -68,7 +68,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æĞŞ¸Ä
+	 * å¹¿å‘Šä¿®æ”¹
 	 */
 	public function edit() {
 		$_GET['id'] = intval($_GET['id']);
@@ -104,7 +104,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æÅÅĞò
+	 * å¹¿å‘Šæ’åº
 	 */
 	public function listorder() {
 		if (isset($_POST['listorder']) && is_array($_POST['listorder'])) {
@@ -118,9 +118,9 @@ class poster extends admin {
 	}
 	
 	/**
-	 * Éú³É¹ã¸æjsÎÄ¼ş
-	 * @param intval $id ¹ã¸æ°æÎ»ID
-	 * @return boolen ³É¹¦·µ»Øtrue
+	 * ç”Ÿæˆå¹¿å‘Šjsæ–‡ä»¶
+	 * @param intval $id å¹¿å‘Šç‰ˆä½ID
+	 * @return boolen æˆåŠŸè¿”å›true
 	 */
 	private function create_js($id = 0) {
 		
@@ -130,8 +130,8 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ÆôÓÃ¡¢Í£ÓÃ¹ã¸æ¡£´Ë·½·¨²»ÕæÕıÖ´ĞĞ²Ù×÷£¬µ÷ÓÃÕæÕıµÄ²Ù×÷·½·¨
-	 * @param intval $id ¹ã¸æID
+	 * å¯ç”¨ã€åœç”¨å¹¿å‘Šã€‚æ­¤æ–¹æ³•ä¸çœŸæ­£æ‰§è¡Œæ“ä½œï¼Œè°ƒç”¨çœŸæ­£çš„æ“ä½œæ–¹æ³•
+	 * @param intval $id å¹¿å‘ŠID
 	 */
 	public function public_approval() {
 		if (!isset($_POST['id']) || !is_array($_POST['id'])) {
@@ -151,8 +151,8 @@ class poster extends admin {
 	}
 	
 	/**
-	 * É¾³ı¹ã¸æ ´Ë·½·¨²»ÕæÕıÖ´ĞĞÉ¾³ı²Ù×÷£¬µ÷ÓÃÕæÕıµÄÉ¾³ı²Ù×÷·½·¨
-	 * @param invtal $id ¹ã¸æID
+	 * åˆ é™¤å¹¿å‘Š æ­¤æ–¹æ³•ä¸çœŸæ­£æ‰§è¡Œåˆ é™¤æ“ä½œï¼Œè°ƒç”¨çœŸæ­£çš„åˆ é™¤æ“ä½œæ–¹æ³•
+	 * @param invtal $id å¹¿å‘ŠID
 	 */
 	public function delete() {
 		if (!isset($_POST['id']) || !is_array($_POST['id'])) {
@@ -164,7 +164,7 @@ class poster extends admin {
 	}
 	
 	/***
-	 * ¹ã¸æÉ¾³ı
+	 * å¹¿å‘Šåˆ é™¤
 	 */
 	private function _del($id = 0) {
 		$id = intval($id);
@@ -181,7 +181,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æÍ³¼Æ
+	 * å¹¿å‘Šç»Ÿè®¡
 	 */
 	public function stat() {
 		
@@ -189,48 +189,48 @@ class poster extends admin {
 		$info = $this->db->get_one(array('id'=>$_GET['id']), 'spaceid');
 		if (!$_GET['id']) showmessage(L('illegal_operation'));
 		/** 
-		 *Èç¹ûÉèÖÃÁËÈÕÆÚ²éÑ¯£¬ÉèÖÃ²éÑ¯µÄ¿ªÊ¼Ê±¼äºÍ½áÊøÊ±¼ä
+		 *å¦‚æœè®¾ç½®äº†æ—¥æœŸæŸ¥è¯¢ï¼Œè®¾ç½®æŸ¥è¯¢çš„å¼€å§‹æ—¶é—´å’Œç»“æŸæ—¶é—´
 		 */
-		$sdb = pc_base::load_model('poster_stat_model'); //µ÷ÓÃ¹ã¸æÍ³¼ÆµÄÊı¾İÄ£ĞÍ
+		$sdb = pc_base::load_model('poster_stat_model'); //è°ƒç”¨å¹¿å‘Šç»Ÿè®¡çš„æ•°æ®æ¨¡å‹
 		$year = date('Y', SYS_TIME);
         $month = date('m', SYS_TIME);
         $day = date('d', SYS_TIME);
         $where = $group = $order = '';
         $fields = '*';
         $where = "`pid`='".$_GET['id']."' AND `siteid`='".$this->get_siteid()."'";
-		if ($_GET['range'] == 2) { //×òÌìµÄÍ³¼Æ
+		if ($_GET['range'] == 2) { //æ˜¨å¤©çš„ç»Ÿè®¡
             $fromtime = mktime(0, 0, 0, $month, $day-2, $year);
             $totime = mktime(0, 0, 0, $month, $day-1, $year);
             $where .= " AND `clicktime`>='".$fromtime."'";
             $where .= " AND `clicktime`<='".$totime."'";
-        } elseif(is_numeric($_GET['range'])) { //Èç¹ûÉèÖÃÁË²éÑ¯µÄÌìÊı
+        } elseif(is_numeric($_GET['range'])) { //å¦‚æœè®¾ç½®äº†æŸ¥è¯¢çš„å¤©æ•°
             $fromtime = mktime(0, 0, 0, $month, $day-$_GET['range'], $year);
             $where .= " AND `clicktime`>='".$fromtime."'";
         }
         $order = '`clicktime` DESC';
         
-        //Èç¹ûÉèÖÃÁË°´µã»÷¡¢Õ¹Ê¾Í³¼Æ
+        //å¦‚æœè®¾ç½®äº†æŒ‰ç‚¹å‡»ã€å±•ç¤ºç»Ÿè®¡
         $_GET['click'] = isset($_GET['click']) ? intval($_GET['click']) : 0;
         if (is_numeric($_GET['click'])) {
         	$_GET['click'] = intval($_GET['click']);
         	$where .= " AND `type`='".$_GET['click']."'";
         	
-        	//Èç¹ûÉèÖÃÁË°´µØÇø»òÕß°´ip·ÖÀà
+        	//å¦‚æœè®¾ç½®äº†æŒ‰åœ°åŒºæˆ–è€…æŒ‰ipåˆ†ç±»
 	        if ($_GET['group']) {
 	        	$group = " `".$_GET['group']."`";
 	        	$fields = "*, COUNT(".$_GET['group'].") AS num";
 	        	$order = " `num` DESC";
 	        } 
-	        $r = $sdb->get_one($where, 'COUNT(*) AS num', '', $group); //È¡µÃ×ÜÊı
+	        $r = $sdb->get_one($where, 'COUNT(*) AS num', '', $group); //å–å¾—æ€»æ•°
         } else {
         	$r = $sdb->get_one($where, 'COUNT(*) AS num');
         }
 		$page = max(intval($_GET['page']), 1);
 		$curr_page = 20;
 		$limit = ($page-1)*$curr_page.','.$curr_page;
-		$pages = pages($r['num'], $page, 20); //Éú³É·ÖÒ³
+		$pages = pages($r['num'], $page, 20); //ç”Ÿæˆåˆ†é¡µ
 		$data = $sdb->select($where, $fields, $limit, $order, $group);
-		$selectstr = $sdb->get_list($_GET['year']); //È¡µÃÀúÊ·²éÑ¯ÏÂÀ­¿ò£¬ÓĞÀúÊ·Êı¾İ²éÑ¯Ê±£¬»á×Ô¶¯»»±í
+		$selectstr = $sdb->get_list($_GET['year']); //å–å¾—å†å²æŸ¥è¯¢ä¸‹æ‹‰æ¡†ï¼Œæœ‰å†å²æ•°æ®æŸ¥è¯¢æ—¶ï¼Œä¼šè‡ªåŠ¨æ¢è¡¨
 		pc_base::load_sys_class('format', '', 0);
 		$show_header = true;
 		unset($r);
@@ -238,8 +238,8 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¸ù¾İ°æÎ»µÄÀàĞÍ£¬µÃµ½°æÎ»µÄÅäÖÃĞÅÏ¢¡£Èç¹ã¸æÀàĞÍµÈ
-	 * @param string  $type °æÎ»µÄÀàĞÍ,Ä¬ÈÏÇé¿öÏÂÊÇÒ»ÕÅÍ¼Æ¬»òÕß¶¯»­
+	 * æ ¹æ®ç‰ˆä½çš„ç±»å‹ï¼Œå¾—åˆ°ç‰ˆä½çš„é…ç½®ä¿¡æ¯ã€‚å¦‚å¹¿å‘Šç±»å‹ç­‰
+	 * @param string  $type ç‰ˆä½çš„ç±»å‹,é»˜è®¤æƒ…å†µä¸‹æ˜¯ä¸€å¼ å›¾ç‰‡æˆ–è€…åŠ¨ç”»
 	 * return boolean  
 	 */
 	private function get_setting($type) {
@@ -296,7 +296,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¼ì²é¹ã¸æÊôĞÔĞÅÏ¢
+	 * æ£€æŸ¥å¹¿å‘Šå±æ€§ä¿¡æ¯
 	 * @param array $data
 	 * return array
 	 */
@@ -310,9 +310,9 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ¼ì²é¹ã¸æµÄÄÚÈİĞÅÏ¢£¬ÈçÍ¼Æ¬¡¢flash¡¢ÎÄ×Ö
+	 * æ£€æŸ¥å¹¿å‘Šçš„å†…å®¹ä¿¡æ¯ï¼Œå¦‚å›¾ç‰‡ã€flashã€æ–‡å­—
 	 * @param array $setting
-	 * @param string $type ¹ã¸æµÄÀàĞÍ
+	 * @param string $type å¹¿å‘Šçš„ç±»å‹
 	 * @return array
 	 */
 	private function check_setting($setting = array(), $type = 'images') {
@@ -355,7 +355,7 @@ class poster extends admin {
 	}
 	
 	/**
-	 * ajax¼ì²é¹ã¸æÃûµÄºÏ·¨ĞÔ
+	 * ajaxæ£€æŸ¥å¹¿å‘Šåçš„åˆæ³•æ€§
 	 */
 	public function public_check_poster() {
 		if (!$_GET['name']) exit(0);

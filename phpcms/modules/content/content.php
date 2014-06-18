@@ -1,8 +1,8 @@
 <?php
 defined('IN_PHPCMS') or exit('No permission resources.');
-//Ä£ĞÍ»º´æÂ·¾¶
+//æ¨¡å‹ç¼“å­˜è·¯å¾„
 define('CACHE_MODEL_PATH',CACHE_PATH.'caches_model'.DIRECTORY_SEPARATOR.'caches_data'.DIRECTORY_SEPARATOR);
-//¶¨ÒåÔÚµ¥¶À²Ù×÷ÄÚÈİµÄÊ±ºò£¬Í¬Ê±¸üĞÂÏà¹ØÀ¸Ä¿Ò³Ãæ
+//å®šä¹‰åœ¨å•ç‹¬æ“ä½œå†…å®¹çš„æ—¶å€™ï¼ŒåŒæ—¶æ›´æ–°ç›¸å…³æ ç›®é¡µé¢
 define('RELATION_HTML',true);
 
 pc_base::load_app_class('admin','admin',0);
@@ -18,7 +18,7 @@ class content extends admin {
 		$this->db = pc_base::load_model('content_model');
 		$this->siteid = $this->get_siteid();
 		$this->categorys = getcache('category_content_'.$this->siteid,'commons');
-		//È¨ÏŞÅĞ¶Ï
+		//æƒé™åˆ¤æ–­
 		if(isset($_GET['catid']) && $_SESSION['roleid'] != 1 && ROUTE_A !='pass' && strpos(ROUTE_A,'public_')===false) {
 			$catid = intval($_GET['catid']);
 			$this->priv_db = pc_base::load_model('category_priv_model');
@@ -38,14 +38,14 @@ class content extends admin {
 			$MODEL = $model_arr[$modelid];
 			unset($model_arr);
 			$admin_username = param::get_cookie('admin_username');
-			//²éÑ¯µ±Ç°µÄ¹¤×÷Á÷
+			//æŸ¥è¯¢å½“å‰çš„å·¥ä½œæµ
 			$setting = string2array($category['setting']);
 			$workflowid = $setting['workflowid'];
 			$workflows = getcache('workflow_'.$this->siteid,'commons');
 			$workflows = $workflows[$workflowid];
 			$workflows_setting = string2array($workflows['setting']);
 
-			//½«ÓĞÈ¨ÏŞµÄ¼¶±ğ·Åµ½ĞÂÊı×éÖĞ
+			//å°†æœ‰æƒé™çš„çº§åˆ«æ”¾åˆ°æ–°æ•°ç»„ä¸­
 			$admin_privs = array();
 			foreach($workflows_setting as $_k=>$_v) {
 				if(empty($_v)) continue;
@@ -53,18 +53,18 @@ class content extends admin {
 					if($_value==$admin_username) $admin_privs[$_k] = $_k;
 				}
 			}
-			//¹¤×÷Á÷ÉóºË¼¶±ğ
+			//å·¥ä½œæµå®¡æ ¸çº§åˆ«
 			$workflow_steps = $workflows['steps'];
 			$workflow_menu = '';
 			$steps = isset($_GET['steps']) ? intval($_GET['steps']) : 0;
-			//¹¤×÷Á÷È¨ÏŞÅĞ¶Ï
+			//å·¥ä½œæµæƒé™åˆ¤æ–­
 			if($_SESSION['roleid']!=1 && $steps && !in_array($steps,$admin_privs)) showmessage(L('permission_to_operate'));
 			$this->db->set_model($modelid);
 			if($this->db->table_name==$this->db->db_tablepre) showmessage(L('model_table_not_exists'));;
 			$status = $steps ? $steps : 99;
 			if(isset($_GET['reject'])) $status = 0;
 			$where = 'catid='.$catid.' AND status='.$status;
-			//ËÑË÷
+			//æœç´¢
 			
 			if(isset($_GET['start_time']) && $_GET['start_time']) {
 				$start_time = strtotime($_GET['start_time']);
@@ -106,7 +106,7 @@ class content extends admin {
 				$current = isset($_GET['reject']) ? 'class=on' : '';
 				$workflow_menu .= '<a href="?m=content&c=content&a=&menuid='.$_GET['menuid'].'&catid='.$catid.'&pc_hash='.$pc_hash.'&reject=1" '.$current.' ><em>'.L('reject').'</em></a><span>|</span>';
 			}
-			//$ = 153fc6d28dda8ca94eaa3686c8eed857;»ñÈ¡Ä£ĞÍµÄthumb×Ö¶ÎÅäÖÃĞÅÏ¢
+			//$ = 153fc6d28dda8ca94eaa3686c8eed857;è·å–æ¨¡å‹çš„thumbå­—æ®µé…ç½®ä¿¡æ¯
 			$model_fields = getcache('model_field_'.$modelid, 'model');
 			$setting = string2array($model_fields['thumb']['setting']);
 			$args = '1,'.$setting['upload_allowext'].','.$setting['isselectimage'].','.$setting['images_width'].','.$setting['images_height'].','.$setting['watermark'];
@@ -128,20 +128,20 @@ class content extends admin {
 			if($category['type']==0) {
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
-				//Èç¹û¸ÃÀ¸Ä¿ÉèÖÃÁË¹¤×÷Á÷£¬ÄÇÃ´±ØĞë×ß¹¤×÷Á÷Éè¶¨
+				//å¦‚æœè¯¥æ ç›®è®¾ç½®äº†å·¥ä½œæµï¼Œé‚£ä¹ˆå¿…é¡»èµ°å·¥ä½œæµè®¾å®š
 				$setting = string2array($category['setting']);
 				$workflowid = $setting['workflowid'];
 				if($workflowid && $_POST['status']!=99) {
-					//Èç¹ûÓÃ»§ÊÇ³¬¼¶¹ÜÀíÔ±£¬ÄÇÃ´Ôò¸ù¾İ×Ô¼ºµÄÉèÖÃÀ´·¢²¼
+					//å¦‚æœç”¨æˆ·æ˜¯è¶…çº§ç®¡ç†å‘˜ï¼Œé‚£ä¹ˆåˆ™æ ¹æ®è‡ªå·±çš„è®¾ç½®æ¥å‘å¸ƒ
 					$_POST['info']['status'] = $_SESSION['roleid']==1 ? intval($_POST['status']) : 1;
 				} else {
 					$_POST['info']['status'] = 99;
 				}
 				
 	
-				//Ìí¼ÓÄÚÈİÊ±ºòÌí¼ÓÊÓÆµ start
+				//æ·»åŠ å†…å®¹æ—¶å€™æ·»åŠ è§†é¢‘ start
 					ini_set("max_execution_time",600000);
-					//È¡µÃÊÓÆµÎÄ¼şÃû×Ö	
+					//å–å¾—è§†é¢‘æ–‡ä»¶åå­—	
 					$local_videos = explode(',' , $_POST['info']['local_video'] );
 					$local_videos = array_filter($local_videos);
 					sort($local_videos);
@@ -159,7 +159,7 @@ class content extends admin {
 						$ext = $local_video[1];
 					
 						$unq_name = uniqid();
-							//ÔØÈëffmpeg
+							//è½½å…¥ffmpeg
 						copy($local_video_path , 'uploadfile/video/'.$unq_name.'.'.$ext);
 						//copy($local_video_path , 'uploadfile/video/aaabbb.wmv.bak');
 						
@@ -170,11 +170,11 @@ class content extends admin {
 
 									if($ext !== 'mp4') {
 										
-										//ÇåÎú¶È
+										//æ¸…æ™°åº¦
 										
 										$r = intval($_POST['info']['vision']) * 15;
 									
-										$ffmpeg = 'ffmpeg.exe';//ÔØÈëffmpeg
+										$ffmpeg = 'ffmpeg.exe';//è½½å…¥ffmpeg
 										 
 										$cmd= FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.mp4';
 									
@@ -184,7 +184,7 @@ class content extends admin {
 										 exec($cmd,$status);
 										 pc_base::ftp_upload($unq_name.'.mp4');
 										
-										/* Ïú»ÙÔ­ÊÓÆµ */
+										/* é”€æ¯åŸè§†é¢‘ */
 										@unlink('uploadfile/video/' . $unq_name . '.' . $ext);
 										 
 										
@@ -194,7 +194,7 @@ class content extends admin {
 								 $insert[$i] = $unq_name . '.mp4';
 								
 						 }else{    
-								showmessage("ffmpegÃ»ÓĞÔØÈë"); 
+								showmessage("ffmpegæ²¡æœ‰è½½å…¥"); 
 						 } 
 								
 					}
@@ -216,7 +216,7 @@ class content extends admin {
 				$this->db->add_content($_POST['info']);
 				
 		
-				//Ìí¼ÓÄÚÈİÊ±ºòÌí¼Ó end
+				//æ·»åŠ å†…å®¹æ—¶å€™æ·»åŠ  end
 
 			
 				if(isset($_POST['dosubmit'])) {
@@ -225,7 +225,7 @@ class content extends admin {
 					showmessage(L('add_success'),HTTP_REFERER);
 				}
 			} else {
-				//µ¥ÍøÒ³
+				//å•ç½‘é¡µ
 				$this->page_db = pc_base::load_model('page_model');
 				$style_font_weight = $_POST['style_font_weight'] ? 'font-weight:'.strip_tags($_POST['style_font_weight']) : '';
 				$_POST['info']['style'] = strip_tags($_POST['style_color']).';'.$style_font_weight;
@@ -241,7 +241,7 @@ class content extends admin {
 			showmessage(L('add_success'),$forward);
 		} else {
 			$show_header = $show_dialog = $show_validator = '';
-			//ÉèÖÃcookie ÔÚ¸½¼şÌí¼Ó´¦µ÷ÓÃ
+			//è®¾ç½®cookie åœ¨é™„ä»¶æ·»åŠ å¤„è°ƒç”¨
 			param::set_cookie('module', 'content');
 
 			if(isset($_GET['catid']) && $_GET['catid']) {
@@ -251,7 +251,7 @@ class content extends admin {
 				$category = $this->categorys[$catid];
 				if($category['type']==0) {
 					$modelid = $category['modelid'];
-					//È¡Ä£ĞÍID£¬ÒÀÄ£ĞÍIDÀ´Éú³É¶ÔÓ¦µÄ±íµ¥
+					//å–æ¨¡å‹IDï¼Œä¾æ¨¡å‹IDæ¥ç”Ÿæˆå¯¹åº”çš„è¡¨å•
 					require CACHE_MODEL_PATH.'content_form.class.php';
 					$content_form = new content_form($modelid,$catid,$this->categorys);
 					$forminfos = $content_form->get();
@@ -270,7 +270,7 @@ class content extends admin {
 					}
 					include $this->admin_tpl('content_add');
 				} else {
-					//µ¥ÍøÒ³
+					//å•ç½‘é¡µ
 					$this->page_db = pc_base::load_model('page_model');
 					
 					$r = $this->page_db->get_one(array('catid'=>$catid));
@@ -291,7 +291,7 @@ class content extends admin {
 	}
 	
 	public function edit() {
-			//ÉèÖÃcookie ÔÚ¸½¼şÌí¼Ó´¦µ÷ÓÃ
+			//è®¾ç½®cookie åœ¨é™„ä»¶æ·»åŠ å¤„è°ƒç”¨
 			param::set_cookie('module', 'content');
 			if(isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue'])) {
 				define('INDEX_HTML',true);
@@ -308,7 +308,7 @@ class content extends admin {
 				}
 			} else {
 				$show_header = $show_dialog = $show_validator = '';
-				//´ÓÊı¾İ¿â»ñÈ¡ÄÚÈİ
+				//ä»æ•°æ®åº“è·å–å†…å®¹
 				$id = intval($_GET['id']);
 				if(!isset($_GET['catid']) || !$_GET['catid']) showmessage(L('missing_part_parameters'));
 				$catid = $_GET['catid'] = intval($_GET['catid']);
@@ -335,7 +335,7 @@ class content extends admin {
 			header("Cache-control: private");
 	}
 	/**
-	 * É¾³ı
+	 * åˆ é™¤
 	 */
 	public function delete() {
 		if(isset($_GET['dosubmit'])) {
@@ -358,12 +358,12 @@ class content extends admin {
 				$_POST['ids'] = array(0=>$ids);
 			}
 			if(empty($_POST['ids'])) showmessage(L('you_do_not_check'));
-			//¸½¼ş³õÊ¼»¯
+			//é™„ä»¶åˆå§‹åŒ–
 			$attachment = pc_base::load_model('attachment_model');
 			$this->content_check_db = pc_base::load_model('content_check_model');
 			$this->position_data_db = pc_base::load_model('position_data_model');
 			$this->search_db = pc_base::load_model('search_model');
-			//ÅĞ¶ÏÊÓÆµÄ£¿éÊÇ·ñ°²×° 
+			//åˆ¤æ–­è§†é¢‘æ¨¡å—æ˜¯å¦å®‰è£… 
 			if (module_exists('video') && file_exists(PC_PATH.'model'.DIRECTORY_SEPARATOR.'video_content_model.class.php')) {
 				$video_content_db = pc_base::load_model('video_content_model');
 				$video_install = 1;
@@ -382,7 +382,7 @@ class content extends admin {
 						$sitelist = getcache('sitelist','commons');
 						$fileurl = $html_root.'/'.$sitelist[$this->siteid]['dirname'].$fileurl;
 					}
-					//É¾³ı¾²Ì¬ÎÄ¼ş£¬ÅÅ³ıhtm/html/shtmlÍâµÄÎÄ¼ş
+					//åˆ é™¤é™æ€æ–‡ä»¶ï¼Œæ’é™¤htm/html/shtmlå¤–çš„æ–‡ä»¶
 					$lasttext = strrchr($fileurl,'.');
 					$len = -strlen($lasttext);
 					$path = substr($fileurl,0,$len);
@@ -392,38 +392,38 @@ class content extends admin {
 						$lasttext = strrchr($delfile,'.');
 						if(!in_array($lasttext, array('.htm','.html','.shtml'))) continue;
 						@unlink($delfile);
-						//É¾³ı·¢²¼µã¶ÓÁĞÊı¾İ
+						//åˆ é™¤å‘å¸ƒç‚¹é˜Ÿåˆ—æ•°æ®
 						$delfile = str_replace(PHPCMS_PATH, '/', $delfile);
 						$this->queue->add_queue('del',$delfile,$this->siteid);
 					}
 				} else {
 					$fileurl = 0;
 				}
-				//É¾³ıÄÚÈİ
+				//åˆ é™¤å†…å®¹
 				$this->db->delete_content($id,$fileurl,$catid);
-				//É¾³ıÍ³¼Æ±íÊı¾İ
+				//åˆ é™¤ç»Ÿè®¡è¡¨æ•°æ®
 				$this->hits_db->delete(array('hitsid'=>'c-'.$modelid.'-'.$id));
-				//É¾³ı¸½¼ş
+				//åˆ é™¤é™„ä»¶
 				$attachment->api_delete('c-'.$catid.'-'.$id);
-				//É¾³ıÉóºË±íÊı¾İ
+				//åˆ é™¤å®¡æ ¸è¡¨æ•°æ®
 				$this->content_check_db->delete(array('checkid'=>'c-'.$id.'-'.$modelid));
-				//É¾³ıÍÆ¼öÎ»Êı¾İ
+				//åˆ é™¤æ¨èä½æ•°æ®
 				$this->position_data_db->delete(array('id'=>$id,'catid'=>$catid,'module'=>'content'));
-				//É¾³ıÈ«Õ¾ËÑË÷ÖĞÊı¾İ
+				//åˆ é™¤å…¨ç«™æœç´¢ä¸­æ•°æ®
 				$this->search_db->delete_search($typeid,$id);
-				//É¾³ıÊÓÆµ¿âÓëÄÚÈİ¶ÔÓ¦¹ØÏµÊı¾İ
+				//åˆ é™¤è§†é¢‘åº“ä¸å†…å®¹å¯¹åº”å…³ç³»æ•°æ®
 				if ($video_install ==1) {
 					$video_content_db->delete(array('contentid'=>$id, 'modelid'=>$modelid));
 				}
 				
-				//É¾³ıÏà¹ØµÄÆÀÂÛ,É¾³ıÇ°Ó¦¸ÃÅĞ¶ÏÊÇ·ñ»¹´æÔÚ´ËÄ£¿é
+				//åˆ é™¤ç›¸å…³çš„è¯„è®º,åˆ é™¤å‰åº”è¯¥åˆ¤æ–­æ˜¯å¦è¿˜å­˜åœ¨æ­¤æ¨¡å—
 				if(module_exists('comment')){
 					$commentid = id_encode('content_'.$catid, $id, $siteid);
 					$this->comment->del($commentid, $siteid, $id, $catid);
 				}
 				
  			}
-			//¸üĞÂÀ¸Ä¿Í³¼Æ
+			//æ›´æ–°æ ç›®ç»Ÿè®¡
 			$this->db->cache_items();
 			showmessage(L('operation_success'),HTTP_REFERER);
 		} else {
@@ -431,7 +431,7 @@ class content extends admin {
 		}
 	}
 	/**
-	 * ¹ıÉóÄÚÈİ
+	 * è¿‡å®¡å†…å®¹
 	 */
 	public function pass() {
 		$admin_username = param::get_cookie('admin_username');
@@ -441,14 +441,14 @@ class content extends admin {
 		$category = $this->categorys[$catid];
 		$setting = string2array($category['setting']);
 		$workflowid = $setting['workflowid'];
-		//Ö»ÓĞ´æÔÚ¹¤×÷Á÷²ÅĞèÒªÉóºË
+		//åªæœ‰å­˜åœ¨å·¥ä½œæµæ‰éœ€è¦å®¡æ ¸
 		if($workflowid) {
 			$steps = intval($_GET['steps']);
-			//¼ì²éµ±Ç°ÓÃ»§ÓĞÃ»ÓĞµ±Ç°¹¤×÷Á÷µÄ²Ù×÷È¨ÏŞ
+			//æ£€æŸ¥å½“å‰ç”¨æˆ·æœ‰æ²¡æœ‰å½“å‰å·¥ä½œæµçš„æ“ä½œæƒé™
 			$workflows = getcache('workflow_'.$this->siteid,'commons');
 			$workflows = $workflows[$workflowid];
 			$workflows_setting = string2array($workflows['setting']);
-			//½«ÓĞÈ¨ÏŞµÄ¼¶±ğ·Åµ½ĞÂÊı×éÖĞ
+			//å°†æœ‰æƒé™çš„çº§åˆ«æ”¾åˆ°æ–°æ•°ç»„ä¸­
 			$admin_privs = array();
 			foreach($workflows_setting as $_k=>$_v) {
 				if(empty($_v)) continue;
@@ -457,12 +457,12 @@ class content extends admin {
 				}
 			}
 			if($_SESSION['roleid']!=1 && $steps && !in_array($steps,$admin_privs)) showmessage(L('permission_to_operate'));
-			//¸ü¸ÄÄÚÈİ×´Ì¬
+			//æ›´æ”¹å†…å®¹çŠ¶æ€
 				if(isset($_GET['reject'])) {
-				//ÍË¸å
+				//é€€ç¨¿
 					$status = 0;
 				} else {
-					//¹¤×÷Á÷ÉóºË¼¶±ğ
+					//å·¥ä½œæµå®¡æ ¸çº§åˆ«
 					$workflow_steps = $workflows['steps'];
 					
 					if($workflow_steps>$steps) {
@@ -475,7 +475,7 @@ class content extends admin {
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
 				$this->db->search_db = pc_base::load_model('search_model');
-				//ÉóºËÍ¨¹ı£¬¼ì²éÍ¶¸å½±Àø»ò¿Û³ı»ı·Ö
+				//å®¡æ ¸é€šè¿‡ï¼Œæ£€æŸ¥æŠ•ç¨¿å¥–åŠ±æˆ–æ‰£é™¤ç§¯åˆ†
 				if ($status==99) {
 					$html = pc_base::load_app_class('html', 'content');
 					$this->url = pc_base::load_app_class('url', 'content');
@@ -492,11 +492,11 @@ class content extends admin {
 								pc_base::load_app_class('spend','pay',0);
 								spend::point($setting['presentpoint'], L('contribute_del_point'), $memberinfo['userid'], $memberinfo['username'], '', '', $flag);
 							}
-							if($setting['content_ishtml'] == '1'){//À¸Ä¿ÓĞ¾²Ì¬ÅäÖÃ
+							if($setting['content_ishtml'] == '1'){//æ ç›®æœ‰é™æ€é…ç½®
   								$urls = $this->url->show($id, 0, $content_info['catid'], $content_info['inputtime'], '',$content_info,'add');
    								$html->show($urls[1],$urls['data'],0);
  							}
-							//¸üĞÂµ½È«Õ¾ËÑË÷
+							//æ›´æ–°åˆ°å…¨ç«™æœç´¢
 							$inputinfo = '';
 							$inputinfo['system'] = $content_info;
 							$this->db->search_api($id,$inputinfo);
@@ -513,12 +513,12 @@ class content extends admin {
 							pc_base::load_app_class('spend','pay',0);
 							spend::point($setting['presentpoint'], L('contribute_del_point'), $memberinfo['userid'], $memberinfo['username'], '', '', $flag);
 						}
-						//µ¥ÆªÉóºË£¬Éú³É¾²Ì¬
-						if($setting['content_ishtml'] == '1'){//À¸Ä¿ÓĞ¾²Ì¬ÅäÖÃ
+						//å•ç¯‡å®¡æ ¸ï¼Œç”Ÿæˆé™æ€
+						if($setting['content_ishtml'] == '1'){//æ ç›®æœ‰é™æ€é…ç½®
 						$urls = $this->url->show($id, 0, $content_info['catid'], $content_info['inputtime'], '',$content_info,'add');
 						$html->show($urls[1],$urls['data'],0);
 						}
-						//¸üĞÂµ½È«Õ¾ËÑË÷
+						//æ›´æ–°åˆ°å…¨ç«™æœç´¢
 						$inputinfo = '';
 						$inputinfo['system'] = $content_info;
 						$this->db->search_api($id,$inputinfo);
@@ -532,7 +532,7 @@ class content extends admin {
 		showmessage(L('operation_success'),HTTP_REFERER);
 	}
 	/**
-	 * ÅÅĞò
+	 * æ’åº
 	 */
 	public function listorder() {
 		if(isset($_GET['dosubmit'])) {
@@ -549,7 +549,7 @@ class content extends admin {
 		}
 	}
 	/**
-	 * ÏÔÊ¾À¸Ä¿²Ëµ¥ÁĞ±í
+	 * æ˜¾ç¤ºæ ç›®èœå•åˆ—è¡¨
 	 */
 	public function public_categorys() {
 		$show_header = '';
@@ -613,7 +613,7 @@ class content extends admin {
 		exit;
 	}
 	/**
-	 * ¼ì²é±êÌâÊÇ·ñ´æÔÚ
+	 * æ£€æŸ¥æ ‡é¢˜æ˜¯å¦å­˜åœ¨
 	 */
 	public function public_check_title() {
 		if($_GET['data']=='' || (!$_GET['catid'])) return '';
@@ -631,7 +631,7 @@ class content extends admin {
 	}
 
 	/**
-	 * ĞŞ¸ÄÄ³Ò»×Ö¶ÎÊı¾İ
+	 * ä¿®æ”¹æŸä¸€å­—æ®µæ•°æ®
 	 */
 	public function update_param() {
 		$id = intval($_GET['id']);
@@ -641,7 +641,7 @@ class content extends admin {
 		if (CHARSET!='utf-8') {
 			$value = iconv('utf-8', 'gbk', $value);
 		}
-		//¼ì²é×Ö¶ÎÊÇ·ñ´æÔÚ
+		//æ£€æŸ¥å­—æ®µæ˜¯å¦å­˜åœ¨
 		$this->db->set_model($modelid);
 		if ($this->db->field_exists($field)) {
 			$this->db->update(array($field=>$value), array('id'=>$id));
@@ -658,7 +658,7 @@ class content extends admin {
 	}
 	
 	/**
-	 * Í¼Æ¬²ÃÇĞ
+	 * å›¾ç‰‡è£åˆ‡
 	 */
 	public function public_crop() {
 		if (isset($_GET['picurl']) && !empty($_GET['picurl'])) {
@@ -672,7 +672,7 @@ class content extends admin {
 		}
 	}
 	/**
-	 * Ïà¹ØÎÄÕÂÑ¡Ôñ
+	 * ç›¸å…³æ–‡ç« é€‰æ‹©
 	 */
 	public function public_relationlist() {
 		pc_base::load_sys_class('format','',0);
@@ -732,7 +732,7 @@ class content extends admin {
 		}
 	}
 
-	//ÎÄÕÂÔ¤ÀÀ
+	//æ–‡ç« é¢„è§ˆ
 	public function public_preview() {
 		$catid = intval($_GET['catid']);
 		$id = intval($_GET['id']);
@@ -757,7 +757,7 @@ class content extends admin {
 		$r2 = $this->db->get_one(array('id'=>$id));
 		$rs = $r2 ? array_merge($r,$r2) : $r;
 
-		//ÔÙ´ÎÖØĞÂ¸³Öµ£¬ÒÔÊı¾İ¿âÎª×¼
+		//å†æ¬¡é‡æ–°èµ‹å€¼ï¼Œä»¥æ•°æ®åº“ä¸ºå‡†
 		$catid = $CATEGORYS[$r['catid']]['catid'];
 		$modelid = $CATEGORYS[$catid]['modelid'];
 		
@@ -778,13 +778,13 @@ class content extends admin {
 		}
 		$pages = $titles = '';
 		if($rs['paginationtype']==1) {
-			//×Ô¶¯·ÖÒ³
+			//è‡ªåŠ¨åˆ†é¡µ
 			if($maxcharperpage < 10) $maxcharperpage = 500;
 			$contentpage = pc_base::load_app_class('contentpage');
 			$content = $contentpage->get_data($content,$maxcharperpage);
 		}
 		if($rs['paginationtype']!=0) {
-			//ÊÖ¶¯·ÖÒ³
+			//æ‰‹åŠ¨åˆ†é¡µ
 			$CONTENT_POS = strpos($content, '[page]');
 			if($CONTENT_POS !== false) {
 				$this->url = pc_base::load_app_class('url', 'content');
@@ -803,10 +803,10 @@ class content extends admin {
 						}
 					}
 				} else {
-					//µ±²»´æÔÚ [/page]Ê±£¬ÔòÊ¹ÓÃÏÂÃæ·ÖÒ³
+					//å½“ä¸å­˜åœ¨ [/page]æ—¶ï¼Œåˆ™ä½¿ç”¨ä¸‹é¢åˆ†é¡µ
 					$pages = content_pages($pagenumber,$page, $pageurls);
 				}
-				//ÅĞ¶Ï[page]³öÏÖµÄÎ»ÖÃÊÇ·ñÔÚµÚÒ»Î» 
+				//åˆ¤æ–­[page]å‡ºç°çš„ä½ç½®æ˜¯å¦åœ¨ç¬¬ä¸€ä½ 
 				if($CONTENT_POS<7) {
 					$content = $contents[$page];
 				} else {
@@ -830,7 +830,7 @@ class content extends admin {
 		echo "
 		<link href=\"".CSS_PATH."dialog_simp.css\" rel=\"stylesheet\" type=\"text/css\" />
 		<script language=\"javascript\" type=\"text/javascript\" src=\"".JS_PATH."dialog.js\"></script>
-		<script type=\"text/javascript\">art.dialog({lock:false,title:'".L('operations_manage')."',mouse:true, id:'content_m', content:'<span id=cloading ><a href=\'javascript:ajax_manage(1)\'>".L('passed_checked')."</a> | <a href=\'javascript:ajax_manage(2)\'>".L('reject')."</a> |¡¡<a href=\'javascript:ajax_manage(3)\'>".L('delete')."</a></span>',left:'100%',top:'100%',width:200,height:50,drag:true, fixed:true});
+		<script type=\"text/javascript\">art.dialog({lock:false,title:'".L('operations_manage')."',mouse:true, id:'content_m', content:'<span id=cloading ><a href=\'javascript:ajax_manage(1)\'>".L('passed_checked')."</a> | <a href=\'javascript:ajax_manage(2)\'>".L('reject')."</a> |ã€€<a href=\'javascript:ajax_manage(3)\'>".L('delete')."</a></span>',left:'100%',top:'100%',width:200,height:50,drag:true, fixed:true});
 		function ajax_manage(type) {
 			if(type==1) {
 				$.get('?m=content&c=content&a=pass&ajax_preview=1&catid=".$catid."&steps=".$steps."&id=".$id."&pc_hash=".$pc_hash."');
@@ -850,7 +850,7 @@ class content extends admin {
 	}
 
 	/**
-	 * ÉóºËËùÓĞÄÚÈİ
+	 * å®¡æ ¸æ‰€æœ‰å†…å®¹
 	 */
 	public function public_checkall() {
 		$page = isset($_GET['page']) && intval($_GET['page']) ? intval($_GET['page']) : 1;
@@ -877,21 +877,21 @@ class content extends admin {
 			$sql = "`status` = '$status' AND `siteid`=$this->siteid";
 		}
 		if($status!=0 && !$super_admin) {
-			//ÒÔÀ¸Ä¿½øĞĞÑ­»·
+			//ä»¥æ ç›®è¿›è¡Œå¾ªç¯
 			foreach ($this->categorys as $catid => $cat) {
 				if($cat['type']!=0) continue;
-				//²é¿´¹ÜÀíÔ±ÊÇ·ñÓĞÕâ¸öÀ¸Ä¿µÄ²é¿´È¨ÏŞ¡£
+				//æŸ¥çœ‹ç®¡ç†å‘˜æ˜¯å¦æœ‰è¿™ä¸ªæ ç›®çš„æŸ¥çœ‹æƒé™ã€‚
 				if (!$this->priv_db->get_one(array('catid'=>$catid, 'siteid'=>$this->siteid, 'roleid'=>$_SESSION['roleid'], 'is_admin'=>'1'))) {
 					continue;
 				}
-				//Èç¹ûÀ¸Ä¿ÓĞÉèÖÃ¹¤×÷Á÷£¬½øĞĞÈ¨ÏŞ¼ì²é¡£
+				//å¦‚æœæ ç›®æœ‰è®¾ç½®å·¥ä½œæµï¼Œè¿›è¡Œæƒé™æ£€æŸ¥ã€‚
 				$workflow = array();
 				$cat['setting'] = string2array($cat['setting']);
 				if (isset($cat['setting']['workflowid']) && !empty($cat['setting']['workflowid'])) {
 					$workflow = $workflows[$cat['setting']['workflowid']];
 					$workflow['setting'] = string2array($workflow['setting']);
 					$usernames = $workflow['setting'][$status];
-					if (empty($usernames) || !in_array($admin_username, $usernames)) {//ÅĞ¶Ïµ±Ç°¹ÜÀí£¬ÔÚ¹¤×÷Á÷ÖĞ¿ÉÒÔÉóºË¼¸Éó
+					if (empty($usernames) || !in_array($admin_username, $usernames)) {//åˆ¤æ–­å½“å‰ç®¡ç†ï¼Œåœ¨å·¥ä½œæµä¸­å¯ä»¥å®¡æ ¸å‡ å®¡
 						continue;
 					}
 				}
@@ -911,7 +911,7 @@ class content extends admin {
 	}
 	
 	/**
-	 * ÅúÁ¿ÒÆ¶¯ÎÄÕÂ
+	 * æ‰¹é‡ç§»åŠ¨æ–‡ç« 
 	 */
 	public function remove() {
 		if(isset($_POST['dosubmit'])) {
@@ -948,7 +948,7 @@ class content extends admin {
 			$catid = intval($_GET['catid']);
 			$modelid = $this->categorys[$catid]['modelid'];
 			$tree = pc_base::load_sys_class('tree');
-			$tree->icon = array('&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;©¸©¤ ');
+			$tree->icon = array('&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;â””â”€ ');
 			$tree->nbsp = '&nbsp;&nbsp;';
 			$categorys = array();
 			foreach($this->categorys as $cid=>$r) {
@@ -972,7 +972,7 @@ class content extends admin {
 	}
 	
 	/**
-	 * Í¬Ê±·¢²¼µ½ÆäËûÀ¸Ä¿
+	 * åŒæ—¶å‘å¸ƒåˆ°å…¶ä»–æ ç›®
 	 */
 	public function add_othors() {
 		$show_header = '';
@@ -982,14 +982,14 @@ class content extends admin {
 		
 	}
 	/**
-	 * Í¬Ê±·¢²¼µ½ÆäËûÀ¸Ä¿ Òì²½¼ÓÔØÀ¸Ä¿
+	 * åŒæ—¶å‘å¸ƒåˆ°å…¶ä»–æ ç›® å¼‚æ­¥åŠ è½½æ ç›®
 	 */
 	public function public_getsite_categorys() {
 		$siteid = intval($_GET['siteid']);
 		$this->categorys = getcache('category_content_'.$siteid,'commons');
 		$models = getcache('model','commons');
 		$tree = pc_base::load_sys_class('tree');
-		$tree->icon = array('&nbsp;&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;&nbsp;©¸©¤ ');
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;&nbsp;â””â”€ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		$categorys = array();
 		if($_SESSION['roleid'] != 1) {
@@ -1073,10 +1073,10 @@ class content extends admin {
 	}
 
 	/**
-	 * Ò»¼üÇåÀíÑİÊ¾Êı¾İ
+	 * ä¸€é”®æ¸…ç†æ¼”ç¤ºæ•°æ®
 	 */
 	public function clear_data() {
-		//ÇåÀíÊı¾İÉæ¼°µ½µÄÊı¾İ±í
+		//æ¸…ç†æ•°æ®æ¶‰åŠåˆ°çš„æ•°æ®è¡¨
 		
 		if ($_POST['dosubmit']) {
 			set_time_limit(0);
@@ -1088,22 +1088,22 @@ class content extends admin {
 						if ($t=='content') {
 							$model = $_POST['model'];
 							$db = pc_base::load_model('content_model');
-							//¶ÁÈ¡ÍøÕ¾µÄËùÓĞÄ£ĞÍ
+							//è¯»å–ç½‘ç«™çš„æ‰€æœ‰æ¨¡å‹
 							$model_arr = getcache('model', 'commons');
 							foreach ($model as $modelid) {
 								$db->set_model($modelid);
-								if ($r = $db->count()) { //ÅĞ¶ÏÄ£ĞÍÏÂÊÇ·ñÓĞÊı¾İ
+								if ($r = $db->count()) { //åˆ¤æ–­æ¨¡å‹ä¸‹æ˜¯å¦æœ‰æ•°æ®
 									$sql_file = CACHE_PATH.'bakup'.DIRECTORY_SEPARATOR.'default'.DIRECTORY_SEPARATOR.$model_arr[$modelid]['tablename'].'.sql';
 									$result = $data = $db->select();
 									$this->create_sql_file($result, $db->db_tablepre.$model_arr[$modelid]['tablename'], $sql_file);
 									$db->query('TRUNCATE TABLE `phpcms_'.$model_arr[$modelid]['tablename'].'`');
-									//¿ªÊ¼ÇåÀíÄ£ĞÍdata±íÊı¾İ
+									//å¼€å§‹æ¸…ç†æ¨¡å‹dataè¡¨æ•°æ®
 									$db->table_name = $db->table_name.'_data';
 									$sql_file = CACHE_PATH.'bakup'.DIRECTORY_SEPARATOR.'default'.DIRECTORY_SEPARATOR.$model_arr[$modelid]['tablename'].'_data.sql';
 									$result = $db->select();
 									$this->create_sql_file($result, $db->db_tablepre.$model_arr[$modelid]['tablename'].'_data', $sql_file);
 									$db->query('TRUNCATE TABLE `phpcms_'.$model_arr[$modelid]['tablename'].'_data`');
-									//É¾³ı¸ÃÄ£ĞÍÖĞÔÚhits±íµÄÊı¾İ
+									//åˆ é™¤è¯¥æ¨¡å‹ä¸­åœ¨hitsè¡¨çš„æ•°æ®
 									$hits_db = pc_base::load_model('hits_model');
 									$hitsid = 'c-'.$modelid.'-';
 									$result = $hits_db->select("`hitsid` LIKE '%$hitsid%'");
@@ -1112,7 +1112,7 @@ class content extends admin {
 										$this->create_sql_file($result, $hits_db->db_tablepre.'hits', $sql_file);
 									}
 									$hits_db->delete("`hitsid` LIKE '%$hitsid%'");
-									//É¾³ı¸ÃÄ£ĞÍÔÚsearchÖĞµÄÊı¾İ
+									//åˆ é™¤è¯¥æ¨¡å‹åœ¨searchä¸­çš„æ•°æ®
 									$search_db = pc_base::load_model('search_model');
 									$type_model = getcache('type_model_'.$model_arr[$modelid]['siteid'], 'search');
 									$typeid = $type_model[$modelid];
@@ -1130,7 +1130,7 @@ class content extends admin {
 										$this->create_sql_file($result, $position_db->db_tablepre.'position_data', $sql_file);
 									}
 									$position_db->delete('`modelid`='.$modelid.' AND `module`=\'content\'');
-									//ÇåÀíÊÓÆµ¿âÓëÄÚÈİ¶ÔÓ¦¹ØÏµ±í
+									//æ¸…ç†è§†é¢‘åº“ä¸å†…å®¹å¯¹åº”å…³ç³»è¡¨
 									if (module_exists('video')) {
 										$video_content_db = pc_base::load_model('video_content_model');
 										$result = $video_content_db->select('`modelid`=\''.$modelid.'\'');
@@ -1140,8 +1140,8 @@ class content extends admin {
 										}
 										$video_content_db->delete('`modelid`=\''.$modelid.'\'');
 									}
-									//ÇåÀíÆÀÂÛ±í¼°¸½¼ş±í£¬¸½¼şµÄÇåÀíÎª²»¿ÉÄæ²Ù×÷¡£
-									//¸½¼ş³õÊ¼»¯
+									//æ¸…ç†è¯„è®ºè¡¨åŠé™„ä»¶è¡¨ï¼Œé™„ä»¶çš„æ¸…ç†ä¸ºä¸å¯é€†æ“ä½œã€‚
+									//é™„ä»¶åˆå§‹åŒ–
 									//$attachment = pc_base::load_model('attachment_model');
 									//$comment = pc_base::load_app_class('comment', 'comment');
 									//if(module_exists('comment')){
@@ -1186,17 +1186,17 @@ class content extends admin {
 			}
 			showmessage(L('clear_data_message'));
 		} else {
-			//¶ÁÈ¡ÍøÕ¾µÄËùÓĞÄ£ĞÍ
+			//è¯»å–ç½‘ç«™çš„æ‰€æœ‰æ¨¡å‹
 			$model_arr = getcache('model', 'commons');
 			include $this->admin_tpl('clear_data');
 		}
 	}
 
 	/**
-	 * ±¸·İÊı¾İµ½ÎÄ¼ş
-	 * @param $data array ±¸·İµÄÊı¾İÊı×é
-	 * @param $tablename Êı¾İËùÊôÊı¾İ±í
-	 * @param $file ±¸·İµ½µÄÎÄ¼ş
+	 * å¤‡ä»½æ•°æ®åˆ°æ–‡ä»¶
+	 * @param $data array å¤‡ä»½çš„æ•°æ®æ•°ç»„
+	 * @param $tablename æ•°æ®æ‰€å±æ•°æ®è¡¨
+	 * @param $file å¤‡ä»½åˆ°çš„æ–‡ä»¶
 	 */
 	private function create_sql_file($data, $db, $file) {
 		if (is_array($data)) {
@@ -1216,3 +1216,4 @@ class content extends admin {
 	}
 }
 ?>
+

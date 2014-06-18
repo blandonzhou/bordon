@@ -8,10 +8,10 @@ class comment_api {
 	}
 	
 	/**
-	 * 获取评论信息
-	 * @param $module      模型
-	 * @param $contentid   文章ID
-	 * @param $siteid      站点ID
+	 * 鑾峰彇璇勮淇℃伅
+	 * @param $module      妯″瀷
+	 * @param $contentid   鏂囩珷ID
+	 * @param $siteid      绔欑偣ID
 	 */
 	function get_info($module, $contentid, $siteid) {
 		list($module, $catid) = explode('_', $module);

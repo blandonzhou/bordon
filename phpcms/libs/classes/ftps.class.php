@@ -1,38 +1,38 @@
 <?php
 /**
- * FTP²Ù×÷Àà
+ * FTPæ“ä½œç±»
  * @author chenzhouyu
  *
- *Ê¹ÓÃ$ftps = pc_base::load_sys_class('ftps');½øĞĞ³õÊ¼»¯¡£
- *Ê×ÏÈÍ¨¹ı¡¡$ftps->connect($host,$username,$password,$post,$pasv,$ssl,$timeout);½øĞĞFTP·şÎñÆ÷Á¬½Ó¡£
- *Í¨¹ı¾ßÌåµÄº¯Êı½øĞĞFTPµÄ²Ù×÷¡£
- *$ftps->mkdir() ´´½¨Ä¿Â¼£¬¿ÉÒÔ´´½¨¶à¼¶Ä¿Â¼ÒÔ¡°/abc/def/higk¡±µÄĞÎÊ½½øĞĞ¶à¼¶Ä¿Â¼µÄ´´½¨¡£
- *$ftps->put()ÉÏ´«ÎÄ¼ş
- *$ftps->rmdir()É¾³ıÄ¿Â¼
- *$ftps->f_delete()É¾³ıÎÄ¼ş
- *$ftps->nlist()ÁĞ³öÖ¸¶¨Ä¿Â¼µÄÎÄ¼ş
- *$ftps->chdir()±ä¸üµ±Ç°ÎÄ¼ş¼Ğ
- *$ftps->get_error()»ñÈ¡´íÎóĞÅÏ¢
+ *ä½¿ç”¨$ftps = pc_base::load_sys_class('ftps');è¿›è¡Œåˆå§‹åŒ–ã€‚
+ *é¦–å…ˆé€šè¿‡ã€€$ftps->connect($host,$username,$password,$post,$pasv,$ssl,$timeout);è¿›è¡ŒFTPæœåŠ¡å™¨è¿æ¥ã€‚
+ *é€šè¿‡å…·ä½“çš„å‡½æ•°è¿›è¡ŒFTPçš„æ“ä½œã€‚
+ *$ftps->mkdir() åˆ›å»ºç›®å½•ï¼Œå¯ä»¥åˆ›å»ºå¤šçº§ç›®å½•ä»¥â€œ/abc/def/higkâ€çš„å½¢å¼è¿›è¡Œå¤šçº§ç›®å½•çš„åˆ›å»ºã€‚
+ *$ftps->put()ä¸Šä¼ æ–‡ä»¶
+ *$ftps->rmdir()åˆ é™¤ç›®å½•
+ *$ftps->f_delete()åˆ é™¤æ–‡ä»¶
+ *$ftps->nlist()åˆ—å‡ºæŒ‡å®šç›®å½•çš„æ–‡ä»¶
+ *$ftps->chdir()å˜æ›´å½“å‰æ–‡ä»¶å¤¹
+ *$ftps->get_error()è·å–é”™è¯¯ä¿¡æ¯
  */
 class ftps {
-	//FTP Á¬½Ó×ÊÔ´
+	//FTP è¿æ¥èµ„æº
 	private $link;
-	//FTPÁ¬½ÓÊ±¼ä
+	//FTPè¿æ¥æ—¶é—´
 	public $link_time;
-	//´íÎó´úÂë
+	//é”™è¯¯ä»£ç 
 	private $err_code = 0;
-	//´«ËÍÄ£Ê½{ÎÄ±¾Ä£Ê½:FTP_ASCII, ¶ş½øÖÆÄ£Ê½:FTP_BINARY}
+	//ä¼ é€æ¨¡å¼{æ–‡æœ¬æ¨¡å¼:FTP_ASCII, äºŒè¿›åˆ¶æ¨¡å¼:FTP_BINARY}
 	public $mode = FTP_BINARY;
 	
 	/**
-	 * Á¬½ÓFTP·şÎñÆ÷
-	 * @param string $host    ¡¡¡¡ ·şÎñÆ÷µØÖ·
-	 * @param string $username¡¡¡¡¡¡ÓÃ»§Ãû
-	 * @param string $password¡¡¡¡¡¡ÃÜÂë
-	 * @param integer $port¡¡¡¡¡¡¡¡   ·şÎñÆ÷¶Ë¿Ú£¬Ä¬ÈÏÖµÎª21
-	 * @param boolean $pasv        ÊÇ·ñ¿ªÆô±»¶¯Ä£Ê½
-	 * @param boolean $ssl¡¡¡¡¡¡¡¡ ¡¡ÊÇ·ñÊ¹ÓÃSSLÁ¬½Ó
-	 * @param integer $timeout     ³¬Ê±Ê±¼ä¡¡
+	 * è¿æ¥FTPæœåŠ¡å™¨
+	 * @param string $host    ã€€ã€€ æœåŠ¡å™¨åœ°å€
+	 * @param string $usernameã€€ã€€ã€€ç”¨æˆ·å
+	 * @param string $passwordã€€ã€€ã€€å¯†ç 
+	 * @param integer $portã€€ã€€ã€€ã€€   æœåŠ¡å™¨ç«¯å£ï¼Œé»˜è®¤å€¼ä¸º21
+	 * @param boolean $pasv        æ˜¯å¦å¼€å¯è¢«åŠ¨æ¨¡å¼
+	 * @param boolean $sslã€€ã€€ã€€ã€€ ã€€æ˜¯å¦ä½¿ç”¨SSLè¿æ¥
+	 * @param integer $timeout     è¶…æ—¶æ—¶é—´ã€€
 	 */
 	public function connect($host, $username = '', $password = '', $port = '21', $pasv = false, $ssl = false, $timeout = 30) {
 		$start = time();
@@ -60,8 +60,8 @@ class ftps {
 	}
 	
 	/**
-	 * ´´½¨ÎÄ¼ş¼Ğ
-	 * @param string $dirname Ä¿Â¼Ãû£¬
+	 * åˆ›å»ºæ–‡ä»¶å¤¹
+	 * @param string $dirname ç›®å½•åï¼Œ
 	 */
 	public function mkdir($dirname) {
 		if (!$this->link) {
@@ -81,9 +81,9 @@ class ftps {
 	}
 	
 	/**
-	 * ÉÏ´«ÎÄ¼ş
-	 * @param string $remote Ô¶³Ì´æ·ÅµØÖ·
-	 * @param string $local ±¾µØ´æ·ÅµØÖ·
+	 * ä¸Šä¼ æ–‡ä»¶
+	 * @param string $remote è¿œç¨‹å­˜æ”¾åœ°å€
+	 * @param string $local æœ¬åœ°å­˜æ”¾åœ°å€
 	 */
 	public function put($remote, $local) {
 		if (!$this->link) {
@@ -103,9 +103,9 @@ class ftps {
 	}
 	
 	/**
-	 * É¾³ıÎÄ¼ş¼Ğ
-	 * @param string $dirname  Ä¿Â¼µØÖ·
-	 * @param boolean $enforce Ç¿ÖÆÉ¾³ı
+	 * åˆ é™¤æ–‡ä»¶å¤¹
+	 * @param string $dirname  ç›®å½•åœ°å€
+	 * @param boolean $enforce å¼ºåˆ¶åˆ é™¤
 	 */
 	public function rmdir($dirname, $enforce = false) {
 		if (!$this->link) {
@@ -127,8 +127,8 @@ class ftps {
 	}
 	
 	/**
-	 * É¾³ıÖ¸¶¨ÎÄ¼ş
-	 * @param string $filename ÎÄ¼şÃû
+	 * åˆ é™¤æŒ‡å®šæ–‡ä»¶
+	 * @param string $filename æ–‡ä»¶å
 	 */
 	public function f_delete($filename) {
 		if (!$this->link) {
@@ -144,9 +144,9 @@ class ftps {
 	}
 	
 	/**
-	 * ·µ»Ø¸ø¶¨Ä¿Â¼µÄÎÄ¼şÁĞ±í
-	 * @param string $dirname  Ä¿Â¼µØÖ·
-	 * @return array ÎÄ¼şÁĞ±íÊı¾İ
+	 * è¿”å›ç»™å®šç›®å½•çš„æ–‡ä»¶åˆ—è¡¨
+	 * @param string $dirname  ç›®å½•åœ°å€
+	 * @return array æ–‡ä»¶åˆ—è¡¨æ•°æ®
 	 */
 	public function nlist($dirname) {
 		if (!$this->link) {
@@ -162,8 +162,8 @@ class ftps {
 	}
 	
 	/**
-	 * ÔÚ FTP ·şÎñÆ÷ÉÏ¸Ä±äµ±Ç°Ä¿Â¼
-	 * @param string $dirname ĞŞ¸Ä·şÎñÆ÷ÉÏµ±Ç°Ä¿Â¼
+	 * åœ¨ FTP æœåŠ¡å™¨ä¸Šæ”¹å˜å½“å‰ç›®å½•
+	 * @param string $dirname ä¿®æ”¹æœåŠ¡å™¨ä¸Šå½“å‰ç›®å½•
 	 */
 	public function chdir($dirname) {
 		if (!$this->link) {
@@ -179,7 +179,7 @@ class ftps {
 	}
 	
 	/**
-	 * »ñÈ¡´íÎóĞÅÏ¢
+	 * è·å–é”™è¯¯ä¿¡æ¯
 	 */
 	public function get_error() {
 		if (!$this->err_code) return false;
@@ -196,9 +196,9 @@ class ftps {
 	}
 	
 	/**
-	 * ¼ì²âÄ¿Â¼Ãû
-	 * @param string $url Ä¿Â¼
-	 * @return ÓÉ / ·Ö¿ªµÄ·µ»ØÊı×é
+	 * æ£€æµ‹ç›®å½•å
+	 * @param string $url ç›®å½•
+	 * @return ç”± / åˆ†å¼€çš„è¿”å›æ•°ç»„
 	 */
 	private function ck_dirname($url) {
 		$url = str_replace('\\', '/', $url);
@@ -207,7 +207,7 @@ class ftps {
 	}
 	
 	/**
-	 * ¹Ø±ÕFTPÁ¬½Ó
+	 * å…³é—­FTPè¿æ¥
 	 */
 	public function close() {
 		return @ftp_close($this->link);

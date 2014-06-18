@@ -7,10 +7,10 @@
  * 
  * An open source application development framework for PHP 5.0 or newer
  * 
- * ÕâÊÇ¸ö½Ó¿ÚÀà£¬Ö÷Òª¸ºÔğÊÓÆµÄ£ĞÍ¸úku6vmsÖ®¼äµÄÍ¨ĞÅ
+ * è¿™æ˜¯ä¸ªæ¥å£ç±»ï¼Œä¸»è¦è´Ÿè´£è§†é¢‘æ¨¡å‹è·Ÿku6vmsä¹‹é—´çš„é€šä¿¡
  * @package	PHPCMS V9.1.16
  * @author		chenxuewang
- * @copyright	CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @copyright	CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  *
  */
 
@@ -20,9 +20,9 @@ class ku6api {
 	
 	/**
 	 * 
-	 * ¹¹Ôì·½·¨ ³õÊ¼»¯ÓÃ»§Éí·İÊ¶±ğÂë¡¢¼ÓÃÜÃÜÔ¿µÈ
-	 * @param string $ku6api_skey vmsÏµÍ³ÖĞµÄÉí·İÊ¶±ğÂë
-	 * @param string $ku6api_sn vmsÏµÍ³ÖĞÅäÖÃµÄÍ¨ĞÅ¼ÓÃÜÃÜÔ¿
+	 * æ„é€ æ–¹æ³• åˆå§‹åŒ–ç”¨æˆ·èº«ä»½è¯†åˆ«ç ã€åŠ å¯†å¯†é’¥ç­‰
+	 * @param string $ku6api_skey vmsç³»ç»Ÿä¸­çš„èº«ä»½è¯†åˆ«ç 
+	 * @param string $ku6api_sn vmsç³»ç»Ÿä¸­é…ç½®çš„é€šä¿¡åŠ å¯†å¯†é’¥
 	 * 
 	 */
 	public function __construct($ku6api_sn = '', $ku6api_skey = '') {
@@ -40,11 +40,11 @@ class ku6api {
 
 	/**
 	 * 
-	 * ÉèÖÃÉí·İÊ¶±ğÂë¼°Éí·İÃÜÔ¿
+	 * è®¾ç½®èº«ä»½è¯†åˆ«ç åŠèº«ä»½å¯†é’¥
 	 * 
 	 */
 	private function set_sn() {
-		//»ñÈ¡¶ÌĞÅÆ½Ì¨ÅäÖÃĞÅÏ¢
+		//è·å–çŸ­ä¿¡å¹³å°é…ç½®ä¿¡æ¯
 		$setting = getcache('video', 'video');
 		if ($setting['sn'] && $setting['skey']) {
 			$this->ku6api_skey = $setting['skey'];
@@ -54,16 +54,16 @@ class ku6api {
 	
 	/**
 	 * 
-	 * vms_add ÊÓÆµÌí¼Ó·½·¨ ÏµÍ³ÖĞÌí¼ÓÊÓÆµÊÇµ÷ÓÃ£¬Í¬²½Ìí¼Óµ½vmsÏµÍ³ÖĞ
-	 * @param array $data Ìí¼ÓÊÇÊÓÆµĞÅÏ¢ ÊÓÆµ±êÌâ¡¢½éÉÜµÈ
+	 * vms_add è§†é¢‘æ·»åŠ æ–¹æ³• ç³»ç»Ÿä¸­æ·»åŠ è§†é¢‘æ˜¯è°ƒç”¨ï¼ŒåŒæ­¥æ·»åŠ åˆ°vmsç³»ç»Ÿä¸­
+	 * @param array $data æ·»åŠ æ˜¯è§†é¢‘ä¿¡æ¯ è§†é¢‘æ ‡é¢˜ã€ä»‹ç»ç­‰
 	 */
 	public function vms_add($data = array()) {
 		if (is_array($data) && !empty($data)) {
-			//´¦ÀíÊı¾İ
+			//å¤„ç†æ•°æ®
 			$data['tag'] = $this->get_tag($data);
 			$data['v'] = 1;
 			$data['channelid'] = $data['channelid'] ? intval($data['channelid']) : 1;
-			//½«gbk±àÂë×ªÎªutf-8±àÂë
+			//å°†gbkç¼–ç è½¬ä¸ºutf-8ç¼–ç 
 			if (CHARSET == 'gbk') {
 				$data = array_iconv($data);
 			}
@@ -71,7 +71,7 @@ class ku6api {
 			$data['method'] = 'VideoAdd';
 			$data['posttime'] = SYS_TIME;
 			$data['token'] = $this->xxtea->encrypt($data['posttime'], $this->ku6api_skey);
-			//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+			//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 			$this->http->post($this->ku6api_url, $data);
 			$get_data = $this->http->get_data();
 			$get_data = json_decode($get_data, true);
@@ -89,14 +89,14 @@ class ku6api {
 	
 	/**
 	 * function vms_edit
-	 * ÊÓÆµ±à¼­Ê±µ÷ÓÃ ÊÓÆµ¸Ä±äÊ±Í¬²½¸üĞÂvmsÏµÍ³ÖĞ¶ÔÓ¦µÄÊÓÆµ
+	 * è§†é¢‘ç¼–è¾‘æ—¶è°ƒç”¨ è§†é¢‘æ”¹å˜æ—¶åŒæ­¥æ›´æ–°vmsç³»ç»Ÿä¸­å¯¹åº”çš„è§†é¢‘
 	 * @param array $data
 	 */
 	public function vms_edit($data = array()) {
 		if (is_array($data ) && !empty($data)) {
-			//´¦ÀíÊı¾İ
+			//å¤„ç†æ•°æ®
 			$data['tag'] = $this->get_tag($data);
-			//½«gbk±àÂë×ªÎªutf-8±àÂë
+			//å°†gbkç¼–ç è½¬ä¸ºutf-8ç¼–ç 
 			if (CHARSET == 'gbk') {
 				$data = array_iconv($data);
 			}
@@ -104,7 +104,7 @@ class ku6api {
 			$data['method'] = 'VideoEdit';
 			$data['posttime'] = SYS_TIME;
 			$data['token'] = $this->xxtea->encrypt($data['posttime'], $this->ku6api_skey);
-			//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+			//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 			$this->http->post($this->ku6api_url, $data);
 			$get_data = $this->http->get_data();
 			$get_data = json_decode($get_data, true);
@@ -120,18 +120,18 @@ class ku6api {
 	
 	/**
 	 * function delete_v
-	 * É¾³ıÊÓÆµÊ±£¬Í¨ÖªvmsÏµÍ³½Ó¿Ú¡£
-	 * @param string $ku6vid vmsÏµÍ³ÖĞku6vid
+	 * åˆ é™¤è§†é¢‘æ—¶ï¼Œé€šçŸ¥vmsç³»ç»Ÿæ¥å£ã€‚
+	 * @param string $ku6vid vmsç³»ç»Ÿä¸­ku6vid
 	 */
 	public function delete_v($ku6vid = '') {
 		if (!$ku6vid) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$data['sn'] = $this->ku6api_sn;
 		$data['method'] = 'VideoDel';
 		$data['posttime'] = SYS_TIME;
 		$data['token'] = $this->xxtea->encrypt($data['posttime'], $this->ku6api_skey);
 		$data['vid'] = $ku6vid;
-		//Ïòvms postÊı¾İ
+		//å‘vms postæ•°æ®
 		$this->http->post($this->ku6api_url, $data);
 		$get_data = $this->http->get_data();
 		$get_data = json_decode($get_data, true);
@@ -143,9 +143,9 @@ class ku6api {
 	}
 	/**
 	 * 
-	 * »ñÈ¡ÊÓÆµtag±êÇ©
-	 * @param array $data ÊÓÆµĞÅÏ¢Êı×é
-	 * @return string $tag ±êÇ©
+	 * è·å–è§†é¢‘tagæ ‡ç­¾
+	 * @param array $data è§†é¢‘ä¿¡æ¯æ•°ç»„
+	 * @return string $tag æ ‡ç­¾
 	 */
 	private function get_tag($data = array()) {
 		if (is_array($data) && !empty($data)) {
@@ -157,8 +157,8 @@ class ku6api {
 	
 	/**
 	 * function update_video_status_from_vms
-	 * ÊÓÆµ×´Ì¬¸Ä±ä½Ó¿Ú
-	 * @param array $get ÊÓÆµĞÅÏ¢
+	 * è§†é¢‘çŠ¶æ€æ”¹å˜æ¥å£
+	 * @param array $get è§†é¢‘ä¿¡æ¯
 	 */
 	public function update_video_status_from_vms() {
 		if (is_array($_GET) && !empty($_GET)) {
@@ -167,12 +167,12 @@ class ku6api {
 			$status = intval($_GET['ku6status']);
 			$vid = $_GET['vid'];
 			$picpath = format_url($_GET['picpath']);
-			//ÑéÖ¤Êı¾İ
-			/* ÑéÖ¤vid */
+			//éªŒè¯æ•°æ®
+			/* éªŒè¯vid */
 			if(!$vid) return json_encode(array('status'=>'101','msg'=>'vid not allowed to be empty'));
-			/* ÑéÖ¤ÊÓÆµ´óĞ¡ */
+			/* éªŒè¯è§†é¢‘å¤§å° */
 			if($size<100) return json_encode(array('status'=>'103','msg'=>'size incorrect'));
-			/* ÑéÖ¤ÊÓÆµÊ±³¤ */
+			/* éªŒè¯è§†é¢‘æ—¶é•¿ */
 			if($timelen<1) return json_encode(array('status'=>'104','msg'=>'timelen incorrect'));
 			
 			$db = pc_base::load_model('video_store_model');
@@ -180,16 +180,16 @@ class ku6api {
 			if ($r) {
 				$db->update(array('size'=>$size, 'picpath'=>$picpath, 'status'=>$status), array('vid'=>$vid));
 				if ($status==21) {
-					$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //È¡³övideoid£¬ÒÔ±ãÏÂÃæ²Ù×÷
+					$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //å–å‡ºvideoidï¼Œä»¥ä¾¿ä¸‹é¢æ“ä½œ
 					$videoid = $r['videoid'];
 					/**
-					 * ¼ÓÔØÊÓÆµÄÚÈİ¶ÔÓ¦¹ØÏµÊı¾İÄ£ĞÍ£¬¼ìË÷ÓëÉ¾³ıÊÓÆµÏà¹ØµÄÄÚÈİ¡£
-					 * ÔÚ¶ÔÓ¦¹ØÏµ±íÖĞÕÒ³ö¶ÔÓ¦µÄÄÚÈİid£¬²¢¸üĞÂÄÚÈİµÄ¾²Ì¬Ò³
+					 * åŠ è½½è§†é¢‘å†…å®¹å¯¹åº”å…³ç³»æ•°æ®æ¨¡å‹ï¼Œæ£€ç´¢ä¸åˆ é™¤è§†é¢‘ç›¸å…³çš„å†…å®¹ã€‚
+					 * åœ¨å¯¹åº”å…³ç³»è¡¨ä¸­æ‰¾å‡ºå¯¹åº”çš„å†…å®¹idï¼Œå¹¶æ›´æ–°å†…å®¹çš„é™æ€é¡µ
 					 */
 					$video_content_db = pc_base::load_model('video_content_model');
 					$result = $video_content_db->select(array('videoid'=>$videoid));
 					if (is_array($result) && !empty($result)) {
-						//¼ÓÔØ¸üĞÂhtmlÀà
+						//åŠ è½½æ›´æ–°htmlç±»
 						$html = pc_base::load_app_class('html', 'content');
 						$content_db = pc_base::load_model('content_model');
 						$url = pc_base::load_app_class('url', 'content');
@@ -201,7 +201,7 @@ class ku6api {
 							$table_name = $content_db->table_name;
 							$r1 = $content_db->get_one(array('id'=>$contentid));
 							/**
-							 * ÅĞ¶ÏÈç¹ûÄÚÈİÒ³Éú³ÉÁË¾²Ì¬Ò³£¬Ôò¸üĞÂ¾²Ì¬Ò³
+							 * åˆ¤æ–­å¦‚æœå†…å®¹é¡µç”Ÿæˆäº†é™æ€é¡µï¼Œåˆ™æ›´æ–°é™æ€é¡µ
 							 */
 							if (ishtml($r1['catid'])) {
 								$content_db->table_name = $table_name.'_data';
@@ -219,17 +219,17 @@ class ku6api {
 						}
 					}
 				} elseif ($data['status']<0 || $data['status']==24) {
-					$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //È¡³övideoid£¬ÒÔ±ãÏÂÃæ²Ù×÷
+					$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //å–å‡ºvideoidï¼Œä»¥ä¾¿ä¸‹é¢æ“ä½œ
 					$videoid = $r['videoid'];
-					//$video_store_db->delete(array('vid'=>$vid)); //É¾³ı´ËÊÓÆµ
+					//$video_store_db->delete(array('vid'=>$vid)); //åˆ é™¤æ­¤è§†é¢‘
 					/**
-					 * ¼ÓÔØÊÓÆµÄÚÈİ¶ÔÓ¦¹ØÏµÊı¾İÄ£ĞÍ£¬¼ìË÷ÓëÉ¾³ıÊÓÆµÏà¹ØµÄÄÚÈİ¡£
-					 * ÔÚ¶ÔÓ¦¹ØÏµ±íÖĞ½â³ı¹ØÏµ£¬²¢¸üĞÂÄÚÈİµÄ¾²Ì¬Ò³
+					 * åŠ è½½è§†é¢‘å†…å®¹å¯¹åº”å…³ç³»æ•°æ®æ¨¡å‹ï¼Œæ£€ç´¢ä¸åˆ é™¤è§†é¢‘ç›¸å…³çš„å†…å®¹ã€‚
+					 * åœ¨å¯¹åº”å…³ç³»è¡¨ä¸­è§£é™¤å…³ç³»ï¼Œå¹¶æ›´æ–°å†…å®¹çš„é™æ€é¡µ
 					 */
 					$video_content_db = pc_base::load_model('video_content_model');
 					$result = $video_content_db->select(array('videoid'=>$videoid));
 					if (is_array($result) && !empty($result)) {
-						//¼ÓÔØ¸üĞÂhtmlÀà
+						//åŠ è½½æ›´æ–°htmlç±»
 						$html = pc_base::load_app_class('html', 'content');
 						$content_db = pc_base::load_model('content_model');
 						$url = pc_base::load_app_class('url', 'content');
@@ -241,7 +241,7 @@ class ku6api {
 							$table_name = $content_db->table_name;
 							$r1 = $content_db->get_one(array('id'=>$contentid));
 							/**
-							 * ÅĞ¶ÏÈç¹ûÄÚÈİÒ³Éú³ÉÁË¾²Ì¬Ò³£¬Ôò¸üĞÂ¾²Ì¬Ò³
+							 * åˆ¤æ–­å¦‚æœå†…å®¹é¡µç”Ÿæˆäº†é™æ€é¡µï¼Œåˆ™æ›´æ–°é™æ€é¡µ
 							 */
 							if (ishtml($r1['catid'])) {
 								$content_db->table_name = $table_name.'_data';
@@ -269,9 +269,9 @@ class ku6api {
 	
 	/**
 	 * function get_categroys
-	 * ½«cmsÏµÍ³ÖĞÊÓÆµÄ£ĞÍµÄÀ¸Ä¿È¡³öÀ´£¬²¢Í¨¹ı½Ó¿Ú´«µ½vmsÏµÍ³ÖĞ
-	 * @param bloon $isreturn ÊÇ·ñ·µ»Øoption
-	 * @param int $catid ±»Ñ¡ÖĞµÄÀ¸Ä¿ id
+	 * å°†cmsç³»ç»Ÿä¸­è§†é¢‘æ¨¡å‹çš„æ ç›®å–å‡ºæ¥ï¼Œå¹¶é€šè¿‡æ¥å£ä¼ åˆ°vmsç³»ç»Ÿä¸­
+	 * @param bloon $isreturn æ˜¯å¦è¿”å›option
+	 * @param int $catid è¢«é€‰ä¸­çš„æ ç›® id
 	 */
 	public function get_categorys($isreturn = false, $catid = 0) {
 		$siteid = get_siteid();
@@ -300,7 +300,7 @@ class ku6api {
 					$return_data[$r['catid']] = $r;
 					
 				}
-				//½«gbk±àÂë×ªÎªutf-8±àÂë
+				//å°†gbkç¼–ç è½¬ä¸ºutf-8ç¼–ç 
 				if (strtolower(CHARSET) == 'gbk') {
 					$data = array_iconv($data);
 				}
@@ -310,7 +310,7 @@ class ku6api {
 				$postdata['posttime'] = SYS_TIME;
 				$postdata['token'] = $this->xxtea->encrypt($postdata['posttime'], $this->ku6api_skey);
 				$postdata['data'] = $data;
-				//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+				//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 				$this->http->post($this->ku6api_url, $postdata);
 				$get_data = $this->http->get_data();
 				$get_data = json_decode($get_data, true);
@@ -334,12 +334,12 @@ class ku6api {
 	
 	/**
 	 * function get_ku6_channels
-	 * »ñÈ¡ku6µÄÆµµÀĞÅÏ¢
+	 * è·å–ku6çš„é¢‘é“ä¿¡æ¯
 	 */
 	public function get_subscribetype() {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'SubscribeType';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data['data'];
 		}
@@ -348,12 +348,12 @@ class ku6api {
 	
 	/**
 	 * function get_ku6_channels
-	 * »ñÈ¡ku6µÄÆµµÀĞÅÏ¢
+	 * è·å–ku6çš„é¢‘é“ä¿¡æ¯
 	 */
 	public function get_ku6_channels() {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'Ku6Channel';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data['data'];
 		}
@@ -361,18 +361,18 @@ class ku6api {
 	}
 	
 	/**
-	 * function subscribe ¶©ÔÄ´¦Àí
-	 * ¸Ã·½·¨½«ÓÃ»§µÄ¶©ÔÄĞÅÏ¢postµ½vmsÀïÃæ¼ÇÂ¼
-	 * @param array $data ÍÆËÍĞÅÏ¢ ÀıÈç£º array(array('channelid'=>102000, 'catid'=>16371, 'posid'=>8))
+	 * function subscribe è®¢é˜…å¤„ç†
+	 * è¯¥æ–¹æ³•å°†ç”¨æˆ·çš„è®¢é˜…ä¿¡æ¯poståˆ°vmsé‡Œé¢è®°å½•
+	 * @param array $data æ¨é€ä¿¡æ¯ ä¾‹å¦‚ï¼š array(array('channelid'=>102000, 'catid'=>16371, 'posid'=>8))
 	 */
 	public function subscribe($datas = array()) {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'SubscribeAdd';
 		$postdata['channelid'] = $datas['channelid'];
 		$postdata['catid'] = $datas['catid'];
 		$postdata['posid'] = $datas['posid'] ? $datas['posid'] : 0;
 
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data;
 		}
@@ -380,13 +380,13 @@ class ku6api {
 	} 
 
 	/**
-	 * function checkusersubscribe ÅĞ¶ÏÓÃ»§ÊÇ·ñÒÑ¾­¶©ÔÄ
+	 * function checkusersubscribe åˆ¤æ–­ç”¨æˆ·æ˜¯å¦å·²ç»è®¢é˜…
 	 */
 	public function checkusersubscribe($datas = array()) {
 		$postdata['method'] = 'CheckUserSubscribe';
 		$postdata['userid'] = $datas['userid'];
 
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data;
 		}
@@ -394,18 +394,18 @@ class ku6api {
 	}	
 	
 	/**
-	 * function subscribe °´ÓÃ»§¶©ÔÄ´¦Àí
-	 * ¸Ã·½·¨½«ÓÃ»§µÄ¶©ÔÄĞÅÏ¢postµ½vmsÀïÃæ¼ÇÂ¼
-	 * @param array $data ÍÆËÍĞÅÏ¢ ÀıÈç£º array(array('userid'=>102000, 'catid'=>16371, 'posid'=>8))
+	 * function subscribe æŒ‰ç”¨æˆ·è®¢é˜…å¤„ç†
+	 * è¯¥æ–¹æ³•å°†ç”¨æˆ·çš„è®¢é˜…ä¿¡æ¯poståˆ°vmsé‡Œé¢è®°å½•
+	 * @param array $data æ¨é€ä¿¡æ¯ ä¾‹å¦‚ï¼š array(array('userid'=>102000, 'catid'=>16371, 'posid'=>8))
 	 */
 	public function usersubscribe($datas = array()) {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'UserSubscribeAdd';
 		$postdata['userid'] = $datas['userid'];
 		$postdata['catid'] = $datas['catid'];
 		$postdata['posid'] = $datas['posid'] ? $datas['posid'] : 0;
 
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data;
 		}
@@ -413,16 +413,16 @@ class ku6api {
 	}	
 	
 	/**
-	 * Function sub_del É¾³ı¶©ÔÄ
-	 * ÓÃ»§É¾³ı¶©ÔÄ
-	 * @param int $id ¶©ÔÄid
+	 * Function sub_del åˆ é™¤è®¢é˜…
+	 * ç”¨æˆ·åˆ é™¤è®¢é˜…
+	 * @param int $id è®¢é˜…id
 	 */
 	public function sub_del($id = 0) {
 		if (!$id) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'SubscribeDel';
 		$postdata['sid'] = $id;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return true;
 		}
@@ -430,16 +430,16 @@ class ku6api {
 	}
 	
 	/**
-	 * Function user_sub_del É¾³ı¶©ÔÄÓÃ»§
-	 * É¾³ı¶©ÔÄÓÃ»§
-	 * @param int $id ¶©ÔÄid
+	 * Function user_sub_del åˆ é™¤è®¢é˜…ç”¨æˆ·
+	 * åˆ é™¤è®¢é˜…ç”¨æˆ·
+	 * @param int $id è®¢é˜…id
 	 */
 	public function user_sub_del($id = 0) {
 		if (!$id) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'UserSubscribeDel';
 		$postdata['sid'] = $id;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return true;
 		}
@@ -447,13 +447,13 @@ class ku6api {
 	}	
 	
 	/**
-	 * fucntion get_subscribe »ñÈ¡¶©ÔÄ
-	 * »ñÈ¡×Ô¼ºµÄ¶©ÔÄĞÅÏ¢
+	 * fucntion get_subscribe è·å–è®¢é˜…
+	 * è·å–è‡ªå·±çš„è®¢é˜…ä¿¡æ¯
 	 */	
 	public function get_subscribe() {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'SubscribeSearch';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data['data'];
 		} else {
@@ -462,13 +462,13 @@ class ku6api {
 	}
 	
 	/**
-	 * fucntion get_subscribe »ñÈ¡ÓÃ»§¶©ÔÄ
-	 * »ñÈ¡ÓÃ»§×Ô¼ºµÄ¶©ÔÄĞÅÏ¢
+	 * fucntion get_subscribe è·å–ç”¨æˆ·è®¢é˜…
+	 * è·å–ç”¨æˆ·è‡ªå·±çš„è®¢é˜…ä¿¡æ¯
 	 */	
 	public function get_usersubscribe() {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'UserSubscribeSearch';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data['data'];
 		} else {
@@ -477,13 +477,13 @@ class ku6api {
 	}	
 	
 	/**
-	 * Function flashuploadparam »ñÈ¡flashÉÏ´«ÌõÊôĞÔ
-	 * »ñÈ¡flashÉÏ´«ÌõÊôĞÔ
+	 * Function flashuploadparam è·å–flashä¸Šä¼ æ¡å±æ€§
+	 * è·å–flashä¸Šä¼ æ¡å±æ€§
 	 */
 	public function flashuploadparam () {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'GetFlashUploadParam';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data['data'];
 		} else {
@@ -493,13 +493,13 @@ class ku6api {
 	
 	/**
 	 * Function get_albums
-	 * »ñÈ¡ku6×¨¼­ÁĞ±í
-	 * @param int $page µ±Ç°Ò³Êı
-	 * @param int $pagesize Ã¿Ò³ÊıÁ¿
-	 * @return array ·µ»Ø×¨¼­Êı×é
+	 * è·å–ku6ä¸“è¾‘åˆ—è¡¨
+	 * @param int $page å½“å‰é¡µæ•°
+	 * @param int $pagesize æ¯é¡µæ•°é‡
+	 * @return array è¿”å›ä¸“è¾‘æ•°ç»„
 	 */
 	public function get_albums($page = 1, $pagesize = 20) {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		if ($_GET['start_time']) {
 			$postdata['start_time'] = strtotime($_GET['start_time']);
 		}
@@ -515,7 +515,7 @@ class ku6api {
 		$postdata['method'] = 'AlbumList';
 		$postdata['start'] = ($page-1)*$pagesize;
 		$postdata['size'] = $pagesize;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data;
 		} else {
@@ -525,19 +525,19 @@ class ku6api {
 	
 	/**
 	 * Function get_album_videoes
-	 * »ñÈ¡Ä³×¨¼­ÏÂµÄÊÓÆµÁĞ±í
-	 * @param int $albumid ×¨¼­ID
-	 * @param int $page µ±Ç°Ò³
-	 * @param int $pagesize Ã¿Ò³ÊıÁ¿
-	 * @return array ÊÓÆµÊı×é
+	 * è·å–æŸä¸“è¾‘ä¸‹çš„è§†é¢‘åˆ—è¡¨
+	 * @param int $albumid ä¸“è¾‘ID
+	 * @param int $page å½“å‰é¡µ
+	 * @param int $pagesize æ¯é¡µæ•°é‡
+	 * @return array è§†é¢‘æ•°ç»„
 	 */
 	public function get_album_videoes($albumid = 0, $page = 1, $pagesize = 20) {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'AlbumVideoList';
 		$postdata['p'] = $page;
 		$postdata['playlistid'] = $albumid;
 		$postdata['s'] = $pagesize;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data['data'];
 		} else {
@@ -547,8 +547,8 @@ class ku6api {
 	
 	/**
 	 * Function get_album_info
-	 * »ñÈ¡×¨¼­µÄÏêÏ¸ĞÅÏ¢
-	 * @param int $albumid ×¨¼­id
+	 * è·å–ä¸“è¾‘çš„è¯¦ç»†ä¿¡æ¯
+	 * @param int $albumid ä¸“è¾‘id
 	 */
 	public function get_album_info($albumid = 0) {
 		$albumid = intval($albumid);
@@ -563,17 +563,17 @@ class ku6api {
 	
 	/**
 	 * Function add_album_subscribe
-	 * Ìí¼Ó×¨¼­¶©ÔÄ
-	 * @param array $data ¶©ÔÄÊı×é Èç£ºarray(0=>array('specialid'=>1, 'id'=>1232131), 1=>array('specialid'=>2, 'id'=>4354323))
+	 * æ·»åŠ ä¸“è¾‘è®¢é˜…
+	 * @param array $data è®¢é˜…æ•°ç»„ å¦‚ï¼šarray(0=>array('specialid'=>1, 'id'=>1232131), 1=>array('specialid'=>2, 'id'=>4354323))
 	 */
 	public function add_album_subscribe($data = array()) {
 		if (!is_array($data) || empty($data)) {
 			return false;
 		}
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'AlbumVideoSubscribe';
 		$postdata['data'] = $data;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return true;
 		} else {
@@ -583,14 +583,14 @@ class ku6api {
 	
 	/**
 	 * Function member_login_vms
-	 * µÇÂ½ºóÌ¨Í¬Ê±µÇÂ½vms
+	 * ç™»é™†åå°åŒæ—¶ç™»é™†vms
 	 * @param array $data
 	 */
 	public function member_login_vms() {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata = array();
 		$postdata['method'] = 'SynLogin';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return true;
 		} else {
@@ -600,16 +600,16 @@ class ku6api {
 
 	/**
 	 * Function check_status
-	 * µÇÂ½ºóÌ¨Í¬Ê±µÇÂ½vms
+	 * ç™»é™†åå°åŒæ—¶ç™»é™†vms
 	 * @param array $data
 	 */
 	public function check_status($vid = '') {
 		if (!$vid) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata = array();
 		$postdata['method'] = 'VideoStatusCheck';
 		$postdata['vid'] = $vid;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data;
 		} else {
@@ -619,11 +619,11 @@ class ku6api {
 	
 	/**
 	 * Function http
-	 * Ö´ĞĞhttp postÊı¾İµ½½Ó¿Ú
-	 * @param array $datas postÊı¾İ²ÎÊı Èç£ºarray('method'=>'AlbumVideoList', 'p'=>1, 's'=>6,....)
+	 * æ‰§è¡Œhttp postæ•°æ®åˆ°æ¥å£
+	 * @param array $datas postæ•°æ®å‚æ•° å¦‚ï¼šarray('method'=>'AlbumVideoList', 'p'=>1, 's'=>6,....)
 	 */
 	private function post($datas = array()) {
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$data['sn'] = $this->ku6api_sn;
 		$data['posttime'] = SYS_TIME;
 		$data['token'] = $this->xxtea->encrypt($data['posttime'], $this->ku6api_skey);
@@ -639,13 +639,13 @@ class ku6api {
 				}
 			}
 		}
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		$this->http->post($this->ku6api_url, $data);
 		$get_data = $this->http->get_data();
 		$get_data = json_decode($get_data, true);
-		//³É¹¦Ê±vms·µ»Øcode=200 ¶øku6·µ»Østatus=1
+		//æˆåŠŸæ—¶vmsè¿”å›code=200 è€Œku6è¿”å›status=1
 		if ($get_data['code'] == 200 || $get_data['status'] == 1) {
-			//½«gbk±àÂë×ªÎªutf-8±àÂë
+			//å°†gbkç¼–ç è½¬ä¸ºutf-8ç¼–ç 
 			if (strtolower(CHARSET) == 'gbk') {
 				$get_data = array_iconv($get_data, 'utf-8', 'gbk');
 			}
@@ -657,16 +657,16 @@ class ku6api {
 	
 	/**
 	 * Function CHECK
-	 * Ïòvms·¢ËÍvid
+	 * å‘vmså‘é€vid
 	 * @param string $vid vid
 	 */
 	public function check($vid = '') {
 		if (!$vid) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'GetVid';
 		$postdata['vid'] = $vid;
 		$postdata['url'] = APP_PATH . 'api.php?op=video_api';
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return true;
 		} else {
@@ -676,15 +676,15 @@ class ku6api {
 
 	/**
 	 * Function vms_update_video 
-	 * ¸üĞÂÊÓÆµ¿âÊÓÆµµ½ĞÂÏµÍ³
+	 * æ›´æ–°è§†é¢‘åº“è§†é¢‘åˆ°æ–°ç³»ç»Ÿ
 	 * @param array $data array of video
 	 */
 	public function vms_update_video($data = array()) {
 		if (empty($data)) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'VideoUpdate';
 		$postdata['data'] = $data;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		if ($data = $this->post($postdata)) {
 			return $data;
 		} else {
@@ -694,15 +694,15 @@ class ku6api {
 
 	/**
 	 * Function Preview
-	 * ÏòvmsÇëÇóvid
+	 * å‘vmsè¯·æ±‚vid
 	 * @param string $vid vid
 	 */
 	public function Preview($vid = '') {
 		if (!$vid) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'Preview';
 		$postdata['vid'] = $vid;
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
  		if ($data = $this->post($postdata)) {
 			return $data;
 		} else { 
@@ -712,11 +712,11 @@ class ku6api {
 	
 	/**
 	 * Function Ku6search
-	 * ÏòvmsÇëÇóËÑË÷
+	 * å‘vmsè¯·æ±‚æœç´¢
 	 * @param string $vid vid
 	 */
 	public function Ku6search($keyword,$pagesize,$page,$srctype,$len,$fenlei,$fq) { 
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['method'] = 'search';
 		$postdata['pagesize'] = $pagesize;
 		$postdata['keyword'] = $keyword;
@@ -726,7 +726,7 @@ class ku6api {
 		$postdata['len'] = $len;
 		$postdata['fq'] = $fq;
 		
- 		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+ 		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
  		if ($data = $this->post($postdata)) { 
   			return $data;
 		} else { 
@@ -735,7 +735,7 @@ class ku6api {
 	}
 	/**
 	 * Function get_sitename
-	 * »ñÈ¡Õ¾µãÃû³Æ
+	 * è·å–ç«™ç‚¹åç§°
 	 */
 	private function get_sitename($siteid) {
 		static $sitelist;
@@ -748,12 +748,12 @@ class ku6api {
 	
 	/**
 	 * Function update_vms 
-	 * @Éı¼¶ÊÓÆµÏµÍ³£¬ÏòĞÂÏµÍ³Ìí¼ÓÓÃ»§
-	 * @param $data POSTÊı¾İ
+	 * @å‡çº§è§†é¢‘ç³»ç»Ÿï¼Œå‘æ–°ç³»ç»Ÿæ·»åŠ ç”¨æˆ·
+	 * @param $data POSTæ•°æ®
 	 */
 	public function update_vms_member($data = array()) {
 		if (empty($data)) return false;
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$data['sn'] = $this->ku6api_sn;
 		$data['skey'] = $this->ku6api_skey;
 		$postdata['data'] = json_encode($data);
@@ -761,7 +761,7 @@ class ku6api {
 
 		$data = $this->post_api($api_url, $postdata);
 		
-		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
  		if ($data) { 
   			return $data;
 		} else { 
@@ -772,7 +772,7 @@ class ku6api {
 
 	/**
 	 * Function testapi
-	 * ²âÊÔ½Ó¿ÚÅäÖÃÊÇ·ñÕıÈ·
+	 * æµ‹è¯•æ¥å£é…ç½®æ˜¯å¦æ­£ç¡®
 	 */
 	public function testapi() {
 		$postdata['method'] = 'Test';
@@ -784,61 +784,61 @@ class ku6api {
 		}
 	} 
 	
-	/******************ÒÔÏÂÎªÊÓÆµÍ³¼ÆÊ¹ÓÃ*****************/
+	/******************ä»¥ä¸‹ä¸ºè§†é¢‘ç»Ÿè®¡ä½¿ç”¨*****************/
 	
 	/*
-	* ×î½üÊÓÆµ²¥·ÅÁ¿×ßÊÆÍ¼
+	* æœ€è¿‘è§†é¢‘æ’­æ”¾é‡èµ°åŠ¿å›¾
 	*/
 	public function get_stat_bydate($start_time,$end_time,$pagesize,$page){
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata['pagesize'] = $pagesize; 
 		$postdata['page'] = $page;
 		$postdata['start_time'] = $start_time; 
 		$postdata['end_time'] = $end_time; 
 		$postdata['method'] = 'GetStatBydate'; 
 		
- 		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+ 		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		$data = $this->post($postdata);
 		return $data;
 	}
 	
 	/*
-	* ¸ù¾İ¹Ø¼ü×ÖÀ´ËÑË÷ÊÓÆµ
+	* æ ¹æ®å…³é”®å­—æ¥æœç´¢è§†é¢‘
 	*/
 	public function get_video_bykeyword($type,$keyword){
 		$postdata['type'] = $type; 
 		$postdata['keyword'] = $keyword; 
 		$postdata['method'] = 'GetVideoBykeyword';  
- 		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+ 		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		$data = $this->post($postdata);  
 		if ($data['code']==200) { 
   			return $data;
 		} else { 
- 			echo 'ËÑË÷³öÏÖ´íÎó£¬ÇëÁªÏµ¹ÜÀíÔ±!';exit;
+ 			echo 'æœç´¢å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç®¡ç†å‘˜!';exit;
    			return false;
 		}
 	}
 	
 	/*
-	* ²é¿´ÊÓÆµÁ÷Á¿×ßÊÆ
+	* æŸ¥çœ‹è§†é¢‘æµé‡èµ°åŠ¿
 	*/
 	public function show_video_stat($vid){
 		if(!$vid) return false;
 		$postdata['vid'] = $vid; 
 		$postdata['method'] = 'ShowVideoStat';  
- 		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+ 		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
 		$data = $this->post($postdata);  
 		if ($data['code']==200) { 
   			return $data;
 		} else { 
- 			echo '²é¿´ÊÓÆµÍ³¼Æ³ö´í£¬ÇëÁªÏµ¹ÜÀíÔ±!'; 
+ 			echo 'æŸ¥çœ‹è§†é¢‘ç»Ÿè®¡å‡ºé”™ï¼Œè¯·è”ç³»ç®¡ç†å‘˜!'; 
    			return false;
 		}
 		
 	}
 	
 	/*
-	* ÊÓÆµÁ÷Á¿×ÜÌåÇ÷ÊÆÍ¼ 
+	* è§†é¢‘æµé‡æ€»ä½“è¶‹åŠ¿å›¾ 
 	*/
 	public function vv_trend(){  
 		$postdata['method'] = 'VvTrend';   
@@ -846,39 +846,39 @@ class ku6api {
 		if ($data['code']==200) { 
   			return $data;
 		} else { 
- 			echo 'ÊÓÆµÁ÷Á¿×ÜÌåÇ÷ÊÆÍ¼!'; 
+ 			echo 'è§†é¢‘æµé‡æ€»ä½“è¶‹åŠ¿å›¾!'; 
    			return false;
 		} 
 	}
 	
 	
 	/*
-	* °´Ê±¼ä²é¿´µ±ÈÕÊÓÆµ²¥·ÅÅÅĞĞ°ñ£¬ÒÔ²¥·Å´ÎÊıµ¹Ğğ
+	* æŒ‰æ—¶é—´æŸ¥çœ‹å½“æ—¥è§†é¢‘æ’­æ”¾æ’è¡Œæ¦œï¼Œä»¥æ’­æ”¾æ¬¡æ•°å€’å™
 	* $date 2012-02-03
 	*/
-	/* Íõ²Î¼Ó×¢ÊÍ£¬Õâ¸öÊÇ·ñ»¹ÓĞÓÃ£¿
+	/* ç‹å‚åŠ æ³¨é‡Šï¼Œè¿™ä¸ªæ˜¯å¦è¿˜æœ‰ç”¨ï¼Ÿ
 	public function get_stat_single($date){
-		//¹¹ÔìpostÊı¾İ 
+		//æ„é€ postæ•°æ® 
 		$postdata['method'] = 'get_stat_single';
 		$postdata['pagesize'] = $pagesize;
 		$postdata['date'] = $date;
 		$postdata['page'] = $page; 
 		
- 		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ
+ 		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼
  		if ($data = $this->post($postdata)) { 
   			return $data;
 		} else { 
- 			echo 'Ã»ÓĞ·µ»Ø²éÑ¯Ê±¼äµãµÄÊı¾İ£¡';exit;
+ 			echo 'æ²¡æœ‰è¿”å›æŸ¥è¯¢æ—¶é—´ç‚¹çš„æ•°æ®ï¼';exit;
    			return false;
 		}
 	}
 	*/
-	//ÍêÉÆ×ÊÁÏ
+	//å®Œå–„èµ„æ–™
 	public function complete_info($data){
-		//¹¹ÔìpostÊı¾İ
+		//æ„é€ postæ•°æ®
 		$postdata = $data; 
 		$postdata['user_back'] = APP_PATH . 'api.php?op=video_api';   
- 		//Ïòvms postÊı¾İ£¬²¢»ñÈ¡·µ»ØÖµ 
+ 		//å‘vms postæ•°æ®ï¼Œå¹¶è·å–è¿”å›å€¼ 
 		
 		$url = $this->ku6api_api."CompleteInfo.php"; 
 		$return_data = $this->post_api($url, $postdata);
@@ -890,8 +890,8 @@ class ku6api {
 	} 
 	
 	/*
-	* »ñµÃÓÃ»§ÌîĞ´µÄÏêÏ¸×ÊÁÏ
-	* ·µ»ØÖµ£º¡¡ÓÃ»§ÍêÉÆµÄ×ÊÁÏ
+	* è·å¾—ç”¨æˆ·å¡«å†™çš„è¯¦ç»†èµ„æ–™
+	* è¿”å›å€¼ï¼šã€€ç”¨æˆ·å®Œå–„çš„èµ„æ–™
 	*/
 	public function Get_Complete_Info($data){
 		if (empty($data)) return false; 
@@ -905,8 +905,8 @@ class ku6api {
 	}
 	
 	/*
-	* »ñµÃÓÃ»§ÌîĞ´µÄÏêÏ¸×ÊÁÏ
-	* ·µ»ØÖµ£º¡¡ÓÃ»§ÍêÉÆµÄ×ÊÁÏ
+	* è·å¾—ç”¨æˆ·å¡«å†™çš„è¯¦ç»†èµ„æ–™
+	* è¿”å›å€¼ï¼šã€€ç”¨æˆ·å®Œå–„çš„èµ„æ–™
 	*/
 	public function check_user_back($url){
 		if (empty($url)) return false; 
@@ -920,7 +920,7 @@ class ku6api {
 		} 
 	}
 	
-	//·¢ËÍÑéÖ¤Âëµ½Ö¸¶¨ÓÊ¼ş
+	//å‘é€éªŒè¯ç åˆ°æŒ‡å®šé‚®ä»¶
 	public function send_code($data){
 		if (empty($data)) return false; 
 		$new_data['email'] = $data['email'];
@@ -930,7 +930,7 @@ class ku6api {
     	return $return_data;
 	}
 	
-	//ÑéÖ¤ĞÅÏäºÍÑéÖ¤Âë£¬°üº¬email and  code
+	//éªŒè¯ä¿¡ç®±å’ŒéªŒè¯ç ï¼ŒåŒ…å«email and  code
 	public function check_email_code($data){
 		if (empty($data)) return false;  
 		$url =  $this->ku6api_api."Check_Email_Code.php";  
@@ -945,7 +945,7 @@ class ku6api {
 	
 	/**
 	 * Function 
-	 * »ñÈ¡²¥·ÅÆ÷ÁĞ±í
+	 * è·å–æ’­æ”¾å™¨åˆ—è¡¨
 	 */
 	public function player_list() {
 		$postdata['method'] = 'PlayerList';
@@ -958,7 +958,7 @@ class ku6api {
 	}
 	/**
 	 * Function 
-	 * »ñÈ¡²¥·ÅÆ÷ÁĞ±í
+	 * è·å–æ’­æ”¾å™¨åˆ—è¡¨
 	 */
 	public function player_edit($field,$style) {
 		$postdata['method'] = 'PlayerEdit';
@@ -974,8 +974,8 @@ class ku6api {
 
 	/**
 	 * FUNCTION post_api
-	 * @postÊı¾İµ½api£¬post·½·¨ÊÇpostÊı¾İµ½apiÏÂÃæµÄv5£¬¶øpost_apiÊÇpostµ½apiÏÂÃæ
-	 * @$data array postÊı¾İ
+	 * @postæ•°æ®åˆ°apiï¼Œpostæ–¹æ³•æ˜¯postæ•°æ®åˆ°apiä¸‹é¢çš„v5ï¼Œè€Œpost_apiæ˜¯poståˆ°apiä¸‹é¢
+	 * @$data array postæ•°æ®
 	 */
 	private function post_api($url = '', $data = array()) {
 		if (empty($url) || !preg_match("/^(http:\/\/)?([a-z0-9\.]+)(\/api)(\/[a-z0-9\._]+)/i", $url) || empty($data)) return false;

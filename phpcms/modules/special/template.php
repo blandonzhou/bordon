@@ -12,7 +12,7 @@ class template extends admin {
 	}
 	
 	/**
-	 * ±à¼­×¨ÌâÊ×Ò³Ä£°å
+	 * ç¼–è¾‘ä¸“é¢˜é¦–é¡µæ¨¡æ¿
 	 */
 	public function init() {
 		echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
@@ -40,7 +40,7 @@ class template extends admin {
 	}
 	
 	/**
-	 * css±à¼­Ô¤ÀÀ
+	 * cssç¼–è¾‘é¢„è§ˆ
 	 */
 	public function preview() {
 		define('HTML', true);
@@ -53,7 +53,7 @@ class template extends admin {
 	}
 	
 	/**
-	 * cssÌí¼Ó
+	 * cssæ·»åŠ 
 	 */
 	public function add() {
 		if (!$_GET['specialid']) showmessage(L('illegal_action'), HTTP_REFERER);

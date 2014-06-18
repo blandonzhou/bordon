@@ -1,6 +1,6 @@
 <?php
 defined('IN_PHPCMS') or exit('No permission resources.');
-//Ä£ÐÍ»º´æÂ·¾¶
+//æ¨¡åž‹ç¼“å­˜è·¯å¾„
 define('CACHE_MODEL_PATH',CACHE_PATH.'caches_model'.DIRECTORY_SEPARATOR.'caches_data'.DIRECTORY_SEPARATOR);
 
 pc_base::load_app_func('util','content');
@@ -10,7 +10,7 @@ class search {
 		$this->db = pc_base::load_model('content_model');
 	}
 	/**
-	 * °´ÕÕÄ£ÐÍËÑË÷
+	 * æŒ‰ç…§æ¨¡åž‹æœç´¢
 	 */
 	public function init() {
 		$grouplist = getcache('grouplist','member');
@@ -35,7 +35,7 @@ class search {
 		$modelid = $this->categorys[$catid]['modelid'];
 		$modelid = intval($modelid);
 		if(!$modelid) showmessage(L('illegal_parameters'));
-		//ËÑË÷¼ä¸ô
+		//æœç´¢é—´éš”
 		$minrefreshtime = getcache('common','commons');
 		$minrefreshtime = intval($minrefreshtime['minrefreshtime']);
 		$minrefreshtime = $minrefreshtime ? $minrefreshtime : 5;
@@ -44,10 +44,10 @@ class search {
 		} else {
 			param::set_cookie('search_cookie',SYS_TIME+2);
 		}
-		//ËÑË÷¼ä¸ô
+		//æœç´¢é—´éš”
 		
 		$CATEGORYS = $this->categorys;
-		//²úÉú±íµ¥
+		//äº§ç”Ÿè¡¨å•
 		pc_base::load_sys_class('form','',0);
 		$fields = getcache('model_field_'.$modelid,'model');
 		$forminfos = array();
@@ -113,7 +113,7 @@ class search {
 			$page = max(intval($_GET['page']), 1);
 			$sql  = "SELECT * FROM `{$tablename}` a,`{$tablename}_data` b WHERE a.id=b.id AND a.status=99";
 			$sql_count  = "SELECT COUNT(*) AS num FROM `{$tablename}` a,`{$tablename}_data` b WHERE a.id=b.id AND a.status=99";
-			//¹¹ÔìËÑË÷SQL
+			//æž„é€ æœç´¢SQL
 			$where = '';
 			foreach ($fields as $field=>$r) {
 				if($r['issearch']) {

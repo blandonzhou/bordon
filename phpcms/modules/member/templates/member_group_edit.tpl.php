@@ -92,15 +92,15 @@ $(function(){
 			<td width="80"><?php echo L('member_group_upgradeprice')?></td> 
 			<td>
 				<span class="ik lf" style="width:120px;">
-					<?php echo L('member_group_dayprice')?>£º
+					<?php echo L('member_group_dayprice')?>ï¼š
 					<input type="text" name="info[price_d]" class="input-text" value="<?php echo $groupinfo['price_d']?>" size="6">	
 				</span>
 				<span class="ik lf" style="width:120px;">
-					<?php echo L('member_group_monthprice')?>£º
+					<?php echo L('member_group_monthprice')?>ï¼š
 					<input type="text" name="info[price_m]" class="input-text" value="<?php echo $groupinfo['price_m']?>" size="6">
 				</span>
 				<span class="ik lf" style="width:120px;">
-					<?php echo L('member_group_yearprice')?>£º
+					<?php echo L('member_group_yearprice')?>ï¼š
 					<input type="text" name="info[price_y]" class="input-text" value="<?php echo $groupinfo['price_y']?>" size="6">
 				</span>
 			</td>

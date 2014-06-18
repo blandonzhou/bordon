@@ -22,6 +22,8 @@ class member_output {
 		}
 		return $info;
 	}
+
+
 	function editor($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		if($setting['enablekeylink']) {
@@ -50,8 +52,8 @@ class member_output {
 		} else {
 			//TODO 
 			$linkdatas = array(
-				0 => array(0=>'ÍøÕ¾',1=>'http://www.phpip.com'),
-				1 => array(0=>'°Ù¶È',1=>'http://www.baidu.com'),
+				0 => array(0=>'ç½‘ç«™',1=>'http://www.phpip.com'),
+				1 => array(0=>'ç™¾åº¦',1=>'http://www.baidu.com'),
 			);
 		}
 		if($linkdatas) {
@@ -78,6 +80,7 @@ class member_output {
 		$txt = stripslashes($txt);
 		return $txt;
 	}
+
 	function box($field, $value) {
 		extract(string2array($this->fields[$field]['setting']));
 		if($outputtype) {
@@ -98,7 +101,7 @@ class member_output {
 				case 'checkbox':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' ¡¢';
+						if($_v) $string .= $option[$_v].' ã€';
 					}
 				break;
 
@@ -109,16 +112,18 @@ class member_output {
 				case 'multiple':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' ¡¢';
+						if($_v) $string .= $option[$_v].' ã€';
 					}
 				break;
 			}
 			return $string;
 		}
 	}
+
 	function images($field, $value) {
 		return string2array($value);
 	}
+
 	function datetime($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		extract($setting);
@@ -138,6 +143,7 @@ class member_output {
 		$value = date($format_txt,$value);
 		return $value;
 	}
+
 	function linkage($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		$datas = getcache($setting['linkageid'],'linkage');
@@ -171,6 +177,7 @@ class member_output {
 			}
 		}			
 	}
+
 
  } 
 ?>

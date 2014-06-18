@@ -30,11 +30,11 @@
 		$str .='
 		function drawPoints(){
 			var markerOption = new MMarkerOptions();
-			var tipOption=new MTipOptions();//Ìí¼ÓĞÅÏ¢´°¿Ú 
+			var tipOption=new MTipOptions();//æ·»åŠ ä¿¡æ¯çª—å£ 
 			var address = "'.$address.'";
-			tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ĞÅÏ¢´°¿Ú±êÌâ  
-			tipOption.title = address;//ĞÅÏ¢´°¿Ú±êÌâ  
-			tipOption.content = address;//ĞÅÏ¢´°¿ÚÄÚÈİ     
+			tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+			tipOption.title = address;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+			tipOption.content = address;//ä¿¡æ¯çª—å£å†…å®¹     
 			var markerOption = new MMarkerOptions(); 		
 			markerOption.imageUrl="'.IMG_PATH.'icon/mak.png";		
 			markerOption.picAgent=false;   
@@ -58,7 +58,7 @@
 			mapObj.enableDragging();
 			mapObj.enableScrollWheelZoom();
 			mapObj.enableDoubleClickZoom();
-			mapObj.enableKeyboard();//ÆôÓÃ¼üÅÌÉÏÏÂ×óÓÒ¼üÒÆ¶¯µØÍ¼
+			mapObj.enableKeyboard();//å¯ç”¨é”®ç›˜ä¸Šä¸‹å·¦å³é”®ç§»åŠ¨åœ°å›¾
 			mapObj.centerAndZoom(new BMap.Point(lngX,latY),zoom);
 			drawPoints();
 			';
@@ -74,3 +74,4 @@
 		$str .='</script>';
 		return $str;
 	}
+

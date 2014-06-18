@@ -1721,3 +1721,4 @@ class RSSItem extends RSSBase {
 	/**#@-*/
 } // end class RSSItem
 ?>
+

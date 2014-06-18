@@ -8,7 +8,7 @@ class formguide_input {
 		$this->formid = $formid;
 		$this->fields = getcache('formguide_field_'.$formid, 'model');
 		$this->siteid = get_siteid();
-		//³õÊ¼»¯¸½¼þÀà
+		//åˆå§‹åŒ–é™„ä»¶ç±»
 		pc_base::load_sys_class('attachment','',0);
 		$this->siteid = param::get_cookie('siteid');
 		$this->attachment = new attachment('formguide','0',$this->siteid);
@@ -50,16 +50,18 @@ class formguide_input {
 			$func = $field['formtype'];
 			if(method_exists($this, $func)) $value = $this->$func($field['field'], $value);
 			$info[$field['field']] = $value;
-			//ÑÕÉ«Ñ¡ÔñÎªÒþ²ØÓò ÔÚÕâÀï½øÐÐÈ¡Öµ
+			//é¢œè‰²é€‰æ‹©ä¸ºéšè—åŸŸ åœ¨è¿™é‡Œè¿›è¡Œå–å€¼
 			if ($_POST['style_color']) $info['style'] = $_POST['style_color'];
 			if($_POST['style_font_weight']) $info['style'] = $info['style'].';'.strip_tags($_POST['style_font_weight']);
 		}
 		return $info;
 	}
+
 	function textarea($field, $value) {
 		if(!$this->fields[$field]['enablehtml']) $value = strip_tags($value);
 		return $value;
 	}
+
 	function editor($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		$enablesaveimage = $setting['enablesaveimage'];
@@ -68,6 +70,7 @@ class formguide_input {
 		$value = $this->attachment->download('content', $value,$watermark_enable);
 		return $value;
 	}
+
 	function box($field, $value) {
 		if($this->fields[$field]['boxtype'] == 'checkbox') {
 			if(!is_array($value) || empty($value)) return false;
@@ -83,10 +86,11 @@ class formguide_input {
 			return $value;
 		}
 	}
+
 	function images($field, $value) {
-		//È¡µÃÍ¼Æ¬ÁÐ±í
+		//å–å¾—å›¾ç‰‡åˆ—è¡¨
 		$pictures = $_POST[$field.'_url'];
-		//È¡µÃÍ¼Æ¬ËµÃ÷
+		//å–å¾—å›¾ç‰‡è¯´æ˜Ž
 		$pictures_alt = isset($_POST[$field.'_alt']) ? $_POST[$field.'_alt'] : array();
 		$array = $temp = array();
 		if(!empty($pictures)) {
@@ -99,6 +103,7 @@ class formguide_input {
 		$array = array2string($array);
 		return $array;
 	}
+
 	function datetime($field, $value) {
 		$setting = string2array($this->fields[$field]['setting']);
 		if($setting['fieldtype']=='int') {
@@ -106,6 +111,7 @@ class formguide_input {
 		}
 		return $value;
 	}
+
 
  } 
 ?>

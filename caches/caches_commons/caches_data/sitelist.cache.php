@@ -3,12 +3,12 @@ return array (
   1 => 
   array (
     'siteid' => '1',
-    'name' => 'Ä¬ÈÏÕ¾µã',
+    'name' => 'é»˜è®¤ç«™ç‚¹',
     'dirname' => '',
-    'domain' => 'http://localhost/cms/',
-    'site_title' => 'Ò½Ñ§×ÊÔ´Õ¾µã',
-    'keywords' => 'Ò½Ñ§¶àÃ½Ìå',
-    'description' => 'Ò½Ñ§¶àÃ½Ìå×ÊÔ´ÍøÕ¾',
+    'domain' => 'http://localhost/bordon/',
+    'site_title' => 'åŒ»å­¦èµ„æºç«™ç‚¹',
+    'keywords' => 'åŒ»å­¦å¤šåª’ä½“',
+    'description' => 'åŒ»å­¦å¤šåª’ä½“èµ„æºç½‘ç«™',
     'release_point' => '',
     'default_style' => 'sina',
     'template' => 'sina',
@@ -24,7 +24,7 @@ return array (
   \'watermark_pos\' => \'9\',
 )',
     'uuid' => '8261f520-aa47-1031-97af-ab0e46332e4e',
-    'url' => 'http://localhost/cms/',
+    'url' => 'http://localhost/bordon/',
   ),
 );
 ?>

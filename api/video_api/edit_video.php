@@ -3,57 +3,57 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 
 /**
  * 
- * ÊÓÆµĞŞ¸Ä½ÓÊÕ½Ó¿Ú ÔÚvmsÏµÍ³ÖĞĞŞ¸ÄÊÓÆµÊ±£¬»áµ÷ÓÃ´Ë½Ó¿Ú¸üĞÂÕâĞ©ÊÓÆµ
+ * è§†é¢‘ä¿®æ”¹æ¥æ”¶æ¥å£ åœ¨vmsç³»ç»Ÿä¸­ä¿®æ”¹è§†é¢‘æ—¶ï¼Œä¼šè°ƒç”¨æ­¤æ¥å£æ›´æ–°è¿™äº›è§†é¢‘
  * 
  * @author				chenxuewang
  * @link				http://www.phpcms.cn http://www.ku6.cn
- * @copyright			CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @copyright			CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  * @license			http://www.phpcms.cn/license/
  * 
  * 
  * *************************************
  *              			           *
- *                 ²ÎÊıËµÃ÷            *
+ *                 å‚æ•°è¯´æ˜            *
  *                                     *
  * ************************************* 
  * 
  * title, description, tag, vid, picpath, size, timelen, status, playnum
  * 
- * title, ÊÓÆµ±êÌâ
+ * title, è§†é¢‘æ ‡é¢˜
  * 
- * descrption ÊÓÆµ¼ò½é
+ * descrption è§†é¢‘ç®€ä»‹
  * 
- * tag ÊÓÆµ±êÇ©
+ * tag è§†é¢‘æ ‡ç­¾
  * 
- * vid£¬ÊÓÆµvid£¬ÊÓÆµµÄÎ¨Ò»µÄ±êÊ¾·û¡£Çø·ÖÊÓÆµ
+ * vidï¼Œè§†é¢‘vidï¼Œè§†é¢‘çš„å”¯ä¸€çš„æ ‡ç¤ºç¬¦ã€‚åŒºåˆ†è§†é¢‘
  * 
- * picpath ÊÓÆµËõÂÔÍ¼
+ * picpath è§†é¢‘ç¼©ç•¥å›¾
  * 
- * size ÊÓÆµ´óĞ¡
+ * size è§†é¢‘å¤§å°
  * 
- * timelen ÊÓÆµ²¥·ÅÊ±³¤
+ * timelen è§†é¢‘æ’­æ”¾æ—¶é•¿
  * 
- * status ÊÓÆµÄ¿Ç°µÄ×´Ì¬
+ * status è§†é¢‘ç›®å‰çš„çŠ¶æ€
  * 
- * playnum ÊÓÆµ²¥·Å´ÎÊı
+ * playnum è§†é¢‘æ’­æ”¾æ¬¡æ•°
  * 
  * 
  * 
  * ************************************
  *              			          *
- *                 ·µ »Ø Öµ           *
+ *                 è¿” å› å€¼           *
  *                                    *
  * ************************************ 
  * 
- * ½Ó¿ÚÖ´ĞĞºó£¬Ó¦·µ»ØÏàÓ¦µÄÖµÍ¨ÖªvmsÏµÍ³
- * ·µ»ØÖµ¸ñÊ½ jsonÊı¾İ£¬array('msg'=>'Edit Success', 'code'=>'100')
+ * æ¥å£æ‰§è¡Œåï¼Œåº”è¿”å›ç›¸åº”çš„å€¼é€šçŸ¥vmsç³»ç»Ÿ
+ * è¿”å›å€¼æ ¼å¼ jsonæ•°æ®ï¼Œarray('msg'=>'Edit Success', 'code'=>'100')
  */
 
-//¼ÓÔØÊı¾İÄ£ĞÍ
+//åŠ è½½æ•°æ®æ¨¡å‹
 $video_store_db = pc_base::load_model('video_store_model');
 pc_base::load_app_func('global', 'video');
 
-//ÑéÖ¤ĞÅÏ¢
+//éªŒè¯ä¿¡æ¯
 $data = array();
 
 $vid = $_POST['vid'];
@@ -71,17 +71,17 @@ if ($_POST['ku6status'])	$data['status'] = intval($_POST['ku6status']);
 if ($_POST['playnum'])		$data['playnum'] = intval($_POST['playnum']);
 
 if ($data['status']<0 || $data['status']==24) {
-	$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //È¡³övideoid£¬ÒÔ±ãÏÂÃæ²Ù×÷
+	$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //å–å‡ºvideoidï¼Œä»¥ä¾¿ä¸‹é¢æ“ä½œ
 	$videoid = $r['videoid'];
-	//$video_store_db->delete(array('vid'=>$vid)); //É¾³ı´ËÊÓÆµ
+	//$video_store_db->delete(array('vid'=>$vid)); //åˆ é™¤æ­¤è§†é¢‘
 	/**
-	 * ¼ÓÔØÊÓÆµÄÚÈİ¶ÔÓ¦¹ØÏµÊı¾İÄ£ĞÍ£¬¼ìË÷ÓëÉ¾³ıÊÓÆµÏà¹ØµÄÄÚÈİ¡£
-	 * ÔÚ¶ÔÓ¦¹ØÏµ±íÖĞ½â³ı¹ØÏµ£¬²¢¸üĞÂÄÚÈİµÄ¾²Ì¬Ò³
+	 * åŠ è½½è§†é¢‘å†…å®¹å¯¹åº”å…³ç³»æ•°æ®æ¨¡å‹ï¼Œæ£€ç´¢ä¸åˆ é™¤è§†é¢‘ç›¸å…³çš„å†…å®¹ã€‚
+	 * åœ¨å¯¹åº”å…³ç³»è¡¨ä¸­è§£é™¤å…³ç³»ï¼Œå¹¶æ›´æ–°å†…å®¹çš„é™æ€é¡µ
 	 */
 	$video_content_db = pc_base::load_model('video_content_model');
 	$result = $video_content_db->select(array('videoid'=>$videoid));
 	if (is_array($result) && !empty($result)) {
-		//¼ÓÔØ¸üĞÂhtmlÀà
+		//åŠ è½½æ›´æ–°htmlç±»
 		$html = pc_base::load_app_class('html', 'content');
 		$content_db = pc_base::load_model('content_model');
 		$url = pc_base::load_app_class('url', 'content');
@@ -93,7 +93,7 @@ if ($data['status']<0 || $data['status']==24) {
 			$table_name = $content_db->table_name;
 			$r1 = $content_db->get_one(array('id'=>$contentid));
 			/**
-			 * ÅĞ¶ÏÈç¹ûÄÚÈİÒ³Éú³ÉÁË¾²Ì¬Ò³£¬Ôò¸üĞÂ¾²Ì¬Ò³
+			 * åˆ¤æ–­å¦‚æœå†…å®¹é¡µç”Ÿæˆäº†é™æ€é¡µï¼Œåˆ™æ›´æ–°é™æ€é¡µ
 			 */
 			if (ishtml($r1['catid'])) {
 				$content_db->table_name = $table_name.'_data';
@@ -111,16 +111,16 @@ if ($data['status']<0 || $data['status']==24) {
 		}
 	}
 } elseif ($data['status']==21) {
-	$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //È¡³övideoid£¬ÒÔ±ãÏÂÃæ²Ù×÷
+	$r = $video_store_db->get_one(array('vid'=>$vid), 'videoid'); //å–å‡ºvideoidï¼Œä»¥ä¾¿ä¸‹é¢æ“ä½œ
 	$videoid = $r['videoid'];
 	/**
-	 * ¼ÓÔØÊÓÆµÄÚÈİ¶ÔÓ¦¹ØÏµÊı¾İÄ£ĞÍ£¬¼ìË÷ÓëÉ¾³ıÊÓÆµÏà¹ØµÄÄÚÈİ¡£
-	 * ÔÚ¶ÔÓ¦¹ØÏµ±íÖĞÕÒ³ö¶ÔÓ¦µÄÄÚÈİid£¬²¢¸üĞÂÄÚÈİµÄ¾²Ì¬Ò³
+	 * åŠ è½½è§†é¢‘å†…å®¹å¯¹åº”å…³ç³»æ•°æ®æ¨¡å‹ï¼Œæ£€ç´¢ä¸åˆ é™¤è§†é¢‘ç›¸å…³çš„å†…å®¹ã€‚
+	 * åœ¨å¯¹åº”å…³ç³»è¡¨ä¸­æ‰¾å‡ºå¯¹åº”çš„å†…å®¹idï¼Œå¹¶æ›´æ–°å†…å®¹çš„é™æ€é¡µ
 	 */
 	$video_content_db = pc_base::load_model('video_content_model');
 	$result = $video_content_db->select(array('videoid'=>$videoid));
 	if (is_array($result) && !empty($result)) {
-		//¼ÓÔØ¸üĞÂhtmlÀà
+		//åŠ è½½æ›´æ–°htmlç±»
 		$html = pc_base::load_app_class('html', 'content');
 		$content_db = pc_base::load_model('content_model');
 		$content_check_db = pc_base::load_model('content_check_model');
@@ -139,7 +139,7 @@ if ($data['status']<0 || $data['status']==24) {
 			$table_name = $content_db->table_name;
 			$r1 = $content_db->get_one(array('id'=>$contentid));
 			/**
-			 * ÅĞ¶ÏÈç¹ûÄÚÈİÒ³Éú³ÉÁË¾²Ì¬Ò³£¬Ôò¸üĞÂ¾²Ì¬Ò³
+			 * åˆ¤æ–­å¦‚æœå†…å®¹é¡µç”Ÿæˆäº†é™æ€é¡µï¼Œåˆ™æ›´æ–°é™æ€é¡µ
 			 */
 			if (ishtml($r1['catid'])) {
 				$content_db->table_name = $table_name.'_data';
@@ -158,7 +158,7 @@ if ($data['status']<0 || $data['status']==24) {
 		}
 	}
 }
-//ĞŞ¸ÄÊÓÆµ¿âÖĞµÄÊÓÆµ
+//ä¿®æ”¹è§†é¢‘åº“ä¸­çš„è§†é¢‘
 if (strtolower(CHARSET)!='utf-8') {
 	$data = array_iconv($data, 'utf-8', 'gbk');
 }

@@ -7,7 +7,7 @@ return array (
 		'username' => 'root',
 		'password' => '',
 		'tablepre' => 'v9_',
-		'charset' => 'gbk',
+		'charset' => 'utf8',
 		'type' => 'mysql',
 		'debug' => true,
 		'pconnect' => 0,

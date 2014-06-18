@@ -6,7 +6,7 @@ class wap_url{
 		self::set_siteid();
 	}
 	/**
-	* WAPÄÚÈİÒ³Á´½Ó
+	* WAPå†…å®¹é¡µé“¾æ¥
 	*/
 	public function show($id, $page = 0, $catid = 0, $typeid = 0, $prefix = '',$data = '',$action = 'edit') {
 		$page = max($page,1);
@@ -23,7 +23,7 @@ class wap_url{
 		return $url_arr;
 	}
 	/**
-	 * ÉèÖÃÕ¾µãid
+	 * è®¾ç½®ç«™ç‚¹id
 	 */
 	private function set_siteid() {
 		if(defined('IN_ADMIN')) {

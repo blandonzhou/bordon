@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * @param ¹ã¸æÉú³ÉjsÀà
+ * @param å¹¿å‘Šç”Ÿæˆjsç±»
  */
 
 defined('IN_PHPCMS') or exit('No permission resources.');
@@ -16,9 +16,9 @@ class html {
 	}
 	
 	/**
-	 * Éú³É¹ã¸æjsÎÄ¼þ
-	 * @param intval $id ¹ã¸æ°æÎ»ID
-	 * @return boolen ³É¹¦·µ»Øtrue
+	 * ç”Ÿæˆå¹¿å‘Šjsæ–‡ä»¶
+	 * @param intval $id å¹¿å‘Šç‰ˆä½ID
+	 * @return boolen æˆåŠŸè¿”å›žtrue
 	 */
 	public function create_js($id = 0) {
 		$id = intval($id);

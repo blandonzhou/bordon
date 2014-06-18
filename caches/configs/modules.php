@@ -1,11 +1,11 @@
 <?php
 return array (
-  'member' => '会员',
-  'special' => '专题',
-  'content' => '内容模块',
-  'announce' => '公告',
-  'link' => '友情链接',
-  'vote' => '投票',
-  'wap' => '手机门户',
+  'member' => '浼氬憳',
+  'special' => '涓撻',
+  'content' => '鍐呭妯″潡',
+  'announce' => '鍏憡',
+  'link' => '鍙嬫儏閾炬帴',
+  'vote' => '鎶曠エ',
+  'wap' => '鎵嬫満闂ㄦ埛',
 );
 ?>

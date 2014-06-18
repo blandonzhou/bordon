@@ -26,3 +26,4 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	}
 }
 ?>
+

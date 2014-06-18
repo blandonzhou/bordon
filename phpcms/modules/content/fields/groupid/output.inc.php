@@ -2,3 +2,4 @@
 		if($value) $value = explode(',',$value);
 		return $value;
 	}
+

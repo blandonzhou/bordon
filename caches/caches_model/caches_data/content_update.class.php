@@ -18,12 +18,15 @@ class content_update {
 			$info[$field] = method_exists($this, $func) ? $this->$func($field, $value) : $value;
 		}
 	}
+
+
 function editor($field, $value) {
 	$attachment_db = pc_base::load_model('attachment_model');
 	$attachment_db->api_update($GLOBALS['downloadfiles'],'c-'.$this->data['catid'].'-'.$this->id,1);
 
 	return $value;
-}	function posid($field, $value) {
+}
+	function posid($field, $value) {
 		if(!empty($value) && is_array($value)) {
 			if($_GET['a']=='add') {
 				$position_data_db = pc_base::load_model('position_data_model');
@@ -55,7 +58,7 @@ function editor($field, $value) {
 						$textcontent[$_key] = $this->data[$_key];
 					}
 				}
-				//ÑÕÉ«Ñ¡ÔñÎªÒþ²ØÓò ÔÚÕâÀï½øÐÐÈ¡Öµ
+				//é¢œè‰²é€‰æ‹©ä¸ºéšè—åŸŸ åœ¨è¿™é‡Œè¿›è¡Œå–å€¼
 				$textcontent['style'] = $_POST['style_color'] ? strip_tags($_POST['style_color']) : '';
 				$textcontent['inputtime'] = strtotime($textcontent['inputtime']);
 				if($_POST['style_font_weight']) $textcontent['style'] = $textcontent['style'].';'.strip_tags($_POST['style_font_weight']);
@@ -64,11 +67,12 @@ function editor($field, $value) {
 		}
 	}
 
+
 	function keyword ($field, $value) {
-		//»ñÈ¡post¹ýÀ´µÄ¹Ø¼ü×Ö£¬¹Ø¼ü×ÖÓÃ¿Õ¸ñ»òÕß¡®,¡¯·Ö¸îµÄ
+		//èŽ·å–postè¿‡æ¥çš„å…³é”®å­—ï¼Œå…³é”®å­—ç”¨ç©ºæ ¼æˆ–è€…â€˜,â€™åˆ†å‰²çš„
 		$data = array();
 		$data = split('[ ,]', $value);
-		//¼ÓÔØ¹Ø¼ü×ÖµÄÊý¾ÝÄ£ÐÍ
+		//åŠ è½½å…³é”®å­—çš„æ•°æ®æ¨¡åž‹
 		$keyword_db = pc_base::load_model('keyword_model');
 		$keyword_data_db = pc_base::load_model('keyword_data_model');
 		pc_base::load_sys_func('iconv');
@@ -94,6 +98,7 @@ function editor($field, $value) {
 		}
 		return $value;
 	}
+
 
  } 
 ?>

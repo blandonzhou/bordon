@@ -9,7 +9,7 @@ if (isset($set_modules) && $set_modules == TRUE)
     $modules[$i]['desc']    = L('alipay_tip', '', 'pay');
     $modules[$i]['is_cod']  = '0';
     $modules[$i]['is_online']  = '1';
-    $modules[$i]['author']  = 'PHPCMS¿ª·¢ÍÅ¶Ó';
+    $modules[$i]['author']  = 'PHPCMSå¼€å‘å›¢é˜Ÿ';
     $modules[$i]['website'] = 'http://www.alipay.com';
     $modules[$i]['version'] = '1.0.0';
     $modules[$i]['config']  = array(
@@ -48,34 +48,34 @@ class Alipay extends paymentabstract{
 		$prepare_data['notify_url'] = $this->config['notify_url'];
 		$prepare_data['return_url'] = $this->config['return_url'];
 		
-		// ÉÌÆ·ĞÅÏ¢
+		// å•†å“ä¿¡æ¯
 		$prepare_data['subject'] = $this->product_info['name'];
 		$prepare_data['price'] = $this->product_info['price'];
 		if (array_key_exists('url', $this->product_info)) $prepare_data['show_url'] = $this->product_info['url'];
 		$prepare_data['body'] = $this->product_info['body'];
 		
-		//¶©µ¥ĞÅÏ¢
+		//è®¢å•ä¿¡æ¯
 		$prepare_data['out_trade_no'] = $this->order_info['id'];
 		$prepare_data['quantity'] = $this->order_info['quantity'];
 
-		// ÎïÁ÷ĞÅÏ¢
+		// ç‰©æµä¿¡æ¯
 		if($this->config['service'] == 'create_partner_trade_by_buyer' || $this->config['service'] == 'trade_create_by_buyer') {
 			$prepare_data['logistics_type'] = 'EXPRESS';
 			$prepare_data['logistics_fee'] = '0.00';
 			$prepare_data['logistics_payment'] = 'SELLER_PAY';
 		}
-		//Âò¼ÒĞÅÏ¢
+		//ä¹°å®¶ä¿¡æ¯
 		$prepare_data['buyer_email'] = $this->order_info['buyer_email'];
 		
 		$prepare_data = arg_sort($prepare_data);
-		// Êı×ÖÇ©Ãû
+		// æ•°å­—ç­¾å
 		$prepare_data['sign'] = build_mysign($prepare_data,$this->config['alipay_key'],'MD5');
 		return $prepare_data;
 	}
 	
 	/**
-	 * GET½ÓÊÕÊı¾İ
-	 * ×´Ì¬ÂëËµÃ÷  £¨0 ½»Ò×Íê³É 1 ½»Ò×Ê§°Ü 2 ½»Ò×³¬Ê± 3 ½»Ò×´¦ÀíÖĞ 4 ½»Ò×Î´Ö§¸¶5½»Ò×È¡Ïû6½»Ò×·¢Éú´íÎó£©
+	 * GETæ¥æ”¶æ•°æ®
+	 * çŠ¶æ€ç è¯´æ˜  ï¼ˆ0 äº¤æ˜“å®Œæˆ 1 äº¤æ˜“å¤±è´¥ 2 äº¤æ˜“è¶…æ—¶ 3 äº¤æ˜“å¤„ç†ä¸­ 4 äº¤æ˜“æœªæ”¯ä»˜5äº¤æ˜“å–æ¶ˆ6äº¤æ˜“å‘ç”Ÿé”™è¯¯ï¼‰
 	 */
     public function receive() {
     	$receive_sign = $_GET['sign'];
@@ -128,8 +128,8 @@ class Alipay extends paymentabstract{
     }	
 
     /**
-	 * POST½ÓÊÕÊı¾İ
-	 * ×´Ì¬ÂëËµÃ÷  £¨0 ½»Ò×Íê³É 1 ½»Ò×Ê§°Ü 2 ½»Ò×³¬Ê± 3 ½»Ò×´¦ÀíÖĞ 4 ½»Ò×Î´Ö§¸¶ 5½»Ò×È¡Ïû6½»Ò×·¢Éú´íÎó£©
+	 * POSTæ¥æ”¶æ•°æ®
+	 * çŠ¶æ€ç è¯´æ˜  ï¼ˆ0 äº¤æ˜“å®Œæˆ 1 äº¤æ˜“å¤±è´¥ 2 äº¤æ˜“è¶…æ—¶ 3 äº¤æ˜“å¤„ç†ä¸­ 4 äº¤æ˜“æœªæ”¯ä»˜ 5äº¤æ˜“å–æ¶ˆ6äº¤æ˜“å‘ç”Ÿé”™è¯¯ï¼‰
 	 */
     public function notify() {
     	$receive_sign = $_POST['sign'];
@@ -178,7 +178,7 @@ class Alipay extends paymentabstract{
     }
     	
     /**
-     * ÏàÓ¦·şÎñÆ÷Ó¦´ğ×´Ì¬
+     * ç›¸åº”æœåŠ¡å™¨åº”ç­”çŠ¶æ€
      * @param $result
      */
     public function response($result) {
@@ -187,7 +187,7 @@ class Alipay extends paymentabstract{
     }
     
     /**
-     * ·µ»Ø×Ö·û¹ıÂË
+     * è¿”å›å­—ç¬¦è¿‡æ»¤
      * @param $parameter
      */
 	private function filterParameter($parameter)

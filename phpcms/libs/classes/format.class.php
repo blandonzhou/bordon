@@ -1,7 +1,7 @@
 <?php
 class format {
 	/**
-	 * ÈÕÆÚ¸ñÊ½»¯
+	 * æ—¥æœŸæ ¼å¼åŒ–
 	 * 
 	 * @param $timestamp
 	 * @param $showtime
@@ -19,7 +19,7 @@ class format {
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°ÐÇÆÚ
+	 * èŽ·å–å½“å‰æ˜ŸæœŸ
 	 * 
 	 * @param $timestamp
 	 */

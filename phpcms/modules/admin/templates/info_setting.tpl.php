@@ -5,7 +5,7 @@ if(ROUTE_A=='public_rewriteurl') {
 ?>
 <div class="pad-10">
 <div class="explain-col">
-<strong><?php echo L('explain')?>£º</strong><br />
+<strong><?php echo L('explain')?>ï¼š</strong><br />
 <?php echo L('notice')?><?php echo L('info_notice','','info')?>
 </div>
 <div class="bk10"></div>
@@ -65,9 +65,9 @@ RewriteRule ^list-([0-9]+)-([a-zA-Z_]+)-([0-9]+).html  index.php?m=content&c=ind
   <tr>
     <th width="150"><?php echo L('info_top_setting')?></th>
     <td class="y-bg"> 
-	<?php echo L('top_city').L('info_top_cost')?>£º<input type="text" class="input-text" name="setting[top_city]" id="top_city" size="5" value="<?php echo $top_city?>"/><?php echo L('info_top_jifen')?> <?php echo L('info_posid')?><input type="text" class="input-text" name="setting[top_city_posid]" id="top_city_posid" size="5" value="<?php echo $top_city_posid?>"/><div class="bk10"></div>
-	<?php echo L('top_zone').L('info_top_cost')?>£º<input type="text" class="input-text" name="setting[top_zone]" id="top_zone" size="5" value="<?php echo $top_zone?>"/><?php echo L('info_top_jifen')?> <?php echo L('info_posid')?><input type="text" class="input-text" name="setting[top_zone_posid]" id="top_zone_posid" size="5" value="<?php echo $top_zone_posid?>"/><div class="bk10"></div>
-	<?php echo L('top_district').L('info_top_cost')?>£º<input type="text" class="input-text" name="setting[top_district]" id="top_district" size="5" value="<?php echo $top_district?>"/><?php echo L('info_top_jifen')?> <?php echo L('info_posid')?><input type="text" class="input-text" name="setting[top_district_posid]" id="top_district_posid" size="5" value="<?php echo $top_district_posid?>"/>
+	<?php echo L('top_city').L('info_top_cost')?>ï¼š<input type="text" class="input-text" name="setting[top_city]" id="top_city" size="5" value="<?php echo $top_city?>"/><?php echo L('info_top_jifen')?> <?php echo L('info_posid')?><input type="text" class="input-text" name="setting[top_city_posid]" id="top_city_posid" size="5" value="<?php echo $top_city_posid?>"/><div class="bk10"></div>
+	<?php echo L('top_zone').L('info_top_cost')?>ï¼š<input type="text" class="input-text" name="setting[top_zone]" id="top_zone" size="5" value="<?php echo $top_zone?>"/><?php echo L('info_top_jifen')?> <?php echo L('info_posid')?><input type="text" class="input-text" name="setting[top_zone_posid]" id="top_zone_posid" size="5" value="<?php echo $top_zone_posid?>"/><div class="bk10"></div>
+	<?php echo L('top_district').L('info_top_cost')?>ï¼š<input type="text" class="input-text" name="setting[top_district]" id="top_district" size="5" value="<?php echo $top_district?>"/><?php echo L('info_top_jifen')?> <?php echo L('info_posid')?><input type="text" class="input-text" name="setting[top_district_posid]" id="top_district_posid" size="5" value="<?php echo $top_district_posid?>"/>
 	</td>
   </tr> 
   

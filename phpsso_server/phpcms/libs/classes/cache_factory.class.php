@@ -1,6 +1,6 @@
 <?php
 /**
- *  cache_factory.class.php »º´æ¹¤³§Àà
+ *  cache_factory.class.php ç¼“å­˜å·¥å‚ç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -10,29 +10,29 @@
 final class cache_factory {
 	
 	/**
-	 * µ±Ç°»º´æ¹¤³§Àà¾²Ì¬ÊµÀı
+	 * å½“å‰ç¼“å­˜å·¥å‚ç±»é™æ€å®ä¾‹
 	 */
 	private static $cache_factory;
 	
 	/**
-	 * »º´æÅäÖÃÁĞ±í
+	 * ç¼“å­˜é…ç½®åˆ—è¡¨
 	 */
 	protected $cache_config = array();
 	
 	/**
-	 * »º´æ²Ù×÷ÊµÀı»¯ÁĞ±í
+	 * ç¼“å­˜æ“ä½œå®ä¾‹åŒ–åˆ—è¡¨
 	 */
 	protected $cache_list = array();
 	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 */
 	function __construct() {
 	}
 	
 	/**
-	 * ·µ»Øµ±Ç°ÖÕ¼¶Àà¶ÔÏóµÄÊµÀı
-	 * @param $cache_config »º´æÅäÖÃ
+	 * è¿”å›å½“å‰ç»ˆçº§ç±»å¯¹è±¡çš„å®ä¾‹
+	 * @param $cache_config ç¼“å­˜é…ç½®
 	 * @return object
 	 */
 	public static function get_instance($cache_config = '') {
@@ -47,8 +47,8 @@ final class cache_factory {
 	}
 	
 	/**
-	 * »ñÈ¡»º´æ²Ù×÷ÊµÀı
-	 * @param $cache_name »º´æÅäÖÃÃû³Æ
+	 * è·å–ç¼“å­˜æ“ä½œå®ä¾‹
+	 * @param $cache_name ç¼“å­˜é…ç½®åç§°
 	 */
 	public function get_cache($cache_name) {
 		if(!isset($this->cache_list[$cache_name]) || !is_object($this->cache_list[$cache_name])) {
@@ -58,8 +58,8 @@ final class cache_factory {
 	}
 	
 	/**
-	 *  ¼ÓÔØ»º´æÇı¶¯
-	 * @param $cache_name 	»º´æÅäÖÃÃû³Æ
+	 *  åŠ è½½ç¼“å­˜é©±åŠ¨
+	 * @param $cache_name 	ç¼“å­˜é…ç½®åç§°
 	 * @return object
 	 */
 	public function load($cache_name) {

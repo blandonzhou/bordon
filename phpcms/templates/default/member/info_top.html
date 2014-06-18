@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>ĞÅÏ¢·¢²¼³É¹¦</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>ä¿¡æ¯å‘å¸ƒæˆåŠŸ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <link type="text/css" rel="stylesheet" href="{CSS_PATH}reset.css">
 <link type="text/css" rel="stylesheet" href="{CSS_PATH}info.css">
@@ -14,53 +14,53 @@
 <div class="info-tip{if !$_GET['msg']} info-off{/if}">
 {if $_GET['msg']}
 	{php $city = getcity($city, 'pinyin', 'info_citys_id')}
-	<center><div class="tip-ok ib">¹§Ï²ĞÅÏ¢·¢²¼³É¹¦£¡</div></center>
-    <div class="tip-loc"><a href="{$url}" target="_blank">{$title}</a> ÒÑ¾­³É¹¦·¢²¼µ½
+	<center><div class="tip-ok ib">æ­å–œä¿¡æ¯å‘å¸ƒæˆåŠŸï¼</div></center>
+    <div class="tip-loc"><a href="{$url}" target="_blank">{$title}</a> å·²ç»æˆåŠŸå‘å¸ƒåˆ°
 			{loop $zone $r}
 			{$r[name]} 
 			{/loop}<br />
-Äú»¹¿ÉÒÔ£º<a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid={$siteid}&catid={$catid}&city={$city}&zone={$r[linkageid]}">ÔÙ·¢Ò»Ìõ</a>
+æ‚¨è¿˜å¯ä»¥ï¼š<a href="{APP_PATH}index.php?m=member&c=content&a=info_publish&siteid={$siteid}&catid={$catid}&city={$city}&zone={$r[linkageid]}">å†å‘ä¸€æ¡</a>
   </div>
 	{/if}
     <div class="info-top">
-    	{if $_GET['msg']}<h5>ÖÃ¶¥¸ÃĞÅÏ¢»ñµÃ¸ü¶à¹Ø×¢</h5>{/if}
+    	{if $_GET['msg']}<h5>ç½®é¡¶è¯¥ä¿¡æ¯è·å¾—æ›´å¤šå…³æ³¨</h5>{/if}
         <div class="content">
         	<div class="not"></div>
 		{if count($exist_posids)<=3}	
 		<form action="?m=member&c=content&a=info_top_cost" method="post" id="myform">
           <table width="100%" class="table" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <th>Ñ¡ÔñÖÃ¶¥Ò³Ãæ£º</th>
+                <th>é€‰æ‹©ç½®é¡¶é¡µé¢ï¼š</th>
                 <td>
-                	{if !$exist_posids[1]}<label><input type="checkbox" name="toptype[]"  onclick="info_top_select(this)" value="1"/>³ÇÊĞÖÃ¶¥</label><br />{/if}
-                    {if !$exist_posids[2]}<label><input type="checkbox" name="toptype[]" onclick="info_top_select(this)" value="2"/>ÇøÓòÖÃ¶¥</label><br />{/if}
-                    {if !$exist_posids[3]}<label><input type="checkbox" name="toptype[]" onclick="info_top_select(this)" value="3"/>ÉÌÈ¦ÖÃ¶¥</label><br />{/if}
+                	{if !$exist_posids[1]}<label><input type="checkbox" name="toptype[]"  onclick="info_top_select(this)" value="1"/>åŸå¸‚ç½®é¡¶</label><br />{/if}
+                    {if !$exist_posids[2]}<label><input type="checkbox" name="toptype[]" onclick="info_top_select(this)" value="2"/>åŒºåŸŸç½®é¡¶</label><br />{/if}
+                    {if !$exist_posids[3]}<label><input type="checkbox" name="toptype[]" onclick="info_top_select(this)" value="3"/>å•†åœˆç½®é¡¶</label><br />{/if}
                 </td>
               </tr>
               <tr>
-                <th>Ñ¡ÔñÖÃ¶¥Ê±³¤£º</th>
+                <th>é€‰æ‹©ç½®é¡¶æ—¶é•¿ï¼š</th>
                 <td>
-				<label><input type="radio" name="toptime" value="6" onclick="info_top_select(this)"/>6Ğ¡Ê±</label>
-				<label><input type="radio" name="toptime" value="12" onclick="info_top_select(this)"/>12Ğ¡Ê±</label>
-				<label><input type="radio" name="toptime" value="72" onclick="info_top_select(this)"/>3Ìì</label>
-				<label><input type="radio" name="toptime" value="240" onclick="info_top_select(this)">10Ìì</label>
-				<label><input type="radio" name="toptime" value="480" onclick="info_top_select(this)"/>20Ìì</label>
-				<label><input type="radio" name="toptime" value="720" onclick="info_top_select(this)"/>30Ìì</label>
+				<label><input type="radio" name="toptime" value="6" onclick="info_top_select(this)"/>6å°æ—¶</label>
+				<label><input type="radio" name="toptime" value="12" onclick="info_top_select(this)"/>12å°æ—¶</label>
+				<label><input type="radio" name="toptime" value="72" onclick="info_top_select(this)"/>3å¤©</label>
+				<label><input type="radio" name="toptime" value="240" onclick="info_top_select(this)">10å¤©</label>
+				<label><input type="radio" name="toptime" value="480" onclick="info_top_select(this)"/>20å¤©</label>
+				<label><input type="radio" name="toptime" value="720" onclick="info_top_select(this)"/>30å¤©</label>
 				</td>
               </tr>
               
               <tr>
                 <th>&nbsp;</th>
-                <td><p class="f12">´Ë´ÎÖÃ¶¥ĞèÒª»¨·ÑÄú<span class="f14 fb red" id="need_point">0</span>»ı·Ö¡£ÄúÏÖÔÚÓµÓĞ<span class="f14 fb red" id="point">{$memberinfo[point]}</span>»ı·Ö£¬<span class="red" id="need_recharge"></span></p></td>
+                <td><p class="f12">æ­¤æ¬¡ç½®é¡¶éœ€è¦èŠ±è´¹æ‚¨<span class="f14 fb red" id="need_point">0</span>ç§¯åˆ†ã€‚æ‚¨ç°åœ¨æ‹¥æœ‰<span class="f14 fb red" id="point">{$memberinfo[point]}</span>ç§¯åˆ†ï¼Œ<span class="red" id="need_recharge"></span></p></td>
               </tr>
 			  {if $_GET['msg']}
 			  <tr>
                 <th>&nbsp;</th>
-                <td><input type="submit" id="dosubmit" name="dosubmit" value="Íê³ÉÖÃ¶¥" class="btn"></td>
+                <td><input type="submit" id="dosubmit" name="dosubmit" value="å®Œæˆç½®é¡¶" class="btn"></td>
               </tr>
 			  {/if}
           </table>
-          {if !$_GET['msg']}<input type="submit" class="dialog" value="Íê³ÉÖÃ¶¥" name="dosubmit" id="dosubmit" /> {/if}
+          {if !$_GET['msg']}<input type="submit" class="dialog" value="å®Œæˆç½®é¡¶" name="dosubmit" id="dosubmit" /> {/if}
 		  <input type="hidden" value="{$catid}" name="catid"/>
 		  <input type="hidden" value="{$id}" name="id" />
 		  <input type="hidden" value="{$_GET['msg']}" name="msg" />
@@ -84,8 +84,8 @@ function need_recharge() {
 	var point = parseInt($('#point').html());
 	var need_recharge = Number(point)-Number(need_point);
 	if(need_recharge < 0) {
-		$("#need_recharge").html('<a href="{APP_PATH}index.php?m=pay&c=deposit&a=pay" target="_blank">»ı·Ö²»×ã,ÂíÉÏ³äÖµ'+Math.abs(need_recharge)+'»ı·Ö</a>');
-		$('#dosubmit').attr('disabled',"true").val('»ı·Ö²»×ã£¬ÎŞ·¨³äÖµ');
+		$("#need_recharge").html('<a href="{APP_PATH}index.php?m=pay&c=deposit&a=pay" target="_blank">ç§¯åˆ†ä¸è¶³,é©¬ä¸Šå……å€¼'+Math.abs(need_recharge)+'ç§¯åˆ†</a>');
+		$('#dosubmit').attr('disabled',"true").val('ç§¯åˆ†ä¸è¶³ï¼Œæ— æ³•å……å€¼');
 	} else {
 		$("#need_recharge").html('');
 		$('#dosubmit').attr('disabled','');		

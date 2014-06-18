@@ -11,5 +11,7 @@ class member_update {
 		$this->fields = getcache('model_field_'.$modelid,'model');
     }
 
+
+
  } 
 ?>

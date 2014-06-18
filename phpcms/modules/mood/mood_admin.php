@@ -7,7 +7,7 @@ class mood_admin extends admin {
 		parent::__construct();
 	}
 	
-	//ÅÅĞĞ°ñ²é¿´
+	//æ’è¡Œæ¦œæŸ¥çœ‹
 	public function init() {
 		$mood_program = getcache('mood_program', 'commons');
 		$mood_program = isset($mood_program[$this->get_siteid()]) ? $mood_program[$this->get_siteid()] : array();
@@ -19,26 +19,26 @@ class mood_admin extends admin {
 		if ($catid) {
 			$sql = "`catid` = '$catid' AND `siteid` = '".$this->get_siteid()."'";
 			switch ($datetype) {
-				case 1://½ñÌì
+				case 1://ä»Šå¤©
 					$sql .= " AND `lastupdate` BETWEEN '".(strtotime(date('Y-m-d')." 00:00:00"))."' AND '".(strtotime(date('Y-m-d')." 23:59:59"))."'";
 					break;
 					
-				case 2://×òÌì
+				case 2://æ˜¨å¤©
 					$sql .= " AND `lastupdate` BETWEEN '".(strtotime(date('Y-m-d')." 00:00:00")-86400)."' AND '".(strtotime(date('Y-m-d')." 23:59:59")-86400)."'";
 					break;
 					
-				case 3://±¾ÖÜ
+				case 3://æœ¬å‘¨
 					$week = date('w');
 					if (empty($week)) $week = 7;
 					$sql .= " AND `lastupdate` BETWEEN '".(strtotime(date('Y-m-d')." 23:59:59")-86400*$week)."' AND '".(strtotime(date('Y-m-d')." 23:59:59")+(86400*(7-$week)))."'";
 					break;
 				
-				case 4://±¾ÔÂ
+				case 4://æœ¬æœˆ
 					$day = date('t');
 					$sql .= " AND `lastupdate` BETWEEN '".strtotime(date('Y-m-1')." 00:00:00")."' AND '".strtotime(date('Y-m-'.$day)." 23:59:59")."'";
 					break;
 					
-				case 5://ËùÓĞ
+				case 5://æ‰€æœ‰
 					$sql .= " AND `lastupdate` <= '".SYS_TIME."'";
 					break;
 			}
@@ -71,7 +71,7 @@ class mood_admin extends admin {
 		include $this->admin_tpl('mood_list');
 	}
 	
-	//ÅäÖÃ
+	//é…ç½®
 	public function setting() {
 		$mood_program = getcache('mood_program', 'commons');
 		if (isset($_POST['dosubmit'])) {

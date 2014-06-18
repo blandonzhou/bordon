@@ -3,7 +3,7 @@ return array (
   8 => 
   array (
     'groupid' => '8',
-    'name' => '游客',
+    'name' => '娓稿',
     'issystem' => '1',
     'starnum' => '0',
     'point' => '0',
@@ -28,7 +28,7 @@ return array (
   2 => 
   array (
     'groupid' => '2',
-    'name' => '新手上路',
+    'name' => '鏂版墜涓婅矾',
     'issystem' => '1',
     'starnum' => '1',
     'point' => '50',
@@ -53,7 +53,7 @@ return array (
   6 => 
   array (
     'groupid' => '6',
-    'name' => '注册会员',
+    'name' => '娉ㄥ唽浼氬憳',
     'issystem' => '1',
     'starnum' => '2',
     'point' => '100',
@@ -78,7 +78,7 @@ return array (
   4 => 
   array (
     'groupid' => '4',
-    'name' => '中级会员',
+    'name' => '涓骇浼氬憳',
     'issystem' => '1',
     'starnum' => '3',
     'point' => '150',
@@ -103,7 +103,7 @@ return array (
   5 => 
   array (
     'groupid' => '5',
-    'name' => '高级会员',
+    'name' => '楂樼骇浼氬憳',
     'issystem' => '1',
     'starnum' => '5',
     'point' => '300',
@@ -128,7 +128,7 @@ return array (
   1 => 
   array (
     'groupid' => '1',
-    'name' => '禁止访问',
+    'name' => '绂佹璁块棶',
     'issystem' => '1',
     'starnum' => '0',
     'point' => '0',
@@ -153,7 +153,7 @@ return array (
   7 => 
   array (
     'groupid' => '7',
-    'name' => '邮件认证',
+    'name' => '閭欢璁よ瘉',
     'issystem' => '1',
     'starnum' => '0',
     'point' => '0',

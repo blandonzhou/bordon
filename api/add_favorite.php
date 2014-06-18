@@ -1,9 +1,9 @@
 <?php
 /**
- * ÊÕ²Øurl£¬±ØĞëµÇÂ¼
- * @param url µØÖ·£¬Ğèurlencode£¬·ÀÖ¹ÂÒÂë²úÉú
- * @param title ±êÌâ£¬Ğèurlencode£¬·ÀÖ¹ÂÒÂë²úÉú
- * @return {1:³É¹¦;-1:Î´µÇÂ¼;-2:È±ÉÙ²ÎÊı}
+ * æ”¶è—urlï¼Œå¿…é¡»ç™»å½•
+ * @param url åœ°å€ï¼Œéœ€urlencodeï¼Œé˜²æ­¢ä¹±ç äº§ç”Ÿ
+ * @param title æ ‡é¢˜ï¼Œéœ€urlencodeï¼Œé˜²æ­¢ä¹±ç äº§ç”Ÿ
+ * @return {1:æˆåŠŸ;-1:æœªç™»å½•;-2:ç¼ºå°‘å‚æ•°}
  */
 defined('IN_PHPCMS') or exit('No permission resources.');
 
@@ -22,7 +22,7 @@ if(empty($_GET['title']) || empty($_GET['url'])) {
 	$url = trim_script($url);
 }
 $_GET['callback'] = safe_replace($_GET['callback']);
-//ÅĞ¶ÏÊÇ·ñµÇÂ¼	
+//åˆ¤æ–­æ˜¯å¦ç™»å½•	
 $phpcms_auth = param::get_cookie('auth');
 if($phpcms_auth) {
 	$auth_key = md5(pc_base::load_config('system', 'auth_key').$_SERVER['HTTP_USER_AGENT']);
@@ -38,7 +38,7 @@ if($phpcms_auth) {
 
 $favorite_db = pc_base::load_model('favorite_model');
 $data = array('title'=>$title, 'url'=>$url, 'adddate'=>SYS_TIME, 'userid'=>$userid);
-//¸ù¾İurlÅĞ¶ÏÊÇ·ñÒÑ¾­ÊÕ²Ø¹ı¡£
+//æ ¹æ®urlåˆ¤æ–­æ˜¯å¦å·²ç»æ”¶è—è¿‡ã€‚
 $is_exists = $favorite_db->get_one(array('url'=>$url, 'userid'=>$userid));
 if(!$is_exists) {
 	$favorite_db->insert($data);

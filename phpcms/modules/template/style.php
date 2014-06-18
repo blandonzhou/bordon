@@ -2,7 +2,7 @@
 defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_class('admin', 'admin', 0);
 class style extends admin {
-	//Ä£°åÎÄ¼ş¼Ğ
+	//æ¨¡æ¿æ–‡ä»¶å¤¹
 	private $filepath;
 	
 	public function __construct() {

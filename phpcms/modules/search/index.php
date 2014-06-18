@@ -9,14 +9,14 @@ class index {
 	}
 	
 	/**
-	 * ¹Ø¼ü´ÊËÑË÷
+	 * å…³é”®è¯æœç´¢
 	 */
 	public function init() {
-		//»ñÈ¡siteid
+		//è·å–siteid
 		$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
 		$SEO = seo($siteid);
 
-		//ËÑË÷ÅäÖÃ
+		//æœç´¢é…ç½®
 		$search_setting = getcache('search');
 		$setting = $search_setting[$siteid];
 
@@ -33,10 +33,10 @@ class index {
 			$pagesize = 10;
 			$q = safe_replace(trim($_GET['q']));
 			$q = new_html_special_chars(strip_tags($q));
-			$q = str_replace('%', '', $q);	//¹ıÂË'%'£¬ÓÃ»§È«ÎÄËÑË÷
-			$search_q = $q;	//ËÑË÷Ô­ÄÚÈİ
+			$q = str_replace('%', '', $q);	//è¿‡æ»¤'%'ï¼Œç”¨æˆ·å…¨æ–‡æœç´¢
+			$search_q = $q;	//æœç´¢åŸå†…å®¹
 			
-			//°´Ê±¼äËÑË÷
+			//æŒ‰æ—¶é—´æœç´¢
 			if($time == 'day') {
 				$search_time = SYS_TIME - 86400;
 				$sql_time = ' AND adddate > '.$search_time;
@@ -54,12 +54,12 @@ class index {
 				$sql_time = '';
 			}
 			if($page==1 && !$setting['sphinxenable']) {
-				//¾«È·ËÑË÷
+				//ç²¾ç¡®æœç´¢
 				$commend = $this->db->get_one("`typeid` = '$typeid' $sql_time AND `data` like '%$q%'");
 			} else {
 				$commend = '';
 			}
-			//Èç¹û¿ªÆôsphinx
+			//å¦‚æœå¼€å¯sphinx
 			if($setting['sphinxenable']) {
 				$sphinx = pc_base::load_app_class('search_interface', '', 0);
 				$sphinx = new search_interface();
@@ -67,16 +67,16 @@ class index {
 				$offset = $pagesize*($page-1);
 				$res = $sphinx->search($q, array($siteid), array($typeid), array($search_time, SYS_TIME), $offset, $pagesize, '@weight desc');
 				$totalnums = $res['total'];
-				//Èç¹û½á¹û²»Îª¿Õ
+				//å¦‚æœç»“æœä¸ä¸ºç©º
 				if(!empty($res['matches'])) {
 					$result = $res['matches'];
 				}
 			} else {
 				pc_base::load_sys_class('segment', '', 0);
 				$segment = new segment();
-				//·Ö´Ê½á¹û
+				//åˆ†è¯ç»“æœ
 				$segment_q = $segment->get_keyword($segment->split_result($q));
-				//Èç¹û·Ö´Ê½á¹ûÎª¿Õ
+				//å¦‚æœåˆ†è¯ç»“æœä¸ºç©º
 				if(!empty($segment_q)) {
 					$sql = "`siteid`= '$siteid' AND `typeid` = '$typeid' $sql_time AND MATCH (`data`) AGAINST ('$segment_q' IN BOOLEAN MODE)";
 				} else {
@@ -86,18 +86,18 @@ class index {
 				$result = $this->db->listinfo($sql, 'searchid DESC', $page, 10);
 			}
 
-			//Èç¹û¿ªÆôÏà¹ØËÑË÷¹¦ÄÜ
+			//å¦‚æœå¼€å¯ç›¸å…³æœç´¢åŠŸèƒ½
 			if($setting['relationenble']) {
-				//Èç¹û¹Ø¼ü´Ê³¤¶ÈÔÚ8-16Ö®¼ä£¬±£´æ¹Ø¼ü´Ê×÷Îªrelation search
+				//å¦‚æœå…³é”®è¯é•¿åº¦åœ¨8-16ä¹‹é—´ï¼Œä¿å­˜å…³é”®è¯ä½œä¸ºrelation search
 				$this->keyword_db = pc_base::load_model('search_keyword_model');
 
 				if(strlen($q) < 17 && strlen($q) > 5 && !empty($segment_q)) {
 					$res = $this->keyword_db->get_one(array('keyword'=>$q));
 					if($res) {
-						//¹Ø¼ü´ÊËÑË÷Êı+1
+						//å…³é”®è¯æœç´¢æ•°+1
 						//$this->keyword_db->update(array('searchnums'=>'+=1'), array('keyword'=>$q));
 					} else {
-						//¹Ø¼ü´Ê×ª»»ÎªÆ´Òô
+						//å…³é”®è¯è½¬æ¢ä¸ºæ‹¼éŸ³
 						pc_base::load_sys_func('iconv');
 						$pinyin = gbk_to_pinyin($q);
 						if(is_array($pinyin)) {
@@ -106,7 +106,7 @@ class index {
 						$this->keyword_db->insert(array('keyword'=>$q, 'searchnums'=>1, 'data'=>$segment_q, 'pinyin'=>$pinyin));
 					}
 				}
-				//Ïà¹ØËÑË÷
+				//ç›¸å…³æœç´¢
 				if(!empty($segment_q)) {
 					$relation_q = str_replace(' ', '%', $segment_q);
 				} else {
@@ -115,9 +115,9 @@ class index {
 				$relation = $this->keyword_db->select("MATCH (`data`) AGAINST ('%$relation_q%' IN BOOLEAN MODE)", '*', 10, 'searchnums DESC');
 			}
 				
-			//Èç¹û½á¹û²»Îª¿Õ
+			//å¦‚æœç»“æœä¸ä¸ºç©º
 			  if(!empty($result) || !empty($commend['id'])) {
-				//¿ªÆôsphinxºóÎÄÕÂidÈ¡·¨²»Í¬
+				//å¼€å¯sphinxåæ–‡ç« idå–æ³•ä¸åŒ
 				if($setting['sphinxenable']) {
 					foreach($result as $_v) {
 						$sids[] = $_v['attrs']['id'];
@@ -134,17 +134,17 @@ class index {
 				$sids = array_unique($sids);
 
 				$where = to_sqls($sids, '', 'id');
-				//»ñÈ¡Ä£ĞÍid
+				//è·å–æ¨¡å‹id
 				$model_type_cache = getcache('type_model_'.$siteid,'search');
 				$model_type_cache = array_flip($model_type_cache);
 				$modelid = $model_type_cache[$typeid];
 
-				//ÊÇ·ñ¶ÁÈ¡ÆäËûÄ£¿é½Ó¿Ú
+				//æ˜¯å¦è¯»å–å…¶ä»–æ¨¡å—æ¥å£
 				if(true) {
 					$this->content_db->set_model($modelid);
 					
 					/**
-					 * Èç¹û±íÃûÎª¿Õ£¬ÔòÎª»ÆÒ³Ä£ĞÍ
+					 * å¦‚æœè¡¨åä¸ºç©ºï¼Œåˆ™ä¸ºé»„é¡µæ¨¡å‹
 					 */
 				
 					
@@ -159,7 +159,7 @@ class index {
 						$totalnums = $this->db->number;
 					}
 					
-					//Èç¹û·Ö´Ê½á¹ûÎª¿Õ
+					//å¦‚æœåˆ†è¯ç»“æœä¸ºç©º
 					if(!empty($segment_q)) {
 						$replace = explode(' ', $segment_q);
 						foreach($replace as $replace_arr_v) {
@@ -176,7 +176,7 @@ class index {
 						}
 					}
 				} else {
-					//¶ÁÈ¡×¨¼­ËÑË÷½Ó¿Ú
+					//è¯»å–ä¸“è¾‘æœç´¢æ¥å£
 					$special_api = pc_base::load_app_class('search_api', 'special');
  					$data = $special_api->get_search_data($sids);
 					$totalnums = count($data);
@@ -208,11 +208,11 @@ class index {
 	}
 	
 	/**
-	 * ÌáÊ¾ËÑË÷½Ó¿Ú
-	 * TODO ÔİÊ±Î´ÆôÓÃ£¬ÓÃµÄÊÇgoogleµÄ½Ó¿Ú
+	 * æç¤ºæœç´¢æ¥å£
+	 * TODO æš‚æ—¶æœªå¯ç”¨ï¼Œç”¨çš„æ˜¯googleçš„æ¥å£
 	 */
 	public function public_suggest_search() {
-		//¹Ø¼ü´Ê×ª»»ÎªÆ´Òô
+		//å…³é”®è¯è½¬æ¢ä¸ºæ‹¼éŸ³
 		pc_base::load_sys_func('iconv');
 		$pinyin = gbk_to_pinyin($q);
 		if(is_array($pinyin)) {

@@ -16,7 +16,7 @@ class manage extends admin {
 		$this->siteid = $this->get_siteid();
 	}	
 	/**
-	 * 附件列表
+	 * 闄勪欢鍒楄〃
 	 */
 	public function init() {
 		$where = '';
@@ -47,7 +47,7 @@ class manage extends admin {
 	}
 	
 	/**
-	 * 目录浏览模式添加图片
+	 * 鐩綍娴忚妯″紡娣诲姞鍥剧墖
 	 */
 	public function dir() {
 		if(!$this->admin_username) return false;
@@ -73,7 +73,7 @@ class manage extends admin {
 	}
 	
 	/**
-	 * 删除附件
+	 * 鍒犻櫎闄勪欢
 	 */
 	public function delete() {
 		$aid = $_GET['aid'];
@@ -87,7 +87,7 @@ class manage extends admin {
 	}
 	
 	/**
-	 * 批量删除附件
+	 * 鎵归噺鍒犻櫎闄勪欢
 	 */
 	public function public_delete_all() {
 		$del_arr = array();

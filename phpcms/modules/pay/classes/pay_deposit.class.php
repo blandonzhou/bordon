@@ -6,7 +6,7 @@ class pay_deposit  {
 		$this->account_db = pc_base::load_model('pay_account_model');
 	}
 	/**
-	 * Éú³ÉÁ÷Ë®¼ÇÂ¼
+	 * ç”Ÿæˆæµæ°´è®°å½•
 	 * @param unknown_type 
 	 */
 	public function set_record($data){
@@ -25,8 +25,8 @@ class pay_deposit  {
 	}
 	
 	/**
-	 * »ñÈ¡Á÷Ë®¼ÇÂ¼
-	 * @param init $id Á÷Ë®ÕÊºÅ
+	 * èŽ·å–æµæ°´è®°å½•
+	 * @param init $id æµæ°´å¸å·
 	 */
 	public function get_record($id) {
 		$id = intval($id);
@@ -36,7 +36,7 @@ class pay_deposit  {
 		return ($result && !in_array($result['status'],$status_arr)) ? $result: false;
 	}
 	/**
-	 * »ñÈ¡³äÖµ·½Ê½ÐÅÏ¢
+	 * èŽ·å–å……å€¼æ–¹å¼ä¿¡æ¯
 	 * @param unknown_type $pay_id
 	 * @return unknown
 	 */
@@ -48,7 +48,7 @@ class pay_deposit  {
 	}
 		
 	/**
-	 * »ñÈ¡³äÖµÀàÐÍ
+	 * èŽ·å–å……å€¼ç±»åž‹
 	 */
 	public function get_paytype() {
 		$result = $this->pay_db->select('','pay_id,name,pay_name,pay_code,pay_desc','','pay_order DESC,pay_id DESC');

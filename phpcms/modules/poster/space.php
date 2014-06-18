@@ -22,7 +22,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * Ìí¼Ó¹ã¸æ°æ¿é
+	 * æ·»åŠ å¹¿å‘Šç‰ˆå—
 	 */
 	public function add() {
 		if (isset($_POST['dosubmit'])) {
@@ -48,7 +48,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ±à¼­¹ã¸æ°æÎ»
+	 * ç¼–è¾‘å¹¿å‘Šç‰ˆä½
 	 */
 	public function edit() {
 		$_GET['spaceid'] = intval($_GET['spaceid']);
@@ -78,7 +78,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æ°æÎ»µ÷ÓÃ´úÂë
+	 * å¹¿å‘Šç‰ˆä½è°ƒç”¨ä»£ç 
 	 */
 	public function public_call() {
 		$_GET['sid'] = intval($_GET['sid']);
@@ -88,7 +88,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æÔ¤ÀÀ
+	 * å¹¿å‘Šé¢„è§ˆ
 	 */
 	public function public_preview() {
 		if (is_numeric($_GET['spaceid'])) {
@@ -115,15 +115,15 @@ class space extends admin {
 	}
 	
 	/**
-	 * É¾³ı¹ã¸æ°æÎ» 
-	 * @param	intval	$sid	¹ã¸æ°æÎ»µÄID£¬µ±ÅúÁ¿É¾³ıÊ±ÏµÍ³»áµİ¹éÉ¾³ı
+	 * åˆ é™¤å¹¿å‘Šç‰ˆä½ 
+	 * @param	intval	$sid	å¹¿å‘Šç‰ˆä½çš„IDï¼Œå½“æ‰¹é‡åˆ é™¤æ—¶ç³»ç»Ÿä¼šé€’å½’åˆ é™¤
 	 */
 	public function delete() {
 		if ((!isset($_GET['spaceid']) || empty($_GET['spaceid'])) && (!isset($_POST['spaceid']) || empty($_POST['spaceid']))) {
 			showmessage(L('illegal_parameters'), HTTP_REFERER);
 		} else {
 			if (is_array($_POST['spaceid'])) {
-				array_map(array($this, _del), $_POST['spaceid']); //Èç¹ûÊÇÅúÁ¿²Ù×÷£¬Ôòµİ¹éÊı×é
+				array_map(array($this, _del), $_POST['spaceid']); //å¦‚æœæ˜¯æ‰¹é‡æ“ä½œï¼Œåˆ™é€’å½’æ•°ç»„
 			} elseif($_GET['spaceid']) {
 				$_GET['spaceid'] = intval($_GET['spaceid']);
 				$db = pc_base::load_model('poster_model');
@@ -135,8 +135,8 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æÎ»É¾³ı
-	 * @param intval $spaceid ×¨ÌâID
+	 * å¹¿å‘Šä½åˆ é™¤
+	 * @param intval $spaceid ä¸“é¢˜ID
 	 */
 	private function _del($spaceid = 0) {
 		$spaceid = intval($spaceid);
@@ -148,17 +148,17 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¹ã¸æÄ£¿éÅäÖÃ
+	 * å¹¿å‘Šæ¨¡å—é…ç½®
 	 */
 	public function setting() {
 		if (isset($_POST['dosubmit'])) {
 			$setting = getcache('poster', 'commons');
 			$setting[$this->get_siteid()] = $_POST['setting'];
-			setcache('poster', $setting, 'commons'); //ÉèÖÃ»º´æ
-			$m_db = pc_base::load_model('module_model'); //µ÷ÓÃÄ£¿éÊı¾İÄ£ĞÍ
+			setcache('poster', $setting, 'commons'); //è®¾ç½®ç¼“å­˜
+			$m_db = pc_base::load_model('module_model'); //è°ƒç”¨æ¨¡å—æ•°æ®æ¨¡å‹
 			$setting = array2string($_POST['setting']);  
 			
-			$m_db->update(array('setting'=>$setting), array('module'=>ROUTE_M)); //½«ÅäÖÃĞÅÏ¢´æÈëÊı¾İ±íÖĞ
+			$m_db->update(array('setting'=>$setting), array('module'=>ROUTE_M)); //å°†é…ç½®ä¿¡æ¯å­˜å…¥æ•°æ®è¡¨ä¸­
 			
 			showmessage(L('setting_updates_successful'), HTTP_REFERER, '', 'setting');
 		} else {
@@ -168,7 +168,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ÅäÖÃÄ£°å
+	 * é…ç½®æ¨¡æ¿
 	 */
 	public function poster_template() {
 		$tpl_root = pc_base::load_config('system', 'tpl_root');
@@ -185,7 +185,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * É¾³ıÄ£°åÅäÖÃ
+	 * åˆ é™¤æ¨¡æ¿é…ç½®
 	 */
 	public function public_tempate_del() {
 		if (!isset($_GET['id'])) showmessage(L('illegal_parameters'), HTTP_REFERER);
@@ -199,7 +199,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ÅäÖÃÄ£°å
+	 * é…ç½®æ¨¡æ¿
 	 */
 	public function public_tempate_setting() {
 		$siteid = $this->get_siteid();
@@ -241,7 +241,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¸üĞÂjs
+	 * æ›´æ–°js
 	 */
 	public function create_js($page = 0) {
 		$page = max(intval($_GET['page']), 1);
@@ -273,7 +273,7 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¼ì²â°æÎ»Ãû³ÆÊÇ·ñ´æÔÚ
+	 * æ£€æµ‹ç‰ˆä½åç§°æ˜¯å¦å­˜åœ¨
 	 */
 	public function public_check_space() {
 		if (!$_GET['name']) exit(0);
@@ -297,9 +297,9 @@ class space extends admin {
 	}
 	
 	/**
-	 * ¼ì²é±íµ¥Êı¾İ
-	 * @param	Array	$data	±íµ¥´«µİ¹ıÀ´µÄÊı×é
-	 * @return Array	¼ì²éºóµÄÊı×é
+	 * æ£€æŸ¥è¡¨å•æ•°æ®
+	 * @param	Array	$data	è¡¨å•ä¼ é€’è¿‡æ¥çš„æ•°ç»„
+	 * @return Array	æ£€æŸ¥åçš„æ•°ç»„
 	 */
 	private function check($data = array()) {
 		if ($data['name'] == '') showmessage(L('name_plates_not_empty'));

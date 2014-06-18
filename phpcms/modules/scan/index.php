@@ -31,7 +31,7 @@ class index extends admin {
 		include $this->admin_tpl('scan_index');
 	}
 	
-	//½øĞĞÅäÖÃÎÄ¼ş¸üĞÂ
+	//è¿›è¡Œé…ç½®æ–‡ä»¶æ›´æ–°
 	public function public_update_config() {
 		$info = isset($_POST['info']) ? $_POST['info'] : showmessage(L('illegal_action'), HTTP_REFERER);
 		$dir = isset($_POST['dir']) ? new_stripslashes($_POST['dir']) : '';
@@ -43,7 +43,7 @@ class index extends admin {
 		showmessage(L('configuration_file_save_to_the'), '?m=scan&c=index&a=public_file_count');
 	}
 	
-	//¶ÔÒª½øĞĞÉ¨ÃèµÄÎÄ¼ş½øĞĞÍ³¼Æ
+	//å¯¹è¦è¿›è¡Œæ‰«æçš„æ–‡ä»¶è¿›è¡Œç»Ÿè®¡
 	public function public_file_count() {
 		$scan = getcache('scan_config', 'scan');
 		pc_base::load_app_func('global');
@@ -64,7 +64,7 @@ class index extends admin {
 		showmessage(L('documents_to_file_the_statistics'), '?m=scan&c=index&a=public_file_filter');
 	}
 	
-	//¶ÔÎÄ¼ş½øĞĞÉ¸Ñ¡
+	//å¯¹æ–‡ä»¶è¿›è¡Œç­›é€‰
 	public function public_file_filter() {
 		$scan_list = getcache('scan_list', 'scan');
 		$scan = getcache('scan_config', 'scan');
@@ -80,7 +80,7 @@ class index extends admin {
 		showmessage(L('file_through_a_feature_the_function_is'), '?m=scan&c=index&a=public_file_func');
 	}
 	
-	//½øĞĞÌØÕ÷º¯Êı¹ıÂË
+	//è¿›è¡Œç‰¹å¾å‡½æ•°è¿‡æ»¤
 	public function public_file_func() {
 		@set_time_limit(600);
 		$file_list = getcache('scan_list', 'scan');
@@ -98,7 +98,7 @@ class index extends admin {
 		showmessage(L('feature_function_complete_a_code_used_by_filtration'), '?m=scan&c=index&a=public_file_code');
 	}
 	
-	//½øĞĞÌØÕ÷´úÂë¹ıÂË
+	//è¿›è¡Œç‰¹å¾ä»£ç è¿‡æ»¤
 	public function public_file_code() {
 		@set_time_limit(600);
 		$file_list = getcache('scan_list', 'scan');
@@ -135,11 +135,11 @@ class index extends admin {
 			showmessage(L('file_not_exists'));
 		}
 		$html = file_get_contents(PHPCMS_PATH.$url);
-		//ÅĞ¶ÏÎÄ¼şÃû£¬Èç¹ûÊÇdatabase.php ¶ÔÀïÃæµÄ¹Ø¼ü×Ö·û½øĞĞÌæ»»
+		//åˆ¤æ–­æ–‡ä»¶åï¼Œå¦‚æœæ˜¯database.php å¯¹é‡Œé¢çš„å…³é”®å­—ç¬¦è¿›è¡Œæ›¿æ¢
 		$basename = basename($url);
 		if($basename == "database.php"){
 			//$html = str_replace();
-			showmessage(L('ÖØÒªÎÄ¼ş£¬²»ÔÊĞíÔÚÏß²é¿´£¡'));
+			showmessage(L('é‡è¦æ–‡ä»¶ï¼Œä¸å…è®¸åœ¨çº¿æŸ¥çœ‹ï¼'));
 		}
 		$file_list = getcache('scan_bad_file', 'scan');
 		if (isset($file_list[$url]['func']) && is_array($file_list[$url]['func']) && !empty($file_list[$url]['func'])) foreach ($file_list[$url]['func'] as $key=>$val)
@@ -161,7 +161,7 @@ class index extends admin {
 		$pro = isset($_GET['pro']) && intval($_GET['pro']) ? intval($_GET['pro']) : 1;
 		pc_base::load_app_func('global');
 		switch ($pro) {
-			case '1'://Í³¼ÆÎÄ¼ş
+			case '1'://ç»Ÿè®¡æ–‡ä»¶
 				$msg = L('please_wait');
 				ob_start();
 				include $this->admin_tpl('md5_creat');

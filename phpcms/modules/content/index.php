@@ -1,6 +1,6 @@
 <?php
 defined('IN_PHPCMS') or exit('No permission resources.');
-//Ä£ĞÍ»º´æÂ·¾¶
+//æ¨¡å‹ç¼“å­˜è·¯å¾„
 define('CACHE_MODEL_PATH',CACHE_PATH.'caches_model'.DIRECTORY_SEPARATOR.'caches_data'.DIRECTORY_SEPARATOR);
 pc_base::load_app_func('util','content');
 class index {
@@ -11,7 +11,7 @@ class index {
 		$this->_username = param::get_cookie('_username');
 		$this->_groupid = param::get_cookie('_groupid');
 	}
-	//Ê×Ò³
+	//é¦–é¡µ
 	public function init() {
 		if(isset($_GET['siteid'])) {
 			$siteid = intval($_GET['siteid']);
@@ -30,7 +30,7 @@ class index {
 		$CATEGORYS = getcache('category_content_'.$siteid,'commons');
 		include template('content','index',$default_style);
 	}
-	//ÄÚÈİÒ³
+	//å†…å®¹é¡µ
 	public function show() {
 		$catid = intval($_GET['catid']);
 		$id = intval($_GET['id']);
@@ -61,7 +61,7 @@ class index {
 		$this->db->table_name = $tablename.'_data';
 		$r2 = $this->db->get_one(array('id'=>$id));
 		$rs = $r2 ? array_merge($r,$r2) : $r;
-/* ĞŞ¸ÄÔ´Âë		 */
+/* ä¿®æ”¹æºç 		 */
 		$rs['local_video'] = str_replace('|','',$rs['local_video']);
 		
 		$video_url_arr =  explode(',',$rs['local_video']);
@@ -78,10 +78,10 @@ class index {
 			
 		}
 		
-/* ĞŞ¸ÄÔ´Âë	end	 */	
+/* ä¿®æ”¹æºç 	end	 */	
 	
 		
-		//ÔÙ´ÎÖØĞÂ¸³Öµ£¬ÒÔÊı¾İ¿âÎª×¼
+		//å†æ¬¡é‡æ–°èµ‹å€¼ï¼Œä»¥æ•°æ®åº“ä¸ºå‡†
 		$catid = $CATEGORYS[$r['catid']]['catid'];
 		$modelid = $CATEGORYS[$catid]['modelid'];
 		
@@ -90,7 +90,7 @@ class index {
 		$data = $content_output->get($rs);
 		extract($data);
 		
-		//¼ì²éÎÄÕÂ»áÔ±×éÈ¨ÏŞ
+		//æ£€æŸ¥æ–‡ç« ä¼šå‘˜ç»„æƒé™
 		if($groupids_view && is_array($groupids_view)) {
 			$_groupid = param::get_cookie('_groupid');
 			$_groupid = intval($_groupid);
@@ -100,7 +100,7 @@ class index {
 			}
 			if(!in_array($_groupid,$groupids_view)) showmessage(L('no_priv'));
 		} else {
-			//¸ù¾İÀ¸Ä¿·ÃÎÊÈ¨ÏŞÅĞ¶ÏÈ¨ÏŞ
+			//æ ¹æ®æ ç›®è®¿é—®æƒé™åˆ¤æ–­æƒé™
 			$_priv_data = $this->_category_priv($catid);
 			if($_priv_data=='-1') {
 				$forward = urlencode(get_url());
@@ -114,7 +114,7 @@ class index {
 		} else {
 			$allow_comment = 0;
 		}
-		//ÔÄ¶ÁÊÕ·Ñ ÀàĞÍ
+		//é˜…è¯»æ”¶è´¹ ç±»å‹
 		$paytype = $rs['paytype'];
 		$readpoint = $rs['readpoint'];
 		$allow_visitor = 1;
@@ -124,7 +124,7 @@ class index {
 				$paytype = $this->category_setting['paytype'];
 			}
 			
-			//¼ì²éÊÇ·ñÖ§¸¶¹ı
+			//æ£€æŸ¥æ˜¯å¦æ”¯ä»˜è¿‡
 			$allow_visitor = self::_check_payment($catid.'_'.$id,$paytype);
 			if(!$allow_visitor) {
 				$http_referer = urlencode(get_url());
@@ -133,7 +133,7 @@ class index {
 				$allow_visitor = 1;
 			}
 		}
-		//×î¶¥¼¶À¸Ä¿ID
+		//æœ€é¡¶çº§æ ç›®ID
 		$arrparentid = explode(',', $CAT['arrparentid']);
 		$top_parentid = $arrparentid[1] ? $arrparentid[1] : $catid;
 		
@@ -151,13 +151,13 @@ class index {
 		}
 		$pages = $titles = '';
 		if($rs['paginationtype']==1) {
-			//×Ô¶¯·ÖÒ³
+			//è‡ªåŠ¨åˆ†é¡µ
 			if($maxcharperpage < 10) $maxcharperpage = 500;
 			$contentpage = pc_base::load_app_class('contentpage');
 			$content = $contentpage->get_data($content,$maxcharperpage);
 		}
 		if($rs['paginationtype']!=0) {
-			//ÊÖ¶¯·ÖÒ³
+			//æ‰‹åŠ¨åˆ†é¡µ
 			$CONTENT_POS = strpos($content, '[page]');
 			if($CONTENT_POS !== false) {
 				$this->url = pc_base::load_app_class('url', 'content');
@@ -182,9 +182,9 @@ class index {
 						}
 					}
 				}
-				//µ±²»´æÔÚ [/page]Ê±£¬ÔòÊ¹ÓÃÏÂÃæ·ÖÒ³
+				//å½“ä¸å­˜åœ¨ [/page]æ—¶ï¼Œåˆ™ä½¿ç”¨ä¸‹é¢åˆ†é¡µ
 				$pages = content_pages($pagenumber,$page, $pageurls);
-				//ÅĞ¶Ï[page]³öÏÖµÄÎ»ÖÃÊÇ·ñÔÚµÚÒ»Î» 
+				//åˆ¤æ–­[page]å‡ºç°çš„ä½ç½®æ˜¯å¦åœ¨ç¬¬ä¸€ä½ 
 				if($CONTENT_POS<7) {
 					$content = $contents[$page];
 				} else {
@@ -207,9 +207,9 @@ class index {
 			}
 		}
 		$this->db->table_name = $tablename;
-		//ÉÏÒ»Ò³
+		//ä¸Šä¸€é¡µ
 		$previous_page = $this->db->get_one("`catid` = '$catid' AND `id`<'$id' AND `status`=99",'*','id DESC');
-		//ÏÂÒ»Ò³
+		//ä¸‹ä¸€é¡µ
 		$next_page = $this->db->get_one("`catid`= '$catid' AND `id`>'$id' AND `status`=99");
 
 		if(empty($previous_page)) {
@@ -223,7 +223,7 @@ class index {
 		
 		include template('content',$template);
 	}
-	//ÁĞ±íÒ³
+	//åˆ—è¡¨é¡µ
 	public function lists() {
 		$catid = $_GET['catid'] = intval($_GET['catid']);
 		$_priv_data = $this->_category_priv($catid);
@@ -261,14 +261,14 @@ class index {
 			$top_parentid = $arrparentid[1] ? $arrparentid[1] : $catid;
 			$array_child = array();
 			$self_array = explode(',', $arrchildid);
-			//»ñÈ¡Ò»¼¶À¸Ä¿ids
+			//è·å–ä¸€çº§æ ç›®ids
 			foreach ($self_array as $arr) {
 				if($arr!=$catid && $CATEGORYS[$arr][parentid]==$catid) {
 					$array_child[] = $arr;
 				}
 			}
 			$arrchildid = implode(',', $array_child);
-			//URL¹æÔò
+			//URLè§„åˆ™
 			$urlrules = getcache('urlrules','commons');
 			$urlrules = str_replace('|', '~',$urlrules[$category_ruleid]);
 			$tmp_urls = explode('~',$urlrules);
@@ -285,7 +285,7 @@ class index {
 			$GLOBALS['URL_ARRAY']['catid'] = $catid;
 			include template('content',$template);
 		} else {
-		//µ¥ÍøÒ³
+		//å•ç½‘é¡µ
 			$this->page_db = pc_base::load_model('page_model');
 			$r = $this->page_db->get_one(array('catid'=>$catid));
 			if($r) extract($r);
@@ -300,10 +300,10 @@ class index {
 		}
 	}
 	
-	//JSON Êä³ö
+	//JSON è¾“å‡º
 	public function json_list() {
 		if($_GET['type']=='keyword' && $_GET['modelid'] && $_GET['keywords']) {
-		//¸ù¾İ¹Ø¼ü×ÖËÑË÷
+		//æ ¹æ®å…³é”®å­—æœç´¢
 			$modelid = intval($_GET['modelid']);
 			$id = intval($_GET['id']);
 
@@ -327,7 +327,7 @@ class index {
 					if(count($data)==0) exit('0');
 					echo json_encode($data);
 				} else {
-					//Ã»ÓĞÊı¾İ
+					//æ²¡æœ‰æ•°æ®
 					exit('0');
 				}
 			}
@@ -337,7 +337,7 @@ class index {
 	
 	
 	/**
-	 * ¼ì²éÖ§¸¶×´Ì¬
+	 * æ£€æŸ¥æ”¯ä»˜çŠ¶æ€
 	 */
 	protected function _check_payment($flag,$paytype) {
 		$_userid = $this->_userid;
@@ -355,7 +355,7 @@ class index {
 	}
 	
 	/**
-	 * ¼ì²éÔÄ¶ÁÈ¨ÏŞ
+	 * æ£€æŸ¥é˜…è¯»æƒé™
 	 *
 	 */
 	protected function _category_priv($catid) {

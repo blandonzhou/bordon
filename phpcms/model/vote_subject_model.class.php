@@ -10,8 +10,8 @@ class vote_subject_model extends model {
 	}
 	
 	/**
-	 * 说明: 取得投票信息, 返回数组
-	 * @param $subjectid 投票ID 
+	 * 璇存槑: 鍙栧緱鎶曠エ淇℃伅, 杩斿洖鏁扮粍
+	 * @param $subjectid 鎶曠エID 
 	 */
 	function get_subject($subjectid)
 	{

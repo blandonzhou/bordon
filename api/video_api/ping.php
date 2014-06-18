@@ -1,6 +1,6 @@
 <?php
 /**
- * 检查是否通讯成功
+ * 妫�鏌ユ槸鍚﹂�氳鎴愬姛
  */
 defined('IN_PHPCMS') or exit('No permission resources.'); 
 echo json_encode(array('msg'=>'Ping success','100'));

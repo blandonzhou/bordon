@@ -17,7 +17,7 @@ class payment extends admin {
 		$this->method = new pay_method($this->modules_path);
 	}
 	/**
-	 * Ö§¸¶Ä£¿éÁĞ±í
+	 * æ”¯ä»˜æ¨¡å—åˆ—è¡¨
 	 */
 	public function init() {	
 		$infos = $this->method->get_list();
@@ -25,7 +25,7 @@ class payment extends admin {
 		include $this->admin_tpl('payment_list');
 	}
 	/*
-	 * Ôö¼ÓÖ§¸¶Ä£¿é
+	 * å¢åŠ æ”¯ä»˜æ¨¡å—
 	 */
 	public function add() {
 		if(isset($_POST['dosubmit'])) {
@@ -63,7 +63,7 @@ class payment extends admin {
 		}
 	}
 	/*
-	 * ±à¼­Ö§¸¶Ä£¿é
+	 * ç¼–è¾‘æ”¯ä»˜æ¨¡å—
 	 */
 	public function edit() {
 		if(isset($_POST['dosubmit'])) {
@@ -101,7 +101,7 @@ class payment extends admin {
 	}
 	
 	/**
-	 * Ğ¶ÔØÖ§¸¶Ä£¿é
+	 * å¸è½½æ”¯ä»˜æ¨¡å—
 	 */
 	public function delete() {
 		$pay_id = intval($_GET['id']);
@@ -110,7 +110,7 @@ class payment extends admin {
 	}
 	
 	/**
-	 * Ö§¸¶¶©µ¥ÁĞ±í
+	 * æ”¯ä»˜è®¢å•åˆ—è¡¨
 	 */
 	public function pay_list() {
 		$where = '';
@@ -139,7 +139,7 @@ class payment extends admin {
 	}
 	
 	/**
-	 * ²ÆÎñÍ³¼Æ
+	 * è´¢åŠ¡ç»Ÿè®¡
 	 * Enter description here ...
 	 */
 	public function pay_stat() {
@@ -187,7 +187,7 @@ class payment extends admin {
 	}
 	
 	/**
-	 * Ö§¸¶´òÕÛ
+	 * æ”¯ä»˜æ‰“æŠ˜
 	 * Enter description here ...
 	 */
 	public function discount() {
@@ -207,7 +207,7 @@ class payment extends admin {
 	}
 	
 	/**
-	 * ĞŞ¸Ä²ÆÎñ
+	 * ä¿®æ”¹è´¢åŠ¡
 	 * Enter description here ...
 	 */
 	public function modify_deposit() {
@@ -216,7 +216,7 @@ class payment extends admin {
 			$usernote = isset($_POST['usernote']) && trim($_POST['usernote']) ? addslashes(trim($_POST['usernote'])) : showmessage(L('usernote').L('error'));	
 			$userinfo = $this->get_useid($username);
 			if($userinfo) {	
-				//Èç¹ûÔö¼Ó½ğÇ®»òµãÊı£¬Ïëpay_account ÖĞ¼ÇÂ¼Êı¾İ
+				//å¦‚æœå¢åŠ é‡‘é’±æˆ–ç‚¹æ•°ï¼Œæƒ³pay_account ä¸­è®°å½•æ•°æ®
 				if($_POST['pay_unit']) {
 					$value = floatval($_POST['unit']);
 					$payment = L('admin_recharge');
@@ -248,7 +248,7 @@ class payment extends admin {
 	}
 	
 	/*
-	 * Ö§¸¶É¾³ı
+	 * æ”¯ä»˜åˆ é™¤
 	 */
 	public function pay_del() {
 		$id = intval($_GET['id']);
@@ -257,7 +257,7 @@ class payment extends admin {
 	}
 	
 	/*
-	 * Ö§¸¶È¡Ïû
+	 * æ”¯ä»˜å–æ¶ˆ
 	 */
 	public function pay_cancel() {
 		$id = intval($_GET['id']);
@@ -265,7 +265,7 @@ class payment extends admin {
 		showmessage(L('state_change_succ'),HTTP_REFERER);
 	}
 	/*
-	 * Ö§¸¶ÏêÇé
+	 * æ”¯ä»˜è¯¦æƒ…
 	 */
 	public function public_pay_detail() {
 		$id = intval($_GET['id']);
@@ -294,8 +294,8 @@ class payment extends admin {
 		}		
 	}
 	/**
-	 * ¼ì²éÓÃ»§Ãû
-	 * @param string $username	ÓÃ»§Ãû
+	 * æ£€æŸ¥ç”¨æˆ·å
+	 * @param string $username	ç”¨æˆ·å
 	 */
 	public function public_checkname_ajax() {
 		$username = isset($_GET['username']) && trim($_GET['username']) ? trim($_GET['username']) : exit(0);

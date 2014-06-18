@@ -53,7 +53,7 @@
     </div>
 </div>
 <script type="text/javascript"> 
-//clientHeight-0; ¿Õ°×Öµ iframe×ÔÊÊÓ¦¸ß¶È
+//clientHeight-0; ç©ºç™½å€¼ iframeè‡ªé€‚åº”é«˜åº¦
 function windowW(){
 	if($(window).width()<940){
 			$('.header').css('width',940+'px');
@@ -80,7 +80,7 @@ window.onresize = function(){
 	$("#openClose").height(openClose);$("#content").height(openClose);
 }
 window.onresize();
-//×ó²à¿ª¹Ø
+//å·¦ä¾§å¼€å…³
 $("#openClose").toggle(
   function () {
     $(".left_menu").addClass("left_menu_on");

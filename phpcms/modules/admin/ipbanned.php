@@ -18,11 +18,11 @@ class ipbanned extends admin {
 	}
 	
 	/**
-	 * ÑéÖ¤Êý¾ÝÓÐÐ§ÐÔ
+	 * éªŒè¯æ•°æ®æœ‰æ•ˆæ€§
 	 */
 	public function public_name() {
 		$ip = isset($_GET['ip']) && trim($_GET['ip']) ? (CHARSET == 'gbk' ? iconv('utf-8', 'gbk', trim($_GET['ip'])) : trim($_GET['ip'])) : exit('0');
- 		//Ìí¼ÓÅÐ¶ÏIPÊÇ·ñÖØ¸´
+ 		//æ·»åŠ åˆ¤æ–­IPæ˜¯å¦é‡å¤
 		if ($this->db->get_one(array('ip'=>$ip), 'ipbannedid')) {
 			exit('0');
 		} else {
@@ -31,13 +31,13 @@ class ipbanned extends admin {
 	}
 		
 	/**
-	 * IPÌí¼Ó
+	 * IPæ·»åŠ 
 	 */
 	function add() {
 		if(isset($_POST['dosubmit'])){
   			$_POST['info']['expires']=strtotime($_POST['info']['expires']);
 			$this->db->insert($_POST['info']);
-			$this->public_cache_file();//¸üÐÂ»º´æ 
+			$this->public_cache_file();//æ›´æ–°ç¼“å­˜ 
 			showmessage(L('operation_success'),'?m=admin&c=ipbanned&a=add','', 'add');
 		}else{
 			$show_validator = $show_scroll = $show_header = true;
@@ -46,20 +46,20 @@ class ipbanned extends admin {
 	} 
 	 
 	/**
-	 * IPÉ¾³ý
+	 * IPåˆ é™¤
 	 */
 	function delete() {
  		if(is_array($_POST['ipbannedid'])){
 			foreach($_POST['ipbannedid'] as $ipbannedid_arr) {
 				$this->db->delete(array('ipbannedid'=>$ipbannedid_arr));
 			}
-			$this->public_cache_file();//¸üÐÂ»º´æ 
+			$this->public_cache_file();//æ›´æ–°ç¼“å­˜ 
 			showmessage(L('operation_success'),'?m=admin&c=ipbanned');	
 		} else {
 			$ipbannedid = intval($_GET['ipbannedid']);
 			if($ipbannedid < 1) return false;
 			$result = $this->db->delete(array('ipbannedid'=>$ipbannedid));
-			$this->public_cache_file();//¸üÐÂ»º´æ 
+			$this->public_cache_file();//æ›´æ–°ç¼“å­˜ 
 			if($result){
 				showmessage(L('operation_success'),'?m=admin&c=ipbanned');
 			} else {
@@ -69,7 +69,7 @@ class ipbanned extends admin {
 	}
 	
 	/**
-	 * IPËÑË÷
+	 * IPæœç´¢
 	 */
 	public function search_ip() {
 		$where = '';
@@ -85,7 +85,7 @@ class ipbanned extends admin {
 	} 
 	
 	/**
-	 * Éú³É»º´æ
+	 * ç”Ÿæˆç¼“å­˜
 	 */
 	public function public_cache_file() {
 		$infos = $this->db->select('','ip,expires','','ipbannedid desc');

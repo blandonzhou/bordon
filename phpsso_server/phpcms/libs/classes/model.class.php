@@ -1,6 +1,6 @@
 <?php 
 /**
- *  model.class.php Êý¾ÝÄ£ÐÍ»ùÀà
+ *  model.class.php æ•°æ®æ¨¡åž‹åŸºç±»
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -10,15 +10,15 @@ defined('IN_PHPCMS') or exit('Access Denied');
 pc_base::load_sys_class('db_factory', '', 0);
 class model {
 	
-	//Êý¾Ý¿âÅäÖÃ
+	//æ•°æ®åº“é…ç½®
 	protected $db_config = '';
-	//Êý¾Ý¿âÁ¬½Ó
+	//æ•°æ®åº“è¿žæŽ¥
 	protected $db = '';
-	//µ÷ÓÃÊý¾Ý¿âµÄÅäÖÃÏî
+	//è°ƒç”¨æ•°æ®åº“çš„é…ç½®é¡¹
 	protected $db_setting = 'default';
-	//Êý¾Ý±íÃû
+	//æ•°æ®è¡¨å
 	protected $table_name = '';
-	//±íÇ°×º
+	//è¡¨å‰ç¼€
 	public  $db_tablepre = '';
 	
 	public function __construct() {
@@ -31,13 +31,13 @@ class model {
 	}
 		
 	/**
-	 * Ö´ÐÐsql²éÑ¯
-	 * @param $where 		²éÑ¯Ìõ¼þ[Àý`name`='$name']
-	 * @param $data 		ÐèÒª²éÑ¯µÄ×Ö¶ÎÖµ[Àý`name`,`gender`,`birthday`]
-	 * @param $limit 		·µ»Ø½á¹û·¶Î§[Àý£º10»ò10,10 Ä¬ÈÏÎª¿Õ]
-	 * @param $order 		ÅÅÐò·½Ê½	[Ä¬ÈÏ°´Êý¾Ý¿âÄ¬ÈÏ·½Ê½ÅÅÐò]
-	 * @param $group 		·Ö×é·½Ê½	[Ä¬ÈÏÎª¿Õ]
-	 * @return array		²éÑ¯½á¹û¼¯Êý×é
+	 * æ‰§è¡ŒsqlæŸ¥è¯¢
+	 * @param $where 		æŸ¥è¯¢æ¡ä»¶[ä¾‹`name`='$name']
+	 * @param $data 		éœ€è¦æŸ¥è¯¢çš„å­—æ®µå€¼[ä¾‹`name`,`gender`,`birthday`]
+	 * @param $limit 		è¿”å›žç»“æžœèŒƒå›´[ä¾‹ï¼š10æˆ–10,10 é»˜è®¤ä¸ºç©º]
+	 * @param $order 		æŽ’åºæ–¹å¼	[é»˜è®¤æŒ‰æ•°æ®åº“é»˜è®¤æ–¹å¼æŽ’åº]
+	 * @param $group 		åˆ†ç»„æ–¹å¼	[é»˜è®¤ä¸ºç©º]
+	 * @return array		æŸ¥è¯¢ç»“æžœé›†æ•°ç»„
 	 */
 	final public function select($where = '', $data = '*', $limit = '', $order = '', $group = '', $key='') {
 		if (is_array($where)) $where = $this->sqls($where);
@@ -45,7 +45,7 @@ class model {
 	}
 
 	/**
-	 * ²éÑ¯¶àÌõÊý¾Ý²¢·ÖÒ³
+	 * æŸ¥è¯¢å¤šæ¡æ•°æ®å¹¶åˆ†é¡µ
 	 * @param $where
 	 * @param $order
 	 * @param $page
@@ -63,12 +63,12 @@ class model {
 	}
 
 	/**
-	 * »ñÈ¡µ¥Ìõ¼ÇÂ¼²éÑ¯
-	 * @param $where 		²éÑ¯Ìõ¼þ
-	 * @param $data 		ÐèÒª²éÑ¯µÄ×Ö¶ÎÖµ[Àý`name`,`gender`,`birthday`]
-	 * @param $order 		ÅÅÐò·½Ê½	[Ä¬ÈÏ°´Êý¾Ý¿âÄ¬ÈÏ·½Ê½ÅÅÐò]
-	 * @param $group 		·Ö×é·½Ê½	[Ä¬ÈÏÎª¿Õ]
-	 * @return array/null	Êý¾Ý²éÑ¯½á¹û¼¯,Èç¹û²»´æÔÚ£¬Ôò·µ»Ø¿Õ
+	 * èŽ·å–å•æ¡è®°å½•æŸ¥è¯¢
+	 * @param $where 		æŸ¥è¯¢æ¡ä»¶
+	 * @param $data 		éœ€è¦æŸ¥è¯¢çš„å­—æ®µå€¼[ä¾‹`name`,`gender`,`birthday`]
+	 * @param $order 		æŽ’åºæ–¹å¼	[é»˜è®¤æŒ‰æ•°æ®åº“é»˜è®¤æ–¹å¼æŽ’åº]
+	 * @param $group 		åˆ†ç»„æ–¹å¼	[é»˜è®¤ä¸ºç©º]
+	 * @return array/null	æ•°æ®æŸ¥è¯¢ç»“æžœé›†,å¦‚æžœä¸å­˜åœ¨ï¼Œåˆ™è¿”å›žç©º
 	 */
 	final public function get_one($where = '', $data = '*', $order = '', $group = '') {
 		if (is_array($where)) $where = $this->sqls($where);
@@ -76,19 +76,19 @@ class model {
 	}
 	
 	/**
-	 * Ö±½ÓÖ´ÐÐsql²éÑ¯
-	 * @param $sql							²éÑ¯sqlÓï¾ä
-	 * @return	boolean/query resource		Èç¹ûÎª²éÑ¯Óï¾ä£¬·µ»Ø×ÊÔ´¾ä±ú£¬·ñÔò·µ»Øtrue/false
+	 * ç›´æŽ¥æ‰§è¡ŒsqlæŸ¥è¯¢
+	 * @param $sql							æŸ¥è¯¢sqlè¯­å¥
+	 * @return	boolean/query resource		å¦‚æžœä¸ºæŸ¥è¯¢è¯­å¥ï¼Œè¿”å›žèµ„æºå¥æŸ„ï¼Œå¦åˆ™è¿”å›žtrue/false
 	 */
 	final public function query($sql) {
 		return $this->db->query($sql);
 	}
 	
 	/**
-	 * Ö´ÐÐÌí¼Ó¼ÇÂ¼²Ù×÷
-	 * @param $data 		ÒªÔö¼ÓµÄÊý¾Ý£¬²ÎÊýÎªÊý×é¡£Êý×ékeyÎª×Ö¶ÎÖµ£¬Êý×éÖµÎªÊý¾ÝÈ¡Öµ
-	 * @param $return_insert_id ÊÇ·ñ·µ»ØÐÂ½¨IDºÅ
-	 * @param $replace ÊÇ·ñ²ÉÓÃ replace intoµÄ·½Ê½Ìí¼ÓÊý¾Ý
+	 * æ‰§è¡Œæ·»åŠ è®°å½•æ“ä½œ
+	 * @param $data 		è¦å¢žåŠ çš„æ•°æ®ï¼Œå‚æ•°ä¸ºæ•°ç»„ã€‚æ•°ç»„keyä¸ºå­—æ®µå€¼ï¼Œæ•°ç»„å€¼ä¸ºæ•°æ®å–å€¼
+	 * @param $return_insert_id æ˜¯å¦è¿”å›žæ–°å»ºIDå·
+	 * @param $replace æ˜¯å¦é‡‡ç”¨ replace intoçš„æ–¹å¼æ·»åŠ æ•°æ®
 	 * @return boolean
 	 */
 	final public function insert($data, $return_insert_id = false, $replace = false) {
@@ -96,7 +96,7 @@ class model {
 	}
 	
 	/**
-	 * »ñÈ¡×îºóÒ»´ÎÌí¼Ó¼ÇÂ¼µÄÖ÷¼üºÅ
+	 * èŽ·å–æœ€åŽä¸€æ¬¡æ·»åŠ è®°å½•çš„ä¸»é”®å·
 	 * @return int 
 	 */
 	final public function insert_id() {
@@ -104,13 +104,13 @@ class model {
 	}
 	
 	/**
-	 * Ö´ÐÐ¸üÐÂ¼ÇÂ¼²Ù×÷
-	 * @param $data 		Òª¸üÐÂµÄÊý¾ÝÄÚÈÝ£¬²ÎÊý¿ÉÒÔÎªÊý×éÒ²¿ÉÒÔÎª×Ö·û´®£¬½¨ÒéÊý×é¡£
-	 * 						ÎªÊý×éÊ±Êý×ékeyÎª×Ö¶ÎÖµ£¬Êý×éÖµÎªÊý¾ÝÈ¡Öµ
-	 * 						Îª×Ö·û´®Ê±[Àý£º`name`='phpcms',`hits`=`hits`+1]¡£
-	 *						ÎªÊý×éÊ±[Àý: array('name'=>'phpcms','password'=>'123456')]
-	 *						Êý×éµÄÁíÒ»ÖÖÊ¹ÓÃarray('name'=>'+=1', 'base'=>'-=1');³ÌÐò»á×Ô¶¯½âÎöÎª`name` = `name` + 1, `base` = `base` - 1
-	 * @param $where 		¸üÐÂÊý¾ÝÊ±µÄÌõ¼þ,¿ÉÎªÊý×é»ò×Ö·û´®
+	 * æ‰§è¡Œæ›´æ–°è®°å½•æ“ä½œ
+	 * @param $data 		è¦æ›´æ–°çš„æ•°æ®å†…å®¹ï¼Œå‚æ•°å¯ä»¥ä¸ºæ•°ç»„ä¹Ÿå¯ä»¥ä¸ºå­—ç¬¦ä¸²ï¼Œå»ºè®®æ•°ç»„ã€‚
+	 * 						ä¸ºæ•°ç»„æ—¶æ•°ç»„keyä¸ºå­—æ®µå€¼ï¼Œæ•°ç»„å€¼ä¸ºæ•°æ®å–å€¼
+	 * 						ä¸ºå­—ç¬¦ä¸²æ—¶[ä¾‹ï¼š`name`='phpcms',`hits`=`hits`+1]ã€‚
+	 *						ä¸ºæ•°ç»„æ—¶[ä¾‹: array('name'=>'phpcms','password'=>'123456')]
+	 *						æ•°ç»„çš„å¦ä¸€ç§ä½¿ç”¨array('name'=>'+=1', 'base'=>'-=1');ç¨‹åºä¼šè‡ªåŠ¨è§£æžä¸º`name` = `name` + 1, `base` = `base` - 1
+	 * @param $where 		æ›´æ–°æ•°æ®æ—¶çš„æ¡ä»¶,å¯ä¸ºæ•°ç»„æˆ–å­—ç¬¦ä¸²
 	 * @return boolean
 	 */
 	final public function update($data, $where = '') {
@@ -119,8 +119,8 @@ class model {
 	}
 	
 	/**
-	 * Ö´ÐÐÉ¾³ý¼ÇÂ¼²Ù×÷
-	 * @param $where 		É¾³ýÊý¾ÝÌõ¼þ,²»³äÐíÎª¿Õ¡£
+	 * æ‰§è¡Œåˆ é™¤è®°å½•æ“ä½œ
+	 * @param $where 		åˆ é™¤æ•°æ®æ¡ä»¶,ä¸å……è®¸ä¸ºç©ºã€‚
 	 * @return boolean
 	 */
 	final public function delete($where) {
@@ -129,8 +129,8 @@ class model {
 	}
 	
 	/**
-	 * ¼ÆËã¼ÇÂ¼Êý
-	 * @param string/array $where ²éÑ¯Ìõ¼þ
+	 * è®¡ç®—è®°å½•æ•°
+	 * @param string/array $where æŸ¥è¯¢æ¡ä»¶
 	 */
 	final public function count($where = '') {
 		$r = $this->get_one($where, "COUNT(*) AS num");
@@ -138,9 +138,9 @@ class model {
 	}
 	
 	/**
-	 * ½«Êý×é×ª»»ÎªSQLÓï¾ä
-	 * @param array $where ÒªÉú³ÉµÄÊý×é
-	 * @param string $font Á¬½Ó´®¡£
+	 * å°†æ•°ç»„è½¬æ¢ä¸ºSQLè¯­å¥
+	 * @param array $where è¦ç”Ÿæˆçš„æ•°ç»„
+	 * @param string $font è¿žæŽ¥ä¸²ã€‚
 	 */
 	final public function sqls($where, $font = ' AND ') {
 		if (is_array($where)) {
@@ -155,7 +155,7 @@ class model {
 	}
 	
 	/**
-	 * »ñÈ¡×îºóÊý¾Ý¿â²Ù×÷Ó°Ïìµ½µÄÌõÊý
+	 * èŽ·å–æœ€åŽæ•°æ®åº“æ“ä½œå½±å“åˆ°çš„æ¡æ•°
 	 * @return int
 	 */
 	final public function affected_rows() {
@@ -163,7 +163,7 @@ class model {
 	}
 	
 	/**
-	 * »ñÈ¡Êý¾Ý±íÖ÷¼ü
+	 * èŽ·å–æ•°æ®è¡¨ä¸»é”®
 	 * @return array
 	 */
 	final public function get_primary() {
@@ -171,7 +171,7 @@ class model {
 	}
 	
 	/**
-	 * »ñÈ¡±í×Ö¶Î
+	 * èŽ·å–è¡¨å­—æ®µ
 	 * @return array
 	 */
 	final public function get_fields() {
@@ -179,8 +179,8 @@ class model {
 	}
 	
 	/**
-	 * ¼ì²é±íÊÇ·ñ´æÔÚ
-	 * @param $table ±íÃû
+	 * æ£€æŸ¥è¡¨æ˜¯å¦å­˜åœ¨
+	 * @param $table è¡¨å
 	 * @return boolean
 	 */
 	final public function table_exists($table){
@@ -191,8 +191,8 @@ class model {
 		return $this->db->list_tables();
 	}
 	/**
-	 * ·µ»ØÊý¾Ý½á¹û¼¯
-	 * @param $query £¨mysql_query·µ»ØÖµ£©
+	 * è¿”å›žæ•°æ®ç»“æžœé›†
+	 * @param $query ï¼ˆmysql_queryè¿”å›žå€¼ï¼‰
 	 * @return array
 	 */
 	final public function fetch_array() {
@@ -204,7 +204,7 @@ class model {
 	}
 	
 	/**
-	 * ·µ»ØÊý¾Ý¿â°æ±¾ºÅ
+	 * è¿”å›žæ•°æ®åº“ç‰ˆæœ¬å·
 	 */
 	final public function version() {
 		return $this->db->version();

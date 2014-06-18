@@ -9,7 +9,7 @@ if (isset($set_modules) && $set_modules == TRUE)
     $modules[$i]['desc']    = L('chinabank_tip', '', 'pay');
     $modules[$i]['is_cod']  = '0';
     $modules[$i]['is_online']  = '1';
-    $modules[$i]['author']  = 'PHPCMS¿ª·¢ÍÅ¶Ó';
+    $modules[$i]['author']  = 'PHPCMSå¼€å‘å›¢é˜Ÿ';
     $modules[$i]['website'] = 'http://www.chinabank.com.cn';
     $modules[$i]['version'] = '1.0.0';
     $modules[$i]['config']  = array(
@@ -39,30 +39,30 @@ class Chinabank extends paymentabstract{
 		$prepare_data['v_moneytype'] = 'CNY';
 		$prepare_data['return_url'] = $this->config['return_url'];		
 		
-		// ÉÌÆ·ĞÅÏ¢
+		// å•†å“ä¿¡æ¯
 		$prepare_data['v_rcvname'] = $this->product_info['name'];
 		$prepare_data['v_amount'] = $this->product_info['price'];
 		
-		//¶©µ¥ĞÅÏ¢
+		//è®¢å•ä¿¡æ¯
 		$prepare_data['v_oid'] = $this->order_info['id'];
 
-		//Âò¼ÒĞÅÏ¢
+		//ä¹°å®¶ä¿¡æ¯
 		$prepare_data['v_rcvmobile'] = $this->customer_info['telephone'];
 		$prepare_data['v_rcvemail'] = $this->order_info['buyer_email'];
 		
-		//±¸×¢		
+		//å¤‡æ³¨		
 		$prepare_data['remark1'] = $this->product_info['body'];
 		
 		$data =$prepare_data['v_amount'].$prepare_data['v_moneytype'].$prepare_data['v_oid'].$prepare_data['v_mid'].$prepare_data['v_url'].$this->config['chinabank_key']; 
-		// Êı×ÖÇ©Ãû
+		// æ•°å­—ç­¾å
 		$prepare_data['v_md5info'] = strtoupper(md5($data));
 		
 		return $prepare_data;
 	}
 	
 	/**
-	 * ¿Í»§¶Ë½ÓÊÕÊı¾İ
-	 * ×´Ì¬ÂëËµÃ÷  £¨0 ½»Ò×Íê³É 1 ½»Ò×Ê§°Ü 2 ½»Ò×³¬Ê± 3 ½»Ò×´¦ÀíÖĞ 4 ½»Ò×Î´Ö§¸¶£©
+	 * å®¢æˆ·ç«¯æ¥æ”¶æ•°æ®
+	 * çŠ¶æ€ç è¯´æ˜  ï¼ˆ0 äº¤æ˜“å®Œæˆ 1 äº¤æ˜“å¤±è´¥ 2 äº¤æ˜“è¶…æ—¶ 3 äº¤æ˜“å¤„ç†ä¸­ 4 äº¤æ˜“æœªæ”¯ä»˜ï¼‰
 	 */
     public function receive() {
     	$receive_data = $this->filterParameter($_POST);
@@ -102,8 +102,8 @@ class Chinabank extends paymentabstract{
     }	
 
     /**
-	 * POST½ÓÊÕÊı¾İ
-	 * ×´Ì¬ÂëËµÃ÷  £¨0 ½»Ò×Íê³É 1 ½»Ò×Ê§°Ü 2 ½»Ò×³¬Ê± 3 ½»Ò×´¦ÀíÖĞ 4 ½»Ò×Î´Ö§¸¶£©
+	 * POSTæ¥æ”¶æ•°æ®
+	 * çŠ¶æ€ç è¯´æ˜  ï¼ˆ0 äº¤æ˜“å®Œæˆ 1 äº¤æ˜“å¤±è´¥ 2 äº¤æ˜“è¶…æ—¶ 3 äº¤æ˜“å¤„ç†ä¸­ 4 äº¤æ˜“æœªæ”¯ä»˜ï¼‰
 	 */
     public function notify() {
     	$receive_data = $this->filterParameter($_POST);
@@ -141,7 +141,7 @@ class Chinabank extends paymentabstract{
     }
     	
     /**
-     * ÏàÓ¦·şÎñÆ÷Ó¦´ğ×´Ì¬
+     * ç›¸åº”æœåŠ¡å™¨åº”ç­”çŠ¶æ€
      * @param $result
      */
     public function response($result) {
@@ -150,7 +150,7 @@ class Chinabank extends paymentabstract{
     }
     
     /**
-     * ·µ»Ø×Ö·û¹ıÂË
+     * è¿”å›å­—ç¬¦è¿‡æ»¤
      * @param $parameter
      */
 	private function filterParameter($parameter)

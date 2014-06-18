@@ -24,12 +24,12 @@
 
 <script type="text/javascript" src="<?php echo JS_PATH;?>plupload/plupload.full.min.js"></script>
 	<tr id="local_method">
-		<td width="120">É¨ÃèÎÄ¼ş</td> 
+		<td width="120">æ‰«ææ–‡ä»¶</td> 
 	
 		<td>
 		<div id="container">
 		
-			<input id='pickfiles' type='button' class='button' value='¿ªÊ¼É¨Ãè'>
+			<input id='pickfiles' type='button' class='button' value='å¼€å§‹æ‰«æ'>
 			
 		</div>
 		</td>
@@ -37,7 +37,7 @@
 	
 
 	<tr>
-			<td width="120"><input type="checkbox" value="" id="check_box" onclick="selectall('ids[]');"> È«Ñ¡ </td>
+			<td width="120"><input type="checkbox" value="" id="check_box" onclick="selectall('ids[]');"> å…¨é€‰ </td>
             <td> </td>
            
      </tr>
@@ -49,10 +49,10 @@
 	<tr>
 	
 	
-		<td width="120">ÇåÎú¶È</td> 
+		<td width="120">æ¸…æ™°åº¦</td> 
 		<td>
-			<input type="radio" name="r" value="1"/>ÆÕÍ¨
-			<input type="radio" name="r" value="2"/>¸ßÇå
+			<input type="radio" name="r" value="1"/>æ™®é€š
+			<input type="radio" name="r" value="2"/>é«˜æ¸…
 			
 	
 		</td>
@@ -65,7 +65,7 @@
 	<tr>
 		
 		<td>
-		<a href="javascript:;" onclick="omnipotent('selectid','?m=content&c=content&a=add_othors&siteid=1','Í¬Ê±·¢²¼µ½ÆäËûÀ¸Ä¿',1);return false;" style="color:red">[·¢²¼µ½À¸Ä¿]</a>
+		<a href="javascript:;" onclick="omnipotent('selectid','?m=content&c=content&a=add_othors&siteid=1','åŒæ—¶å‘å¸ƒåˆ°å…¶ä»–æ ç›®',1);return false;" style="color:red">[å‘å¸ƒåˆ°æ ç›®]</a>
 	
 		</td>
 		<td>
@@ -87,7 +87,7 @@
 
 $(document).ready(function() {
 
-//ÒÆ³ıID
+//ç§»é™¤ID
 
 	
 	function selectall(name) {
@@ -115,7 +115,7 @@ $(document).ready(function() {
 			
 					function(){  
 						
-						$('#pickfiles').val('É¨ÃèÖĞ...');
+						$('#pickfiles').val('æ‰«æä¸­...');
 						
 		
 					}, 
@@ -126,7 +126,7 @@ $(document).ready(function() {
 						
 						$('#local_method').after(data);
 						
-						$('#pickfiles').val('Íê³É£¡');
+						$('#pickfiles').val('å®Œæˆï¼');
 						
 						$('#pickfiles').unbind('click');
 						

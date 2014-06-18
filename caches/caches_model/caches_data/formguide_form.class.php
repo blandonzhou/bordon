@@ -35,6 +35,7 @@ class formguide_form {
 		}
 		return $info;
 	}
+
 	function text($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -46,6 +47,7 @@ class formguide_form {
 		if($errortips) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:'.$minlength.',max:'.$maxlength.',onerror:"'.$errortips.'"})'.$regexp.';';
 		return '<input type="text" name="info['.$field.']" id="'.$field.'" size="'.$size.'" value="'.$value.'" '.$this->no_allowed.' class="input-text" '.$formattribute.' '.$css.'>';
 	}
+
 	function textarea($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$setting = string2array($setting);
@@ -57,8 +59,9 @@ class formguide_form {
 		$value = empty($value) ? $setting['defaultvalue'] : $value;
 		return "<textarea name='info[{$field}]' id='$field' style='width:{$width}%;height:{$height}px;' $formattribute $css $this->no_allowed>{$value}</textarea>";
 	}
+
 	function editor($field, $value, $fieldinfo) {
-		//是否允许用户上传附件 ，后台管理员开启此功能
+		//鏄惁鍏佽鐢ㄦ埛涓婁紶闄勪欢 锛屽悗鍙扮鐞嗗憳寮�鍚鍔熻兘
 		extract($fieldinfo);
 		extract(string2array($setting));
 		$allowupload = defined('IN_ADMIN') ? 1 : 0;
@@ -67,6 +70,7 @@ class formguide_form {
 		if($errortips) $this->formValidator .= '$("#'.$field.'").formValidator({'.$allow_empty.'onshow:"",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
 		return "<div id='{$field}_tip'></div>".'<textarea name="info['.$field.']" id="'.$field.'" boxid="'.$field.'">'.$value.'</textarea>'.form::editor($field,$toolbar,'member','','',$allowupload,1,'',300);
 	}
+
 	function box($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		if($value=='') $value = $this->fields[$field]['defaultvalue'];
@@ -101,7 +105,8 @@ class formguide_form {
 			break;
 		}
 		return $string;
-	}	function image($field, $value, $fieldinfo) {
+	}
+	function image($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		extract($setting);
 		if(!defined('IMAGES_INIT')) {
@@ -118,6 +123,7 @@ class formguide_form {
 			return $str."<input type='text' name='info[$field]' id='$field' value='$value' size='$size' $this->no_allowed class='input-text' />  <input type='button' class='button' $this->no_allowed onclick=\"javascript:flashupload('{$field}_images', '".L('attachment_upload')."','{$field}',submit_images,'1,{$upload_allowext},$isselectimage,$images_width,$images_height','member','','{$authkey}')\"/ value='".L('image_upload')."'>";
 		}
 	}
+
 	function images($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		$list_str = '';
@@ -149,13 +155,15 @@ class formguide_form {
 		$authkey = upload_key("$upload_number,$upload_allowext,$isselectimage");
 		$string .= $str."<div class='picBut cu'><a herf='javascript:void(0);' onclick=\"javascript:flashupload('{$field}_images', '".L('attachment_upload')."','{$field}',change_images,'{$upload_number},{$upload_allowext},{$isselectimage}','formguide','','{$authkey}')\"/> ".L('select_picture')." </a></div>";
 		return $string;
-	}	function number($field, $value, $fieldinfo) {
+	}
+	function number($field, $value, $fieldinfo) {
 		extract($fieldinfo);
 		if(!$value) $value = $defaultvalue;
 		$errortips = $this->fields[$field]['errortips'];
 		if($errortips) $this->formValidator .= '$("#'.$field.'").formValidator({onshow:"'.$errortips.'",onfocus:"'.$errortips.'"}).inputValidator({min:'.$minnumber.',max:'.$maxnumber.',onerror:"'.$errortips.'"}).regexValidator({regexp:"num",datatype:"enum",onerror:"'.$errortips.'"});';
 		return "<input type='text' name='info[$field]' id='$field' value='$value' size='$size' $this->no_allowed class='input-text' {$formattribute} {$css}>";
 	}
+
 	function datetime($field, $value, $fieldinfo) {
 		extract(string2array($fieldinfo['setting']));
 		$isdatetime = 0;
@@ -169,11 +177,13 @@ class formguide_form {
 		}
 		return form::date("info[$field]",$value,$isdatetime,1);
 	}
+
 	function linkage($field, $value, $fieldinfo) {
 		$setting = string2array($fieldinfo['setting']);
 		$linkageid = $setting['linkageid'];
 		return menu_linkage($linkageid,$field,$value);
 	}
+
 
  } 
 ?>

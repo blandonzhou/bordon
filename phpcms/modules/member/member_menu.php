@@ -1,6 +1,6 @@
 <?php
 /**
- * ¹ÜÀíÔ±ºóÌ¨»áÔ±ÖĞĞÄ²Ëµ¥¹ÜÀíÀà
+ * ç®¡ç†å‘˜åå°ä¼šå‘˜ä¸­å¿ƒèœå•ç®¡ç†ç±»
  */
 
 defined('IN_PHPCMS') or exit('No permission resources.');
@@ -14,7 +14,7 @@ class member_menu extends admin {
 	
 	function manage() {
 		$tree = pc_base::load_sys_class('tree');
-		$tree->icon = array('&nbsp;&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;&nbsp;©¸©¤ ');
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;&nbsp;â””â”€ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		$userid = $_SESSION['userid'];
 		$admin_username = param::get_cookie('admin_username');
@@ -40,7 +40,7 @@ class member_menu extends admin {
 	function add() {
 		if(isset($_POST['dosubmit'])) {
 			$this->db->insert($_POST['info']);
-			//¿ª·¢¹ı³ÌÖĞÓÃÓÚ×Ô¶¯´´½¨ÓïÑÔ°ü
+			//å¼€å‘è¿‡ç¨‹ä¸­ç”¨äºè‡ªåŠ¨åˆ›å»ºè¯­è¨€åŒ…
 			$file = PC_PATH.'languages'.DIRECTORY_SEPARATOR.'zh-cn'.DIRECTORY_SEPARATOR.'member_menu.lang.php';
 			if(file_exists($file)) {
 				$content = file_get_contents($file);
@@ -54,7 +54,7 @@ class member_menu extends admin {
 				$data = "<?php\r\n\$LANG['$key'] = '$_POST[language]';\r\n?>";
 				file_put_contents($file,$data);
 			}
-			//½áÊø
+			//ç»“æŸ
 			showmessage(L('add_success'));
 		} else {
 			$show_validator = '';
@@ -75,9 +75,9 @@ class member_menu extends admin {
 	function delete() {
 		$_GET['id'] = intval($_GET['id']);
 		$menu = $this->db->get_one(array("id"=>$_GET['id']));
-		if(!$menu)showmessage('²Ëµ¥²»´æÔÚ£¡Çë·µ»Ø£¡',HTTP_REFERER);
+		if(!$menu)showmessage('èœå•ä¸å­˜åœ¨ï¼è¯·è¿”å›ï¼',HTTP_REFERER);
 		$this->db->delete(array('id'=>$_GET['id']));
-		//É¾³ımember_menuÓïÑÔ°ü
+		//åˆ é™¤member_menuè¯­è¨€åŒ…
 		$file = PC_PATH.'languages'.DIRECTORY_SEPARATOR.'zh-cn'.DIRECTORY_SEPARATOR.'member_menu.lang.php';
 		require $file;
 		$content = file_get_contents($file);
@@ -92,7 +92,7 @@ class member_menu extends admin {
 		if(isset($_POST['dosubmit'])) {
 			$id = intval($_POST['id']);
 			$this->db->update($_POST['info'],array('id'=>$id));
-			//ĞŞ¸ÄÓïÑÔÎÄ¼ş
+			//ä¿®æ”¹è¯­è¨€æ–‡ä»¶
 			$file = PC_PATH.'languages'.DIRECTORY_SEPARATOR.'zh-cn'.DIRECTORY_SEPARATOR.'member_menu.lang.php';
 			require $file;
 			$key = $_POST['info']['name'];
@@ -107,7 +107,7 @@ class member_menu extends admin {
 				file_put_contents($file,$content);
 			}
 			
-			//½áÊøÓïÑÔÎÄ¼şĞŞ¸Ä
+			//ç»“æŸè¯­è¨€æ–‡ä»¶ä¿®æ”¹
 			showmessage(L('operation_success'));
 		} else {
 			$show_validator = '';
@@ -129,7 +129,7 @@ class member_menu extends admin {
 	}
 	
 	/**
-	 * ÅÅĞò
+	 * æ’åº
 	 */
 	function listorder() {
 		if(isset($_POST['dosubmit'])) {

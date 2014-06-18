@@ -6,7 +6,7 @@ class system extends admin {
 
 	private $db;
 	/**
-	 * Îö¹¹º¯Êý
+	 * æžæž„å‡½æ•°
 	 */
 	public function __construct() {	
 		parent::__construct(1);
@@ -14,7 +14,7 @@ class system extends admin {
 	}
 	
 	/**
-	 * Ê×Ò³
+	 * é¦–é¡µ
 	 */
 	public function init() {
 		if (isset($_POST['dosubmit'])) {
@@ -27,7 +27,7 @@ class system extends admin {
 			$this->db->insert(array('name'=>'denyemail', 'data'=>$denyemaildata), 1, 1);
 			$this->db->insert(array('name'=>'denyusername', 'data'=>$denyusernamedata), 1, 1);
 
-			/*Ð´Èë»º´æ*/
+			/*å†™å…¥ç¼“å­˜*/
 			setcache('settings', array('denyemail'=>explode("\r\n", $denyemail), 'denyusername'=>explode("\r\n", $denyusername)));
 			showmessage(L('operation_success'), HTTP_REFERER);
 		}

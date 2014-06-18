@@ -15,7 +15,7 @@ class index {
 	}
 	
 	 /**
-	 *	ÓÑÇéÁ´½ÓÁĞ±íÒ³
+	 *	å‹æƒ…é“¾æ¥åˆ—è¡¨é¡µ
 	 */
 	public function list_type() {
 		$siteid = SITEID;
@@ -30,7 +30,7 @@ class index {
 	} 
  	
 	 /**
-	 *	ÉêÇëÓÑÇéÁ´½Ó 
+	 *	ç”³è¯·å‹æƒ…é“¾æ¥ 
 	 */
 	public function register() { 
  		$siteid = SITEID;
@@ -68,7 +68,7 @@ class index {
  				showmessage(L('suspend_application'), HTTP_REFERER);
  			}
  			$this->type = pc_base::load_model('type_model');
- 			$types = $this->type->get_types($siteid);//»ñÈ¡Õ¾µãÏÂËùÓĞÓÑÇéÁ´½Ó·ÖÀà
+ 			$types = $this->type->get_types($siteid);//è·å–ç«™ç‚¹ä¸‹æ‰€æœ‰å‹æƒ…é“¾æ¥åˆ†ç±»
  			pc_base::load_sys_class('form', '', 0);
   			$SEO = seo(SITEID, '', L('application_links'), '', '');
    			include template('link', 'register');

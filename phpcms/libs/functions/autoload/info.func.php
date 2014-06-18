@@ -1,6 +1,6 @@
 <?php
 /**
- *  info.func.php ·ÖÀàĞÅÏ¢º¯Êı¿â
+ *  info.func.php åˆ†ç±»ä¿¡æ¯å‡½æ•°åº“
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -8,12 +8,12 @@
  */
  
 /**
- * Éú³ÉÈËĞÔ»¯ÈÕÆÚ
+ * ç”Ÿæˆäººæ€§åŒ–æ—¥æœŸ
  * Enter description here ...
  * @param unknown_type $timestamp
  */	
 function timeinterval($timestamp) {
-    $format=array('ÃëÖÓÇ°','·ÖÖÓÇ°','Ğ¡Ê±Ç°');
+    $format=array('ç§’é’Ÿå‰','åˆ†é’Ÿå‰','å°æ—¶å‰');
     if(is_numeric($timestamp)){
          $i=SYS_TIME-$timestamp;
          switch($i){
@@ -27,7 +27,7 @@ function timeinterval($timestamp) {
 }
 
 /**
- * ¹¹ÔìÉ¸Ñ¡URL
+ * æ„é€ ç­›é€‰URL
  */
 function structure_filters_url($fieldname,$array=array(),$type = 1,$modelid) {
 	if(empty($array)) {
@@ -46,17 +46,17 @@ function structure_filters_url($fieldname,$array=array(),$type = 1,$modelid) {
 			}
 		}
 	}
-	//ºóÆÚÔö¼ÓÎ±¾²Ì¬µÈÆäËûurl¹æÔò¹ÜÀí£¬apacheÎ±¾²Ì¬Ö§³Ö9¸ö²ÎÊı //È¥³ıcity
+	//åæœŸå¢åŠ ä¼ªé™æ€ç­‰å…¶ä»–urlè§„åˆ™ç®¡ç†ï¼Œapacheä¼ªé™æ€æ”¯æŒ9ä¸ªå‚æ•° //å»é™¤city
 	if(strpos(URLRULE,'.html') === FALSE) $urlrule =APP_PATH.'index.php?m=content&c=index&a=lists&catid={$catid}'.$urlpars.'&page={$page}' ;
 	else $urlrule =APP_PATH.'list-{$catid}-{$city}'.$urlpars.'-{$page}.html';
-	//¸ù¾İget´«Öµ¹¹ÔìURL
+	//æ ¹æ®getä¼ å€¼æ„é€ URL
 	if (is_array($array)) foreach ($array as $_k=>$_v) {
 		if($_k=='page') $_v=1;
 		if($type == 1) if($_k==$fieldname) continue;
 		$_findme[] = '/{\$'.$_k.'}/';
 		$_replaceme[] = $_v;
 	}
-     //type Ä£Ê½µÄÊ±ºò£¬¹¹ÔìÅÅ³ı¸Ã×Ö¶ÎÃû³ÆµÄÕıÔò
+     //type æ¨¡å¼çš„æ—¶å€™ï¼Œæ„é€ æ’é™¤è¯¥å­—æ®µåç§°çš„æ­£åˆ™
 	if($type==1) $filter = '(?!'.$fieldname.'.)';
 	$_findme[] = '/{\$'.$filter.'([a-z0-9_]+)}/';
 	$_replaceme[] = '';		
@@ -65,7 +65,7 @@ function structure_filters_url($fieldname,$array=array(),$type = 1,$modelid) {
 }
 
 /**
- * ¹¹ÔìÉ¸Ñ¡Ê±ºòµÄsqlÓï¾ä
+ * æ„é€ ç­›é€‰æ—¶å€™çš„sqlè¯­å¥
  */
 function structure_filters_sql($modelid,$cityid='') {
 	$sql = $fieldname = $min = $max = '';
@@ -104,9 +104,9 @@ function structure_filters_sql($modelid,$cityid='') {
 }
 
 /**
- * Éú³É·ÖÀàĞÅÏ¢ÖĞµÄÉ¸Ñ¡²Ëµ¥
- * @param $field   ×Ö¶ÎÃû³Æ
- * @param $modelid  Ä£ĞÍID
+ * ç”Ÿæˆåˆ†ç±»ä¿¡æ¯ä¸­çš„ç­›é€‰èœå•
+ * @param $field   å­—æ®µåç§°
+ * @param $modelid  æ¨¡å‹ID
  */
 function filters($field,$modelid,$diyarr = array()) {
 	$fields = getcache('model_field_'.$modelid,'model');
@@ -120,7 +120,7 @@ function filters($field,$modelid,$diyarr = array()) {
 		$option[$k]['url'] = structure_filters_url($field,array($field=>$k),2,$modelid);
 		$option[$k]['menu'] = $field_value == $k ? '<em>'.$v[0].'</em>' : '<a href='.$option[$k]['url'].'>'.$v[0].'</a>' ;
 	}
-	$all['name'] = 'È«²¿';
+	$all['name'] = 'å…¨éƒ¨';
 	$all['url'] = structure_filters_url($field,array($field=>''),2,$modelid);
 	$all['menu'] = $field_value == '' ? '<em>'.$all['name'].'</em>' : '<a href='.$all['url'].'>'.$all['name'].'</a>';
 
@@ -129,13 +129,13 @@ function filters($field,$modelid,$diyarr = array()) {
 }
 
 /**
- * Í¨¹ıÖ¸¶¨keyidĞÎÊ½ÏÔÊ¾ËùÓĞÁª¶¯²Ëµ¥
- * @param  $keyid ²Ëµ¥Ö÷id
- * @param  $linkageid  Áª¶¯²Ëµ¥id
- * @param  $toppatentid ¸¸¼¶²Ëµ¥id
- * @param  $modelid Ä£ĞÍid
- * @param  $fieldname  ×Ö¶ÎÃû³Æ
- * @param  $showall ÊÇ·ñÏÔÊ¾È«²¿
+ * é€šè¿‡æŒ‡å®škeyidå½¢å¼æ˜¾ç¤ºæ‰€æœ‰è”åŠ¨èœå•
+ * @param  $keyid èœå•ä¸»id
+ * @param  $linkageid  è”åŠ¨èœå•id
+ * @param  $toppatentid çˆ¶çº§èœå•id
+ * @param  $modelid æ¨¡å‹id
+ * @param  $fieldname  å­—æ®µåç§°
+ * @param  $showall æ˜¯å¦æ˜¾ç¤ºå…¨éƒ¨
  */
 function show_linkage($keyid, $linkageid = 0, $toppatentid = '', $modelid = '', $fieldname='zone' ,$showall = 1) {
 	$datas = $infos =array();
@@ -159,14 +159,14 @@ function show_linkage($keyid, $linkageid = 0, $toppatentid = '', $modelid = '', 
 		}
 	}
 	if($toppatentid == $linkageid) $linkageid_tmp = '';
-	if($showall && !empty($infos)) array_unshift($infos,array('name'=>'È«²¿','url'=>preg_replace('/{\$'.$fieldname.'}/', $linkageid_tmp, $urlrule),'linkageid'=>$linkageid_tmp));
+	if($showall && !empty($infos)) array_unshift($infos,array('name'=>'å…¨éƒ¨','url'=>preg_replace('/{\$'.$fieldname.'}/', $linkageid_tmp, $urlrule),'linkageid'=>$linkageid_tmp));
 	return $infos;
 }
 /**
- * »ñÈ¡Áª¶¯²Ëµ¥²ã¼¶
- * @param  $keyid     Áª¶¯²Ëµ¥·ÖÀàid
- * @param  $linkageid ²Ëµ¥id
- * @param  $leveltype »ñÈ¡ÀàĞÍ parentid »ñÈ¡¸¸¼¶id child »ñÈ¡Ê±ºòÓĞ×ÓÀ¸Ä¿ arrchildid »ñÈ¡×ÓÀ¸Ä¿Êı×é
+ * è·å–è”åŠ¨èœå•å±‚çº§
+ * @param  $keyid     è”åŠ¨èœå•åˆ†ç±»id
+ * @param  $linkageid èœå•id
+ * @param  $leveltype è·å–ç±»å‹ parentid è·å–çˆ¶çº§id child è·å–æ—¶å€™æœ‰å­æ ç›® arrchildid è·å–å­æ ç›®æ•°ç»„
  */
 function get_linkage_level($keyid,$linkageid,$leveltype = 'parentid') {
 	$child_arr = $childs = array();
@@ -188,10 +188,10 @@ function get_linkage_level($keyid,$linkageid,$leveltype = 'parentid') {
 
 
 /**
- * ¸ù¾İboxÀàĞÍ×Ö¶Î»ñÈ¡ÏÔÊ¾Ãû³Æ
- * @param $field ×Ö¶ÎÃû³Æ
- * @param $value ×Ö¶ÎÖµ
- * @param $modelid ×Ö¶ÎËùÔÚÄ£ĞÍid
+ * æ ¹æ®boxç±»å‹å­—æ®µè·å–æ˜¾ç¤ºåç§°
+ * @param $field å­—æ®µåç§°
+ * @param $value å­—æ®µå€¼
+ * @param $modelid å­—æ®µæ‰€åœ¨æ¨¡å‹id
  */
 function box($field, $value, $modelid='') {
 	$fields = getcache('model_field_'.$modelid,'model');
@@ -211,7 +211,7 @@ function box($field, $value, $modelid='') {
 			case 'checkbox':
 				$value_arr = explode(',',$value);
 				foreach($value_arr as $_v) {
-					if($_v) $string .= $option[$_v].' ¡¢';
+					if($_v) $string .= $option[$_v].' ã€';
 				}
 			break;
 
@@ -222,7 +222,7 @@ function box($field, $value, $modelid='') {
 			case 'multiple':
 				$value_arr = explode(',',$value);
 				foreach($value_arr as $_v) {
-					if($_v) $string .= $option[$_v].' ¡¢';
+					if($_v) $string .= $option[$_v].' ã€';
 				}
 			break;
 		}
@@ -230,9 +230,9 @@ function box($field, $value, $modelid='') {
 }
 	
 /**
- * »ñÈ¡ĞÅÏ¢ÅäÖÃ»º´æ²ÎÊı
- * @param $key ĞÅÏ¢Ä£ĞÍ²ÎÊı²ÎÊı
- * @param $filename ×Ö¶ÎÖµ »º´æÎÄ¼şÃû³Æ£¬Ä¬ÈÏÎªinfo_setting
+ * è·å–ä¿¡æ¯é…ç½®ç¼“å­˜å‚æ•°
+ * @param $key ä¿¡æ¯æ¨¡å‹å‚æ•°å‚æ•°
+ * @param $filename å­—æ®µå€¼ ç¼“å­˜æ–‡ä»¶åç§°ï¼Œé»˜è®¤ä¸ºinfo_setting
  */
 function getinfocache($key, $filename = 'info_setting') {
 	$infos = getcache($filename,'commons');
@@ -252,10 +252,10 @@ function getinfocache($key, $filename = 'info_setting') {
 }
 
 /**
- * »ñÈ¡ĞÅÏ¢ÅäÖÃ³ÇÊĞĞÅÏ¢
- * @param $key ³ÇÊĞ±àºÅ£¬Í¨³£Îª³ÇÊĞÆ´ÒôÃû³Æ
- * @param $info »ñÈ¡Êı¾İÀàĞÍ
- * @param $showall ÊÇ·ñÏÔÊ¾ËùÓĞ
+ * è·å–ä¿¡æ¯é…ç½®åŸå¸‚ä¿¡æ¯
+ * @param $key åŸå¸‚ç¼–å·ï¼Œé€šå¸¸ä¸ºåŸå¸‚æ‹¼éŸ³åç§°
+ * @param $info è·å–æ•°æ®ç±»å‹
+ * @param $showall æ˜¯å¦æ˜¾ç¤ºæ‰€æœ‰
  */
 function getcity($key ='', $info = '', $filename = 'info_citys', $showall = '0') {
 	$citys = $current_city = array();

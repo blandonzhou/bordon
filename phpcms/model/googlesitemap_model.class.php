@@ -11,7 +11,7 @@ class googlesitemap_model extends model {
 		parent::__construct();
 	}
 	/**
-     * Ôö¼ÓÒ»¸öĞÂµÄ×ÓÏî
+     * å¢åŠ ä¸€ä¸ªæ–°çš„å­é¡¹
      *@access   public
      *@param    google_sitemap  item    $new_item
      */
@@ -20,9 +20,9 @@ class googlesitemap_model extends model {
     }
     
 	/**
-     * Éú³ÉXMLÎÄµµ
+     * ç”ŸæˆXMLæ–‡æ¡£
      *@access    public
-     *@param     string  $file_name  Èç¹ûÌá¹©ÁËÎÄ¼şÃûÔòÉú³ÉÎÄ¼ş£¬·ñÔò·µ»Ø×Ö·û´®.
+     *@param     string  $file_name  å¦‚æœæä¾›äº†æ–‡ä»¶ååˆ™ç”Ÿæˆæ–‡ä»¶ï¼Œå¦åˆ™è¿”å›å­—ç¬¦ä¸².
      *@return [void|string]
      */
     function build( $file_name = null ) {

@@ -1,6 +1,6 @@
 <?php
 /**
- *  base.php PHPCMS¿ò¼ÜÈë¿ÚÎÄ¼þ
+ *  base.php PHPCMSæ¡†æž¶å…¥å£æ–‡ä»¶
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -8,49 +8,49 @@
  */
 define('IN_PHPCMS', true);
 
-//PHPCMS¿ò¼ÜÂ·¾¶
+//PHPCMSæ¡†æž¶è·¯å¾„
 define('PC_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
 if(!defined('PHPCMS_PATH')) define('PHPCMS_PATH', PC_PATH.'..'.DIRECTORY_SEPARATOR);
 
-//»º´æÎÄ¼þ¼ÐµØÖ·
+//ç¼“å­˜æ–‡ä»¶å¤¹åœ°å€
 define('CACHE_PATH', PHPCMS_PATH.'caches'.DIRECTORY_SEPARATOR);
-//Ö÷»úÐ­Òé
+//ä¸»æœºåè®®
 define('SITE_PROTOCOL', isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://');
-//µ±Ç°·ÃÎÊµÄÖ÷»úÃû
+//å½“å‰è®¿é—®çš„ä¸»æœºå
 define('SITE_URL', (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ''));
-//À´Ô´
+//æ¥æº
 define('HTTP_REFERER', isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '');
 
-//ÏµÍ³¿ªÊ¼Ê±¼ä
+//ç³»ç»Ÿå¼€å§‹æ—¶é—´
 define('SYS_START_TIME', microtime());
 
-//¼ÓÔØ¹«ÓÃº¯Êý¿â
+//åŠ è½½å…¬ç”¨å‡½æ•°åº“
 pc_base::load_sys_func('global');
 pc_base::load_sys_func('extention');
 pc_base::auto_load_func();
 
 pc_base::load_config('system','errorlog') ? set_error_handler('my_error_handler') : error_reporting(E_ERROR | E_WARNING | E_PARSE);
-//ÉèÖÃ±¾µØÊ±²î
+//è®¾ç½®æœ¬åœ°æ—¶å·®
 function_exists('date_default_timezone_set') && date_default_timezone_set(pc_base::load_config('system','timezone'));
 
 define('CHARSET' ,pc_base::load_config('system','charset'));
-//Êä³öÒ³Ãæ×Ö·û¼¯
+//è¾“å‡ºé¡µé¢å­—ç¬¦é›†
 header('Content-type: text/html; charset='.CHARSET);
 
 define('SYS_TIME', time());
-//¶¨ÒåÍøÕ¾¸ùÂ·¾¶
+//å®šä¹‰ç½‘ç«™æ ¹è·¯å¾„
 define('WEB_PATH',pc_base::load_config('system','web_path'));
-//js Â·¾¶
+//js è·¯å¾„
 define('JS_PATH',pc_base::load_config('system','js_path'));
-//css Â·¾¶
+//css è·¯å¾„
 define('CSS_PATH',pc_base::load_config('system','css_path'));
-//img Â·¾¶
+//img è·¯å¾„
 define('IMG_PATH',pc_base::load_config('system','img_path'));
-//¶¯Ì¬³ÌÐòÂ·¾¶
+//åŠ¨æ€ç¨‹åºè·¯å¾„
 define('APP_PATH',pc_base::load_config('system','app_path'));
 
-//Ó¦ÓÃ¾²Ì¬ÎÄ¼þÂ·¾¶
+//åº”ç”¨é™æ€æ–‡ä»¶è·¯å¾„
 define('PLUGIN_STATICS_PATH',WEB_PATH.'statics/plugin/');
 
 define('FFMPEG_EXT','/usr/local/bin/ffmpeg');
@@ -82,26 +82,26 @@ class pc_base {
 	
 
 	/**
-	 * ³õÊ¼»¯Ó¦ÓÃ³ÌÐò
+	 * åˆå§‹åŒ–åº”ç”¨ç¨‹åº
 	 */
 	public static function creat_app() {
 		return self::load_sys_class('application');
 	}
 	/**
-	 * ¼ÓÔØÏµÍ³Àà·½·¨
-	 * @param string $classname ÀàÃû
-	 * @param string $path À©Õ¹µØÖ·
-	 * @param intger $initialize ÊÇ·ñ³õÊ¼»¯
+	 * åŠ è½½ç³»ç»Ÿç±»æ–¹æ³•
+	 * @param string $classname ç±»å
+	 * @param string $path æ‰©å±•åœ°å€
+	 * @param intger $initialize æ˜¯å¦åˆå§‹åŒ–
 	 */
 	public static function load_sys_class($classname, $path = '', $initialize = 1) {
 			return self::_load_class($classname, $path, $initialize);
 	}
 	
 	/**
-	 * ¼ÓÔØÓ¦ÓÃÀà·½·¨
-	 * @param string $classname ÀàÃû
-	 * @param string $m Ä£¿é
-	 * @param intger $initialize ÊÇ·ñ³õÊ¼»¯
+	 * åŠ è½½åº”ç”¨ç±»æ–¹æ³•
+	 * @param string $classname ç±»å
+	 * @param string $m æ¨¡å—
+	 * @param intger $initialize æ˜¯å¦åˆå§‹åŒ–
 	 */
 	public static function load_app_class($classname, $m = '', $initialize = 1) {
 		$m = empty($m) && defined('ROUTE_M') ? ROUTE_M : $m;
@@ -110,18 +110,18 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØÊý¾ÝÄ£ÐÍ
-	 * @param string $classname ÀàÃû
+	 * åŠ è½½æ•°æ®æ¨¡åž‹
+	 * @param string $classname ç±»å
 	 */
 	public static function load_model($classname) {
 		return self::_load_class($classname,'model');
 	}
 		
 	/**
-	 * ¼ÓÔØÀàÎÄ¼þº¯Êý
-	 * @param string $classname ÀàÃû
-	 * @param string $path À©Õ¹µØÖ·
-	 * @param intger $initialize ÊÇ·ñ³õÊ¼»¯
+	 * åŠ è½½ç±»æ–‡ä»¶å‡½æ•°
+	 * @param string $classname ç±»å
+	 * @param string $path æ‰©å±•åœ°å€
+	 * @param intger $initialize æ˜¯å¦åˆå§‹åŒ–
 	 */
 	private static function _load_class($classname, $path = '', $initialize = 1) {
 		static $classes = array();
@@ -154,25 +154,25 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØÏµÍ³µÄº¯Êý¿â
-	 * @param string $func º¯Êý¿âÃû
+	 * åŠ è½½ç³»ç»Ÿçš„å‡½æ•°åº“
+	 * @param string $func å‡½æ•°åº“å
 	 */
 	public static function load_sys_func($func) {
 		return self::_load_func($func);
 	}
 	
 	/**
-	 * ×Ô¶¯¼ÓÔØautoloadÄ¿Â¼ÏÂº¯Êý¿â
-	 * @param string $func º¯Êý¿âÃû
+	 * è‡ªåŠ¨åŠ è½½autoloadç›®å½•ä¸‹å‡½æ•°åº“
+	 * @param string $func å‡½æ•°åº“å
 	 */
 	public static function auto_load_func($path='') {
 		return self::_auto_load_func($path);
 	}
 	
 	/**
-	 * ¼ÓÔØÓ¦ÓÃº¯Êý¿â
-	 * @param string $func º¯Êý¿âÃû
-	 * @param string $m Ä£ÐÍÃû
+	 * åŠ è½½åº”ç”¨å‡½æ•°åº“
+	 * @param string $func å‡½æ•°åº“å
+	 * @param string $m æ¨¡åž‹å
 	 */
 	public static function load_app_func($func, $m = '') {
 		$m = empty($m) && defined('ROUTE_M') ? ROUTE_M : $m;
@@ -181,7 +181,7 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØ²å¼þÀà¿â
+	 * åŠ è½½æ’ä»¶ç±»åº“
 	 */
 	public static function load_plugin_class($classname, $identification = '' ,$initialize = 1) {
 		$identification = empty($identification) && defined('PLUGIN_ID') ? PLUGIN_ID : $identification;
@@ -190,9 +190,9 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØ²å¼þº¯Êý¿â
-	 * @param string $func º¯ÊýÎÄ¼þÃû³Æ
-	 * @param string $identification ²å¼þ±êÊ¶
+	 * åŠ è½½æ’ä»¶å‡½æ•°åº“
+	 * @param string $func å‡½æ•°æ–‡ä»¶åç§°
+	 * @param string $identification æ’ä»¶æ ‡è¯†
 	 */
 	public static function load_plugin_func($func,$identification) {
 		static $funcs = array();
@@ -212,8 +212,8 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØ²å¼þÊý¾ÝÄ£ÐÍ
-	 * @param string $classname ÀàÃû
+	 * åŠ è½½æ’ä»¶æ•°æ®æ¨¡åž‹
+	 * @param string $classname ç±»å
 	 */
 	public static function load_plugin_model($classname,$identification) {
 		$identification = empty($identification) && defined('PLUGIN_ID') ? PLUGIN_ID : $identification;
@@ -222,9 +222,9 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØº¯Êý¿â
-	 * @param string $func º¯Êý¿âÃû
-	 * @param string $path µØÖ·
+	 * åŠ è½½å‡½æ•°åº“
+	 * @param string $func å‡½æ•°åº“å
+	 * @param string $path åœ°å€
 	 */
 	private static function _load_func($func, $path = '') {
 		static $funcs = array();
@@ -243,9 +243,9 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØº¯Êý¿â
-	 * @param string $func º¯Êý¿âÃû
-	 * @param string $path µØÖ·
+	 * åŠ è½½å‡½æ•°åº“
+	 * @param string $func å‡½æ•°åº“å
+	 * @param string $path åœ°å€
 	 */
 	private static function _auto_load_func($path = '') {
 		if (empty($path)) $path = 'libs'.DIRECTORY_SEPARATOR.'functions'.DIRECTORY_SEPARATOR.'autoload';
@@ -258,8 +258,8 @@ class pc_base {
 		}
 	}
 	/**
-	 * ÊÇ·ñÓÐ×Ô¼ºµÄÀ©Õ¹ÎÄ¼þ
-	 * @param string $filepath Â·¾¶
+	 * æ˜¯å¦æœ‰è‡ªå·±çš„æ‰©å±•æ–‡ä»¶
+	 * @param string $filepath è·¯å¾„
 	 */
 	public static function my_path($filepath) {
 		$path = pathinfo($filepath);
@@ -271,11 +271,11 @@ class pc_base {
 	}
 	
 	/**
-	 * ¼ÓÔØÅäÖÃÎÄ¼þ
-	 * @param string $file ÅäÖÃÎÄ¼þ
-	 * @param string $key  Òª»ñÈ¡µÄÅäÖÃ¼ö
-	 * @param string $default  Ä¬ÈÏÅäÖÃ¡£µ±»ñÈ¡ÅäÖÃÏîÄ¿Ê§°ÜÊ±¸ÃÖµ·¢Éú×÷ÓÃ¡£
-	 * @param boolean $reload Ç¿ÖÆÖØÐÂ¼ÓÔØ¡£
+	 * åŠ è½½é…ç½®æ–‡ä»¶
+	 * @param string $file é…ç½®æ–‡ä»¶
+	 * @param string $key  è¦èŽ·å–çš„é…ç½®è
+	 * @param string $default  é»˜è®¤é…ç½®ã€‚å½“èŽ·å–é…ç½®é¡¹ç›®å¤±è´¥æ—¶è¯¥å€¼å‘ç”Ÿä½œç”¨ã€‚
+	 * @param boolean $reload å¼ºåˆ¶é‡æ–°åŠ è½½ã€‚
 	 */
 	public static function load_config($file, $key = '', $default = '', $reload = false) {
 		static $configs = array();
@@ -301,3 +301,4 @@ class pc_base {
 		}
 	}
 }
+

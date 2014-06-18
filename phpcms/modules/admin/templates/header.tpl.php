@@ -61,7 +61,7 @@ if(isset($show_dialog)) {
 <?php if(!isset($show_header)) { ?>
 <div class="subnav">
     <div class="content-menu ib-a blue line-x">
-    <?php if(isset($big_menu)) { echo '<a class="add fb" href="'.$big_menu[0].'"><em>'.$big_menu[1].'</em></a>¡¡';} else {$big_menu = '';} ?>
+    <?php if(isset($big_menu)) { echo '<a class="add fb" href="'.$big_menu[0].'"><em>'.$big_menu[1].'</em></a>ã€€';} else {$big_menu = '';} ?>
     <?php echo admin::submenu($_GET['menuid'],$big_menu); ?>
     </div>
 </div>

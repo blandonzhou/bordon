@@ -32,7 +32,7 @@ class xml {
 
 	/**
 	 * unserialize
-	 * @param xml×Ö·û´®
+	 * @param xmlå­—ç¬¦ä¸²
 	 * @return array
 	 */
 	public function xml_unserialize($xml) {
@@ -43,7 +43,7 @@ class xml {
 
 	/**
 	 * serialize
-	 * @param $data Êý×é
+	 * @param $data æ•°ç»„
 	 * @return string
 	 */
 	public function xml_serialize(&$data, $level = 0, $prior_key = NULL) {

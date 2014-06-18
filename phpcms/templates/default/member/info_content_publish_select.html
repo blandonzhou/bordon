@@ -10,11 +10,11 @@
 <div class="wp" id="content">
   <div class="info-add clear">
   	<ul class="navbar sli-{$step}">
-    	<li class="s1"><em>1.</em>{if $step_1}{$step_1}{else}Ñ¡Ôñ´óÀà{/if}</li>
-    	<li class="s2"><em>2.</em>{if $step_2}{$step_2}{else}Ñ¡ÔñĞ¡Àà{/if}</li>
-    	<li class="s3"><em>3.</em>{if $step_3}{$step_3}{else}Ñ¡ÔñÇøÓò{/if}</li>
-    	<li class="s4"><em>4.</em>Ñ¡ÔñÉÌÈ¦</li>
-    	<li class="s5"><em>5.</em>ÌîĞ´ĞÅÏ¢</li>
+    	<li class="s1"><em>1.</em>{if $step_1}{$step_1}{else}é€‰æ‹©å¤§ç±»{/if}</li>
+    	<li class="s2"><em>2.</em>{if $step_2}{$step_2}{else}é€‰æ‹©å°ç±»{/if}</li>
+    	<li class="s3"><em>3.</em>{if $step_3}{$step_3}{else}é€‰æ‹©åŒºåŸŸ{/if}</li>
+    	<li class="s4"><em>4.</em>é€‰æ‹©å•†åœˆ</li>
+    	<li class="s5"><em>5.</em>å¡«å†™ä¿¡æ¯</li>
     </ul>
     <div class="menu blue1 clear">
 	   {if $step == 1}
@@ -51,13 +51,13 @@
         </ul>
 		{/if}
     </div>
-	{if $step==4}<a href="{get_url()}&jumpstep=1" class="ignore">ºöÂÔ£¬Ö±½Ó½øÈëÏÂÒ»²½</a>{/if}
+	{if $step==4}<a href="{get_url()}&jumpstep=1" class="ignore">å¿½ç•¥ï¼Œç›´æ¥è¿›å…¥ä¸‹ä¸€æ­¥</a>{/if}
   </div>
 </div>
 <div class="clear"></div>
 <script type="text/javascript"> 
 <!--
-//Ö»ÄÜ·Åµ½×îÏÂÃæ
+//åªèƒ½æ”¾åˆ°æœ€ä¸‹é¢
 $(function(){
 	$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'200',height:'50'}, 	function(){$(obj).focus();
 	boxid = $(obj).attr('id');

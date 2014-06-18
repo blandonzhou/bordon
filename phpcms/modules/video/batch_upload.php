@@ -19,7 +19,7 @@ pc_base::load_app_func('global', 'video');
  
  class  batch_upload extends admin{
  
-	public $path = 'uploadfile/video/ftp'; //É¨ÃèÄ¿Â¼
+	public $path = 'uploadfile/video/ftp'; //æ‰«æç›®å½•
  
 	public function __construct() {
 	
@@ -40,7 +40,7 @@ pc_base::load_app_func('global', 'video');
 	
 		if(empty($_POST['othor_catid'])){
 			
-			showmessage('ÇëÑ¡ÔñÀ¸Ä¿');
+			showmessage('è¯·é€‰æ‹©æ ç›®');
 			
 		}
 	
@@ -78,15 +78,15 @@ pc_base::load_app_func('global', 'video');
 			
 			copy('uploadfile/video/ftp/'.$picpaths[$i], 'uploadfile/video/' .$unq_name. '.' .$ext);
 			
-			copy('uploadfile/video/ftp/'.$picpaths[$i], 'uploadfile/video/org/' .$picpaths[$i]);//±£´æµ½org
+			copy('uploadfile/video/ftp/'.$picpaths[$i], 'uploadfile/video/org/' .$picpaths[$i]);//ä¿å­˜åˆ°org
 			
-			@unlink('uploadfile/video/ftp/'.$picpaths[$i]);//É¾³ıftpµÄÊÓÆµ
-			  //ÅĞ¶ÏffmpegÊÇ·ñÔØÈë     
+			@unlink('uploadfile/video/ftp/'.$picpaths[$i]);//åˆ é™¤ftpçš„è§†é¢‘
+			  //åˆ¤æ–­ffmpegæ˜¯å¦è½½å…¥     
 			   if(FFMPEG_EXT){
 							/*
-						$mov = new ffmpeg_movie(APP_PATH . 'uploadfile/video/' .$unq_name. '.' .$ext);//ÊÓÆµµÄÂ·¾¶ 
+						$mov = new ffmpeg_movie(APP_PATH . 'uploadfile/video/' .$unq_name. '.' .$ext);//è§†é¢‘çš„è·¯å¾„ 
 
-						//Éú³ÉËõÂÔÍ¼	 
+						//ç”Ÿæˆç¼©ç•¥å›¾	 
 							$img = 100;
 							
 							 $ff_frame = $mov->getFrame($img);  
@@ -97,9 +97,9 @@ pc_base::load_app_func('global', 'video');
 							
 							 $img = realpath($real_path) . '/' . $unq_name . '.jpg';
 								
-							 imagejpeg($gd_image, $img);//´´½¨jpgÍ¼Ïñ  
+							 imagejpeg($gd_image, $img);//åˆ›å»ºjpgå›¾åƒ  
 							 
-							 imagedestroy($gd_image);//Ïú»ÙÒ»Í¼Ïñ 
+							 imagedestroy($gd_image);//é”€æ¯ä¸€å›¾åƒ 
 							 
 						$mov = "";
 						*/
@@ -108,13 +108,13 @@ pc_base::load_app_func('global', 'video');
 						//echo $jpg;die;
 						exec($jpg);
 						
-						//×ªÂë
+						//è½¬ç 
 						
 					
 						
 						if($ext != 'mp4') {
 						
-							$ffmpeg = 'ffmpeg.exe';//ÔØÈëffmpeg
+							$ffmpeg = 'ffmpeg.exe';//è½½å…¥ffmpeg
 						
 							$_POST['r'] = empty($_POST['r']) ? 1 : 2;
 						
@@ -128,7 +128,7 @@ pc_base::load_app_func('global', 'video');
 							 exec($cmd,$status);
 							 pc_base::ftp_upload($unq_name.'.mp4'); 
 							
-							/* Ïú»ÙÔ­ÊÓÆµ */
+							/* é”€æ¯åŸè§†é¢‘ */
 							@unlink('uploadfile/video/' . $unq_name . '.' . $ext );
 							 
 							
@@ -137,7 +137,7 @@ pc_base::load_app_func('global', 'video');
 						
 						
 				 }else{    
-						showmessage("ffmpegÃ»ÓĞÔØÈë"); 
+						showmessage("ffmpegæ²¡æœ‰è½½å…¥"); 
 				 } 
 				
 				$data = array('thumb' => 'uploadfile/thumb/' .$unq_name .'.jpg',				
@@ -193,7 +193,7 @@ pc_base::load_app_func('global', 'video');
 			
 		
 		}
-	$str .= empty($upload_files) ? '<tr><td>  Ã»ÓĞÊı¾İ</td></tr>': $data;
+	$str .= empty($upload_files) ? '<tr><td>  æ²¡æœ‰æ•°æ®</td></tr>': $data;
 	
 	
 	
@@ -206,8 +206,8 @@ pc_base::load_app_func('global', 'video');
 	public function traverse($path){
 	
 			$arr = array();
-			$current_dir = opendir($path);    //opendir()·µ»ØÒ»¸öÄ¿Â¼¾ä±ú,Ê§°Ü·µ»Øfalse
-			while(($file = readdir($current_dir)) !== false)  //readdir()·µ»Ø´ò¿ªÄ¿Â¼¾ä±úÖĞµÄÒ»¸öÌõÄ¿
+			$current_dir = opendir($path);    //opendir()è¿”å›ä¸€ä¸ªç›®å½•å¥æŸ„,å¤±è´¥è¿”å›false
+			while(($file = readdir($current_dir)) !== false)  //readdir()è¿”å›æ‰“å¼€ç›®å½•å¥æŸ„ä¸­çš„ä¸€ä¸ªæ¡ç›®
 			{		
 				if($file == '.' || $file == '..')
 					continue;
@@ -224,3 +224,4 @@ pc_base::load_app_func('global', 'video');
 		 
  
  }
+

@@ -1,7 +1,7 @@
 <?php 
 defined('IN_PHPCMS') or exit('No permission resources.');
 /**
- * Íâ²¿Êý¾ÝÔ´»º´æ
+ * å¤–éƒ¨æ•°æ®æºç¼“å­˜
  */
 function dbsource_cache() {
 	$db = pc_base::load_model('dbsource_model');
@@ -18,8 +18,8 @@ function dbsource_cache() {
 }
 
 /**
- * »ñÈ¡Ä£ÐÍPC±êÇ©ÅäÖÃÏàÐÅ
- * @param $module Ä£ÐÍÃû
+ * èŽ·å–æ¨¡åž‹PCæ ‡ç­¾é…ç½®ç›¸ä¿¡
+ * @param $module æ¨¡åž‹å
  */
 function pc_tag_class ($module) {
 	$filepath = PC_PATH.'modules'.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'classes'.DIRECTORY_SEPARATOR.$module.'_tag.class.php';
@@ -36,8 +36,8 @@ function pc_tag_class ($module) {
 }
 
 /**
- * ·µ»ØÄ£°åµØÖ·¡£
- * @param $id Êý¾ÝÔ´µ÷ÓÃID
+ * è¿”å›žæ¨¡æ¿åœ°å€ã€‚
+ * @param $id æ•°æ®æºè°ƒç”¨ID
  */
 function template_url($id) {
 	$filepath = CACHE_PATH.'caches_template'.DIRECTORY_SEPARATOR.'dbsource'.DIRECTORY_SEPARATOR.$id.'.php';

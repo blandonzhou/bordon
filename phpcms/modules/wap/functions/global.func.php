@@ -1,12 +1,12 @@
 <?php
 /**
- * Êä³öxmlÍ·²¿ĞÅÏ¢
+ * è¾“å‡ºxmlå¤´éƒ¨ä¿¡æ¯
  */
 function wmlHeader() {
 	echo "<?xml version=\"1.0\" encoding=\"".CHARSET."\"?>\n";
 }
 /**
- * ½âÎö·ÖÀàurlÂ·¾¶
+ * è§£æåˆ†ç±»urlè·¯å¾„
  */
 function list_url($typeid) {
     return WAP_SITEURL."&amp;a=lists&amp;typeid=$typeid";
@@ -16,10 +16,10 @@ function bigimg_url($url,$w='') {
 	return WAP_SITEURL.'&amp;a=big_image&amp;url='.base64_encode($url).'&amp;w='.$w;
 }
 /**
- * ½âÎöÄÚÈİurlÂ·¾¶
- * $catid À¸Ä¿id
- * $typeid wap·ÖÀàid
- * $id ÎÄÕÂid
+ * è§£æå†…å®¹urlè·¯å¾„
+ * $catid æ ç›®id
+ * $typeid wapåˆ†ç±»id
+ * $id æ–‡ç« id
  */
 function show_url($catid, $id, $typeid='') {
 	global $WAP;
@@ -37,10 +37,10 @@ function show_url($catid, $id, $typeid='') {
 
 
 /**
- * µ±Ç°Â·¾¶ 
- * ·µ»ØÖ¸¶¨·ÖÀàÂ·¾¶²ã¼¶
- * @param $typeid ·ÖÀàid
- * @param $symbol ·ÖÀà¼ä¸ô·û
+ * å½“å‰è·¯å¾„ 
+ * è¿”å›æŒ‡å®šåˆ†ç±»è·¯å¾„å±‚çº§
+ * @param $typeid åˆ†ç±»id
+ * @param $symbol åˆ†ç±»é—´éš”ç¬¦
  */
 function wap_pos($typeid, $symbol=' > '){
 	$type_arr = array();
@@ -55,7 +55,7 @@ function wap_pos($typeid, $symbol=' > '){
 }
 
 /**
- * »ñÈ¡×Ó·ÖÀà
+ * è·å–å­åˆ†ç±»
  */
 function subtype($parentid = NULL, $siteid = '') {
 	if (empty($siteid)) $siteid = $GLOBALS['siteid'];
@@ -68,14 +68,14 @@ function subtype($parentid = NULL, $siteid = '') {
 	return $subtype;
 }
 /**
- * ·ÖÒ³º¯Êı
+ * åˆ†é¡µå‡½æ•°
  * 
- * @param $num ĞÅÏ¢×ÜÊı
- * @param $curr_page µ±Ç°·ÖÒ³
- * @param $perpage Ã¿Ò³ÏÔÊ¾Êı
- * @param $urlrule URL¹æÔò
- * @param $array ĞèÒª´«µİµÄÊı×é£¬ÓÃÓÚÔö¼Ó¶îÍâµÄ·½·¨
- * @return ·ÖÒ³
+ * @param $num ä¿¡æ¯æ€»æ•°
+ * @param $curr_page å½“å‰åˆ†é¡µ
+ * @param $perpage æ¯é¡µæ˜¾ç¤ºæ•°
+ * @param $urlrule URLè§„åˆ™
+ * @param $array éœ€è¦ä¼ é€’çš„æ•°ç»„ï¼Œç”¨äºå¢åŠ é¢å¤–çš„æ–¹æ³•
+ * @return åˆ†é¡µ
  */
 function wpa_pages($num, $curr_page, $perpage = 20, $urlrule = '', $array = array(),$setpages = 10) {
 	if(defined('URLRULE')) {
@@ -121,34 +121,34 @@ function wpa_pages($num, $curr_page, $perpage = 20, $urlrule = '', $array = arra
 }
 
 /**
- * ¹ıÂËÄÚÈİÎªwml¸ñÊ½
+ * è¿‡æ»¤å†…å®¹ä¸ºwmlæ ¼å¼
  */
 function wml_strip($string) {
-    $string = str_replace(array('&nbsp;', '&amp;', '&quot;', '&#039;', '&ldquo;', '&rdquo;', '&mdash;', '&lt;', '&gt;', '&middot;', '&hellip;', '&'), array(' ', '&', '"', "'", '¡°', '¡±', '¡ª', '{<}', '{>}', '¡¤', '¡­', '&amp;'), $string);
+    $string = str_replace(array('&nbsp;', '&amp;', '&quot;', '&#039;', '&ldquo;', '&rdquo;', '&mdash;', '&lt;', '&gt;', '&middot;', '&hellip;', '&'), array(' ', '&', '"', "'", 'â€œ', 'â€', 'â€”', '{<}', '{>}', 'Â·', 'â€¦', '&amp;'), $string);
 	return str_replace(array('{<}', '{>}'), array('&lt;', '&gt;'), $string);
 }
 
 /**
- * ÄÚÈİÖĞÍ¼Æ¬Ìæ»»
+ * å†…å®¹ä¸­å›¾ç‰‡æ›¿æ¢
  */
 function content_strip($content,$ishow=1) {
     
    $content = preg_replace('/<img[^>]*src=[\'"]?([^>\'"\s]*)[\'"]?[^>]*>/ie', "wap_img('$1',$ishow)", $content);
       
-   //Æ¥ÅäÌæ»»¹ıµÄÍ¼Æ¬
+   //åŒ¹é…æ›¿æ¢è¿‡çš„å›¾ç‰‡
       
    $content = strip_tags($content,'<b><br><img><p><div><a>');
    return $content;
 }
 
 /**
- * Í¼Æ¬¹ıÂËÌæ»»
+ * å›¾ç‰‡è¿‡æ»¤æ›¿æ¢
  */
 function wap_img($url,$ishow) {
 	$wap_site = getcache('wap_site','wap');
 	$wap_setting = string2array($wap_site[$GLOBALS['siteid']]['setting']);
 	$show_big = bigimg_url($url);
-	if($ishow==1) $show_tips = '<br><a href="'.$show_big.'">ä¯ÀÀ´óÍ¼</a>';
+	if($ishow==1) $show_tips = '<br><a href="'.$show_big.'">æµè§ˆå¤§å›¾</a>';
 	return '<img src="'.thumb($url,$wap_setting['thumb_w'],$wap_setting['thumb_h']).'">'.$show_tips;
 }
 
@@ -166,7 +166,7 @@ function strip_selected_tags($text) {
 }
 
 /**
- * Éú³ÉÎÄÕÂ·ÖÒ³·½·¨
+ * ç”Ÿæˆæ–‡ç« åˆ†é¡µæ–¹æ³•
  */
 
 function content_pages($num, $curr_page,$pageurls,$showremain = 1) {
@@ -205,12 +205,12 @@ function content_pages($num, $curr_page,$pageurls,$showremain = 1) {
 	} elseif($curr_page==$pages) {
 		$multipage .= ' <a class="a1" href="'.$pageurls[$curr_page][1].'">'.L('next').'</a>';
 	}
-	if($showremain) $multipage .="| <a href='".$pageurls[$curr_page][1]."&remains=true'>Ê£ÓàÈ«ÎÄ</a>";
+	if($showremain) $multipage .="| <a href='".$pageurls[$curr_page][1]."&remains=true'>å‰©ä½™å…¨æ–‡</a>";
 	return $multipage;
 }
 
 /**
- * ¶àÍ¼·ÖÒ³´¦Àí
+ * å¤šå›¾åˆ†é¡µå¤„ç†
  */
 
 function pic_pages($array) {
@@ -224,7 +224,7 @@ function pic_pages($array) {
 }
 
 /**
- * »ñÈ¡ÈÈ´Ê
+ * è·å–çƒ­è¯
  */
 function hotword() {
 	$site = getcache('wap_site','wap');

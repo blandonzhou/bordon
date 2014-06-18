@@ -48,7 +48,7 @@ var cmsAD_9 = new PCMSAD('cmsAD_9');
 cmsAD_9.PosID = 9; 
 cmsAD_9.ADID = 9; 
 cmsAD_9.ADType = "images"; 
-cmsAD_9.ADName = "phpcms v9¹ã¸æ"; 
+cmsAD_9.ADName = "phpcms v9å¹¿å‘Š"; 
 cmsAD_9.ADContent = "{'Images':[{'imgADLinkUrl':'http%3A%2F%2Fwww.phpcms.cn','imgADAlt':'','ImgPath':'http://localhost/video/uploadfile/poster/4.gif'}],'imgADLinkTarget':'New','Count':'1','showAlt':'Y'}"; 
 cmsAD_9.URL = "http://123.123.110.110:9999/phpcms/index.php?m=poster&c=index"; 
 cmsAD_9.SiteID = 1; 

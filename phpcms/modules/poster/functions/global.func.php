@@ -1,6 +1,6 @@
 <?php
 /**
- * ¹ã¸æÄ£°åÅäÖÃº¯Êý
+ * å¹¿å‘Šæ¨¡æ¿é…ç½®å‡½æ•°
  */
 function get_types() {
 	$poster_template = getcache('poster_template_'.get_siteid(), 'commons');

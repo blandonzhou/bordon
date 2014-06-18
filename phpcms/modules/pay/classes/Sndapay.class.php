@@ -9,7 +9,7 @@ if (isset($set_modules) && $set_modules == TRUE)
     $modules[$i]['desc']    = L('sndapay_tip', '', 'pay');
     $modules[$i]['is_cod']  = '0';
     $modules[$i]['is_online']  = '1';
-    $modules[$i]['author']  = 'PHPCMS¿ª·¢ÍÅ¶Ó';
+    $modules[$i]['author']  = 'PHPCMSå¼€å‘å›¢é˜Ÿ';
     $modules[$i]['website'] = 'http://www.sdo.com';
     $modules[$i]['version'] = '1.0.0';
     $modules[$i]['config']  = array(
@@ -44,36 +44,36 @@ class Sndapay extends paymentabstract{
 		$prepare_data['PayChannel'] = '';	
 		$prepare_data['DefaultChannel'] = '04';
 		
-		// ÉÌÆ·ĞÅÏ¢
+		// å•†å“ä¿¡æ¯
 		$prepare_data['ProductDesc'] = $this->product_info['name'];
 		$prepare_data['Amount'] = $this->product_info['price'];
 		$prepare_data['ProductNo'] = '';
 		$prepare_data['ProductUrl'] = '';
 		
-		//¶©µ¥ĞÅÏ¢
+		//è®¢å•ä¿¡æ¯
 		$prepare_data['OrderNo'] = $this->order_info['id'];
 		$prepare_data['OrderTime'] = date('YmdHis',$this->order_info['order_time']);
 
-		//Âò¼ÒĞÅÏ¢
+		//ä¹°å®¶ä¿¡æ¯
 		$prepare_data['Remark1'] = $this->product_info['body'];
 		
 		$data = $prepare_data['Version'].$prepare_data['Amount'].$prepare_data['OrderNo'].$prepare_data['MerchantNo'].$prepare_data['MerchantUserId'].$prepare_data['PayChannel'].$prepare_data['PostBackUrl'].$prepare_data['NotifyUrl'].$prepare_data['BackUrl'].$prepare_data['OrderTime'].$prepare_data['CurrencyType'].$prepare_data['NotifyUrlType'].$prepare_data['SignType'].$prepare_data['ProductNo'].$prepare_data['ProductDesc'].$prepare_data['Remark1'].$prepare_data['DefaultChannel'].$prepare_data['ProductUrl'];
 		
-		// Êı×ÖÇ©Ãû
+		// æ•°å­—ç­¾å
 		$prepare_data['MAC'] = md5($data.$this->config['sndapay_key']);
 
 		return $prepare_data;
 	}
 	
 	/**
-	 * ¿Í»§¶Ë½ÓÊÕÊı¾İ
-	 * ×´Ì¬ÂëËµÃ÷  £¨0 ½»Ò×Íê³É 1 ½»Ò×Ê§°Ü 2 ½»Ò×³¬Ê± 3 ½»Ò×´¦ÀíÖĞ 4 ½»Ò×Î´Ö§¸¶£©
+	 * å®¢æˆ·ç«¯æ¥æ”¶æ•°æ®
+	 * çŠ¶æ€ç è¯´æ˜  ï¼ˆ0 äº¤æ˜“å®Œæˆ 1 äº¤æ˜“å¤±è´¥ 2 äº¤æ˜“è¶…æ—¶ 3 äº¤æ˜“å¤„ç†ä¸­ 4 äº¤æ˜“æœªæ”¯ä»˜ï¼‰
 	 */
     public function receive() {
 		$amount=$_POST["Amount"];
 		$payamount=$_POST["PayAmount"];
 		$orderid=$_POST["OrderNo"];
-		$serialno=$_POST["serialno"];//×¢Òâ´óĞ¡Ğ´£¬¿Í·ş¶Ë»Øµ÷Ê××ÖÄ¸´óĞ´£¬·şÎñ¶Ë»Øµ÷Ê××ÖÄ¸Ğ¡Ğ´
+		$serialno=$_POST["serialno"];//æ³¨æ„å¤§å°å†™ï¼Œå®¢æœç«¯å›è°ƒé¦–å­—æ¯å¤§å†™ï¼ŒæœåŠ¡ç«¯å›è°ƒé¦–å­—æ¯å°å†™
 		$status=$_POST["Status"];
 		$merid=$_POST["MerchantNo"];
 		$paychannel=$_POST["PayChannel"];
@@ -111,14 +111,14 @@ class Sndapay extends paymentabstract{
     }	
 
     /**
-	 * POST½ÓÊÕÊı¾İ
-	 * ×´Ì¬ÂëËµÃ÷  £¨0 ½»Ò×Íê³É 1 ½»Ò×Ê§°Ü 2 ½»Ò×³¬Ê± 3 ½»Ò×´¦ÀíÖĞ 4 ½»Ò×Î´Ö§¸¶£©
+	 * POSTæ¥æ”¶æ•°æ®
+	 * çŠ¶æ€ç è¯´æ˜  ï¼ˆ0 äº¤æ˜“å®Œæˆ 1 äº¤æ˜“å¤±è´¥ 2 äº¤æ˜“è¶…æ—¶ 3 äº¤æ˜“å¤„ç†ä¸­ 4 äº¤æ˜“æœªæ”¯ä»˜ï¼‰
 	 */
     public function notify() {
     	$amount=$_POST["Amount"];
 		$payamount=$_POST["PayAmount"];
 		$orderid=$_POST["OrderNo"];
-		$serialno=$_POST["serialno"];//×¢Òâ´óĞ¡Ğ´£¬¿Í·ş¶Ë»Øµ÷Ê××ÖÄ¸´óĞ´£¬·şÎñ¶Ë»Øµ÷Ê××ÖÄ¸Ğ¡Ğ´
+		$serialno=$_POST["serialno"];//æ³¨æ„å¤§å°å†™ï¼Œå®¢æœç«¯å›è°ƒé¦–å­—æ¯å¤§å†™ï¼ŒæœåŠ¡ç«¯å›è°ƒé¦–å­—æ¯å°å†™
 		$status=$_POST["Status"];
 		$merid=$_POST["MerchantNo"];
 		$paychannel=$_POST["PayChannel"];
@@ -153,7 +153,7 @@ class Sndapay extends paymentabstract{
     }
     	
     /**
-     * ÏàÓ¦·şÎñÆ÷Ó¦´ğ×´Ì¬
+     * ç›¸åº”æœåŠ¡å™¨åº”ç­”çŠ¶æ€
      * @param $result
      */
     public function response($result) {
@@ -162,7 +162,7 @@ class Sndapay extends paymentabstract{
     }
     
     /**
-     * ·µ»Ø×Ö·û¹ıÂË
+     * è¿”å›å­—ç¬¦è¿‡æ»¤
      * @param $parameter
      */
 	private function filterParameter($parameter)

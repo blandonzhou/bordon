@@ -3,55 +3,55 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 
 /**
  * 
- * ÊÓÆµÌí¼Ó½ÓÊÕ½Ó¿Ú ÔÚvmsÏµÍ³ÖĞÌí¼ÓÊÓÆµ¡¢µ¼Èëku6ÊÓÆµÊ±£¬»áµ÷ÓÃ´Ë½Ó¿ÚÍ¬²½ÕâĞ©ÊÓÆµ
+ * è§†é¢‘æ·»åŠ æ¥æ”¶æ¥å£ åœ¨vmsç³»ç»Ÿä¸­æ·»åŠ è§†é¢‘ã€å¯¼å…¥ku6è§†é¢‘æ—¶ï¼Œä¼šè°ƒç”¨æ­¤æ¥å£åŒæ­¥è¿™äº›è§†é¢‘
  * 
  * @author				chenxuewang
  * @link				http://www.phpcms.cn http://www.ku6.cn
- * @copyright			CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @copyright			CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  * @license			http://www.phpcms.cn/license/
  * 
  * 
  * *************************************
  *              			           *
- *                 ²ÎÊıËµÃ÷            *
+ *                 å‚æ•°è¯´æ˜            *
  *                                     *
  * ************************************* 
  * 
  * title, description, tag, vid, picpath, size, timelen, status, playnum, specialid
  * 
- * title, ÊÓÆµ±êÌâ
+ * title, è§†é¢‘æ ‡é¢˜
  * 
- * descrption ÊÓÆµ¼ò½é
+ * descrption è§†é¢‘ç®€ä»‹
  * 
- * tag ÊÓÆµ±êÇ©
+ * tag è§†é¢‘æ ‡ç­¾
  * 
- * vid£¬ÊÓÆµvid£¬ÊÓÆµµÄÎ¨Ò»µÄ±êÊ¾·û¡£Çø·ÖÊÓÆµ
+ * vidï¼Œè§†é¢‘vidï¼Œè§†é¢‘çš„å”¯ä¸€çš„æ ‡ç¤ºç¬¦ã€‚åŒºåˆ†è§†é¢‘
  * 
- * picpath ÊÓÆµËõÂÔÍ¼
+ * picpath è§†é¢‘ç¼©ç•¥å›¾
  * 
- * size ÊÓÆµ´óĞ¡
+ * size è§†é¢‘å¤§å°
  * 
- * timelen ÊÓÆµ²¥·ÅÊ±³¤
+ * timelen è§†é¢‘æ’­æ”¾æ—¶é•¿
  * 
- * status ÊÓÆµÄ¿Ç°µÄ×´Ì¬
+ * status è§†é¢‘ç›®å‰çš„çŠ¶æ€
  * 
- * playnum ÊÓÆµ²¥·Å´ÎÊı
+ * playnum è§†é¢‘æ’­æ”¾æ¬¡æ•°
  * 
- * specialid ÊÓÆµµ¼ÈëµÄ×¨Ìâid
+ * specialid è§†é¢‘å¯¼å…¥çš„ä¸“é¢˜id
  * 
  * 
  * 
  * ************************************
  *              			          *
- *                 ·µ »Ø Öµ           *
+ *                 è¿” å› å€¼           *
  *                                    *
  * ************************************ 
  * 
- * ½Ó¿ÚÖ´ĞĞºó£¬Ó¦·µ»ØÏàÓ¦µÄÖµÍ¨ÖªvmsÏµÍ³
- * ·µ»ØÖµ¸ñÊ½ jsonÊı¾İ£¬array('msg'=>'Add Success', 'code'=>'100')
+ * æ¥å£æ‰§è¡Œåï¼Œåº”è¿”å›ç›¸åº”çš„å€¼é€šçŸ¥vmsç³»ç»Ÿ
+ * è¿”å›å€¼æ ¼å¼ jsonæ•°æ®ï¼Œarray('msg'=>'Add Success', 'code'=>'100')
  */
 
-//¼ÓÔØÊı¾İÄ£ĞÍ
+//åŠ è½½æ•°æ®æ¨¡å‹
 
 $video_store_db = pc_base::load_model('video_store_model');
 $special_db = pc_base::load_model('special_model');
@@ -61,7 +61,7 @@ $type_db = pc_base::load_model('type_model');
 
 pc_base::load_app_func('global', 'video');
 
-//ÑéÖ¤ĞÅÏ¢
+//éªŒè¯ä¿¡æ¯
 $data = $video_data = array();
 
 $data['specialid'] = intval($_POST['specialid']);
@@ -86,8 +86,8 @@ if (!$vid) {
 	echo json_encode(array('msg'=>'Vid do not empty', 'code'=>4));
 	exit;
 }
-//ÏÈ½«ÊÓÆµ¼ÓÈëµ½ÊÓÆµ¿âÖĞ£¬²¢È¡µÃvideoid
-//ÅĞ¶ÏvidÊÇ·ñÒÑ¾­´æÔÚÊÓÆµ¿âÖĞ
+//å…ˆå°†è§†é¢‘åŠ å…¥åˆ°è§†é¢‘åº“ä¸­ï¼Œå¹¶å–å¾—videoid
+//åˆ¤æ–­vidæ˜¯å¦å·²ç»å­˜åœ¨è§†é¢‘åº“ä¸­
 if (!$video_store = $video_store_db->get_one(array('vid'=>$vid))) {
 	$video_data['status'] = $_POST['status'] ? intval($_POST['status']) : 21;
 	$video_data['picpath'] = safe_replace( format_url($_POST['picPath']) );
@@ -101,32 +101,32 @@ if (!$video_store = $video_store_db->get_one(array('vid'=>$vid))) {
 } else {
 	$videoid = $video_store['vid'];
 }
-//¹¹½¨special_content±íÊı¾İ×Ö¶Î
+//æ„å»ºspecial_contentè¡¨æ•°æ®å­—æ®µ
 $res = $type_db->get_one(array('parentid'=>$data['specialid'], 'module'=>'special'), 'typeid', 'listorder ASC');
 $data['typeid'] = $res['typeid'];
 $data['thumb'] = $video_data['picpath'];
 $data['videoid'] = $videoid;
-//×éºÏPOSTÊı¾İ
+//ç»„åˆPOSTæ•°æ®
 $data['inputtime'] = SYS_TIME;
 $data['updatetime'] = SYS_TIME;
 if (strtolower(CHARSET)!='utf-8') {
 	$data = array_iconv($data, 'utf-8', 'gbk');
 }
 $contentid = $special_content_db->insert($data, true);
-// ÏòÊı¾İÍ³¼Æ±íÌí¼ÓÊı¾İ
+// å‘æ•°æ®ç»Ÿè®¡è¡¨æ·»åŠ æ•°æ®
 $count = pc_base::load_model('hits_model');
 $hitsid = 'special-c-'.$data['specialid'].'-'.$contentid;
 $count->insert(array('hitsid'=>$hitsid, 'views'=>intval($_POST['playnum'])));
-//½«ÄÚÈİ¼Óµ½data±íÖĞ
+//å°†å†…å®¹åŠ åˆ°dataè¡¨ä¸­
 $content = iconv('utf-8', 'gbk', $content);
 $content_data_db->insert(array('id'=>$contentid, 'content'=>$content));
-//¸üĞÂsearch±í
+//æ›´æ–°searchè¡¨
 $search_db = pc_base::load_model('search_model');
 $siteid = $special_info['siteid'];
 $type_arr = getcache('type_module_'.$siteid,'search');
 $typeid = $type_arr['special'];
 $searchid = $search_db->update_search($typeid ,$contentid,'',$data['title'], $data['inputtime']);
-//»ñÈ¡×¨ÌâµÄurl
+//è·å–ä¸“é¢˜çš„url
 $html = pc_base::load_app_class('html', 'special');
 $urls= $html->_create_content($contentid);
 $special_content_db->update(array('url'=>$urls[0], 'searchid'=>$searchid), array('id'=>$contentid));

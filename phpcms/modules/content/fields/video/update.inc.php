@@ -6,7 +6,7 @@
 			return '';
 		}
 		$video_content_db = pc_base::load_model('video_content_model');
-		//先获取目前contentid下面的videoid
+		//鍏堣幏鍙栫洰鍓峜ontentid涓嬮潰鐨剉ideoid
 		$result = $video_content_db->select(array('contentid'=>$this->id, 'modelid'=>$this->modelid), 'videoid');
 		if (is_array($result)) {
 			$video_arr = array();
@@ -29,7 +29,7 @@
 					unset($video_arr[$s_key]);
 				}
 			}
-			//删除需要删除的videoid
+			//鍒犻櫎闇�瑕佸垹闄ょ殑videoid
 			if ($video_arr && !empty($video_arr)) {
 				foreach ($video_arr as $dvid) {
 					$video_content_db->delete(array('contentid'=>$this->id, 'modelid'=>$this->modelid, 'videoid'=>$dvid));

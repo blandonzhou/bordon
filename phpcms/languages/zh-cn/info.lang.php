@@ -5,33 +5,33 @@ Add a new file(.lang.php) with your module name at /phpcms/languages/
 translation save at the array:$LANG
 */
 //info_setting.phpcredits
-$LANG['city_setting'] = '³ÇÊÐÅäÖÃ';
-$LANG['info_linkageid'] = 'Áª¶¯²Ëµ¥µØÇøID';
-$LANG['info_cachetime'] = '²éÑ¯½á¹û»º´æÊ±¼ä';
-$LANG['img_contact'] = 'ÊÇ·ñÍ¼Æ¬·½Ê½ÏÔÊ¾ÁªÏµ·½Ê½';
-$LANG['guest_visit'] = 'ÊÇ·ñ½ûÖ¹ÓÎ¿Í²é¿´ÁªÏµ·½Ê½';
-$LANG['info_modelid'] = 'ÐÅÏ¢Ä£ÐÍID';
-$LANG['info_modelid_tips'] = '¶à¸öÄ£ÐÍÇëÊ¹ÓÃ¡°,¡±·Ö¸î¡£Èç£º1,2';
-$LANG['info_top_setting'] = 'ÖÃ¶¥ÉèÖÃ';
-$LANG['top_city'] = '³ÇÊÐÖÃ¶¥,';
-$LANG['top_zone'] = 'ÇøÓòÖÃ¶¥,';
-$LANG['top_district'] = 'ÉÌÈ¦ÖÃ¶¥,';
-$LANG['info_top_jifen'] = '»ý·Ö/Ð¡Ê±';
-$LANG['info_top_cost'] = 'Ïû·Ñ£º';
-$LANG['info_posid'] = '°ó¶¨ÍÆ¼öÎ»ID£º';
-$LANG['add_city'] = 'Ìí¼Ó³ÇÊÐ';
-$LANG['info_city_name'] = 'ÏÔÊ¾Ãû³Æ';
-$LANG['info_city_pinyin'] = 'Æ´ÒôÃû³Æ';
-$LANG['info_city_posid'] = '°ó¶¨³ÇÊÐID';
-$LANG['info_city_confirm_del'] = 'È·ÈÏÉ¾³ý¸Ã³ÇÊÐ£¿';
-$LANG['info_city_not_be_del'] = 'ÉÙÓÚÒ»¸öÎÞ·¨É¾³ý';
-$LANG['info_city_confirm_save'] = 'È·ÈÏ±£´æ¸Ã³ÇÊÐ£¿';
-$LANG['info_city_name_empty'] = '²ÎÊýÌá½»´íÎó£¬Çë¼ì²éÃû³ÆÊÇ·ñÎª¿Õ';
-$LANG['multi_city'] = 'ÊÇ·ñÊ¹ÓÃ¶à³ÇÊÐ°æ';
-$LANG['info_catid'] = '·ÖÀàÐÅÏ¢¶¥¼¶À¸Ä¿ID';
-$LANG['info_apacherw'] = 'APACHE Rewrite¹æÔò';
-$LANG['info_copy'] = ' ¸´ ÖÆ ';
-$LANG['info_publish'] = '·¢²¼·ÖÀàÐÅÏ¢';
-$LANG['info_notice'] = ' ¸ÃURL¹æÔòÊÊÓÃÓëapache,Èç¹ûÄúµÄweb·þÎñÆ÷ÎªIIS,NginxµÈ£¬¿ÉÒÔ¸ù¾Ý¸Ã¹æÔò×öÊÊµ±ÐÞ¸Ä¼´¿É¡£APACHEÄ¬ÈÏ²»Ö§³Ö9¸öÒÔÉÏrewrite²ÎÊý';
+$LANG['city_setting'] = 'åŸŽå¸‚é…ç½®';
+$LANG['info_linkageid'] = 'è”åŠ¨èœå•åœ°åŒºID';
+$LANG['info_cachetime'] = 'æŸ¥è¯¢ç»“æžœç¼“å­˜æ—¶é—´';
+$LANG['img_contact'] = 'æ˜¯å¦å›¾ç‰‡æ–¹å¼æ˜¾ç¤ºè”ç³»æ–¹å¼';
+$LANG['guest_visit'] = 'æ˜¯å¦ç¦æ­¢æ¸¸å®¢æŸ¥çœ‹è”ç³»æ–¹å¼';
+$LANG['info_modelid'] = 'ä¿¡æ¯æ¨¡åž‹ID';
+$LANG['info_modelid_tips'] = 'å¤šä¸ªæ¨¡åž‹è¯·ä½¿ç”¨â€œ,â€åˆ†å‰²ã€‚å¦‚ï¼š1,2';
+$LANG['info_top_setting'] = 'ç½®é¡¶è®¾ç½®';
+$LANG['top_city'] = 'åŸŽå¸‚ç½®é¡¶,';
+$LANG['top_zone'] = 'åŒºåŸŸç½®é¡¶,';
+$LANG['top_district'] = 'å•†åœˆç½®é¡¶,';
+$LANG['info_top_jifen'] = 'ç§¯åˆ†/å°æ—¶';
+$LANG['info_top_cost'] = 'æ¶ˆè´¹ï¼š';
+$LANG['info_posid'] = 'ç»‘å®šæŽ¨èä½IDï¼š';
+$LANG['add_city'] = 'æ·»åŠ åŸŽå¸‚';
+$LANG['info_city_name'] = 'æ˜¾ç¤ºåç§°';
+$LANG['info_city_pinyin'] = 'æ‹¼éŸ³åç§°';
+$LANG['info_city_posid'] = 'ç»‘å®šåŸŽå¸‚ID';
+$LANG['info_city_confirm_del'] = 'ç¡®è®¤åˆ é™¤è¯¥åŸŽå¸‚ï¼Ÿ';
+$LANG['info_city_not_be_del'] = 'å°‘äºŽä¸€ä¸ªæ— æ³•åˆ é™¤';
+$LANG['info_city_confirm_save'] = 'ç¡®è®¤ä¿å­˜è¯¥åŸŽå¸‚ï¼Ÿ';
+$LANG['info_city_name_empty'] = 'å‚æ•°æäº¤é”™è¯¯ï¼Œè¯·æ£€æŸ¥åç§°æ˜¯å¦ä¸ºç©º';
+$LANG['multi_city'] = 'æ˜¯å¦ä½¿ç”¨å¤šåŸŽå¸‚ç‰ˆ';
+$LANG['info_catid'] = 'åˆ†ç±»ä¿¡æ¯é¡¶çº§æ ç›®ID';
+$LANG['info_apacherw'] = 'APACHE Rewriteè§„åˆ™';
+$LANG['info_copy'] = ' å¤ åˆ¶ ';
+$LANG['info_publish'] = 'å‘å¸ƒåˆ†ç±»ä¿¡æ¯';
+$LANG['info_notice'] = ' è¯¥URLè§„åˆ™é€‚ç”¨ä¸Žapache,å¦‚æžœæ‚¨çš„webæœåŠ¡å™¨ä¸ºIIS,Nginxç­‰ï¼Œå¯ä»¥æ ¹æ®è¯¥è§„åˆ™åšé€‚å½“ä¿®æ”¹å³å¯ã€‚APACHEé»˜è®¤ä¸æ”¯æŒ9ä¸ªä»¥ä¸Šrewriteå‚æ•°';
 
 ?>

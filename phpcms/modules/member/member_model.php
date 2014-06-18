@@ -1,14 +1,14 @@
 <?php
 /**
- * ¹ÜÀíÔ±ºóÌ¨»áÔ±Ä£ĞÍ²Ù×÷Àà
+ * ç®¡ç†å‘˜åå°ä¼šå‘˜æ¨¡å‹æ“ä½œç±»
  */
 
 defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_class('admin', 'admin', 0);
 pc_base::load_sys_class('form', '', 0);
-//Ä£ĞÍÔ­ĞÍ´æ´¢Â·¾¶
+//æ¨¡å‹åŸå‹å­˜å‚¨è·¯å¾„
 define('MODEL_PATH',PC_PATH.'modules'.DIRECTORY_SEPARATOR.'member'.DIRECTORY_SEPARATOR.'fields'.DIRECTORY_SEPARATOR);
-//Ä£ĞÍ»º´æÂ·¾¶
+//æ¨¡å‹ç¼“å­˜è·¯å¾„
 define('CACHE_MODEL_PATH',CACHE_PATH.'caches_model'.DIRECTORY_SEPARATOR.'caches_data'.DIRECTORY_SEPARATOR);
 
 class member_model extends admin {
@@ -21,7 +21,7 @@ class member_model extends admin {
 	}
 
 	/**
-	 * »áÔ±Ä£ĞÍÁĞ±í
+	 * ä¼šå‘˜æ¨¡å‹åˆ—è¡¨
 	 */
 	function manage() {
 		$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -32,7 +32,7 @@ class member_model extends admin {
 	}
 			
 	/**
-	 * Ìí¼Ó»áÔ±Ä£ĞÍ
+	 * æ·»åŠ ä¼šå‘˜æ¨¡å‹
 	 */
 	function add() {
 		if(isset($_POST['dosubmit'])) {
@@ -64,7 +64,7 @@ class member_model extends admin {
 					$this->sitemodel_field_db = pc_base::load_model('sitemodel_field_model');
 					$tablename = $tablepre.$tablename;
 					foreach($model_import_data as $v) {
-						//ĞŞ¸ÄÄ£ĞÍ±í×Ö¶Î
+						//ä¿®æ”¹æ¨¡å‹è¡¨å­—æ®µ
 						$field = $v['field'];
 						$minlength = $v['minlength'] ? $v['minlength'] : 0;
 						$maxlength = $v['maxlength'] ? $v['maxlength'] : 0;
@@ -83,7 +83,7 @@ class member_model extends admin {
 					}
 				}
 
-				//¸üĞÂÄ£ĞÍ»º´æ
+				//æ›´æ–°æ¨¡å‹ç¼“å­˜
 				pc_base::load_app_class('member_cache','','');
 				member_cache::update_cache_model();
 				showmessage(L('operation_success'),'?m=member&c=member_model&a=manage', '', 'add');
@@ -98,7 +98,7 @@ class member_model extends admin {
 	}
 	
 	/**
-	 * ĞŞ¸Ä»áÔ±Ä£ĞÍ
+	 * ä¿®æ”¹ä¼šå‘˜æ¨¡å‹
 	 */
 	function edit() {
 		if(isset($_POST['dosubmit'])) {
@@ -109,7 +109,7 @@ class member_model extends admin {
 			
 			$this->db->update($info, array('modelid'=>$modelid));
 			
-			//¸üĞÂÄ£ĞÍ»º´æ
+			//æ›´æ–°æ¨¡å‹ç¼“å­˜
 			pc_base::load_app_class('member_cache','','');
 			member_cache::update_cache_model();
 			showmessage(L('operation_success'),'?m=member&c=member_model&a=manage', '', 'edit');
@@ -121,7 +121,7 @@ class member_model extends admin {
 	}
 	
 	/**
-	 * É¾³ı»áÔ±Ä£ĞÍ
+	 * åˆ é™¤ä¼šå‘˜æ¨¡å‹
 	 */
 	function delete() {
 		$modelidarr = isset($_POST['modelid']) ? $_POST['modelid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
@@ -139,14 +139,14 @@ class member_model extends admin {
 		}
 
 		if ($this->db->delete($where)) {
-			//É¾³ıÄ£ĞÍ×Ö¶Î
+			//åˆ é™¤æ¨¡å‹å­—æ®µ
 			$this->sitemodel_field_db = pc_base::load_model('sitemodel_field_model');
 			$this->sitemodel_field_db->delete($where);
-			//ĞŞ¸ÄÓÃ»§Ä£ĞÍ×éÎªÆÕÍ¨»áÔ±
+			//ä¿®æ”¹ç”¨æˆ·æ¨¡å‹ç»„ä¸ºæ™®é€šä¼šå‘˜
 			$this->member_db = pc_base::load_model('members_model');
 			$this->member_db->update(array('modelid'=>10), $where);
 			
-			//¸üĞÂÄ£ĞÍ»º´æ
+			//æ›´æ–°æ¨¡å‹ç¼“å­˜
 			pc_base::load_app_class('member_cache','','');
 			member_cache::update_cache_model();
 			
@@ -157,14 +157,14 @@ class member_model extends admin {
 	}
 
 	/**
-	 * µ¼Èë»áÔ±Ä£ĞÍ
+	 * å¯¼å…¥ä¼šå‘˜æ¨¡å‹
 	 */
 	function import(){
 		include $this->admin_tpl('member_model_import');
 	}
 	
 	/**
-	 * µ¼³ö»áÔ±Ä£ĞÍ
+	 * å¯¼å‡ºä¼šå‘˜æ¨¡å‹
 	 */
 	function export() {
 		$modelid = isset($_GET['modelid']) ? $_GET['modelid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
@@ -183,14 +183,14 @@ class member_model extends admin {
 	}
 	
 	/**
-	 * ĞŞ¸Ä»áÔ±Ä£ĞÍ
+	 * ä¿®æ”¹ä¼šå‘˜æ¨¡å‹
 	 */
 	function move() {
 		if(isset($_POST['dosubmit'])) {
 			$from_modelid = isset($_POST['from_modelid']) ? $_POST['from_modelid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
 			$to_modelid = !empty($_POST['to_modelid']) && $_POST['to_modelid'] != $from_modelid ? $_POST['to_modelid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
 			
-			//¸üĞÂ»áÔ±±ímodelid
+			//æ›´æ–°ä¼šå‘˜è¡¨modelid
 			$this->db->change_member_modelid($from_modelid, $to_modelid);
 			
 			showmessage(L('member_move').L('operation_success'), HTTP_REFERER, '', 'move');
@@ -206,7 +206,7 @@ class member_model extends admin {
 	}
 	
 	/**
-	 * ÅÅĞò»áÔ±Ä£ĞÍ
+	 * æ’åºä¼šå‘˜æ¨¡å‹
 	 */
 	function sort() {		
 		if(isset($_POST['sort'])) {
@@ -214,7 +214,7 @@ class member_model extends admin {
 				$this->db->update(array('sort'=>$v), array('modelid'=>$k));
 			}
 			
-			//¸üĞÂÄ£ĞÍ»º´æ
+			//æ›´æ–°æ¨¡å‹ç¼“å­˜
 			pc_base::load_app_class('member_cache','','');
 			member_cache::update_cache_model();
 			
@@ -225,9 +225,9 @@ class member_model extends admin {
 	}
 	
 	/**
-	 * ¼ì²éÄ£ĞÍÃû³Æ
-	 * @param string $username	Ä£ĞÍÃû
-	 * @return $status {0:Ä£ĞÍÃûÒÑ¾­´æÔÚ ;1:³É¹¦}
+	 * æ£€æŸ¥æ¨¡å‹åç§°
+	 * @param string $username	æ¨¡å‹å
+	 * @return $status {0:æ¨¡å‹åå·²ç»å­˜åœ¨ ;1:æˆåŠŸ}
 	 */
 	public function public_checkmodelname_ajax() {
 		$modelname = isset($_GET['modelname']) ? trim($_GET['modelname']) : exit('0');
@@ -249,9 +249,9 @@ class member_model extends admin {
 	}
 	
 	/**
-	 * ¼ì²éÄ£ĞÍ±íÊÇ·ñ´æÔÚ
-	 * @param string $username	Ä£ĞÍÃû
-	 * @return $status {0:Ä£ĞÍ±íÃûÒÑ¾­´æÔÚ ;1:³É¹¦}
+	 * æ£€æŸ¥æ¨¡å‹è¡¨æ˜¯å¦å­˜åœ¨
+	 * @param string $username	æ¨¡å‹å
+	 * @return $status {0:æ¨¡å‹è¡¨åå·²ç»å­˜åœ¨ ;1:æˆåŠŸ}
 	 */
 	public function public_checktablename_ajax() {
 		$tablename = isset($_GET['tablename']) ? trim($_GET['tablename']) : exit('0');

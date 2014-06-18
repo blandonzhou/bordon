@@ -10,8 +10,8 @@ pc_base::load_sys_class($session_storage);
  * video_for_ck
  * ------------------------------------------
  * @package 	PHPCMS V9.1.16
- * @author		Íõ²Î¼Ó
- * @copyright	CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @author		ç‹å‚åŠ 
+ * @copyright	CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  * 
  */
 
@@ -32,12 +32,12 @@ class video_for_ck {
 	
 	/**
 	 * 
-	 * ÊÓÆµÁĞ±í
+	 * è§†é¢‘åˆ—è¡¨
 	 */
 	public function init() {
 		
 		if (!$this->check_priv('video2content')) {
-			showmessage('ÄúÃ»ÓĞÈ¨ÏŞ²Ù×÷¸ÃÏî','blank');
+			showmessage('æ‚¨æ²¡æœ‰æƒé™æ“ä½œè¯¥é¡¹','blank');
 		}
 		$where = '`status`=21';
 		$page = max(intval($_GET['page']), 1);
@@ -87,10 +87,10 @@ class video_for_ck {
 	
 	/**
 	 * Function add_f_ckeditor
-	 * ckeditorÖĞÌí¼ÓÊÓÆµ
+	 * ckeditorä¸­æ·»åŠ è§†é¢‘
 	 */
 	public function add_f_ckeditor () {
-		//Ê×ÏÈ´¦Àí£¬Ìá½»¹ıÀ´µÄÊı¾İ
+		//é¦–å…ˆå¤„ç†ï¼Œæäº¤è¿‡æ¥çš„æ•°æ®
 
 		$data = array();
 		$data['vid'] = $_GET['vid'];
@@ -102,7 +102,7 @@ class video_for_ck {
 		$data['description'] = safe_replace(str_replace(array('select','from','concat'),'',$data['description']));
 		$data['keywords'] = addslashes(trim(strip_tags($_GET['keywords'])));
 		$data['keywords'] = safe_replace(str_replace(array('select','from','concat'),'',$data['keywords']));
-		//Æä´ÎÏòvms postÊı¾İ£¬²¢È¡µÃ·µ»ØÖµ
+		//å…¶æ¬¡å‘vms postæ•°æ®ï¼Œå¹¶å–å¾—è¿”å›å€¼
 		$get_data = $this->ku6api->vms_add($data);
 		if (!$get_data) {
 			exit('3');
@@ -121,11 +121,11 @@ class video_for_ck {
 	
 	/**
 	 * Funtion pages
-	 * ÊÓÆµ·ÖÒ³
-	 * @param int $number ×ÜÒ³Êı 
-	 * @param int $page µ±Ç°Ò³
- 	 * @param int $pagesize Ã¿Ò³ÊıÁ¿
- 	 * @param string $js JSÊôĞÔ
+	 * è§†é¢‘åˆ†é¡µ
+	 * @param int $number æ€»é¡µæ•° 
+	 * @param int $page å½“å‰é¡µ
+ 	 * @param int $pagesize æ¯é¡µæ•°é‡
+ 	 * @param string $js JSå±æ€§
 	 */
 	private function pages($num, $curr_page, $perpage = 20, $setpages = 5, $js = '') {
 		$urlrule = url_par('page={$page}');
@@ -186,7 +186,7 @@ class video_for_ck {
 	
 	/**
 	 * Function CHECK_VID
-	 * ¼ì²évidÊÇ·ñ¿ÉÓÃ
+	 * æ£€æŸ¥vidæ˜¯å¦å¯ç”¨
 	 */
 	public function check_vid() {
 		$vid = $_GET['vid'];
@@ -212,7 +212,7 @@ class video_for_ck {
 
 	/**
 	 * Function CHECK_priv
-	 * ¼ì²éÈ¨ÏŞ
+	 * æ£€æŸ¥æƒé™
 	 */
 	private function check_priv($action = '') {
 		if (!$action) $action = 'init';

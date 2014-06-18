@@ -1,5 +1,5 @@
 	function editor($field, $value, $fieldinfo) {
-		//是否允许用户上传附件 ，后台管理员开启此功能
+		//鏄惁鍏佽鐢ㄦ埛涓婁紶闄勪欢 锛屽悗鍙扮鐞嗗憳寮�鍚鍔熻兘
 		extract($fieldinfo);
 		extract(string2array($setting));
 		$allowupload = defined('IN_ADMIN') || $allowupload ? 1 : 0;
@@ -8,3 +8,4 @@
 		if($errortips) $this->formValidator .= '$("#'.$field.'").formValidator({'.$allow_empty.'onshow:"",onfocus:"'.$errortips.'"}).inputValidator({min:1,onerror:"'.$errortips.'"});';
 		return "<div id='{$field}_tip'></div>".'<textarea name="info['.$field.']" id="'.$field.'" boxid="'.$field.'">'.$value.'</textarea>'.form::editor($field,$toolbar,'member','','',$allowupload,1,'',300);
 	}
+

@@ -7,9 +7,9 @@ defined('IN_PHPCMS') or exit('No permission resources.');
  * video import class
  * ------------------------------------------
  * 
- * µ¼ÈëKU6ÊÓÆµ
+ * å¯¼å…¥KU6è§†é¢‘
  *  
- * @copyright	CopyRight (c) 2006-2012 ÉÏº£Ê¢´óÍøÂç·¢Õ¹ÓĞÏŞ¹«Ë¾
+ * @copyright	CopyRight (c) 2006-2012 ä¸Šæµ·ç››å¤§ç½‘ç»œå‘å±•æœ‰é™å…¬å¸
  * 
  */
 pc_base::load_app_class('admin', 'admin', 0);
@@ -29,7 +29,7 @@ class import extends admin {
 		pc_base::load_app_class('v', 'video', 0);
 		$this->v =  new v($this->db);
 		
-		//»ñÈ¡¶ÌĞÅÆ½Ì¨ÅäÖÃĞÅÏ¢
+		//è·å–çŸ­ä¿¡å¹³å°é…ç½®ä¿¡æ¯
 		$this->setting = getcache('video');
 		if(empty($this->setting) && ROUTE_A!='setting') {
 			showmessage(L('video_setting_not_succfull'), 'index.php?m=video&c=video&a=setting&meunid='.$_GET['meunid']);
@@ -38,17 +38,17 @@ class import extends admin {
 	}
 	
 	/**
-	* Ö´ĞĞÊÓÆµµ¼Èë 
+	* æ‰§è¡Œè§†é¢‘å¯¼å…¥ 
 	*/
 	public function doimport(){
 		$importdata = $_POST['importdata'];
-		$select_category = intval($_POST['select_category']);//À¸Ä¿ID
-		$is_category = intval($_POST['is_category']);//ÊÇ·ñµ¼ÈëÀ¸Ä¿
+		$select_category = intval($_POST['select_category']);//æ ç›®ID
+		$is_category = intval($_POST['is_category']);//æ˜¯å¦å¯¼å…¥æ ç›®
  		$siteid = get_siteid();
 		$ids = $_POST['ids'];
 		$datas = array();
  		if(is_array($ids)){
- 			foreach ($_POST['importdata'] as $vv) {//ÖØ×é¹´Ñ¡Êı¾İ
+ 			foreach ($_POST['importdata'] as $vv) {//é‡ç»„å‹¾é€‰æ•°æ®
 				if(in_array($vv['vid'], $ids)) {
 					$datas[] = $vv;
 				}
@@ -58,27 +58,27 @@ class import extends admin {
 			$content_model = pc_base::load_model('content_model');
 			$content_model->set_catid($select_category);
 			$CATEGORYS = getcache('category_content_'.$siteid,'commons');
-			$modelid = $CATEGORYS[$select_category]['modelid'];// ËùÑ¡ÊÓÆµÀ¸Ä¿¶ÔÓ¦µÄmodelid
+			$modelid = $CATEGORYS[$select_category]['modelid'];// æ‰€é€‰è§†é¢‘æ ç›®å¯¹åº”çš„modelid
 			$model_field = pc_base::load_model('sitemodel_field_model');
 			$r = $model_field->get_one(array('modelid'=>$modelid, 'formtype'=>'video'), 'field');
-			$fieldname = $r['field'];//²é³öÊÓÆµ×Ö¶Î
+			$fieldname = $r['field'];//æŸ¥å‡ºè§†é¢‘å­—æ®µ
 			
-			//µ¼ÈëÍÆ¼öÎ»Ê¹ÓÃ
+			//å¯¼å…¥æ¨èä½ä½¿ç”¨
 			$this->push = push_factory::get_instance()->get_api('admin');
-  			//Ñ­»·¹´Ñ¡Êı¾İ£¬½øĞĞÇëÇóku6vmsÈë¿â½Ó¿Ú½øĞĞÈë¿â£¬³É¹¦ºó²åÈë±¾ÏµÍ³¶ÔÓ¦À¸Ä¿£¬²¢×Ô¶¯½øĞĞvideo_content¶ÔÓ¦¹ØÏµ 
+  			//å¾ªç¯å‹¾é€‰æ•°æ®ï¼Œè¿›è¡Œè¯·æ±‚ku6vmså…¥åº“æ¥å£è¿›è¡Œå…¥åº“ï¼ŒæˆåŠŸåæ’å…¥æœ¬ç³»ç»Ÿå¯¹åº”æ ç›®ï¼Œå¹¶è‡ªåŠ¨è¿›è¡Œvideo_contentå¯¹åº”å…³ç³» 
 			$new_s = array();
  			foreach ($datas as $data) {
   				$data['cid'] = $select_category;
 				$data['import'] = 1;
 				$data['channelid'] = 1;
 				$return_data = array();
-  				$return_data = $this->ku6api->vms_add($data);//²åÈëVMS,·µ»ØÄÜ²¥·ÅÊ¹ÓÃµÄvid
+  				$return_data = $this->ku6api->vms_add($data);//æ’å…¥VMS,è¿”å›èƒ½æ’­æ”¾ä½¿ç”¨çš„vid
 				//$new_s[] = $return_data;
    				$vid = $return_data['vid'];
 				if(!$vid){
-					showmessage('µ¼ÈëVMSÏµÍ³Ê±£¬·¢Éú´íÎó£¡',HTTP_REFERER);
+					showmessage('å¯¼å…¥VMSç³»ç»Ÿæ—¶ï¼Œå‘ç”Ÿé”™è¯¯ï¼',HTTP_REFERER);
 				}
-  				//Èë±¾»úÊÓÆµ¿â
+  				//å…¥æœ¬æœºè§†é¢‘åº“
 				
 				$video_data = array();
 				$video_data['title'] = str_cut($data['title'],80,false);
@@ -92,11 +92,11 @@ class import extends admin {
 				$video_data['size'] = intval($data['size']); 
 				$video_data['channelid'] = 1; 
 				
-				$videoid = $video_store_db->insert($video_data, true);//²åÈëÊÓÆµ¿â
+				$videoid = $video_store_db->insert($video_data, true);//æ’å…¥è§†é¢‘åº“
  				
-				if($is_category==1){//ÊÓÆµÖ±½Ó·¢²¼µ½Ö¸¶¨À¸Ä¿
-					//×éºÏPOSTÊı¾İ
-					//¸ù¾İÄ£ĞÍid£¬µÃµ½ÊÓÆµ×Ö¶ÎÃû
+				if($is_category==1){//è§†é¢‘ç›´æ¥å‘å¸ƒåˆ°æŒ‡å®šæ ç›®
+					//ç»„åˆPOSTæ•°æ®
+					//æ ¹æ®æ¨¡å‹idï¼Œå¾—åˆ°è§†é¢‘å­—æ®µå
 					$content_data = array();
 					
 					$content_data[$fieldname] = 1;
@@ -108,36 +108,36 @@ class import extends admin {
 					$content_data = array_filter($content_data,'rtrim');
 					$content_data['thumb'] = $data['picpath']; 
 					$content_data['status'] = 99;  
-					//×éºÏPOSTÊı¾İ,Èë¿âÊ±»á×Ô¶¯¶ÔÓ¦¹ØÏµ 
+					//ç»„åˆPOSTæ•°æ®,å…¥åº“æ—¶ä¼šè‡ªåŠ¨å¯¹åº”å…³ç³» 
 					$_POST[$fieldname.'_video'][1] = array('videoid'=>$videoid, 'listorder'=>1); 
-					//µ÷½Ó¿Ú£¬²åÈëÊı¾İ¿â
+					//è°ƒæ¥å£ï¼Œæ’å…¥æ•°æ®åº“
 					$cid = $content_model->add_content($content_data); 
 					
-					//ÈëÍÆ¼öÎ»
+					//å…¥æ¨èä½
 					$position = $_POST['sub']['posid'];
 					if($position){
-						$info = array();//×é³ÉÌá½»ĞÅÏ¢Êı¾İ
+						$info = array();//ç»„æˆæäº¤ä¿¡æ¯æ•°æ®
 						$pos_content_data = $content_data;
 						$pos_content_data['id'] = $cid;
 						$pos_content_data['inputtime'] = SYS_TIME;
 						$pos_content_data['updatetime'] = SYS_TIME;
-						$info[$cid]= $pos_content_data;//ĞÅÏ¢Êı¾İ
+						$info[$cid]= $pos_content_data;//ä¿¡æ¯æ•°æ®
 						
-						$pos_array = array();//ÍÆ¼öÎ»ID£¬ÒªÇóÊÇÊı×éÏÂÃæÊ¹ÓÃ
+						$pos_array = array();//æ¨èä½IDï¼Œè¦æ±‚æ˜¯æ•°ç»„ä¸‹é¢ä½¿ç”¨
 						$pos_array[] = $position;
 						
-						$post_array = '';//position ËùÓÃ
+						$post_array = '';//position æ‰€ç”¨
 						$post_array['modelid'] = $modelid;
 						$post_array['catid'] = $select_category;
 						$post_array['id'] = $cid; 
 						$post_array['posid'] = $pos_array;
-						$post_array['dosubmit'] = 'Ìá½»';
+						$post_array['dosubmit'] = 'æäº¤';
 						$post_array['pc_hash'] = $_GET['pc_hash'];
 						 
-						$this->push->position_list($info, $post_array);//µ÷ÓÃadmin position_list()·½·¨
+						$this->push->position_list($info, $post_array);//è°ƒç”¨admin position_list()æ–¹æ³•
 					}
 					
-					//¸üĞÂµã»÷´ÎÊı 
+					//æ›´æ–°ç‚¹å‡»æ¬¡æ•° 
 					if ($data['viewcount']) {
 						$views = intval($data['viewcount']);
 						$hitsid = 'c-'.$modelid.'-'.$cid;
@@ -154,19 +154,19 @@ class import extends admin {
 				$forward = "?m=video&c=video&a=import_ku6video&menuid=".$_POST['menuid'];
 			}
 			
-     		showmessage('KU6ÊÓÆµµ¼Èë³É¹¦£¬ÕıÔÚ·µ»Ø£¡',$forward);
+     		showmessage('KU6è§†é¢‘å¯¼å…¥æˆåŠŸï¼Œæ­£åœ¨è¿”å›ï¼',$forward);
 		}else{
- 			showmessage('ÇëÑ¡ÔñÒªµ¼ÈëµÄÊÓÆµ£¡',HTTP_REFERER);
+ 			showmessage('è¯·é€‰æ‹©è¦å¯¼å…¥çš„è§†é¢‘ï¼',HTTP_REFERER);
 		}
 	} 
 	
 	/**
-	* »ñÈ¡Õ¾µãÀ¸Ä¿Êı¾İ
+	* è·å–ç«™ç‚¹æ ç›®æ•°æ®
 	*/
 	 
 	/**
 	 * 
-	 * ÊÓÆµÁĞ±í
+	 * è§†é¢‘åˆ—è¡¨
 	 */
 	public function init() {
 		$where = '1';

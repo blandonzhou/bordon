@@ -2,7 +2,7 @@
 return array (
   'beijing' => 
   array (
-    'name' => '±±¾©',
+    'name' => 'åŒ—äº¬',
     'pinyin' => 'beijing',
     'linkageid' => '3361',
     'id' => '2',

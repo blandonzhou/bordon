@@ -13,3 +13,4 @@
 		if($maxlength) $str .= L('can_enter').'<B><span id="'.$field.'_len">'.$maxlength.'</span></B> '.L('characters');
 		return $str;
 	}
+

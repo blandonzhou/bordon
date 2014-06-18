@@ -10,13 +10,13 @@ class vote_option_model extends model {
 		parent::__construct();
 	}
 	/**
-	 * ËµÃ÷:Ìí¼ÓÍ¶Æ±Ñ¡Ïî²Ù×÷
-	 * @param $data Ñ¡ÏîÊı×é
-	 * @param $subjectid Í¶Æ±±êÌâID
+	 * è¯´æ˜:æ·»åŠ æŠ•ç¥¨é€‰é¡¹æ“ä½œ
+	 * @param $data é€‰é¡¹æ•°ç»„
+	 * @param $subjectid æŠ•ç¥¨æ ‡é¢˜ID
 	 */
 	function add_options($data, $subjectid,$siteid)
 	{
-		//ÅĞ¶Ï´«µİµÄÊı¾İÀàĞÍÊÇ·ñÕıÈ· 
+		//åˆ¤æ–­ä¼ é€’çš„æ•°æ®ç±»å‹æ˜¯å¦æ­£ç¡® 
 		if(!is_array($data)) return FALSE;
 		if(!$subjectid) return FALSE;
 		foreach($data as $key=>$val)
@@ -36,13 +36,13 @@ class vote_option_model extends model {
 	}
 
 	/**
-	 * ËµÃ÷:¸üĞÂÑ¡Ïî  
-	 * @param $data Êı×é  Array ( [44] => 443 [43(optionid)] => 334(option Öµ) )
+	 * è¯´æ˜:æ›´æ–°é€‰é¡¹  
+	 * @param $data æ•°ç»„  Array ( [44] => 443 [43(optionid)] => 334(option å€¼) )
 	 * @param $subjectid
 	 */
 	function update_options($data)
 	{
-		//ÅĞ¶Ï´«µİµÄÊı¾İÀàĞÍÊÇ·ñÕıÈ· 
+		//åˆ¤æ–­ä¼ é€’çš„æ•°æ®ç±»å‹æ˜¯å¦æ­£ç¡® 
 		if(!is_array($data)) return FALSE;
 		foreach($data as $key=>$val)
 		{
@@ -56,8 +56,8 @@ class vote_option_model extends model {
 		return TRUE;
 	}
 	/**
-	 * ËµÃ÷:Ñ¡ÏîÅÅĞò
-	 * @param  $data Ñ¡ÏîÊı×é
+	 * è¯´æ˜:é€‰é¡¹æ’åº
+	 * @param  $data é€‰é¡¹æ•°ç»„
 	 */
 	function set_listorder($data)
 	{
@@ -71,7 +71,7 @@ class vote_option_model extends model {
 		return $this->db->affected_rows();
 	}
 	/**
-	 * ËµÃ÷:É¾³ıÖ¸¶¨ Í¶Æ±ID¶ÔÓ¦µÄÑ¡Ïî 
+	 * è¯´æ˜:åˆ é™¤æŒ‡å®š æŠ•ç¥¨IDå¯¹åº”çš„é€‰é¡¹ 
 	 * @param $data
 	 * @param $subjectid
 	 */
@@ -84,8 +84,8 @@ class vote_option_model extends model {
 	}
 
 	/**
-	 * ËµÃ÷: ²éÑ¯ ¸ÃÍ¶Æ±µÄ Ñ¡Ïî
-	 * @param $subjectid Í¶Æ±ID 
+	 * è¯´æ˜: æŸ¥è¯¢ è¯¥æŠ•ç¥¨çš„ é€‰é¡¹
+	 * @param $subjectid æŠ•ç¥¨ID 
 	 */
 	function get_options($subjectid)
 	{
@@ -94,8 +94,8 @@ class vote_option_model extends model {
 			
 	}
 	/**
-	 * ËµÃ÷:É¾³ıµ¥Ìõ¶ÔÓ¦IDµÄÑ¡Ïî¼ÇÂ¼ 
-	 * @param $optionid Í¶Æ±Ñ¡ÏîID
+	 * è¯´æ˜:åˆ é™¤å•æ¡å¯¹åº”IDçš„é€‰é¡¹è®°å½• 
+	 * @param $optionid æŠ•ç¥¨é€‰é¡¹ID
 	 */
 	function del_option($optionid)
 	{

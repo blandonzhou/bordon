@@ -11,7 +11,7 @@ class category extends admin {
 		$this->siteid = $this->get_siteid();
 	}
 	/**
-	 * ¹ÜÀíÀ¸Ä¿
+	 * ç®¡ç†æ ç›®
 	 */
 	public function init () {
 		$show_pc_hash = '';
@@ -22,10 +22,10 @@ class category extends admin {
 		foreach ($models as $modelid=>$model) {
 			$category_items[$modelid] = getcache('category_items_'.$modelid,'commons');
 		}
-		$tree->icon = array('&nbsp;&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;&nbsp;©¸©¤ ');
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;&nbsp;â””â”€ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		$categorys = array();
-		//¶ÁÈ¡»º´æ
+		//è¯»å–ç¼“å­˜
 		$result = getcache('category_content_'.$this->siteid,'commons');
 		$show_detail = count($result) < 500 ? 1 : 0;
 		$parentid = $_GET['parentid'] ? intval($_GET['parentid']) : 0;
@@ -88,7 +88,7 @@ class category extends admin {
 		include $this->admin_tpl('category_manage');
 	}
 	/**
-	 * Ìí¼ÓÀ¸Ä¿
+	 * æ·»åŠ æ ç›®
 	 */
 	public function add() {
 		if(isset($_POST['dosubmit'])) {
@@ -108,7 +108,7 @@ class category extends admin {
 			$_POST['info']['module'] = 'content';
 			$setting = $_POST['setting'];
 			if($_POST['info']['type']!=2) {
-				//À¸Ä¿Éú³É¾²Ì¬ÅäÖÃ
+				//æ ç›®ç”Ÿæˆé™æ€é…ç½®
 				if($setting['ishtml']) {
 					$setting['category_ruleid'] = $_POST['category_html_ruleid'];
 				} else {
@@ -117,7 +117,7 @@ class category extends admin {
 				}
 			}
 			
-			//ÄÚÈÝÉú³É¾²Ì¬ÅäÖÃ
+			//å†…å®¹ç”Ÿæˆé™æ€é…ç½®
 			if($setting['content_ishtml']) {
 				$setting['show_ruleid'] = $_POST['show_html_ruleid'];
 			} else {
@@ -135,7 +135,7 @@ class category extends admin {
 				$catid = $this->db->insert($_POST['info'], true);
 				$this->update_priv($catid, $_POST['priv_roleid']);
 				$this->update_priv($catid, $_POST['priv_groupid'],0);
-			} else {//ÅúÁ¿Ìí¼Ó
+			} else {//æ‰¹é‡æ·»åŠ 
 				$end_str = '';
 				$batch_adds = explode("\n", $_POST['batch_add']);
 				foreach ($batch_adds as $_v) {
@@ -159,7 +159,7 @@ class category extends admin {
 			$this->cache();
 			showmessage(L('add_success').$end_str);
 		} else {
-			//»ñÈ¡Õ¾µãÄ£°åÐÅÏ¢
+			//èŽ·å–ç«™ç‚¹æ¨¡æ¿ä¿¡æ¯
 			pc_base::load_app_func('global');
 
 			$template_list = template_list($this->siteid, 0);
@@ -196,7 +196,7 @@ class category extends admin {
 		}
 	}
 	/**
-	 * ÐÞ¸ÄÀ¸Ä¿
+	 * ä¿®æ”¹æ ç›®
 	 */
 	public function edit() {
 		
@@ -205,7 +205,7 @@ class category extends admin {
 			$catid = 0;
 			$catid = intval($_POST['catid']);
 			$setting = $_POST['setting'];
-			//À¸Ä¿Éú³É¾²Ì¬ÅäÖÃ
+			//æ ç›®ç”Ÿæˆé™æ€é…ç½®
 			if($_POST['type'] != 2) {
 				if($setting['ishtml']) {
 					$setting['category_ruleid'] = $_POST['category_html_ruleid'];
@@ -214,7 +214,7 @@ class category extends admin {
 					$_POST['info']['url'] = '';
 				}
 			}
-			//ÄÚÈÝÉú³É¾²Ì¬ÅäÖÃ
+			//å†…å®¹ç”Ÿæˆé™æ€é…ç½®
 			if($setting['content_ishtml']) {
 				$setting['show_ruleid'] = $_POST['show_html_ruleid'];
 			} else {
@@ -228,7 +228,7 @@ class category extends admin {
 			$letters = gbk_to_pinyin($catname);
 			$_POST['info']['letter'] = strtolower(implode('', $letters));
 			
-			//Ó¦ÓÃÈ¨ÏÞÉèÖÃµ½×ÓÀ¸Ä¿
+			//åº”ç”¨æƒé™è®¾ç½®åˆ°å­æ ç›®
 			if($_POST['priv_child']) {
 				$arrchildid = $this->db->get_one(array('catid'=>$catid), 'arrchildid');
 				if(!empty($arrchildid['arrchildid'])) {
@@ -242,7 +242,7 @@ class category extends admin {
 				
 			}
 			
-			//Ó¦ÓÃÄ£°åµ½ËùÓÐ×ÓÀ¸Ä¿
+			//åº”ç”¨æ¨¡æ¿åˆ°æ‰€æœ‰å­æ ç›®
 			if($_POST['template_child']){
                                 $this->categorys = $categorys = $this->db->select(array('siteid'=>$this->siteid,'module'=>'content'), '*', '', 'listorder ASC, catid ASC', '', 'catid');
                                 $idstr = $this->get_arrchildid($catid);
@@ -266,14 +266,14 @@ class category extends admin {
 			$this->update_priv($catid, $_POST['priv_roleid']);
 			$this->update_priv($catid, $_POST['priv_groupid'],0);
 			$this->cache();
-			//¸üÐÂ¸½¼þ×´Ì¬
+			//æ›´æ–°é™„ä»¶çŠ¶æ€
 			if($_POST['info']['image'] && pc_base::load_config('system','attachment_stat')) {
 				$this->attachment_db = pc_base::load_model('attachment_model');
 				$this->attachment_db->api_update($_POST['info']['image'],'catid-'.$catid,1);
 			}
 			showmessage(L('operation_success').'<script type="text/javascript">window.top.art.dialog({id:"test"}).close();window.top.art.dialog({id:"test",content:\'<h2>'.L("operation_success").'</h2><span style="fotn-size:16px;">'.L("edit_following_operation").'</span><br /><ul style="fotn-size:14px;"><li><a href="?m=admin&c=category&a=public_cache&menuid=43&module=admin" target="right"  onclick="window.top.art.dialog({id:\\\'test\\\'}).close()">'.L("following_operation_1").'</a></li></ul>\',width:"400",height:"200"});</script>','?m=admin&c=category&a=init&module=admin&menuid=43');
 		} else {
-			//»ñÈ¡Õ¾µãÄ£°åÐÅÏ¢
+			//èŽ·å–ç«™ç‚¹æ¨¡æ¿ä¿¡æ¯
 			pc_base::load_app_func('global');
 			$template_list = template_list($this->siteid, 0);
 			foreach ($template_list as $k=>$v) {
@@ -303,7 +303,7 @@ class category extends admin {
 		}	
 	}
 	/**
-	 * ÅÅÐò
+	 * æŽ’åº
 	 */
 	public function listorder() {
 		if(isset($_POST['dosubmit'])) {
@@ -317,7 +317,7 @@ class category extends admin {
 		}
 	}
 	/**
-	 * É¾³ýÀ¸Ä¿
+	 * åˆ é™¤æ ç›®
 	 */
 	public function delete() {
 		$catid = intval($_GET['catid']);
@@ -334,8 +334,8 @@ class category extends admin {
 		showmessage(L('operation_success'),HTTP_REFERER);
 	}
 	/**
-	 * µÝ¹éÉ¾³ýÀ¸Ä¿
-	 * @param $catid ÒªÉ¾³ýµÄÀ¸Ä¿id
+	 * é€’å½’åˆ é™¤æ ç›®
+	 * @param $catid è¦åˆ é™¤çš„æ ç›®id
 	 */
 	private function delete_child($catid, $modelid) {
 		$catid = intval($catid);
@@ -351,8 +351,8 @@ class category extends admin {
 		return true;
 	}
 	/**
-	 * É¾³ýÀ¸Ä¿·ÖÀàÏÂµÄÊÓÆµ
-	 * @param $catid ÒªÉ¾³ýÊÓÆµµÄÀ¸Ä¿id
+	 * åˆ é™¤æ ç›®åˆ†ç±»ä¸‹çš„è§†é¢‘
+	 * @param $catid è¦åˆ é™¤è§†é¢‘çš„æ ç›®id
 	 */
 	private function delete_category_video($catid, $modelid) {
 		$content_model = pc_base::load_model('content_model');
@@ -365,7 +365,7 @@ class category extends admin {
 		}
 	}	
 	/**
-	 * ¸üÐÂ»º´æ
+	 * æ›´æ–°ç¼“å­˜
 	 */
 	public function cache() {
 		$categorys = array();
@@ -407,7 +407,7 @@ class category extends admin {
 		return true;
 	}
 	/**
-	 * ¸üÐÂ»º´æ²¢ÐÞ¸´À¸Ä¿
+	 * æ›´æ–°ç¼“å­˜å¹¶ä¿®å¤æ ç›®
 	 */
 	public function public_cache() {
 		$this->repair();
@@ -415,7 +415,7 @@ class category extends admin {
 		showmessage(L('operation_success'),'?m=admin&c=category&a=init&module=admin&menuid=43');
 	}
 	/**
-	* ÐÞ¸´À¸Ä¿Êý¾Ý
+	* ä¿®å¤æ ç›®æ•°æ®
 	*/
 	private function repair() {
 		pc_base::load_sys_func('iconv');
@@ -441,18 +441,18 @@ class category extends admin {
 				$listorder = $cat['listorder'] ? $cat['listorder'] : $catid;
 				
 				$this->sethtml = $setting['create_to_html_root'];
-				//¼ì²éÊÇ·ñÉú³Éµ½¸ùÄ¿Â¼
+				//æ£€æŸ¥æ˜¯å¦ç”Ÿæˆåˆ°æ ¹ç›®å½•
 				$this->get_sethtml($catid);
 				$sethtml = $this->sethtml ? 1 : 0;
 				
 				if($setting['ishtml']) {
-				//Éú³É¾²Ì¬Ê±
+				//ç”Ÿæˆé™æ€æ—¶
 					$url = $this->update_url($catid);
 					if(!preg_match('/^(http|https):\/\//i', $url)) {
 						$url = $sethtml ? '/'.$url : $html_root.'/'.$url;
 					}
 				} else {
-				//²»Éú³É¾²Ì¬Ê±
+				//ä¸ç”Ÿæˆé™æ€æ—¶
 					$url = $this->update_url($catid);
 					$url = APP_PATH.$url;
 				}
@@ -464,7 +464,7 @@ class category extends admin {
 			}
 		}
 		
-		//É¾³ýÔÚ·ÇÕý³£ÏÔÊ¾µÄÀ¸Ä¿
+		//åˆ é™¤åœ¨éžæ­£å¸¸æ˜¾ç¤ºçš„æ ç›®
 		foreach($this->categorys as $catid => $cat) {
 			if($cat['parentid'] != 0 && !isset($this->categorys[$cat['parentid']])) {
 				$this->db->delete(array('catid'=>$catid));
@@ -473,7 +473,7 @@ class category extends admin {
 		return true;
 	}
 	/**
-	 * »ñÈ¡¸¸À¸Ä¿ÊÇ·ñÉú³Éµ½¸ùÄ¿Â¼
+	 * èŽ·å–çˆ¶æ ç›®æ˜¯å¦ç”Ÿæˆåˆ°æ ¹ç›®å½•
 	 */
 	private function get_sethtml($catid) {
 		foreach($this->categorys as $id => $cat) {
@@ -490,7 +490,7 @@ class category extends admin {
 	}
 	
 	/**
-	 * ÕÒ³ö×ÓÄ¿Â¼ÁÐ±í
+	 * æ‰¾å‡ºå­ç›®å½•åˆ—è¡¨
 	 * @param array $categorys
 	 */
 	private function get_categorys($categorys = array()) {
@@ -507,21 +507,21 @@ class category extends admin {
 		return true;
 	}
 	/**
-	* ¸üÐÂÀ¸Ä¿Á´½ÓµØÖ·
+	* æ›´æ–°æ ç›®é“¾æŽ¥åœ°å€
 	*/
 	private function update_url($catid) {
 		$catid = intval($catid);
 		if (!$catid) return false;
-		$url = pc_base::load_app_class('url', 'content'); //µ÷ÓÃURLÊµÀý
+		$url = pc_base::load_app_class('url', 'content'); //è°ƒç”¨URLå®žä¾‹
 		return $url->category_url($catid);
 	}
 
 	/**
 	 * 
-	 * »ñÈ¡¸¸À¸Ä¿IDÁÐ±í
-	 * @param integer $catid              À¸Ä¿ID
-	 * @param array $arrparentid          ¸¸Ä¿Â¼ID
-	 * @param integer $n                  ²éÕÒµÄ²ã´Î
+	 * èŽ·å–çˆ¶æ ç›®IDåˆ—è¡¨
+	 * @param integer $catid              æ ç›®ID
+	 * @param array $arrparentid          çˆ¶ç›®å½•ID
+	 * @param integer $n                  æŸ¥æ‰¾çš„å±‚æ¬¡
 	 */
 	private function get_arrparentid($catid, $arrparentid = '', $n = 1) {
 		if($n > 5 || !is_array($this->categorys) || !isset($this->categorys[$catid])) return false;
@@ -538,8 +538,8 @@ class category extends admin {
 
 	/**
 	 * 
-	 * »ñÈ¡×ÓÀ¸Ä¿IDÁÐ±í
-	 * @param $catid À¸Ä¿ID
+	 * èŽ·å–å­æ ç›®IDåˆ—è¡¨
+	 * @param $catid æ ç›®ID
 	 */
 	private function get_arrchildid($catid) {
 		$arrchildid = $catid;
@@ -553,7 +553,7 @@ class category extends admin {
 		return $arrchildid;
 	}
 	/**
-	 * »ñÈ¡¸¸À¸Ä¿Â·¾¶
+	 * èŽ·å–çˆ¶æ ç›®è·¯å¾„
 	 * @param  $catid
 	 */
 	function get_parentdir($catid) {
@@ -600,9 +600,9 @@ class category extends admin {
 		}
 	}
 	/**
-	 * ¼ì²éÄ¿Â¼ÊÇ·ñ´æÔÚ
-	 * @param  $return_method ·µ»Ø·½·¨
-	 * @param  $catdir Ä¿Â¼
+	 * æ£€æŸ¥ç›®å½•æ˜¯å¦å­˜åœ¨
+	 * @param  $return_method è¿”å›žæ–¹æ³•
+	 * @param  $catdir ç›®å½•
 	 */
 	public function public_check_catdir($return_method = 1,$catdir = '') {
 		$old_dir = '';
@@ -611,7 +611,7 @@ class category extends admin {
 		$old_dir = $_GET['old_dir'];
 		$r = $this->db->get_one(array('siteid'=>$this->siteid,'module'=>'content','catdir'=>$catdir,'parentid'=>$parentid));
 		if($r && $old_dir != $r['catdir']) {
-			//Ä¿Â¼´æÔÚ
+			//ç›®å½•å­˜åœ¨
 			if($return_method) {
 				exit('0');
 			} else {
@@ -627,7 +627,7 @@ class category extends admin {
 	}
 	
 	/**
-	 * ¸üÐÂÈ¨ÏÞ
+	 * æ›´æ–°æƒé™
 	 * @param  $catid
 	 * @param  $priv_datas
 	 * @param  $is_admin
@@ -646,10 +646,10 @@ class category extends admin {
 	}
 
 	/**
-	 * ¼ì²éÀ¸Ä¿È¨ÏÞ
-	 * @param $action ¶¯×÷
-	 * @param $roleid ½ÇÉ«
-	 * @param $is_admin ÊÇ·ñÎª¹ÜÀí×é
+	 * æ£€æŸ¥æ ç›®æƒé™
+	 * @param $action åŠ¨ä½œ
+	 * @param $roleid è§’è‰²
+	 * @param $is_admin æ˜¯å¦ä¸ºç®¡ç†ç»„
 	 */
 	private function check_category_priv($action,$roleid,$is_admin = 1) {
 		$checked = '';
@@ -659,7 +659,7 @@ class category extends admin {
 		return $checked;
 	}
 	/**
-	 * ÖØÐÂÍ³¼ÆÀ¸Ä¿ÐÅÏ¢ÊýÁ¿
+	 * é‡æ–°ç»Ÿè®¡æ ç›®ä¿¡æ¯æ•°é‡
 	 */
 	public function count_items() {
 		$this->content_db = pc_base::load_model('content_model');
@@ -675,7 +675,7 @@ class category extends admin {
 		showmessage(L('operation_success'),HTTP_REFERER);
 	}
 	/**
-	 * json·½Ê½¼ÓÔØÄ£°å
+	 * jsonæ–¹å¼åŠ è½½æ¨¡æ¿
 	 */
 	public function public_tpl_file_list() {
 		$style = isset($_GET['style']) && trim($_GET['style']) ? trim($_GET['style']) : exit(0);
@@ -717,7 +717,7 @@ class category extends admin {
 	}
 
 	/**
-	 * ¿ìËÙ½øÈëËÑË÷
+	 * å¿«é€Ÿè¿›å…¥æœç´¢
 	 */
 	public function public_ajax_search() {
 		if($_GET['catname']) {
@@ -737,7 +737,7 @@ class category extends admin {
 		}
 	}
 	/**
-	 * json·½Ê½¶ÁÈ¡·ç¸ñÁÐ±í£¬ÍÆËÍ²¿·Öµ÷ÓÃ
+	 * jsonæ–¹å¼è¯»å–é£Žæ ¼åˆ—è¡¨ï¼ŒæŽ¨é€éƒ¨åˆ†è°ƒç”¨
 	 */
 	public function public_change_tpl() {
 		pc_base::load_sys_class('form','',0);
@@ -761,7 +761,7 @@ class category extends admin {
 		}
 	}
 	/**
-	 * ÅúÁ¿ÐÞ¸Ä
+	 * æ‰¹é‡ä¿®æ”¹
 	 */
 	public function batch_edit() {
 		$categorys = getcache('category_content_'.$this->siteid,'commons');
@@ -770,7 +770,7 @@ class category extends admin {
 			pc_base::load_sys_func('iconv');	
 			$catid = intval($_POST['catid']);
 			$post_setting = $_POST['setting'];
-			//À¸Ä¿Éú³É¾²Ì¬ÅäÖÃ
+			//æ ç›®ç”Ÿæˆé™æ€é…ç½®
 			$infos = $info = array();
 			$infos = $_POST['info'];
 			if(empty($infos)) showmessage(L('operation_success'));
@@ -788,7 +788,7 @@ class category extends admin {
 				foreach($post_setting[$catid] as $_k=>$_setting) {
 					$setting[$_k] = $_setting;
 				}
-				//ÄÚÈÝÉú³É¾²Ì¬ÅäÖÃ
+				//å†…å®¹ç”Ÿæˆé™æ€é…ç½®
 				if($post_setting[$catid]['content_ishtml']) {
 					$setting['show_ruleid'] = $_POST['show_html_ruleid'][$catid];
 				} else {
@@ -804,7 +804,7 @@ class category extends admin {
 				$info['letter'] = strtolower(implode('', $letters));
 				$this->db->update($info,array('catid'=>$catid,'siteid'=>$this->siteid));
 
-				//¸üÐÂ¸½¼þ×´Ì¬
+				//æ›´æ–°é™„ä»¶çŠ¶æ€
 				if($info['image'] && pc_base::load_config('system','attachment_stat')) {
 					$this->attachment_db->api_update($info['image'],'catid-'.$catid,1);
 				}
@@ -813,7 +813,7 @@ class category extends admin {
 			showmessage(L('operation_success'),'?m=admin&c=category&a=init&module=admin&menuid=43');
 		} else {
 			if(isset($_POST['catids'])) {
-				//»ñÈ¡Õ¾µãÄ£°åÐÅÏ¢
+				//èŽ·å–ç«™ç‚¹æ¨¡æ¿ä¿¡æ¯
 				pc_base::load_app_func('global');
 				$template_list = template_list($this->siteid, 0);
 				foreach ($template_list as $k=>$v) {
@@ -851,7 +851,7 @@ class category extends admin {
 				$type = isset($_GET['select_type']) ? intval($_GET['select_type']) : 0;
 				
 				$tree = pc_base::load_sys_class('tree');
-				$tree->icon = array('&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;©¸©¤ ');
+				$tree->icon = array('&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;â””â”€ ');
 				$tree->nbsp = '&nbsp;&nbsp;';
 				$category = array();
 				foreach($categorys as $catid=>$r) {
@@ -867,7 +867,7 @@ class category extends admin {
 		}	
 	} 
 	/**
-	 * ÅúÁ¿ÒÆ¶¯ÎÄÕÂ
+	 * æ‰¹é‡ç§»åŠ¨æ–‡ç« 
 	 */
 	public function remove() {
 		$this->categorys = getcache('category_content_'.$this->siteid,'commons');
@@ -891,7 +891,7 @@ class category extends admin {
  			
   			$modelid = $this->categorys[$catid]['modelid'];
   			$tree = pc_base::load_sys_class('tree');
-			$tree->icon = array('&nbsp;&nbsp;©¦ ','&nbsp;&nbsp;©À©¤ ','&nbsp;&nbsp;©¸©¤ ');
+			$tree->icon = array('&nbsp;&nbsp;â”‚ ','&nbsp;&nbsp;â”œâ”€ ','&nbsp;&nbsp;â””â”€ ');
 			$tree->nbsp = '&nbsp;&nbsp;';
  			foreach($this->categorys as $cid=>$r) {
 				if($this->siteid != $r['siteid'] || $r['type']) continue;

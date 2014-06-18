@@ -4,7 +4,7 @@ return array (
   array (
     'id' => '2',
     'siteid' => '1',
-    'title' => '¶ù¸è',
+    'title' => 'å„¿æ­Œ',
     'url' => 'http://bordon.xicp.net/:9999/phpcms/html/special/erge/',
     'thumb' => 'http://bordon.xicp.net/:9999/phpcms/uploadfile/2013/1211/20131211073110382.jpg',
     'banner' => 'http://bordon.xicp.net/:9999/phpcms/uploadfile/2013/1211/20131211073110382.jpg',
@@ -14,7 +14,7 @@ return array (
   array (
     'id' => '1',
     'siteid' => '1',
-    'title' => 'ÈËÐÔµÄÕÜÑ§Óë¿ÆÑ§',
+    'title' => 'äººæ€§çš„å“²å­¦ä¸Žç§‘å­¦',
     'url' => 'bordon.xicp.net:9999/phpcms/html/special/yeludaxue/',
     'thumb' => 'bordon.xicp.net:9999/phpcms/uploadfile/2013/1210/20131210012519999.jpg',
     'banner' => 'bordon.xicp.net:9999/phpcms/uploadfile/2013/1210/20131210012519999.jpg',

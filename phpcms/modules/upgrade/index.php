@@ -3,9 +3,9 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_class('admin', 'admin', 0);
 class index extends admin {
 	private $_filearr = array('api', 'phpcms', 'statics', '');
-	//md5ÑéÖ¤µØÖ·
+	//md5éªŒè¯åœ°å€
 	private $_upgrademd5 = 'http://www.phpcms.cn/upgrademd5/';
-	//²¹¶¡µØÖ·
+	//è¡¥ä¸åœ°å€
 	private $_patchurl = 'http://download.phpcms.cn/v9/9.0/patch/';
 	
 	public function __construct() {
@@ -16,15 +16,15 @@ class index extends admin {
 
 		$patch_charset = str_replace('-', '', CHARSET);
 		$upgrade_path_base = $this->_patchurl.$patch_charset.'/';
-		//»ñÈ¡µ±Ç°°æ±¾
+		//è·å–å½“å‰ç‰ˆæœ¬
 		$current_version = pc_base::load_config('version');
 		$pathlist_str = @file_get_contents($upgrade_path_base);
 		$pathlist = $allpathlist = array();
 		$key = -1;
-		//»ñÈ¡Ñ¹Ëõ°üÁĞ±í
+		//è·å–å‹ç¼©åŒ…åˆ—è¡¨
 		preg_match_all("/\"(patch_[\w_]+\.zip)\"/", $pathlist_str, $allpathlist);
 		$allpathlist = $allpathlist[1];
-		//»ñÈ¡¿É¹©µ±Ç°°æ±¾Éı¼¶µÄÑ¹Ëõ°ü
+		//è·å–å¯ä¾›å½“å‰ç‰ˆæœ¬å‡çº§çš„å‹ç¼©åŒ…
 		foreach($allpathlist as $k=>$v) {
 			if(strstr($v, 'patch_'.$current_version['pc_release'])) {
 				$key = $k;
@@ -38,59 +38,59 @@ class index extends admin {
 			}
 		}
 		
-		//¿ªÊ¼Éı¼¶
+		//å¼€å§‹å‡çº§
 		if(!empty($_GET['s'])) {
 			if(empty($_GET['do'])) {
 				showmessage(L('upgradeing'), '?m=upgrade&c=index&a=init&s=1&do=1&cover='.$_GET['cover']);
 			}
-			//¼ì²é·şÎñÆ÷ÊÇ·ñÖ§³Özip
+			//æ£€æŸ¥æœåŠ¡å™¨æ˜¯å¦æ”¯æŒzip
 
 			if(empty($pathlist)) {
 				showmessage(L('upgrade_success'), '?m=upgrade&c=index&a=checkfile');
 			}
 			
-			//´´½¨»º´æÎÄ¼ş¼Ğ
+			//åˆ›å»ºç¼“å­˜æ–‡ä»¶å¤¹
 			if(!file_exists(CACHE_PATH.'caches_upgrade')) {
 				@mkdir(CACHE_PATH.'caches_upgrade');
 			}
 			
-			//¸ù¾İ°æ±¾ÏÂÔØzipÉı¼¶°ü£¬½âÑ¹¸²¸Ç
+			//æ ¹æ®ç‰ˆæœ¬ä¸‹è½½zipå‡çº§åŒ…ï¼Œè§£å‹è¦†ç›–
 			pc_base::load_app_class('pclzip', 'upgrade', 0);
 
 			foreach($pathlist as $k=>$v) {
-				//Ô¶³ÌÑ¹Ëõ°üµØÖ·
+				//è¿œç¨‹å‹ç¼©åŒ…åœ°å€
 				$upgradezip_url = $upgrade_path_base.$v;
-				//±£´æµ½±¾µØµØÖ·
+				//ä¿å­˜åˆ°æœ¬åœ°åœ°å€
 				$upgradezip_path = CACHE_PATH.'caches_upgrade'.DIRECTORY_SEPARATOR.$v;
-				//½âÑ¹Â·¾¶
+				//è§£å‹è·¯å¾„
 				$upgradezip_source_path = CACHE_PATH.'caches_upgrade'.DIRECTORY_SEPARATOR.basename($v,".zip");
 				
-				//ÏÂÔØÑ¹Ëõ°ü
+				//ä¸‹è½½å‹ç¼©åŒ…
 				@file_put_contents($upgradezip_path, @file_get_contents($upgradezip_url));
-				//½âÑ¹Ëõ
+				//è§£å‹ç¼©
 				$archive = new PclZip($upgradezip_path);
 
 				if($archive->extract(PCLZIP_OPT_PATH, $upgradezip_source_path, PCLZIP_OPT_REPLACE_NEWER) == 0) {
 					die("Error : ".$archive->errorInfo(true));
 				}
 								
-				//¿½±´gbk/uploadÎÄ¼ş¼Ğµ½¸ùÄ¿Â¼
+				//æ‹·è´gbk/uploadæ–‡ä»¶å¤¹åˆ°æ ¹ç›®å½•
 				$copy_from = $upgradezip_source_path.DIRECTORY_SEPARATOR.$patch_charset.DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR;
 				$copy_to = PHPCMS_PATH;
 				
 				$this->copyfailnum = 0;
 				$this->copydir($copy_from, $copy_to, $_GET['cover']);
 				
-				//¼ì²éÎÄ¼ş²Ù×÷È¨ÏŞ£¬ÊÇ·ñ¸´ÖÆ³É¹¦
+				//æ£€æŸ¥æ–‡ä»¶æ“ä½œæƒé™ï¼Œæ˜¯å¦å¤åˆ¶æˆåŠŸ
 				if($this->copyfailnum > 0) {
-					//Èç¹ûÊ§°Ü£¬»Ö¸´µ±Ç°°æ±¾
+					//å¦‚æœå¤±è´¥ï¼Œæ¢å¤å½“å‰ç‰ˆæœ¬
 					@file_put_contents(CACHE_PATH.'configs'.DIRECTORY_SEPARATOR.'version.php', '<?php return '.var_export($current_version, true).';?>');
 				
 					showmessage(L('please_check_filepri'));	
 				}
 				
-				//Ö´ĞĞsql
-				//sqlÄ¿Â¼µØÖ·
+				//æ‰§è¡Œsql
+				//sqlç›®å½•åœ°å€
 				$sql_path = CACHE_PATH.'caches_upgrade'.DIRECTORY_SEPARATOR.basename($v,".zip").DIRECTORY_SEPARATOR.$patch_charset.DIRECTORY_SEPARATOR.'upgrade'.DIRECTORY_SEPARATOR.'ext'.DIRECTORY_SEPARATOR;
 				$file_list = glob($sql_path.'*');
 				if(!empty($file_list)) {
@@ -116,7 +116,7 @@ class index extends admin {
 							} elseif (strtolower(substr($file_list[$fk], -3, 3)) == 'php' && file_exists($file_list[$fk])) {
 								include $file_list[$fk];
 								
-								//Í¬²½²Ëµ¥ÓïÑÔ°ü
+								//åŒæ­¥èœå•è¯­è¨€åŒ…
 								if (strtolower(basename($file_list[$fk])) == 'system_menu.lang.php' && file_exists($file_list[$fk])) {
 									include $file_list[$fk];
 									$new_lan = $LANG;
@@ -143,30 +143,30 @@ class index extends admin {
 					}
 				}
 				
-				//¶ÁÈ¡°æ±¾ºÅĞ´Èëversion.phpÎÄ¼ş
-				//ÅäÖÃÎÄ¼şµØÖ·
+				//è¯»å–ç‰ˆæœ¬å·å†™å…¥version.phpæ–‡ä»¶
+				//é…ç½®æ–‡ä»¶åœ°å€
 				$configpath = CACHE_PATH.'caches_upgrade'.DIRECTORY_SEPARATOR.basename($v,".zip").DIRECTORY_SEPARATOR.$patch_charset.DIRECTORY_SEPARATOR.'upgrade'.DIRECTORY_SEPARATOR.'config.php';
 				if(file_exists($configpath)) {
 					$config_arr = include $configpath;
 					$version_arr = array('pc_version'=>$config_arr['to_version'], 'pc_release'=>$config_arr['to_release']);
-					//°æ±¾ÎÄ¼şµØÖ·
+					//ç‰ˆæœ¬æ–‡ä»¶åœ°å€
 					$version_filepath = CACHE_PATH.'configs'.DIRECTORY_SEPARATOR.'version.php';
 					@file_put_contents($version_filepath, '<?php return '.var_export($version_arr, true).';?>');
 				}
 
-				//É¾³ıÎÄ¼ş
+				//åˆ é™¤æ–‡ä»¶
 				@unlink($upgradezip_path);
-				//É¾³ıÎÄ¼ş¼Ğ
+				//åˆ é™¤æ–‡ä»¶å¤¹
 	 			$this->deletedir($upgradezip_source_path);
 	 			
-				//ÌáÊ¾Óï
+				//æç¤ºè¯­
 				$tmp_k = $k + 1;
 				if(!empty($pathlist[$tmp_k])) {
 					$next_update = '<br />'.L('upgradeing').basename($pathlist[$tmp_k],".zip");
 				} else {
 					$next_update;
 				}
-				//ÎÄ¼şĞ£ÑéÊÇ·ñÉı¼¶³É¹¦		
+				//æ–‡ä»¶æ ¡éªŒæ˜¯å¦å‡çº§æˆåŠŸ		
 				showmessage(basename($v,".zip").L('upgrade_success').$next_update, '?m=upgrade&c=index&a=init&s=1&do=1&cover='.$_GET['cover']);	
 			}	
 		} else {
@@ -176,20 +176,20 @@ class index extends admin {
 	}
 	
 	
-	//¼ì²éÎÄ¼şmd5Öµ
+	//æ£€æŸ¥æ–‡ä»¶md5å€¼
 	public function checkfile() {
 		if(!empty($_GET['do'])) {
 			$this->md5_arr = array();
 			$this->_pc_readdir(".");
 
-			//¶ÁÈ¡phpcms½Ó¿Ú
+			//è¯»å–phpcmsæ¥å£
 			$current_version = pc_base::load_config('version');
 			$phpcms_md5 = @file_get_contents($this->_upgrademd5.$current_version['pc_release'].'_'.CHARSET.".php");
 			$phpcms_md5_arr = json_decode($phpcms_md5, 1);
-			//¼ÆËãÊı×é²î¼¯
+			//è®¡ç®—æ•°ç»„å·®é›†
 			$diff = array_diff($phpcms_md5_arr, $this->md5_arr);
 
-			//¶ªÊ§ÎÄ¼şÁĞ±í
+			//ä¸¢å¤±æ–‡ä»¶åˆ—è¡¨
 			$lostfile = array();
 			foreach($phpcms_md5_arr as $k=>$v) {
 				if(!in_array($k, array_keys($this->md5_arr))) {
@@ -198,7 +198,7 @@ class index extends admin {
 				}
 			}
 			
-			//Î´ÖªÎÄ¼şÁĞ±í
+			//æœªçŸ¥æ–‡ä»¶åˆ—è¡¨
 			$unknowfile = array_diff(array_keys($this->md5_arr), array_keys($phpcms_md5_arr));
 			
 			include $this->admin_tpl('check_file');
@@ -226,27 +226,27 @@ class index extends admin {
 	}
 	
 	public function copydir($dirfrom, $dirto, $cover='') {
-	    //Èç¹ûÓöµ½Í¬ÃûÎÄ¼şÎŞ·¨¸´ÖÆ£¬ÔòÖ±½ÓÍË³ö
+	    //å¦‚æœé‡åˆ°åŒåæ–‡ä»¶æ— æ³•å¤åˆ¶ï¼Œåˆ™ç›´æ¥é€€å‡º
 	    if(is_file($dirto)){
 	        die(L('have_no_pri').$dirto);
 	    }
-	    //Èç¹ûÄ¿Â¼²»´æÔÚ£¬Ôò½¨Á¢Ö®
+	    //å¦‚æœç›®å½•ä¸å­˜åœ¨ï¼Œåˆ™å»ºç«‹ä¹‹
 	    if(!file_exists($dirto)){
 	        mkdir($dirto);
 	    }
 	    
-	    $handle = opendir($dirfrom); //´ò¿ªµ±Ç°Ä¿Â¼
+	    $handle = opendir($dirfrom); //æ‰“å¼€å½“å‰ç›®å½•
     
-	    //Ñ­»·¶ÁÈ¡ÎÄ¼ş
+	    //å¾ªç¯è¯»å–æ–‡ä»¶
 	    while(false !== ($file = readdir($handle))) {
-	    	if($file != '.' && $file != '..'){ //ÅÅ³ı"."ºÍ"."
-		        //Éú³ÉÔ´ÎÄ¼şÃû
+	    	if($file != '.' && $file != '..'){ //æ’é™¤"."å’Œ"."
+		        //ç”Ÿæˆæºæ–‡ä»¶å
 			    $filefrom = $dirfrom.DIRECTORY_SEPARATOR.$file;
-		     	//Éú³ÉÄ¿±êÎÄ¼şÃû
+		     	//ç”Ÿæˆç›®æ ‡æ–‡ä»¶å
 		        $fileto = $dirto.DIRECTORY_SEPARATOR.$file;
-		        if(is_dir($filefrom)){ //Èç¹ûÊÇ×ÓÄ¿Â¼£¬Ôò½øĞĞµİ¹é²Ù×÷
+		        if(is_dir($filefrom)){ //å¦‚æœæ˜¯å­ç›®å½•ï¼Œåˆ™è¿›è¡Œé€’å½’æ“ä½œ
 		            $this->copydir($filefrom, $fileto, $cover);
-		        } else { //Èç¹ûÊÇÎÄ¼ş£¬ÔòÖ±½ÓÓÃcopyº¯Êı¸´ÖÆ
+		        } else { //å¦‚æœæ˜¯æ–‡ä»¶ï¼Œåˆ™ç›´æ¥ç”¨copyå‡½æ•°å¤åˆ¶
 		        	if(!empty($cover)) {
 						if(!copy($filefrom, $fileto)) {
 							$this->copyfailnum++;
@@ -273,11 +273,11 @@ class index extends admin {
 	        echo " $dirname is not a dir!";
 	        exit(0);
 	    }
-	    $handle = opendir($dirname); //´ò¿ªÄ¿Â¼
+	    $handle = opendir($dirname); //æ‰“å¼€ç›®å½•
 	    while(($file = readdir($handle)) !== false) {
-	        if($file != '.' && $file != '..'){ //ÅÅ³ı"."ºÍ"."
+	        if($file != '.' && $file != '..'){ //æ’é™¤"."å’Œ"."
 	            $dir = $dirname.DIRECTORY_SEPARATOR.$file;
-	            //$dirÊÇÄ¿Â¼Ê±µİ¹éµ÷ÓÃdeletedir,ÊÇÎÄ¼şÔòÖ±½ÓÉ¾³ı
+	            //$diræ˜¯ç›®å½•æ—¶é€’å½’è°ƒç”¨deletedir,æ˜¯æ–‡ä»¶åˆ™ç›´æ¥åˆ é™¤
 	            is_dir($dir) ? $this->deletedir($dir) : unlink($dir);
 	        }
 	    }

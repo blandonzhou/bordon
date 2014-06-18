@@ -1,39 +1,39 @@
 {template "content","header_info"}
 <div class="wp" id="content">
-	<div class="Location blue1"><a href="{siteurl($siteid)}">Ê×Ò³</a> > {catpos($catid)}
+	<div class="Location blue1"><a href="{siteurl($siteid)}">é¦–é¡µ</a> > {catpos($catid)}
 					{loop $zone $r}
 					{if $r[parentid]}<a href="{structure_filters_url('zone',array('zone'=>$r[linkageid],'catid'=>$catid,'city'=>$city),0,$modelid)}">{$r[name]}</a> > {/if}
 					{/loop}{$title}</div>
 	<div class="info-show clear">
     	<div class="hd">
-        	<h1>{$title} <a href="javascript:;" class="f12 fn blue" onclick="add_favorite('{$title}');" id='favorite'>(ÊÕ²Ø)</a></h1>
-            <p class="blue1"><span class="gray4">{$inputtime}</span>ä¯ÀÀ:<font color="red" id="hits">0</font>´Î</p>
+        	<h1>{$title} <a href="javascript:;" class="f12 fn blue" onclick="add_favorite('{$title}');" id='favorite'>(æ”¶è—)</a></h1>
+            <p class="blue1"><span class="gray4">{$inputtime}</span>æµè§ˆ:<font color="red" id="hits">0</font>æ¬¡</p>
         </div>
         <div class="info-list">
         	<ul class="info">
-                <li><span>×â½ğ£º</span><em class="redfont">{$price}</em> Ôª/ÔÂ ({$pay_type_int})</li>
-                <li><span>ÕûÌ×»§ĞÍ£º</span>{$bedroom}ÊÒ {$hall} Ìü {$bathroom} ÎÀ ({$rent_mode}-{$area}©O)</li>
-                <li><span>»ù±¾Çé¿ö£º</span>{$objecttype}£¬{$fittype}£¬³¯Ïò{$toward} (µÚ {$floor} ²ã£¬ ¹² {$floors} ²ã)</li>
-                {if $houseallocation}<li><span>ÅäÖÃ£º</span>{substr($houseallocation,0,-2)}</li>{/if}
+                <li><span>ç§Ÿé‡‘ï¼š</span><em class="redfont">{$price}</em> å…ƒ/æœˆ ({$pay_type_int})</li>
+                <li><span>æ•´å¥—æˆ·å‹ï¼š</span>{$bedroom}å®¤ {$hall} å… {$bathroom} å« ({$rent_mode}-{$area}ã¡)</li>
+                <li><span>åŸºæœ¬æƒ…å†µï¼š</span>{$objecttype}ï¼Œ{$fittype}ï¼Œæœå‘{$toward} (ç¬¬ {$floor} å±‚ï¼Œ å…± {$floors} å±‚)</li>
+                {if $houseallocation}<li><span>é…ç½®ï¼š</span>{substr($houseallocation,0,-2)}</li>{/if}
                 {if !empty($zone)}
-				<li><span>ÇøÓò£º</span>
+				<li><span>åŒºåŸŸï¼š</span>
 					{loop $zone $r}
 					{if $r[parentid]}<a href="{structure_filters_url('zone',array('zone'=>$r[linkageid],'catid'=>$catid,'city'=>$city),0,$modelid)}" class="blue">{$r[name]}</a>{/if}
 					{/loop} 
 				</li>
 				{/if}
-                <li><span>Ğ¡Çø£º</span>{$xiaoqu_address}</li>
-                <li><span>µØÖ·£º</span>{$address}</li>
+                <li><span>å°åŒºï¼š</span>{$xiaoqu_address}</li>
+                <li><span>åœ°å€ï¼š</span>{$address}</li>
     		</ul>
             <div class="Reminded">
-<strong>ÌáĞÑ£º</strong>ÈÃÄúÌáÇ°»ã¿î»òÕß²»¼ûÃæ½»Ò×µÄ¶¼ÊÇÆ­×Ó£¡<br />
-µçÄÔÅäÖÃºÜ¸ßµ«¼Û¸ñºÜµÍµÄ¶¼ÊÇĞé¼ÙĞÅÏ¢¡£
+<strong>æé†’ï¼š</strong>è®©æ‚¨æå‰æ±‡æ¬¾æˆ–è€…ä¸è§é¢äº¤æ˜“çš„éƒ½æ˜¯éª—å­ï¼<br />
+ç”µè„‘é…ç½®å¾ˆé«˜ä½†ä»·æ ¼å¾ˆä½çš„éƒ½æ˜¯è™šå‡ä¿¡æ¯ã€‚
             </div>
         </div>
         <dl class="user">
-        	<dt><span>Áª Ïµ ÈË£º</span>{$contact}</dt>
-            <dt><span>ÁªÏµµç»°£º</span>{if getinfocache('img_contact')}{string2img($phone)}{else}{$phone}{/if}</dt>
-			<dt class="Tool"><span>·Ö¡¡¡¡Ïí£º</span><img src="http://v.t.qq.com/share/images/s/weiboicon16.png" onclick="postToWb();" class="cu" title="·ÖÏíµ½ÌÚÑ¶Î¢²©"/><script type="text/javascript">
+        	<dt><span>è” ç³» äººï¼š</span>{$contact}</dt>
+            <dt><span>è”ç³»ç”µè¯ï¼š</span>{if getinfocache('img_contact')}{string2img($phone)}{else}{$phone}{/if}</dt>
+			<dt class="Tool"><span>åˆ†ã€€ã€€äº«ï¼š</span><img src="http://v.t.qq.com/share/images/s/weiboicon16.png" onclick="postToWb();" class="cu" title="åˆ†äº«åˆ°è…¾è®¯å¾®åš"/><script type="text/javascript">
 	function postToWb(){
 		var _t = encodeURI(document.title);
 		var _url = encodeURIComponent(document.location);
@@ -43,11 +43,11 @@
 		var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t;
 		window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
 	}
-</script><script type="text/javascript">document.write('<a href="http://v.t.sina.com.cn/share/share.php?url='+encodeURIComponent(location.href)+'&appkey=3172366919&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="·ÖÏíµ½ĞÂÀËÎ¢²©" class="t1" target="_blank">&nbsp;</a>');</script>
-				  <script type="text/javascript">document.write('<a href="http://www.douban.com/recommend/?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="·ÖÏíµ½¶¹°ê" class="t2" target="_blank">&nbsp;</a>');</script>
-				  <script type="text/javascript">document.write('<a href="http://share.renren.com/share/buttonshare.do?link='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="·ÖÏíµ½ÈËÈË" class="t3" target="_blank">&nbsp;</a>');</script>
-				  <script type="text/javascript">document.write('<a href="http://www.kaixin001.com/repaste/share.php?rtitle='+encodeURIComponent('{new_addslashes($title)}')+'&rurl='+encodeURIComponent(location.href)+'&rcontent=" title="·ÖÏíµ½¿ªĞÄÍø" class="t4" target="_blank">&nbsp;</a>');</script>
-				  <script type="text/javascript">document.write('<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(location.href)+'" title="·ÖÏíµ½QQ¿Õ¼ä" class="t5" target="_blank">&nbsp;</a>');</script></dt>
+</script><script type="text/javascript">document.write('<a href="http://v.t.sina.com.cn/share/share.php?url='+encodeURIComponent(location.href)+'&appkey=3172366919&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="åˆ†äº«åˆ°æ–°æµªå¾®åš" class="t1" target="_blank">&nbsp;</a>');</script>
+				  <script type="text/javascript">document.write('<a href="http://www.douban.com/recommend/?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="åˆ†äº«åˆ°è±†ç“£" class="t2" target="_blank">&nbsp;</a>');</script>
+				  <script type="text/javascript">document.write('<a href="http://share.renren.com/share/buttonshare.do?link='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="åˆ†äº«åˆ°äººäºº" class="t3" target="_blank">&nbsp;</a>');</script>
+				  <script type="text/javascript">document.write('<a href="http://www.kaixin001.com/repaste/share.php?rtitle='+encodeURIComponent('{new_addslashes($title)}')+'&rurl='+encodeURIComponent(location.href)+'&rcontent=" title="åˆ†äº«åˆ°å¼€å¿ƒç½‘" class="t4" target="_blank">&nbsp;</a>');</script>
+				  <script type="text/javascript">document.write('<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(location.href)+'" title="åˆ†äº«åˆ°QQç©ºé—´" class="t5" target="_blank">&nbsp;</a>');</script></dt>
         </dl>
         <div class="bk15"></div>
     </div>
@@ -55,10 +55,10 @@
 	<div class="content-sub clear">
     	<div class="col-left">
             <div class="des">
-            	<h5>ÏêÏ¸ÃèÊö</h5>
+            	<h5>è¯¦ç»†æè¿°</h5>
             	{$content}
 				{if $rs[map]}
-				<h5>µØÍ¼Î»ÖÃ</h5>
+				<h5>åœ°å›¾ä½ç½®</h5>
 				{$map}
 				{/if}
             </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="col-right">
         	<div class="category-sub">
-        	<h5>ÍÆ¼öĞÅÏ¢</h5>
+        	<h5>æ¨èä¿¡æ¯</h5>
             <ul>
 			{pc:content action="relation" relation="$relation" id="$id" catid="$catid" num="5" keywords="$rs[keywords]"}
 			{if $data}
@@ -91,9 +91,9 @@
 function add_favorite(title) {
 	$.getJSON('{APP_PATH}api.php?op=add_favorite&title='+encodeURIComponent(title)+'&url='+encodeURIComponent(location.href)+'&'+Math.random()+'&callback=?', function(data){
 		if(data.status==1)	{
-			$("#favorite").html('ÊÕ²Ø³É¹¦');
+			$("#favorite").html('æ”¶è—æˆåŠŸ');
 		} else {
-			alert('ÇëµÇÂ¼');
+			alert('è¯·ç™»å½•');
 		}
 	});
 }

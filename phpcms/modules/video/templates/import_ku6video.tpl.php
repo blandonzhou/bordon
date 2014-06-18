@@ -10,8 +10,8 @@
 <input type="hidden" value="import_ku6video" name="a">
 <input type="hidden" value="<?php echo $_GET['menuid']?>" name="menuid">
 <div class="explain-col search-form">
-<?php echo L('import_ku6video');?>£º
-<?php echo L('ku6video_fenlei');?>£º
+<?php echo L('import_ku6video');?>ï¼š
+<?php echo L('ku6video_fenlei');?>ï¼š
 <select name="fenlei">
 <option value=""><?php echo L('all');?></option>
 <?php foreach($fenlei_array as $key=>$values) { ?>
@@ -19,21 +19,21 @@
 <?php } ?> 
 </select>
 
-<?php echo L('ku6video_srctype');?>£º
+<?php echo L('ku6video_srctype');?>ï¼š
 <select name="srctype">
 <option value=""><?php echo L('all');?></option>
 <?php foreach($srctype_array as $key=>$values) { ?>
 <option value="<?php echo $key;?>" <?php if($key==$srctype){echo 'selected';}?>><?php echo $values;?></option>
 <?php } ?>  
 </select>
-<?php echo L('ku6video_time');?>£º
+<?php echo L('ku6video_time');?>ï¼š
 <select name="videotime">
 <option value=""><?php echo L('all');?></option>
 <?php foreach($videotime_array as $key=>$values) { ?>
 <option value="<?php echo $key;?>" <?php if($key==$videotime){echo 'selected';}?>><?php echo $values;?></option>
 <?php } ?> 
 </select>
-<?php echo L('keyword_name','','admin');?>£º<input type="text" value="<?php echo $_GET['keyword']?>" class="input-text" name="keyword"> 
+<?php echo L('keyword_name','','admin');?>ï¼š<input type="text" value="<?php echo $_GET['keyword']?>" class="input-text" name="keyword"> 
  
 <input type="submit" value="<?php echo L('search')?>" class="button" name="dosubmit">
 </div>
@@ -91,7 +91,7 @@
 		<ul class="title_ul">
 		<li><input type="text" size="30" title="<?php  echo L('ku6video_edittitle');?>" value="<?php echo $r[title];?>" class="input-text" name="importdata[<?php echo $i; ?>][title]">  
 		</li>
-		<li><font color="red"><?php echo $r['ku6video_time']?>£º<?php echo $r['videotime']?>Ãë ´óĞ¡£º 
+		<li><font color="red"><?php echo $r['ku6video_time']?>ï¼š<?php echo $r['videotime']?>ç§’ å¤§å°ï¼š 
 		<?php 
 		if(number_format($r['size']/1024/1024, 2, '.', '') == '0.00') { 
 			echo number_format($r['size']/1024, 2, '.', '').' KB';
@@ -120,15 +120,15 @@
 		<input type="hidden" value="<?php echo $_GET['menuid'];?>" name="menuid">
 		<input type="hidden" value="<?php echo $_GET['page'];?>" name="page">
 		
-		<input type="radio" name="is_category" value="0" checked="1" id="no_category" onclick="$('#show_category').css('display','none');">Ö»Èë¿â
+		<input type="radio" name="is_category" value="0" checked="1" id="no_category" onclick="$('#show_category').css('display','none');">åªå…¥åº“
  		<input type="radio" name="is_category" value="1" id="yes_category" onclick="$('#show_category').css('display','');">
-		µ¼ÈëÀ¸Ä¿&nbsp; &nbsp;
+		å¯¼å…¥æ ç›®&nbsp; &nbsp;
 		<span id="show_category" style="display:none;"> 
 		 &nbsp; 
 		<span id="category">
 		<?php echo $categoryrr;?>
 		</span>
-		&nbsp; Ö¸¶¨ÍÆ¼öÎ»£º
+		&nbsp; æŒ‡å®šæ¨èä½ï¼š
 		<span id="posid"></span>
 		</span>
 		<input name="dosubmit" type="button" value="<?php echo L('import_select_ku6video');?>" class="button" onclick="check_sbumit();">  
@@ -145,7 +145,7 @@
 </html>
 <script type="text/javascript">
 <!--
-//¼ì²éÑ¡ÖĞ
+//æ£€æŸ¥é€‰ä¸­
 function check_sbumit() {
 	var str = 0;
 	var id = tag = '';
@@ -157,19 +157,19 @@ function check_sbumit() {
 		}
 	});
 	if(str==0) {
-		alert('ÄúÃ»ÓĞ¹´Ñ¡ĞÅÏ¢');
+		alert('æ‚¨æ²¡æœ‰å‹¾é€‰ä¿¡æ¯');
 		return false;
 	}
- 	if(is_category==1){//Ñ¡ÔñÀ¸Ä¿
+ 	if(is_category==1){//é€‰æ‹©æ ç›®
 		if($("#siteid").val()==0 || $("#select_category").val()==0){
-			alert('ÇëÑ¡ÔñÒªµ¼ÈëµÄÀ¸Ä¿£¡');
+			alert('è¯·é€‰æ‹©è¦å¯¼å…¥çš„æ ç›®ï¼');
 			return false;
 		} 
 	} 
  	document.myform.submit(); 
 }
 
-//Ö¸¶¨µ¼ÈëÍÆ¼öÎ»
+//æŒ‡å®šå¯¼å…¥æ¨èä½
 function select_pos(obj) {
 	var catid = obj.value;
 	if (catid == 0) {
@@ -186,10 +186,10 @@ function select_pos(obj) {
 	} );
 }
 
-//Ô¤ÀÀÊÓÆµ
+//é¢„è§ˆè§†é¢‘
 function preview(vid, name) {
 	window.top.art.dialog({id:'preview'}).close();
-	window.top.art.dialog({title:'Ô¤ÀÀ '+name+' ',id:'preview',iframe:'?m=video&c=video&a=preview_ku6video&ku6vid='+vid,width:'530',height:'400'}, '', function(){window.top.art.dialog({id:'preview'}).close()});
+	window.top.art.dialog({title:'é¢„è§ˆ '+name+' ',id:'preview',iframe:'?m=video&c=video&a=preview_ku6video&ku6vid='+vid,width:'530',height:'400'}, '', function(){window.top.art.dialog({id:'preview'}).close()});
 }
 
 function discount(id, name) {

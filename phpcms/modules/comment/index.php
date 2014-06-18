@@ -29,7 +29,7 @@ class index {
 		//SEO
 		$SEO = seo($siteid, '', $title);
 		
-		//Í¨¹ýAPI½Ó¿Úµ÷ÓÃÊý¾ÝµÄ±êÌâ¡¢URLµØÖ·
+		//é€šè¿‡APIæŽ¥å£è°ƒç”¨æ•°æ®çš„æ ‡é¢˜ã€URLåœ°å€
 		if (!$data = get_comment_api($commentid)) {
 			$this->_show_msg(L('illegal_parameters'));
 		} else {
@@ -63,7 +63,7 @@ class index {
 		$comment_setting_db = pc_base::load_model('comment_setting_model');
 		$setting = $comment_setting_db->get_one(array('siteid'=>$this->siteid));
 		if (!empty($setting)) {
-			//ÊÇ·ñÔÊÐíÓÎ¿Í
+			//æ˜¯å¦å…è®¸æ¸¸å®¢
 			if (!$setting['guest']) {
 				if (!$username || !$userid) {
 					$this->_show_msg(L('landing_users_to_comment'), HTTP_REFERER);
@@ -80,7 +80,7 @@ class index {
 			}
 		}
 		
-		//Í¨¹ýAPI½Ó¿Úµ÷ÓÃÊý¾ÝµÄ±êÌâ¡¢URLµØÖ·
+		//é€šè¿‡APIæŽ¥å£è°ƒç”¨æ•°æ®çš„æ ‡é¢˜ã€URLåœ°å€
 		if (!$data = get_comment_api($this->commentid)) {
 			$this->_show_msg(L('illegal_parameters'));
 		} else {
@@ -133,15 +133,15 @@ class index {
 				$comment['data'][$k]['format_time'] = format::date($v['creat_at'], 1);
 			}
 			switch ($direction) {
-				case '1'://Õý
+				case '1'://æ­£
 					$total = $comment['square'];
 					break;
 					
-				case '2'://·´
+				case '2'://å
 					$total = $comment['anti'];
 					break;
 					
-				case '3'://ÖÐ
+				case '3'://ä¸­
 					$total = $comment['neutral'];
 					break;
 					
@@ -159,7 +159,7 @@ class index {
 		}
 	}
 	
-	//ÌáÊ¾ÐÅÏ¢´¦Àí
+	//æç¤ºä¿¡æ¯å¤„ç†
 	protected function _show_msg($msg, $url = '', $status = 0) {
 		
 		switch ($this->format) {

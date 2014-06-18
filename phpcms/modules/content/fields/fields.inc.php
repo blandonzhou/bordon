@@ -1,40 +1,40 @@
 <?php
-$fields = array('text'=>'µ¥ÐÐÎÄ±¾',
-				'textarea'=>'¶àÐÐÎÄ±¾',
-				'editor'=>'±à¼­Æ÷',
-				'catid'=>'À¸Ä¿',
-				'title'=>'±êÌâ',
-				'box'=>'Ñ¡Ïî',
-				'image'=>'Í¼Æ¬',
-				'images'=>'¶àÍ¼Æ¬',
-				'number'=>'Êý×Ö',
-				'datetime'=>'ÈÕÆÚºÍÊ±¼ä',
-				'posid'=>'ÍÆ¼öÎ»',
-				'keyword'=>'¹Ø¼ü´Ê',
-				'author'=>'×÷Õß',
-				'copyfrom'=>'À´Ô´',
-				'groupid'=>'»áÔ±×é',
-				'islink'=>'×ªÏòÁ´½Ó',
-				'template'=>'Ä£°å',
-				'pages'=>'·ÖÒ³Ñ¡Ôñ',
-				'typeid'=>'Àà±ð',
-				'readpoint'=>'»ý·Ö¡¢µãÊý',
-				'linkage'=>'Áª¶¯²Ëµ¥',
-				'downfile'=>'¾µÏñÏÂÔØ',
-				'downfiles'=>'¶àÎÄ¼þÉÏ´«',
-				'map'=>'µØÍ¼×Ö¶Î',
-				'omnipotent'=>'ÍòÄÜ×Ö¶Î',
-    				'bcsfile'=>'±¾µØÉÏ´«ÊÓÆµ',
-				'gallery'=>'»ÃµÆÆ¬',
+$fields = array('text'=>'å•è¡Œæ–‡æœ¬',
+				'textarea'=>'å¤šè¡Œæ–‡æœ¬',
+				'editor'=>'ç¼–è¾‘å™¨',
+				'catid'=>'æ ç›®',
+				'title'=>'æ ‡é¢˜',
+				'box'=>'é€‰é¡¹',
+				'image'=>'å›¾ç‰‡',
+				'images'=>'å¤šå›¾ç‰‡',
+				'number'=>'æ•°å­—',
+				'datetime'=>'æ—¥æœŸå’Œæ—¶é—´',
+				'posid'=>'æŽ¨èä½',
+				'keyword'=>'å…³é”®è¯',
+				'author'=>'ä½œè€…',
+				'copyfrom'=>'æ¥æº',
+				'groupid'=>'ä¼šå‘˜ç»„',
+				'islink'=>'è½¬å‘é“¾æŽ¥',
+				'template'=>'æ¨¡æ¿',
+				'pages'=>'åˆ†é¡µé€‰æ‹©',
+				'typeid'=>'ç±»åˆ«',
+				'readpoint'=>'ç§¯åˆ†ã€ç‚¹æ•°',
+				'linkage'=>'è”åŠ¨èœå•',
+				'downfile'=>'é•œåƒä¸‹è½½',
+				'downfiles'=>'å¤šæ–‡ä»¶ä¸Šä¼ ',
+				'map'=>'åœ°å›¾å­—æ®µ',
+				'omnipotent'=>'ä¸‡èƒ½å­—æ®µ',
+    				'bcsfile'=>'æœ¬åœ°ä¸Šä¼ è§†é¢‘',
+				'gallery'=>'å¹»ç¯ç‰‡',
 				);
-//²»ÔÊÐíÉ¾³ýµÄ×Ö¶Î£¬ÕâÐ©×Ö¶Î½²²»»áÔÚ×Ö¶ÎÌí¼Ó´¦ÏÔÊ¾
+//ä¸å…è®¸åˆ é™¤çš„å­—æ®µï¼Œè¿™äº›å­—æ®µè®²ä¸ä¼šåœ¨å­—æ®µæ·»åŠ å¤„æ˜¾ç¤º
 $not_allow_fields = array('catid','typeid','title','keyword','posid','template','username');
-//ÔÊÐíÌí¼Óµ«±ØÐëÎ¨Ò»µÄ×Ö¶Î
+//å…è®¸æ·»åŠ ä½†å¿…é¡»å”¯ä¸€çš„å­—æ®µ
 $unique_fields = array('pages','readpoint','author','copyfrom','islink');
-//½ûÖ¹±»½ûÓÃµÄ×Ö¶ÎÁÐ±í
+//ç¦æ­¢è¢«ç¦ç”¨çš„å­—æ®µåˆ—è¡¨
 $forbid_fields = array('catid','title','updatetime','inputtime','url','listorder','status','template','username');
-//½ûÖ¹±»É¾³ýµÄ×Ö¶ÎÁÐ±í
+//ç¦æ­¢è¢«åˆ é™¤çš„å­—æ®µåˆ—è¡¨
 $forbid_delete = array('catid','typeid','title','thumb','keywords','updatetime','inputtime','posids','url','listorder','status','template','username');
-//¿ÉÒÔ×·¼Ó JSºÍCSS µÄ×Ö¶Î
+//å¯ä»¥è¿½åŠ  JSå’ŒCSS çš„å­—æ®µ
 $att_css_js = array('text','textarea','box','number','keyword','typeid');
 ?>

@@ -24,15 +24,15 @@ class data extends admin {
 			$cache = isset($_POST['cache']) && intval($_POST['cache']) ? intval($_POST['cache']) : 0;
 			$num = isset($_POST['num']) && intval($_POST['num']) ? intval($_POST['num']) : 0;
 			$type = isset($_POST['type']) && intval($_POST['type']) ? intval($_POST['type']) : 0;
-			//¼ì²éÃû³ÆÊÇ·ñÒÑ¾­´æÔÚ
+			//æ£€æŸ¥åç§°æ˜¯å¦å·²ç»å­˜åœ¨
 			if ($this->db->get_one(array('name'=>$name)))  {
 				showmessage(L('name').L('exists'));
 			}
 			$sql = array();
-			if ($type == '1') { //×Ô¶¨ÒåSQL
+			if ($type == '1') { //è‡ªå®šä¹‰SQL
 				$data = isset($_POST['data']) && trim($_POST['data']) ? trim($_POST['data']) : showmessage(L('custom_sql').L('empty'));
 				$sql = array('data'=>$data);
-			} else { //Ä£ÐÍÅäÖÃ·½Ê½
+			} else { //æ¨¡åž‹é…ç½®æ–¹å¼
 				$module = isset($_POST['module']) && trim($_POST['module']) ? trim($_POST['module']) : showmessage(L('please_select_model'));
 				$action = isset($_POST['action']) && trim($_POST['action']) ? trim($_POST['action']) : showmessage(L('please_select_action'));
 				$html = pc_tag_class($module);
@@ -61,14 +61,14 @@ class data extends admin {
 			if ($dis_type == 3) {
 				$sql['template'] = isset($_POST['template']) && trim($_POST['template']) ? trim($_POST['template']) : '';
 			}
-			//³õÊ¼»¯Êý¾Ý
+			//åˆå§‹åŒ–æ•°æ®
 			$sql['name'] = $name;
 			$sql['type'] = $type;
 			$sql['dis_type'] = $dis_type;
 			$sql['cache'] = $cache;
 			$sql['num'] = $num;
 			if ($id = $this->db->insert($sql,true)) {
-				//µ±ÎªJSÊ±£¬Êä³öÄ£°åÎÄ¼þ
+				//å½“ä¸ºJSæ—¶ï¼Œè¾“å‡ºæ¨¡æ¿æ–‡ä»¶
 				if ($dis_type == 3) {
 					$tpl = pc_base::load_sys_class('template_cache');
 					$str = $tpl->template_parse($sql['template']);
@@ -108,17 +108,17 @@ class data extends admin {
 			$cache = isset($_POST['cache']) && intval($_POST['cache']) ? intval($_POST['cache']) : 0;
 			$num = isset($_POST['num']) && intval($_POST['num']) ? intval($_POST['num']) : 0;
 			$type = isset($_POST['type']) && intval($_POST['type']) ? intval($_POST['type']) : 0;
-			//¼ì²éÃû³ÆÊÇ·ñÒÑ¾­´æÔÚ
+			//æ£€æŸ¥åç§°æ˜¯å¦å·²ç»å­˜åœ¨
 		if ($edit_data['name'] != $name) {
 				if ($this->db->get_one(array('name'=>$name), 'id'))  {
 					showmessage(L('name').L('exists'));
 				}
 			}
 			$sql = array();
-			if ($type == '1') { //×Ô¶¨ÒåSQL
+			if ($type == '1') { //è‡ªå®šä¹‰SQL
 				$data = isset($_POST['data']) && trim($_POST['data']) ? trim($_POST['data']) : showmessage(L('custom_sql').L('empty'));
 				$sql = array('data'=>$data);
-			} else { //Ä£ÐÍÅäÖÃ·½Ê½
+			} else { //æ¨¡åž‹é…ç½®æ–¹å¼
 				$module = isset($_POST['module']) && trim($_POST['module']) ? trim($_POST['module']) : showmessage(L('please_select_model'));
 				$action = isset($_POST['action']) && trim($_POST['action']) ? trim($_POST['action']) : showmessage(L('please_select_action'));
 				$html = pc_tag_class($module);
@@ -147,14 +147,14 @@ class data extends admin {
 			if ($dis_type == 3) {
 				$sql['template'] = isset($_POST['template']) && trim($_POST['template']) ? trim($_POST['template']) : '';
 			}
-			//³õÊ¼»¯Êý¾Ý
+			//åˆå§‹åŒ–æ•°æ®
 			$sql['name'] = $name;
 			$sql['type'] = $type;
 			$sql['dis_type'] = $dis_type;
 			$sql['cache'] = $cache;
 			$sql['num'] = $num;
 			if ($this->db->update($sql,array('id'=>$id))) {
-				//µ±ÎªJSÊ±£¬Êä³öÄ£°åÎÄ¼þ
+				//å½“ä¸ºJSæ—¶ï¼Œè¾“å‡ºæ¨¡æ¿æ–‡ä»¶
 				if ($dis_type == 3) {
 					$tpl = pc_base::load_sys_class('template_cache');
 					$str = $tpl->template_parse($sql['template']);

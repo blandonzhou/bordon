@@ -2,7 +2,7 @@
 	function video($field, $value) {
 		$video_content_db = pc_base::load_model('video_content_model');
 		$video_store_db = pc_base::load_model('video_store_model');
-		//ÏÈ»ñÈ¡Ä¿Ç°contentidÏÂÃæµÄvideoid
+		//å…ˆè·å–ç›®å‰contentidä¸‹é¢çš„videoid
 		$videos = $video_content_db->select(array('contentid'=>$this->id, 'modelid'=>$this->modelid), 'videoid', '', '`listorder` ASC', '', 'videoid');
 		if (is_array($videos) && !empty($videos)) {
 			$videoids = '';
@@ -15,7 +15,7 @@
 			$return_data = array();
 			if ($pagenumber>0) {
 				if (is_array($result) && !empty($result)) {
-					//Ê×ÏÈ¶Ô$result°´ÕÕ$videosµÄvideoidÅÅĞò
+					//é¦–å…ˆå¯¹$resultæŒ‰ç…§$videosçš„videoidæ’åº
 					foreach ($videos as $_vid => $v) {
 						if ($result[$_vid]) $new_result[] = $result[$_vid];
 					}
@@ -26,7 +26,7 @@
 				for($i=1; $i<=$pagenumber; $i++) {
 					$pageurls[$i] = $this->url->show($this->id, $i, $this->data['catid'], $this->data['inputtime']);
 				}
-				//¹¹½¨·µ»ØÊı×é
+				//æ„å»ºè¿”å›æ•°ç»„
 				foreach ($pageurls as $page =>$urls) {
 					$_k = $page - 1;
 					if ($_k==0) $arr = reset($new_result);

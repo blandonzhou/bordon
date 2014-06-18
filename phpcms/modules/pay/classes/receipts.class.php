@@ -3,11 +3,11 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_func('global','pay');
 class receipts {
 	
-	//Êı¾İ¿âÁ¬½Ó
+	//æ•°æ®åº“è¿æ¥
 	protected static $db;
 	
 	/**
-	 * Êı¾İ¿âÁ¬½Ó
+	 * æ•°æ®åº“è¿æ¥
 	 */
 	protected  static function connect() {
 		self::$db = pc_base::load_model("pay_account_model");
@@ -15,40 +15,40 @@ class receipts {
 	
 	
 	/**
-	 * Ìí¼Ó½ğÇ®ÈëÕË¼ÇÂ¼
-	 * Ìí¼Ó½ğÇ®ÈëÕË¼ÇÂ¼²Ù×÷·Å·Å
-	 * @param integer $value ÈëÕË½ğ¶î
-	 * @param integer $userid ÓÃ»§ID
-	 * @param string $username ÓÃ»§Ãû
-	 * @param integer $trand_sn ²Ù×÷¶©µ¥ID,Ä¬ÈÏÎª×Ô¶¯Éú³É
-	 * @param string $pay_type ÈëÕËÀàĞÍ £¨¿ÉÑ¡Öµ  offline ÏßÏÂ³äÖµ£¬recharge ÔÚÏß³äÖµ£¬selfincome ×ÔÖú»ñÈ¡£©
-	 * @param string $payment ÈëÕË·½Ê½  £¨ÈçºóÌ¨³äÖµ£¬Ö§¸¶±¦£¬ÒøĞĞ»ã¿î/×ªÕËµÈ´Ë´¦Îª×Ô¶¨Òå£©
-	 * @param string $status ÈëÕË×´Ì¬  £¨¿ÉÑ¡Öµ  succ Ä¬ÈÏ£¬ÈëÕË³É¹¦£¬error ÈëÕËÊ§°Ü£©×¢µ±ÇÒ½öµ±Îª¡®succ¡¯Ê±¸ü¸ÄmemberÊı¾İ
-	 * @param string  $op_username ¹ÜÀíÔ±ĞÅÏ¢
+	 * æ·»åŠ é‡‘é’±å…¥è´¦è®°å½•
+	 * æ·»åŠ é‡‘é’±å…¥è´¦è®°å½•æ“ä½œæ”¾æ”¾
+	 * @param integer $value å…¥è´¦é‡‘é¢
+	 * @param integer $userid ç”¨æˆ·ID
+	 * @param string $username ç”¨æˆ·å
+	 * @param integer $trand_sn æ“ä½œè®¢å•ID,é»˜è®¤ä¸ºè‡ªåŠ¨ç”Ÿæˆ
+	 * @param string $pay_type å…¥è´¦ç±»å‹ ï¼ˆå¯é€‰å€¼  offline çº¿ä¸‹å……å€¼ï¼Œrecharge åœ¨çº¿å……å€¼ï¼Œselfincome è‡ªåŠ©è·å–ï¼‰
+	 * @param string $payment å…¥è´¦æ–¹å¼  ï¼ˆå¦‚åå°å……å€¼ï¼Œæ”¯ä»˜å®ï¼Œé“¶è¡Œæ±‡æ¬¾/è½¬è´¦ç­‰æ­¤å¤„ä¸ºè‡ªå®šä¹‰ï¼‰
+	 * @param string $status å…¥è´¦çŠ¶æ€  ï¼ˆå¯é€‰å€¼  succ é»˜è®¤ï¼Œå…¥è´¦æˆåŠŸï¼Œerror å…¥è´¦å¤±è´¥ï¼‰æ³¨å½“ä¸”ä»…å½“ä¸ºâ€˜succâ€™æ—¶æ›´æ”¹memberæ•°æ®
+	 * @param string  $op_username ç®¡ç†å‘˜ä¿¡æ¯
 	 */
 	public static function amount($value, $userid = '' , $username = '', $trade_sn = '', $pay_type = '', $payment = '', $op_username = '', $status = 'succ', $note = '') {
 		return self::_add(array('username'=>$username, 'userid'=>$userid,'money'=>$value, 'trade_sn'=>$trade_sn, 'pay_type'=>$pay_type, 'payment'=>$payment, 'status'=>$status, 'type'=>1, 'adminnote'=>$op_username, 'usernote'=>$note));
 	}
 	
 	/**
-	 * Ìí¼ÓµãÊıÈëÕË¼ÇÂ¼
-	 * Ìí¼ÓµãÊıÈëÕË¼ÇÂ¼²Ù×÷·Å·Å
-	 * @param integer $value ÈëÕË½ğ¶î
-	 * @param integer $userid ÓÃ»§ID
-	 * @param string $username ÓÃ»§Ãû
-	 * @param integer $trade_sn ²Ù×÷¶©µ¥ID,Ä¬ÈÏÎª×Ô¶¯Éú³É
-	 * @param string $pay_type ÈëÕËÀàĞÍ £¨¿ÉÑ¡Öµ  offline ÏßÏÂ³äÖµ£¬recharge ÔÚÏß³äÖµ£¬selfincome ×ÔÖú»ñÈ¡£©
-	 * @param string $payment ÈëÕË·½Ê½  £¨ÈçºóÌ¨³äÖµ£¬Ö§¸¶±¦£¬ÒøĞĞ»ã¿î/×ªÕËµÈ´Ë´¦Îª×Ô¶¨Òå£©
-	 * @param string $status ÈëÕË×´Ì¬  £¨¿ÉÑ¡Öµ  succ Ä¬ÈÏ£¬ÈëÕË³É¹¦£¬failed ÈëÕËÊ§°Ü£©
-	 * @param string  $op_username ¹ÜÀíÔ±ĞÅÏ¢
+	 * æ·»åŠ ç‚¹æ•°å…¥è´¦è®°å½•
+	 * æ·»åŠ ç‚¹æ•°å…¥è´¦è®°å½•æ“ä½œæ”¾æ”¾
+	 * @param integer $value å…¥è´¦é‡‘é¢
+	 * @param integer $userid ç”¨æˆ·ID
+	 * @param string $username ç”¨æˆ·å
+	 * @param integer $trade_sn æ“ä½œè®¢å•ID,é»˜è®¤ä¸ºè‡ªåŠ¨ç”Ÿæˆ
+	 * @param string $pay_type å…¥è´¦ç±»å‹ ï¼ˆå¯é€‰å€¼  offline çº¿ä¸‹å……å€¼ï¼Œrecharge åœ¨çº¿å……å€¼ï¼Œselfincome è‡ªåŠ©è·å–ï¼‰
+	 * @param string $payment å…¥è´¦æ–¹å¼  ï¼ˆå¦‚åå°å……å€¼ï¼Œæ”¯ä»˜å®ï¼Œé“¶è¡Œæ±‡æ¬¾/è½¬è´¦ç­‰æ­¤å¤„ä¸ºè‡ªå®šä¹‰ï¼‰
+	 * @param string $status å…¥è´¦çŠ¶æ€  ï¼ˆå¯é€‰å€¼  succ é»˜è®¤ï¼Œå…¥è´¦æˆåŠŸï¼Œfailed å…¥è´¦å¤±è´¥ï¼‰
+	 * @param string  $op_username ç®¡ç†å‘˜ä¿¡æ¯
 	 */
 	public static function point($value, $userid = '' , $username = '', $trade_sn = '', $pay_type = '', $payment = '', $op_username = '', $status = 'succ', $note = '') {
 		return self::_add(array('username'=>$username, 'userid'=>$userid,'money'=>$value, 'trade_sn'=>$trade_sn, 'pay_type'=>$pay_type, 'payment'=>$payment, 'status'=>$status, 'type'=>2, 'adminnote'=>$op_username, 'usernote'=>$note));
 	}
 	
 	/**
-	 * Ìí¼ÓÈëÕË¼ÇÂ¼
-	 * @param array $data Ìí¼ÓÈëÕË¼ÇÂ¼²ÎÊı
+	 * æ·»åŠ å…¥è´¦è®°å½•
+	 * @param array $data æ·»åŠ å…¥è´¦è®°å½•å‚æ•°
 	 */
 	private static function _add($data) {
 		$data['money'] = isset($data['money']) && floatval($data['money']) ? floatval($data['money']) : 0;
@@ -64,31 +64,31 @@ class receipts {
 		$data['addtime'] = SYS_TIME;
 		$data['ip'] = ip();
 		
-		//¼ì²ìÏû·ÑÀàĞÍ
+		//æ£€å¯Ÿæ¶ˆè´¹ç±»å‹
 		if (!in_array($data['type'], array(1,2))) {
 			return false;
 		}
 		
-		//¼ì²éÈëÕËÀàĞÍ
+		//æ£€æŸ¥å…¥è´¦ç±»å‹
 		if (!in_array($data['pay_type'], array('offline','recharge','selfincome'))) {
 			return false;
 		}
-		//¼ì²éÈëÕË×´Ì¬
+		//æ£€æŸ¥å…¥è´¦çŠ¶æ€
 		if (!in_array($data['status'], array('succ','error','failed'))) {
 			return false;
 		}	
 				
-		//¼ì²éÏû·ÑÃèÊö
+		//æ£€æŸ¥æ¶ˆè´¹æè¿°
 		if (empty($data['payment'])) {
 			return false;
 		}
 		
-		//¼ì²éÏû·Ñ½ğ¶î
+		//æ£€æŸ¥æ¶ˆè´¹é‡‘é¢
 		if (empty($data['money'])) {
 			return false;
 		}
 	
-		//¼ì²éuseridºÍusername²¢³¥ÊÔÔÙ´ÎµÄ»ñÈ¡
+		//æ£€æŸ¥useridå’Œusernameå¹¶å¿è¯•å†æ¬¡çš„è·å–
 		if (empty($data['userid']) || empty($data['username'])) {
 			if (defined('IN_ADMIN')) {
 				return false;
@@ -99,27 +99,27 @@ class receipts {
 			}
 		}
 	
-		//¼ì²éop_useridºÍop_username²¢³¥ÊÔÔÙ´ÎµÄ»ñÈ¡
+		//æ£€æŸ¥op_useridå’Œop_usernameå¹¶å¿è¯•å†æ¬¡çš„è·å–
 		if (defined('IN_ADMIN') && empty($data['adminnote'])) {
 			$data['adminnote'] = param::get_cookie('admin_username');
 		}
 
-		//Êı¾İ¿âÁ¬½Ó
+		//æ•°æ®åº“è¿æ¥
 		if (empty(self::$db)) {
 			self::connect();
 		}
 		$member_db = pc_base::load_model('member_model');
 				
 		$sql = array();
-		if ($data['type'] == 1) {//½ğÇ®·½Ê½³äÖµ
+		if ($data['type'] == 1) {//é‡‘é’±æ–¹å¼å……å€¼
 			$sql = array('amount'=>"+=".$data['money']);
-		} elseif ($data['type'] == 2) { //»ı·Ö·½Ê½³äÖµ
+		} elseif ($data['type'] == 2) { //ç§¯åˆ†æ–¹å¼å……å€¼
 			$sql = array('point'=>'+='.$data['money']);
 		} else {
 			return false;
 		}
 				
-		//½øÈëÊı¾İ¿â²Ù×÷
+		//è¿›å…¥æ•°æ®åº“æ“ä½œ
 		$insertid = self::$db->insert($data,true);
 		if($insertid && $data['status'] == 'succ') {
 			return $member_db->update($sql, array('userid'=>$data['userid'], 'username'=>$data['username'])) ? true : false;

@@ -1,4 +1,4 @@
-﻿/*
+/*
 	http://www.rjboy.cn
 	By sean at 2010.06 - 2011.03
 	

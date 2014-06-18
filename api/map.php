@@ -6,7 +6,7 @@ $data = getcache('model_field_'.$modelid,'model');
 $setting = string2array($data[$field]['setting']);
 $key = $setting['api_key'];
 $maptype = $setting['maptype'] ? $setting['maptype'] : 1;
-$defaultcity = $setting['defaultcity'] ? $setting['defaultcity'] : '±±¾©';
+$defaultcity = $setting['defaultcity'] ? $setting['defaultcity'] : 'åŒ—äº¬';
 $hotcitys = explode(",",$setting['hotcitys']);
 if(!isset($_GET['city'])) {
 ?>
@@ -63,8 +63,8 @@ body{font-size: 12px;}
 <div id="mapObj" class="view"></div>
 <?php if($maptype == 1) {?>
 <SCRIPT LANGUAGE="JavaScript">
-  //ÉèÖÃÖĞĞÄµãÎª±±¾©
-  //ÉèÖÃµØÍ¼³õÊ¼»¯²ÎÊı¶ÔÏó
+  //è®¾ç½®ä¸­å¿ƒç‚¹ä¸ºåŒ—äº¬
+  //è®¾ç½®åœ°å›¾åˆå§‹åŒ–å‚æ•°å¯¹è±¡
   var mapOptions = new MMapOptions();
   var defaultcity = "<?php echo strtolower(CHARSET)!='utf-8' ? iconv(CHARSET,'UTF-8',$defaultcity) : $defaultcity?>";
   mapOptions.toolbar = MConstants.MINI;
@@ -73,14 +73,14 @@ body{font-size: 12px;}
   mapOptions.overviewMap = MConstants.SHOW;  
   mapOptions.scale = MConstants.SHOW; 
   mapOptions.mapComButton = MConstants.SHOW_NO
-  //´´½¨µØÍ¼¶ÔÏó
+  //åˆ›å»ºåœ°å›¾å¯¹è±¡
   var mapObj = new MMap("mapObj", mapOptions);
   var  maptools = new MMapTools(mapObj);
   maptools.setCenterByCity(defaultcity);
   if(window.top.$('#<?php echo $field?>').val()) {
 	drawPoints();
   } 
-	//ÉèÖÃÇĞ»»³ÇÊĞ
+	//è®¾ç½®åˆ‡æ¢åŸå¸‚
 	function keywordSearch(city) {
 		if(city==null || city=='') {
 			var city=$("#citywd").val();
@@ -99,10 +99,10 @@ body{font-size: 12px;}
 	
 	function addMarker(){ 	  
 		var address = $(window.parent.document).find("input[id='address']").val();
-		var tipOption=new MTipOptions();//Ìí¼ÓĞÅÏ¢´°¿Ú 
-		tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ĞÅÏ¢´°¿Ú±êÌâ  
-		tipOption.title = address;//ĞÅÏ¢´°¿Ú±êÌâ  
-		tipOption.content = address;//ĞÅÏ¢´°¿ÚÄÚÈİ   
+		var tipOption=new MTipOptions();//æ·»åŠ ä¿¡æ¯çª—å£ 
+		tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+		tipOption.title = address;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+		tipOption.content = address;//ä¿¡æ¯çª—å£å†…å®¹   
 		var markerOption = new MMarkerOptions(); 		
 		markerOption.imageUrl='<?php echo IMG_PATH ?>icon/mak.png';		
 		markerOption.picAgent=false;   
@@ -156,11 +156,11 @@ body{font-size: 12px;}
 		var zoom = data[2]? data[2] : 10
 		mapObj.setZoomAndCenter(zoom,new MLngLat(lngX,latY));
 		var markerOption = new MMarkerOptions();
-		var tipOption=new MTipOptions();//Ìí¼ÓĞÅÏ¢´°¿Ú 
+		var tipOption=new MTipOptions();//æ·»åŠ ä¿¡æ¯çª—å£ 
 		var address = "";
-		tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ĞÅÏ¢´°¿Ú±êÌâ  
-		tipOption.title = address;//ĞÅÏ¢´°¿Ú±êÌâ  
-		tipOption.content = address;//ĞÅÏ¢´°¿ÚÄÚÈİ     
+		tipOption.tipType = MConstants.HTML_BUBBLE_TIP;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+		tipOption.title = address;//ä¿¡æ¯çª—å£æ ‡é¢˜  
+		tipOption.content = address;//ä¿¡æ¯çª—å£å†…å®¹     
 		var markerOption = new MMarkerOptions(); 		
 		markerOption.imageUrl="<?php echo IMG_PATH ?>icon/mak.png";		
 		markerOption.picAgent=false;   
@@ -180,21 +180,21 @@ body{font-size: 12px;}
 </style>
 <?php } elseif($maptype == 2) {?>
 <script type="text/javascript">  
-var mapObj = new BMap.Map("mapObj");          // ´´½¨µØÍ¼ÊµÀı  
-//ÏòµØÍ¼ÖĞÌí¼ÓËõ·Å¿Ø¼ş
+var mapObj = new BMap.Map("mapObj");          // åˆ›å»ºåœ°å›¾å®ä¾‹  
+//å‘åœ°å›¾ä¸­æ·»åŠ ç¼©æ”¾æ§ä»¶
 var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
 mapObj.addControl(ctrl_nav);
-mapObj.enableDragging();//ÆôÓÃµØÍ¼ÍÏ×§ÊÂ¼ş£¬Ä¬ÈÏÆôÓÃ(¿É²»Ğ´)
-mapObj.enableScrollWheelZoom();//ÆôÓÃµØÍ¼¹öÂÖ·Å´óËõĞ¡
-mapObj.enableDoubleClickZoom();//ÆôÓÃÊó±êË«»÷·Å´ó£¬Ä¬ÈÏÆôÓÃ(¿É²»Ğ´)
-mapObj.enableKeyboard();//ÆôÓÃ¼üÅÌÉÏÏÂ×óÓÒ¼üÒÆ¶¯µØÍ¼
+mapObj.enableDragging();//å¯ç”¨åœ°å›¾æ‹–æ‹½äº‹ä»¶ï¼Œé»˜è®¤å¯ç”¨(å¯ä¸å†™)
+mapObj.enableScrollWheelZoom();//å¯ç”¨åœ°å›¾æ»šè½®æ”¾å¤§ç¼©å°
+mapObj.enableDoubleClickZoom();//å¯ç”¨é¼ æ ‡åŒå‡»æ”¾å¤§ï¼Œé»˜è®¤å¯ç”¨(å¯ä¸å†™)
+mapObj.enableKeyboard();//å¯ç”¨é”®ç›˜ä¸Šä¸‹å·¦å³é”®ç§»åŠ¨åœ°å›¾
 //mapObj.centerAndZoom("<?php echo $defaultcity?>");
 if(window.top.$('#<?php echo $field?>').val()) {
 	drawPoints();
 } else {
 	mapObj.centerAndZoom("<?php echo $defaultcity?>");
 } 
-//ÉèÖÃÇĞ»»³ÇÊĞ
+//è®¾ç½®åˆ‡æ¢åŸå¸‚
 function keywordSearch(city) {
 	if(city==null || city=='') {
 		var city=$("#citywd").val();
@@ -210,10 +210,10 @@ function drawPoints(){
 	var latY = data[1];
 	var zoom = data[2] ? data[2] : 10;
 	mapObj.centerAndZoom(new BMap.Point(lngX,latY),zoom);
-	// ´´½¨Í¼±ê¶ÔÏó
+	// åˆ›å»ºå›¾æ ‡å¯¹è±¡
 	var myIcon = new BMap.Icon('<?php echo IMG_PATH ?>icon/mak.png', new BMap.Size(27, 45));
 
-	// ´´½¨±ê×¢¶ÔÏó²¢Ìí¼Óµ½µØÍ¼
+	// åˆ›å»ºæ ‡æ³¨å¯¹è±¡å¹¶æ·»åŠ åˆ°åœ°å›¾
 	var center = mapObj.getCenter();
 	var point = new BMap.Point(lngX,latY);
 	var marker = new BMap.Marker(point, {icon: myIcon});
@@ -227,10 +227,10 @@ function drawPoints(){
 
 function addMarker(){ 
 	  mapObj.clearOverlays();
-	  // ´´½¨Í¼±ê¶ÔÏó
+	  // åˆ›å»ºå›¾æ ‡å¯¹è±¡
 	  var myIcon = new BMap.Icon('<?php echo IMG_PATH ?>icon/mak.png', new BMap.Size(27, 45));
 	
-	  // ´´½¨±ê×¢¶ÔÏó²¢Ìí¼Óµ½µØÍ¼
+	  // åˆ›å»ºæ ‡æ³¨å¯¹è±¡å¹¶æ·»åŠ åˆ°åœ°å›¾
 	  var center = mapObj.getCenter();
 	  var point = new BMap.Point(center.lng,center.lat);
 	  var marker = new BMap.Marker(point, {icon: myIcon});
@@ -269,3 +269,4 @@ function removeMarker() {
 	echo $city;
 }
 ?>
+

@@ -2,11 +2,11 @@
 {template "content","header_nav"}
 
 
-<!-- ÊÕ²Ø¹«¿ª¿Î begin -->
+<!-- æ”¶è—å…¬å¼€è¯¾ begin -->
 
 <div class="wrap">
     <div class="blk_login">
-        <p class="lf fred"><a class="saveBtn" href="javascript:void(0)" onclick="addFavorite(window.location.href, document.title)">ÊÕ²Ø±¾ÍøÕ¾</a></p>
+        <p class="lf fred"><a class="saveBtn" href="javascript:void(0)" onclick="addFavorite(window.location.href, document.title)">æ”¶è—æœ¬ç½‘ç«™</a></p>
         <script type="text/javascript">
 
             function addFavorite(sURL, sTitle) {
@@ -38,11 +38,11 @@
         </script> 
     </div>
 </div>
-<!-- ÊÖ¶¯½¹µãÍ¼ begin -->
+<!-- æ‰‹åŠ¨ç„¦ç‚¹å›¾ begin -->
 
 <div class="focus">
     <div class="focus_body">
-        <div class="scroll"> <a href="javascript:void(0);" class="arr_left" id="FS_arr_left_01">×óÒÆ¶¯</a> <a href="javascript:void(0);" class="arr_right" id="FS_arr_right_01">ÓÒÒÆ¶¯</a>
+        <div class="scroll"> <a href="javascript:void(0);" class="arr_left" id="FS_arr_left_01">å·¦ç§»åŠ¨</a> <a href="javascript:void(0);" class="arr_right" id="FS_arr_right_01">å³ç§»åŠ¨</a>
             <div class="scroll_cont" id="FS_Cont_01">
                 {pc:content  action="position" posid="2" order="listorder DESC" num="5" moreinfo="1"}
                 {loop $data $r}
@@ -69,9 +69,9 @@
                     <div class="txtbg"></div>
                     <div class="txtcontent">
                         <h2>
-                            <a href="{$r[url]}" target="_blank">{$CATEGORYS[$r[catid]][catname]}£º{$r[title]}</a></h2>
-                        <p class="des">{$r[description]} <a href="{$r[url]}" target="_blank">[ÏêÏ¸]</a></p>
-                        <div class="btn"><a href="{$r[url]}" target="_blank">²¥·Å</a></div>
+                            <a href="{$r[url]}" target="_blank">{$CATEGORYS[$r[catid]][catname]}ï¼š{$r[title]}</a></h2>
+                        <p class="des">{$r[description]} <a href="{$r[url]}" target="_blank">[è¯¦ç»†]</a></p>
+                        <div class="btn"><a href="{$r[url]}" target="_blank">æ’­æ”¾</a></div>
                     </div>
                 </div>
                 {$i++}
@@ -87,39 +87,39 @@
 
             var focusScroll = new ScrollPic();
 
-            focusScroll.scrollContId = "FS_Cont_01"; //ÄÚÈİÈİÆ÷ID
+            focusScroll.scrollContId = "FS_Cont_01"; //å†…å®¹å®¹å™¨ID
 
-            focusScroll.arrLeftId = "FS_arr_left_01";//×ó¼ıÍ·ID
+            focusScroll.arrLeftId = "FS_arr_left_01";//å·¦ç®­å¤´ID
 
-            focusScroll.arrRightId = "FS_arr_right_01"; //ÓÒ¼ıÍ·ID
+            focusScroll.arrRightId = "FS_arr_right_01"; //å³ç®­å¤´ID
 
-            focusScroll.dotListId = "FS_numList_01";//µãÁĞ±íID
+            focusScroll.dotListId = "FS_numList_01";//ç‚¹åˆ—è¡¨ID
 
-            focusScroll.dotClassName = "";//µãclassName
+            focusScroll.dotClassName = "";//ç‚¹className
 
-            focusScroll.dotOnClassName = "selected";//µ±Ç°µãclassName
+            focusScroll.dotOnClassName = "selected";//å½“å‰ç‚¹className
 
-            focusScroll.listType = "number";//ÁĞ±íÀàĞÍ(number:Êı×Ö£¬ÆäËüÎª¿Õ)
+            focusScroll.listType = "number";//åˆ—è¡¨ç±»å‹(number:æ•°å­—ï¼Œå…¶å®ƒä¸ºç©º)
 
-            focusScroll.listEvent = "onmouseover"; //ÇĞ»»ÊÂ¼ş
+            focusScroll.listEvent = "onmouseover"; //åˆ‡æ¢äº‹ä»¶
 
-            focusScroll.frameWidth = 944;//ÏÔÊ¾¿ò¿í¶È
+            focusScroll.frameWidth = 944;//æ˜¾ç¤ºæ¡†å®½åº¦
 
-            focusScroll.pageWidth = 944; //·­Ò³¿í¶È
+            focusScroll.pageWidth = 944; //ç¿»é¡µå®½åº¦
 
-            focusScroll.upright = false; //´¹Ö±¹ö¶¯
+            focusScroll.upright = false; //å‚ç›´æ»šåŠ¨
 
-            focusScroll.speed = 10; //ÒÆ¶¯ËÙ¶È(µ¥Î»ºÁÃë£¬Ô½Ğ¡Ô½¿ì)
+            focusScroll.speed = 10; //ç§»åŠ¨é€Ÿåº¦(å•ä½æ¯«ç§’ï¼Œè¶Šå°è¶Šå¿«)
 
-            focusScroll.space = 50; //Ã¿´ÎÒÆ¶¯ÏñËØ(µ¥Î»px£¬Ô½´óÔ½¿ì)
+            focusScroll.space = 50; //æ¯æ¬¡ç§»åŠ¨åƒç´ (å•ä½pxï¼Œè¶Šå¤§è¶Šå¿«)
 
-            focusScroll.autoPlay = true; //×Ô¶¯²¥·Å
+            focusScroll.autoPlay = true; //è‡ªåŠ¨æ’­æ”¾
 
-            focusScroll.autoPlayTime = 5; //×Ô¶¯²¥·Å¼ä¸ôÊ±¼ä(Ãë)
+            focusScroll.autoPlayTime = 5; //è‡ªåŠ¨æ’­æ”¾é—´éš”æ—¶é—´(ç§’)
 
             focusScroll.circularly = true;
 
-            focusScroll.initialize(); //³õÊ¼»¯
+            focusScroll.initialize(); //åˆå§‹åŒ–
 
             focusScroll.onpagechange = function() {
 
@@ -135,13 +135,13 @@
     </div>
 </div>
 
-<!-- ÊÖ¶¯½¹µãÍ¼ end  -->
+<!-- æ‰‹åŠ¨ç„¦ç‚¹å›¾ end  -->
 
 <div class="wrap">
     <div class="part02">
         <div class="cont clearfix">
             <div class="p_l"><div id="sub01" class="sub01">
-                    <div class="sub01_t"> <a href="http://open.sina.com.cn/courses/" target="_blank"><span class="selected" id="sub01_t1">×îĞÂ¿Î³ÌÍÆ¼ö</span></a></div>
+                    <div class="sub01_t"> <a href="http://open.sina.com.cn/courses/" target="_blank"><span class="selected" id="sub01_t1">æœ€æ–°è¯¾ç¨‹æ¨è</span></a></div>
                     <div id="sub01_c1" class="sub01_c">
                         <ul class="list01">
                             {pc:content  action="position" posid="1" order="listorder DESC" num="9" moreinfo="1"}
@@ -156,7 +156,7 @@
                 </div></div>
             <div class="p_m">
                 <div id="sub01" class="sub01">
-                    <div class="sub01_t"> <a href="http://open.sina.com.cn/courses/" target="_blank"><span class="   selected" id="sub01_t1">×îÈÈ¿Î³ÌÍÆ¼ö</span></a></div>
+                    <div class="sub01_t"> <a href="http://open.sina.com.cn/courses/" target="_blank"><span class="   selected" id="sub01_t1">æœ€çƒ­è¯¾ç¨‹æ¨è</span></a></div>
                     <div id="sub01_c1" class="sub01_c">
                         <ul class="list01">
                             {pc:content  action="position" posid="18" order="listorder DESC" num="9" moreinfo="1"}
@@ -171,8 +171,8 @@
             <div class="p_r">
                 <div id="sub02" class="sub02">
                     <div class="sub02_t">
-                        <h2><a class="best" onclick="javascript:void(0)">×îÊÜ»¶Ó­µÄ½ÚÄ¿</a></h2>
-                        <span id="sub02_t1" class="selected">×Ü</span> <span id="sub02_t2" class="">ÖÜ</span> <span id="sub02_t3" class="">ÔÂ</span> </div>
+                        <h2><a class="best" onclick="javascript:void(0)">æœ€å—æ¬¢è¿çš„èŠ‚ç›®</a></h2>
+                        <span id="sub02_t1" class="selected">æ€»</span> <span id="sub02_t2" class="">å‘¨</span> <span id="sub02_t3" class="">æœˆ</span> </div>
                     <div id="sub02_c1" class="sub02_c">
                         <ul class="list02">
 
@@ -244,11 +244,11 @@
         </div>
     </div>
 
-    <!-- Ò»¼ü·ÖÏí begin -->
+    <!-- ä¸€é”®åˆ†äº« begin -->
 
     <div class="part03 clearfix"> 
         <!-- Baidu Button BEGIN -->
-        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">·ÖÏíµ½£º</span> <a class="bds_tsina"></a> <a class="bds_qzone"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> <a class="bds_t163"></a> <a class="bds_kaixin001"></a> <a class="bds_bdhome"></a> <a class="bds_hi"></a> <a class="shareCount"></a> </div>
+        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">åˆ†äº«åˆ°ï¼š</span> <a class="bds_tsina"></a> <a class="bds_qzone"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> <a class="bds_t163"></a> <a class="bds_kaixin001"></a> <a class="bds_bdhome"></a> <a class="bds_hi"></a> <a class="shareCount"></a> </div>
         <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script> 
         <script type="text/javascript" id="bdshell_js"></script> 
         <script type="text/javascript">
@@ -256,11 +256,11 @@
         </script> 
         <!-- Baidu Button END --> 
     </div>
-    <!-- Ò»¼ü·ÖÏí end -->
+    <!-- ä¸€é”®åˆ†äº« end -->
     <div class="part07">
     <div class="part07 part08">
         <div class="tit04">
-            <h2 class=""><span class="tt hzjg">ºÏ×÷»ú¹¹</span></h2>
+            <h2 class=""><span class="tt hzjg">åˆä½œæœºæ„</span></h2>
         </div>
         <div class="cont">
             <div class="blk06 clearfix">
@@ -286,3 +286,4 @@
 </div>
 
 {template "content","footer"}  
+

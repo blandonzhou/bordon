@@ -1,6 +1,6 @@
 <?php
 /**
- * ¹ÜÀíÔ±ºóÌ¨»áÔ±ÉóºË²Ù×÷Àà
+ * ç®¡ç†å‘˜åå°ä¼šå‘˜å®¡æ ¸æ“ä½œç±»
  */
 
 defined('IN_PHPCMS') or exit('No permission resources.');
@@ -43,13 +43,13 @@ class member_verify extends admin {
 		$modelid = !empty($_GET['modelid']) ? intval($_GET['modelid']) : showmessage(L('illegal_parameters'), HTTP_REFERER);
 		
 		$memberinfo = $this->db->get_one(array('userid'=>$userid));
-		//Ä£ĞÍ×Ö¶ÎÃû³Æ
+		//æ¨¡å‹å­—æ®µåç§°
 		$this->member_field_db = pc_base::load_model('sitemodel_field_model');
 		$model_fieldinfo = $this->member_field_db->select(array('modelid'=>$modelid), "*", 100);
-		//ÓÃ»§Ä£ĞÍ×Ö¶ÎĞÅÏ¢
+		//ç”¨æˆ·æ¨¡å‹å­—æ®µä¿¡æ¯
 		$member_fieldinfo = string2array($memberinfo['modelinfo']);
 		
-		//½»»»Êı×ékeyÖµ
+		//äº¤æ¢æ•°ç»„keyå€¼
 		foreach($model_fieldinfo as $v) {
 			if(array_key_exists($v['field'], $member_fieldinfo)) {
 				$tmp = $member_fieldinfo[$v['field']];
@@ -90,8 +90,8 @@ class member_verify extends admin {
 					$info['modelid'] = $v['modelid'] ? $v['modelid'] : 10;
 					$userid = $this->member_db->insert($info, 1);
 
-					if($v['modelinfo']) {	//Èç¹ûÊı¾İÄ£ĞÍ²»Îª¿Õ
-						//²åÈë»áÔ±Ä£ĞÍÊı¾İ
+					if($v['modelinfo']) {	//å¦‚æœæ•°æ®æ¨¡å‹ä¸ä¸ºç©º
+						//æ’å…¥ä¼šå‘˜æ¨¡å‹æ•°æ®
 						$user_model_info = string2array($v['modelinfo']);
 						$user_model_info['userid'] = $userid;
 						$this->member_db->set_model($info['modelid']);
@@ -106,14 +106,14 @@ class member_verify extends admin {
 			$where = to_sqls($success_uids, '', 'userid');			
 			$this->db->update(array('status'=>1, 'message'=>$_POST['message']), $where);
 			
-			//phpsso×¢²áÊ§°ÜµÄÓÃ»§×´Ì¬Ö±½ÓÖÃÎªÉóºËÆÚ¼äphpssoÒÑ×¢²á¸Ã»áÔ±
+			//phpssoæ³¨å†Œå¤±è´¥çš„ç”¨æˆ·çŠ¶æ€ç›´æ¥ç½®ä¸ºå®¡æ ¸æœŸé—´phpssoå·²æ³¨å†Œè¯¥ä¼šå‘˜
 			$fail_uids = array_diff($uidarr, $success_uids);
 			if (!empty($fail_uids)) {
 				$where = to_sqls($fail_uids, '', 'userid');
 				$this->db->update(array('status'=>5, 'message'=>$_POST['message']), $where);
 			}
 			
-			//·¢ËÍ emailÍ¨Öª
+			//å‘é€ emailé€šçŸ¥
 			if($_POST['sendemail']) {
 				$memberinfo = $this->db->select($where);
 				pc_base::load_sys_func('mail');
@@ -152,7 +152,7 @@ class member_verify extends admin {
 			$uidarr = isset($_POST['userid']) ? $_POST['userid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
 			$where = to_sqls($uidarr, '', 'userid');
 			$res = $this->db->update(array('status'=>4, 'message'=>$_POST['message']), $where);
-			//·¢ËÍ emailÍ¨Öª
+			//å‘é€ emailé€šçŸ¥
 			if($res) {
 				if($_POST['sendemail']) {
 					$memberinfo = $this->db->select($where);
@@ -177,7 +177,7 @@ class member_verify extends admin {
 			$uidarr = isset($_POST['userid']) ? $_POST['userid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
 			$where = to_sqls($uidarr, '', 'userid');
 			$res = $this->db->update(array('status'=>2, 'message'=>$_POST['message']), $where);
-			//·¢ËÍ emailÍ¨Öª
+			//å‘é€ emailé€šçŸ¥
 			if($res) {
 				if($_POST['sendemail']) {
 					$memberinfo = $this->db->select($where);
@@ -237,8 +237,8 @@ class member_verify extends admin {
 	}
 	
 	/**
-	 *¸ù¾İ»ı·ÖËã³öÓÃ»§×é
-	 * @param $point int »ı·ÖÊı
+	 *æ ¹æ®ç§¯åˆ†ç®—å‡ºç”¨æˆ·ç»„
+	 * @param $point int ç§¯åˆ†æ•°
 	 */
 	private function _get_usergroup_bypoint($point=0) {
 		$groupid = 2;
@@ -253,7 +253,7 @@ class member_verify extends admin {
 		}
 		arsort($grouppointlist);
 
-		//Èç¹û³¬³öÓÃ»§×é»ı·ÖÉèÖÃÔòÎª»ı·Ö×î¸ßµÄÓÃ»§×é
+		//å¦‚æœè¶…å‡ºç”¨æˆ·ç»„ç§¯åˆ†è®¾ç½®åˆ™ä¸ºç§¯åˆ†æœ€é«˜çš„ç”¨æˆ·ç»„
 		if($point > max($grouppointlist)) {
 			$groupid = key($grouppointlist);
 		} else {
@@ -269,9 +269,9 @@ class member_verify extends admin {
 	}
 	
 	/**
-	 * ³õÊ¼»¯phpsso
+	 * åˆå§‹åŒ–phpsso
 	 * about phpsso, include client and client configure
-	 * @return string phpsso_api_url phpssoµØÖ·
+	 * @return string phpsso_api_url phpssoåœ°å€
 	 */
 	private function _init_phpsso() {
 		pc_base::load_app_class('client', '', 0);

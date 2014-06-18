@@ -1,7 +1,7 @@
 <?php
 /*
- * ¿Í»§¶Ë±»¶¯½ÓÊÕphpsso·şÎñ¶ËÍ¨Öª
- * ·şÎñ¶ËÍ¨ÖªÄÚÈİ:Í¬²½µÇÂ½¡¢ÍË³ö£¬Í¬²½»ı·ÖÉèÖÃ¡¢¶Ô»»±ÈÂÊ£¬Í¬²½Ìí¼Ó¡¢É¾³ıÓÃ»§¡¢ĞŞ¸ÄÓÃ»§ÃÜÂë£¬²âÊÔÍ¨ĞÅ×´Ì¬
+ * å®¢æˆ·ç«¯è¢«åŠ¨æ¥æ”¶phpssoæœåŠ¡ç«¯é€šçŸ¥
+ * æœåŠ¡ç«¯é€šçŸ¥å†…å®¹:åŒæ­¥ç™»é™†ã€é€€å‡ºï¼ŒåŒæ­¥ç§¯åˆ†è®¾ç½®ã€å¯¹æ¢æ¯”ç‡ï¼ŒåŒæ­¥æ·»åŠ ã€åˆ é™¤ç”¨æˆ·ã€ä¿®æ”¹ç”¨æˆ·å¯†ç ï¼Œæµ‹è¯•é€šä¿¡çŠ¶æ€
  * 
  */
 	defined('IN_PHPCMS') or exit('No permission resources.'); 
@@ -10,8 +10,8 @@
 	
 	$system = pc_base::load_config('system');
 	define('APPID', $system['phpsso_appid']);
-	$ps_api_url = $system['phpsso_api_url'];	//½Ó¿ÚµØÖ·
-	$ps_auth_key = $system['phpsso_auth_key'];	//¼ÓÃÜÃÜÔ¿
+	$ps_api_url = $system['phpsso_api_url'];	//æ¥å£åœ°å€
+	$ps_auth_key = $system['phpsso_auth_key'];	//åŠ å¯†å¯†é’¥
 	$ps_version = $system['phpsso_version'];
 	
 	pc_base::load_app_class('client', 'member', 0);
@@ -26,12 +26,12 @@
 	}
 
 	/**
-	 * ²âÊÔÍ¨ĞÅ×´Ì¬
+	 * æµ‹è¯•é€šä¿¡çŠ¶æ€
 	 */
 	if ($action == 'check_status') exit('1');
 	
 	/**
-	 * Ìí¼ÓÓÃ»§
+	 * æ·»åŠ ç”¨æˆ·
 	 */
 	if ($action == 'member_add') {
 		$userinfo = array();
@@ -54,7 +54,7 @@
 	}
 	
 	/**
-	 * É¾³ıÓÃ»§
+	 * åˆ é™¤ç”¨æˆ·
 	 */
 	if ($action == 'member_delete') {
 		$uidarr = $arr['uids'];
@@ -70,7 +70,7 @@
 	}
 	
 	/**
-	 * ±à¼­ÓÃ»§
+	 * ç¼–è¾‘ç”¨æˆ·
 	 */
 	if ($action == 'member_edit') {
 		if(!isset($arr['uid'])) exit('0');
@@ -92,7 +92,7 @@
 	}
 	
 	/**
-	 * Ó¦ÓÃ»ı·ÖÁĞ±í
+	 * åº”ç”¨ç§¯åˆ†åˆ—è¡¨
 	 */
 	if ($action == 'credit_list') {
 		$credit_list = pc_base::load_config('credit');
@@ -101,7 +101,7 @@
 	}
 	
 	/**
-	 * ¸üĞÂ»ı·Ö¶Ò»»¹æÔò
+	 * æ›´æ–°ç§¯åˆ†å…‘æ¢è§„åˆ™
 	 */
 	if ($action == 'credit_update') {
 		setcache('creditchange', $arr, 'member');
@@ -109,7 +109,7 @@
 	}
 	
 	/**
-	 * Í¬²½µÇÂ½
+	 * åŒæ­¥ç™»é™†
 	 */
 	if ($action == 'synlogin') {
 		
@@ -119,7 +119,7 @@
 		$userinfo = $db->get_one(array('phpssouid'=>$phpssouid));
 				
 		if (!$userinfo) {
-			//²åÈë»áÔ±
+			//æ’å…¥ä¼šå‘˜
 			exit;
 			$ps_userinfo = $client->ps_get_member_info($userid);
 			$ps_userinfo = unserialize($ps_userinfo);
@@ -143,7 +143,7 @@
 		} else {
 			$username = $userinfo['username'];
 		}
-		//Ö´ĞĞ±¾ÏµÍ³µÇÂ½²Ù×÷
+		//æ‰§è¡Œæœ¬ç³»ç»Ÿç™»é™†æ“ä½œ
 		$userid = $userinfo['userid'];
 		$groupid = $userinfo['groupid'];
 		$username = $userinfo['username'];
@@ -169,7 +169,7 @@
 	}
 	
 	/**
-	 * Í¬²½ÍË³ö
+	 * åŒæ­¥é€€å‡º
 	 */
 	if ($action == 'synlogout') {
 		header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
@@ -181,7 +181,7 @@
 		param::set_cookie('_groupid', '');
 		param::set_cookie('cookietime', '');
 		exit('1');
-		//Ö´ĞĞ±¾ÏµÍ³ÍË³ö²Ù×÷
+		//æ‰§è¡Œæœ¬ç³»ç»Ÿé€€å‡ºæ“ä½œ
 	}
 	
 	

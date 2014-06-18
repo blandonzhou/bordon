@@ -11,12 +11,12 @@ class info extends admin {
 	}
 	
 	/**
-	 * 信息模型配置
+	 * 淇℃伅妯″瀷閰嶇疆
 	 */
 	public function init() {
 		if(isset($_POST['dosubmit'])) {
 		$setting = $city_default = array();
-		//信息模型基本配置
+		//淇℃伅妯″瀷鍩烘湰閰嶇疆
 		$setting = array(
 					'info_linkageid' => intval($_POST['setting']['info_linkageid']),
 					'info_cachetime' => intval($_POST['setting']['info_cachetime']),
@@ -34,7 +34,7 @@ class info extends admin {
 			
 		$setting = array2string($setting);				
 
-		//更新基本配置记录	
+		//鏇存柊鍩烘湰閰嶇疆璁板綍	
 		$this->db->update(array('data'=>$setting), array('key'=>'info_setting')); 
 		$this->_cache();		
 		showmessage(L('setting_succ').$snda_error, HTTP_REFERER);
@@ -55,7 +55,7 @@ class info extends admin {
 	}	
 	
 	/**
-	 * 删除城市
+	 * 鍒犻櫎鍩庡競
 	 */
 	public function delete_city() {
 		$id = intval($_GET['id']);
@@ -72,14 +72,14 @@ class info extends admin {
 	}
 	
 	/**
-	 * 保存城市
+	 * 淇濆瓨鍩庡競
 	 */
 	public function save_city() {
 		pc_base::load_sys_func('iconv');
 		$id = intval($_POST['id']);
 		$city['name'] = iconv('utf-8', CHARSET, addslashes($_POST['name']));
 		
-	     //没有填写拼音默认将城市中文名称转化为拼音
+	     //娌℃湁濉啓鎷奸煶榛樿灏嗗煄甯備腑鏂囧悕绉拌浆鍖栦负鎷奸煶
 		if($_POST['pinyin'] == '') {
 			if(strtolower(CHARSET) == 'utf-8') {
 				$str_py = gbk_to_pinyin(iconv(CHARSET, gbk, $city['name']));				

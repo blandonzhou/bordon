@@ -6,3 +6,4 @@
 		}
 		return '<input type="hidden" name="info['.$field.']" value="1">'.form::checkbox($data,$value,'name="'.$field.'[]" id="'.$field.'"','','120');
 	}
+

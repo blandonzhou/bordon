@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
         <meta name="keywords" content="{$SEO['keyword']}">
             <meta name="description" content="{$SEO['description']}">
@@ -15,7 +15,7 @@
                 <div class="wrap"> 
 
                     <div class="blk_login">
-                        <p class="lf fred"><a class="saveBtn" href="javascript:void(0)" onclick="addFavorite(window.location.href, document.title)"> ’≤ÿ</a></p>
+                        <p class="lf fred"><a class="saveBtn" href="javascript:void(0)" onclick="addFavorite(window.location.href, document.title)">Êî∂Ëóè</a></p>
                         <script type="text/javascript">
 
                             function addFavorite(sURL, sTitle) {
@@ -131,17 +131,17 @@
                             </style>
                             <div  id="search-data"  style="background-color:#FFF">
                                 <dl class="searchitem">
-                                    <dt class="blue"><span>ƒÍº∂£∫</span> {loop filters('nianji',$modelid) $r}
+                                    <dt class="blue"><span>Âπ¥Á∫ßÔºö</span> {loop filters('nianji',$modelid) $r}
                                         {$r[menu]}
                                         {/loop} </dt>
                                 </dl>
                                 <dl class="searchitem">
-                                    <dt class="blue"><span>—ßø∆£∫</span> {loop filters('xueke',$modelid) $r}
+                                    <dt class="blue"><span>Â≠¶ÁßëÔºö</span> {loop filters('xueke',$modelid) $r}
                                         {$r[menu]}
                                         {/loop} </dt>
                                 </dl>  
                                 <dl class="searchitem">
-                                    <dt class="blue"><span>—ß∂Œ£∫</span> {loop filters('xueduan',$modelid) $r}
+                                    <dt class="blue"><span>Â≠¶ÊÆµÔºö</span> {loop filters('xueduan',$modelid) $r}
                                         {$r[menu]}
                                         {/loop} </dt>
                                 </dl>       
@@ -181,7 +181,7 @@
 
                                                     {$v[title]}
                                                 </a></p>
-                                            <p class="intro">»À∆¯:<i>
+                                            <p class="intro">‰∫∫Ê∞î:<i>
 
                                                     <?php
                                                     $hitsid = 'c-11-'.intval($v['id']);
@@ -211,7 +211,7 @@
                             <div class="sub02" id="sub02">
                                 <div class="sub02_t">
                                     <h2><a class="best"></a></h2>
-                                    <span id="sub02_t1">◊‹</span> <span id="sub02_t2">÷‹</span> <span id="sub02_t3">‘¬</span> </div>
+                                    <span id="sub02_t1">ÊÄª</span> <span id="sub02_t2">Âë®</span> <span id="sub02_t3">Êúà</span> </div>
                                 <div id="sub02_c1" class="sub02_c">
                                     <ul class="list02">
 
@@ -282,7 +282,7 @@
                             </script>
                             <div class="blk03">
                                 <div class="tit01">
-                                    <h2>Õ∆ºˆµƒπ´ø™øŒ</h2>
+                                    <h2>Êé®ËçêÁöÑÂÖ¨ÂºÄËØæ</h2>
                                 </div>
                                 {pc:content  action="position" posid="1" order="listorder DESC" num="9" catid="$catid" moreinfo="1"}
                                 {loop $data $r}
@@ -318,7 +318,7 @@
                     <div class="part02">
                         <div class="tit02">
                             <h2 class="fbluel"><a target="_blank" href="url" onclick="javascript:void(0);
-                                    return false;">Ω≤ ¶</a></h2>
+                                    return false;">ËÆ≤Â∏à</a></h2>
                         </div>
                         <div class="blk05 clearfix" id="scr_cont1">
                             <div class="pics fblue clearfix">
@@ -367,3 +367,4 @@
                 </div>
                 </body>
                 </html>
+

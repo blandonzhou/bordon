@@ -1,7 +1,7 @@
 <?php
 defined('IN_PHPCMS') or exit('No permission resources.');
 /**
- * È«Õ¾ËÑË÷ÄÚÈÝÈë¿â½Ó¿Ú
+ * å…¨ç«™æœç´¢å†…å®¹å…¥åº“æŽ¥å£
  */
 class search_api extends admin {
 	private $siteid,$categorys,$db;
@@ -15,9 +15,9 @@ class search_api extends admin {
 		$this->db->set_model($modelid);
 	}
 	/**
-	 * È«ÎÄË÷ÒýAPI
-	 * @param $pagesize Ã¿Ò³ÌõÊý
-	 * @param $page µ±Ç°Ò³
+	 * å…¨æ–‡ç´¢å¼•API
+	 * @param $pagesize æ¯é¡µæ¡æ•°
+	 * @param $page å½“å‰é¡µ
 	 */
 	public function fulltext_api($pagesize = 100, $page = 1) {
 		$system_keys = $model_keys = array();
@@ -32,7 +32,7 @@ class search_api extends admin {
 		$offset = $pagesize*($page-1);
 		$result = $this->db->select('',$system_keys,"$offset, $pagesize");
 
-		//Ä£ÐÍ´Ó±í×Ö¶Î
+		//æ¨¡åž‹ä»Žè¡¨å­—æ®µ
 		foreach($fulltext_array AS $key=>$value) {
 			if(!$value['issystem'] && $value['isfulltext']) {
 				$model_keys[] = $key;
@@ -43,7 +43,7 @@ class search_api extends admin {
 		
 		$this->db->table_name = $this->db->table_name.'_data';
 		$result_data = $this->db->select('',$model_keys,"$offset, $pagesize",'','','id');
-		//´¦Àí½á¹û
+		//å¤„ç†ç»“æžœ
 		foreach($result as $r) {
 			$fulltextcontent = '';
 			foreach($r as $field=>$_r) {
@@ -64,7 +64,7 @@ class search_api extends admin {
 		return $data;
 	}
 	/**
-	 * ¼ÆËã×ÜÊý
+	 * è®¡ç®—æ€»æ•°
 	 * @param $modelid
 	 */
 	public function total($modelid) {

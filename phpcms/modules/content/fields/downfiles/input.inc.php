@@ -12,3 +12,4 @@
 		$array = array2string($array);
 		return $array;
 	}
+

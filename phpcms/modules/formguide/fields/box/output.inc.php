@@ -18,7 +18,7 @@
 				case 'checkbox':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' °¢';
+						if($_v) $string .= $option[$_v].' „ÄÅ';
 					}
 				break;
 
@@ -29,10 +29,11 @@
 				case 'multiple':
 					$value_arr = explode(',',$value);
 					foreach($value_arr as $_v) {
-						if($_v) $string .= $option[$_v].' °¢';
+						if($_v) $string .= $option[$_v].' „ÄÅ';
 					}
 				break;
 			}
 			return $string;
 		}
 	}
+

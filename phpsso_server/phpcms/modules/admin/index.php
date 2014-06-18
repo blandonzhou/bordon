@@ -6,7 +6,7 @@ class index extends admin {
 	
 	private $db, $messagequeue_db;
 	/**
-	 * Îö¹¹º¯Êý
+	 * æžæž„å‡½æ•°
 	 */
 	public function __construct() {	
 		parent::__construct();
@@ -21,13 +21,13 @@ class index extends admin {
 		$this->member_db = pc_base::load_model('member_model');
 		$this->messagequeue_db = pc_base::load_model('messagequeue_model');
 		
-		$total_member = $this->member_db->count();	//»áÔ±×ÜÊý
+		$total_member = $this->member_db->count();	//ä¼šå‘˜æ€»æ•°
 		
-		$todaytime = strtotime(date('Y-m-d', SYS_TIME));	//½ñÈÕ»áÔ±Êý
+		$todaytime = strtotime(date('Y-m-d', SYS_TIME));	//ä»Šæ—¥ä¼šå‘˜æ•°
 		$today_member = $this->member_db->count("`regdate` > '$todaytime'");
-		$total_messagequeue = $this->messagequeue_db->count();	//ÏûÏ¢×ÜÊý
+		$total_messagequeue = $this->messagequeue_db->count();	//æ¶ˆæ¯æ€»æ•°
 		
-		$mysql_version = $this->member_db->get_version();	//mysql°æ±¾
+		$mysql_version = $this->member_db->get_version();	//mysqlç‰ˆæœ¬
 		
 		$mysql_table_status = $this->member_db->get_table_status();
 		$mysql_table_size = $mysql_table_index_size = '';
@@ -38,7 +38,7 @@ class index extends admin {
 		$mysql_table_size = sizecount($mysql_table_size);
 		$mysql_table_index_size = sizecount($mysql_table_index_size);
 
-		//Ó¦ÓÃ¸öÊý
+		//åº”ç”¨ä¸ªæ•°
 		$applist = getcache('applist');
 		$appnum = empty($applist) ? 0 : count($applist);
 		

@@ -21,18 +21,18 @@ class badword extends admin {
 	
 	
 	/**
-	 * Ãô¸Ð´ÊÌí¼Ó
+	 * æ•æ„Ÿè¯æ·»åŠ 
 	 */
 	function add() {
 		if(isset($_POST['dosubmit'])){
 	 			$_POST['info']['lastusetime'] = SYS_TIME;
-				$_POST['info']['replaceword'] = str_replace("¡¡","",trim($_POST['replaceword']));
-				$_POST['info']['badword'] = str_replace("¡¡","",trim($_POST['badword']));
+				$_POST['info']['replaceword'] = str_replace("ã€€","",trim($_POST['replaceword']));
+				$_POST['info']['badword'] = str_replace("ã€€","",trim($_POST['badword']));
 	 			if(empty($_POST['info']['badword'])) {
 					showmessage(L('enter_word'),'?m=admin&c=badword&a=add');
 					}
 				$this->db->insert($_POST['info']);
-				$this->public_cache_file();//¸üÐÂ»º´æ
+				$this->public_cache_file();//æ›´æ–°ç¼“å­˜
 		 		showmessage(L('operation_success'),'?m=admin&c=badword&a=add','', 'add');
 		 		}else{
 				$show_validator = $show_scroll = $show_header = true; 
@@ -58,7 +58,7 @@ class badword extends admin {
 		}
 		
 	/**
-	 * Ãô¸Ð´ÊÅÅÐò
+	 * æ•æ„Ÿè¯æŽ’åº
 	 */
 	function listorder() {
 		if(!is_array($_POST['listorders'])) return false;
@@ -69,15 +69,15 @@ class badword extends admin {
 	}
 	
 	/**
-	 * Ãô¸Ð´ÊÐÞ¸Ä
+	 * æ•æ„Ÿè¯ä¿®æ”¹
 	 */
 	function edit() {
 		if(isset($_POST['dosubmit'])){
 				$badid = intval($_GET['badid']);
-				$_POST['info']['replaceword'] = str_replace("¡¡","",trim($_POST['replaceword']));
-				$_POST['info']['badword'] = str_replace("¡¡","",trim($_POST['badword']));
+				$_POST['info']['replaceword'] = str_replace("ã€€","",trim($_POST['replaceword']));
+				$_POST['info']['badword'] = str_replace("ã€€","",trim($_POST['badword']));
 				$this->db->update($_POST['info'],array('badid'=>$badid));
-				$this->public_cache_file();//¸üÐÂ»º´æ
+				$this->public_cache_file();//æ›´æ–°ç¼“å­˜
 				showmessage(L('operation_success'),'?m=admin&c=badword&a=edit','', 'edit');
 			}else{
 				$show_validator = $show_scroll = $show_header = true;
@@ -89,21 +89,21 @@ class badword extends admin {
 		}	 
 	}
 	/**
-	 * ¹Ø¼ü´ÊÉ¾³ý °üº¬ÅúÁ¿É¾³ý µ¥¸öÉ¾³ý
+	 * å…³é”®è¯åˆ é™¤ åŒ…å«æ‰¹é‡åˆ é™¤ å•ä¸ªåˆ é™¤
 	 */
 	function delete() {
  		if(is_array($_POST['badid'])){
 				foreach($_POST['badid'] as $badid_arr) {
 					$this->db->delete(array('badid'=>$badid_arr));
 				}
-				$this->public_cache_file();//¸üÐÂ»º´æ
+				$this->public_cache_file();//æ›´æ–°ç¼“å­˜
 				showmessage(L('operation_success'),'?m=admin&c=badword');	
 			}else{
 				$badid = intval($_GET['badid']);
 				if($badid < 1) return false;
 				$result = $this->db->delete(array('badid'=>$badid));
 				if($result){
-					$this->public_cache_file();//¸üÐÂ»º´æ
+					$this->public_cache_file();//æ›´æ–°ç¼“å­˜
 					showmessage(L('operation_success'),'?m=admin&c=badword');
 					}else {
 					showmessage(L("operation_failure"),'?m=admin&c=badword');
@@ -112,13 +112,13 @@ class badword extends admin {
 	}
 	
 	/**
-	 * µ¼³öÃô¸Ð´ÊÎªÎÄ±¾ Ò»ÐÐÒ»Ìõ¼ÇÂ¼
+	 * å¯¼å‡ºæ•æ„Ÿè¯ä¸ºæ–‡æœ¬ ä¸€è¡Œä¸€æ¡è®°å½•
 	 */
 	function export() {
 		$result = $s = '';
 		$result = $this->db->select($where = '', $data = '*', $limit = '', $order = 'badid DESC', $group = '');
 		if(!is_array($result) || empty($result)){
-			showmessage('ÔÝÎÞÃô¸Ð´ÊÉèÖÃ£¬ÕýÔÚ·µ»Ø£¡','?m=admin&c=badword');
+			showmessage('æš‚æ— æ•æ„Ÿè¯è®¾ç½®ï¼Œæ­£åœ¨è¿”å›žï¼','?m=admin&c=badword');
 		}
   		foreach($result as $s){
  			extract($s);
@@ -141,7 +141,7 @@ class badword extends admin {
  	}
 	
 	/**
-	 * ´ÓÎÄ±¾ÖÐµ¼ÈëÃô¸Ð´Ê, Ò»ÐÐÒ»Ìõ¼ÇÂ¼
+	 * ä»Žæ–‡æœ¬ä¸­å¯¼å…¥æ•æ„Ÿè¯, ä¸€è¡Œä¸€æ¡è®°å½•
 	 */
 	function import(){
 		if(isset($_POST['dosubmit'])){
@@ -178,7 +178,7 @@ class badword extends admin {
 	} 
  	
 	/**
-	 * Éú³É»º´æ
+	 * ç”Ÿæˆç¼“å­˜
 	 */
 	function public_cache_file() { 
 		$infos = $this->db->select('','badid,badword,replaceword,level','','badid ASC');

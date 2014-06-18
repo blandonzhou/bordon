@@ -1,6 +1,6 @@
 <?php
 /**
- *  plugin.func.php ¹«¹²º¯Êý¿â
+ *  plugin.func.php å…¬å…±å‡½æ•°åº“
  *
  * @copyright			(C) 2005-2010 PHPCMS
  * @license				http://www.phpcms.cn/license/
@@ -12,7 +12,7 @@ function pluginkey_check($key) {
 }
 
 /**
- * ²å¼þÓïÑÔ°ü
+ * æ’ä»¶è¯­è¨€åŒ…
  * Enter description here ...
  * @param unknown_type $language
  * @param unknown_type $pars
@@ -105,7 +105,7 @@ function plugin_stat($appid = '') {
 }
 
 /**
-*²å¼þ°²×°Á¿Í³¼Æ
+*æ’ä»¶å®‰è£…é‡ç»Ÿè®¡
 */
 function plugin_install_stat($appid){
 	if(pc_base::load_config('system','plugin_debug')) return false;
@@ -116,7 +116,7 @@ function plugin_install_stat($appid){
 }
 
 /**
-* ²å¼þºÏ·¨ÐÔÑéÖ¤
+* æ’ä»¶åˆæ³•æ€§éªŒè¯
 */
 function app_validity_check($appid) {
 	if(pc_base::load_config('system','plugin_debug')) return 2;
@@ -140,7 +140,7 @@ function plugin_url($data = '',$type = '') {
 
 
 /**
-*¼ÓÃÜÐèÍ¨¹ýget·½Ê½ÔÚurlÖÐ´«µÝµÄ²ÎÊý
+*åŠ å¯†éœ€é€šè¿‡getæ–¹å¼åœ¨urlä¸­ä¼ é€’çš„å‚æ•°
 */
 function args_encode($data) {
 	if(is_array($data)) {
@@ -151,7 +151,7 @@ function args_encode($data) {
 	}
 }
 /**
-*»ñÈ¡urlÖÐget·½Ê½´«µÝµÄ²ÎÊý
+*èŽ·å–urlä¸­getæ–¹å¼ä¼ é€’çš„å‚æ•°
 */
 function getargs() {
 	$string = base64_decode($_GET['args']);

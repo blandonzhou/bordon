@@ -6,13 +6,13 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'catid',
-    'name' => 'À¸Ä¿',
+    'name' => 'æ ç›®',
     'tips' => '',
     'css' => '',
     'minlength' => '1',
     'maxlength' => '6',
     'pattern' => '/^[0-9]{1,6}$/',
-    'errortips' => 'ÇëÑ¡ÔñÀ¸Ä¿',
+    'errortips' => 'è¯·é€‰æ‹©æ ç›®',
     'formtype' => 'catid',
     'setting' => 'array (
   \'defaultvalue\' => \'\',
@@ -39,13 +39,13 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'title',
-    'name' => '±êÌâ',
+    'name' => 'æ ‡é¢˜',
     'tips' => '',
     'css' => 'inputtitle',
     'minlength' => '1',
     'maxlength' => '80',
     'pattern' => '',
-    'errortips' => 'ÇëÊäÈë±êÌâ',
+    'errortips' => 'è¯·è¾“å…¥æ ‡é¢˜',
     'formtype' => 'title',
     'setting' => '',
     'formattribute' => '',
@@ -69,8 +69,8 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'keywords',
-    'name' => '¹Ø¼ü´Ê',
-    'tips' => '¶à¹Ø¼ü´ÊÖ®¼äÓÃ¿Õ¸ñ»òÕß¡°,¡±¸ô¿ª',
+    'name' => 'å…³é”®è¯',
+    'tips' => 'å¤šå…³é”®è¯ä¹‹é—´ç”¨ç©ºæ ¼æˆ–è€…â€œ,â€éš”å¼€',
     'css' => '',
     'minlength' => '0',
     'maxlength' => '40',
@@ -104,7 +104,7 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'downfiles',
-    'name' => '±¾µØÏÂÔØ',
+    'name' => 'æœ¬åœ°ä¸‹è½½',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -145,7 +145,7 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'downfile',
-    'name' => '¾µÏñÏÂÔØ',
+    'name' => 'é•œåƒä¸‹è½½',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -186,7 +186,7 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'description',
-    'name' => 'ÕªÒª',
+    'name' => 'æ‘˜è¦',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -225,7 +225,7 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'updatetime',
-    'name' => '¸üÐÂÊ±¼ä',
+    'name' => 'æ›´æ–°æ—¶é—´',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -264,7 +264,7 @@ return array (
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'copytype',
-    'name' => 'Èí¼þÊÚÈ¨ÐÎÊ½',
+    'name' => 'è½¯ä»¶æŽˆæƒå½¢å¼',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -273,21 +273,21 @@ return array (
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'Ãâ·Ñ°æ|Ãâ·Ñ°æ
-¹²Ïí°æ|¹²Ïí°æ
-ÊÔÓÃ°æ|ÊÔÓÃ°æ
-ÑÝÊ¾°æ|ÑÝÊ¾°æ
-×¢²á°æ|×¢²á°æ
-ÆÆ½â°æ|ÆÆ½â°æ
-ÁãÊÛ°æ|ÁãÊÛ°æ
-OEM°æ|OEM°æ\',
+  \'options\' => \'å…è´¹ç‰ˆ|å…è´¹ç‰ˆ
+å…±äº«ç‰ˆ|å…±äº«ç‰ˆ
+è¯•ç”¨ç‰ˆ|è¯•ç”¨ç‰ˆ
+æ¼”ç¤ºç‰ˆ|æ¼”ç¤ºç‰ˆ
+æ³¨å†Œç‰ˆ|æ³¨å†Œç‰ˆ
+ç ´è§£ç‰ˆ|ç ´è§£ç‰ˆ
+é›¶å”®ç‰ˆ|é›¶å”®ç‰ˆ
+OEMç‰ˆ|OEMç‰ˆ\',
   \'boxtype\' => \'select\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
   \'cols\' => \'5\',
   \'width\' => \'80\',
   \'size\' => \'1\',
-  \'default_select_value\' => \'Ãâ·Ñ°æ\',
+  \'default_select_value\' => \'å…è´¹ç‰ˆ\',
 )',
     'formattribute' => '',
     'unsetgroupids' => '',
@@ -303,21 +303,21 @@ OEM°æ|OEM°æ\',
     'listorder' => '12',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => 'Ãâ·Ñ°æ|Ãâ·Ñ°æ
-¹²Ïí°æ|¹²Ïí°æ
-ÊÔÓÃ°æ|ÊÔÓÃ°æ
-ÑÝÊ¾°æ|ÑÝÊ¾°æ
-×¢²á°æ|×¢²á°æ
-ÆÆ½â°æ|ÆÆ½â°æ
-ÁãÊÛ°æ|ÁãÊÛ°æ
-OEM°æ|OEM°æ',
+    'options' => 'å…è´¹ç‰ˆ|å…è´¹ç‰ˆ
+å…±äº«ç‰ˆ|å…±äº«ç‰ˆ
+è¯•ç”¨ç‰ˆ|è¯•ç”¨ç‰ˆ
+æ¼”ç¤ºç‰ˆ|æ¼”ç¤ºç‰ˆ
+æ³¨å†Œç‰ˆ|æ³¨å†Œç‰ˆ
+ç ´è§£ç‰ˆ|ç ´è§£ç‰ˆ
+é›¶å”®ç‰ˆ|é›¶å”®ç‰ˆ
+OEMç‰ˆ|OEMç‰ˆ',
     'boxtype' => 'select',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
     'cols' => '5',
     'width' => '80',
     'size' => '1',
-    'default_select_value' => 'Ãâ·Ñ°æ',
+    'default_select_value' => 'å…è´¹ç‰ˆ',
   ),
   'content' => 
   array (
@@ -325,15 +325,15 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'content',
-    'name' => 'ÄÚÈÝ',
-    'tips' => '<div class="content_attr"><label><input name="add_introduce" type="checkbox"  value="1" checked>ÊÇ·ñ½ØÈ¡ÄÚÈÝ</label><input type="text" name="introcude_length" value="200" size="3">×Ö·ûÖÁÄÚÈÝÕªÒª
-<label><input type=\'checkbox\' name=\'auto_thumb\' value="1" checked>ÊÇ·ñ»ñÈ¡ÄÚÈÝµÚ</label><input type="text" name="auto_thumb_no" value="1" size="2" class="">ÕÅÍ¼Æ¬×÷Îª±êÌâÍ¼Æ¬
+    'name' => 'å†…å®¹',
+    'tips' => '<div class="content_attr"><label><input name="add_introduce" type="checkbox"  value="1" checked>æ˜¯å¦æˆªå–å†…å®¹</label><input type="text" name="introcude_length" value="200" size="3">å­—ç¬¦è‡³å†…å®¹æ‘˜è¦
+<label><input type=\'checkbox\' name=\'auto_thumb\' value="1" checked>æ˜¯å¦èŽ·å–å†…å®¹ç¬¬</label><input type="text" name="auto_thumb_no" value="1" size="2" class="">å¼ å›¾ç‰‡ä½œä¸ºæ ‡é¢˜å›¾ç‰‡
 </div>',
     'css' => '',
     'minlength' => '1',
     'maxlength' => '999999',
     'pattern' => '',
-    'errortips' => 'ÄÚÈÝ²»ÄÜÎª¿Õ',
+    'errortips' => 'å†…å®¹ä¸èƒ½ä¸ºç©º',
     'formtype' => 'editor',
     'setting' => 'array (
   \'toolbar\' => \'full\',
@@ -374,7 +374,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'language',
-    'name' => 'Èí¼þÓïÑÔ',
+    'name' => 'è½¯ä»¶è¯­è¨€',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -383,19 +383,19 @@ OEM°æ|OEM°æ',
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'Ó¢ÎÄ|Ó¢ÎÄ
-¼òÌåÖÐÎÄ|¼òÌåÖÐÎÄ
-·±ÌåÖÐÎÄ|·±ÌåÖÐÎÄ
-¼ò·±ÖÐÎÄ|¼ò·±ÖÐÎÄ
-¶à¹úÓïÑÔ|¶à¹úÓïÑÔ
-ÆäËûÓïÑÔ|ÆäËûÓïÑÔ\',
+  \'options\' => \'è‹±æ–‡|è‹±æ–‡
+ç®€ä½“ä¸­æ–‡|ç®€ä½“ä¸­æ–‡
+ç¹ä½“ä¸­æ–‡|ç¹ä½“ä¸­æ–‡
+ç®€ç¹ä¸­æ–‡|ç®€ç¹ä¸­æ–‡
+å¤šå›½è¯­è¨€|å¤šå›½è¯­è¨€
+å…¶ä»–è¯­è¨€|å…¶ä»–è¯­è¨€\',
   \'boxtype\' => \'select\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
   \'cols\' => \'5\',
   \'width\' => \'80\',
   \'size\' => \'1\',
-  \'default_select_value\' => \'¼òÌåÖÐÎÄ\',
+  \'default_select_value\' => \'ç®€ä½“ä¸­æ–‡\',
 )',
     'formattribute' => '',
     'unsetgroupids' => '',
@@ -411,19 +411,19 @@ OEM°æ|OEM°æ',
     'listorder' => '13',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => 'Ó¢ÎÄ|Ó¢ÎÄ
-¼òÌåÖÐÎÄ|¼òÌåÖÐÎÄ
-·±ÌåÖÐÎÄ|·±ÌåÖÐÎÄ
-¼ò·±ÖÐÎÄ|¼ò·±ÖÐÎÄ
-¶à¹úÓïÑÔ|¶à¹úÓïÑÔ
-ÆäËûÓïÑÔ|ÆäËûÓïÑÔ',
+    'options' => 'è‹±æ–‡|è‹±æ–‡
+ç®€ä½“ä¸­æ–‡|ç®€ä½“ä¸­æ–‡
+ç¹ä½“ä¸­æ–‡|ç¹ä½“ä¸­æ–‡
+ç®€ç¹ä¸­æ–‡|ç®€ç¹ä¸­æ–‡
+å¤šå›½è¯­è¨€|å¤šå›½è¯­è¨€
+å…¶ä»–è¯­è¨€|å…¶ä»–è¯­è¨€',
     'boxtype' => 'select',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
     'cols' => '5',
     'width' => '80',
     'size' => '1',
-    'default_select_value' => '¼òÌåÖÐÎÄ',
+    'default_select_value' => 'ç®€ä½“ä¸­æ–‡',
   ),
   'version' => 
   array (
@@ -431,7 +431,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'version',
-    'name' => '°æ±¾ºÅ',
+    'name' => 'ç‰ˆæœ¬å·',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -468,7 +468,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'thumb',
-    'name' => 'ËõÂÔÍ¼',
+    'name' => 'ç¼©ç•¥å›¾',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -517,7 +517,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'systems',
-    'name' => 'Èí¼þÆ½Ì¨',
+    'name' => 'è½¯ä»¶å¹³å°',
     'tips' => '<select name=\'selectSystem\' onchange="ChangeInput(this,document.myform.systems,\'/\')">
 	<option value=\'WinXP\'>WinXP</option>
 	<option value=\'Vista\'>Windows 7</option>
@@ -562,7 +562,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'filesize',
-    'name' => 'ÎÄ¼þ´óÐ¡',
+    'name' => 'æ–‡ä»¶å¤§å°',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -572,7 +572,7 @@ OEM°æ|OEM°æ',
     'formtype' => 'text',
     'setting' => 'array (
   \'size\' => \'10\',
-  \'defaultvalue\' => \'Î´Öª\',
+  \'defaultvalue\' => \'æœªçŸ¥\',
   \'ispassword\' => \'0\',
 )',
     'formattribute' => '',
@@ -590,7 +590,7 @@ OEM°æ|OEM°æ',
     'disabled' => '0',
     'isomnipotent' => '0',
     'size' => '10',
-    'defaultvalue' => 'Î´Öª',
+    'defaultvalue' => 'æœªçŸ¥',
     'ispassword' => '0',
   ),
   'relation' => 
@@ -599,7 +599,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'relation',
-    'name' => 'Ïà¹ØÎÄÕÂ',
+    'name' => 'ç›¸å…³æ–‡ç« ',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -611,9 +611,9 @@ OEM°æ|OEM°æ',
   \'formtext\' => \'<input type=\\\'hidden\\\' name=\\\'info[relation]\\\' id=\\\'relation\\\' value=\\\'{FIELD_VALUE}\\\' style=\\\'50\\\' >
 <ul class="list-dot" id="relation_text"></ul>
 <div>
-<input type=\\\'button\\\' value="Ìí¼ÓÏà¹Ø" onclick="omnipotent(\\\'selectid\\\',\\\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\\\',\\\'Ìí¼ÓÏà¹ØÎÄÕÂ\\\',1)" class="button" style="width:66px;">
+<input type=\\\'button\\\' value="æ·»åŠ ç›¸å…³" onclick="omnipotent(\\\'selectid\\\',\\\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\\\',\\\'æ·»åŠ ç›¸å…³æ–‡ç« \\\',1)" class="button" style="width:66px;">
 <span class="edit_content">
-<input type=\\\'button\\\' value="ÏÔÊ¾ÒÑÓÐ" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
+<input type=\\\'button\\\' value="æ˜¾ç¤ºå·²æœ‰" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
 </span>
 </div>\',
   \'fieldtype\' => \'varchar\',
@@ -636,9 +636,9 @@ OEM°æ|OEM°æ',
     'formtext' => '<input type=\'hidden\' name=\'info[relation]\' id=\'relation\' value=\'{FIELD_VALUE}\' style=\'50\' >
 <ul class="list-dot" id="relation_text"></ul>
 <div>
-<input type=\'button\' value="Ìí¼ÓÏà¹Ø" onclick="omnipotent(\'selectid\',\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\',\'Ìí¼ÓÏà¹ØÎÄÕÂ\',1)" class="button" style="width:66px;">
+<input type=\'button\' value="æ·»åŠ ç›¸å…³" onclick="omnipotent(\'selectid\',\'?m=content&c=content&a=public_relationlist&modelid={MODELID}\',\'æ·»åŠ ç›¸å…³æ–‡ç« \',1)" class="button" style="width:66px;">
 <span class="edit_content">
-<input type=\'button\' value="ÏÔÊ¾ÒÑÓÐ" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
+<input type=\'button\' value="æ˜¾ç¤ºå·²æœ‰" onclick="show_relation({MODELID},{ID})" class="button" style="width:66px;">
 </span>
 </div>',
     'fieldtype' => 'varchar',
@@ -650,7 +650,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'inputtime',
-    'name' => '·¢²¼Ê±¼ä',
+    'name' => 'å‘å¸ƒæ—¶é—´',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -687,7 +687,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'classtype',
-    'name' => 'Èí¼þÀàÐÍ',
+    'name' => 'è½¯ä»¶ç±»åž‹',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -696,18 +696,18 @@ OEM°æ|OEM°æ',
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'¹ú²úÈí¼þ|¹ú²úÈí¼þ
-¹úÍâÈí¼þ|¹úÍâÈí¼þ
-ºº»¯²¹¶¡|ºº»¯²¹¶¡
-³ÌÐòÔ´Âë|³ÌÐòÔ´Âë
-ÆäËû|ÆäËû\',
+  \'options\' => \'å›½äº§è½¯ä»¶|å›½äº§è½¯ä»¶
+å›½å¤–è½¯ä»¶|å›½å¤–è½¯ä»¶
+æ±‰åŒ–è¡¥ä¸|æ±‰åŒ–è¡¥ä¸
+ç¨‹åºæºç |ç¨‹åºæºç 
+å…¶ä»–|å…¶ä»–\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
   \'cols\' => \'5\',
   \'width\' => \'80\',
   \'size\' => \'1\',
-  \'default_select_value\' => \'¹ú²úÈí¼þ\',
+  \'default_select_value\' => \'å›½äº§è½¯ä»¶\',
 )',
     'formattribute' => '',
     'unsetgroupids' => '',
@@ -723,18 +723,18 @@ OEM°æ|OEM°æ',
     'listorder' => '17',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => '¹ú²úÈí¼þ|¹ú²úÈí¼þ
-¹úÍâÈí¼þ|¹úÍâÈí¼þ
-ºº»¯²¹¶¡|ºº»¯²¹¶¡
-³ÌÐòÔ´Âë|³ÌÐòÔ´Âë
-ÆäËû|ÆäËû',
+    'options' => 'å›½äº§è½¯ä»¶|å›½äº§è½¯ä»¶
+å›½å¤–è½¯ä»¶|å›½å¤–è½¯ä»¶
+æ±‰åŒ–è¡¥ä¸|æ±‰åŒ–è¡¥ä¸
+ç¨‹åºæºç |ç¨‹åºæºç 
+å…¶ä»–|å…¶ä»–',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
     'cols' => '5',
     'width' => '80',
     'size' => '1',
-    'default_select_value' => '¹ú²úÈí¼þ',
+    'default_select_value' => 'å›½äº§è½¯ä»¶',
   ),
   'stars' => 
   array (
@@ -742,7 +742,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'stars',
-    'name' => 'ÆÀ·ÖµÈ¼¶',
+    'name' => 'è¯„åˆ†ç­‰çº§',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -751,18 +751,18 @@ OEM°æ|OEM°æ',
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'¡ï¡î¡î¡î¡î|¡ï¡î¡î¡î¡î
-¡ï¡ï¡î¡î¡î|¡ï¡ï¡î¡î¡î
-¡ï¡ï¡ï¡î¡î|¡ï¡ï¡ï¡î¡î
-¡ï¡ï¡ï¡ï¡î|¡ï¡ï¡ï¡ï¡î
-¡ï¡ï¡ï¡ï¡ï|¡ï¡ï¡ï¡ï¡ï\',
+  \'options\' => \'â˜…â˜†â˜†â˜†â˜†|â˜…â˜†â˜†â˜†â˜†
+â˜…â˜…â˜†â˜†â˜†|â˜…â˜…â˜†â˜†â˜†
+â˜…â˜…â˜…â˜†â˜†|â˜…â˜…â˜…â˜†â˜†
+â˜…â˜…â˜…â˜…â˜†|â˜…â˜…â˜…â˜…â˜†
+â˜…â˜…â˜…â˜…â˜…|â˜…â˜…â˜…â˜…â˜…\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
   \'cols\' => \'5\',
   \'width\' => \'88\',
   \'size\' => \'1\',
-  \'default_select_value\' => \'¡ï¡ï¡ï¡î¡î\',
+  \'default_select_value\' => \'â˜…â˜…â˜…â˜†â˜†\',
 )',
     'formattribute' => '',
     'unsetgroupids' => '',
@@ -778,18 +778,18 @@ OEM°æ|OEM°æ',
     'listorder' => '17',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => '¡ï¡î¡î¡î¡î|¡ï¡î¡î¡î¡î
-¡ï¡ï¡î¡î¡î|¡ï¡ï¡î¡î¡î
-¡ï¡ï¡ï¡î¡î|¡ï¡ï¡ï¡î¡î
-¡ï¡ï¡ï¡ï¡î|¡ï¡ï¡ï¡ï¡î
-¡ï¡ï¡ï¡ï¡ï|¡ï¡ï¡ï¡ï¡ï',
+    'options' => 'â˜…â˜†â˜†â˜†â˜†|â˜…â˜†â˜†â˜†â˜†
+â˜…â˜…â˜†â˜†â˜†|â˜…â˜…â˜†â˜†â˜†
+â˜…â˜…â˜…â˜†â˜†|â˜…â˜…â˜…â˜†â˜†
+â˜…â˜…â˜…â˜…â˜†|â˜…â˜…â˜…â˜…â˜†
+â˜…â˜…â˜…â˜…â˜…|â˜…â˜…â˜…â˜…â˜…',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
     'cols' => '5',
     'width' => '88',
     'size' => '1',
-    'default_select_value' => '¡ï¡ï¡ï¡î¡î',
+    'default_select_value' => 'â˜…â˜…â˜…â˜†â˜†',
   ),
   'posids' => 
   array (
@@ -797,7 +797,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'posids',
-    'name' => 'ÍÆ¼öÎ»',
+    'name' => 'æŽ¨èä½',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -832,7 +832,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'groupids_view',
-    'name' => 'ÔÄ¶ÁÈ¨ÏÞ',
+    'name' => 'é˜…è¯»æƒé™',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -865,7 +865,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'islink',
-    'name' => '×ªÏòÁ´½Ó',
+    'name' => 'è½¬å‘é“¾æŽ¥',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -925,7 +925,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'listorder',
-    'name' => 'ÅÅÐò',
+    'name' => 'æŽ’åº',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -955,7 +955,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'template',
-    'name' => 'ÄÚÈÝÒ³Ä£°å',
+    'name' => 'å†…å®¹é¡µæ¨¡æ¿',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -990,7 +990,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'allow_comment',
-    'name' => 'ÔÊÐíÆÀÂÛ',
+    'name' => 'å…è®¸è¯„è®º',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -999,8 +999,8 @@ OEM°æ|OEM°æ',
     'errortips' => '',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'ÔÊÐíÆÀÂÛ|1
-²»ÔÊÐíÆÀÂÛ|0\',
+  \'options\' => \'å…è®¸è¯„è®º|1
+ä¸å…è®¸è¯„è®º|0\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'tinyint\',
   \'minnumber\' => \'1\',
@@ -1024,8 +1024,8 @@ OEM°æ|OEM°æ',
     'listorder' => '54',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => 'ÔÊÐíÆÀÂÛ|1
-²»ÔÊÐíÆÀÂÛ|0',
+    'options' => 'å…è®¸è¯„è®º|1
+ä¸å…è®¸è¯„è®º|0',
     'boxtype' => 'radio',
     'fieldtype' => 'tinyint',
     'minnumber' => '1',
@@ -1041,7 +1041,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'status',
-    'name' => '×´Ì¬',
+    'name' => 'çŠ¶æ€',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -1071,7 +1071,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'readpoint',
-    'name' => 'ÔÄ¶ÁÊÕ·Ñ',
+    'name' => 'é˜…è¯»æ”¶è´¹',
     'tips' => '',
     'css' => '',
     'minlength' => '0',
@@ -1110,7 +1110,7 @@ OEM°æ|OEM°æ',
     'modelid' => '2',
     'siteid' => '1',
     'field' => 'username',
-    'name' => 'ÓÃ»§Ãû',
+    'name' => 'ç”¨æˆ·å',
     'tips' => '',
     'css' => '',
     'minlength' => '0',

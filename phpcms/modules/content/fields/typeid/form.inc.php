@@ -10,7 +10,7 @@
 		$usable_array = array();
 		if($usable_type) $usable_array = explode(',',$usable_type);
 		
-		//»ñÈ¡Õ¾µãID
+		//è·å–ç«™ç‚¹ID
 		if(intval($_GET['siteid'])){
 			$siteid = intval($_GET['siteid']);
 		}else{
@@ -24,3 +24,4 @@
 		}
 		return form::select($data,$value,'name="info['.$field.']" id="'.$field.'" '.$formattribute.' '.$css,L('copyfrom_tips'));
 	}
+

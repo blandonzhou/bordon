@@ -1,20 +1,20 @@
 <?php
 /**
- * »áÔ±½Ó¿Ú
+ * ä¼šå‘˜æ¥å£
  *
  */
 class member_interface {
-	//Êı¾İ¿âÁ¬½Ó
+	//æ•°æ®åº“è¿æ¥
 	private $db;
 	public function __construct() {
 		$this->db = pc_base::load_model('member_model');
 	}
 	
 	/**
-	 * »ñÈ¡ÓÃ»§ĞÅÏ¢
-	 * @param $username ÓÃ»§Ãû
-	 * @param $type {1:ÓÃ»§id;2:ÓÃ»§Ãû;3:email}
-	 * @return $mix {-1:ÓÃ»§²»´æÔÚ;userinfo:ÓÃ»§ĞÅÏ¢}
+	 * è·å–ç”¨æˆ·ä¿¡æ¯
+	 * @param $username ç”¨æˆ·å
+	 * @param $type {1:ç”¨æˆ·id;2:ç”¨æˆ·å;3:email}
+	 * @return $mix {-1:ç”¨æˆ·ä¸å­˜åœ¨;userinfo:ç”¨æˆ·ä¿¡æ¯}
 	 */
 	public function get_member_info($mix, $type=1) {
 		$mix = safe_replace($mix);
@@ -36,11 +36,11 @@ class member_interface {
 	}
 	
 	/**
-	 * ½«ÎÄÕÂ¼ÓÈëÊÕ²Ø¼Ğ
-	 * @param int $cid ÎÄÕÂid
-	 * @param int $userid »áÔ±id
-	 * @param string $title ÎÄÕÂ±êÌâ
-	 * @param $mix {-1:¼ÓÈëÊ§°Ü;$id:¼ÓÈë³É¹¦£¬·µ»ØÊÕ²Øid}
+	 * å°†æ–‡ç« åŠ å…¥æ”¶è—å¤¹
+	 * @param int $cid æ–‡ç« id
+	 * @param int $userid ä¼šå‘˜id
+	 * @param string $title æ–‡ç« æ ‡é¢˜
+	 * @param $mix {-1:åŠ å…¥å¤±è´¥;$id:åŠ å…¥æˆåŠŸï¼Œè¿”å›æ”¶è—id}
 	 */
 	public function add_favorite($cid, $userid, $title) {
 		$cid = intval($cid);
@@ -56,9 +56,9 @@ class member_interface {
 	}
 
 	/**
-	 * ¸ù¾İuidÔö¼ÓÓÃ»§»ı·Ö
-	 * @param int $userid	ÓÃ»§id
-	 * @param int $point	µãÊı
+	 * æ ¹æ®uidå¢åŠ ç”¨æˆ·ç§¯åˆ†
+	 * @param int $userid	ç”¨æˆ·id
+	 * @param int $point	ç‚¹æ•°
 	 * @return boolean
 	 */
 	public function add_point($userid, $point) {

@@ -54,7 +54,7 @@ EOF;
 							"token"     : "'.md5('unique_salt' . time()).'"
 						},
                                                 "sizeLimit" : "99999999999 ",
-						"buttonText" : "Ñ¡ÔñÎÄ¼þ",
+						"buttonText" : "é€‰æ‹©æ–‡ä»¶",
 						"swf"      : "'.JS_PATH.'uploadify/uploadify.swf",
 				
 						"uploader" : "'.APP_PATH.'uploadify.php",
@@ -72,3 +72,4 @@ EOF;
 
 		return $string;
 	}
+

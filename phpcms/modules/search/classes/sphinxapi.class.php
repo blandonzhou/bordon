@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  sphinxËÑË÷½Ó¿ÚÀà
+ *  sphinxæœç´¢æŽ¥å£ç±»
  */
 //
 // $Id: sphinxapi.php 2055 2009-11-06 23:09:58Z shodan $
@@ -1627,3 +1627,4 @@ class SphinxClient
 //
 // $Id: sphinxapi.php 2055 2009-11-06 23:09:58Z shodan $
 //
+

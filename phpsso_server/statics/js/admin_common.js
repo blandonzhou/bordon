@@ -6,15 +6,15 @@ function redirect(url) {
 	if(url.indexOf('://') == -1 && url.substr(0, 1) != '/' && url.substr(0, 1) != '?') url = $('base').attr('href')+url;
 	location.href = url;
 }
-//¹ö¶¯Ìõ
+//æ»šåŠ¨æ¡
 $(function(){
 	//inputStyle
 	$(":text").addClass('input-text');
 })
 
 /**
- * È«Ñ¡checkbox,×¢Òâ£º±êÊ¶checkbox id¹Ì¶¨ÎªÎªcheck_box
- * @param string name ÁĞ±ícheckÃû³Æ,Èç uid[]
+ * å…¨é€‰checkbox,æ³¨æ„ï¼šæ ‡è¯†checkbox idå›ºå®šä¸ºä¸ºcheck_box
+ * @param string name åˆ—è¡¨checkåç§°,å¦‚ uid[]
  */
 function selectall(name) {
 	if ($("#check_box").attr("checked")==false) {

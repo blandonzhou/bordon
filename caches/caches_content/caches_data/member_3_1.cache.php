@@ -4,7 +4,7 @@ return array (
   array (
     'id' => '258',
     'catid' => '13',
-    'title' => '中国电影报道',
+    'title' => '涓浗鐢靛奖鎶ラ亾',
     'url' => 'http://123.123.110.110:9999/phpcms/index.php?m=content&c=index&a=show&catid=13&id=258',
     'username' => 'aaa',
     'sysadd' => '0',
@@ -26,7 +26,7 @@ return array (
   array (
     'id' => '256',
     'catid' => '13',
-    'title' => '[三只小鸟].S01E16',
+    'title' => '[涓夊彧灏忛笩].S01E16',
     'url' => 'http://123.123.110.110:9999/phpcms/index.php?m=content&c=index&a=show&catid=13&id=256',
     'username' => 'aaa',
     'sysadd' => '0',

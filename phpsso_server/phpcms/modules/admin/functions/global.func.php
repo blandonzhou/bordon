@@ -1,9 +1,9 @@
 <?php 
 
 	/**
-	 * Éú³É¼ÓÃÜºóµÄÃÜÂë
-	 * @param string $password ÃÜÂë
-	 * @return array ¼ÓÃÜºóµÄÃÜÂë
+	 * ç”ŸæˆåŠ å¯†åŽçš„å¯†ç 
+	 * @param string $password å¯†ç 
+	 * @return array åŠ å¯†åŽçš„å¯†ç 
 	 */
 	function creat_password($password) {
 		$encrypt = substr(md5(rand()), 0, 6);
@@ -11,9 +11,9 @@
 	}
 
 	/**
-	 * ·¢ËÍÊý¾Ý
-	 * @param $action ²Ù×÷
-	 * @param $data Êý¾Ý
+	 * å‘é€æ•°æ®
+	 * @param $action æ“ä½œ
+	 * @param $data æ•°æ®
 	 */
 	function ps_send($url, $data = null, $key) {
 		$s = $sep = '';
@@ -47,15 +47,15 @@
 	}
 	
 	/**
-	 *  postÊý¾Ý
-	 *  @param string $url		postµÄurl
-	 *  @param int $limit		·µ»ØµÄÊý¾ÝµÄ³¤¶È
-	 *  @param string $post		postÊý¾Ý£¬×Ö·û´®ÐÎÊ½username='dalarge'&password='123456'
-	 *  @param string $cookie	Ä£Äâ cookie£¬×Ö·û´®ÐÎÊ½username='dalarge'&password='123456'
-	 *  @param string $ip		ipµØÖ·
-	 *  @param int $timeout		Á¬½Ó³¬Ê±Ê±¼ä
-	 *  @param bool $block		ÊÇ·ñÎª×èÈûÄ£Ê½
-	 *  @return string			·µ»Ø×Ö·û´®
+	 *  postæ•°æ®
+	 *  @param string $url		postçš„url
+	 *  @param int $limit		è¿”å›žçš„æ•°æ®çš„é•¿åº¦
+	 *  @param string $post		postæ•°æ®ï¼Œå­—ç¬¦ä¸²å½¢å¼username='dalarge'&password='123456'
+	 *  @param string $cookie	æ¨¡æ‹Ÿ cookieï¼Œå­—ç¬¦ä¸²å½¢å¼username='dalarge'&password='123456'
+	 *  @param string $ip		ipåœ°å€
+	 *  @param int $timeout		è¿žæŽ¥è¶…æ—¶æ—¶é—´
+	 *  @param bool $block		æ˜¯å¦ä¸ºé˜»å¡žæ¨¡å¼
+	 *  @return string			è¿”å›žå­—ç¬¦ä¸²
 	 */
 	
 	function ps_post($url, $limit = 0, $post = '', $cookie = '', $ip = '', $timeout = 15, $block = true) {
@@ -116,7 +116,7 @@
 	}
 	
 	/**
-	 * ¹ýÂË×Ö·û´®
+	 * è¿‡æ»¤å­—ç¬¦ä¸²
 	 * @param $string
 	 */
 	function ps_stripslashes($string) {
@@ -129,7 +129,7 @@
 	}
 	
 	/**
-	 * ¸ù¾Ýphpsso uid»ñÈ¡Í·Ïñurl
+	 * æ ¹æ®phpsso uidèŽ·å–å¤´åƒurl
 	 */
 	function ps_getavatar($uid, $is_url=0) {
 		$dir1 = ceil($uid / 10000);
@@ -145,7 +145,7 @@
 	}
 	
 	/**
-	 * É¾³ýÄ¿Â¼
+	 * åˆ é™¤ç›®å½•
 	 */
 	function ps_unlink($dir) {
 		if(is_dir($dir)) {

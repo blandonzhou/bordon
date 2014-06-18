@@ -7,7 +7,7 @@ class messagequeue extends admin {
 
 	private $db;
 	/**
-	 * Îö¹¹º¯Êý
+	 * æžæž„å‡½æ•°
 	 */
 	public function __construct() {	
 		parent::__construct();
@@ -15,7 +15,7 @@ class messagequeue extends admin {
 	}
 	
 	/**
-	 * ¶ÓÁÐ¹ÜÀí
+	 * é˜Ÿåˆ—ç®¡ç†
 	 */
 	public function manage() {
 		$where = '';
@@ -35,7 +35,7 @@ class messagequeue extends admin {
 	
 
 	/**
-	 * É¾³ý¶ÓÁÐÐÅÏ¢
+	 * åˆ é™¤é˜Ÿåˆ—ä¿¡æ¯
 	 */
 	public function delete() {
 		$idarr = isset($_POST['id']) ? $_POST['id'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
@@ -48,24 +48,24 @@ class messagequeue extends admin {
 	}
 
 	/**
-	 * ÖØÐÂÍ¨Öª
+	 * é‡æ–°é€šçŸ¥
 	 */
 	public function renotice() {
 		$noticeid = isset($_POST['noticeid']) ? $_POST['noticeid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
 		$appid = isset($_POST['appid']) ? $_POST['appid'] : showmessage(L('illegal_parameters'), HTTP_REFERER);
 		if ($noticeinfo = $this->db->get_one(array('id'=>$noticeid))) {
-			//Í¨Öªapp noticedata ·µ»ØÍ¨Öª³É¹¦µÄappid 1
+			//é€šçŸ¥app noticedata è¿”å›žé€šçŸ¥æˆåŠŸçš„appid 1
 			//debug post appid.phpsso.php?data=noticeinfo[noticedata];
 			$applist = getcache('applist');
 			$url = $applist[$appid]['url'].$applist[$appid]['apifilename'];
 			$data = string2array($noticeinfo['noticedata']);
 			$data['action'] = $noticeinfo['operation'];
 			
-			//×ª»»ÖÐÎÄ±àÂë
+			//è½¬æ¢ä¸­æ–‡ç¼–ç 
 			if (CHARSET != $applist[$appid]['charset'] && isset($data['action']) && $data['action'] == 'member_add') {
 				if(isset($data['username']) && !empty($data['username'])) {
-					if(CHARSET == 'utf-8') {	//ÅÐ¶Ïphpsso×Ö·û¼¯ÊÇ·ñÎªutf-8±àÂë
-						//Ó¦ÓÃ×Ö·û¼¯Èç¹ûÊÇutf-8£¬²¢ÇÒÓÃ»§ÃûÊÇutf-8±àÂë£¬×ª»»ÓÃ»§ÃûÎªphpsso×Ö·û¼¯£¬Èç¹ûÎªÓ¢ÎÄ£¬is_utf8·µ»Øfalse£¬²»½øÐÐ×ª»»
+					if(CHARSET == 'utf-8') {	//åˆ¤æ–­phpssoå­—ç¬¦é›†æ˜¯å¦ä¸ºutf-8ç¼–ç 
+						//åº”ç”¨å­—ç¬¦é›†å¦‚æžœæ˜¯utf-8ï¼Œå¹¶ä¸”ç”¨æˆ·åæ˜¯utf-8ç¼–ç ï¼Œè½¬æ¢ç”¨æˆ·åä¸ºphpssoå­—ç¬¦é›†ï¼Œå¦‚æžœä¸ºè‹±æ–‡ï¼Œis_utf8è¿”å›žfalseï¼Œä¸è¿›è¡Œè½¬æ¢
 						if(!is_utf8($data['username'])) {
 							$data['username'] = iconv(CHARSET, $applist[$appid]['charset'], $data['username']);
 						}
@@ -79,21 +79,21 @@ class messagequeue extends admin {
 			$tmp_s = strstr($url, '?') ? '&' : '?';
 			$status = ps_send($url.$tmp_s.'appid='.$appid, $data, $applist[$appid]['authkey']);
 
-			//Í¨ÐÅ´ÎÊý+1
+			//é€šä¿¡æ¬¡æ•°+1
 			$this->db->update(array('totalnum'=>'+=1', 'dateline'=>SYS_TIME), array('id'=>$noticeid));
 			
 			if($status == 1) {
-				//ÖØÖÃÏûÏ¢¶ÓÁÐappÍ¨ÐÅ×´Ì¬
+				//é‡ç½®æ¶ˆæ¯é˜Ÿåˆ—appé€šä¿¡çŠ¶æ€
 				$appstatusarr = json_decode($noticeinfo['appstatus'], 1);
 				$appstatusarr[$appid] = 1;
 				$appstatus = json_encode($appstatusarr);
 				
-				//È«²¿Í¨Öª³É¹¦ºó¸üÐÂÏûÏ¢¶ÓÁÐ×´Ì¬
+				//å…¨éƒ¨é€šçŸ¥æˆåŠŸåŽæ›´æ–°æ¶ˆæ¯é˜Ÿåˆ—çŠ¶æ€
 				if (!strstr($appstatus, ':0')) {
 					$this->db->update(array('succeed'=>1), array('id'=>$noticeid));
 				}
 				
-				//¸üÐÂÏûÏ¢¶ÓÁÐ
+				//æ›´æ–°æ¶ˆæ¯é˜Ÿåˆ—
 				$this->db->update(array('appstatus'=>$appstatus), array('id'=>$noticeid));
 				exit('1');
 			} else {

@@ -1,14 +1,14 @@
 <?php
 /**
- * 解析评论ID
- * @param $commentid 评论ID
+ * 瑙ｆ瀽璇勮ID
+ * @param $commentid 璇勮ID
  */
 function decode_commentid($commentid) {
 	return explode('-', $commentid);
 }
 
 /**
- * 方向生成
+ * 鏂瑰悜鐢熸垚
  * @param $direction
  */
 function direction($direction) {
@@ -26,9 +26,9 @@ function direction($direction) {
 }
  
 /**
- * 通过API接口调用标题和URL数据
- * @param string $commentid    评论ID
- * @return array($title, $url)   返回数据
+ * 閫氳繃API鎺ュ彛璋冪敤鏍囬鍜孶RL鏁版嵁
+ * @param string $commentid    璇勮ID
+ * @return array($title, $url)   杩斿洖鏁版嵁
  */
 function get_comment_api($commentid) {
 	list($modules, $contentid, $siteid) = id_decode($commentid);

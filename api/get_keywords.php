@@ -1,6 +1,6 @@
 <?php
 /**
- * »ñÈ¡¹Ø¼ü×Ö½Ó¿Ú
+ * èŽ·å–å…³é”®å­—æŽ¥å£
  */
 defined('IN_PHPCMS') or exit('No permission resources.'); 
 
