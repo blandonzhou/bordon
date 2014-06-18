@@ -148,7 +148,7 @@ class content extends admin {
 					$l = count($local_videos);
 				
 					for($i = 0;$i<$l;$i++){
-						$local_video_path =iconv("gb2312","utf-8",$local_videos[$i]);
+						$local_video_path =$local_videos[$i];
 						//echo $local_video_path;
 						$local_video = explode('.',$local_video_path);
 						
