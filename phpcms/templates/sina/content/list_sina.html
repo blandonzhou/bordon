@@ -35,7 +35,7 @@
                                 <div class="tit04">{$CATEGORYS[$catid][catname]}</div>
                                 <div class="blk07">
                                     <div class="pic"> 
-                                        {pc:content  action="position" posid="19" order="listorder DESC" num="1" catid="$catid" moreinfo="1" page="$page"}
+                                        {pc:content  action="position" posid="19" order="listorder DESC" num="1" catid="$catid" moreinfo="1"}
                                         {loop $data $r}
                                         {php $img = explode('.',$r[local_video])}
                                         {php $src = $img[0]}		  
@@ -54,11 +54,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {if $pages}
-                            <div class="pages"> 
-                            {$pages}
-                            </div>
-                            {/if}
                         </div>
                         <div class="p_r">
                             <div class="blk08">
@@ -153,7 +148,7 @@
                                     </div>
                                     <div class="blk02">
                                         <p class="page" >
-                                            {$sina_pages}
+                                            {$pages}
                                         </p>
                                     </div>
                                 </div>
