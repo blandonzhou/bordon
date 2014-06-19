@@ -278,51 +278,109 @@ class content extends admin {
         }
     }
 
-    public function edit() {
-			//设置cookie 在附件添加处调用
-			param::set_cookie('module', 'content');
-			if(isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue'])) {
-				define('INDEX_HTML',true);
-				$id = $_POST['info']['id'] = intval($_POST['id']);
-				$catid = $_POST['info']['catid'] = intval($_POST['info']['catid']);
-				if(trim($_POST['info']['title'])=='') showmessage(L('title_is_empty'));
-				$modelid = $this->categorys[$catid]['modelid'];
-				$this->db->set_model($modelid);
-				$this->db->edit_content($_POST['info'],$id);
-				if(isset($_POST['dosubmit'])) {
-					showmessage(L('update_success').L('2s_close'),'blank','','','function set_time() {$("#secondid").html(1);}setTimeout("set_time()", 500);setTimeout("window.close()", 1200);');
-				} else {
-					showmessage(L('update_success'),HTTP_REFERER);
-				}
-			} else {
-				$show_header = $show_dialog = $show_validator = '';
-				//从数据库获取内容
-				$id = intval($_GET['id']);
-				if(!isset($_GET['catid']) || !$_GET['catid']) showmessage(L('missing_part_parameters'));
-				$catid = $_GET['catid'] = intval($_GET['catid']);
-				
-				$this->model = getcache('model', 'commons');
-				
-				param::set_cookie('catid', $catid);
-				$category = $this->categorys[$catid];
-				$modelid = $category['modelid'];
-				$this->db->table_name = $this->db->db_tablepre.$this->model[$modelid]['tablename'];
-				$r = $this->db->get_one(array('id'=>$id));
-				$this->db->table_name = $this->db->table_name.'_data';
-				$r2 = $this->db->get_one(array('id'=>$id));
-				if(!$r2) showmessage(L('subsidiary_table_datalost'),'blank');
-				$data = array_merge($r,$r2);
-				$data = array_map('htmlspecialchars_decode',$data);
-				require CACHE_MODEL_PATH.'content_form.class.php';
-				$content_form = new content_form($modelid,$catid,$this->categorys);
+    public function edit()
+    {
+        //设置cookie 在附件添加处调用
+        param::set_cookie('module', 'content');
+        if (isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue']))
+        {
+            define('INDEX_HTML', true);
+            $id = $_POST['info']['id'] = intval($_POST['id']);
+            $catid = $_POST['info']['catid'] = intval($_POST['info']['catid']);
+            if (trim($_POST['info']['title']) == '')
+                showmessage(L('title_is_empty'));
+            if (substr($_POST['info']['local_video'], 0, 1) == ',')
+            {
+                //添加内容时候添加视频 start
+                ini_set("max_execution_time", 600000);
+                //取得视频文件名字	
+                $local_videos = explode(',', $_POST['info']['local_video']);
+                $local_videos = array_filter($local_videos);
+                sort($local_videos);
+                $l = count($local_videos);
+                for ($i = 0; $i < $l; $i++)
+                {
+                    $local_video_path = $local_videos[$i];
+                    $local_video = explode('.', $local_video_path);
+                    $local_video_name = $local_video[0];
+                    $ext = $local_video[1];
+                    $unq_name = uniqid();
+                    //载入ffmpeg
+                    copy($local_video_path,
+                            'uploadfile/video/' . $unq_name . '.' . $ext);
+                    if (FFMPEG_EXT)
+                    {
+                        $jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . 'uploadfile/thumb/' . $unq_name . '.jpg';
+                        exec($jpg);
+                        if ($ext !== 'mp4')
+                        {
+                            //清晰度
+                            $r = intval($_POST['info']['vision']) * 15;
+                            $ffmpeg = 'ffmpeg.exe'; //载入ffmpeg
+                            $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.mp4';
+                            exec($cmd, $status);
+                            pc_base::ftp_upload($unq_name . '.mp4');
+                            /* 销毁原视频 */
+                            @unlink('uploadfile/video/' . $unq_name . '.' . $ext);
+                        }
+                        $insert_name[$i] = $unq_name;
+                        $insert[$i] = $unq_name . '.mp4';
+                    } else
+                    {
+                        showmessage("ffmpeg没有载入");
+                    }
+                }
+                if (!empty($insert_name[0]))
+                {
+                    $_POST['info']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
+                }
+                $_POST['info']['local_video'] = join(',', $insert);
+            }
+            $modelid = $this->categorys[$catid]['modelid'];
+            $this->db->set_model($modelid);
+            $this->db->edit_content($_POST['info'], $id);
+            if (isset($_POST['dosubmit']))
+            {
+                showmessage(L('update_success') . L('2s_close'), 'blank', '',
+                        '',
+                        'function set_time() {$("#secondid").html(1);}setTimeout("set_time()", 500);setTimeout("window.close()", 1200);');
+            } else
+            {
+                showmessage(L('update_success'), HTTP_REFERER);
+            }
+        } else
+        {
+            $show_header = $show_dialog = $show_validator = '';
+            //从数据库获取内容
+            $id = intval($_GET['id']);
+            if (!isset($_GET['catid']) || !$_GET['catid'])
+                showmessage(L('missing_part_parameters'));
+            $catid = $_GET['catid'] = intval($_GET['catid']);
 
-				$forminfos = $content_form->get($data);
-				$formValidator = $content_form->formValidator;
-				include $this->admin_tpl('content_edit');
-			}
-			header("Cache-control: private");
-	}
-	/**
+            $this->model = getcache('model', 'commons');
+
+            param::set_cookie('catid', $catid);
+            $category = $this->categorys[$catid];
+            $modelid = $category['modelid'];
+            $this->db->table_name = $this->db->db_tablepre . $this->model[$modelid]['tablename'];
+            $r = $this->db->get_one(array('id' => $id));
+            $this->db->table_name = $this->db->table_name . '_data';
+            $r2 = $this->db->get_one(array('id' => $id));
+            if (!$r2)
+                showmessage(L('subsidiary_table_datalost'), 'blank');
+            $data = array_merge($r, $r2);
+            $data = array_map('htmlspecialchars_decode', $data);
+            require CACHE_MODEL_PATH . 'content_form.class.php';
+            $content_form = new content_form($modelid, $catid, $this->categorys);
+
+            $forminfos = $content_form->get($data);
+            $formValidator = $content_form->formValidator;
+            include $this->admin_tpl('content_edit');
+        }
+        header("Cache-control: private");
+    }
+
+    /**
 	 * 删除
 	 */
 	public function delete() {
