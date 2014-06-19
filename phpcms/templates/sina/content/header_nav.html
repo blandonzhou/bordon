@@ -60,8 +60,11 @@
                     {loop $data $r}
 
                     {pc:content action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
-                    {php  $cont = count($info)}
-                    <a target="_blank" href="{$r[url]}">{$r[catname]}(共{$cont}集`)</a> 	
+                    <pre>
+                            {php print_r($info);}
+                    </pre>
+                    {php  $cont = count(array_filter($info))}
+                    <a target="_blank" href="{$r[url]}">{$r[catname]}(共{$cont}集)</a> 	
                     {/pc}
                     {/loop}        
                     {/pc}	
