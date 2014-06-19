@@ -102,6 +102,52 @@ class sakai  extends admin{
 				$id  = intval($_POST['video']['id']);
 				$catid = $_POST['video']['catid'] = intval($_POST['video']['catid']);
 				if(trim($_POST['video']['title'])=='') exit('标题必须填写');
+				
+					//添加内容时候添加视频 start
+					ini_set("max_execution_time",600000);
+					//取得视频文件名字	
+					$_POST['video']['local_video']=urldecode($_POST['video']['local_video']);
+					$local_videos = explode(',' , $_POST['video']['local_video'] );
+					$local_videos = array_filter($local_videos);
+					sort($local_videos);
+					$l = count($local_videos);
+
+					for($i = 0;$i<$l;$i++){
+						$local_video_path =$local_videos[$i];
+						//echo $local_video_path;
+						$local_video = explode('.',$local_video_path);
+						
+						$local_video_name = $local_video[0];
+						$ext = $local_video[1];
+						$unq_name = uniqid();
+							//载入ffmpeg
+						copy($local_video_path , 'uploadfile/video/'.$unq_name.'.'.$ext);
+						//copy($local_video_path , 'uploadfile/video/aaabbb.wmv.bak');
+						
+						  if(FFMPEG_EXT){
+                                                                   
+									$jpg=FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext.'  -f  image2  -ss 5 -vframes 1  '.PHPCMS_PATH.'uploadfile/thumb/'.$unq_name.'.jpg';
+									exec($jpg);
+									if($ext !== 'mp4') {
+										//清晰度
+										$r = intval($_POST['video']['vision']) * 15;
+										$ffmpeg = 'ffmpeg.exe';//载入ffmpeg
+										$cmd= FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.mp4';
+										 //die($cmd);
+										 exec($cmd,$status);
+										 pc_base::ftp_upload($unq_name.'.mp4');
+										
+										/* 销毁原视频 */
+										@unlink('uploadfile/video/' . $unq_name . '.' . $ext);
+									} 
+								 $insert_name[$i] = $unq_name;
+								 $insert[$i] = $unq_name . '.mp4';
+								
+						 }else{    
+								showmessage("ffmpeg没有载入"); 
+						 } 
+						 
+				$_POST['video']['local_video'] = join(',' , $insert);		 
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
 				echo $this->db->edit_content($_POST['video'],$id);
