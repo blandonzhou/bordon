@@ -30,6 +30,7 @@ class sakai  extends admin{
 				//添加内容时候添加视频 start
 					ini_set("max_execution_time",600000);
 					//取得视频文件名字	
+					$_POST['video']['local_video']=urldecode($_POST['video']['local_video']);
 					$local_videos = explode(',' , $_POST['video']['local_video'] );
 					$local_videos = array_filter($local_videos);
 					sort($local_videos);
