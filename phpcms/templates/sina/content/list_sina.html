@@ -9,52 +9,26 @@
                 <script language="javascript" src="{APP_PATH}statics/sina/js/jquery-1.8.0.js" ></script>
                 <script language="javascript" src="{APP_PATH}statics/sina/js/common.js" ></script>
                 </head>
-
                 {template "content","header_nav"}
-
                 <div class="wrap"> 
-
                     <div class="blk_login">
                         <p class="lf fred"><a class="saveBtn" href="javascript:void(0)" onclick="addFavorite(window.location.href, document.title)">收藏</a></p>
                         <script type="text/javascript">
-
                             function addFavorite(sURL, sTitle) {
-
                                 try {
-
                                     window.external.addFavorite(sURL, sTitle);
-
                                 }
-
                                 catch (e) {
-
                                     try {
-
                                         window.sidebar.addPanel(sTitle, sURL, "");
-
                                     }
-
                                     catch (e) {
-
-                                        //
-
                                     }
-
                                 }
-
                             }
-
-
-
                         </script> 
                     </div>
-
-
-
-                    <!-- main --> 
-
                     <!--part school intro start-->
-
                     <div class="part_school clearfix">
                         <div class="p_l">
                             <div class="cont">
@@ -69,7 +43,6 @@
                                     <div class="txt_bg"></div>
                                     <div class="txt">
                                         <h3 class="update">what?</h3>
-
                                         <h4>
                                             <a href="{$r[url]}" target="_blank">
 
@@ -78,12 +51,9 @@
                                         <p> <a href="{$r[url]}" target="_blank" class="vidoPlay">{$r[title]}</a></p>
                                         {/loop}  
                                         {/pc}  
-
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="p_r">
                             <div class="blk08">
@@ -106,15 +76,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <!--part school intro end--> 
-
-                    <!--part01 start-->
-
                     <div class="part01 clearfix">
-
                         <div class="p_l">
-
                             <style>
                                 #search-data{margin:10px 0;}
                                 #search-data .searchitem em {
@@ -146,13 +109,10 @@
                                         {/loop} </dt>
                                 </dl>       
                             </div>
-
-
                             <div class="cont_bg">
                                 <div class="cont">
                                     <div class="tit03  clearfix">
                                         <h2><span class="tt zxkc"></span></h2>
-
                                     </div>
                                     <div class="blk01">
                                         {php $sql = structure_filters_sql($modelid);}
@@ -160,41 +120,28 @@
                                         //echo $sql;
                                         //exit();
                                         ?>
-
                                         {php $urlrule = makeurlrule()}
-
                                         {pc:content  action="lists" catid="$catid" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule"}   
-
-
                                         {php $l = count($info)}
-
                                         {loop $info $v} 
                                         {php $img = explode('.',$v[local_video])}
                                         {php $src = $img[0]}
-
-
                                         <div class="vido">
                                             <div class="pic">
                                                 <a href="{$v[url]}" target="_blank">
                                                     <img height="90" width="120" src="statics/sina/images/d.gif" data-src="{$v[thumb]}" ></a></div>
                                             <p class="tit fbluel"><a target="_blank" href="{$v[url]}">
-
                                                     {$v[title]}
                                                 </a></p>
                                             <p class="intro">人气:<i>
-
                                                     <?php
                                                     $hitsid = 'c-11-'.intval($v['id']);
                                                     $hit_model = pc_base::load_model('hits_model');
                                                     $hit = $hit_model->get_one(array('hitsid'=>$hitsid),'views');
                                                     echo $hit['views'];
                                                     ?> 
-
                                                 </i></p>
                                         </div>
-
-
-
                                         {/loop}
                                         {/pc}
 
@@ -214,11 +161,9 @@
                                     <span id="sub02_t1">总</span> <span id="sub02_t2">周</span> <span id="sub02_t3">月</span> </div>
                                 <div id="sub02_c1" class="sub02_c">
                                     <ul class="list02">
-
                                         {pc:content action="hits"  num="9" catid="$catid" order="views DESC"}
                                         {php $i =1}
                                         {loop $data $r}
-
                                         <li> <em>{$i}</em>
                                             <a target="_blank" href="{$r[url]}">
                                                 {$CATEGORYS[$r[catid]][catname]}:{$r[title]}
@@ -227,16 +172,13 @@
                                         {php $i++}
                                         {/loop}
                                         {/pc}
-
                                     </ul>
                                 </div>
-
                                 <div style="display:none" id="sub02_c2" class="sub02_c">
                                     <ul class="list02">
                                         {pc:content action="hits" catid="$catid" num="9" order="weekviews DESC"}
                                         {php $i =1}
                                         {loop $data $r}
-
                                         <li> <em>{$i}</em>
                                             <a target="_blank" href="{$r[url]}">
                                                 {$CATEGORYS[$r[catid]][catname]}:{$r[title]}
@@ -247,13 +189,11 @@
                                         {/pc}
                                     </ul>
                                 </div>
-
                                 <div style="display:none" id="sub02_c3" class="sub02_c">
                                     <ul class="list02">
                                         {pc:content action="hits" catid="$catid" num="9" order="monthviews DESC"}
                                         {php $i =1}
                                         {loop $data $r}
-
                                         <li> <em>{$i}</em>
                                             <a target="_blank" href="{$r[url]}">
                                                 {$CATEGORYS[$r[catid]][catname]}:{$r[title]}
@@ -266,19 +206,10 @@
                                 </div>
                             </div>
                             <script type="text/javascript" language="javascript">
-
-<!--//--><![CDATA[//><!--
-
                                 var SubShow_02 = new SubShowClass("sub02", "onmouseover");
-
                                 SubShow_02.addLabel("sub02_t1", "sub02_c1");
-
                                 SubShow_02.addLabel("sub02_t2", "sub02_c2");
-
                                 SubShow_02.addLabel("sub02_t3", "sub02_c3");
-
-                                //--><!]]>
-
                             </script>
                             <div class="blk03">
                                 <div class="tit01">
@@ -288,22 +219,15 @@
                                 {loop $data $r}
                                 {php $img = explode('.',$v[local_video])}
                                 {php $src = $img[0]}
-
                                 <div class="pictxt addAtt">
                                     <div  class="pic"> <img src="{$r[thumb]}" width="50" height="50" />  </div>
                                     <div class="txt">
                                         <h2 class="fblue"> <a href="{$r[url]}" target="_blank">{$CATEGORYS[$r[catid]][catname]}: {$r[title]}</a> </h2>
-
                                     </div>
                                 </div>
-
                                 {/loop}  
                                 {/pc}			
-
-
-
                             </div>
-
                         </div>
                     </div>
 
@@ -312,58 +236,18 @@
 
                 </div>
                 <div class="wrap"> 
-
-                    <!--part02 start-->
-
-                    <div class="part02">
-                        <div class="tit02">
-                            <h2 class="fbluel"><a target="_blank" href="url" onclick="javascript:void(0);
-                                    return false;">讲师</a></h2>
-                        </div>
-                        <div class="blk05 clearfix" id="scr_cont1">
-                            <div class="pics fblue clearfix">
-                                {pc:content  action="lists" catid="$catid" order="updatetime DESC"  return="info" num="12"}   
-
-
-                                {loop $info $v} 
-
-                                <div class="pic"> 
-
-                                    <img width="72" height="72"  src="{$v[tea]}"> <span>
-                                            <i class="">{$v[tea_name]}</i></span> 
-                                </div>
-                                {/loop}
-                                {/pc}  
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--part02 end-->
-
                     <div class="part_b2t" ><a href="#" target="_self" class="b2t" hidefocus>back2Top</a></div>
-
                     <!-- end main --> 
-
                 </div>
                 <script src="{APP_PATH}statics/sina/js/move.js"></script>
                 <!-- footer -->
 
                 <div style="padding: 15px; font-size: 12px; line-height: 20px; text-align: center;" class="footer">
                     {pc:get sql="SELECT * FROM v9_page where catid='53'" return="page_data"}
-
                     {loop $page_data $v}
-
-
-
                     {$v[content]}
-
-
                     {/loop}
                     {/pc}
-
                 </div>
                 </body>
                 </html>
