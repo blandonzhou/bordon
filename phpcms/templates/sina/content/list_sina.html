@@ -232,34 +232,6 @@
                         </div>
                     </div>
                 </div>
-                
-                               <div class="wrap"> 
-                     <!--part02 start-->
-                     <div class="part02">
-                         <div class="tit02">
-                             <h2 class="fbluel"><a target="_blank" href="url" onclick="javascript:void(0);
-                                     return false;">分类</a></h2>
-                         </div>
-                         <div class="blk05 clearfix" id="scr_cont1">
-                             <div class="pics fblue clearfix">
-                                 {pc:content  action="category" catid="$catid" siteid="$siteid" order="listorder ASC"}   
-                                 {loop $data $r} 
- <?php print_r($r);?>
-                                <div class="pic"> 
-                                   <a href="{$r[url]}"><img width="72" height="72"  src="{$r[url]}"></a> 
-                                      <span><i class="">{$r[catname]}</i></span> 
-                               </div>
-                               {/loop}
-                            {/pc}  
-                            </div>
-                        </div>
-                    </div>
-                    <!--part02 end-->
-                      <div class="part_b2t" ><a href="#" target="_self" class="b2t" hidefocus>back2Top</a></div>
-                      <!-- end main --> 
-                  </div>
-                  
-                  
                 <script src="{APP_PATH}statics/sina/js/move.js"></script>
                 <!-- footer -->
                 <div style="padding: 15px; font-size: 12px; line-height: 20px; text-align: center;" class="footer">

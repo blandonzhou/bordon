@@ -95,7 +95,7 @@ height: 31px; }
 .part01 .p_l .cont_bg { background: url(../images/pubClass2012_class_bg1.png) 0 0 repeat-x; overflow: hidden; zoom: 1; }
 .part01 .p_l .cont { border: 1px solid #dadada; border-top: none; margin-top: 20px; }
 .part01 .p_r { width: 250px; float: right; }
-.part02 { background: url(../images/pubClass2012_yan_rpX3.png) 0 0 repeat-x; height: 296px; border: 1px solid #dbdbdb; padding: 5px 10px; margin-top: 10px; }
+.part02 { background: url(../images/pubClass2012_yan_rpX3.png) 0 0 repeat-x; border: 1px solid #dbdbdb; padding: 5px 10px; margin-top: 10px; }
 .part_school { overflow: hidden; zoom: 1 }
 .part_school .p_l { background: none repeat scroll 0 0 #EAEAEA; border: 1px solid #AEAEAE; width: 688px; float: left; }
 .part_school .p_r { width: 248px; border: 1px #e5e5e5 solid; float: right; background: #fff; height: 349px; }
@@ -161,7 +161,7 @@ display: block; height: 22px; width: 22px; cursor: pointer }
 
 .blk_login { padding: 5px 10px 0 0; line-height: 30px; height: 30px; }
 .blk_login .saveBtn { background-position: 0 8px; display: block; width: 130px; height: 28px; overflow: hidden; zoom: 1; float: left; padding-left: 10px; }
-.blk01 { height: 860px; overflow: hidden; zoom: 1; padding-left: 10px; background: #fff; }
+.blk01 { overflow: hidden; zoom: 1; padding-left: 10px; background: #fff; }
 .blk01 .vido { padding: 10px; width: 140px; height: 155px; }
 .blk01 .vido .tit { font-size: 12px; text-align: left; }
 .blk02 { padding: 20px 0; }
