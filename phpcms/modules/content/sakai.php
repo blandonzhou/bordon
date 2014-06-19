@@ -146,7 +146,11 @@ class sakai  extends admin{
 						 }else{    
 								showmessage("ffmpeg没有载入"); 
 						 } 
-						 
+				f( !empty ($insert_name[0])){
+				
+					$_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/'  . $insert_name[0]. '.jpg';
+				
+				}		 
 				$_POST['video']['local_video'] = join(',' , $insert);		 
 				$modelid = $this->categorys[$catid]['modelid'];
 				$this->db->set_model($modelid);
