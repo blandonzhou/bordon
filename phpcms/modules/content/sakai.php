@@ -53,7 +53,7 @@ class sakai  extends admin{
 									exec($jpg);
 									if($ext !== 'mp4') {
 										//清晰度
-										$r = intval($_POST['video']['quality']) * 15;
+										$r = intval($_POST['video']['vision']) * 15;
 										$ffmpeg = 'ffmpeg.exe';//载入ffmpeg
 										$cmd= FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.mp4';
 										 //die($cmd);
