@@ -117,180 +117,168 @@ class content extends admin {
 			include $this->admin_tpl('content_quick');
 		}
 	}
-	public function add() {
-		if(isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue'])) {
-		
-		
-			define('INDEX_HTML',true);
-			$catid = $_POST['info']['catid'] = intval($_POST['info']['catid']);
-			//if(trim($_POST['info']['title'])=='') showmessage(L('title_is_empty'));
-			$category = $this->categorys[$catid];
-			if($category['type']==0) {
-				$modelid = $this->categorys[$catid]['modelid'];
-				$this->db->set_model($modelid);
-				//如果该栏目设置了工作流，那么必须走工作流设定
-				$setting = string2array($category['setting']);
-				$workflowid = $setting['workflowid'];
-				if($workflowid && $_POST['status']!=99) {
-					//如果用户是超级管理员，那么则根据自己的设置来发布
-					$_POST['info']['status'] = $_SESSION['roleid']==1 ? intval($_POST['status']) : 1;
-				} else {
-					$_POST['info']['status'] = 99;
-				}
-				
-	
-				//添加内容时候添加视频 start
-					ini_set("max_execution_time",600000);
-					//取得视频文件名字	
-					$local_videos = explode(',' , $_POST['info']['local_video'] );
-					$local_videos = array_filter($local_videos);
-					sort($local_videos);
-					$l = count($local_videos);
-				
-					for($i = 0;$i<$l;$i++){
-						$local_video_path =$local_videos[$i];
-						//echo $local_video_path;
-						$local_video = explode('.',$local_video_path);
-						
-						$local_video_name = $local_video[0];
-					
-					
-						
-						$ext = $local_video[1];
-					
-						$unq_name = uniqid();
-							//载入ffmpeg
-						copy($local_video_path , 'uploadfile/video/'.$unq_name.'.'.$ext);
-						//copy($local_video_path , 'uploadfile/video/aaabbb.wmv.bak');
-						
-						  if(FFMPEG_EXT){
-                                                                   
-									$jpg=FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext.'  -f  image2  -ss 5 -vframes 1  '.PHPCMS_PATH.'uploadfile/thumb/'.$unq_name.'.jpg';
-									exec($jpg);
+	public function add()
+    {
+        if (isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue']))
+        {
+            define('INDEX_HTML', true);
+            $catid = $_POST['info']['catid'] = intval($_POST['info']['catid']);
+            //if(trim($_POST['info']['title'])=='') showmessage(L('title_is_empty'));
+            $category = $this->categorys[$catid];
+            if ($category['type'] == 0)
+            {
+                $modelid = $this->categorys[$catid]['modelid'];
+                $this->db->set_model($modelid);
+                //如果该栏目设置了工作流，那么必须走工作流设定
+                $setting = string2array($category['setting']);
+                $workflowid = $setting['workflowid'];
+                if ($workflowid && $_POST['status'] != 99)
+                {
+                    //如果用户是超级管理员，那么则根据自己的设置来发布
+                    $_POST['info']['status'] = $_SESSION['roleid'] == 1 ? intval($_POST['status']) : 1;
+                } else
+                {
+                    $_POST['info']['status'] = 99;
+                }
+                if (substr( $_POST['info']['local_video'], 0, 1 )==',')
+                {
+                    //添加内容时候添加视频 start
+                    ini_set("max_execution_time", 600000);
+                    //取得视频文件名字	
+                    $local_videos = explode(',', $_POST['info']['local_video']);
+                    $local_videos = array_filter($local_videos);
+                    sort($local_videos);
+                    $l = count($local_videos);
+                    for ($i = 0; $i < $l; $i++)
+                    {
+                        $local_video_path = $local_videos[$i];
+                        $local_video = explode('.', $local_video_path);
+                        $local_video_name = $local_video[0];
+                        $ext = $local_video[1];
+                        $unq_name = uniqid();
+                        //载入ffmpeg
+                        copy($local_video_path,
+                                'uploadfile/video/' . $unq_name . '.' . $ext);
+                        if (FFMPEG_EXT)
+                        {
+                            $jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . 'uploadfile/thumb/' . $unq_name . '.jpg';
+                            exec($jpg);
+                            if ($ext !== 'mp4')
+                            {
+                                //清晰度
+                                $r = intval($_POST['info']['vision']) * 15;
+                                $ffmpeg = 'ffmpeg.exe'; //载入ffmpeg
+                                $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.mp4';
+                                exec($cmd, $status);
+                                pc_base::ftp_upload($unq_name . '.mp4');
+                                /* 销毁原视频 */
+                                @unlink('uploadfile/video/' . $unq_name . '.' . $ext);
+                            }
+                            $insert_name[$i] = $unq_name;
+                            $insert[$i] = $unq_name . '.mp4';
+                        } else
+                        {
+                            showmessage("ffmpeg没有载入");
+                        }
+                    }
+                    if (!empty($insert_name[0]))
+                    {
+                        $_POST['info']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
+                    }
+                    $_POST['info']['local_video'] = join(',', $insert);
+                }
 
-									if($ext !== 'mp4') {
-										
-										//清晰度
-										
-										$r = intval($_POST['info']['vision']) * 15;
-									
-										$ffmpeg = 'ffmpeg.exe';//载入ffmpeg
-										 
-										$cmd= FFMPEG_EXT. ' -i  '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' '.PHPCMS_PATH.'uploadfile/video/' . $unq_name . '.mp4';
-									
-									
-									         
-										 //die($cmd);
-										 exec($cmd,$status);
-										 pc_base::ftp_upload($unq_name.'.mp4');
-										
-										/* 销毁原视频 */
-										@unlink('uploadfile/video/' . $unq_name . '.' . $ext);
-										 
-										
-										
-									} 
-								 $insert_name[$i] = $unq_name;
-								 $insert[$i] = $unq_name . '.mp4';
-								
-						 }else{    
-								showmessage("ffmpeg没有载入"); 
-						 } 
-								
-					}
-				
-					
-			
-			
-				
-				if( !empty ($insert_name[0])){
-				
-					$_POST['info']['thumb'] = APP_PATH . 'uploadfile/thumb/'  . $insert_name[0]. '.jpg';
-				
-				}
-				
-				
-				
-				$_POST['info']['local_video'] = join(',' , $insert);
-			
-				$this->db->add_content($_POST['info']);
-				
-		
-				//添加内容时候添加 end
+                $this->db->add_content($_POST['info']);
+                //添加内容时候添加 end
+                if (isset($_POST['dosubmit']))
+                {
+                    showmessage(L('add_success') . L('2s_close'), 'blank', '',
+                            '',
+                            'function set_time() {$("#secondid").html(1);}setTimeout("set_time()", 500);setTimeout("window.close()", 1200);');
+                } else
+                {
+                    showmessage(L('add_success'), HTTP_REFERER);
+                }
+            } else
+            {
+                //单网页
+                $this->page_db = pc_base::load_model('page_model');
+                $style_font_weight = $_POST['style_font_weight'] ? 'font-weight:' . strip_tags($_POST['style_font_weight']) : '';
+                $_POST['info']['style'] = strip_tags($_POST['style_color']) . ';' . $style_font_weight;
 
-			
-				if(isset($_POST['dosubmit'])) {
-					showmessage(L('add_success').L('2s_close'),'blank','','','function set_time() {$("#secondid").html(1);}setTimeout("set_time()", 500);setTimeout("window.close()", 1200);');
-				} else {
-					showmessage(L('add_success'),HTTP_REFERER);
-				}
-			} else {
-				//单网页
-				$this->page_db = pc_base::load_model('page_model');
-				$style_font_weight = $_POST['style_font_weight'] ? 'font-weight:'.strip_tags($_POST['style_font_weight']) : '';
-				$_POST['info']['style'] = strip_tags($_POST['style_color']).';'.$style_font_weight;
-				
-				if($_POST['edit']) {
-					$this->page_db->update($_POST['info'],array('catid'=>$catid));
-				} else {
-					$catid = $this->page_db->insert($_POST['info'],1);
-				}
-				$this->page_db->create_html($catid,$_POST['info']);
-				$forward = HTTP_REFERER;
-			}
-			showmessage(L('add_success'),$forward);
-		} else {
-			$show_header = $show_dialog = $show_validator = '';
-			//设置cookie 在附件添加处调用
-			param::set_cookie('module', 'content');
+                if ($_POST['edit'])
+                {
+                    $this->page_db->update($_POST['info'],
+                            array('catid' => $catid));
+                } else
+                {
+                    $catid = $this->page_db->insert($_POST['info'], 1);
+                }
+                $this->page_db->create_html($catid, $_POST['info']);
+                $forward = HTTP_REFERER;
+            }
+            showmessage(L('add_success'), $forward);
+        } else
+        {
+            $show_header = $show_dialog = $show_validator = '';
+            //设置cookie 在附件添加处调用
+            param::set_cookie('module', 'content');
+            if (isset($_GET['catid']) && $_GET['catid'])
+            {
+                $catid = $_GET['catid'] = intval($_GET['catid']);
+                param::set_cookie('catid', $catid);
+                $category = $this->categorys[$catid];
+                if ($category['type'] == 0)
+                {
+                    $modelid = $category['modelid'];
+                    //取模型ID，依模型ID来生成对应的表单
+                    require CACHE_MODEL_PATH . 'content_form.class.php';
+                    $content_form = new content_form($modelid, $catid,
+                            $this->categorys);
+                    $forminfos = $content_form->get();
+                    $formValidator = $content_form->formValidator;
+                    $setting = string2array($category['setting']);
+                    $workflowid = $setting['workflowid'];
+                    $workflows = getcache('workflow_' . $this->siteid, 'commons');
+                    $workflows = $workflows[$workflowid];
+                    $workflows_setting = string2array($workflows['setting']);
+                    $nocheck_users = $workflows_setting['nocheck_users'];
+                    $admin_username = param::get_cookie('admin_username');
+                    if (!empty($nocheck_users) && in_array($admin_username,
+                                    $nocheck_users))
+                    {
+                        $priv_status = true;
+                    } else
+                    {
+                        $priv_status = false;
+                    }
+                    include $this->admin_tpl('content_add');
+                } else
+                {
+                    //单网页
+                    $this->page_db = pc_base::load_model('page_model');
 
-			if(isset($_GET['catid']) && $_GET['catid']) {
-				$catid = $_GET['catid'] = intval($_GET['catid']);
-				
-				param::set_cookie('catid', $catid);
-				$category = $this->categorys[$catid];
-				if($category['type']==0) {
-					$modelid = $category['modelid'];
-					//取模型ID，依模型ID来生成对应的表单
-					require CACHE_MODEL_PATH.'content_form.class.php';
-					$content_form = new content_form($modelid,$catid,$this->categorys);
-					$forminfos = $content_form->get();
- 					$formValidator = $content_form->formValidator;
-					$setting = string2array($category['setting']);
-					$workflowid = $setting['workflowid'];
-					$workflows = getcache('workflow_'.$this->siteid,'commons');
-					$workflows = $workflows[$workflowid];
-					$workflows_setting = string2array($workflows['setting']);
-					$nocheck_users = $workflows_setting['nocheck_users'];
-					$admin_username = param::get_cookie('admin_username');
-					if(!empty($nocheck_users) && in_array($admin_username, $nocheck_users)) {
-						$priv_status = true;
-					} else {
-						$priv_status = false;
-					}
-					include $this->admin_tpl('content_add');
-				} else {
-					//单网页
-					$this->page_db = pc_base::load_model('page_model');
-					
-					$r = $this->page_db->get_one(array('catid'=>$catid));
-					
-					if($r) {
-						extract($r);
-						$style_arr = explode(';',$style);
-						$style_color = $style_arr[0];
-						$style_font_weight = $style_arr[1] ? substr($style_arr[1],12) : '';
-					}
-					include $this->admin_tpl('content_page');
-				}
-			} else {
-				include $this->admin_tpl('content_add');
-			}
-			header("Cache-control: private");
-		}
-	}
-	
-	public function edit() {
+                    $r = $this->page_db->get_one(array('catid' => $catid));
+
+                    if ($r)
+                    {
+                        extract($r);
+                        $style_arr = explode(';', $style);
+                        $style_color = $style_arr[0];
+                        $style_font_weight = $style_arr[1] ? substr($style_arr[1],
+                                        12) : '';
+                    }
+                    include $this->admin_tpl('content_page');
+                }
+            } else
+            {
+                include $this->admin_tpl('content_add');
+            }
+            header("Cache-control: private");
+        }
+    }
+
+    public function edit() {
 			//设置cookie 在附件添加处调用
 			param::set_cookie('module', 'content');
 			if(isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue'])) {
