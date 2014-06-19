@@ -146,7 +146,7 @@ class sakai  extends admin{
 						 }else{    
 								showmessage("ffmpeg没有载入"); 
 						 } 
-				f( !empty ($insert_name[0])){
+				if( !empty ($insert_name[0])){
 				
 					$_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/'  . $insert_name[0]. '.jpg';
 				
