@@ -12009,3 +12009,7 @@
 <?php exit;?>06-18 16:52:03 | 2 | ftp_close() expects parameter 1 to be resource, boolean given | phpcms/base.php | 80
 <?php exit;?>06-18 16:52:03 | 2 | unlink(uploadfile/video/53a15333ede22.): No such file or directory | phpcms/modules/content/sakai.php | 64
 <?php exit;?>06-18 16:52:03 | 8192 | Function split() is deprecated | caches/caches_model/caches_data/content_update.class.php | 74
+<?php exit;?>06-19 12:13:49 | 2 | ftp_login() expects parameter 1 to be resource, boolean given | phpcms/base.php | 75
+<?php exit;?>06-19 12:13:49 | 2 | ftp_put() expects parameter 1 to be resource, boolean given | phpcms/base.php | 77
+<?php exit;?>06-19 12:13:49 | 2 | ftp_close() expects parameter 1 to be resource, boolean given | phpcms/base.php | 80
+<?php exit;?>06-19 12:13:49 | 8192 | Function split() is deprecated | caches/caches_model/caches_data/content_update.class.php | 74
