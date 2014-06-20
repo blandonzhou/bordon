@@ -124,7 +124,7 @@
                                         {loop $data $r}
                                         <li> <em>{$i}</em>
                                             <a target="_blank" href="{$r[url]}">
-                                                {str_cut(strip_tags($r[title]), 30)}
+                                                {str_cut(strip_tags($r[title]), 60)}
                                             </a>
                                             <span class="data">{$r[views]}</span> </li>
                                         {php $i++}
@@ -139,7 +139,7 @@
                                         {loop $data $r}
                                         <li> <em>{$i}</em>
                                             <a target="_blank" href="{$r[url]}">
-                                                {str_cut(strip_tags($r[title]), 30)}
+                                                {str_cut(strip_tags($r[title]), 60)}
                                             </a>
                                             <span class="data">{$r[views]}</span> </li>
                                         {php $i++}
@@ -154,7 +154,7 @@
                                         {loop $data $r}
                                         <li> <em>{$i}</em>
                                             <a target="_blank" href="{$r[url]}">
-                                                {str_cut(strip_tags($r[title]), 30)}
+                                                {str_cut(strip_tags($r[title]), 60)}
                                             </a>
                                             <span class="data">{$r[views]}</span> </li>
                                         {php $i++}
@@ -180,7 +180,7 @@
                                 <div class="pictxt addAtt">
                                     <div  class="pic"> <img src="{$r[thumb]}" width="50" height="50" />  </div>
                                     <div class="txt">
-                                        <h2 class="fblue"> <a href="{$r[url]}" target="_blank">{str_cut(strip_tags($r[title]), 30)}</a> </h2>
+                                        <h2 class="fblue"> <a href="{$r[url]}" target="_blank">{str_cut(strip_tags($r[title]), 60)}</a> </h2>
                                     </div>
                                 </div>
                                 {/loop}  
