@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/bordon/phpcms/templates/sina/content/category_sina.html</file>
-            <file>file:/D:/wamp/www/bordon/phpcms/templates/sina/content/list_sina.html</file>
-            <file>file:/D:/wamp/www/bordon/statics/sina/css/style_school.css</file>
+            <file>file:/D:/wamp/www/bordon/phpcms/modules/content/content.php</file>
+            <file>file:/D:/wamp/www/bordon/phpcms/modules/content/sakai.php</file>
         </group>
     </open-files>
 </project-private>
