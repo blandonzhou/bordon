@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ckplayer>
 	<share_html>
-	{embed src="贵站网址/ckplayer/ckplayer.swf" flashvars="[$share]" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" allowFullscreen="true" type="application/x-shockwave-flash"}{/embed}
+	{embed src="http://202.120.83.180/phpcms/statics/js/ckplayer/ckplayer.swf" flashvars="[$share]" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" allowFullscreen="true" type="application/x-shockwave-flash"}{/embed}
 	</share_html>
 	<share_flash>
-	贵站网址/ckplayer/ckplayer.swf?[$share]
+	http://202.120.83.180/phpcms/statics/js/ckplayer/ckplayer.swf?[$share]
 	</share_flash>
 	<share_flashvars>
 	f,my_url,my_pic,a
 	</share_flashvars>
 	<share_path>
-	/ckplayer/share/
+	statics/js/ckplayer/share/
 	</share_path>
 	<share_replace>
 	</share_replace>
