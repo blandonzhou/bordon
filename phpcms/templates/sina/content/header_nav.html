@@ -34,6 +34,7 @@
                 {php $i++}		
                 {/loop}
                 {/pc}	
+                <li id="99"><a href="javascript:void(0)"  class="mt t99" hidefocus>按学科分</a></li>
             </ul>
             <div class="search"> 
                 <form target="_blank" name="frm" method="get" action="{APP_PATH}index.php" class="search" id="unify_search">
@@ -72,6 +73,14 @@
                     {php $i++}		
                     {/loop}
                 {/pc}	
+                
+                        <div class="menu_c  clearfix" id="menu_c99" style="display:none;">
+                            <div class="className fchg1">
+                                    {loop filters('xueke',$modelid) $r}
+                                        {$r[menu]}
+                                    {/loop}
+                            </div>
+                        </div>
         </div>
         <script>
             var menu = new PulldownMenu(menu);
