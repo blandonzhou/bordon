@@ -10,7 +10,7 @@
 	f,my_url,my_pic,a
 	</share_flashvars>
 	<share_path>
-	
+	statics/js/ckplayer/share/
 	</share_path>
 	<share_replace>
 	</share_replace>
