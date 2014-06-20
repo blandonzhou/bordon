@@ -26,7 +26,7 @@
     <div id="menu" class="menu">
         <div class="menu_nav">
             <ul class="menu_t" id="menu_t">
-                {pc:content action="category" catid="51" num="3" siteid="$siteid" order="listorder ASC"}
+                {pc:content action="category" catid="1" num="5" siteid="$siteid" order="listorder ASC"}
                 {php $i = 2}
                 <li id="menu1"><a href="{siteurl($siteid)}" class="mt t1" hidefocus>首页</a></li>
                 {loop $data $r}
@@ -54,52 +54,24 @@
             </div>
         </div>
         <div class="menu_c_bg">
-            <div class="menu_c  clearfix" id="menu_c2" style="display:none;">
-                <div class="className fchg1">
-                    {pc:content action="category" catid="9"  siteid="$siteid" order="listorder ASC"}			
+                {pc:content action="category" catid="1" num="5" siteid="$siteid" order="listorder ASC"}
+                    {php $i = 2}
                     {loop $data $r}
-
-                    {pc:content action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
-                    {php  $cont = count(array_filter($info))}
-                    <a target="_blank" href="{$r[url]}">{$r[catname]}</a> 	
-                    {/pc}
-                    {/loop}        
-                    {/pc}	
-                </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c3" style="display:none;">
-                <div class="className fchg1"> 
-                    {pc:content action="category" catid="10"  siteid="$siteid" order="listorder ASC"}			
-                    {loop $data $r}
-                    {pc:content  action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
-                    {php  $cont = count(array_filter($info))}
-                    <a target="_blank" href="{$r[url]}">{$r[catname]}</a> 	
-                    {/pc}
+                        <div class="menu_c  clearfix" id="menu_c{$i}" style="display:none;">
+                            <div class="className fchg1">
+                                {pc:content action="category" catid="$r[catid]"  siteid="$siteid" order="listorder ASC"}			
+                                    {loop $data $r}
+                                        {pc:content action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
+                                        {php  $cont = count(array_filter($info))}
+                                        <a target="_blank" href="{$r[url]}">{$r[catname]}</a> 	
+                                        {/pc}
+                                    {/loop}        
+                                {/pc}	
+                            </div>
+                        </div>
+                    {php $i++}		
                     {/loop}
-                    {/pc}	
-                </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c4" style="display:none;">
-                <div class="className fchg1"> 
-                    {pc:content action="category" catid="11"  siteid="$siteid" order="listorder ASC"}			
-                    {loop $data $r}
-                    {pc:content  action="lists" catid="$r[catid]" order="updatetime DESC" return="info"}  
-                    {php  $cont = count(array_filter($info))}
-                    <a target="_blank" href="{$r[url]}">{$r[catname]}</a> 	
-                    {/pc}
-                    {/loop}          
-                    {/pc}	
-                </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c5" style="display:none;">
-                <div class="className fchg1"> </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c6" style="display:none;">
-                <div class="className fchg1"> </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c7" style="display:none;">
-                <div class="className fchg1"> </div>
-            </div>
+                {/pc}	
         </div>
         <script>
             var menu = new PulldownMenu(menu);
