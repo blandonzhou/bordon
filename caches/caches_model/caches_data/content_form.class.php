@@ -525,7 +525,7 @@ class content_form {
 		}
 	if(!defined('IMAGES_INIT')) {
 			$str = '
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+			<script src="'.JS_PATH.'/jquery.min.js" type="text/javascript"></script>
 			<script type="text/javascript" src="'.JS_PATH.'swfupload/swf2ckeditor.js"></script>
 					<script type="text/javascript" src="'.JS_PATH.'uploadify/jquery.uploadify.min.js"></script>
          

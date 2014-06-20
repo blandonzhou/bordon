@@ -129,133 +129,6 @@ return array (
     'disabled' => '0',
     'isomnipotent' => '0',
   ),
-  'tea' => 
-  array (
-    'fieldid' => '111',
-    'modelid' => '11',
-    'siteid' => '1',
-    'field' => 'tea',
-    'name' => '讲师',
-    'tips' => '',
-    'css' => '',
-    'minlength' => '0',
-    'maxlength' => '0',
-    'pattern' => '',
-    'errortips' => '',
-    'formtype' => 'image',
-    'setting' => 'array (
-  \'size\' => \'\',
-  \'defaultvalue\' => \'\',
-  \'show_type\' => \'1\',
-  \'upload_maxsize\' => \'\',
-  \'upload_allowext\' => \'gif|jpg|jpeg|png|bmp\',
-  \'watermark\' => \'0\',
-  \'isselectimage\' => \'1\',
-  \'images_width\' => \'\',
-  \'images_height\' => \'\',
-)',
-    'formattribute' => '',
-    'unsetgroupids' => '',
-    'unsetroleids' => '',
-    'iscore' => '0',
-    'issystem' => '1',
-    'isunique' => '0',
-    'isbase' => '1',
-    'issearch' => '0',
-    'isadd' => '1',
-    'isfulltext' => '0',
-    'isposition' => '0',
-    'listorder' => '4',
-    'disabled' => '0',
-    'isomnipotent' => '0',
-    'size' => '',
-    'defaultvalue' => '',
-    'show_type' => '1',
-    'upload_maxsize' => '',
-    'upload_allowext' => 'gif|jpg|jpeg|png|bmp',
-    'watermark' => '0',
-    'isselectimage' => '1',
-    'images_width' => '',
-    'images_height' => '',
-  ),
-  'gallary' => 
-  array (
-    'fieldid' => '134',
-    'modelid' => '11',
-    'siteid' => '1',
-    'field' => 'gallary',
-    'name' => '幻灯片',
-    'tips' => '',
-    'css' => '',
-    'minlength' => '0',
-    'maxlength' => '0',
-    'pattern' => '',
-    'errortips' => '',
-    'formtype' => 'gallery',
-    'setting' => 'array (
-  \'upload_allowext\' => \'gif|jpg|jpeg|png|bmp\',
-  \'isselectimage\' => \'0\',
-  \'upload_number\' => \'10\',
-)',
-    'formattribute' => '',
-    'unsetgroupids' => '',
-    'unsetroleids' => '',
-    'iscore' => '0',
-    'issystem' => '0',
-    'isunique' => '0',
-    'isbase' => '1',
-    'issearch' => '0',
-    'isadd' => '1',
-    'isfulltext' => '0',
-    'isposition' => '0',
-    'listorder' => '4',
-    'disabled' => '0',
-    'isomnipotent' => '0',
-    'upload_allowext' => 'gif|jpg|jpeg|png|bmp',
-    'isselectimage' => '0',
-    'upload_number' => '10',
-  ),
-  'bgsound' => 
-  array (
-    'fieldid' => '138',
-    'modelid' => '11',
-    'siteid' => '1',
-    'field' => 'bgsound',
-    'name' => '背景音乐',
-    'tips' => '',
-    'css' => '',
-    'minlength' => '0',
-    'maxlength' => '0',
-    'pattern' => '',
-    'errortips' => '',
-    'formtype' => 'downfiles',
-    'setting' => 'array (
-  \'upload_allowext\' => \'mp3|wav\',
-  \'isselectimage\' => \'0\',
-  \'upload_number\' => \'10\',
-  \'downloadlink\' => \'1\',
-  \'downloadtype\' => \'1\',
-)',
-    'formattribute' => '',
-    'unsetgroupids' => '',
-    'unsetroleids' => '',
-    'iscore' => '0',
-    'issystem' => '0',
-    'isunique' => '0',
-    'isbase' => '1',
-    'issearch' => '0',
-    'isadd' => '1',
-    'isfulltext' => '0',
-    'isposition' => '0',
-    'listorder' => '4',
-    'disabled' => '0',
-    'isomnipotent' => '0',
-    'upload_allowext' => 'mp3|wav',
-    'isselectimage' => '0',
-    'upload_number' => '10',
-    'downloadlink' => '1',
-    'downloadtype' => '1',
-  ),
   'tea_des' => 
   array (
     'fieldid' => '110',
@@ -347,8 +220,7 @@ return array (
     'setting' => 'array (
   \'options\' => \'小学|1
 初中|2
-高中|3
-大学|4\',
+高中|3\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -374,8 +246,7 @@ return array (
     'isomnipotent' => '0',
     'options' => '小学|1
 初中|2
-高中|3
-大学|4',
+高中|3',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',
@@ -400,14 +271,24 @@ return array (
     'errortips' => '请选择学科',
     'formtype' => 'box',
     'setting' => 'array (
-  \'options\' => \'语文|1
-数学|2
-英语|3
-历史|4
-地理|5
-政治|6
-物理|7
-化学|8\',
+  \'options\' => \'地理|1
+思品|2
+化学|3
+体育|4
+科技|5
+物理|6
+科学|7
+心理与健康|8
+历史|9
+信息技术|10
+美术|11
+音乐|12
+生物|13
+英语|14
+书法|15
+语文|16
+数学|17
+政治|18\',
   \'boxtype\' => \'radio\',
   \'fieldtype\' => \'varchar\',
   \'minnumber\' => \'1\',
@@ -431,14 +312,24 @@ return array (
     'listorder' => '5',
     'disabled' => '0',
     'isomnipotent' => '0',
-    'options' => '语文|1
-数学|2
-英语|3
-历史|4
-地理|5
-政治|6
-物理|7
-化学|8',
+    'options' => '地理|1
+思品|2
+化学|3
+体育|4
+科技|5
+物理|6
+科学|7
+心理与健康|8
+历史|9
+信息技术|10
+美术|11
+音乐|12
+生物|13
+英语|14
+书法|15
+语文|16
+数学|17
+政治|18',
     'boxtype' => 'radio',
     'fieldtype' => 'varchar',
     'minnumber' => '1',

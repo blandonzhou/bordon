@@ -50,7 +50,7 @@
                 <?php $src = $img[0]?>
                 <div class="box"> 
                     <a href="<?php echo $r['url'];?>" target="_blank">
-                        <img alt="<?php echo $r['title'];?>" src="<?php echo APP_PATH;?>uploadfile/thumb/<?php echo $src;?>.jpg" width="945" height="342"/>
+                        <img alt="<?php echo $r['title'];?>" src="<?php echo $r['thumb'];?>" width="945" height="342"/>
                     </a> 
                 </div>
                 <?php $n++;}unset($n); ?>  
