@@ -30,9 +30,8 @@ class sakai  extends admin{
                 $this->db->set_model($modelid);
                 $_POST['video']['status'] = 99;
 
-                if (substr($_POST['info']['local_video'], 0, 1) == ',')
+                if (substr($_POST['video']['local_video'], 0, 1) == ',')
                 {
-                	echo 'convert';die;
                     //添加内容时候添加视频 start
                     ini_set("max_execution_time", 600000);
                     //取得视频文件名字	
@@ -104,7 +103,7 @@ class sakai  extends admin{
             if (trim($_POST['video']['title']) == '')
                 exit('标题必须填写');
 
-            if (substr($_POST['info']['local_video'], 0, 1) == ',')
+            if (substr($_POST['video']['local_video'], 0, 1) == ',')
             {
                 //添加内容时候添加视频 start
                 ini_set("max_execution_time", 600000);
