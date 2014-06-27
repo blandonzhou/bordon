@@ -75,7 +75,7 @@ class sakai  extends admin{
                     {
                         $_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
                     }
-                    $_POST['']['local_video'] = join(',', $insert);
+                    $_POST['video']['local_video'] = join(',', $insert);
                 }
 
                 $id = $this->db->add_content($_POST['video']);
@@ -148,7 +148,7 @@ class sakai  extends admin{
                 {
                     $_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
                 }
-                $_POST['']['local_video'] = join(',', $insert);
+                $_POST['video']['local_video'] = join(',', $insert);
             }
             $modelid = $this->categorys[$catid]['modelid'];
             $this->db->set_model($modelid);
