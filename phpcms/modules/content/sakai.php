@@ -32,6 +32,7 @@ class sakai  extends admin{
 
                 if (substr($_POST['info']['local_video'], 0, 1) == ',')
                 {
+                	echo 'convert';die;
                     //添加内容时候添加视频 start
                     ini_set("max_execution_time", 600000);
                     //取得视频文件名字	
