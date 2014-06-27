@@ -32,11 +32,10 @@ class sakai  extends admin{
 
                 if (substr($_POST['video']['local_video'], 0, 1) == ',')
                 {
-                    echo 'convert';die;
                     //添加内容时候添加视频 start
                     ini_set("max_execution_time", 600000);
                     //取得视频文件名字	
-                    $local_videos = explode(',', $_POST['info']['local_video']);
+                    $local_videos = explode(',', $_POST['video']['local_video']);
                     $local_videos = array_filter($local_videos);
                     sort($local_videos);
                     $l = count($local_videos);
@@ -57,7 +56,7 @@ class sakai  extends admin{
                             if ($ext !== 'mp4')
                             {
                                 //清晰度
-                                $r = intval($_POST['info']['vision']) * 15;
+                                $r = intval($_POST['video']['vision']) * 15;
                                 $ffmpeg = 'ffmpeg.exe'; //载入ffmpeg
                                 $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.mp4';
                                 exec($cmd, $status);
@@ -74,9 +73,9 @@ class sakai  extends admin{
                     }
                     if (!empty($insert_name[0]))
                     {
-                        $_POST['info']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
+                        $_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
                     }
-                    $_POST['info']['local_video'] = join(',', $insert);
+                    $_POST['']['local_video'] = join(',', $insert);
                 }
 
                 $id = $this->db->add_content($_POST['video']);
@@ -109,7 +108,7 @@ class sakai  extends admin{
                 //添加内容时候添加视频 start
                 ini_set("max_execution_time", 600000);
                 //取得视频文件名字	
-                $local_videos = explode(',', $_POST['info']['local_video']);
+                $local_videos = explode(',', $_POST['video']['local_video']);
                 $local_videos = array_filter($local_videos);
                 sort($local_videos);
                 $l = count($local_videos);
@@ -130,7 +129,7 @@ class sakai  extends admin{
                         if ($ext !== 'mp4')
                         {
                             //清晰度
-                            $r = intval($_POST['info']['vision']) * 15;
+                            $r = intval($_POST['video']['vision']) * 15;
                             $ffmpeg = 'ffmpeg.exe'; //载入ffmpeg
                             $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.mp4';
                             exec($cmd, $status);
@@ -147,9 +146,9 @@ class sakai  extends admin{
                 }
                 if (!empty($insert_name[0]))
                 {
-                    $_POST['info']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
+                    $_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
                 }
-                $_POST['info']['local_video'] = join(',', $insert);
+                $_POST['']['local_video'] = join(',', $insert);
             }
             $modelid = $this->categorys[$catid]['modelid'];
             $this->db->set_model($modelid);
