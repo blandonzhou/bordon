@@ -52,7 +52,9 @@
                             </style>
                             <div  id="search-data"  style="background-color:#FFF">
                                 <dl class="searchitem">
-                                    <dt class="blue"><span>年级：</span> <span style="display:inline-block;width:590px;vertical-align:top">{loop filters('nianji',$modelid) $r}
+                                    <dt class="blue"><span>年级：</span> <span style="display:inline-block;width:590px;vertical-align:top">
+                                            <pre><?php print_r(filters('nianji',$modelid));?></pre>
+                                            {loop filters('nianji',$modelid) $r}
                                             {$r[menu]}
                                             {/loop} </span></dt>
                                 </dl>

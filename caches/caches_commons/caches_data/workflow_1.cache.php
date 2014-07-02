@@ -36,8 +36,14 @@ return array (
     'siteid' => '1',
     'steps' => '4',
     'workname' => '四级审核',
-    'description' => '四级审核',
-    'setting' => '',
+    'description' => '审核四次',
+    'setting' => 'array (
+  1 => \'\',
+  2 => \'\',
+  3 => \'\',
+  4 => \'\',
+  \'nocheck_users\' => \'\',
+)',
     'flag' => '0',
   ),
 );

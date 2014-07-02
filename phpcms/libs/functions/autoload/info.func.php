@@ -47,7 +47,9 @@ function structure_filters_url($fieldname,$array=array(),$type = 1,$modelid) {
 		}
 	}
 	//后期增加伪静态等其他url规则管理，apache伪静态支持9个参数 //去除city
-	if(strpos(URLRULE,'.html') === FALSE) $urlrule =APP_PATH.'index.php?m=content&c=index&a=lists&catid={$catid}'.$urlpars.'&page={$page}' ;
+        $c=$_GET['c'];
+        $t=$_GET['t'];
+	if(strpos(URLRULE,'.html') === FALSE) $urlrule =APP_PATH.'index.php?m=content&c={$c}&a=lists&t={$t}&catid={$catid}'.$urlpars.'&page={$page}' ;
 	else $urlrule =APP_PATH.'list-{$catid}-{$city}'.$urlpars.'-{$page}.html';
 	//根据get传值构造URL
 	if (is_array($array)) foreach ($array as $_k=>$_v) {
@@ -108,6 +110,8 @@ function structure_filters_sql($modelid,$cityid='') {
  * @param $field   字段名称
  * @param $modelid  模型ID
  */
+
+//play 2014/7/2更改
 function filters($field,$modelid,$diyarr = array()) {
 	$fields = getcache('model_field_'.$modelid,'model');
 	$options = empty($diyarr) ?  explode("\n",$fields[$field]['options']) : $diyarr;
@@ -118,11 +122,11 @@ function filters($field,$modelid,$diyarr = array()) {
 		$option[$k]['name'] = $v[0];
 		$option[$k]['value'] = $k;
 		$option[$k]['url'] = structure_filters_url($field,array($field=>$k),2,$modelid);
-		$option[$k]['menu'] = $field_value == $k ? '<em>'.$v[0].'</em>' : '<a href='.$option[$k]['url'].'>'.$v[0].'</a>' ;
+		$option[$k]['menu'] = $field_value == $k ? '<a class="checked">'.$v[0].'</a>' : '<a href='.$option[$k]['url'].'>'.$v[0].'</a>' ;
 	}
 	$all['name'] = '全部';
 	$all['url'] = structure_filters_url($field,array($field=>''),2,$modelid);
-	$all['menu'] = $field_value == '' ? '<em>'.$all['name'].'</em>' : '<a href='.$all['url'].'>'.$all['name'].'</a>';
+	$all['menu'] = $field_value == '' ? '<a class="checked">'.$all['name'].'</a>' : '<a href='.$all['url'].'>'.$all['name'].'</a>';
 
 	array_unshift($option,$all);	
 	return $option;

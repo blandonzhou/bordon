@@ -1,0 +1,69 @@
+{template "content","header"}
+<div class="blank_30"></div>
+<div class="main-wrap mod-info-wrap cf ">
+    <div class="mod-info fr">
+        <h2 class="checked">热播课程</h2>
+        <ul class="mod-hot ml10 mt15" id="mod-hot">
+                        <li><span>1</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>2</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>3</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>4</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>5</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>6</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>7</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>8</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>9</span><em class="aem"></em><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                        <li><span>10</span><a href="play.htm">这里是视频课程排行榜标题</a></li>
+                    </ul>
+    </div>
+    <div class="mod-list fl">
+        <div class="inner">
+            <div class="mod-list-title">
+                <span>视频播放</span>
+            </div>
+            <div class="blank_15"></div>
+            <div class="mod-list-cont">
+                <h1>这里是标题</h1>
+                <div class="cont-info">
+                    <span>播放：122</span>
+                    <span>2014-06-27</span>
+                    <span>来源：xxx学校</span>
+                    <span>制作人：张三</span>
+                </div>
+                <div class="blank_20"></div>
+                <div class="muke-video-play cf">
+                	<object type="application/x-shockwave-flash" id="ckplayer_a1" name="ckplayer_a1" menu="false" data="http://www.hsjdy.com.cn/jclass/play/ckplayer/ckplayer/ckplayer.swf" width="730" height="430"><param name="bgcolor" value="#FFF"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="flashvars" value="f=http://movie.ks.js.cn/flv/2012/02/6-3.flv"></object>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blank_30"></div>
+<div class="muke-footer-wrap">
+  <div id="muke-footer">
+    <div class="footer-AboutUs"> <a href="page.htm">关于我们</a> <a href="page.htm">加入我们</a> <a href="page.htm">联系我们</a> <a href="#">资源下载</a> </div>
+    <div class="footer-left">
+      <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+		var aDiv = document.getElementById('muke-head');
+		var aLi = aDiv.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].onmouseover = function(){
+				this.className = 'checked';
+			}
+			if(aLi[i].className==''){
+				aLi[i].onmouseout = function(){
+					this.className = '';
+				}
+			}
+		} ;
+
+</script>
+
+
+</body>
+</html>

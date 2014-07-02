@@ -1,785 +1,265 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>医学资源站点</title>
-<meta name="keywords" content="医学多媒体ovimelody">
-<meta name="description" content="医学多媒体资源网站">
-<link href="http://202.120.83.180/phpcms/statics/sina/css/index.css" rel="stylesheet" type="text/css" />
-
-
-<script src="http://202.120.83.180/phpcms/statics/sina/js/weibogundong.js"></script>
-<script src="http://202.120.83.180/phpcms/statics/sina/js/common.js"></script>
-<script src="http://202.120.83.180/phpcms/statics/sina/js/jquery-1.4.1.min.js"></script>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>华东师范大学慕课中心</title>
+<link rel="stylesheet" type="text/css" href="http://localhost/bordon/statics/mooc/images/public.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/bordon/statics/mooc/images/muke.css">
+<script type="text/javascript" src="http://localhost/bordon/statics/mooc/images/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/bordon/statics/mooc/images/faseSlider.js"></script>
 </head>
-
 <body>
-    <div style='position:absolute;top:0;left:0;width:0;height:0;visibility:hidden'><img width=0 height=0 src='images/a.gif' border='0' alt='' /></div>
-
-    <!-- 二级导航 begin -->
-
-    <div class="secondaryHeader">
-        <div class="sHBorder">
-            <div class="sHLogo"><span><a href="http://www.moe.gov.cn/"><img src="http://202.120.83.180/phpcms/statics/sina/images/standardl2nav_sina_new.gif" alt="教育部"></a></span></div>
-            <div class="sHLinks"><script type="text/javascript">document.write('<iframe src="http://202.120.83.180/phpcms/index.php?m=member&c=index&a=mini&forward=' + encodeURIComponent(location.href) + '&siteid=1" allowTransparency="true"  width="300" height="24" frameborder="0" scrolling="no"></iframe>')</script></div>
-        </div>
+<div class="muke-top-wrap">
+  <div class="muke-top">
+    <div class="blank_10"></div>
+    <a class="muke-btn fr" href="#" >学习平台登录</a>　　<a class="muke-btn fr" href="#" >视频资源平台</a>
+    <div class="muke-search fr">
+      <form action="search.htm" method="post" id="form1">
+        <input id="key" name="keyword" type="text" class="txt" value="请输入课程关键字" onblur="if(this.value=='') {this.value='请输入课程关键字';this.style.color='#999';}" onfocus="if(this.value=='请输入课程关键字') {this.value='';this.style.color='#333';}">
+        <input class="btn" id="search" type="submit">
+      </form>
     </div>
-
-    <!-- 二级导航 end --> 
-
-    <!-- logo begin -->
-
-    <div class="wrap">
-        <div class="logo"> <img src="http://202.120.83.180/phpcms/statics/sina/images/logo.jpg"> </div>
-    </div>
-
-    <!-- logo  end --> 
-
-    <!-- 首页导航 begin-->
-
-    <div id="menu" class="menu">
-        <div class="menu_nav">
-            <ul class="menu_t" id="menu_t">
-                                                <li id="menu1"><a href="http://202.120.83.180/phpcms" class="mt t1" hidefocus>首页</a></li>
-                                <li id="menu2"><a href="javascript:void(0)"  class="mt t2" hidefocus>按学校分类</a></li>
-                		
-                                <li id="menu3"><a href="javascript:void(0)"  class="mt t2" hidefocus>按学科分类</a></li>
-                		
-                                <li id="menu4"><a href="javascript:void(0)"  class="mt t2" hidefocus>sakai平台</a></li>
-                		
-                                	
-            </ul>
-            <div class="search"> 
-                <form target="_blank" name="frm" method="get" action="http://202.120.83.180/phpcms/index.php" class="search" id="unify_search">
-                    <span class="stext">
-                        <input type="text" maxlength="128" size="32" onfocus="javascript:if (this.value == '请输入搜索词')
-                                            this.value = ''" onblur="javascript:if (this.value == '')
-                                                        this.value = '请输入搜索词'" value="请输入搜索词" name="q" class="sinput" id="q" title="课程名">
-                    </span>
-
-                    <input type="hidden" name="m" value="search"/>
-                    <input type="hidden" name="c" value="index"/>
-                    <input type="hidden" name="a" value="init"/>
-                    <input type="hidden" name="typeid" value="0" id="typeid"/>
-                    <input type="hidden" name="siteid" value="1" id="siteid"/>      
-                    <input class="sbtn" name="submit" type="submit" value=''>
-                </form>
-
-            </div>
-        </div>
-        <div class="menu_c_bg">
-            <div class="menu_c  clearfix" id="menu_c2" style="display:none;">
-                <div class="className fchg1">
-                    			
-                    
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=13">哈佛大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=14">香港大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms">协和医科大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=16">南开大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=17">北京大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=18">耶鲁大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=19">哈佛大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=20">斯坦福大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=21">牛津大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=23">麻省理工</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=24">普林斯顿</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=25">伯克利</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=26">复旦大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=27">中国地质大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=28">北京邮电大学</a> 	
-                                        
-                      
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=54">台湾大学</a> 	
-                                                
-                    	
-                </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c3" style="display:none;">
-                <div class="className fchg1"> 
-                    			
-                                          
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=31">经济</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=32">人文</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=33">理科</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=34">哲学</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=35">工科</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=36">其他科学</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=37">历史</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=38">社会</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=39">语言</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=40">讲座</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=41">美术/建筑</a> 	
-                                                              
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=42">时尚</a> 	
-                                                            	
-                </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c4" style="display:none;">
-                <div class="className fchg1"> 
-                    			
-                                          
-                                        <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=97">sakai视频</a> 	
-                                                  
-                    	
-                </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c5" style="display:none;">
-                <div class="className fchg1"> </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c6" style="display:none;">
-                <div class="className fchg1"> </div>
-            </div>
-            <div class="menu_c  clearfix" id="menu_c7" style="display:none;">
-                <div class="className fchg1"> </div>
-            </div>
-        </div>
-        <script>
-            var menu = new PulldownMenu(menu);
-            menu.addLabel("menu2", "menu_c2");
-            menu.addLabel("menu3", "menu_c3");
-            menu.addLabel("menu4", "menu_c4");
-        </script> 
-    </div>
-
-    <!-- 首页导航 end --> 
-
-
-    <!-- 收藏公开课 end  --> 
-
-
-
-
-<!-- 收藏公开课 begin -->
-
-<div class="wrap">
-    <div class="blk_login">
-        <p class="lf fred"><a class="saveBtn" href="javascript:void(0)" onclick="addFavorite(window.location.href, document.title)">收藏本网站</a></p>
-        <script type="text/javascript">
-
-            function addFavorite(sURL, sTitle) {
-
-                try {
-
-                    window.external.addFavorite(sURL, sTitle);
-
-                }
-
-                catch (e) {
-
-                    try {
-
-                        window.sidebar.addPanel(sTitle, sURL, "");
-
-                    }
-
-                    catch (e) {
-
-                        //
-
-                    }
-
-                }
-
-            }
-
-        </script> 
-    </div>
-</div>
-<!-- 手动焦点图 begin -->
-
-<div class="focus">
-    <div class="focus_body">
-        <div class="scroll"> <a href="javascript:void(0);" class="arr_left" id="FS_arr_left_01">左移动</a> <a href="javascript:void(0);" class="arr_right" id="FS_arr_right_01">右移动</a>
-            <div class="scroll_cont" id="FS_Cont_01">
-                                                                                <div class="box"> 
-                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=570" target="_blank">
-                        <img alt="恒星与星系的形成" src="" width="945" height="342"/>
-                    </a> 
-                </div>
-                                                                <div class="box"> 
-                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=569" target="_blank">
-                        <img alt="宇宙第二大爆炸" src="http://202.120.83.180/phpcms/uploadfile/thumb/53a384345f89f.jpg" width="945" height="342"/>
-                    </a> 
-                </div>
-                                                                <div class="box"> 
-                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=566" target="_blank">
-                        <img alt="急生心肌梗死的介入治疗" src="http://202.120.83.180/phpcms/uploadfile/thumb/53a3827b0c51b.jpg" width="945" height="342"/>
-                    </a> 
-                </div>
-                                                                <div class="box"> 
-                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=565" target="_blank">
-                        <img alt="野生动物样片" src="http://202.120.83.180/phpcms/uploadfile/thumb/53a2f985d5d9d.jpg" width="945" height="342"/>
-                    </a> 
-                </div>
-                                                                <div class="box"> 
-                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=563" target="_blank">
-                        <img alt="嘟嘟熊画报-快乐的一天" src="http://202.120.83.180/phpcms/uploadfile/thumb/53a2e514aa5e6.jpg" width="945" height="342"/>
-                    </a> 
-                </div>
-                  
-                   	  
-
-
-            </div>
-            <div id="FS_numList_01" class="numList"></div>
-            <div class="scroll_txt">
-                                                                                                <div id="txt01" class="scroll_info" style="display:block">
-                    <div class="txtbg"></div>
-                    <div class="txtcontent">
-                        <h2>
-                            <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=570" target="_blank">香港大学：恒星与星系的形成</a></h2>
-                        <p class="des">恒星与星系的形成 <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=570" target="_blank">[详细]</a></p>
-                        <div class="btn"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=570" target="_blank">播放</a></div>
-                    </div>
-                </div>
-                                                                                <div id="txt02" class="scroll_info" style="display:none">
-                    <div class="txtbg"></div>
-                    <div class="txtcontent">
-                        <h2>
-                            <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=569" target="_blank">香港大学：宇宙第二大爆炸</a></h2>
-                        <p class="des">这是一部关于宇宙第二大爆炸的科幻片 <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=569" target="_blank">[详细]</a></p>
-                        <div class="btn"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=569" target="_blank">播放</a></div>
-                    </div>
-                </div>
-                                                                                <div id="txt03" class="scroll_info" style="display:none">
-                    <div class="txtbg"></div>
-                    <div class="txtcontent">
-                        <h2>
-                            <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=566" target="_blank">协和医科大学：急生心肌梗死的介入治疗</a></h2>
-                        <p class="des">手术现场，急生心肌梗死的介入治疗 <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=566" target="_blank">[详细]</a></p>
-                        <div class="btn"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=566" target="_blank">播放</a></div>
-                    </div>
-                </div>
-                                                                                <div id="txt04" class="scroll_info" style="display:none">
-                    <div class="txtbg"></div>
-                    <div class="txtcontent">
-                        <h2>
-                            <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=565" target="_blank">哈佛大学：野生动物样片</a></h2>
-                        <p class="des">这是一部野生动物宣传片，号召人们都来爱护和保护野生动物资源，建设我们美好的地球家园 <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=565" target="_blank">[详细]</a></p>
-                        <div class="btn"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=565" target="_blank">播放</a></div>
-                    </div>
-                </div>
-                                                                                <div id="txt05" class="scroll_info" style="display:none">
-                    <div class="txtbg"></div>
-                    <div class="txtcontent">
-                        <h2>
-                            <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=563" target="_blank">哈佛大学：嘟嘟熊画报-快乐的一天</a></h2>
-                        <p class="des">嘟嘟熊画报-快乐的一天 <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=563" target="_blank">[详细]</a></p>
-                        <div class="btn"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=563" target="_blank">播放</a></div>
-                    </div>
-                </div>
-                                  
-                   	  
-
-
-            </div>
-        </div>
-        <script language="javascript" type="text/javascript">
-
-    <!--//--><![CDATA[//><!--
-
-            var focusScroll = new ScrollPic();
-
-            focusScroll.scrollContId = "FS_Cont_01"; //内容容器ID
-
-            focusScroll.arrLeftId = "FS_arr_left_01";//左箭头ID
-
-            focusScroll.arrRightId = "FS_arr_right_01"; //右箭头ID
-
-            focusScroll.dotListId = "FS_numList_01";//点列表ID
-
-            focusScroll.dotClassName = "";//点className
-
-            focusScroll.dotOnClassName = "selected";//当前点className
-
-            focusScroll.listType = "number";//列表类型(number:数字，其它为空)
-
-            focusScroll.listEvent = "onmouseover"; //切换事件
-
-            focusScroll.frameWidth = 944;//显示框宽度
-
-            focusScroll.pageWidth = 944; //翻页宽度
-
-            focusScroll.upright = false; //垂直滚动
-
-            focusScroll.speed = 10; //移动速度(单位毫秒，越小越快)
-
-            focusScroll.space = 50; //每次移动像素(单位px，越大越快)
-
-            focusScroll.autoPlay = true; //自动播放
-
-            focusScroll.autoPlayTime = 5; //自动播放间隔时间(秒)
-
-            focusScroll.circularly = true;
-
-            focusScroll.initialize(); //初始化
-
-            focusScroll.onpagechange = function() {
-
-                $(".scroll_info").hide();
-
-                $("#txt0" + (focusScroll.pageIndex + 1)).show();
-
-            };
-
-            //--><!]]>
-
-        </script> 
-    </div>
-</div>
-
-<!-- 手动焦点图 end  -->
-
-<div class="wrap">
-    <div class="part02">
-        <div class="cont clearfix">
-            <div class="p_l"><div id="sub01" class="sub01">
-                    <div class="sub01_t"> <a href="http://open.sina.com.cn/courses/" target="_blank"><span class="selected" id="sub01_t1">最新课程推荐</span></a></div>
-                    <div id="sub01_c1" class="sub01_c">
-                        <ul class="list01">
-                                                                                    <li><span style="float:right;">06-20</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=570" target="_blank">香港大学: 恒星与星系的形成</a></li>
-                                                        <li><span style="float:right;">06-20</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=569" target="_blank">香港大学: 宇宙第二大爆炸</a></li>
-                                                        <li><span style="float:right;">06-20</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=566" target="_blank">协和医科大学: 急生心肌梗死的介入治疗</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=565" target="_blank">哈佛大学: 野生动物样片</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=563" target="_blank">哈佛大学: 嘟嘟熊画报-快乐的一天</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=561" target="_blank">哈佛大学: 朵拉背包-16</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=558" target="_blank">哈佛大学: 歌声与微笑</a></li>
-                                                        <li><span style="float:right;">06-18</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=535" target="_blank">香港大学: 外星车</a></li>
-                                                        <li><span style="float:right;">06-18</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=534" target="_blank">香港大学: 儿歌大全之茉莉花</a></li>
-                              
-                            			
-
-
-                        </ul>
-                    </div>
-                </div></div>
-            <div class="p_m">
-                <div id="sub01" class="sub01">
-                    <div class="sub01_t"> <a href="http://open.sina.com.cn/courses/" target="_blank"><span class="   selected" id="sub01_t1">最热课程推荐</span></a></div>
-                    <div id="sub01_c1" class="sub01_c">
-                        <ul class="list01">
-                                                                                    <li><span style="float:right;">06-20</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=569" target="_blank">香港大学: 宇宙第二大爆炸</a></li>
-                                                        <li><span style="float:right;">06-20</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=567" target="_blank">协和医科大学: 全髋关节置换手术</a></li>
-                                                        <li><span style="float:right;">06-20</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=15&id=566" target="_blank">协和医科大学: 急生心肌梗死的介入治疗</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=565" target="_blank">哈佛大学: 野生动物样片</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=561" target="_blank">哈佛大学: 朵拉背包-16</a></li>
-                                                        <li><span style="float:right;">06-19</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=558" target="_blank">哈佛大学: 歌声与微笑</a></li>
-                                                        <li><span style="float:right;">06-18</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=534" target="_blank">香港大学: 儿歌大全之茉莉花</a></li>
-                                                        <li><span style="float:right;">06-18</span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=533" target="_blank">香港大学: 三只小鸟15</a></li>
-                              
-                            	
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="p_r">
-                <div id="sub02" class="sub02">
-                    <div class="sub02_t">
-                        <h2><a class="best" onclick="javascript:void(0)">最受欢迎的节目</a></h2>
-                        <span id="sub02_t1" class="selected">总</span> <span id="sub02_t2" class="">周</span> <span id="sub02_t3" class="">月</span> </div>
-                    <div id="sub02_c1" class="sub02_c">
-                        <ul class="list02">
-
-                                                                                    
-                            <li> <em>1</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=562">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">16</span> </li>
-                                                        
-                            <li> <em>2</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=529">
-                                    哈佛大学:wildfile                                </a>
-                                <span class="data">13</span> </li>
-                                                        
-                            <li> <em>3</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=535">
-                                    香港大学:外星车                                </a>
-                                <span class="data">10</span> </li>
-                                                        
-                            <li> <em>4</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=97&id=512">
-                                    sakai视频:11                                </a>
-                                <span class="data">10</span> </li>
-                                                        
-                            <li> <em>5</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=546">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">9</span> </li>
-                                                        
-                            <li> <em>6</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=560">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">8</span> </li>
-                                                        
-                            <li> <em>7</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=561">
-                                    哈佛大学:朵拉背包-16                                </a>
-                                <span class="data">7</span> </li>
-                                                        
-                            <li> <em>8</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=534">
-                                    香港大学:儿歌大全之茉莉花                                </a>
-                                <span class="data">6</span> </li>
-                                                        
-                            <li> <em>9</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=559">
-                                    哈佛大学:动画片                                </a>
-                                <span class="data">6</span> </li>
-                                                                                    
-                        </ul>
-                    </div>
-
-                    <div style="display:none" id="sub02_c2" class="sub02_c">
-                        <ul class="list02">
-                                                                                    
-                            <li> <em>1</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=562">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">16</span> </li>
-                                                        
-                            <li> <em>2</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=529">
-                                    哈佛大学:wildfile                                </a>
-                                <span class="data">13</span> </li>
-                                                        
-                            <li> <em>3</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=535">
-                                    香港大学:外星车                                </a>
-                                <span class="data">10</span> </li>
-                                                        
-                            <li> <em>4</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=97&id=512">
-                                    sakai视频:11                                </a>
-                                <span class="data">10</span> </li>
-                                                        
-                            <li> <em>5</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=546">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">9</span> </li>
-                                                        
-                            <li> <em>6</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=560">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">8</span> </li>
-                                                        
-                            <li> <em>7</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=561">
-                                    哈佛大学:朵拉背包-16                                </a>
-                                <span class="data">7</span> </li>
-                                                        
-                            <li> <em>8</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=534">
-                                    香港大学:儿歌大全之茉莉花                                </a>
-                                <span class="data">6</span> </li>
-                                                        
-                            <li> <em>9</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=559">
-                                    哈佛大学:动画片                                </a>
-                                <span class="data">6</span> </li>
-                                                                                                            </ul>
-                    </div>
-                    <div style="display:none" id="sub02_c3" class="sub02_c">
-                        <ul class="list02">
-                                                                                    
-                            <li> <em>1</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=562">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">16</span> </li>
-                                                        
-                            <li> <em>2</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=529">
-                                    哈佛大学:wildfile                                </a>
-                                <span class="data">13</span> </li>
-                                                        
-                            <li> <em>3</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=535">
-                                    香港大学:外星车                                </a>
-                                <span class="data">10</span> </li>
-                                                        
-                            <li> <em>4</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=97&id=512">
-                                    sakai视频:11                                </a>
-                                <span class="data">10</span> </li>
-                                                        
-                            <li> <em>5</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=546">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">9</span> </li>
-                                                        
-                            <li> <em>6</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=560">
-                                    哈佛大学:野生动物                                </a>
-                                <span class="data">8</span> </li>
-                                                        
-                            <li> <em>7</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=561">
-                                    哈佛大学:朵拉背包-16                                </a>
-                                <span class="data">7</span> </li>
-                                                        
-                            <li> <em>8</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=14&id=534">
-                                    香港大学:儿歌大全之茉莉花                                </a>
-                                <span class="data">6</span> </li>
-                                                        
-                            <li> <em>9</em>
-                                <a target="_blank" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=13&id=559">
-                                    哈佛大学:动画片                                </a>
-                                <span class="data">6</span> </li>
-                                                                                    </li>
-                        </ul>
-                    </div>
-                    <script type="text/javascript" language="javascript">
-
-          <!--//--><![CDATA[//><!--
-
-                        var SubShow_02 = new SubShowClass("sub02", "onmouseover");
-
-                        SubShow_02.addLabel("sub02_t1", "sub02_c1");
-
-                        SubShow_02.addLabel("sub02_t2", "sub02_c2");
-
-                        SubShow_02.addLabel("sub02_t3", "sub02_c3");
-
-          //--><!]]> 
-
-                    </script> 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 一键分享 begin -->
-
-    <div class="part03 clearfix"> 
-        <!-- Baidu Button BEGIN -->
-        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more">分享到：</span> <a class="bds_tsina"></a> <a class="bds_qzone"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> <a class="bds_t163"></a> <a class="bds_kaixin001"></a> <a class="bds_bdhome"></a> <a class="bds_hi"></a> <a class="shareCount"></a> </div>
-        <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script> 
-        <script type="text/javascript" id="bdshell_js"></script> 
-        <script type="text/javascript">
-            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
-        </script> 
-        <!-- Baidu Button END --> 
-    </div>
-    <!-- 一键分享 end -->
-    <div class="part07">
-    <div class="part07 part08">
-        <div class="tit04">
-            <h2 class=""><span class="tt hzjg">合作机构</span></h2>
-        </div>
-        <div class="cont">
-            <div class="blk06 clearfix">
-                <div class="pics">
-                                                            <div class="pic"> 
-                        <a target="_blank" href="http://www.moe.gov.cn"> 
-                            <img width="95" height="50" title="教育部" alt="教育部" src="http://www.moe.gov.cn/images/logo_88_31.gif"> 
-                            <span>教育部</span> </a> </div>
-
-
-                                        <div class="pic"> 
-                        <a target="_blank" href="http://www.chsi.cn/"> 
-                            <img width="95" height="50" title="学信网" alt="学信网" src="http://www.chsi.cn/logo/comp_logo_sdo.gif"> 
-                            <span>学信网</span> </a> </div>
-
-
-                                        
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="part_b2t"> <a href="#" target="_self" class="b2t" hidefocus="">back2Top</a> </div>
-</div>
-</div>
-
-  <div class="footer" style="padding: 15px; font-size: 12px; line-height: 20px; text-align: center;">
-  
-    
-											
-										
-		<p>Copyright &copy; 2006 - 2013 China Future Education, All Rights Reserved</p>
-										
-  
-
-    <br>
   </div>
 </div>
+<div class="muke-head-wrap">
+  <div id="muke-head"> <a href="index.htm" title="华东师范大学慕课中心" class="muke-logo"><img src="http://localhost/bordon/statics/mooc/images/muke-logo.png"></a>
+    <ul class="muke-nav">
+        <li class="checked"><a href="index.php">首页</a></li>
+      <li ><a href="index.php?m=content&c=mooc&a=lists&t=video&catid=191">微视频资源</a></li>
+      <li ><a href="index.php?m=content&c=mooc&a=lists&t=flipped&catid=189">翻转后课堂</a></li>
+      <li ><a href="index.php?m=content&c=mooc&a=lists&t=teacher&catid=188">名师名课</a></li>
+      <li ><a href="index.php?m=content&c=mooc&a=lists&t=starschool&catid=188">名校名栏</a></li>
+      <li ><a href="index.php?m=content&c=mooc&a=lists&t=maward&catid=190">微视频大奖赛</a></li>
+      <li ><a href="index.php?m=content&c=mooc&a=lists&t=school&catid=188">参与学校</a></li>
+    </ul>
+  </div>
+</div><div class="muke-bann-wrap">
+  <div id="banner" class="muke-bann" style="height:359px;">
+    <ul>
+      <li style="opacity: 1; z-index: 2;"><a href="#" title="微视频资源"><img src="http://localhost/bordon/statics/mooc/images/muke-bann16.jpg" width="994" height="359"></a></li>
+      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="http://localhost/bordon/statics/mooc/images/muke-bann8.jpg" width="994" height="359"></a></li>
+      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="http://localhost/bordon/statics/mooc/images/muke-bann6.jpg" width="994" height="359"></a></li>
+      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="http://localhost/bordon/statics/mooc/images/muke-bann7.jpg" width="994" height="359"></a></li>
+      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="http://localhost/bordon/statics/mooc/images/muke-bann4.jpg" width="994" height="359"></a></li>
+      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="http://localhost/bordon/statics/mooc/images/muke-bann5.jpg" width="994" height="359"></a></li>
+    </ul>
+    <ol>
+      <li class="checked"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+  </div>
 </div>
-
-<script src="http://202.120.83.180/phpcms/statics/sina/js/move.js"></script>
-<!--二维码 begin--> 
-
+<div class="main-wrap">
+  <div class="rollBox muke-c20-school">
+    <p class="muke-p muke-p2">C20慕课联盟成员校</p>
+    <a href="javascript:;" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()" class="lest-btn" hidefocus="true"></a>
+    <div class="Cont" id="ISL_Cont">
+      <div class="ScrCont elite-ul cf">
+        <div id="List1">
+          <div class="pic"><a href="school_info.htm" title="清华大学附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830052600959.jpg" width="190" height="60"  alt="清华大学附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="华东师范大学第二附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830064731691.jpg" width="190" height="60"  alt="华东师范大学第二附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="东北师范大学附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063412420.jpg" width="190" height="60"  alt="东北师范大学附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="西北师范大学附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063658418.jpg" width="190" height="60"  alt="西北师范大学附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="广东省中山纪念中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063201279.jpg" width="190" height="60"  alt="广东省中山纪念中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="贵州省贵阳市第一中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063222878.jpg" width="190" height="60"  alt="贵州省贵阳市第一中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="河南省郑州市外国语学校"><img src="http://localhost/bordon/statics/mooc/temp/20130830062153749.jpg" width="190" height="60"  alt="河南省郑州市外国语学校" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="黑龙江省哈尔滨市第三中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063241291.jpg" width="190" height="60"  alt="黑龙江省哈尔滨市第三中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="湖南省长沙市长郡中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063611246.jpg" width="190" height="60"  alt="湖南省长沙市长郡中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="江苏省南京市金陵中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063413204.jpg" width="190" height="60"  alt="江苏省南京市金陵中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="江苏省锡山高级中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063642906.jpg" width="190" height="60"  alt="江苏省锡山高级中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="山西省山西大学附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830064935443.jpg" width="190" height="60"  alt="山西省山西大学附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="陕西西安交通大学附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063843891.jpg" width="190" height="60"  alt="陕西西安交通大学附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="浙江省宁波市镇海中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830062108579.jpg" width="190" height="60"  alt="浙江省宁波市镇海中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="上海交通大学附属中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830063750133.jpg" width="190" height="60"  alt="上海交通大学附属中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="上海市七宝中学"><img src="http://localhost/bordon/statics/mooc/temp/20130830062509432.jpg" width="190" height="60"  alt="上海市七宝中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="山东省青岛市第二中学"><img src="http://localhost/bordon/statics/mooc/temp/20131018031143552.jpg" width="190" height="60"  alt="山东省青岛市第二中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="福建省福州第一中学"><img src="http://localhost/bordon/statics/mooc/temp/20131018032404461.png" width="190" height="60"  alt="福建省福州第一中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="浙江省杭州学军中学"><img src="http://localhost/bordon/statics/mooc/temp/thumb_190_0_20131121041345352.jpg" width="190" height="60"  alt="浙江省杭州学军中学" /></a></div>
+          <div class="pic"><a href="school_info.htm" title="辽宁省实验中学"><img src="http://localhost/bordon/statics/mooc/temp/thumb_190_0_20131127014329548.jpg" width="190" height="60"  alt="辽宁省实验中学" /></a></div>
+        </div>
+        <div id="List2"></div>
+      </div>
+    </div>
+    <a href="javascript:;"  onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()" class="next-btn" hidefocus="true"></a> </div>
+  <div class="blank_30"></div>
+  <div class="blank_10"></div>
+  <div id="muke-course" class="cf muke-list-wrap">
+    <div class="course-left fl">
+      <h1 class="muke-h1">慕课课程</h1>
+      <p>我们的课程设计很有趣，生动严谨。他们是最好的课程，最好的教授，最好的学校，并跨越多种学科，从科学、技术到人文。</p>
+      <a href="video.htm" class="muke-btn mt30">查看所有微视频资源</a> </div>
+    <img class="fr" src="http://localhost/bordon/statics/mooc/images/course-bj.jpg" width="402" height="240"> </div>
+  <div class="blank_30"></div>
+  <div class="blank_10"></div>
+  <div class="muke-list-wrap cf">
+    <div class="muke-list fl">
+      <div class="muke-title"> <span class="title-txt">通知公告</span> <a class="more" href="list.htm"></a> </div>
+      <ul>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+      </ul>
+    </div>
+    <div class="muke-list fr">
+      <div class="muke-title"> <span class="title-txt">联盟动态</span> <a class="more" href="list.htm"></a> </div>
+      <ul>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+      </ul>
+    </div>
+    <div class="blank_30"></div>
+    <div class="muke-list fl">
+      <div class="muke-title"> <span class="title-txt">研究进展</span> <a class="more" href="list.htm"></a> </div>
+      <ul>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+      </ul>
+    </div>
+    <div class="muke-list fr">
+      <div class="muke-title"> <span class="title-txt">媒体视点</span> <a class="more" href="list.htm"></a> </div>
+      <ul>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="muke-blogroll cf"> <span class="corre">相关链接</span>
+    <div class="corre-li"><a href="http://www.moe.edu.cn/" target="_blank" title="中华人民共和国教育部">中华人民共和国教育部</a><a href="http://www.ecnu.edu.cn/" target="_blank" title="华东师范大学">华东师范大学</a><a href="http://www.c20.org.cn/" target="_blank" title="华东师范大学考试与评价研究院">华东师范大学考试与评价研究院</a>　　<a href="http://www.c20.org.cn" target="_blank" title="华东师范大学教育部中学校长培训中心">华东师范大学教育部中学校长培训中心</a><a href="http://www.dedu.ecnu.edu.cn/" target="_blank" title="基础教育改革与发展研究所">基础教育改革与发展研究所</a><a href="http://www.futurename.cn/" target="_blank" title="未名网">未名网</a></div>
+  </div>
+</div>
+<div class="muke-footer-wrap">
+  <div id="muke-footer">
+    <div class="footer-AboutUs"> <a href="page.htm">关于我们</a> <a href="page.htm">加入我们</a> <a href="page.htm">联系我们</a> <a href="#">资源下载</a> </div>
+    <div class="footer-left">
+      <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="images/faseSlider.js"></script> 
 <script type="text/javascript">
-
-	(function(aClz,maxSize,co) {
-
-	var doc = document,
-
-		side = (function() {
-
-			var body = doc.body,
-
-				firstChild = body.firstChild,
-
-				wrap = doc.createElement('div');
-
-			wrap.className = 'side-btns-2wm';
-
-			wrap.style.display = 'none';
-			wrap.style.display = 'none';
-			thisURL = document.URL;
-			strwrite = "<img src='https://chart.googleapis.com/chart?cht=qr&chs=90x90&choe=UTF-8&chld=L|4&chl=" + thisURL + "' width='90' height='90' alt='网址二维码' />"; 
-
-			wrap.innerHTML = '<a class="side-btns-2wm-img" target="_blank" href="#" title="手机端快速访问" suda-uatrack="key=qr_code&value=open_index_qrcode"><em>使用手机扫描</em> '+strwrite+' <span>使用手机扫描</span> </a> <a href="javascript:;" class="side-btns-2wm-close" title="关闭" suda-uatrack="key=qr_code&value=open_index_qrcode_close">关闭</a>';
-
-			firstChild ? firstChild.parentNode.insertBefore(wrap, firstChild) : body.appendChild(wrap);
-
-			return wrap;
-
-		})(),
-
-		clz = side.className,
-
-		nClz = clz + ' ' + aClz,
-
-		cookieName = co.name || 'close_open_index_2wm',
-
-		domain = co.domain || 'open.sina.com.cn',
-
-		lnks = side.getElementsByTagName('a'),
-
-		close = lnks[lnks.length-1],
-
-		toggle = function(dis) {
-
-			side.style.display = dis;
-
-		}, addEvent = function(o, s, fn) {
-
-			if (o.attachEvent) {
-
-				o.attachEvent('on' + s, fn);
-
-			} else {
-
-				o.addEventListener(s, fn, false);
-
+  (function()
+  {
+    $('#banner').fadeSlider({ev:'click',auto:true});//轮播图
+  })();
+		var aDiv = document.getElementById('muke-head');
+		var aLi = aDiv.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].onmouseover = function(){
+				this.className = 'checked';
 			}
-
-			return o;
-
-		}, resize = function() {
-
-			var body = doc.documentElement || doc.body;
-
-			if (!body) {
-
-				return;
-
+			if(aLi[i].className==''){
+				aLi[i].onmouseout = function(){
+					this.className = '';
+				}
 			}
+		} ;
 
-			var width = body.offsetWidth;
+var Speed = 5; //速度(毫秒)
+var Space = 5; //每次移动(px)
+var PageWidth = 880; //翻页宽度
+var fill = 0; //整体移位
+var MoveLock = false;
+var MoveTimeObj;
+var Comp = 0;
+var AutoPlayObj = null;
+GetObj("List2").innerHTML = GetObj("List1").innerHTML;
+GetObj('ISL_Cont').scrollLeft = fill;
+GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);}
+GetObj("ISL_Cont").onmouseout = function(){AutoPlay();}
+AutoPlay();
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval
 
-			if (width < maxSize) {
+('document.all.'+objName)}}
+function AutoPlay(){ //自动滚动
+clearInterval(AutoPlayObj);
+AutoPlayObj = setInterval('ISL_GoDown();ISL_StopDown();',3000); //间隔时间
+}
+function ISL_GoUp(){ //上翻开始
+if(MoveLock) return;
+clearInterval(AutoPlayObj);
+MoveLock = true;
+MoveTimeObj = setInterval('ISL_ScrUp();',Speed);
+}
+function ISL_StopUp(){ //上翻停止
+clearInterval(MoveTimeObj);
+if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){
+Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth);
+CompScr();
+}else{
+MoveLock = false;
+}
+AutoPlay();
+}
+function ISL_ScrUp(){ //上翻动作
+if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj
 
-				side.className = nClz;
+('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth}
+GetObj('ISL_Cont').scrollLeft -= Space ;
+}
+function ISL_GoDown(){ //下翻
+clearInterval(MoveTimeObj);
+if(MoveLock) return;
+clearInterval(AutoPlayObj);
+MoveLock = true;
+ISL_ScrDown();
+MoveTimeObj = setInterval('ISL_ScrDown()',Speed);
+}
+function ISL_StopDown(){ //下翻停止
+clearInterval(MoveTimeObj);
+if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){
+Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill;
+CompScr();
+}else{
+MoveLock = false;
+}
+AutoPlay();
+}
+function ISL_ScrDown(){ //下翻动作
+if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft =
 
-			} else {
-
-				side.className = clz;
-
-			}
-
-		};
-
-		// name, value, expire(hour), path, domain, secure
-
-		var cookie = (function() {var co = {}; co.getCookie = function(name) {name = name.replace(/([\.\[\]\$])/g, '\\\$1'); var rep = new RegExp(name + '=([^;]*)?;', 'i'); var co = document.cookie + ';'; var res = co.match(rep); if (res) {return unescape(res[1]) || ""; } else {return ""; } }; co.setCookie = function(name, value, expire, path, domain, secure) {var cstr = []; cstr.push(name + '=' + escape(value)); if (expire) {var dd = new Date(); var expires = dd.getTime() + expire * 3600000; dd.setTime(expires); cstr.push('expires=' + dd.toGMTString()); } if (path) {cstr.push('path=' + path); } if (domain) {cstr.push('domain=' + domain); } if (secure) {cstr.push(secure); } document.cookie = cstr.join(';'); }; co.deleteCookie = function(name) {document.cookie = name + '=;' + 'expires=Fri, 31 Dec 1999 23:59:59 GMT;'; }; return co; })();
-
-		var display = cookie.getCookie(cookieName);
-
-		if(display!=''){
-
-			toggle('none');
-
-			return;
-
-		}
-
-		toggle('block');
-
-		resize();
-
-		addEvent(window, 'resize', resize);
-
-		addEvent(close,'click',function(e){
-
-			toggle('none');
-
-			cookie.setCookie(cookieName,'1',15*24,'/',domain);
-
-			if(window.event){
-
-				window.event.returnValue = false;
-
-			}else{
-
-				e.preventDefault();
-
-			}
-
-		});
-
-	})('side-btns-2wm-resize',1174,{
-
-		name:'close_open_index_2wm',				
-
-		domain:'open.sina.com.cn'		
-	});
-
-	</script>
+GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;}
+GetObj('ISL_Cont').scrollLeft += Space ;
+}
+function CompScr(){
+var num;
+if(Comp == 0){MoveLock = false;return;}
+if(Comp < 0){ //上翻
+if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+}else{
+   num = -Comp;
+   Comp = 0;
+}
+GetObj('ISL_Cont').scrollLeft -= num;
+setTimeout('CompScr()',Speed);
+}else{ //下翻
+if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+}else{
+   num = Comp;
+   Comp = 0;
+}
+GetObj('ISL_Cont').scrollLeft += num;
+setTimeout('CompScr()',Speed);
+}
+}
+</script>
 </body>
 </html>
-
-  
-

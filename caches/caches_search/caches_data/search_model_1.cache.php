@@ -18,6 +18,12 @@ return array (
     'name' => '测试模型',
     'sort' => '0',
   ),
+  11 => 
+  array (
+    'typeid' => '59',
+    'name' => '视频模型搜索',
+    'sort' => '0',
+  ),
   1 => 
   array (
     'typeid' => '1',
