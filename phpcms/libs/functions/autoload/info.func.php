@@ -49,7 +49,9 @@ function structure_filters_url($fieldname,$array=array(),$type = 1,$modelid) {
 	//后期增加伪静态等其他url规则管理，apache伪静态支持9个参数 //去除city
         $c=$_GET['c'];
         $t=$_GET['t'];
-	if(strpos(URLRULE,'.html') === FALSE) $urlrule =APP_PATH.'index.php?m=content&c={$c}&a=lists&t={$t}&catid={$catid}'.$urlpars.'&page={$page}' ;
+        $a=$_GET['a'];
+        $id=$_GET['id'];
+	if(strpos(URLRULE,'.html') === FALSE) $urlrule =APP_PATH.'index.php?m=content&c={$c}&a={$a}&t={$t}&catid={$catid}&id={$id}'.$urlpars.'&page={$page}' ;
 	else $urlrule =APP_PATH.'list-{$catid}-{$city}'.$urlpars.'-{$page}.html';
 	//根据get传值构造URL
 	if (is_array($array)) foreach ($array as $_k=>$_v) {
@@ -77,8 +79,16 @@ function structure_filters_sql($modelid,$cityid='') {
 	$fields = getcache('model_field_'.$modelid,'model');
 	$fields_key = array_keys($fields);
 	//TODO
-
-	$sql = '`catid` = \''.$_GET[catid].'\'';
+        if($subcat=subcat($_GET[catid])){
+            $subcatid=array();
+            foreach(($subcat) as $k=>$v)
+            {
+                $subcatid[]=$k;
+            }
+            $subcatid  = implode(',', $subcatid);
+        }
+        else $subcatid=$_GET[catid];
+	$sql ="catid in ($subcatid)";
 	if(intval($cityid)!=0)  $sql .= ' AND `city`=\''.$cityid.'\'';
 	foreach ($_GET as $k=>$r) {
 		if(in_array($k,$fields_key) && intval($r)!=0 && ($fields[$k]['filtertype'] || $fields[$k]['rangetype'])) {

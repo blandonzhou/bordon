@@ -4,51 +4,34 @@
 </div>
 <div class="main-wrap">
   <div class="muke-inner">
-    <div class="muke-cou-title"> <span class="fl" href="">名师名课</span> <span class="fr mr10 f12">共5个教师</span> </div>
+    <div class="muke-cou-title"> <span class="fl" href="">名师名课</span></div>
     <div class="muke-video cf">
       <div class="inner">
         <div class="muke-video-list muke-video-list2 cf" style="padding-left:20px">
           <ul>
-            <li> <a class="fl" href="teacher_info.htm"><img src="temp/m.jpg" width="99" height="130"></a>
-              <div class="muke-video-info">
-                <h2><a href="teacher_info.htm" title="马九克老师讲物理">马九克老师讲物理</a></h2>
-                <p>学校：上海市七宝中学</p>
-                <p>课程：112</p>
-                <p class="intro">简介：马九克，中学高级教师，物理特级教师，全国优秀教师，2013年上海教育年度十大新闻人物。华东师范大学国际慕课研究中心兼职教授，华东师范大学网络教育学院特聘专家，微软（中国）精英培训师，独立承担着"上海市中小学教师信息技术有效应用"课程的开发工作。"马九克教育技术应用研究名师工作室"主持人。中国教师报教育技术应用培训专家。</p>
-              </div>
-            </li>
-            <li> <a class="fl" href="teacher_info.htm"><img src="temp/m.jpg" width="99" height="130"></a>
-              <div class="muke-video-info">
-                <h2><a href="teacher_info.htm" title="马九克老师讲物理">马九克老师讲物理</a></h2>
-                <p>学校：上海市七宝中学</p>
-                <p>课程：112</p>
-                <p class="intro">简介：马九克，中学高级教师，物理特级教师，全国优秀教师，2013年上海教育年度十大新闻人物。华东师范大学国际慕课研究中心兼职教授，华东师范大学网络教育学院特聘专家，微软（中国）精英培训师，独立承担着"上海市中小学教师信息技术有效应用"课程的开发工作。"马九克教育技术应用研究名师工作室"主持人。中国教师报教育技术应用培训专家。</p>
-              </div>
-            </li>
-            <li> <a class="fl" href="teacher_info.htm"><img src="temp/m.jpg" width="99" height="130"></a>
-              <div class="muke-video-info">
-                <h2><a href="teacher_info.htm" title="马九克老师讲物理">马九克老师讲物理</a></h2>
-                <p>学校：上海市七宝中学</p>
-                <p>课程：112</p>
-                <p class="intro">简介：马九克，中学高级教师，物理特级教师，全国优秀教师，2013年上海教育年度十大新闻人物。华东师范大学国际慕课研究中心兼职教授，华东师范大学网络教育学院特聘专家，微软（中国）精英培训师，独立承担着"上海市中小学教师信息技术有效应用"课程的开发工作。"马九克教育技术应用研究名师工作室"主持人。中国教师报教育技术应用培训专家。</p>
-              </div>
-            </li>
-            <li> <a class="fl" href="teacher_info.htm"><img src="temp/m.jpg" width="99" height="130"></a>
-              <div class="muke-video-info">
-                <h2><a href="teacher_info.htm" title="马九克老师讲物理">马九克老师讲物理</a></h2>
-                <p>学校：上海市七宝中学</p>
-                <p>课程：112</p>
-                <p class="intro">简介：马九克，中学高级教师，物理特级教师，全国优秀教师，2013年上海教育年度十大新闻人物。华东师范大学国际慕课研究中心兼职教授，华东师范大学网络教育学院特聘专家，微软（中国）精英培训师，独立承担着"上海市中小学教师信息技术有效应用"课程的开发工作。"马九克教育技术应用研究名师工作室"主持人。中国教师报教育技术应用培训专家。</p>
-              </div>
-            </li>
+            {php $urlrule = makeurlrule()}
+            {loop subcat($catid)  $k $v}
+            {php $subcatid[] = $k;}
+            {/loop}
+            {php $subcatid  = implode(',', $subcatid);}
+            {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}   
+                {loop $info $v} 
+                <li> <a class="fl" href="index.php?m=content&c=mooc&a=subcat&t=teacher_info&catid={$catid}&id={$v[id]}"><img src="{$v[tea_img]}" width="99" height="130"></a>
+                  <div class="muke-video-info">
+                    <h2><a href="index.php?m=content&c=mooc&a=subcat&t=teacher_info&catid={$catid}&id={$v[id]}" title="{$v[tea_name]}">{$v[tea_name]}</a></h2>
+                    <p>学校：{$v[school]}</p>
+                    <p>课程：{$v[title]}</p>
+                    <p class="intro">简介：{$v[tea_des]}</p>
+                  </div>
+                </li>
+                {/loop}
+            {/pc}
           </ul>
         </div>
         <div class="blank_30"></div>
         <div class="mr30">
-          <div class="page fr"><a class="page_no" href="javascript:">上一页</a><a class="checked" href="javascript:void(0)">1</a><a href="javascript:" class="page_no">下一页</a>
-            <div class="page_skip"> <span>到</span>
-              <input type="text" id="pages" class="skip_txt" value="1">
-              <span>页</span> <a href="javascript:" class="skip_btn">确 定</a> </div>
+          <div class="page fr">
+              {$pages}
           </div>
         </div>
         <div class="blank_10"></div>

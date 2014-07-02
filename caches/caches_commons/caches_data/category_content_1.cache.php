@@ -110,7 +110,7 @@ return array (
     'parentdir' => 'shipin/',
     'catdir' => 'flipped',
     'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=189',
-    'items' => '0',
+    'items' => '3',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -161,7 +161,7 @@ return array (
     'parentdir' => 'shipin/',
     'catdir' => 'maward',
     'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=190',
-    'items' => '0',
+    'items' => '3',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',
@@ -212,7 +212,7 @@ return array (
     'parentdir' => 'shipin/',
     'catdir' => 'video',
     'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=191',
-    'items' => '0',
+    'items' => '23',
     'hits' => '0',
     'setting' => 'array (
   \'workflowid\' => \'\',

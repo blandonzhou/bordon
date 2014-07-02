@@ -39,14 +39,14 @@
         </div>
         <div class="blank_30"></div>
         <div class="muke-video cf">
-                {php $sql = structure_filters_sql($modelid);}
-                {php $urlrule = makeurlrule()}
-                {pc:content  action="lists" catid="$catid" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule" num="10"}   
-                {php $l = count($info)}
+
             <div class="muke-cou-title"> <a class="checked" href="javascript:;">最新微视频</a></div>
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
+                    {php $sql = structure_filters_sql($modelid);}
+                    {php $urlrule = makeurlrule()}
+                    {pc:content  action="lists" catid="$catid" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule" num="10"}   
                     {loop $info $v} 
                     {php $img = explode('.',$v[local_video])}
                     {php $src = $img[0]}    

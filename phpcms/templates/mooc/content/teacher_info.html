@@ -4,124 +4,47 @@
   <div class="muke-inner">
   <div class="blank_30"></div>
   <div class="muke-screen-wrap cf">
-
-            <div class="muke-cou-title">上海市七宝中学马九克专栏</div>
-
-            <div class="muke-school-intr muke-topTeacher-intr cf">
-
-                <span><img src="{APP_PATH}statics/mooc/temp/m.jpg" width="99" height="130"></span>
-
-                <div class="muke-video-info mt10">
-
-                    <h2><a href="javascript:void(0);">马九克老师讲物理</a></h2>
-
-                    <p>学校：上海市七宝中学</p>
-
-                    <p>课程：56</p>
-
-                    <p class="intro" style="height:auto">简介：马九克，中学高级教师，物理特级教师，全国优秀教师，2013年上海教育年度十大新闻人物。华东师范大学国际慕课研究中心兼职教授，华东师范大学网络教育学院特聘专家，微软（中国）精英培训师，独立承担着"上海市中小学教师信息技术有效应用"课程的开发工作。"马九克教育技术应用研究名师工作室"主持人。中国教师报教育技术应用培训专家。</p>
-
-                </div>
-
-            </div>
-
-        </div>
+      {php $tea_name=$data[tea_name]}
+      <div class="muke-cou-title">{$data[school]}{$tea_name}专栏</div>
+      <div class="muke-school-intr muke-topTeacher-intr cf">
+          <span><img src="{$data[tea_img]}" width="99" height="130"></span>
+          <div class="muke-video-info mt10">
+              <h2>{$data[tea_name]}</h2>
+              <p>学校：{$data[school]}</p>
+              <p class="intro" style="height:auto">简介：{$data[tea_des]}</p>
+          </div>
+      </div>
+  </div>
     
     <div class="blank_30"></div>
     <div class="muke-video cf">
-      <div class="muke-cou-title"> <a class="checked" href="#">最新微视频</a> <a href="#">最热微视频</a> <span class="fr mr10 f12">共590个视频</span> </div>
+      <div class="muke-cou-title"> <a class="checked">最新微视频</a></div>
       <div class="blank_10"></div>
       <div class="muke-video-list cf">
-        <ul>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          <li> <a class="fl" href="play.htm"><img src="temp/ss.jpg" width="132" height="100"></a>
-            <div class="muke-video-info">
-              <h2><a href="play.htm" title="质量语密度">质量语密度</a></h2>
-              <p>来 &nbsp; &nbsp; 源：银川市第十八中学 张嫣雨</p>
-              <p>播 放 数：214</p>
-              <p>发布时间：2014-06-17</p>
-            </div>
-          </li>
-          
-        </ul>
+          <ul>
+            {php $urlrule = makeurlrule()}
+            {loop subcat($catid)  $k $v}
+            {php $subcatid[] = $k;}
+            {/loop}
+            {php $subcatid  = implode(',', $subcatid);}
+            {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) and tea_name='$tea_name' order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}   
+                {loop $info $v} 
+                <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
+                    <div class="muke-video-info">
+                        <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
+                        <p>来 &nbsp; &nbsp; 源：{$v[school]} {$v[tea_name]}</p>
+                        <!--<p>播 放 数：{$v[views]}</p>-->
+                        <p>发布时间：{date('Y-m-d',$v[inputtime])}</p>
+                    </div>
+                </li>
+                {/loop}
+            {/pc}
+          </ul>
       </div>
       <div class="blank_30"></div>
       <div class="mr30">
-        <div class="page fr"><a class="page_no" href="#">上一页</a><a class="checked" href="#">1</a><a href="#">2</a><a href="#">3</a> <span class="fl">...</span> <a href="#">10</a> <a href="#">下一页</a>
-          <div class="page_skip"> <span>到</span>
-            <input type="text" id="pages" class="skip_txt" value="1">
-            <span>页</span> <a href="#"  class="skip_btn">确 定</a> </div>
+        <div class="page fr">
+            {$pages}
         </div>
       </div>
       <div class="blank_30"></div>

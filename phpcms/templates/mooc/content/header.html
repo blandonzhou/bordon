@@ -24,7 +24,7 @@
 <div class="muke-head-wrap">
   <div id="muke-head"> <a href="index.htm" title="华东师范大学慕课中心" class="muke-logo"><img src="{APP_PATH}statics/mooc/images/muke-logo.png"></a>
     <ul class="muke-nav">
-        <li <?php if($_GET['t']=='') echo 'class="checked"';?>><a href="index.php">首页</a></li>
+        <li <?php if($_GET['c']!='mooc') echo 'class="checked"';?>><a href="index.php">首页</a></li>
       <li <?php if($_GET['t']=='video') echo 'class="checked"';?>><a href="index.php?m=content&c=mooc&a=lists&t=video&catid=191">微视频资源</a></li>
       <li <?php if($_GET['t']=='flipped') echo 'class="checked"';?>><a href="index.php?m=content&c=mooc&a=lists&t=flipped&catid=189">翻转后课堂</a></li>
       <li <?php if($_GET['t']=='teacher') echo 'class="checked"';?>><a href="index.php?m=content&c=mooc&a=lists&t=teacher&catid=188">名师名课</a></li>
