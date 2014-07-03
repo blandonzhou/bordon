@@ -1,0 +1,45 @@
+{template "content","header"}
+    {pc:get sql="select * from v9_category where catid=$catid" return="data" num=1}
+    {php $data=$data[0]}
+<div class="main-wrap">
+  <div class="muke-inner">
+  <div class="blank_30"></div>
+  <div style="border:1px #CCC solid; background-color:#FFF">
+  <div class="muke-cou-title">{$data[school_name]}简介</div>
+  <div class="muke-school-intr cf">
+        <span><img src="{$data[image]}" width="132" height="100" title="{$data[catname]}"></span>
+        <p class="fl">{$data[description]}</p>
+    </div>
+    
+  </div>
+    <div class="blank_30"></div>
+    <div class="muke-video cf">
+      <div class="muke-cou-title"> <a class="checked">最新微视频</a></div>
+      <div class="blank_10"></div>
+      <div class="muke-video-list cf">
+        <ul>
+            {pc:content action="lists" catid="$catid" page="$page" return="info" urlrule="$urlrule" num="10"}   
+                {loop $info $v} 
+                <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
+                    <div class="muke-video-info">
+                        <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
+                        <p>简介：{$v[des]}</p>
+                    </div>
+                </li>
+                {/loop}
+            {/pc}
+          </ul>
+      </div>
+      <div class="blank_30"></div>
+      <div class="mr30">
+        <div class="page fr">
+            {$pages}
+        </div>
+      </div>
+      <div class="blank_30"></div>
+    </div>
+  </div>
+</div>
+{template "content","footer"}
+</body>
+</html>

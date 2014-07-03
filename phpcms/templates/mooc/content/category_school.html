@@ -1,0 +1,47 @@
+{template "content","header"}
+<div class="muke-bann-wrap2">
+  <div class="muke-bann"><img  src="{APP_PATH}statics/mooc/images/muke-bann1.jpg" width="994" height="215"></div>
+</div>
+<div class="main-wrap">
+ <div class="muke-inner">
+  <div class="muke-screen-wrap cf">
+   <div class="muke-cou-title">参与学校</div>
+   <div class="muke-school-intr"> 所谓C20慕课联盟(高中)，其中的C即China(中国)，20是指20所国内著名高中;慕课(MOOCs)是英文"Massive Open Online Courses"的缩写，即大规模公开在线课程的简称。国内著名高中筹建慕课联盟，既是这些学校承担社会责任的需要，也是提升自身声望的需要。在基础教育领域，借助于慕课平台，教师可以实施"翻转课堂"，实现学校教学模式的变革，为拔尖创新人才的培养创造良好环境。 </div>
+  </div>
+  <div class="blank_30"></div>
+  <div class="muke-video cf">
+   <div class="muke-cou-title"> 
+                {pc:content action="category" catid="191" order="listorder ASC"}
+                    {loop $data $v}
+                    <a href="{$v[url]}" <?php if($catid==$v[catid]) echo 'class="checked"';?> >{$v[catname]}</a>
+                    {/loop}
+                {/pc}
+   </div>
+   <div class="muke-video-list cf">
+        <ul>  
+        {pc:content action="category" catid="$catid" order="listorder ASC"}
+            {loop $data $v}
+                    <li> <a class="fl" href="{$v[url]}"><img src="{$v[image]}" width="132" height="100"></a>
+                        <div class="muke-video-info">
+                            <h2><a href="{$v[url]}" title="{$v[title]}">{$v[catname]}</a></h2>
+                            <p>简介：{$v[description]}</p>
+                        </div>
+                    </li>
+            {/loop}
+        {/pc}
+        </ul>
+   </div>
+   <div class="blank_30"></div>
+   <div class="mr30">
+    <div class="page fr">
+        {$pages}
+    </div>
+   </div>
+   <div class="blank_30"></div>
+  </div>
+ </div>
+</div>
+
+{template "content","footer"}
+</body>
+</html>

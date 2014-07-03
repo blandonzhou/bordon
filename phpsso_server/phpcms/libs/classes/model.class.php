@@ -54,6 +54,7 @@ class model {
 	 */
 	final public function listinfo($where = '', $order = '', $page = 1, $pagesize = 20, $key='', $setpages = 10,$urlrule = '',$array = array()) {
 		$where = to_sqls($where);
+                echo $where;die;
 		$this->number = $this->count($where);
 		$page = max(intval($page), 1);
 		$offset = $pagesize*($page-1);

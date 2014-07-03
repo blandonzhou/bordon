@@ -1,0 +1,28 @@
+{template "content","header"}
+<div class="blank_30"></div>
+<div class="main-wrap mod-info-wrap cf ">
+    <div class="mod-info fr">
+        <ul class="mod-info-menu">
+            {pc:content action="hits" catid="$catid" num="10" order="views DESC" return="list"}
+            {php $i=1}
+            {loop $list $v}
+            <li <?php if($id==$v[id]) echo 'class="checked"';?>><a href="{$v[url]}">{$v[title]}</a></li>
+            {php $i++}
+            {/loop}
+        </ul>
+    </div>
+    <div class="mod-list fl">
+        <div class="inner">
+            <div class="mod-list-title">{$title}</div>
+            <div class="blank_15"></div>
+            <div class="mod-list-cont">
+                <div class="node cf">
+                 {$content}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{template "content","footer"}
+</body>
+</html>

@@ -26,7 +26,14 @@ add
 
 c9eee270-cbd3-4170-9c72-e9098b940636
 
-search_admin.php
+classes
+dir
+
+
+
+add
+
+index.php
 file
 
 
@@ -40,7 +47,7 @@ add
 has-props
 has-prop-mods
 
-index.phpbak
+search_admin.php
 file
 
 
@@ -67,27 +74,6 @@ add
 
 has-props
 has-prop-mods
-
-index.php
-file
-
-
-
-add
-
-
-
-
-
-has-props
-has-prop-mods
-
-classes
-dir
-
-
-
-add
 
 templates
 dir

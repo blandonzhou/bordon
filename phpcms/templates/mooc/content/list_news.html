@@ -1,0 +1,40 @@
+{template "content","header"}
+<div class="blank_30"></div>
+<div class="main-wrap mod-info-wrap cf ">
+    <div class="mod-info fr">
+        <h2 class="checked">热门新闻</h2>
+        <ul class="mod-hot ml10 mt15" id="mod-hot">
+            {pc:content action="hits" catid="$catid" num="10" order="views DESC" return="list"}
+            {php $i=1}
+            {loop $list $v}
+            <li><span>{$i}</span><em class="aem"></em><a href="{$v[url]}">{$v[title]}</a></li>
+            {php $i++}
+            {/loop}
+        </ul>
+    </div>
+    <div class="mod-list fl">
+        <div class="inner">
+            <div class="mod-list-title">{$catname}</div>
+            <div class="blank_15"></div>
+            <ul class="mod-list-inner">
+                {pc:content action="lists" catid="$catid" page="$page" return="news" urlrule="$urlrule" num="10"} 
+                    {loop $news $v}
+                        <li><span>{date('Y-m-d H:m:s',$v[updatetime])}</span><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></li>
+                    {/loop}
+                {/pc}    
+            </ul>
+            <div class="blank_30"></div>
+      <div class="mr30">
+        <div class="page fr">
+            {$pages}
+        </div>
+      </div>
+      <div class="blank_30"></div>
+        </div>
+    </div>
+</div>
+{template "content","footer"}
+
+
+</body>
+</html>

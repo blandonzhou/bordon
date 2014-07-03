@@ -1,0 +1,36 @@
+{template "content","header"}
+<div  class="muke-bann-wrap2">
+    <div  class="muke-bann">
+        <img  src="{APP_PATH}statics/mooc/images/muke-banns.jpg"  width="994"  height="215">
+    </div>
+</div>
+<div class="main-wrap">
+  <div class="muke-inner">
+    <div class="muke-video cf">
+        <div class="muke-cou-title" style="padding-left:20px"> 搜索结果 <span class="fr mr10 f12">关键字"<font color="red">{$q}</font></red>"，共有{$totalnums}个结果</span> </div>
+      <div class="blank_10"></div>
+      <div class="muke-video-list cf">
+        <ul>
+            {loop $data $i $r}
+                <li> <a class="fl" href="{$r[url]}"><img src="{$r[thumb]}" width="132" height="100"></a>
+                    <div class="muke-video-info">
+                      <h2><a href="{$r[url]}" title="{$r[title]}">{$r[title]}</a></h2>
+                      <p>简介：{$r[des]}</p>
+                    </div>
+                  </li>
+            {/loop}
+        </ul>
+      </div>
+      <div class="blank_30"></div>
+      <div class="mr30">
+        <div class="page fr">
+            {$pages}
+        </div>
+      </div>
+      <div class="blank_30"></div>
+    </div>
+  </div>
+</div>
+{template "content","footer"}
+</body>
+</html>

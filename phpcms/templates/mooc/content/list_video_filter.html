@@ -1,22 +1,26 @@
 {template "content","header"}
-<div  class="muke-bann-wrap2">
-
-    <div  class="muke-bann">
-
-        <img  src="{APP_PATH}statics/mooc/images/muke-bann18.jpg"  width="994"  height="215">
-
-    </div>
-
-</div>
+{pc:get sql="select * from v9_category where catid=$catid" return="data" num=1}
+{php $data=$data[0]}
 <div class="main-wrap">
     <div class="muke-inner">
+        <div class="blank_30"></div>
+        <div style="border:1px #CCC solid; background-color:#FFF">
+            <div class="muke-cou-title">{$data[school_name]}简介</div>
+            <div class="muke-school-intr cf">
+                <span><img src="{$data[image]}" width="132" height="100" title="{$data[catname]}"></span>
+                <p class="fl">{$data[description]}</p>
+            </div>
+
+        </div>
+
+        <div class="blank_30"></div>
         <div class="muke-screen-wrap cf">
             <div class="muke-cou-title"> <span class="fl">微视频资源</span> </div>
             <div class="muke-screen">
                 <label>学段：</label>
                 <div class="screen-inner">  
                     {loop filters('xueduan',$modelid) $r}
-                        {$r[menu]}
+                    {$r[menu]}
                     {/loop}
                 </div>
             </div>
@@ -24,7 +28,7 @@
                 <label>科目：</label>
                 <div class="screen-inner"> 
                     {loop filters('xueke',$modelid) $r}
-                        {$r[menu]}
+                    {$r[menu]}
                     {/loop}
                 </div>
             </div>
@@ -32,15 +36,14 @@
                 <label>年级：</label>
                 <div class="screen-inner"> 
                     {loop filters('nianji',$modelid) $r}
-                        {$r[menu]}
+                    {$r[menu]}
                     {/loop}
                 </div>
             </div>
         </div>
         <div class="blank_30"></div>
         <div class="muke-video cf">
-
-            <div class="muke-cou-title"> <a class="checked" href="javascript:;">最新微视频</a></div>
+            <div class="muke-cou-title"> <a class="checked">最新微视频</a></div>
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
@@ -54,9 +57,7 @@
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
-                            <p>来 &nbsp; &nbsp; 源：{$v[school]} {$v[tea_name]}</p>
-                            <!--<p>播 放 数：{$v[views]}</p>-->
-                            <p>发布时间：{date('Y-m-d',$v[inputtime])}</p>
+                            <p>简介：{$v[des]}</p>
                         </div>
                     </li>
                     {/loop}

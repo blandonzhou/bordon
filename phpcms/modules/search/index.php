@@ -27,7 +27,7 @@ class index {
 			if(trim($_GET['q'])=='') {
 				header('Location: '.APP_PATH.'index.php?m=search');exit;
 			}
-			$typeid = intval($_GET['typeid']);
+			$typeid = empty($_GET['typeid']) ? 48 : intval($_GET['typeid']);
 			$time = empty($_GET['time']) || !in_array($_GET['time'],array('all','day','month','year','week')) ? 'all' : trim($_GET['time']);
 			$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 			$pagesize = 10;
@@ -140,16 +140,18 @@ class index {
 				$modelid = $model_type_cache[$typeid];
 
 				//是否读取其他模块接口
-				if(true) {
+				if($modelid) {
 					$this->content_db->set_model($modelid);
 					
 					/**
 					 * 如果表名为空，则为黄页模型
 					 */
-				
-					
-					$this->content_db = pc_base::load_model('video_model');
-					
+					if(empty($this->content_db->model_tablename)) {
+						$this->content_db = pc_base::load_model('yp_content_model');
+						$this->content_db->set_model($modelid);
+
+					}
+
 					if($setting['sphinxenable']) {
 						$data = $this->content_db->listinfo($where, 'id DESC', 1, $pagesize);
 						$pages = pages($totalnums, $page, $pagesize);
@@ -158,7 +160,6 @@ class index {
 						$pages = $this->db->pages;
 						$totalnums = $this->db->number;
 					}
-					
 					//如果分词结果为空
 					if(!empty($segment_q)) {
 						$replace = explode(' ', $segment_q);
@@ -186,10 +187,10 @@ class index {
 			$pages = isset($pages) ? $pages : '';
 			$totalnums = isset($totalnums) ? $totalnums : 0;
 			$data = isset($data) ? $data : '';
-			$video_data = isset($data) ? $data : '';
+
 			include	template('search','list');
 		} else {
-			include	template('search','list');
+			include	template('search','index');
 		}
 	}
 

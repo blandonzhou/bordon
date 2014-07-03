@@ -84,5 +84,17 @@ return array (
     'siteid' => '1',
     'thumb' => '',
   ),
+  23 => 
+  array (
+    'posid' => '23',
+    'modelid' => '1',
+    'catid' => '216',
+    'name' => '首页底部',
+    'maxnum' => '20',
+    'extention' => '',
+    'listorder' => '0',
+    'siteid' => '1',
+    'thumb' => '',
+  ),
 );
 ?>

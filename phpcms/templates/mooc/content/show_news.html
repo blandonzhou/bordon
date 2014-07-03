@@ -1,0 +1,32 @@
+{template "content","header"}
+<div class="blank_30"></div>
+<div class="main-wrap mod-info-wrap cf ">
+    <div class="mod-info fr">
+        <h2 class="checked">热门新闻</h2>
+        <ul class="mod-hot ml10 mt15" id="mod-hot">
+            {pc:content action="hits" catid="$catid" num="10" order="views DESC" return="list"}
+            {php $i=1}
+            {loop $list $v}
+            <li><span>{$i}</span><em class="aem"></em><a href="{$v[url]}">{$v[title]}</a></li>
+            {php $i++}
+            {/loop}
+        </ul>
+    </div>
+    <div class="mod-list fl">
+        <div class="inner">
+            <div class="mod-list-cont">
+                <h1>{$title}</h1>
+                <div class="cont-info">{date('Y-m-d H:m:s',strtotime($updatetime))}　　来源：{$copyfrom}　　点击：<span id="hits"><script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script></span>次</div>
+                <div class="blank_20"></div>
+                <div class="node cf">
+                  {$content}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{template "content","footer"}
+
+
+</body>
+</html>

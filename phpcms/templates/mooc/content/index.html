@@ -2,18 +2,14 @@
 <div class="muke-bann-wrap">
   <div id="banner" class="muke-bann" style="height:359px;">
     <ul>
-      <li style="opacity: 1; z-index: 2;"><a href="#" title="微视频资源"><img src="{APP_PATH}statics/mooc/images/muke-bann16.jpg" width="994" height="359"></a></li>
-      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="{APP_PATH}statics/mooc/images/muke-bann8.jpg" width="994" height="359"></a></li>
-      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="{APP_PATH}statics/mooc/images/muke-bann6.jpg" width="994" height="359"></a></li>
-      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="{APP_PATH}statics/mooc/images/muke-bann7.jpg" width="994" height="359"></a></li>
-      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="{APP_PATH}statics/mooc/images/muke-bann4.jpg" width="994" height="359"></a></li>
-      <li style="opacity: 0; z-index: 1;"><a href="#"><img src="{APP_PATH}statics/mooc/images/muke-bann5.jpg" width="994" height="359"></a></li>
+        {pc:content action="category" catid="188" num="5" order="listorder ASC"}
+            {loop $data $r}
+              <li style="opacity: 1; z-index: 2;"><a  href="{$r[url]}" title="{$r[catname]}"><img src="{$r[image]}" width="994" height="359"></a></li>
+            {/loop}
+        {/pc}
     </ul>
     <ol>
       <li class="checked"></li>
-      <li></li>
-      <li></li>
-      <li></li>
       <li></li>
       <li></li>
     </ol>
@@ -26,26 +22,20 @@
     <div class="Cont" id="ISL_Cont">
       <div class="ScrCont elite-ul cf">
         <div id="List1">
-          <div class="pic"><a href="school_info.htm" title="清华大学附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830052600959.jpg" width="190" height="60"  alt="清华大学附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="华东师范大学第二附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830064731691.jpg" width="190" height="60"  alt="华东师范大学第二附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="东北师范大学附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830063412420.jpg" width="190" height="60"  alt="东北师范大学附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="西北师范大学附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830063658418.jpg" width="190" height="60"  alt="西北师范大学附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="广东省中山纪念中学"><img src="{APP_PATH}statics/mooc/temp/20130830063201279.jpg" width="190" height="60"  alt="广东省中山纪念中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="贵州省贵阳市第一中学"><img src="{APP_PATH}statics/mooc/temp/20130830063222878.jpg" width="190" height="60"  alt="贵州省贵阳市第一中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="河南省郑州市外国语学校"><img src="{APP_PATH}statics/mooc/temp/20130830062153749.jpg" width="190" height="60"  alt="河南省郑州市外国语学校" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="黑龙江省哈尔滨市第三中学"><img src="{APP_PATH}statics/mooc/temp/20130830063241291.jpg" width="190" height="60"  alt="黑龙江省哈尔滨市第三中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="湖南省长沙市长郡中学"><img src="{APP_PATH}statics/mooc/temp/20130830063611246.jpg" width="190" height="60"  alt="湖南省长沙市长郡中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="江苏省南京市金陵中学"><img src="{APP_PATH}statics/mooc/temp/20130830063413204.jpg" width="190" height="60"  alt="江苏省南京市金陵中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="江苏省锡山高级中学"><img src="{APP_PATH}statics/mooc/temp/20130830063642906.jpg" width="190" height="60"  alt="江苏省锡山高级中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="山西省山西大学附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830064935443.jpg" width="190" height="60"  alt="山西省山西大学附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="陕西西安交通大学附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830063843891.jpg" width="190" height="60"  alt="陕西西安交通大学附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="浙江省宁波市镇海中学"><img src="{APP_PATH}statics/mooc/temp/20130830062108579.jpg" width="190" height="60"  alt="浙江省宁波市镇海中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="上海交通大学附属中学"><img src="{APP_PATH}statics/mooc/temp/20130830063750133.jpg" width="190" height="60"  alt="上海交通大学附属中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="上海市七宝中学"><img src="{APP_PATH}statics/mooc/temp/20130830062509432.jpg" width="190" height="60"  alt="上海市七宝中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="山东省青岛市第二中学"><img src="{APP_PATH}statics/mooc/temp/20131018031143552.jpg" width="190" height="60"  alt="山东省青岛市第二中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="福建省福州第一中学"><img src="{APP_PATH}statics/mooc/temp/20131018032404461.png" width="190" height="60"  alt="福建省福州第一中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="浙江省杭州学军中学"><img src="{APP_PATH}statics/mooc/temp/thumb_190_0_20131121041345352.jpg" width="190" height="60"  alt="浙江省杭州学军中学" /></a></div>
-          <div class="pic"><a href="school_info.htm" title="辽宁省实验中学"><img src="{APP_PATH}statics/mooc/temp/thumb_190_0_20131127014329548.jpg" width="190" height="60"  alt="辽宁省实验中学" /></a></div>
+                <?php
+                    //获取微视频栏目下所有盟校
+                    foreach(subcat(191) as $k=>$v){
+                        foreach(subcat($k) as $i=>$c){
+                            $subcatid[]=$i;
+                        }
+                    }
+                    $subcatid=implode(',',$subcatid);
+                ?>
+                {pc:get $sql="select * from v9_category where catid in ($subcatid) order by listorder ASC" return="data"}
+                    {loop $data $v}
+                     <div class="pic"><a href="{$v[url]}" title="{$v[catname]}"><img src="{$v[image]}" width="190" height="60"  alt="{$v[image]}" /></a></div>
+                    {/loop}
+                {/pc}
         </div>
         <div id="List2"></div>
       </div>
@@ -57,66 +47,44 @@
     <div class="course-left fl">
       <h1 class="muke-h1">慕课课程</h1>
       <p>我们的课程设计很有趣，生动严谨。他们是最好的课程，最好的教授，最好的学校，并跨越多种学科，从科学、技术到人文。</p>
-      <a href="video.htm" class="muke-btn mt30">查看所有微视频资源</a> </div>
+      <a href="index.php?m=content&c=mooc&a=lists&t=video&catid=191" class="muke-btn mt30">查看所有微视频资源</a> </div>
     <img class="fr" src="{APP_PATH}statics/mooc/images/course-bj.jpg" width="402" height="240"> </div>
   <div class="blank_30"></div>
   <div class="blank_10"></div>
   <div class="muke-list-wrap cf">
-    <div class="muke-list fl">
-      <div class="muke-title"> <span class="title-txt">通知公告</span> <a class="more" href="list.htm"></a> </div>
-      <ul>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-      </ul>
-    </div>
-    <div class="muke-list fr">
-      <div class="muke-title"> <span class="title-txt">联盟动态</span> <a class="more" href="list.htm"></a> </div>
-      <ul>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-      </ul>
-    </div>
-    <div class="blank_30"></div>
-    <div class="muke-list fl">
-      <div class="muke-title"> <span class="title-txt">研究进展</span> <a class="more" href="list.htm"></a> </div>
-      <ul>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-      </ul>
-    </div>
-    <div class="muke-list fr">
-      <div class="muke-title"> <span class="title-txt">媒体视点</span> <a class="more" href="list.htm"></a> </div>
-      <ul>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-        <li><span></span><a href="Detail.htm" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-      </ul>
-    </div>
+    {php $i=0;}
+    {pc:content action="category" catid="211" order="listorder ASC" return="list"}
+        {loop $list $cat}
+            <div class="muke-list {php if($i%2) echo 'fr';else echo 'fl';}">
+              <div class="muke-title"> <span class="title-txt">{$cat[catname]}</span> <a class="more" href="{$cat[url]}"></a> </div>
+              <ul>
+                  {pc:content action="lists" catid="$cat[catid]" order="updatetime" num="5" return="article"}
+                      {loop $article $a}
+                        <li><span></span><a href="{$a[url]}" title="{$a[title]}">{$a[title]}</a></li>
+                      {/loop}
+                  {/pc}   
+              </ul>
+            </div>
+            {php if($i%2){}
+            <div class="blank_30"></div>
+            {php }}
+            {php $i++}
+        {/loop}
+    {/pc}
   </div>
   <div class="muke-blogroll cf"> <span class="corre">相关链接</span>
-    <div class="corre-li"><a href="http://www.moe.edu.cn/" target="_blank" title="中华人民共和国教育部">中华人民共和国教育部</a><a href="http://www.ecnu.edu.cn/" target="_blank" title="华东师范大学">华东师范大学</a><a href="http://www.c20.org.cn/" target="_blank" title="华东师范大学考试与评价研究院">华东师范大学考试与评价研究院</a>　　<a href="http://www.c20.org.cn" target="_blank" title="华东师范大学教育部中学校长培训中心">华东师范大学教育部中学校长培训中心</a><a href="http://www.dedu.ecnu.edu.cn/" target="_blank" title="基础教育改革与发展研究所">基础教育改革与发展研究所</a><a href="http://www.futurename.cn/" target="_blank" title="未名网">未名网</a></div>
+      <div class="corre-li">
+            {pc:link  action="type_list"   order="listorder DESC" num="6" return="pic_link"}
+                {loop $pic_link $v}
+                    <li>
+                        <a href="{$v['url']}" title="{$v['name']}" target="_blank">{$v[name]}</a>
+                    </li>
+                {/loop}
+            {/pc}
+      </div>
   </div>
 </div>
-<div class="muke-footer-wrap">
-  <div id="muke-footer">
-    <div class="footer-AboutUs"> <a href="page.htm">关于我们</a> <a href="page.htm">加入我们</a> <a href="page.htm">联系我们</a> <a href="#">资源下载</a> </div>
-    <div class="footer-left">
-      <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
-    </div>
-  </div>
-</div>
-<script type="text/javascript" src="images/faseSlider.js"></script> 
+{template "content","footer"}
 <script type="text/javascript">
   (function()
   {

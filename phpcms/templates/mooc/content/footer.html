@@ -1,0 +1,30 @@
+<div class="blank_30"></div>
+<div class="muke-footer-wrap">
+  <div id="muke-footer">
+    <div class="footer-AboutUs">
+    {pc:content  action="position" posid="23" order="listorder DESC" num="4"}
+        {loop $data $key $val}
+            <a href="{$val['url']}">{$val['title']}</a>
+        {/loop}
+    {/pc}
+    </div>
+    <div class="footer-left">
+      <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+		var aDiv = document.getElementById('muke-head');
+		var aLi = aDiv.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].onmouseover = function(){
+				this.className = 'checked';
+			}
+			if(aLi[i].className==''){
+				aLi[i].onmouseout = function(){
+					this.className = '';
+				}
+			}
+		} ;
+
+</script>

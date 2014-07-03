@@ -8,7 +8,7 @@ return array (
   'sphinxport' => '9312',
   1 => 
   array (
-    'fulltextenble' => '1',
+    'fulltextenble' => '0',
     'relationenble' => '0',
     'suggestenable' => '0',
     'sphinxenable' => '0',

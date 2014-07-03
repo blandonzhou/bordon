@@ -1,0 +1,100 @@
+{template "content","header"}
+<div class="blank_30"></div>
+<div class="main-wrap mod-info-wrap cf ">
+    <div class="mod-info fr">
+        <h2 class="checked">热播课程</h2>
+        <ul class="mod-hot ml10 mt15" id="mod-hot">
+            {pc:content action="hits" catid="$catid" num="10" order="views DESC" return="list"}
+            {php $i=1}
+            {loop $list $v}
+            <li><span>{$i}</span><em class="aem"></em><a href="{$v[url]}">{$v[title]}</a></li>
+            {php $i++}
+            {/loop}
+        </ul>
+    </div>
+    <div class="mod-list fl">
+        <div class="inner">
+            <div class="mod-list-title">
+                <span>视频播放</span>
+            </div>
+            <div class="blank_15"></div>
+            <div class="mod-list-cont">
+                <h1>{$title}</h1>
+                <div class="cont-info">
+                    <span>播放：<span id="hits"><script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script></span>次</span>
+                    <span>{date('Y-m-d',strtotime($updatetime))}</span>
+                    <span>关键字：<?php foreach($keywords as $k){echo $k.' ';}?></span>
+                    <span>制作人：{$tea_name}</span>
+                </div>
+                <div class="blank_20"></div>
+                <div class="muke-video-play cf">
+                	<!--视频播放区-->
+                                        <div class="vd_playBox vd_fullPlayBox" style="position:static;"> 
+                                            <!--宽屏加vd_fullPlayBox-->
+                                            <div class="playBox" style="z-index:1400;position:relative;">
+                                                <div id="video" style="width:730;height:430px;"><div id="a1"></div></div>
+                                                <!--
+                                                上面一行是播放器所在的容器名称，如果只调用flash播放器，可以只用<div id="a1"></div>
+                                                -->
+                                                <script type="text/javascript" src="{JS_PATH}ckplayer/ckplayer.js" charset="utf-8"></script>
+                                                <script type="text/javascript">
+                                            //如果你不需要某项设置，可以直接删除，注意var flashvars的最后一个值后面不能有逗号
+                                            var flashvars = {
+                                            p:'1', //视频默认0是暂停，1是播放
+
+                                                    f:'uploadfile/video/<?php  echo $video_url;?>', //视频地址
+                                                    a:'', //调用时的参数，只有当s>0的时候有效
+                                                    s:'0', //调用方式，0=普通方法（f=视频地址），1=网址形式,2=xml形式，3=swf形式(s>0时f=网址，配合a来完成对地址的组装)
+                                                    c:'0', //是否读取文本配置,0不是，1是
+                                                    x:'', //调用xml风格路径，为空的话将使用ckplayer.js的配置
+                                                    r:'', //前置广告的链接地址，多个用竖线隔开，没有的留空
+                                                    t:'0|1', //视频开始前播放swf/图片时的时间，多个用竖线隔开
+                                                    y:'', //这里是使用网址形式调用广告地址时使用，前提是要设置l的值为空
+                                                    z:'http://www.ckplayer.com/down/buffer.swf', //缓冲广告，只能放一个，swf格式
+                                                    e:'5', //视频结束后的动作，0是调用js函数，1是循环播放，2是暂停播放并且不调用广告，3是调用视频推荐列表的插件，4是清除视频流并调用js功能和1差不多，5是暂停播放并且调用暂停广告
+                                                    v:'80', //默认音量，0-100之间
+
+                                                    h:'3', //播放http视频流时采用何种拖动方法，=0不使用任意拖动，=1是使用按关键帧，=2是按时间点，=3是自动判断按什么(如果视频格式是.mp4就按关键帧，.flv就按关键时间)，=4也是自动判断(只要包含字符mp4就按mp4来，只要包含字符flv就按flv来)
+                                                    q:'', //视频流拖动时参考函数，默认是start
+                                                    m:'0', //默认是否采用点击播放按钮后再加载视频，0不是，1是,设置成1时不要有前置广告
+                                                    o:'', //当m=1时，可以设置视频的时间，单位，秒
+                                                    w:'', //当m=1时，可以设置视频的总字节数
+                                                    g:'', //视频直接g秒开始播放
+                                                    j:'', //视频提前j秒结束
+                                                    k:'', //提示点时间，如 30|60鼠标经过进度栏30秒，60秒会提示n指定的相应的文字
+                                                    n:'', //提示点文字，跟k配合使用，如 提示点1|提示点2
+                                                    wh:'4:3', //这是6.2新增加的宽高比，可以自己定义视频的宽高或宽高比如：wh:'4:3',或wh:'1080:720'
+                                                    ct:'2', //6.2新增加的参数，主要针对有些视频拖动时时间出错的修正参数，默认是2，自动修正，1是强制修正，0是强制不修正
+                                                    //调用播放器的所有参数列表结束
+                                                    //以下为自定义的播放器参数用来在插件里引用的
+                                                    my_url:encodeURIComponent(window.location.href)//本页面地址
+                                                    //调用自定义播放器参数结束
+                                            };
+                                            var params = {bgcolor:'#FFF', allowFullScreen:true, allowScriptAccess:'always'}; //这里定义播放器的其它参数如背景色（跟flashvars中的b不同），是否支持全屏，是否支持交互
+                                            var attributes = {id:'ckplayer_a1', name:'ckplayer_a1', menu:'false'};
+                                            //下面一行是调用播放器了，括号里的参数含义：（播放器文件，要显示在的div容器，宽，高，需要flash的版本，当用户没有该版本的提示，加载初始化参数，加载设置参数如背景，加载attributes参数，主要用来设置播放器的id）
+                                            CKobject.embedSWF('{JS_PATH}ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '730', '430', flashvars, params);
+                                            /*CKobject.embedSWF(播放器路径,容器id,播放器id/name,播放器宽,播放器高,flashvars的值,其它定义也可省略);
+                                             此时可以删除ckplayer.js中的最后一行，交互的部分也要改成CKobject.getObjectById('ckplayer_a1')
+                                             */
+                                            //调用ckplayer的flash播放器结束
+                                            var video = ['uploadfile/video/<?php  echo $video_url;?>->video/mp4',
+                                                    'http://www.ckplayer.com/webm/0.webm->video/webm',
+                                                    'http://www.ckplayer.com/webm/0.ogv->video/ogg'];
+                                            var support = ['iPad', 'iPhone', 'ios', 'android+false', 'msie10+false'];
+                                            CKobject.embedHTML5('video', 'ckplayer_a1', 730, 430, video, flashvars, support);                                                </script>
+                                            </div>
+                                        </div>
+
+                                        <!--/视频播放区--> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{template "content","footer"}
+
+
+</body>
+</html>

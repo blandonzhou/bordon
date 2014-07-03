@@ -72,29 +72,6 @@
     </div>
   </div>
 </div>
-<div class="blank_30"></div>
-<div class="muke-footer-wrap">
-  <div id="muke-footer">
-    <div class="footer-AboutUs"> <a href="page.htm">关于我们</a> <a href="page.htm">加入我们</a> <a href="page.htm">联系我们</a> <a href="#">资源下载</a> </div>
-    <div class="footer-left">
-      <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
-    </div>
-  </div>
-</div>
-<script type="text/javascript">
-		var aDiv = document.getElementById('muke-head');
-		var aLi = aDiv.getElementsByTagName('li');
-		for(var i=0;i<aLi.length;i++){
-			aLi[i].onmouseover = function(){
-				this.className = 'checked';
-			}
-			if(aLi[i].className==''){
-				aLi[i].onmouseout = function(){
-					this.className = '';
-				}
-			}
-		} ;
-
-</script>
+{template "content","footer"}
 </body>
 </html>
