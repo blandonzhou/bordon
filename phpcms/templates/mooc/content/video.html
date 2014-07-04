@@ -54,10 +54,10 @@
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
-                            <span>来源：{$v[tea_name]}</span>
+                            来源：{$v[tea_name]}</br>
                             {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
-                            <span>播放：{$views}</span>
-                            <span>发布时间：{date('Y-m-d',strtotime($v[inputtime]))}</span>
+                            播放：{$views}</br>
+                            发布时间：{date('Y-m-d',strtotime($v[inputtime]))}
                         </div>
                     </li>
                     {/loop}
