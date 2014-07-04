@@ -54,9 +54,8 @@
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
-                            <p>来 &nbsp; &nbsp; 源：{$v[school]} {$v[tea_name]}</p>
-                            <!--<p>播 放 数：{$v[views]}</p>-->
-                            <p>发布时间：{date('Y-m-d',$v[inputtime])}</p>
+                            <p>简介：{$v[des]}</p>
+
                         </div>
                     </li>
                     {/loop}

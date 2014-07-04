@@ -21,10 +21,9 @@
         <ul>  
         {pc:content action="category" catid="$catid" order="listorder ASC"}
             {loop $data $v}
-                    <li> <a class="fl" href="{$v[url]}"><img src="{$v[image]}" width="132" height="100"></a>
+                    <li> <a class="fl" href="{$v[url]}"><img src="{$v[image]}" width="190" height="60"></a>
                         <div class="muke-video-info">
-                            <h2><a href="{$v[url]}" title="{$v[title]}">{$v[catname]}</a></h2>
-                            <p>简介：{$v[description]}</p>
+                            <p>{$v[description]}</p>
                         </div>
                     </li>
             {/loop}
