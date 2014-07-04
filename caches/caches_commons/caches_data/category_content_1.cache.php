@@ -16,7 +16,7 @@ return array (
     'description' => '',
     'parentdir' => '',
     'catdir' => 'footer',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=2',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=2',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -58,7 +58,7 @@ return array (
     'description' => '',
     'parentdir' => '',
     'catdir' => 'shipin',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=188',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=188',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -109,7 +109,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/',
     'catdir' => 'flipped',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=189',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=189',
     'items' => '3',
     'hits' => '0',
     'setting' => 'array (
@@ -160,7 +160,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/',
     'catdir' => 'maward',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=190',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=190',
     'items' => '3',
     'hits' => '0',
     'setting' => 'array (
@@ -211,7 +211,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/',
     'catdir' => 'video',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=191',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=191',
     'items' => '23',
     'hits' => '0',
     'setting' => 'array (
@@ -262,7 +262,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/',
     'catdir' => 'msmk',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=192',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=192',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -313,7 +313,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/',
     'catdir' => 'mxml',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=193',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=193',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -364,7 +364,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/msmk/',
     'catdir' => 'zlsjhx',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=194',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=194',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -415,7 +415,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/msmk/',
     'catdir' => 'plsjsj',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=195',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=195',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -466,7 +466,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/mxml/',
     'catdir' => 'qdezhxk',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=196',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=196',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -517,7 +517,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/mxml/',
     'catdir' => 'hsdywk',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=197',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=197',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -568,7 +568,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/mxml/',
     'catdir' => 'wdswkj',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=198',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=198',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -619,7 +619,7 @@ return array (
     'description' => '华东师范大学第二附属中学，简称华师大二附中、二附中，是一所由上海市教委和华东师范大学双重领导的实验性示范性高中，创办于1958年。',
     'parentdir' => 'shipin/flipped/',
     'catdir' => 'sznsfzktsl',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=199',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=199',
     'items' => '6',
     'hits' => '0',
     'setting' => 'array (
@@ -670,7 +670,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/flipped/',
     'catdir' => 'njxxfzsl',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=200',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=200',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -721,7 +721,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/gzmx/',
     'catdir' => 'g2',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=203',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=203',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -772,7 +772,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/flipped/',
     'catdir' => 'whezfzsl',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=201',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=201',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -823,7 +823,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/gzmx/',
     'catdir' => 'g1',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=202',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=202',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -874,7 +874,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/czmx/',
     'catdir' => 'c1',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=204',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=204',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -925,7 +925,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/czmx/',
     'catdir' => 'c2',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=205',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=205',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -976,7 +976,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/xxmx/',
     'catdir' => 'x1',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=206',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=206',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1027,7 +1027,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/xxmx/',
     'catdir' => 'x2',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=207',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=207',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1078,7 +1078,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/',
     'catdir' => 'gzmx',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=208',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=208',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1129,7 +1129,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/',
     'catdir' => 'czmx',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=209',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=209',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1180,7 +1180,7 @@ return array (
     'description' => '',
     'parentdir' => 'shipin/video/',
     'catdir' => 'xxmx',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=210',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=210',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1231,7 +1231,7 @@ return array (
     'description' => '',
     'parentdir' => '',
     'catdir' => 'article',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=211',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=211',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1282,7 +1282,7 @@ return array (
     'description' => '',
     'parentdir' => 'article/',
     'catdir' => 'tzgg',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=212',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=212',
     'items' => '5',
     'hits' => '0',
     'setting' => 'array (
@@ -1333,7 +1333,7 @@ return array (
     'description' => '',
     'parentdir' => 'article/',
     'catdir' => 'lmdt',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=213',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=213',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1384,7 +1384,7 @@ return array (
     'description' => '',
     'parentdir' => 'article/',
     'catdir' => 'yjjz',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=214',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=214',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1435,7 +1435,7 @@ return array (
     'description' => '',
     'parentdir' => 'article/',
     'catdir' => 'mtsd',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=215',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=215',
     'items' => '0',
     'hits' => '0',
     'setting' => 'array (
@@ -1486,7 +1486,7 @@ return array (
     'description' => '',
     'parentdir' => '',
     'catdir' => 'page',
-    'url' => 'http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=216',
+    'url' => 'http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=216',
     'items' => '6',
     'hits' => '0',
     'setting' => 'array (

@@ -3,43 +3,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>华东师范大学慕课中心</title>
-<link rel="stylesheet" type="text/css" href="http://localhost/bordon/statics/mooc/images/public.css">
-<link rel="stylesheet" type="text/css" href="http://localhost/bordon/statics/mooc/images/muke.css">
-<script type="text/javascript" src="http://localhost/bordon/statics/mooc/images/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost/bordon/statics/mooc/images/faseSlider.js"></script>
+<link rel="stylesheet" type="text/css" href="http://202.120.83.180/phpcms/statics/mooc/images/public.css">
+<link rel="stylesheet" type="text/css" href="http://202.120.83.180/phpcms/statics/mooc/images/muke.css">
+<script type="text/javascript" src="http://202.120.83.180/phpcms/statics/mooc/images/jquery.min.js"></script>
+<script type="text/javascript" src="http://202.120.83.180/phpcms/statics/mooc/images/faseSlider.js"></script>
 </head>
 <body>
 <div class="muke-top-wrap">
   <div class="muke-top">
     <div class="blank_10"></div>
-    <a class="muke-btn fr" href="#" >学习平台登录</a>　　<a class="muke-btn fr" href="#" >视频资源平台</a>
+    <a class="muke-btn fr">学习平台登录</a>　　<a class="muke-btn fr">视频资源平台</a>
     <div class="muke-search fr">
-      <form action="search.htm" method="post" id="form1">
-        <input id="key" name="keyword" type="text" class="txt" value="请输入课程关键字" onblur="if(this.value=='') {this.value='请输入课程关键字';this.style.color='#999';}" onfocus="if(this.value=='请输入课程关键字') {this.value='';this.style.color='#333';}">
+      <form target="_blank" name="frm" method="get" action="http://202.120.83.180/phpcms/index.php" id="form1">
+        <input id="key" name="q" type="text" class="txt" value="请输入课程关键字" onblur="if(this.value=='') {this.value='请输入课程关键字';this.style.color='#999';}" onfocus="if(this.value=='请输入课程关键字') {this.value='';this.style.color='#333';}">
+        <input type="hidden" name="m" value="search"/>
+        <input type="hidden" name="c" value="index"/>
+        <input type="hidden" name="a" value="init"/>
+        <input type="hidden" name="typeid" value="59"/>
         <input class="btn" id="search" type="submit">
       </form>
     </div>
   </div>
 </div>
 <div class="muke-head-wrap">
-  <div id="muke-head"> <a href="index.htm" title="华东师范大学慕课中心" class="muke-logo"><img src="http://localhost/bordon/statics/mooc/images/muke-logo.png"></a>
+  <div id="muke-head"> <a href="index.php" title="华东师范大学慕课中心" class="muke-logo"><img src="http://202.120.83.180/phpcms/statics/mooc/images/muke-logo.png"></a>
     <ul class="muke-nav">
         <li class="checked"><a href="index.php">首页</a></li>
         <li ><a href="index.php?m=content&c=mooc&a=lists&t=video&catid=191">微视频资源</a></li>
-                                <li ><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=189">翻转后课堂</a></li>
-                        <li ><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=190">微视频大赛</a></li>
-                        <li ><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=192">名师名课</a></li>
-                        <li ><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=193">名校名栏</a></li>
+                                <li ><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=189">翻转后课堂</a></li>
+                        <li ><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=190">微视频大赛</a></li>
+                        <li ><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=192">名师名课</a></li>
+                        <li ><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=193">名校名栏</a></li>
                             <li ><a href="index.php?m=content&c=index&a=lists&t=school&catid=208">参与学校</a></li>
     </ul>
   </div>
 </div><div class="muke-bann-wrap">
   <div id="banner" class="muke-bann" style="height:359px;">
     <ul>
-                                  <li style="opacity: 1; z-index: 2;"><a  href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=189" title="翻转后课堂"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703033925696.jpg" width="994" height="359"></a></li>
-                          <li style="opacity: 1; z-index: 2;"><a  href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=190" title="微视频大赛"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091213486.jpg" width="994" height="359"></a></li>
-                          <li style="opacity: 1; z-index: 2;"><a  href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=192" title="名师名课"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703033846487.jpg" width="994" height="359"></a></li>
-                          <li style="opacity: 1; z-index: 2;"><a  href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=193" title="名校名栏"><img src="" width="994" height="359"></a></li>
+                                  <li style="opacity: 1; z-index: 2;"><a  href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=189" title="翻转后课堂"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703033925696.jpg" width="994" height="359"></a></li>
+                          <li style="opacity: 1; z-index: 2;"><a  href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=190" title="微视频大赛"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091213486.jpg" width="994" height="359"></a></li>
+                          <li style="opacity: 1; z-index: 2;"><a  href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=192" title="名师名课"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703033846487.jpg" width="994" height="359"></a></li>
+                          <li style="opacity: 1; z-index: 2;"><a  href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=193" title="名校名栏"><img src="" width="994" height="359"></a></li>
                         </ul>
     <ol>
       <li class="checked"></li>
@@ -55,12 +59,12 @@
     <div class="Cont" id="ISL_Cont">
       <div class="ScrCont elite-ul cf">
         <div id="List1">
-                                                                         <div class="pic"><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=203" title="武汉大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
-                                         <div class="pic"><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=202" title="华中师范大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
-                                         <div class="pic"><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=204" title="牛津大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
-                                         <div class="pic"><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=205" title="北京大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
-                                         <div class="pic"><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=206" title="南开大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
-                                         <div class="pic"><a href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=207" title="天津大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
+                                                                         <div class="pic"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=203" title="武汉大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
+                                         <div class="pic"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=202" title="华中师范大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
+                                         <div class="pic"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=204" title="牛津大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
+                                         <div class="pic"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=205" title="北京大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
+                                         <div class="pic"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=206" title="南开大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
+                                         <div class="pic"><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=207" title="天津大学"><img src="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" width="190" height="60"  alt="http://localhost/bordon/uploadfile/2014/0703/20140703091144670.jpg" /></a></div>
                                             </div>
         <div id="List2"></div>
       </div>
@@ -73,52 +77,52 @@
       <h1 class="muke-h1">慕课课程</h1>
       <p>我们的课程设计很有趣，生动严谨。他们是最好的课程，最好的教授，最好的学校，并跨越多种学科，从科学、技术到人文。</p>
       <a href="index.php?m=content&c=mooc&a=lists&t=video&catid=191" class="muke-btn mt30">查看所有微视频资源</a> </div>
-    <img class="fr" src="http://localhost/bordon/statics/mooc/images/course-bj.jpg" width="402" height="240"> </div>
+    <img class="fr" src="http://202.120.83.180/phpcms/statics/mooc/images/course-bj.jpg" width="402" height="240"> </div>
   <div class="blank_30"></div>
   <div class="blank_10"></div>
   <div class="muke-list-wrap cf">
                             <div class="muke-list fl">
-              <div class="muke-title"> <span class="title-txt">通知公告</span> <a class="more" href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=212"></a> </div>
+              <div class="muke-title"> <span class="title-txt">通知公告</span> <a class="more" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=212"></a> </div>
               <ul>
-                                                                <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=212&id=3" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=212&id=7" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=212&id=8" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=212&id=11" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=212&id=13" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                                                <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=212&id=3" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=212&id=7" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=212&id=8" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=212&id=11" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=212&id=13" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
                                            
               </ul>
             </div>
                                             <div class="muke-list fr">
-              <div class="muke-title"> <span class="title-txt">联盟动态</span> <a class="more" href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=213"></a> </div>
+              <div class="muke-title"> <span class="title-txt">联盟动态</span> <a class="more" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=213"></a> </div>
               <ul>
-                                                                <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=213&id=6" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=213&id=10" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=213&id=16" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=213&id=21" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=213&id=26" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                                                <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=213&id=6" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=213&id=10" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=213&id=16" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=213&id=21" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=213&id=26" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
                                            
               </ul>
             </div>
                         <div class="blank_30"></div>
                                             <div class="muke-list fl">
-              <div class="muke-title"> <span class="title-txt">研究进展</span> <a class="more" href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=214"></a> </div>
+              <div class="muke-title"> <span class="title-txt">研究进展</span> <a class="more" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=214"></a> </div>
               <ul>
-                                                                <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=214&id=5" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=214&id=9" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=214&id=15" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=214&id=20" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=214&id=25" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                                                <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=214&id=5" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=214&id=9" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=214&id=15" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=214&id=20" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=214&id=25" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
                                            
               </ul>
             </div>
                                             <div class="muke-list fr">
-              <div class="muke-title"> <span class="title-txt">媒体视点</span> <a class="more" href="http://localhost/bordon/index.php?m=content&c=index&a=lists&catid=215"></a> </div>
+              <div class="muke-title"> <span class="title-txt">媒体视点</span> <a class="more" href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=lists&catid=215"></a> </div>
               <ul>
-                                                                <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=215&id=4" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=215&id=12" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=215&id=14" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=215&id=19" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
-                                              <li><span></span><a href="http://localhost/bordon/index.php?m=content&c=index&a=show&catid=215&id=24" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                                                <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=215&id=4" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=215&id=12" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=215&id=14" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=215&id=19" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
+                                              <li><span></span><a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=215&id=24" title="陈玉琨："翻转课堂"：从舶来品到本土化">陈玉琨："翻转课堂"：从舶来品到本土化</a></li>
                                            
               </ul>
             </div>
@@ -144,15 +148,35 @@
                                   </div>
   </div>
 </div>
+<div class="blank_30"></div>
 <div class="muke-footer-wrap">
   <div id="muke-footer">
-    <div class="footer-AboutUs"> <a href="page.htm">关于我们</a> <a href="page.htm">加入我们</a> <a href="page.htm">联系我们</a> <a href="#">资源下载</a> </div>
+    <div class="footer-AboutUs">
+                        <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=216&id=33">加入我们</a>
+                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=216&id=32">联系我们</a>
+                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=216&id=29">组织架构</a>
+                    <a href="http://202.120.83.180/phpcms/index.php?m=content&c=index&a=show&catid=216&id=28">关于我们</a>
+                </div>
     <div class="footer-left">
       <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
     </div>
   </div>
 </div>
 <script type="text/javascript">
+		var aDiv = document.getElementById('muke-head');
+		var aLi = aDiv.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].onmouseover = function(){
+				this.className = 'checked';
+			}
+			if(aLi[i].className==''){
+				aLi[i].onmouseout = function(){
+					this.className = '';
+				}
+			}
+		} ;
+
+</script><script type="text/javascript">
   (function()
   {
     $('#banner').fadeSlider({ev:'click',auto:true});//轮播图
