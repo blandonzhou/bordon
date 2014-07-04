@@ -17,25 +17,25 @@
         <div class="muke-screen-wrap cf">
             <div class="muke-cou-title"> <span class="fl">微视频资源</span> </div>
             <div class="muke-screen">
-                <label>学段：</label>
+                <label>比赛：</label>
                 <div class="screen-inner">  
-                    {loop filters('xueduan',$modelid) $r}
+                    {loop filters('match',$modelid) $r}
                     {$r[menu]}
                     {/loop}
                 </div>
             </div>
             <div class="muke-screen">
-                <label>科目：</label>
+                <label>年份：</label>
                 <div class="screen-inner"> 
-                    {loop filters('xueke',$modelid) $r}
+                    {loop filters('year',$modelid) $r}
                     {$r[menu]}
                     {/loop}
                 </div>
             </div>
             <div class="muke-screen">
-                <label>年级：</label>
+                <label>奖项：</label>
                 <div class="screen-inner"> 
-                    {loop filters('nianji',$modelid) $r}
+                    {loop filters('prize',$modelid) $r}
                     {$r[menu]}
                     {/loop}
                 </div>
