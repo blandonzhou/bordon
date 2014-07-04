@@ -1,0 +1,44 @@
+{template "content","header"}
+<div  class="muke-bann-wrap2">
+
+    <div  class="muke-bann">
+
+        <img  src="{APP_PATH}statics/mooc/images/muke-bann.jpg"  width="994"  height="215">
+
+    </div>
+
+</div>
+
+<div class="main-wrap">
+    <div class="muke-inner">
+        <div class="muke-video cf">
+
+            <div class="muke-cou-title"> <a class="checked" href="javascript:;">最新微视频</a></div>
+            <div class="blank_10"></div>
+            <div class="muke-video-list cf">
+                <ul>  
+        {pc:content action="category" catid="$catid" order="listorder ASC"}
+            {loop $data $v}
+                    <li class="teacher"> <a class="fl" href="{$v[url]}"><img src="{$v[image]}" width="148" height="178"></a>
+                        <div class="muke-video-info">
+                            <a href="$v[url]"><h2>{$v[catname]}</h2></a>
+                            <p>简介：{$v[description]}</p>
+                        </div>
+                    </li>
+                    {/loop}
+                {/pc}
+                </ul>
+            </div>
+            <div class="blank_30"></div>
+            <div class="mr30">
+                <div class="page fr">
+                    {$pages}
+                </div>
+            </div>
+            <div class="blank_30"></div>
+        </div>
+    </div>
+</div>
+{template "content","footer"}
+</body>
+</html>
