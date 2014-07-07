@@ -45,7 +45,7 @@
             <div class="muke-video-list cf">
                 <ul>  
             {php $urlrule = makeurlrule()}
-            {loop subcat(208) $v}
+            {loop subcat(208) as $v}
                     {php $subcatid[] = $v;}
             {/loop}
             {php $subcatid  = implode(',', $subcatid);}
