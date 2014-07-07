@@ -50,7 +50,7 @@
             {/loop}
             {php $subcatid  = implode(',', $subcatid);}
             {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}      
-                   
+                   {loop $info $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
