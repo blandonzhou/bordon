@@ -19,7 +19,7 @@
    </div>
    <div class="muke-video-list cf">
         <ul>  
-        {pc:content action="category" catid="$catid" order="listorder ASC"}
+        {pc:content action="category" catid="$catid" order="listorder ASC" num="100"}
             {loop $data $v}
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[image]}" width="190" height="60"></a>
                         <div class="muke-video-info">
