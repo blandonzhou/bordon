@@ -44,17 +44,19 @@
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
-                    {php $sql = structure_filters_sql($modelid);}
-                    {php $urlrule = makeurlrule()}
-                    {pc:content  action="lists" catid="$catid" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule" num="10"}   
-                    {loop $info $v} 
-                    {php $img = explode('.',$v[local_video])}
-                    {php $src = $img[0]}    
-                   
+            {php $urlrule = makeurlrule()}
+            {loop subcat($catid) $v}
+                {loop subcat($v[catid]) $c}
+                    {php $subcatid[] = $c[catid];}
+                {/loop}
+            {/loop}
+            {php $subcatid  = implode(',', $subcatid);}
+            {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}      
+                   {loop $info $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
-                            来源：{$v[tea_name]}</br>
+                            来源：{$CATEGORYS[$v[catid]][catname]} {$v[tea_name]}</br>
                             {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
                             播放：{$views}</br>
                             发布时间：{date('Y-m-d',strtotime($v[inputtime]))}
