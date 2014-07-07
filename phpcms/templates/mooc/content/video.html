@@ -44,12 +44,12 @@
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
-                    {php $sql = structure_filters_sql($modelid);}
-                    {php $urlrule = makeurlrule()}
-                    {pc:content  action="lists" catid="206" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule" num="10"}   
-                    {loop $info $v} 
-                    {php $img = explode('.',$v[local_video])}
-                    {php $src = $img[0]}    
+            {php $urlrule = makeurlrule()}
+            {loop subcat($catid)  $k $v}
+            {php $subcatid[] = $k;}
+            {/loop}
+            {php $subcatid  = implode(',', $subcatid);}
+            {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}      
                    
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
