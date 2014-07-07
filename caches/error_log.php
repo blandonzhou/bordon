@@ -22831,3 +22831,8 @@
 <?php exit;?>07-04 17:12:17 | 2 | chmod(): Operation not permitted | phpcms/modules/content/sitemodel.php | 160
 <?php exit;?>07-04 17:12:17 | 2 | chmod(): Operation not permitted | phpcms/modules/content/sitemodel.php | 160
 <?php exit;?>07-04 17:12:17 | 2 | chmod(): Operation not permitted | phpcms/modules/content/sitemodel.php | 160
+<?php exit;?>07-07 13:36:53 | 2 | mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: YES) | phpcms\libs\classes\mysql.class.php | 56
+<?php exit;?>07-07 13:36:53 | 2 | mysql_error(): supplied argument is not a valid MySQL-Link resource | phpcms\libs\classes\mysql.class.php | 388
+<?php exit;?>07-07 13:36:53 | 2 | mysql_errno(): supplied argument is not a valid MySQL-Link resource | phpcms\libs\classes\mysql.class.php | 392
+<?php exit;?>07-07 13:36:53 | 2 | mysql_errno(): supplied argument is not a valid MySQL-Link resource | phpcms\libs\classes\mysql.class.php | 392
+<?php exit;?>07-07 13:36:53 | 2 | mysql_error(): supplied argument is not a valid MySQL-Link resource | phpcms\libs\classes\mysql.class.php | 388
