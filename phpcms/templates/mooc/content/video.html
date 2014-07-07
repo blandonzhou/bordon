@@ -45,11 +45,11 @@
             <div class="muke-video-list cf">
                 <ul>  
             {php $urlrule = makeurlrule()}
-            {loop subcat(208) $v}
-                    {php $subcatid[] = $v;}
+            {loop subcat($catid) $v}
+                {loop subcat($v[catid]) $c}
+                    {php $subcatid[] = $c[catid];}
+                {/loop}
             {/loop}
-            <pre>
-            {php print_r($subcatid);die;}
             {php $subcatid  = implode(',', $subcatid);}
             {php echo $subcatid;}
             {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}      
