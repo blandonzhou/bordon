@@ -46,7 +46,7 @@
                 <ul>  
                     {php $sql = structure_filters_sql($modelid);}
                     {php $urlrule = makeurlrule()}
-                    {pc:content  action="lists" catid="$catid" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule" num="10"}   
+                    {pc:content  action="lists" catid="206" where="$sql" order="updatetime DESC"  return="info" moreinfo="1" page="$page"  urlrule="$urlrule" num="10"}   
                     {loop $info $v} 
                     {php $img = explode('.',$v[local_video])}
                     {php $src = $img[0]}    
