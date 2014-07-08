@@ -20,12 +20,17 @@
         <ul>
             {pc:content action="lists" catid="$catid" page="$page" return="info" urlrule="$urlrule" num="10"}   
                 {loop $info $v} 
+
                 <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                     <div class="muke-video-info">
                         <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
-                        <p>简介：{$v[des]}</p>
+                        来源：{$CATEGORYS[$v[catid]][catname]} {$v[tea_name]}</br>
+                        {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
+                        播放：{$views}</br>
+                        发布时间：{date('Y-m-d',$v[inputtime])}
                     </div>
                 </li>
+
                 {/loop}
             {/pc}
           </ul>
