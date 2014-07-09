@@ -42,7 +42,7 @@
                                             var flashvars = {
                                             p:'1', //视频默认0是暂停，1是播放
 
-                                                    f:'uploadfile/video/<?php  echo $video_url;?>', //视频地址
+                                                    f:'uploadfile/video/<?php  echo urlencode($video_url);?>', //视频地址
                                                     a:'', //调用时的参数，只有当s>0的时候有效
                                                     s:'0', //调用方式，0=普通方法（f=视频地址），1=网址形式,2=xml形式，3=swf形式(s>0时f=网址，配合a来完成对地址的组装)
                                                     c:'0', //是否读取文本配置,0不是，1是
@@ -78,7 +78,7 @@
                                              此时可以删除ckplayer.js中的最后一行，交互的部分也要改成CKobject.getObjectById('ckplayer_a1')
                                              */
                                             //调用ckplayer的flash播放器结束
-                                            var video = ['uploadfile/video/<?php  echo $video_url;?>->video/mp4',
+                                            var video = ['uploadfile/video/<?php  echo urlencode($video_url);?>->video/mp4',
                                                     'http://www.ckplayer.com/webm/0.webm->video/webm',
                                                     'http://www.ckplayer.com/webm/0.ogv->video/ogg'];
                                             var support = ['iPad', 'iPhone', 'ios', 'android+false', 'msie10+false'];
