@@ -41,7 +41,7 @@ i,.lest-btn,.next-btn,.muke-blogroll .corre,.muke-share a,.resource-down .down-t
 .muke-bann ol{position:absolute;right:20px;bottom:20px;z-index:99;}
 .muke-bann ol li{width:10px;height:10px;background:#ccc;cursor:pointer;float:left;margin:0 4px;_display:inline;border-radius:10px;}
 .muke-bann ol li.checked{background:#0874C4}
-.page a,.page span{float:left;height:20px;padding:3px 10px;border:1px solid #ccc;margin-left:2px;overflow:hidden;font:14px/20px arial;border-radius:5px;color:#777;background:#fff;}
+.page a,.page span{height:20px;padding:3px 10px;border:1px solid #ccc;margin-left:2px;overflow:hidden;font:14px/20px arial;border-radius:5px;color:#777;background:#fff;}
 .page a:hover{background:#59bdff;color:#fff;}
 .page a.checked{border:0;font-weight:600;background:none;}
 .page span{border:0;font-weight:600;background:none;}
