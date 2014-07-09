@@ -113,7 +113,7 @@ i,.lest-btn,.next-btn,.muke-blogroll .corre,.muke-share a,.resource-down .down-t
 .muke-video-list2 ul{padding:0;}
 .muke-video-list2 li{width:960px;overflow:hidden;*zoom:1;float:none;margin:0;}
 .muke-video-list li a img{border:#ccc 1px solid;float:left;}
-.muke-video-info{float:left;margin-left:20px;white-space: nowrap;width: 304px;}
+.muke-video-info{float:left;margin-left:20px;}
 .muke-video-info h2{width:228px;height:24px;overflow:hidden;}
 .muke-video-info a{font-size:15px;color:#333;line-height:24px;}
 .muke-video-info p{font-size:13px;color:#666;height:77px;line-height:20px;width:228px;overflow:hidden;}
