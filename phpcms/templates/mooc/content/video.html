@@ -80,7 +80,7 @@
             
              <div class="muke-video-list cf">
                 <ul>  
-                {pc:get pc:get sql="select v9_hits.views,v9_video.* from v9_hits left join  v9_video on v9_hits.hitsid=CONCAT('c-11-',v9_video.id)  where v9_video.status=99 and v9_video.catid in ($subcatid) order by v9_hits.views DESC" urlrule="$urlrule" num="20" page="$page" return="hots"}      
+                {pc:get pc:get sql="select v9_hits.views,v9_video.* from v9_hits left join  v9_video on v9_hits.hitsid=CONCAT('c-11-',v9_video.id)  where v9_video.status=99 and v9_video.catid in ($subcatid) order by v9_hits.views DESC" urlrule="$urlrule" num="20"  return="hots"}      
                    {loop $hots $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
