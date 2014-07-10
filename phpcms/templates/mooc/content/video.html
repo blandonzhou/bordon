@@ -45,6 +45,7 @@
             <div class="muke-video-list cf">
                 <ul>  
             {php $sql = structure_filters_sql($modelid);}     
+            {$sql}
             {php $urlrule = makeurlrule()}
             {loop subcat($catid) $v}
                 {loop subcat($v[catid]) $c}
