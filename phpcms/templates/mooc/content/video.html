@@ -63,6 +63,20 @@
                             {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
                             播放：{$views}</br>
                             发布时间：{date('Y-m-d',$v[inputtime])}
+                            {php 
+                                $v['views']=$views;
+                                $hots[]=$v;
+                                foreach ($hots as $key=>$value){
+                                    $url[$key] = $value['url'];
+                                    $views[$key] = $value['views'];
+                                    $thumb[$key] = $value['thumb'];
+                                    $title[$key] = $value['title'];
+                                    $catid[$key] = $value['catid'];
+                                    $tea_name[$key] = $value['tea_name'];
+                                    $inputtime[$key] = $value['inputtime'];
+                                }
+                                array_multisort($views,SORT_NUMERIC,SORT_DESC,$url,$thumb,$title,$catid,$tea_name,$inputtime,$hots);
+                            }
                         </div>
                     </li>
                     {/loop}
@@ -80,19 +94,16 @@
             
              <div class="muke-video-list cf">
                 <ul>  
-                {pc:get pc:get sql="SELECT v.*,h.views FROM v9_video v,v9_hits h where v.status=99 and v.catid in ($subcatid) and v.id=substring(h.hitsid,5) order h.views DESC" num="20" return="hots"}      
                    {loop $hots $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
                             来源：{$CATEGORYS[$v[catid]][catname]} {$v[tea_name]}</br>
-                            {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
-                            播放：{$views}</br>
+                            播放：{$v[views]}</br>
                             发布时间：{date('Y-m-d',$v[inputtime])}
                         </div>
                     </li>
                     {/loop}
-                {/pc}
                 </ul>
             </div>
 
