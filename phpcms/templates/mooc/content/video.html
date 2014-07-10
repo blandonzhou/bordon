@@ -42,7 +42,7 @@
         <div class="blank_30"></div>
         <div class="muke-video cf">
 
-            <div class="muke-cou-title"> <a href="javascript:;">最新微视频</a> <a href="javascript:;">最热微视频</a></div>
+            <div class="muke-cou-title"> <a class="checked">最新微视频</a> <a class="checked">最热微视频</a></div>
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
@@ -68,27 +68,19 @@
                     {/loop}
                 {/pc}
                 </ul>
-            <div class="blank_30"></div>
+                
+                <div class="blank_30"></div>
                 <div class="mr30">
                     <div class="page fr">
                         {$pages}
                     </div>
                 </div>
-                            
             </div>
             
-            <div class="muke-video-list cf">
+             <div class="muke-video-list cf">
                 <ul>  
-            {php $sql = structure_filters_sql($modelid);}     
-            {php $urlrule = makeurlrule()}
-            {loop subcat($catid) $v}
-                {loop subcat($v[catid]) $c}
-                    {php $subcatid[] = $c[catid];}
-                {/loop}
-            {/loop}
-            {php $subcatid  = implode(',', $subcatid);}
-            {pc:content action="hits" where="$sql" page="$page" return="info" urlrule="$urlrule" order="views DESC" num="20"}      
-                   {loop $info $v} 
+                {pc:content action="hits" where="$sql" page="$page" return="hots" urlrule="$urlrule" order="views DESC" num="20"}      
+                   {loop $hots $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
                             <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
@@ -102,8 +94,7 @@
                 {/pc}
                 </ul>
             </div>
-            
-           
+
             <div class="blank_30"></div>
         </div>
     </div>
