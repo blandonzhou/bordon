@@ -87,7 +87,7 @@
                 {/loop}
             {/loop}
             {php $subcatid  = implode(',', $subcatid);}
-            {pc:content action="hits" catid="$catid" where="$sql" page="$page" return="info" urlrule="$urlrule" order="views DESC" num="20"}      
+            {pc:content action="hits" where="$sql" page="$page" return="info" urlrule="$urlrule" order="views DESC" num="20"}      
                    {loop $info $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
