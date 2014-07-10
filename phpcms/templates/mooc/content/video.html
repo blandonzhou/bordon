@@ -63,7 +63,7 @@
                             {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
                             播放：{$views}</br>
                             发布时间：{date('Y-m-d',$v[inputtime])}
-                            {php 
+                            <?php
                                 $v['views']=$views;
                                 $hots[]=$v;
                                 foreach ($hots as $key=>$value){
@@ -76,7 +76,7 @@
                                     $inputtime[$key] = $value['inputtime'];
                                 }
                                 array_multisort($views,SORT_NUMERIC,SORT_DESC,$url,$thumb,$title,$catid,$tea_name,$inputtime,$hots);
-                            }
+                            ?>
                         </div>
                     </li>
                     {/loop}
