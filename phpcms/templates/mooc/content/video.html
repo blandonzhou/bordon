@@ -66,16 +66,6 @@
                             <?php
                                 $v['views']=$views;
                                 $hots[]=$v;
-                                foreach ($hots as $key=>$value){
-                                    $url[$key] = $value['url'];
-                                    $views[$key] = $value['views'];
-                                    $thumb[$key] = $value['thumb'];
-                                    $title[$key] = $value['title'];
-                                    $catid[$key] = $value['catid'];
-                                    $tea_name[$key] = $value['tea_name'];
-                                    $inputtime[$key] = $value['inputtime'];
-                                }
-                                array_multisort($views,SORT_NUMERIC,SORT_DESC,$url,$thumb,$title,$catid,$tea_name,$inputtime,$hots);
                             ?>
                         </div>
                     </li>
@@ -94,6 +84,20 @@
             
              <div class="muke-video-list cf">
                 <ul>  
+                    <?php
+                        $v['views']=$views;
+                        $hots[]=$v;
+                        foreach ($hots as $key=>$value){
+                            $url[$key] = $value['url'];
+                            $views[$key] = $value['views'];
+                            $thumb[$key] = $value['thumb'];
+                            $title[$key] = $value['title'];
+                            $catid[$key] = $value['catid'];
+                            $tea_name[$key] = $value['tea_name'];
+                            $inputtime[$key] = $value['inputtime'];
+                        }
+                        array_multisort($views,SORT_NUMERIC,SORT_DESC,$url,$thumb,$title,$catid,$tea_name,$inputtime,$hots);
+                    ?>
                    {loop $hots $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
