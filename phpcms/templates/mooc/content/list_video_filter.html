@@ -1,17 +1,18 @@
 {template "content","header"}
 {pc:get sql="select * from v9_category where catid=$catid" return="data" num=1}
 {php $data=$data[0]}
+<div  class="muke-bann-wrap2">
+
+    <div  class="muke-bann">
+
+        <img  src="$data[image]" />
+
+    </div>
+
+</div>
+
 <div class="main-wrap">
     <div class="muke-inner">
-        <div class="blank_30"></div>
-        <div style="border:1px #CCC solid; background-color:#FFF">
-            <div class="muke-cou-title">{$data[school_name]}简介</div>
-            <div class="muke-school-intr cf">
-                <span><img src="{$data[image]}" width="190" height="60" title="{$data[catname]}"></span>
-                <p class="fl">{$data[description]}</p>
-            </div>
-
-        </div>
 
         <div class="blank_30"></div>
         <div class="muke-screen-wrap cf">
