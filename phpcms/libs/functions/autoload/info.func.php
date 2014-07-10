@@ -83,7 +83,12 @@ function structure_filters_sql($modelid,$cityid='') {
             $subcatid=array();
             foreach(($subcat) as $k=>$v)
             {
-                $subcatid[]=$k;
+                if($s=subcat($k)){
+                    foreach($s as $sk=>$sv){
+                        $subcatid[]=$sk;
+                    }
+                }
+                else $subcatid[]=$k;
             }
             $subcatid  = implode(',', $subcatid);
         }
