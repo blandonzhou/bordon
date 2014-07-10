@@ -1,9 +1,11 @@
 {template "content","header"}
+{pc:get sql="select * from v9_category where catid=$catid" return="data" num=1}
+{php $data=$data[0]}
 <div  class="muke-bann-wrap2">
 
     <div  class="muke-bann">
 
-        <img  src="{APP_PATH}statics/mooc/images/muke-bann.jpg"  width="994"  height="215">
+        <img  src="{$data[image]}" />
 
     </div>
 
