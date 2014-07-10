@@ -80,7 +80,7 @@
             
              <div class="muke-video-list cf">
                 <ul>  
-                {pc:get pc:get sql="SELECT v.*,h.views FROM v9_video v,v9_hits h where v.status=99 and v.catid in ($subcatid) and v.id=substring(h.hitsid,5) order by h.views DESC" num="20" return="hots"}      
+                {pc:get pc:get sql="SELECT v.*,h.views FROM v9_video v,v9_hits h where v.status=99 and v.catid in ($subcatid) and v.id=substring(h.hitsid,5) order h.views DESC" num="20" return="hots"}      
                    {loop $hots $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
