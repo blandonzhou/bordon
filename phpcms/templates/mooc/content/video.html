@@ -46,11 +46,11 @@
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
-<<<<<<< HEAD
+
             {php $sql = structure_filters_sql($modelid);}        
-=======
+
             {php $sql = structure_filters_sql($modelid);}     
->>>>>>> 272305f746394519a0232caba6c71d4996f85f13
+
             {php $urlrule = makeurlrule()}
             {loop subcat($catid) $v}
                 {loop subcat($v[catid]) $c}
@@ -58,11 +58,9 @@
                 {/loop}
             {/loop}
             {php $subcatid  = implode(',', $subcatid);}
-<<<<<<< HEAD
             {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" where="$sql" return="info" urlrule="$urlrule"}      
-=======
             {pc:get sql="SELECT * FROM v9_video where status=99 and $sql order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}      
->>>>>>> 272305f746394519a0232caba6c71d4996f85f13
+
                    {loop $info $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
