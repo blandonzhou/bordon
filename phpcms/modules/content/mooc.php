@@ -74,7 +74,7 @@ class mooc {
 
     public function search(){
     	$q=trim($_GET['q']);
-    	$q='%'.$q.'%';
+    	$q='\'%'.$q.'\'%';
     	include	template('search','list');
     }    
 	//内容页
