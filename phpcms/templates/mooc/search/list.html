@@ -1,4 +1,6 @@
 {template "content","header"}
+{pc:get sql="select * from v9_video where title like $q" page="$page" num="20" return="data"}
+<pre>{php print_r($pages);}</pre>
 <div  class="muke-bann-wrap2">
     <div  class="muke-bann">
         <img  src="{APP_PATH}statics/mooc/images/muke-banns.jpg"  width="994"  height="215">

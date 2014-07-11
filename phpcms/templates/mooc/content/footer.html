@@ -26,5 +26,18 @@
 				}
 			}
 		} ;
+                
+            $(function(){
+		var tabTitle = ".muke-cou-title a";
+		var tabContent = ".muke-video-list";
+		$(tabTitle + ":first").addClass("checked");
+		$(tabContent).not(":first").hide();
+		$(tabTitle).unbind("click").bind("click", function(){
+		$(this).siblings("a").removeClass("checked").end().addClass("checked");
+		var index = $(tabTitle).index( $(this) );
+		$(tabContent).eq(index).siblings(tabContent).hide().end().fadeIn(0);
+		});
+            });
+	
 
 </script>
