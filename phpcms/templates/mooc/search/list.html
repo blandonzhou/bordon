@@ -1,4 +1,5 @@
 {template "content","header"}
+{pc:get sql="select * from v9_video where title like $q" page="$page" num="20" return="data"}
 <div  class="muke-bann-wrap2">
     <div  class="muke-bann">
         <img  src="{APP_PATH}statics/mooc/images/muke-banns.jpg"  width="994"  height="215">
@@ -7,7 +8,7 @@
 <div class="main-wrap">
   <div class="muke-inner">
     <div class="muke-video cf">
-        <div class="muke-cou-title" style="padding-left:20px"> 搜索结果 <span class="fr mr10 f12">关键字"<font color="red">{$q}</font></red>"，共有{$totalnums}个结果</span> </div>
+        <div class="muke-cou-title" style="padding-left:20px"> 搜索结果 <span class="fr mr10 f12">关键字"<font color="red">{$_GET['q']}</font></red>"</span> </div>
       <div class="blank_10"></div>
       <div class="muke-video-list cf">
         <ul>

@@ -1,14 +1,29 @@
 {template "content","header"}
 {pc:get sql="select * from v9_category where catid=$catid" return="data" num=1}
 {php $data=$data[0]}
+<?php
+    switch($catid){
+      case 193:$image=APP_PATH."statics/mooc/images/muke-bann2.jpg";
+      break;
+      case 192:$image=APP_PATH."statics/mooc/images/muke-bann3.jpg";
+      break;      
+      case 190:$image=APP_PATH."statics/mooc/images/muke-bann108.jpg";
+      break;      
+      case 189:$image=APP_PATH."statics/mooc/images/muke-bann.jpg";
+      break;      
+      case 191:$image=APP_PATH."statics/mooc/images/muke-bann18.jpg";
+      break;
+      default:$image=$data['image'];
+
+    }
+?>
 <div  class="muke-bann-wrap2">
 
     <div  class="muke-bann">
 
-        <img  src="{$data[image]}" />
+        <img  src="{$image}" />
 
     </div>
-
 </div>
 <div class="main-wrap">
     <div class="muke-inner">
@@ -46,7 +61,11 @@
             <div class="blank_10"></div>
             <div class="muke-video-list cf">
                 <ul>  
+
+            {php $sql = structure_filters_sql($modelid);}        
+
             {php $sql = structure_filters_sql($modelid);}     
+
             {php $urlrule = makeurlrule()}
             {loop subcat($catid) $v}
                 {loop subcat($v[catid]) $c}
@@ -54,7 +73,9 @@
                 {/loop}
             {/loop}
             {php $subcatid  = implode(',', $subcatid);}
+            {pc:get sql="SELECT * FROM v9_video where status=99 and catid in ($subcatid) order by inputtime DESC" page="$page" where="$sql" return="info" urlrule="$urlrule"}      
             {pc:get sql="SELECT * FROM v9_video where status=99 and $sql order by inputtime DESC" page="$page" return="info" urlrule="$urlrule"}      
+
                    {loop $info $v} 
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">

@@ -71,6 +71,12 @@ class mooc {
 
             include template('content',$template);
         }
+
+    public function search(){
+    	$q=trim($_GET['q']);
+    	$q='\'%'.$q.'%\'';
+    	include	template('search','list');
+    }    
 	//内容页
 	public function show() {
 		$catid = intval($_GET['catid']);

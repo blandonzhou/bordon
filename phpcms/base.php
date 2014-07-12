@@ -54,7 +54,7 @@ define('APP_PATH',pc_base::load_config('system','app_path'));
 define('PLUGIN_STATICS_PATH',WEB_PATH.'statics/plugin/');
 
 define('FFMPEG_EXT','/usr/local/bin/ffmpeg');
-define('VIDEO_SERVER','http://localhost/uploadfile/video/');
+define('VIDEO_SERVER','uploadfile/video/');
 if(pc_base::load_config('system','gzip') && function_exists('ob_gzhandler')) {
 	ob_start('ob_gzhandler');
 } else {

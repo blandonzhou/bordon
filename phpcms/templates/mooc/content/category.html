@@ -1,14 +1,29 @@
 {template "content","header"}
 {pc:get sql="select * from v9_category where catid=$catid" return="data" num=1}
 {php $data=$data[0]}
+<?php
+    switch($catid){
+      case 193:$image=APP_PATH."statics/mooc/images/muke-bann2.jpg";
+      break;
+      case 192:$image=APP_PATH."statics/mooc/images/muke-bann3.jpg";
+      break;      
+      case 190:$image=APP_PATH."statics/mooc/images/muke-bann108.jpg";
+      break;      
+      case 189:$image=APP_PATH."statics/mooc/images/muke-bann.jpg";
+      break;      
+      case 191:$image=APP_PATH."statics/mooc/images/muke-bann18.jpg";
+      break;
+      default:$image=$data['image'];
+
+    }
+?>
 <div  class="muke-bann-wrap2">
 
     <div  class="muke-bann">
 
-        <img  src="{$data[image]}" />
+        <img  src="{$image}" />
 
     </div>
-
 </div>
 <div class="main-wrap">
     <div class="muke-inner">
