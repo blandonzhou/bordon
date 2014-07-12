@@ -15,6 +15,6 @@
 	 // close the connection 
 	 ftp_close($conn_id); 	
 	}
-ftp_upload('ybdhy.mp4');
+ftp_upload('test.mp4');
 ?>
 
