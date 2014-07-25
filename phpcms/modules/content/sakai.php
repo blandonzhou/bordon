@@ -77,7 +77,7 @@ class sakai  extends admin{
                     }
                     $_POST['video']['local_video'] = join(',', $insert);
                 }
-
+		$_POST['video']['from']='sakai';//设置来源为sakai
                 $id = $this->db->add_content($_POST['video']);
 //                                print_r(json_encode(urldecode(urlencode($_POST['video']))));
                 $modelname = $this->db->model[$modelid]['tablename'] . '_model';
