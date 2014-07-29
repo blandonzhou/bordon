@@ -59,7 +59,7 @@
             <div class="muke-list {php if($i%2) echo 'fr';else echo 'fl';}">
               <div class="muke-title"> <span class="title-txt">{$cat[catname]}</span> <a class="more" href="{$cat[url]}"></a> </div>
               <ul>
-                  {pc:content action="lists" catid="$cat[catid]" order="sort desc,updatetime" num="5" return="article"}
+                  {pc:content action="lists" catid="$cat[catid]" order="sort desc updatetime" num="5" return="article"}
                       {loop $article $a}
                         <li><span></span><a href="{$a[url]}" title="{$a[title]}">{$a[title]}</a></li>
                       {/loop}
