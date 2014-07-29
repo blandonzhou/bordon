@@ -2,7 +2,7 @@
 <div class="muke-bann-wrap">
   <div id="banner" class="muke-bann" style="height:359px;">
     <ul>
-        {pc:content action="category" catid="188" num="5" order="listorder ASC"}
+        {pc:content action="category" catid="188" num="5" order="listorder DESC"}
             {loop $data $r}
               <li style="opacity: 1; z-index: 2;"><a  href="{$r[url]}" title="{$r[catname]}"><img src="{$r[image]}" width="994" height="359"></a></li>
             {/loop}
@@ -59,7 +59,7 @@
             <div class="muke-list {php if($i%2) echo 'fr';else echo 'fl';}">
               <div class="muke-title"> <span class="title-txt">{$cat[catname]}</span> <a class="more" href="{$cat[url]}"></a> </div>
               <ul>
-                  {pc:content action="lists" catid="$cat[catid]" order="sort desc" num="5" return="article"}
+                  {pc:content action="lists" catid="$cat[catid]" order="listorder DESC" num="5" return="article"}
                       {loop $article $a}
                         <li><span></span><a href="{$a[url]}" title="{$a[title]}">{$a[title]}</a></li>
                       {/loop}
