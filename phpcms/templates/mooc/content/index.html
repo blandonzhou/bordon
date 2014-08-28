@@ -196,27 +196,28 @@
       </div>
     </div>
     <a href="javascript:;"  onmousedown="ISL_GoUp2()" onmouseup="ISL_StopUp2()" onmouseout="ISL_StopUp2()" class="img2" hidefocus="true"></a> </div>
-    
-  <div class="muke-list-wrap cf">
-    {php $i=0;}
-    {pc:content action="category" catid="211" order="listorder ASC" return="list"}
-        {loop $list $cat}
-            <div class="muke-list {php if($i%2) echo 'fr';else echo 'fl';}">
-              <div class="muke-title"> <span class="title-txt">{$cat[catname]}</span> <a class="more" href="{$cat[url]}"></a> </div>
-              <ul>
-                  {pc:content action="lists" catid="$cat[catid]" order="listorder DESC" num="5" return="article"}
-                      {loop $article $a}
-                        <li><span></span><a href="{$a[url]}" title="{$a[title]}">{$a[title]}</a></li>
-                      {/loop}
-                  {/pc}   
-              </ul>
-            </div>
-            {php if($i%2){}
-            <div class="blank_30"></div>
-            {php }}
-            {php $i++}
-        {/loop}
-    {/pc}
+  <div class="rollBox">  
+    <div class="muke-list-wrap cf">
+      {php $i=0;}
+      {pc:content action="category" catid="211" order="listorder ASC" return="list"}
+          {loop $list $cat}
+              <div class="muke-list {php if($i%2) echo 'fr';else echo 'fl';}">
+                <div class="muke-title"> <span class="title-txt">{$cat[catname]}</span> <a class="more" href="{$cat[url]}"></a> </div>
+                <ul>
+                    {pc:content action="lists" catid="$cat[catid]" order="listorder DESC" num="5" return="article"}
+                        {loop $article $a}
+                          <li><span></span><a href="{$a[url]}" title="{$a[title]}">{$a[title]}</a></li>
+                        {/loop}
+                    {/pc}   
+                </ul>
+              </div>
+              {php if($i%2){}
+              <div class="blank_30"></div>
+              {php }}
+              {php $i++}
+          {/loop}
+      {/pc}
+    </div>
   </div>
     
 
