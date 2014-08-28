@@ -7,11 +7,10 @@
 </head>
 <meta name="keywords" content="华师慕课,华东师范大学,慕课,慕课中心,C20,c20">
 <meta name="description" content="华东师范大学慕课中心是以研究与开发基础教育、教师教育“慕课（大规模在线开放课程）”，并推动慕课在各领域高质量地得到实施的学术性组织。">
-<link href="{APP_PATH}statics/c20/reset.css"    rel="stylesheet" type="text/css" />
-<link href="{APP_PATH}statics/c20/default_blue.css"    rel="stylesheet" type="text/css" />
-<link href="{APP_PATH}statics/c20/muke.css"    rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{APP_PATH}statics/c20/jquery.min.js"   ></script>
-<script type="text/javascript" src="{APP_PATH}statics/c20/s.js"   ></script>
+<link href="reset.css"    rel="stylesheet" type="text/css" />
+<link href="default_blue.css"    rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery.min.js"   ></script>
+<script type="text/javascript" src="s.js"   ></script>
 <body>
 <!--<div class="tbu">
   <div class="header-menu">
@@ -196,28 +195,6 @@
       </div>
     </div>
     <a href="javascript:;"  onmousedown="ISL_GoUp2()" onmouseup="ISL_StopUp2()" onmouseout="ISL_StopUp2()" class="img2" hidefocus="true"></a> </div>
-    
-  <div class="muke-list-wrap cf">
-    {php $i=0;}
-    {pc:content action="category" catid="211" order="listorder ASC" return="list"}
-        {loop $list $cat}
-            <div class="muke-list {php if($i%2) echo 'fr';else echo 'fl';}">
-              <div class="muke-title"> <span class="title-txt">{$cat[catname]}</span> <a class="more" href="{$cat[url]}"></a> </div>
-              <ul>
-                  {pc:content action="lists" catid="$cat[catid]" order="listorder DESC" num="5" return="article"}
-                      {loop $article $a}
-                        <li><span></span><a href="{$a[url]}" title="{$a[title]}">{$a[title]}</a></li>
-                      {/loop}
-                  {/pc}   
-              </ul>
-            </div>
-            {php if($i%2){}
-            <div class="blank_30"></div>
-            {php }}
-            {php $i++}
-        {/loop}
-    {/pc}
-  </div>
     
 
   <!--<div class="home-page-tiles">
