@@ -1,5 +1,5 @@
-.muke-list-wrap fl{float:left;}
-.muke-list-wrap fr{float:right;}
+.muke-list-wrap .fl{float:left;}
+.muke-list-wrap .fr{float:right;}
 .muke-list-wrap{padding:30px;width:940px;}
 .muke-list{width:440px;overflow:hidden;}
 .muke-list ul{margin-top:5px;}
