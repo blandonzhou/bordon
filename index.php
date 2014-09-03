@@ -10,6 +10,7 @@
 
 define('PHPCMS_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
+require_once('vendor/autoload.php');
 include PHPCMS_PATH.'/phpcms/base.php';
 
 pc_base::creat_app();
