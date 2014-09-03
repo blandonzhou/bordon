@@ -30,7 +30,8 @@
 <input type="hidden" name="url" value="{urlencode(($comment[url] ? $comment[url] : $url))}">
       <a name="comment"></a>
       	<h5><strong>我来说两句</strong></h5>
-        <div class="posn">我的态度：<input type="radio" name="direction" value="1" /> <img src="{IMG_PATH}icon/zheng.png" /> <input type="radio" name="direction" value="2" /> <img src="{IMG_PATH}icon/fan.png" /> <input type="radio" name="direction" value="3"  /> <img src="{IMG_PATH}icon/zhong.png" />
+        <div class="posn">我要点赞：<input type="radio" name="direction" value="1" /> <img src="{IMG_PATH}icon/zheng.png" /> 
+</div><input type="radio" name="direction" value="2" /> <img src="{IMG_PATH}icon/fan.png" /><input type="radio" name="direction" value="3" /> <img src="{IMG_PATH}icon/zhong.png" /> 
 </div>
         <textarea rows="8" cols="80" name="content"></textarea><br>
 		{if $setting[code]}
@@ -39,7 +40,7 @@
 		  <div id="yzm" class="yzm">{form::checkcode()}<br />点击图片更换</a></div>
         <div class="bk10"></div>
 		{/if}
-        <div class="btn"><input type="submit" value="发表评论" /></div>&nbsp;&nbsp;&nbsp;&nbsp;{if $userid}{get_nickname()} <a href="{APP_PATH}index.php?m=member&c=index&a=logout&forward={urlencode(get_url())}">退出</a>{else}<a href="{APP_PATH}index.php?m=member&c=index&a=login&forward={urlencode(get_url())}" class="blue">登录</a><span> | </span><a href="{APP_PATH}index.php?m=member&c=index&a=register" class="blue">注册</a>  {if !$setting[guest]}<span style="color:red">需要登陆才可发布评论</span>{/if}{/if}
+        <div class="btn"><input type="submit" value="发表评论" /></div>
 	</form>
 <style type="text/css">
 .look-content{ padding:10px;border:1px dashed #ffbf7a; background:#fffced; margin:10px auto}

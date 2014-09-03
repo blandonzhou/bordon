@@ -1,0 +1,162 @@
+<style type="text/css">
+body{margin:0;padding:0;}
+.ta{
+font-family:'微软雅黑';
+font-size:15px;
+font-weight:700;
+font-style:normal;
+font-size-adjust:none;
+color:#333 !important;
+text-decoration:none;
+line-height:24px;
+text-align:left;
+
+}
+.vt{
+	margin-top:5px;
+	margin-left:10px;
+font-family:'微软雅黑';
+font-size:12px;
+font-weight:400;
+font-style:normal;
+font-size-adjust:none;
+color:rgb(51,​ 51,​ 51);
+line-height:18px;
+text-align:left;
+	}
+</style>
+
+
+
+            <div class="paa">
+
+		<?php
+        if(isset($_GET['did']) && $_GET['did']!="" ){
+     		$aa=$_GET['did'];   
+        }else{
+        $aa=188;   
+        }
+
+		?>
+            {pc:content action="lists" catid="$aa" page="$page" return="info" num="10"}                 
+           {loop $info $v} 
+            <div style="width: 300px; height: 120px; float: left; margin: 10px; border-bottom: 1px dashed #e7e7e7;"><table width="300" height="120" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="134" align="center" style="font-size: 14px;"><a class="fl" href="{$v[url]}" target="_blank"><img src="{$v[thumb]}" width="132" height="100"></td>
+    <td valign="top"><div class="vt"><a href="{$v[url]}" title="{$v[title]}" class="ta" target="_blank">{$v[title]}</a><br>
+来源：{$CATEGORYS[$v[catid]][catname]} {$v[tea_name]}<br>播放：{$views}<br>发布时间：{date('Y-m-d',$v[inputtime])}</div>      </td>
+  </tr>
+  {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-11-'.$v[id])); $views = $_r[views]; }
+  </table>
+</div>
+        {/loop}
+                    {/pc}
+                    <style>
+                    .page a, .page span {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #777;
+    font: 14px/20px arial;
+    height: 20px;
+    margin-left: 2px;
+    overflow: hidden;
+    padding: 3px 10px;
+	text-decoration: none;
+}
+.page a:hover {
+    background: none repeat scroll 0 0 #59bdff;
+    color: #fff;
+}
+.page a.checked {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    font-weight: 600;
+}
+.page span {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    font-weight: 600;
+}
+.page a.checked:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #fff;
+}
+.page a:link, .page a:visited, .page a:hover, .page a:active {
+    color: #4e4e4e;
+}
+.page a:hover {
+    color: #fff;
+	text-decoration: underline;
+}
+.page a.checked:link, .page a.checked:visited, .page a.checked:hover, .page a.checked:active {
+    color: #0874c4;
+}
+.page .page_no {
+    background: none repeat scroll 0 0 #fff;
+    color: #ccc;
+}
+.page .page_no:hover {
+    background: none repeat scroll 0 0 #fff;
+}
+.page .page_no:link, .page .page_no:visited, .page .page_no:hover, .page .page_no:active {
+    color: #ccc;
+    cursor: text;
+}
+.page_skip {
+    color: #777;
+    float: left;
+    padding-left: 15px;
+}
+.page_skip .skip_txt {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin: 2px 5px 0;
+    text-align: center;
+    width: 40px;
+}
+.page_skip .skip_btn {
+    background: none repeat scroll 0 0 #ebebeb;
+    color: #777;
+    cursor: pointer;
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    margin-left: 5px;
+    padding: 0 10px;
+    width: auto;
+}
+.page_skip .skip_btn:hover {
+    background: none repeat scroll 0 0 #ebebeb;
+    color: #4e4e4e;
+}
+.page_skip span {
+    float: left;
+    line-height: 27px;
+}
+
+.fr {
+    display: inline;
+    float: right;
+}
+* {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    word-break: break-all;
+}
+                    </style>
+                                        <div style="width:600px; height:50px;margin-left:auto; margin-right:auto; margin-bottom:5px; line-height:50px">
+             <div  class="page fr">           {$pages}</div>
+            </div>
+        <div>
+
+
+
+
+
+</body>
+</html>

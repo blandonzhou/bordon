@@ -23,9 +23,12 @@ include $this->admin_tpl('header','admin');
  <table width="100%" cellspacing="0">
         <thead>
             <tr>
+             <th width="80">序号</th>
              <th width="80"><?php echo L('username')?></th>
             <th ><?php echo L('module')?></th>
-            <th ><?php echo L('file')?></th>
+            <th >视频文件</th>
+            <th >动作</th>
+            <th >标题</th>
              <th width="120"><?php echo L('time')?></th>
              <th width="120">IP</th>
             </tr>
@@ -36,9 +39,12 @@ if(is_array($infos)){
 	foreach($infos as $info){
 ?>
     <tr> 
+          <td align="center"><?php echo $info['logid']?></td>
         <td align="center"><?php echo $info['username']?></td>
         <td align="center"><?php echo $info['module']?></td>
-        <td align="left" title="<?php echo $info['querystring']?>"><?php echo str_cut($info['querystring'], 40);?></td>
+         <td align="center"><?php echo $info['file']?></td>
+        <td align="center"><?php echo $info['action']?></td>
+        <td align="left" title="<?php echo $info['querystring']?>"><?php echo $info['data'];?></td>
          <td align="center"><?php echo $info['time'];//echo $info['lastusetime'] ? date('Y-m-d H:i', $info['lastusetime']):''?></td>
          <td align="center"><?php echo $info['ip']?>　</td> 
     </tr>

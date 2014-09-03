@@ -10,7 +10,7 @@
   </div>
   <div class="blank_30"></div>
   <div class="muke-video cf">
-   <div class="muke-cou-title"> 
+   <div class="muke-cou-title2"> 
                 {pc:content action="category" catid="191" order="listorder ASC"}
                     {loop $data $v}
                     <a href="{$v[url]}" <?php if($catid==$v[catid]) echo 'class="checked"';?> >{$v[catname]}</a>
@@ -22,7 +22,7 @@
         {pc:content action="category" catid="$catid" order="listorder ASC" num="100"}
             {loop $data $v}
                     <li> <a class="fl" href="{$v[url]}"><img src="{$v[image]}" width="190" height="60"></a>
-                        <div class="muke-video-info">
+                        <div class="muke-video-info" style="width:234px">
                             <p>{$v[description]}</p>
                         </div>
                     </li>

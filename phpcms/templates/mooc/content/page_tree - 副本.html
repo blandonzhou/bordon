@@ -1,0 +1,154 @@
+{template "content","header"}
+	<link rel="stylesheet" href="{APP_PATH}statics/mooc/css/demo.css" type="text/css">
+	<link rel="stylesheet" href="{APP_PATH}statics/mooc/css/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="{APP_PATH}statics/mooc/js/jquery.ztree.core-3.5.js"></script>
+
+<style type="text/css">
+	
+.paa {
+    background: none repeat scroll 0 0 #fff;
+    border-right: 1px solid #e7e7e7;
+    height: 800px;
+    width: 1000px;
+    display: inline;
+    float: left;
+}
+.ml {
+width:300px;
+height:780px;
+margin:10px;
+
+float:left;
+}
+.mr {
+width:660px;
+height:780px;
+float:left;
+margin-left:10px;
+}
+.muke-nav li.checked {
+    background: none repeat scroll 0 0 #e3f1f8;
+    border-bottom: 1px solid #22aaee;
+}
+.muke-nav li a {
+    color: #333;
+    float: left;
+    font: 18px/20px '微软雅黑';
+    padding: 10px 0;
+}
+</style>
+
+
+	 <SCRIPT type="text/javascript" >
+  <!--
+	var zTree;
+	var demoIframe;
+
+	var setting = {
+		view: {
+			dblClickExpand: false,
+			showLine: true,
+			selectedMulti: false
+		},
+		data: {
+			simpleData: {
+				enable:true,
+				idKey: "id",
+				pIdKey: "pId",
+				rootPId: ""
+			}
+		},
+		callback: {
+			beforeClick: function(treeId, treeNode) {
+				var zTree = $.fn.zTree.getZTreeObj("tree");
+				if (treeNode.isParent) {
+					zTree.expandNode(treeNode);
+					return false;
+				} else {
+					demoIframe.attr("src",treeNode.file);
+					return true;
+				}
+			}
+		}
+	};
+
+
+
+	var zNodes =[
+
+
+
+						<?php 
+
+						display_tree(188);
+						function display_tree($classid) {
+
+						pc_base::load_sys_class("get_model", "model", 0);
+						$get_db = new get_model();
+						$result = $get_db->sql_query("SELECT * FROM v9_category WHERE parentid = '".$classid."'  ORDER BY listorder ASC");             
+                         while ($rv = mysql_fetch_array($result)) {
+           ?>
+                     {id:<?php echo $rv['catid']?>, pId:<?php echo $rv['parentid']?>, name:"<?php echo $rv['catname']?>",<?php  if($rv['catid']==$rv['arrchildid']){ ?>file:"index.php?m=content&c=index&a=lists&catid=367&did=<?php echo $rv['catid']?>"<?php }else if($n==null){ ?>open:false<?php }?>},
+		   <?php
+
+        display_tree($rv['catid']);
+
+        }
+    }
+?>
+	];
+
+	$(document).ready(function(){
+		var t = $("#tree");
+		t = $.fn.zTree.init(t, setting, zNodes);
+		demoIframe = $("#right");
+		demoIframe.bind("load", loadReady);
+		var zTree = $.fn.zTree.getZTreeObj("tree");
+		zTree.selectNode(zTree.getNodeByParam("id", 101));
+
+	});
+
+	function loadReady() {
+		var bodyH = demoIframe.contents().find("body").get(0).scrollHeight,
+		htmlH = demoIframe.contents().find("html").get(0).scrollHeight,
+		maxH = Math.max(bodyH, htmlH), minH = Math.min(bodyH, htmlH),
+		h = demoIframe.height() >= maxH ? minH:maxH ;
+		if (h < 530) h = 530;
+		demoIframe.height(h);
+	}
+
+  //-->
+  </SCRIPT>
+<div class="main-wrap mod-info-wrap cf ">
+
+    <div class="paa" >
+
+				<div class="ml">
+						<div class="zTreeDemoBackground left">
+							<ul id="tree" class="ztree"></ul>
+						</div>
+				</div>
+
+				<div class="mr">
+					<IFRAME ID="right" Name="right" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=780px SRC="index.php?m=content&c=index&a=lists&catid=367"></IFRAME>
+				</div>
+
+
+    </div>
+</div>
+
+<div class="blank_30"></div>
+
+
+<div class="muke-footer-wrap">
+  <div id="muke-footer">
+    <div class="footer-AboutUs"> <a href="page.htm">关于我们</a> <a href="page.htm">加入我们</a> <a href="page.htm">联系我们</a> <a href="#">资源下载</a> </div>
+    <div class="footer-left">
+      <div class="footer-info"> Copyright ©2014 c20.org.cn　沪ICP备13031008号-1 </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

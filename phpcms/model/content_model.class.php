@@ -90,6 +90,21 @@ class content_model extends model {
 		$tablename = $this->table_name = $this->db_tablepre.$this->model_tablename;
 		$id = $modelinfo['id'] = $this->insert($systeminfo,true);
 		$this->update($systeminfo,array('id'=>$id));
+       //添加操作记录
+	   $ip=ip();
+	   $time = date('Y-m-d H:i:s');
+	   $lname= param::get_cookie('admin_username');
+	   $ltitle=$systeminfo['title'];
+	    $vod=$modelinfo['local_video'];
+	   if ($tablename=='v9_video') {
+	        $lfield='添加';
+            $lfield2='视频';
+	   }else{
+	        $lfield='添加';
+            $lfield2='资讯';
+	   }
+	     $urls= $_SERVER["QUERY_STRING"];
+         $this->query("INSERT INTO `jiaoyu`.`v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '$lfield', '0', 'content', '$vod', '$lfield', '$urls', '$ltitle', '5', '$lname', '$ip', '$time');");
 		//更新URL地址
 		if($data['islink']==1) {
 			$urls[0] = trim_script($_POST['linkurl']);
@@ -291,7 +306,14 @@ class content_model extends model {
 		//主表
 		$this->table_name = $this->db_tablepre.$model_tablename;
 		$this->update($systeminfo,array('id'=>$id));
-
+       //添加编辑记录
+       $ip1=ip();
+	   $time1 = date('Y-m-d H:i:s');
+	   $lname1= param::get_cookie('admin_username');
+	   $ltitle1=$systeminfo['title'];
+	    $vod1=$modelinfo['local_video'];
+	     $urls1= $_SERVER["QUERY_STRING"];
+         $this->query("INSERT INTO `jiaoyu`.`v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '编辑', '0', 'content', '$vod1', '编辑', '$urls1', '$ltitle1', '5', '$lname1', '$ip1', '$time1');");
 		//附属表
 		$this->table_name = $this->table_name.'_data';
 		$this->update($modelinfo,array('id'=>$id));
@@ -377,15 +399,60 @@ class content_model extends model {
 	 * @param $catid 栏目id
 	 */
 	public function delete_content($id,$file,$catid = 0) {
-		//删除主表数据
-		$this->delete(array('id'=>$id));
-		//删除从表数据
-		$this->table_name = $this->table_name.'_data';
-		$this->delete(array('id'=>$id));
-		//重置默认表
+       $g1=  $this->table_name = $this->table_name;
+	   $g2=$this->table_name = $this->table_name.'_data';
+        $catid = intval($catid);
+        $siteids = getcache('category_content','commons');
+		$siteid = $siteids[$catid];
+		$this->category = getcache('category_content_'.$siteid,'commons');
+	    $modelid = $this->category[$catid]['modelid'];
+
+			 if ($modelid =="11" ) {   //如果内容模型为视频模型则开始执行   删除发布到其他栏目的数据
+
+							   $this->set_model($modelid);
+
+							   $this->table_name = $this->table_name;
+								$rs = $this->get_one(array('id'=>$id));
+							   $aass= $rs['title'];  //获取title值
+
+							   $this->table_name = $this->table_name.'_data';
+								$r = $this->get_one(array('id'=>$id));
+							   $aa= $r['local_video'];  //获取local_video值
+							   
+									$where = array('local_video'=>$aa);               //设置调用条件
+									$db= pc_base::load_model('sitemodel_field_model');
+									$db->change_table('video_data');                        //要调用的表名
+									$data= $db->select($where,'id,local_video');                                        //这是要调用的字段名
+						  foreach ($data as $rrr) {						    
+                                $bbb=$rrr['id'];
+											if($rrr['id']!=="|"){       //不删除视频文件为空的的数据
+														
+														//删除主表数据
+													  $this->table_name = $g1;
+													 $hhh=  $this->delete(array('id'=>$bbb));
+														//删除从表数据
+													$this->table_name = $g2;
+													$this->delete(array('id'=>$bbb));
+
+													//添加后台操作记录
+
+													       //添加操作记录
+												   $ip=ip();
+												   $time = date('Y-m-d H:i:s');
+												   $lname= param::get_cookie('admin_username');
+												   $ltitle=$aass;
+													$lfield='视频';
+													$vs=$aa;
+													$urls= $_SERVER["QUERY_STRING"];
+													
+													 $this->query("INSERT INTO `jiaoyu`.`v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '$lfield', '$bbb', 'content', '$vs', '删除', '$urls', '$ltitle', '5', '$lname', '$ip', '$time');");
+											}
+						  }
+			 }
+			//重置默认表
 		$this->table_name = $this->db_tablepre.$this->model_tablename;
 		//更新栏目统计
-		$this->update_category_items($catid,'delete');
+		$this->update_category_items($catid,'delete');		 
 	}
 	
 	

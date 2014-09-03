@@ -16,6 +16,7 @@ $(function(){if ($.browser.msie && parseInt($.browser.version) < 7) $('#browserV
 	<div class="bk20 hr"><hr /></div>
 	<?php echo L('main_last_logintime')?><?php echo date('Y-m-d H:i:s',$logintime)?><br />
 	<?php echo L('main_last_loginip')?><?php echo $loginip?> <br />
+    当前IP:<?php echo  ip();?> <br />
 	</div>
 </div>
 

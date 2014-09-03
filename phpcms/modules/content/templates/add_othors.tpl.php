@@ -17,7 +17,7 @@ include $this->admin_tpl('header','admin');
 	}
 ?>
 </fieldset>
-    <div style="width:500px; padding:2px; border:1px solid #d8d8d8; float:left; margin-top:10px; margin-right:10px; overflow:hidden">
+    <div style="width:600px; padding:2px; border:1px solid #d8d8d8; float:left; margin-top:10px; margin-right:10px; overflow:hidden">
     <table width="100%" cellspacing="0" class="table-list" >
             <thead>
                 <tr>
@@ -53,7 +53,7 @@ include $this->admin_tpl('header','admin');
 		var str = "<li id='"+sid+"'>·<input type='hidden' name='othor_catid["+id+"]'><span>"+title+"</span><a href='javascript:;' class='close' onclick=\"remove_id('"+sid+"')\"></a></li>";
 
 		window.top.$('#add_othors_text').append(str);
-		window.parent.$('#add_othors_text').append(str);
+		//window.parent.$('#add_othors_text').append(str);
 		$('#catname').append(str);
 		if(relation_ids =='' ) {
 			window.top.$('#relation').val(id);

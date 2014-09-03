@@ -137,7 +137,7 @@ i,.lest-btn,.next-btn,.muke-blogroll .corre,.muke-share a,.resource-down .down-t
 .mod-info-menu li a{color:#666;display:block;width:100%;}
 .mod-info-menu li.checked{background:#23aaee;color:#fff;}
 .mod-info-menu li.checked a{color:#fff;}
-.mod-list{background:#fff;border-right:#e7e7e7 1px solid;width:761px;min-height:700px;}
+.mod-list{background:#fff;border-right:#e7e7e7 1px solid;width:761px;height:950px;}
 .mod-list .inner{padding:0 15px;}
 .mod-list-title{font-size:16px;padding:8px 0;border-bottom:#e7e7e7 1px solid;}
 .mod-list-inner{}
