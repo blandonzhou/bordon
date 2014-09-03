@@ -104,7 +104,7 @@ class content_model extends model {
             $lfield2='资讯';
 	   }
 	     $urls= $_SERVER["QUERY_STRING"];
-         $this->query("INSERT INTO `jiaoyu`.`v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '$lfield', '0', 'content', '$vod', '$lfield', '$urls', '$ltitle', '5', '$lname', '$ip', '$time');");
+         $this->query("INSERT INTO `v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '$lfield', '0', 'content', '$vod', '$lfield', '$urls', '$ltitle', '5', '$lname', '$ip', '$time');");
 		//更新URL地址
 		if($data['islink']==1) {
 			$urls[0] = trim_script($_POST['linkurl']);
@@ -313,7 +313,7 @@ class content_model extends model {
 	   $ltitle1=$systeminfo['title'];
 	    $vod1=$modelinfo['local_video'];
 	     $urls1= $_SERVER["QUERY_STRING"];
-         $this->query("INSERT INTO `jiaoyu`.`v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '编辑', '0', 'content', '$vod1', '编辑', '$urls1', '$ltitle1', '5', '$lname1', '$ip1', '$time1');");
+         $this->query("INSERT INTO `v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '编辑', '0', 'content', '$vod1', '编辑', '$urls1', '$ltitle1', '5', '$lname1', '$ip1', '$time1');");
 		//附属表
 		$this->table_name = $this->table_name.'_data';
 		$this->update($modelinfo,array('id'=>$id));
@@ -445,7 +445,7 @@ class content_model extends model {
 													$vs=$aa;
 													$urls= $_SERVER["QUERY_STRING"];
 													
-													 $this->query("INSERT INTO `jiaoyu`.`v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '$lfield', '$bbb', 'content', '$vs', '删除', '$urls', '$ltitle', '5', '$lname', '$ip', '$time');");
+													 $this->query("INSERT INTO `v9_log` (`field`, `value`, `module`, `file`, `action`, `querystring`, `data`, `userid`, `username`, `ip`, `time`) VALUES ( '$lfield', '$bbb', 'content', '$vs', '删除', '$urls', '$ltitle', '5', '$lname', '$ip', '$time');");
 											}
 						  }
 			 }
