@@ -122,8 +122,6 @@ class content extends admin {
 
         if (isset($_POST['dosubmit']) || isset($_POST['dosubmit_continue']))
         {
-            echo '<pre>';
-        print_r($_POST['info']);die;
             define('INDEX_HTML', true);
             $catid = $_POST['info']['catid'] = intval($_POST['info']['catid']);
             //if(trim($_POST['info']['title'])=='') showmessage(L('title_is_empty'));
