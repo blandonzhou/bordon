@@ -10,7 +10,12 @@
         <span><img src="{$data[image]}" width="190" title="{$data[catname]}"></span>
         <p class="fl">{$data[description]}</p>
     </div>
-    
+    	            <?php 
+				$category_db = pc_base::load_model('category_model');
+				$rr = $category_db->get_one(array('catid'=>$catid), 'arrchildid');
+				$aa=$rr['arrchildid'];
+				$bb=explode(",",$aa);
+				?>
   </div>
     <div class="blank_30"></div>
     <div class="muke-video cf">
@@ -66,34 +71,30 @@
  
       <div class="blank_30"></div>
        <div class="muke-video-list cf">
-                <ul>  
-      {pc:get sql="select v9_comment.total,v9_video.* from v9_comment left join  v9_video on v9_comment.commentid=CONCAT('content_$catid-',v9_video.id,'-1')  where v9_video.status=99 and v9_video.catid=$catid order by v9_comment.total DESC" urlrule="$urlrule" num="20"  return="hots2"} 
-	  
-	  {loop $hots2  $r}
-   {php $db = pc_base::load_model('hits_model');   $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$r[id])); $views = $_r[views]; }
-      {php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$catid.'-'.$r[id].'-1'));}
-                    <li> <a class="fl" href="{$r[url]}"><img src="{$r[thumb]}" width="132" height="100"></a>
+                <ul>
+            {pc:get sql="SELECT * FROM v9_video where status=99 and love > 0  order by love DESC" page="$page" return="info" urlrule="$urlrule"}      
+
+                   {loop $info $v} 
+       <?php
+	   if(in_array($v[catid],$bb)){
+	   ?>
+				    {php $comment_tag = pc_base::load_app_class("comment_tag", "comment"); $comment_total = $comment_tag->count(array('commentid'=>'content_'.$v[catid].'-'.$v[id].'-1'));}
+                    <li> <a class="fl" href="{$v[url]}"><img src="{$v[thumb]}" width="132" height="100"></a>
                         <div class="muke-video-info">
-                            <h2><a href="{$r[url]}" title="{$r[title]}">{$r[title]}</a></h2>
-                            来源：{$CATEGORYS[$r[catid]][catname]} {$r[tea_name]}</br>
-                            播放：{$views}</br>
-							评论数：{if $comment_total}{$comment_total}{else}0{/if}&nbsp;&nbsp;点赞数：
-							<?php 
-						$cid='content_'.$catid.'-'.$r[id].'-1';
-	                     pc_base::load_sys_class("get_model", "model", 0);
-						$get_db = new get_model();
-						$result = $get_db->sql_query("SELECT count(*) as tt FROM `v9_comment_data_1` WHERE `commentid`='$cid' and direction=1");             
-                         while ($rv = mysql_fetch_array($result)) {
-						 echo $rv["tt"];
-}
-				?>
-							</br>
-                            发布时间：{date('Y-m-d',$r[inputtime])}
+                            <h2><a href="{$v[url]}" title="{$v[title]}">{$v[title]}</a></h2>
+                            来源：{$CATEGORYS[$v[catid]][catname]} {$v[tea_name]}</br>
+                            {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-'.$modelid.'-'.$v[id])); $views = $_r[views]; }
+                            播放：{$views}</br>评论：{if $comment_total}{$comment_total}{else}0{/if}&nbsp;&nbsp;点赞：{$v[love]}</br>
+                            发布时间：{date('Y-m-d',$v[inputtime])}
                         </div>
                     </li>
-   {/loop}
-{/pc}
-                </ul>
+	   <?php
+	   }
+	   ?>
+
+                    {/loop}
+                {/pc}
+      </ul>
             </div>
                         <div class="blank_30"></div>
     </div>

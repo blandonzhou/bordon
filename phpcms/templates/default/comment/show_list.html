@@ -10,8 +10,34 @@
 <link href="{CSS_PATH}default_blue.css" rel="stylesheet" type="text/css" />
 <script language="javascript" type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="{JS_PATH}jquery.sgallery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("font  a").click(function(){
+		var love = $(this);
+		var id = love.attr("rel");
+		love.fadeOut(300);
+		$.ajax({
+			type:"POST",
+			url:"{APP_PATH}index.php?m=content&c=mooc&a=love",
+			data:"id="+id,
+			cache:false,
+			success:function(data){
+				love.html(data);
+				love.fadeIn(300);
+			}
+		});
+		return false;
+	});
+});
+</script>
 <style>
 body{background:none;}
+.clear{clear:both}
+.list{width:760px; margin:20px auto}
+.list li{float:left; width:360px; height:280px; margin:10px; position:relative}
+.list li p{position:absolute; top:0; left:0; width:360px; height:24px; line-height:24px; background:#000; opacity:.8;filter:alpha(opacity=80);}
+.list li p a{padding-left:30px; height:24px; background:url(images/heart.png) no-repeat 4px -1px;color:#fff; font-weight:bold; font-size:14px}
+.list li p a:hover{background-position:4px -25px;text-decoration:none}
 </style>
 </head>
 <body onload="iframe_height()">
@@ -22,22 +48,26 @@ body{background:none;}
 <form action="{APP_PATH}index.php?m=comment&c=index&a=post&commentid={$commentid}" method="post" onsubmit="return on_submit()">
 <input type="hidden" name="title" value="{urlencode(($comment[title] ? $comment[title] : $title))}">
 <input type="hidden" name="url" value="{urlencode(($comment[url] ? $comment[url] : $url))}">
-      <div class="comment-form">
-      	<h5><strong>我来说两句</strong><span class="fn rt blue">点赞数：<font color="#FF0000">			            <?php 
+      <div class="comment-form"><?php 
 						$cid=$_GET['commentid'];
+						$c1=explode('_',$cid);
+						$c2=explode('-',$c1[1]);
+						$c3=$c2[1];
 	                     pc_base::load_sys_class("get_model", "model", 0);
 						$get_db = new get_model();
-						$result = $get_db->sql_query("SELECT count(*) as tt FROM `v9_comment_data_1` WHERE `commentid`='$cid' and direction=1");             
+						$result = $get_db->sql_query("SELECT id,love FROM `v9_video` WHERE `id`=$c3");             
                          while ($rv = mysql_fetch_array($result)) {
-						 echo $rv["tt"];
+						$aa= $rv["id"];
+						$bb=$rv["love"];
 }
-				?> </font></span><span class="fn rt blue">评论数：{if $comment[total]}{$comment[total]}{else}0{/if}<font color="#FF0000">
+				?>
+      	<h5><strong>我来说两句</strong><span class="fn rt blue">点赞数：<font color="#FF0000"><a href="#" title="赞" class="img_on" rel="<?php echo $aa;?>" style="padding-left:30px; height:24px; background:url({IMG_PATH}love.png) no-repeat 4px -2px;color:#f00; font-weight:bold; font-size:14px;text-decoration:none"><?php echo $bb;?></a></font></span><span class="fn rt blue">评论数：{if $comment[total]}{$comment[total]}{else}0{/if}<font color="#FF0000">
 		
 
 		
 		
 		&nbsp;&nbsp;&nbsp;&nbsp;</font></span></h5>
-        <div class="posn">我要点赞：<input type="radio" name="direction" value="1" /> <img src="{IMG_PATH}icon/zheng.png" /> <input type="radio" name="direction" value="2" /> <img src="{IMG_PATH}icon/fan.png" /> <input type="radio" name="direction" value="3" /> <img src="{IMG_PATH}icon/zhong.png" /> 
+        <div class="posn">我要评论：<input type="radio" name="direction" value="1" /> <img src="{IMG_PATH}icon/zheng.png" /> <input type="radio" name="direction" value="2" /> <img src="{IMG_PATH}icon/fan.png" /> <input type="radio" name="direction" value="3" /> <img src="{IMG_PATH}icon/zhong.png" /> 
 </div>
         <textarea rows="8" cols="80" name="content"></textarea><br>
 		{if $setting[code]}

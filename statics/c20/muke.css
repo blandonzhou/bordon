@@ -9,3 +9,5 @@
 .muke-title{height:42px;line-height:42px;border-bottom:#d5d5d5 1px solid;}
 .muke-title .title-txt{font:20px/42px '微软雅黑';float:left;}
 .muke-title .more{float:right;background-position:-69px -290px;width:20px;height:20px;margin-top:19px;}
+i,.lest-btn,.next-btn,.muke-blogroll .corre,.muke-share a,.resource-down .down-top a,.muke-search .btn,.muke-list li span,.muke-title .more,.resource-down .reso-fn span{background:url("muke-ico.png") no-repeat;_background:url("muke-ico.gif") no-repeat;}
+.muke-title .more{float:right;background-position:-69px -290px;width:20px;height:20px;margin-top:19px;}
