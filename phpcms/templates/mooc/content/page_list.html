@@ -44,7 +44,7 @@ text-align:left;
   <tr>
     <td width="134" align="center" style="font-size: 14px;"><a class="fl" href="{$v[url]}" target="_blank"><img src="{$v[thumb]}" width="132" height="100"></td>
     <td valign="top"><div class="vt"><a href="{$v[url]}" title="{$v[title]}" class="ta" target="_blank">{$v[title]}</a><br>
-来源：{$v[school_name]} {$v[tea_name]}<br>播放：{$views}<br>发布时间：{date('Y-m-d',$v[inputtime])}<br>点赞数：{$v[love]}</div>      </td>
+来源：{$v[school_name]} {$v[tea_name]}<br>播放：{$views}<br>发布时间：{date('Y-m-d',$v[inputtime])}<br>点赞数：{$v[views]}</div>      </td>
   </tr>
   {php $db = pc_base::load_model('hits_model'); $_r = $db->get_one(array('hitsid'=>'c-11-'.$v[id])); $views = $_r[views]; }
   </table>
