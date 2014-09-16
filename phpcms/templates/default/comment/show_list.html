@@ -24,6 +24,10 @@ $(function(){
 			cache:false,
 			success:function(data){
 				love.html(data);
+				var src=$('#checkcode').attr("src");  
+				src+='&';
+				src+=Math.random();
+				$('#checkcode').attr("src",src); 
 				//love.fadeIn(300);
 			}
 		});
