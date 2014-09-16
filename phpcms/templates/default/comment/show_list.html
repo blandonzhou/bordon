@@ -15,11 +15,12 @@ $(function(){
 	$("font  a").click(function(){
 		var love = $(this);
 		var id = love.attr("rel");
-		love.fadeOut(300);
+		var code = $("input[name='code']").val();
+		//love.fadeOut(300);
 		$.ajax({
 			type:"POST",
 			url:"{APP_PATH}index.php?m=content&c=mooc&a=love",
-			data:"id="+id,
+			data:{'id':id,'code':code},
 			cache:false,
 			success:function(data){
 				love.html(data);
