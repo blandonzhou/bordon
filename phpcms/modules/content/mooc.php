@@ -273,6 +273,7 @@ class mooc {
 
 	//点赞功能
 	public function love(){
+		exit($_SESSION['code']);
 		//$ip = ip();
 		$id = $_POST['id'];
 		if(!isset($id) || empty($id)) exit;
