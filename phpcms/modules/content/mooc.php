@@ -273,6 +273,9 @@ class mooc {
 
 	//点赞功能
 	public function love(){
+		$session_storage = 'session_'.pc_base::load_config('system','session_storage');
+		pc_base::load_sys_class($session_storage);
+		session_start();
 		exit($_SESSION['code']);
 		//$ip = ip();
 		$id = $_POST['id'];
