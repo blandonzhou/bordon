@@ -273,23 +273,27 @@ class mooc {
 
 	//点赞功能
 	public function love(){
-		$ip = ip();
+		//$ip = ip();
 		$id = $_POST['id'];
 		if(!isset($id) || empty($id)) exit;
 		$tablename = $this->db->table_name = 'v9_video_ip';
-		$r = $this->db->get_one(array('pic_id'=>$id,'ip'=>$ip));
-		if($r){
-			echo "赞过了..";
-		}else{
-			$tablename = $this->db->table_name = 'v9_video';
-			$r = $this->db->get_one(array('id'=>$id));
-			$love = $r['love'] + 1;
-			$sql = array('love'=>$love,'updatetime'=>SYS_TIME);
-		    $this->db->update($sql, array('id'=>$id));
-		    $this->db->table_name= 'v9_video_ip';
-		    $this->db->insert(array('pic_id'=>$id,'ip'=>$ip));
-		    echo $love;
+		// $r = $this->db->get_one(array('pic_id'=>$id,'ip'=>$ip));
+		// if($r){
+		// 	echo "赞过了..";
+		// }else{
+		$code = isset($_POST['code']) && trim($_POST['code']) ? strtolower(trim($_POST['code'])) : exit('请输入验证码');
+		if ($code != $_SESSION['code']) {
+			exit('验证码错误');
 		}
+		$tablename = $this->db->table_name = 'v9_video';
+		$r = $this->db->get_one(array('id'=>$id));
+		$love = $r['love'] + 1;
+		$sql = array('love'=>$love,'updatetime'=>SYS_TIME);
+	        $this->db->update($sql, array('id'=>$id));
+	        $this->db->table_name= 'v9_video_ip';
+	        $this->db->insert(array('pic_id'=>$id,'ip'=>$ip));
+	        echo $love;
+		//}
 	}
 	//列表页
 	public function lists() {
