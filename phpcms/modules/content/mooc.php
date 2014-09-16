@@ -276,7 +276,6 @@ class mooc {
 		$session_storage = 'session_'.pc_base::load_config('system','session_storage');
 		pc_base::load_sys_class($session_storage);
 		session_start();
-		exit($_SESSION['code']);
 		//$ip = ip();
 		$id = $_POST['id'];
 		if(!isset($id) || empty($id)) exit;
