@@ -7,6 +7,10 @@
 <link rel="stylesheet" type="text/css" href="{APP_PATH}statics/mooc/images/muke.css">
 <script type="text/javascript" src="{APP_PATH}statics/mooc/images/jquery.min.js"></script>
 <script type="text/javascript" src="{APP_PATH}statics/mooc/images/faseSlider.js"></script>
+
+<link href="{APP_PATH}statics/c20/reset.css"    rel="stylesheet" type="text/css" />
+<link href="{APP_PATH}statics/c20/muke.css"    rel="stylesheet" type="text/css" />
+<link href="{APP_PATH}statics/c20/default_blue.css"    rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="muke-top-wrap">
@@ -24,17 +28,33 @@
     </div>
   </div>
 </div>
-<div class="muke-head-wrap">
-  <div id="muke-head"> <a href="index.php" title="华东师范大学慕课中心" class="muke-logo"><img src="{APP_PATH}statics/mooc/images/muke-logo.png"></a>
-    <ul class="muke-nav">
-        <li <?php if(!isset($_GET['catid'])) echo 'class="checked"';?>><a href="index.php">首页</a></li>
-        <li <?php if($_GET['t']=='video') echo 'class="checked"';?>><a href="index.php?m=content&c=mooc&a=lists&t=video&catid=191">微视频资源</a></li>
-        {pc:content action="category" catid="188" num="4" order="listorder ASC" return="nav"}
-            {loop $nav $r}
-            <li <?php if($_GET[catid]==$r[catid]) echo 'class="checked"';?>><a href="{$r[url]}">{$r[catname]}</a></li>
-            {/loop}
-        {/pc}
-        <li <?php if($_GET['t']=='school') echo 'class="checked"';?>><a href="index.php?m=content&c=index&a=lists&t=school&catid=208">参与学校</a></li>
-    </ul>
-  </div>
-</div>
+
+<div id="header">
+		<div>
+			<a href="#" id="logo"><img src="{APP_PATH}statics/c20/images/logo5.png" alt="logo"></a>
+			<ul>
+				<li>
+					<a href="http://115.29.169.203/mooc/index.php?m=content&c=index&a=lists&catid=193">名校名栏</a>
+				</li>
+				<li >
+					<a href="http://115.29.169.203/mooc/index.php?m=content&c=index&a=lists&catid=192">名师名课</a>
+				</li>
+				<li >
+					<a href="http://115.29.169.203/mooc/index.php?m=content&c=index&a=lists&catid=190">获奖佳作</a>
+				</li>
+				<li >
+					<a href="http://115.29.169.203/mooc/index.php?m=content&c=index&a=lists&catid=189">翻转课堂精选</a>
+				</li>
+				<li >
+					<a href="http://www.c20mooc.cn/index.php?m=content&c=mooc&a=lists&t=video&catid=191">微视频资源</a>
+				</li>
+                 <li >
+					<a href="http://115.29.169.203/mooc/index.php?m=content&c=index&a=lists&t=school&catid=208">参与学校</a>
+				</li>
+                   <li >
+					<a href="http://115.29.169.203/mooc/index.php?m=content&c=index&a=lists&catid=366">微视频大赛</a>
+				</li>
+				</li>
+			</ul>
+		</div>
+	</div>
