@@ -174,8 +174,12 @@ class content extends admin {
                         $thumbFile=  str_replace("uploadfile/video/org/", "uploadfile/thumb/", $local_video_path);
                         $thumbFileInfo=  pathinfo($thumbFile);
                         $thumbFile=$thumbFileInfo['dirname'] . '/' . $thumbFileInfo['filename'] . '.jpg';
-                        if(!file_exists($thumbFileInfo['dirname'].'/'))
+                        echo $thumbFileInfo['dirname'].'/';
+                        if(!file_exists($thumbFileInfo['dirname'].'/')){
                             mkdir($thumbFileInfo['dirname'].'/',0777,true);
+                            echo 'path not exits';
+                        }
+                            
                         
                         $targetFile=  str_replace("uploadfile/video/org/", "uploadfile/video/", $local_video_path);
                         $targetPathInfo=  pathinfo($targetFile);
