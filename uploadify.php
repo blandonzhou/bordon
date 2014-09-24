@@ -19,7 +19,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
         //$targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
         $targetPath .= date('Y/m/', time());
         if(!file_exists($targetPath)){
-            mkdir($targetPath,0,true);
+            mkdir($targetPath,0777,true);
         }
         $targetFile=$targetPath . uniqid("upload_") . '.' . $fileParts['extension'];
         

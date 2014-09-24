@@ -193,7 +193,7 @@ class content extends admin {
                                 $sourceFile= str_replace('\\', "/",$sourceFile);
                                 $rs=$osstool->upload($sourceFile, $targetFile);
                                 if($rs!=1){
-                                    showmessage("上传云存储失败。" . $sourceFile);
+                                    showmessage("上传云存储失败" . $sourceFile);
                                 }
                             }
                         }
@@ -206,14 +206,14 @@ class content extends admin {
                             //生成缩列图
                             exec($jpg,$status);
                             if(!file_exists($thumbFile)){
-                                showmessage("生成缩列图失败。" . $thumbFile);
+                                showmessage("生成缩略图失败" . $thumbFile);
                             }else{
                                 if(file_exists($thumbFile)){
                                     $sourceFile=PHPCMS_PATH . $thumbFile; 
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $thumbFile);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败。" . $sourceFile);
+                                        showmessage("上传云存储失败" . $sourceFile);
                                     }else{
                                         //删除本地列缩图
                                         @unlink($thumbFile);
@@ -236,7 +236,7 @@ class content extends admin {
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $targetFileMp4);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败。" . $sourceFile);
+                                        showmessage("上传云存储失败" . $sourceFile);
                                     }
                                 }
                                 
@@ -248,7 +248,7 @@ class content extends admin {
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $targetFile);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败。" . $sourceFile);
+                                        showmessage("上传云存储失败" . $sourceFile);
                                     }else{
                                         /* 销毁原视频 */
                                         @unlink($targetFile);
