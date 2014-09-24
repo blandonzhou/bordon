@@ -174,13 +174,13 @@ class content extends admin {
                         $thumbFile=  str_replace("uploadfile/video/org/", "uploadfile/thumb/", $local_video_path);
                         $thumbFileInfo=  pathinfo($thumbFile);
                         $thumbFile=$thumbFileInfo['dirname'] . '/' . $thumbFileInfo['filename'] . '.jpg';
-                        mkdir($thumbFileInfo['dirname'],0,true);
+                        mkdir($thumbFileInfo['dirname'],0777,true);
                         
                         $targetFile=  str_replace("uploadfile/video/org/", "uploadfile/video/", $local_video_path);
                         $targetPathInfo=  pathinfo($targetFile);
                         $targetFileMp4=$targetPathInfo['dirname'] . '/' .$targetPathInfo['filename'] . '.mp4';
                         $targetFileNoExt=$targetPathInfo['dirname'] . '/'  . $targetPathInfo['filename'];
-                        mkdir($targetPathInfo['dirname'], 0, true);
+                        mkdir($targetPathInfo['dirname'], 0777, true);
                         
                         //载入ffmpeg
                         //copy($local_video_path,   'uploadfile/video/' . $unq_name . '.' . $ext);
