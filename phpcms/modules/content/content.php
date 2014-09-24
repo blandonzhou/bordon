@@ -174,10 +174,8 @@ class content extends admin {
                         $thumbFile=  str_replace("uploadfile/video/org/", "uploadfile/thumb/", $local_video_path);
                         $thumbFileInfo=  pathinfo($thumbFile);
                         $thumbFile=$thumbFileInfo['dirname'] . '/' . $thumbFileInfo['filename'] . '.jpg';
-                        echo $thumbFileInfo['dirname'].'/';
                         if(!file_exists($thumbFileInfo['dirname'].'/')){
                             mkdir($thumbFileInfo['dirname'].'/',0777,true);
-                            echo 'path not exits';
                         }
                             
                         
@@ -210,6 +208,7 @@ class content extends admin {
                             //$jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . 'uploadfile/thumb/' . $unq_name . '.jpg';
                             $jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . $targetFile . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . $thumbFile;
                             //生成缩列图
+                            echo $jpg;
                             exec($jpg,$status);
                             if(!file_exists($thumbFile)){
                                 showmessage("生成缩略图失败" . $thumbFile);
