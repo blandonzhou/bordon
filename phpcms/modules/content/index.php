@@ -66,7 +66,11 @@ class index {
 		
 		$video_url_arr =  explode(',',$rs['local_video']);
 	
-		$video_url = $video_url_arr[0];
+                $video_url = $video_url_arr[0];
+                {
+                    //修正成阿里云播放地址
+                    $video_url=OSS_PATH . $video_url;
+                }
 		
 		$count = count ($video_url_arr);
 		

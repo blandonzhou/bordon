@@ -49,12 +49,18 @@ define('CSS_PATH',pc_base::load_config('system','css_path'));
 define('IMG_PATH',pc_base::load_config('system','img_path'));
 //动态程序路径
 define('APP_PATH',pc_base::load_config('system','app_path'));
+//阿里云存储访问网络地址
+define('OSS_PATH',pc_base::load_config('system','oss_path'));
 
 //应用静态文件路径
 define('PLUGIN_STATICS_PATH',WEB_PATH.'statics/plugin/');
 
-define('FFMPEG_EXT','/usr/local/bin/ffmpeg');
+//D:/dev/ffmpeg-20140827-git-9e8ab36-win64-static/bin/ffmpeg.exe
+//define('FFMPEG_EXT','/usr/local/bin/ffmpeg');
+define('FFMPEG_EXT','D:/dev/ffmpeg-20140827-git-9e8ab36-win64-static/bin/ffmpeg.exe');
+
 define('VIDEO_SERVER','uploadfile/video/');
+
 if(pc_base::load_config('system','gzip') && function_exists('ob_gzhandler')) {
 	ob_start('ob_gzhandler');
 } else {

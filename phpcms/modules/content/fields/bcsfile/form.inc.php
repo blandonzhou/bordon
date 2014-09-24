@@ -59,8 +59,13 @@ EOF;
 				
 						"uploader" : "'.APP_PATH.'uploadify.php",
 						"onUploadSuccess" : function(file, data, response) {
-						var file=$("#local_video").val()+",uploadfile/video/org/"+file.name;
-						$("#local_video").val(file);
+						//var file=$("#local_video").val()+",uploadfile/video/org/"+file.name;
+                                                if($.trim(data)=="Invalid file type."){
+                                                    alert(data);
+                                                }else{
+                                                    var file=$("#local_video").val()+","+data;
+                                                    $("#local_video").val(file);
+                                                }
 				}
 						
 					});
