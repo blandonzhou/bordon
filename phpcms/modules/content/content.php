@@ -174,17 +174,17 @@ class content extends admin {
                         $thumbFile=  str_replace("uploadfile/video/org/", "uploadfile/thumb/", $local_video_path);
                         $thumbFileInfo=  pathinfo($thumbFile);
                         $thumbFile=$thumbFileInfo['dirname'] . '/' . $thumbFileInfo['filename'] . '.jpg';
-                        if(!file_exists($thumbFileInfo['dirname'].'/')){
-                            mkdir($thumbFileInfo['dirname'].'/',0777,true);
+                        if(!is_dir($thumbFileInfo['dirname'])){ 
+                            mkdir($thumbFileInfo['dirname'],0777,true);
                         }
-                            
                         
                         $targetFile=  str_replace("uploadfile/video/org/", "uploadfile/video/", $local_video_path);
                         $targetPathInfo=  pathinfo($targetFile);
                         $targetFileMp4=$targetPathInfo['dirname'] . '/' .$targetPathInfo['filename'] . '.mp4';
                         $targetFileNoExt=$targetPathInfo['dirname'] . '/'  . $targetPathInfo['filename'];
-                        if(!file_exists($targetPathInfo['dirname'].'/'))
-                            mkdir($targetPathInfo['dirname'].'/', 0777, true);
+                        if(!is_dir($targetPathInfo['dirname'])){ 
+                            mkdir($targetPathInfo['dirname'], 0777, true);
+                        }
                         
                         //载入ffmpeg
                         //copy($local_video_path,   'uploadfile/video/' . $unq_name . '.' . $ext);
@@ -197,7 +197,7 @@ class content extends admin {
                                 $sourceFile= str_replace('\\', "/",$sourceFile);
                                 $rs=$osstool->upload($sourceFile, $targetFile);
                                 if($rs!=1){
-                                    showmessage("上传云存储失败" . $sourceFile);
+                                    showmessage("上传云存储失败。" . $sourceFile);
                                 }
                             }
                         }
@@ -208,17 +208,16 @@ class content extends admin {
                             //$jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . 'uploadfile/thumb/' . $unq_name . '.jpg';
                             $jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . $targetFile . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . $thumbFile;
                             //生成缩列图
-                            echo $jpg;
                             exec($jpg,$status);
                             if(!file_exists($thumbFile)){
-                                showmessage("生成缩略图失败" . $thumbFile);
+                                showmessage("生成缩列图失败。" . $thumbFile);
                             }else{
                                 if(file_exists($thumbFile)){
                                     $sourceFile=PHPCMS_PATH . $thumbFile; 
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $thumbFile);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败" . $sourceFile);
+                                        showmessage("上传云存储失败。" . $sourceFile);
                                     }else{
                                         //删除本地列缩图
                                         @unlink($thumbFile);
@@ -234,6 +233,7 @@ class content extends admin {
                                 $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . $targetFile . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . $targetFileMp4;
                                 //执行转码
                                 exec($cmd, $status);
+
                                 
                                 if(file_exists($targetFileMp4)){
                                     $sourceFile=PHPCMS_PATH . $targetFileMp4;
@@ -241,27 +241,31 @@ class content extends admin {
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $targetFileMp4);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败" . $sourceFile);
+                                        showmessage("上传云存储失败。" . $sourceFile);
                                     }
+                                }else{
+                                    //. $targetFile 
+                                    showmessage("转码失败。<br>" . "<br>cmd:" . $cmd);
                                 }
                                 
                                 //pc_base::ftp_upload($targetFileMp4);
-                                /* 销毁原视频 */
+                            }else{//if ($ext == 'mp4')
                                 if(file_exists($targetFile)){
                                     $sourceFile=PHPCMS_PATH . $targetFile;
                                     //$rs=$osstool->upload($sourceFile, $targetFileMp4);
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
-                                    $rs=$osstool->upload($sourceFile, $targetFile);
+                                    $rs=$osstool->upload($sourceFile, $targetFileMp4);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败" . $sourceFile);
-                                    }else{
-                                        /* 销毁原视频 */
-                                        @unlink($targetFile);
+                                        showmessage("上传云存储失败。" . $sourceFile);
                                     }
-                                }                                
-                            }else{//if ($ext == 'mp4')
-                                @unlink($targetFile);
+                                }                            
                             }
+                            
+                            if(file_exists($targetFile)){
+                                //delete org file
+                                @unlink($targetFile);
+                            }  
+                            
                             $insert_name[$i] = $targetFileNoExt;
                             $insert[$i] = $targetFileMp4;
                         } else

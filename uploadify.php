@@ -24,9 +24,13 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
         $targetFile=$targetPath . uniqid("upload_") . '.' . $fileParts['extension'];
         
 	if (in_array($fileParts['extension'],$fileTypes)) {
-		move_uploaded_file($tempFile,$targetFile);
-		//echo '1';
-                echo $targetFile;
+		if(move_uploaded_file($tempFile,$targetFile)){
+                //if(copy($tempFile,$targetFile)){
+                    //echo '1';
+                    echo $targetFile;
+                }else{
+                    echo 'upload_file_is_too_large';
+                }
 	} else {
 		echo 'Invalid file type.';
 	}
