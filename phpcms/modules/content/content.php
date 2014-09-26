@@ -197,9 +197,10 @@ class content extends admin {
                                 $sourceFile= str_replace('\\', "/",$sourceFile);
                                 $rs=$osstool->upload($sourceFile, $targetFile);
                                 if($rs!=1){
-                                    showmessage("上传云存储失败。" . $sourceFile);
+                                    showmessage("上传云存储失败" . $sourceFile);
                                 }
                             }
+                            else showmessage('文件上传失败'.$targetFile);
                         }
                                
 
@@ -210,14 +211,14 @@ class content extends admin {
                             //生成缩列图
                             exec($jpg,$status);
                             if(!file_exists($thumbFile)){
-                                showmessage("生成缩列图失败。" . $thumbFile);
+                                showmessage("生成缩略图失败" . $thumbFile);
                             }else{
                                 if(file_exists($thumbFile)){
                                     $sourceFile=PHPCMS_PATH . $thumbFile; 
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $thumbFile);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败。" . $sourceFile);
+                                        showmessage("上传云存储失败" . $sourceFile);
                                     }else{
                                         //删除本地列缩图
                                         @unlink($thumbFile);
@@ -241,11 +242,11 @@ class content extends admin {
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $targetFileMp4);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败。" . $sourceFile);
+                                        showmessage("上传云存储失败" . $sourceFile);
                                     }
                                 }else{
                                     //. $targetFile 
-                                    showmessage("转码失败。<br>" . "<br>cmd:" . $cmd);
+                                    showmessage("转码失败<br>" . "<br>cmd:" . $cmd);
                                 }
                                 
                                 //pc_base::ftp_upload($targetFileMp4);
@@ -256,7 +257,7 @@ class content extends admin {
                                     $sourceFile= str_replace('\\', "/",$sourceFile);
                                     $rs=$osstool->upload($sourceFile, $targetFileMp4);
                                     if($rs!=1){
-                                        showmessage("上传云存储失败。" . $sourceFile);
+                                        showmessage("上传云存储失败" . $sourceFile);
                                     }
                                 }                            
                             }

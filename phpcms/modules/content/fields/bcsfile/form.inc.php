@@ -62,6 +62,8 @@ EOF;
 						//var file=$("#local_video").val()+",uploadfile/video/org/"+file.name;
                                                 if($.trim(data)=="Invalid file type."){
                                                     alert(data);
+                                                }else if($.trim(data)=="upload_file_is_too_large"){
+                                                    alert("上传文件过大。");
                                                 }else{
                                                     var file=$("#local_video").val()+","+data;
                                                     $("#local_video").val(file);

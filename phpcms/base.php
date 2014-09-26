@@ -55,8 +55,9 @@ define('OSS_PATH',pc_base::load_config('system','oss_path'));
 //应用静态文件路径
 define('PLUGIN_STATICS_PATH',WEB_PATH.'statics/plugin/');
 
+//D:/dev/ffmpeg-20140827-git-9e8ab36-win64-static/bin/ffmpeg.exe
 define('FFMPEG_EXT','/usr/local/bin/ffmpeg');
-define('OSS_PATH','http://video.c20.org.cn/');
+//define('FFMPEG_EXT','D:/dev/ffmpeg-20140827-git-9e8ab36-win64-static/bin/ffmpeg.exe');
 
 define('VIDEO_SERVER','uploadfile/video/');
 

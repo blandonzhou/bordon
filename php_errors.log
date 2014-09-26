@@ -1,0 +1,16 @@
+[25-Sep-2014 22:02:49] PHP Warning:  copy(): Filename cannot be empty in /var/www/html/mooc/uploadify.php on line 28
+[25-Sep-2014 22:02:49] PHP Stack trace:
+[25-Sep-2014 22:02:49] PHP   1. {main}() /var/www/html/mooc/uploadify.php:0
+[25-Sep-2014 22:02:49] PHP   2. copy(*uninitialized*, *uninitialized*) /var/www/html/mooc/uploadify.php:28
+[25-Sep-2014 22:14:50] PHP Warning:  copy(): Filename cannot be empty in /var/www/html/mooc/uploadify.php on line 28
+[25-Sep-2014 22:14:50] PHP Stack trace:
+[25-Sep-2014 22:14:50] PHP   1. {main}() /var/www/html/mooc/uploadify.php:0
+[25-Sep-2014 22:14:50] PHP   2. copy(*uninitialized*, *uninitialized*) /var/www/html/mooc/uploadify.php:28
+[25-Sep-2014 22:16:34] PHP Warning:  copy(): Filename cannot be empty in /var/www/html/mooc/uploadify.php on line 28
+[25-Sep-2014 22:16:34] PHP Stack trace:
+[25-Sep-2014 22:16:34] PHP   1. {main}() /var/www/html/mooc/uploadify.php:0
+[25-Sep-2014 22:16:34] PHP   2. copy(*uninitialized*, *uninitialized*) /var/www/html/mooc/uploadify.php:28
+[25-Sep-2014 22:22:28] PHP Warning:  copy(): Filename cannot be empty in /var/www/html/mooc/uploadify.php on line 28
+[25-Sep-2014 22:22:28] PHP Stack trace:
+[25-Sep-2014 22:22:28] PHP   1. {main}() /var/www/html/mooc/uploadify.php:0
+[25-Sep-2014 22:22:28] PHP   2. copy(*uninitialized*, *uninitialized*) /var/www/html/mooc/uploadify.php:28
