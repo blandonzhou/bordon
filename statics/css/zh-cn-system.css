@@ -121,7 +121,7 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 
 
 /*栏目菜单*/
-.cat-menu{ width:180px; margin:10px 8px 0 0; }
+.cat-menu{ width:300px; margin:10px 8px 0 0; }
 .cat-menu div.content{padding-left:8px}
 /*收藏导航*/
 .fav-nav,.fav-nav span,.fav-nav a{height:28px;line-height:28px;background: url(../images/admin_img/fav-nav-bg.png) repeat-x left top;}
