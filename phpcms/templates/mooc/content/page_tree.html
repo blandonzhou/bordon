@@ -94,7 +94,7 @@ text-decoration: none;
 						$result = $get_db->sql_query("SELECT * FROM v9_category WHERE parentid = '".$classid."'  ORDER BY listorder ASC");             
                          while ($rv = mysql_fetch_array($result)) {
            ?>
-                     {id:<?php echo $rv['catid']?>, pId:<?php echo $rv['parentid']?>, name:"<?php echo $rv['catname']?>",<?php  if($rv['catid']==$rv['arrchildid']){ ?>file:"index.php?m=content&c=index&a=lists&catid=367&did=<?php echo $rv['catid']?>"<?php }else if($n==null){ ?>open:false<?php }?>},
+                     {id:<?php echo $rv['catid']?>, pId:<?php echo $rv['parentid']?>, name:"<?php echo $rv['catname']?>",<?php  if($rv['catid']==$rv['arrchildid']){ ?>file:"index.php?m=content&c=index&a=lists&catid=376&did=<?php echo $rv['catid']?>"<?php }else if($n==null){ ?>open:false<?php }?>},
 		   <?php
 
         display_tree($rv['catid']);
@@ -134,7 +134,7 @@ text-decoration: none;
 				</div>
 
 				<div class="mr">
-					<IFRAME ID="right" Name="right" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=780px SRC="index.php?m=content&c=index&a=lists&catid=367"></IFRAME>
+					<IFRAME ID="right" Name="right" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=780px SRC="index.php?m=content&c=index&a=lists&catid=376"></IFRAME>
 				</div>
 
 
