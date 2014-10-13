@@ -12,8 +12,8 @@
 	
 	<div id="container">
 		<input type='text' name='info[$field]' id='$field' value='$value' class='input-text' style='width:60%'/>
-		<input id="upload-$field" type="file" multiple="false" ></br>
-		<span id="progress-$field"></span>
+		<input id="upload-$field" type="file" multiple="false" >
+		<span id="progress-$field" style="float:left;display:block;"></span>
 	</div>
 
 
@@ -31,8 +31,13 @@
 	        },
 	        progressall: function (e, data) {
 	            var progress = parseInt(data.loaded / data.total * 100, 10);
+	            if(progress = 100){
+	            	$('#progress-$field').text(
+		                '正在转码中，请稍等... '
+	            	);
+	            }
 	            $('#progress-$field').text(
-	                progress + '%'
+	                '正在上传中，请稍等... '+progress + '%'
 	            );
 	        }
 	    }).prop('disabled', !$.support.fileInput)
