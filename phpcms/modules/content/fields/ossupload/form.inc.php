@@ -28,6 +28,9 @@
 	        done: function (e, data) {
 	                $('#$field').val(data.result.mp4);
 	                $('#thumb').val(data.result.thumb);
+	                $('#progress-$field').text(
+		                '转码完成!'
+	            	);
 	        },
 	        progressall: function (e, data) {
 	            var progress = parseInt(data.loaded / data.total * 100, 10);
