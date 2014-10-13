@@ -31,14 +31,17 @@
 	        },
 	        progressall: function (e, data) {
 	            var progress = parseInt(data.loaded / data.total * 100, 10);
-	            if(progress = 100){
+	            if(progress == 100){
 	            	$('#progress-$field').text(
 		                '正在转码中，请稍等... '
 	            	);
 	            }
-	            $('#progress-$field').text(
-	                '正在上传中，请稍等... '+progress + '%'
-	            );
+	            else{
+		            $('#progress-$field').text(
+		                '正在上传中，请稍等... '+progress + '%'
+		            );
+	            }
+
 	        }
 	    }).prop('disabled', !$.support.fileInput)
 	        .parent().addClass($.support.fileInput ? undefined : 'disabled');
