@@ -12,7 +12,7 @@
 	
 	<div id="container">
 		<input type='text' name='info[$field]' id='$field' value='$value' class='input-text' style='width:60%'/>
-		<input id="upload-$field" type="file" multiple="false" >
+		<input id="upload-$field" type="file" multiple="false" ></br>
 		<span id="progress-$field"></span>
 	</div>
 

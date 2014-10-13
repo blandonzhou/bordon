@@ -36,13 +36,11 @@ $jpg = $dir.'/thumb/'.$jpg;
 $jpgCmd = FFMPEG.' -i  "' . $file->path . '"  -f  image2  -ss 5 -vframes 1  ' . $jpg;
 $mp4Cmd = FFMPEG.' -i  "' . $file->path . '" -c:v libx264 -strict -2 -r 30 ' . $mp4;
 
-// exec($jpgCmd);
-// exec($mp4Cmd);
+exec($jpgCmd);
+exec($mp4Cmd);
 
 $result = array('thumb'=>'', 'mp4'=>'');
-$result['mp4'] = OSS_PATH.$targetMp4;
-$result['thumb'] = OSS_PATH.$targetJpg;
-echo json_encode($result);die;
+
 if(file_exists($jpg)){
 	$rs=$osstool->upload($jpg, $targetJpg);
 	if($rs)
