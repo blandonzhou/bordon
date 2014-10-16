@@ -6,6 +6,8 @@ pc_base::load_app_func('util');
 pc_base::load_sys_class('format','',0);
 pc_base::load_app_func('global');
 
+require_once PHPCMS_PATH . 'phpcms/plugin/aliyun-oss/oss_tool.class.php';
+
 class sakai  extends admin{
 	private $db,$priv_db;
 	public $siteid,$categorys;
@@ -31,7 +33,10 @@ class sakai  extends admin{
                 $_POST['video']['status'] = 99;
 
                 if (substr($_POST['video']['local_video'], 0, 1) == ',')
-                {
+                {                    
+                    //获取阿里云工具类
+                    $osstool=new OssTool();
+
                     //添加内容时候添加视频 start
                     ini_set("max_execution_time", 600000);
                     //取得视频文件名字	
@@ -41,45 +46,140 @@ class sakai  extends admin{
                     $l = count($local_videos);
                     for ($i = 0; $i < $l; $i++)
                     {
+                        //用户上传原始文件
                         $local_video_path = $local_videos[$i];
-                        $local_video = explode('.', $local_video_path);
-                        $local_video_name = $local_video[0];
-                        $ext = $local_video[1];
-                        $unq_name = uniqid();
-                        //载入ffmpeg
-                        copy($local_video_path,
-                                'uploadfile/video/' . $unq_name . '.' . $ext);
+
+                        //拆分目录，文件名，扩展名
+                        $pathInfo=  pathinfo($local_video_path);                        
+                        $dirname = $pathInfo['dirname'];
+                        $basename = $pathInfo['basename' ];
+                        $filename = $pathInfo['filename'];
+                        $ext = $pathInfo['extension'];
+
+                        $targetFile=$osstool->get_unique_filename('uploadfile/video/org/'.date('Y/m/', time()),'upload_', '.'.$ext);
+                        {
+                            //上传原始文件至OSS
+                            if(file_exists($local_video_path)){
+                                $sourceFile=PHPCMS_PATH . $local_video_path;
+                                $sourceFile= str_replace('\\', "/",$sourceFile);
+                                $rs=$osstool->upload($sourceFile, $targetFile);
+                                if($rs!=1){
+//                                    showmessage("上传云存储失败" . $sourceFile);
+                                    exit('上传云存储失败');
+                                }
+                            }else{
+//                                showmessage('文件上传失败'.$targetFile);
+                                exit('文件上传失败');
+                            }
+                        }
+                        
+                        //获取缩列图名称 xxxx.jpg
+                        $thumbFile= $osstool->get_unique_filename('uploadfile/thumb/'.date('Y/m/', time()),'upload_', '.jpg');
+                        //$thumbFile=  str_replace("uploadfile/video/org/", "uploadfile/thumb/", $local_video_path);
+                        $thumbFileInfo=  pathinfo($thumbFile);
+                        $thumbFile=$thumbFileInfo['dirname'] . '/' . $thumbFileInfo['filename'] . '.jpg';
+                        if(!is_dir($thumbFileInfo['dirname'])){ 
+                            mkdir($thumbFileInfo['dirname'],0777,true);
+                            chmod($thumbFileInfo['dirname'], 0777);
+                        }
+                        
+                        //获取转码后MP4文件名
+                        //$targetFile=  str_replace("uploadfile/video/org/", "uploadfile/video/", $local_video_path);
+                        $targetFile= $osstool->get_unique_filename('uploadfile/video/'.date('Y/m/', time()),'converted_', '.mp4');
+                        $targetPathInfo=  pathinfo($targetFile);
+                        $targetFileMp4=$targetPathInfo['dirname'] . '/' .$targetPathInfo['filename'] . '.mp4';
+                        $targetFileNoExt=$targetPathInfo['dirname'] . '/'  . $targetPathInfo['filename'];
+                        if(!is_dir($targetPathInfo['dirname'])){ 
+                            mkdir($targetPathInfo['dirname'], 0777, true);
+                            chmod($targetPathInfo['dirname'], 0777);
+                        }
+ 
+                        //载入ffmpeg(原来在本地备份，现在改成上传至阿里云OSS)
+                        //copy($local_video_path,  'uploadfile/video/' . $unq_name . '.' . $ext);
                         if (FFMPEG_EXT)
                         {
-                            $jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . 'uploadfile/thumb/' . $unq_name . '.jpg';
-                            exec($jpg);
+                            //生成缩列图,并上传阿里云OSS
+                            $jpg = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . $local_video_path . '  -f  image2  -ss 5 -vframes 1  ' . PHPCMS_PATH . $thumbFile;
+                            exec($jpg,$status);
+                            if(!file_exists($thumbFile)){
+//                                showmessage("生成缩略图失败" . $thumbFile);
+                                exit('生成缩略图失败');
+                            }else{
+                                if(file_exists($thumbFile)){
+                                    $sourceFile=PHPCMS_PATH . $thumbFile; 
+                                    $sourceFile= str_replace('\\', "/",$sourceFile);
+                                    $rs=$osstool->upload($sourceFile, $thumbFile);
+                                    if($rs!=1){
+//                                        showmessage("上传云存储失败" . $sourceFile);
+                                        exit('上传云存储失败');
+                                    }else{
+                                        //删除本地列缩图
+                                        @unlink($thumbFile);
+                                    }
+                                }
+                            }
+                            
                             if ($ext !== 'mp4')
                             {
                                 //清晰度
                                 $r = intval($_POST['video']['vision']) * 15;
-                                $ffmpeg = 'ffmpeg.exe'; //载入ffmpeg
-                                $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.mp4';
+                                //$cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.' . $ext . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . 'uploadfile/video/' . $unq_name . '.mp4';
+                                $cmd = FFMPEG_EXT . ' -i  ' . PHPCMS_PATH . $local_video_path . ' -c:v libx264 -strict -2 -r ' . $r . ' ' . PHPCMS_PATH . $targetFileMp4;
+                                //执行转码
                                 exec($cmd, $status);
-                                pc_base::ftp_upload($unq_name . '.mp4');
-                                /* 销毁原视频 */
-                                @unlink('uploadfile/video/' . $unq_name . '.' . $ext);
-                            }
-                            $insert_name[$i] = $unq_name;
-                            $insert[$i] = $unq_name . '.mp4';
+                                
+                                if(file_exists($targetFileMp4)){
+                                    $sourceFile=PHPCMS_PATH . $targetFileMp4;
+                                    //$rs=$osstool->upload($sourceFile, $targetFileMp4);
+                                    $sourceFile= str_replace('\\', "/",$sourceFile);
+                                    $rs=$osstool->upload($sourceFile, $targetFileMp4);
+                                    if($rs!=1){
+//                                        showmessage("上传云存储失败" . $sourceFile);
+                                        exit('上传云存储失败');
+                                    }else{
+                                        //成功上传OSS后删除本地文件。
+                                        @unlink($targetFileMp4);
+                                        //成功上传OSS后删除本地文件。
+                                        @unlink($local_video_path);
+                                    }
+                                }else{
+                                    //. $targetFile 
+                                    //showmessage("转码失败<br>" . "<br>cmd:" . $cmd);
+                                    exit('"转码失败<br>" . "<br>cmd:" . $cmd');
+                                }
+                                //pc_base::ftp_upload($targetFileMp4);
+                            }else{//if ($ext == 'mp4')
+                                if(file_exists($local_video_path)){
+                                    $sourceFile=PHPCMS_PATH . $local_video_path;
+                                    //$rs=$osstool->upload($sourceFile, $targetFileMp4);
+                                    $sourceFile= str_replace('\\', "/",$sourceFile);
+                                    $rs=$osstool->upload($sourceFile, $targetFileMp4);
+                                    if($rs!=1){
+//                                        showmessage("上传云存储失败" . $sourceFile);
+                                        exit("上传云存储失败" . $sourceFile);
+                                    }else{
+                                        //成功上传OSS后删除本地文件。
+                                        @unlink($local_video_path);
+                                    }
+                                }
+                            }                            
+                            $insert_name[$i] = $targetFileNoExt;
+                            $insert[$i] = $targetFileMp4;
                         } else
                         {
-                            showmessage("ffmpeg没有载入");
+//                            showmessage("ffmpeg没有载入");
+                            exit("ffmpeg没有载入");
                         }
                     }
                     if (!empty($insert_name[0]))
                     {
-                        $_POST['video']['thumb'] = APP_PATH . 'uploadfile/thumb/' . $insert_name[0] . '.jpg';
+                        $_POST['video']['thumb'] = APP_PATH . $thumbFile;
                     }
                     $_POST['video']['local_video'] = join(',', $insert);
                 }
 		$_POST['video']['from']='sakai';//设置来源为sakai
                 $id = $this->db->add_content($_POST['video']);
-//                                print_r(json_encode(urldecode(urlencode($_POST['video']))));
+//              print_r(json_encode(urldecode(urlencode($_POST['video']))));
                 $modelname = $this->db->model[$modelid]['tablename'] . '_model';
                 $return = pc_base::load_model($modelname)->get_one(array('id' => $id));
                 $_POST['video']['id'] = $return['id'];
@@ -246,9 +346,6 @@ class sakai  extends admin{
 		} else 
                     exit('视频ID必须填写 ');
 	}
-        
-        
-
         
        public function checkAuth(){
             $token=$_REQUEST['token'];
