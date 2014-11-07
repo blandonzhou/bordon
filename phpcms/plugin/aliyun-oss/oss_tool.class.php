@@ -158,4 +158,23 @@ class OssTool
 		}
 		return $rt;
 	}
+        
+        /**
+         * 获取OSS可用唯一文件名(含路径)。
+         * @param type $dirname 基础目录
+         * @param type $prefix 前缀
+         * @param type $suffix 后缀，一般为文件扩展名
+         * @return OSS可用的文件名(含路径).
+         */
+        function get_unique_filename($dirname,$prefix='',$suffix='') {
+            $dirname=  trim($dirname);
+            if(strlen($dirname)>0 && substr($dirname, strlen($dirname)-1)!='/'){
+                $dirname=$dirname . '/';
+            }
+            $name=$dirname . uniqid($prefix) .$suffix;
+            while ($this->size($name)>0){
+                $name=$dirname . uniqid($prefix) .$suffix;
+            }
+            return $name;
+        }
 }

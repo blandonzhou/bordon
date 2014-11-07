@@ -457,8 +457,5 @@ $LANG['video_upload'] = '批量上传';
 $LANG['upload_batch'] = '批量上传视频';
 $LANG['video'] = '视频';
 $LANG['batch_upload'] = '批量上传';
-$LANG['batch_upload'] = '批量上传';
-$LANG['batch_import'] = '批量导入';
-$LANG['batch_import'] = '批量导入';
 $LANG['batch_import'] = '批量导入';
 ?>

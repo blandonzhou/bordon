@@ -284,7 +284,7 @@ class mooc {
 		// if($r){
 		// 	echo "赞过了..";
 		// }else{
-		$code = isset($_POST['code']) && trim($_POST['code']) ? strtolower(trim($_POST['code'])) : exit('请输入验证码');
+		$code = isset($_POST['code']) && trim($_POST['code']) ? strtolower(trim($_POST['code'])) : exit('请输入验证码后再点赞');
 		if ($code != $_SESSION['code']) {
 			exit('验证码错误');
 		}

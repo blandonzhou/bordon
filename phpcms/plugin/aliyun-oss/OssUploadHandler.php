@@ -179,7 +179,7 @@ class OssUploadHandler
         switch ($this->get_server_var('REQUEST_METHOD')) {
             case 'OPTIONS':
             case 'HEAD':
-                //$this->head();
+                $this->head();
                 break;
             case 'GET':
                 //$this->get();
@@ -1109,14 +1109,22 @@ class OssUploadHandler
         if (!in_array($fileParts['extension'],$this->fileTypes)) {
             $file->error=$this->get_error_message("accept_file_types");
             return $file;
-        }
-        
+        }        
         {
             $tool=new OssTool();
             //新逻辑，将上传的文件，更新为：将文件上传至云服务器
             $timeString = date('Y/m', time());
-            $full_path =$this->getUniqidOssFileName($tool,"uploadfile/video/org/".$timeString . "/","upload_",$fileParts['extension']);
+            //$full_path =$this->getUniqidOssFileName($tool,"uploadfile/video/org/".$timeString . "/","upload_",$fileParts['extension']);
+            $full_path =$tool->get_unique_filename("uploadfile/video/org/".$timeString . "/", 'upload_', '.'.$fileParts['extension']);
 //            $full_path_target =$this->getUniqidOssFileName($tool,"uploadfile/video/".$timeString . "/","",$fileParts['extension']);
+            {
+                //如果不存在目录则创建该目录
+                $fullPathInfo=  pathinfo($full_path);
+                $fullPathDir=$fullPathInfo['dirname'];
+                if(!file_exists($fullPathDir)){
+                    mkdir($fullPathDir, 0777,true);
+                }
+            }
             //将临时文件移动至上传文件夹中。
             if(!move_uploaded_file($uploaded_file,$full_path)){
                 //如果移动文件失败

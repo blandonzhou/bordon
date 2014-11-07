@@ -20,13 +20,12 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
         $targetPath .= date('Y/m/', time());
         if(!file_exists($targetPath)){
             mkdir($targetPath,0777,true);
+            chmod($targetPath, 0777);
         }
         $targetFile=$targetPath . uniqid("upload_") . '.' . $fileParts['extension'];
         
 	if (in_array($fileParts['extension'],$fileTypes)) {
 		if(move_uploaded_file($tempFile,$targetFile)){
-                //if(copy($tempFile,$targetFile)){
-                    //echo '1';
                     echo $targetFile;
                 }else{
                     echo 'upload_file_is_too_large';

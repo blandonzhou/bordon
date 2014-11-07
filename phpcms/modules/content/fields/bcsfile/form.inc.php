@@ -44,7 +44,7 @@
 <pre id="console"></pre>
 
 EOF;
-		$my = '<script type="text/javascript" src="'.JS_PATH.'dump.js"></script>
+               $my='
 
 			   <script type="text/javascript">
                $(function() {
